@@ -36,7 +36,6 @@
     <link rel="stylesheet" type="text/css" href="/opt/hostedtoolcache/Python/3.12.13/x64/lib/python3.12/site-packages/sphinxcontrib/icon/node_modules/@fortawesome/fontawesome-free/css/all.min.css?v=53359634" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx_paramlinks.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=8fb98eed" />
   
   <!-- So that users can add custom icons -->
@@ -162,6 +161,8 @@
             <option value="../../../../../develop/source/api/lab_contrib/isaaclab_contrib.deformable.html" >develop</option>
             <option value="../../../../../main/index.html" >main</option>
             <option value="isaaclab_contrib.deformable.html" selected>release/3.0.0-beta2</option>
+            <option value="../../../../../v3.0.0-beta2/source/api/lab_contrib/isaaclab_contrib.deformable.html" >v3.0.0-beta2</option>
+            <option value="../../../../../v3.0.0-beta/index.html" >v3.0.0-beta</option>
             <option value="../../../../../v2.3.2/index.html" >v2.3.2</option>
             <option value="../../../../../v2.3.1/index.html" >v2.3.1</option>
             <option value="../../../../../v2.3.0/index.html" >v2.3.0</option>
@@ -1173,7 +1174,7 @@ parameters (density, stiffness, etc.) come from <code class="xref py py-attr doc
 <dd><p>Initialize the deformable object.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab_contrib.deformable.deformable_object.DeformableObject.params.cfg"></span><strong>cfg</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.deformable.deformable_object.DeformableObject.params.cfg">¶</a> – A configuration instance.</p>
+<dd class="field-odd"><p><strong>cfg</strong> – A configuration instance.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1211,8 +1212,8 @@ parameters (density, stiffness, etc.) come from <code class="xref py py-attr doc
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_contrib.deformable.deformable_object.DeformableObject.reset.params.env_ids"></span><strong>env_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.deformable.deformable_object.DeformableObject.reset.params.env_ids">¶</a> – Environment indices. If None, then all indices are used.</p></li>
-<li><p><span class="target" id="isaaclab_contrib.deformable.deformable_object.DeformableObject.reset.params.env_mask"></span><strong>env_mask</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.deformable.deformable_object.DeformableObject.reset.params.env_mask">¶</a> – Environment mask. If None, then all the instances are updated.
+<li><p><strong>env_ids</strong> – Environment indices. If None, then all indices are used.</p></li>
+<li><p><strong>env_mask</strong> – Environment mask. If None, then all the instances are updated.
 Shape is (num_instances,).</p></li>
 </ul>
 </dd>
@@ -1237,7 +1238,7 @@ the state swaps that happen between substeps.</p>
 <dd><p>Update the internal buffers.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab_contrib.deformable.deformable_object.DeformableObject.update.params.dt"></span><strong>dt</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.deformable.deformable_object.DeformableObject.update.params.dt">¶</a> – The amount of time passed from last <a class="reference internal" href="#isaaclab_contrib.deformable.deformable_object.DeformableObject.update" title="isaaclab_contrib.deformable.deformable_object.DeformableObject.update"><code class="xref py py-meth docutils literal notranslate"><span class="pre">update()</span></code></a> call [s].</p>
+<dd class="field-odd"><p><strong>dt</strong> – The amount of time passed from last <a class="reference internal" href="#isaaclab_contrib.deformable.deformable_object.DeformableObject.update" title="isaaclab_contrib.deformable.deformable_object.DeformableObject.update"><code class="xref py py-meth docutils literal notranslate"><span class="pre">update()</span></code></a> call [s].</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1249,11 +1250,11 @@ the state swaps that happen between substeps.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_contrib.deformable.deformable_object.DeformableObject.write_nodal_pos_to_sim_index.params.nodal_pos"></span><strong>nodal_pos</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.deformable.deformable_object.DeformableObject.write_nodal_pos_to_sim_index.params.nodal_pos">¶</a> – Nodal positions in simulation frame [m].
+<li><p><strong>nodal_pos</strong> – Nodal positions in simulation frame [m].
 Shape is (len(env_ids), max_sim_vertices_per_body, 3)
 or (num_instances, max_sim_vertices_per_body, 3).</p></li>
-<li><p><span class="target" id="isaaclab_contrib.deformable.deformable_object.DeformableObject.write_nodal_pos_to_sim_index.params.env_ids"></span><strong>env_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.deformable.deformable_object.DeformableObject.write_nodal_pos_to_sim_index.params.env_ids">¶</a> – Environment indices. If None, then all indices are used.</p></li>
-<li><p><span class="target" id="isaaclab_contrib.deformable.deformable_object.DeformableObject.write_nodal_pos_to_sim_index.params.full_data"></span><strong>full_data</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.deformable.deformable_object.DeformableObject.write_nodal_pos_to_sim_index.params.full_data">¶</a> – Whether to expect full data. Defaults to False.</p></li>
+<li><p><strong>env_ids</strong> – Environment indices. If None, then all indices are used.</p></li>
+<li><p><strong>full_data</strong> – Whether to expect full data. Defaults to False.</p></li>
 </ul>
 </dd>
 </dl>
@@ -1266,11 +1267,11 @@ or (num_instances, max_sim_vertices_per_body, 3).</p></li>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_contrib.deformable.deformable_object.DeformableObject.write_nodal_velocity_to_sim_index.params.nodal_vel"></span><strong>nodal_vel</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.deformable.deformable_object.DeformableObject.write_nodal_velocity_to_sim_index.params.nodal_vel">¶</a> – Nodal velocities in simulation frame [m/s].
+<li><p><strong>nodal_vel</strong> – Nodal velocities in simulation frame [m/s].
 Shape is (len(env_ids), max_sim_vertices_per_body, 3)
 or (num_instances, max_sim_vertices_per_body, 3).</p></li>
-<li><p><span class="target" id="isaaclab_contrib.deformable.deformable_object.DeformableObject.write_nodal_velocity_to_sim_index.params.env_ids"></span><strong>env_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.deformable.deformable_object.DeformableObject.write_nodal_velocity_to_sim_index.params.env_ids">¶</a> – Environment indices. If None, then all indices are used.</p></li>
-<li><p><span class="target" id="isaaclab_contrib.deformable.deformable_object.DeformableObject.write_nodal_velocity_to_sim_index.params.full_data"></span><strong>full_data</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.deformable.deformable_object.DeformableObject.write_nodal_velocity_to_sim_index.params.full_data">¶</a> – Whether to expect full data. Defaults to False.</p></li>
+<li><p><strong>env_ids</strong> – Environment indices. If None, then all indices are used.</p></li>
+<li><p><strong>full_data</strong> – Whether to expect full data. Defaults to False.</p></li>
 </ul>
 </dd>
 </dl>
@@ -1286,11 +1287,11 @@ or (num_instances, max_sim_vertices_per_body, 3).</p></li>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_contrib.deformable.deformable_object.DeformableObject.write_nodal_kinematic_target_to_sim_index.params.targets"></span><strong>targets</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.deformable.deformable_object.DeformableObject.write_nodal_kinematic_target_to_sim_index.params.targets">¶</a> – The kinematic targets comprising of nodal positions and flags [m].
+<li><p><strong>targets</strong> – The kinematic targets comprising of nodal positions and flags [m].
 Shape is (len(env_ids), max_sim_vertices_per_body, 4)
 or (num_instances, max_sim_vertices_per_body, 4).</p></li>
-<li><p><span class="target" id="isaaclab_contrib.deformable.deformable_object.DeformableObject.write_nodal_kinematic_target_to_sim_index.params.env_ids"></span><strong>env_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.deformable.deformable_object.DeformableObject.write_nodal_kinematic_target_to_sim_index.params.env_ids">¶</a> – Environment indices. If None, then all indices are used.</p></li>
-<li><p><span class="target" id="isaaclab_contrib.deformable.deformable_object.DeformableObject.write_nodal_kinematic_target_to_sim_index.params.full_data"></span><strong>full_data</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.deformable.deformable_object.DeformableObject.write_nodal_kinematic_target_to_sim_index.params.full_data">¶</a> – Whether to expect full data. Defaults to False.</p></li>
+<li><p><strong>env_ids</strong> – Environment indices. If None, then all indices are used.</p></li>
+<li><p><strong>full_data</strong> – Whether to expect full data. Defaults to False.</p></li>
 </ul>
 </dd>
 </dl>
@@ -1303,9 +1304,9 @@ or (num_instances, max_sim_vertices_per_body, 4).</p></li>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_contrib.deformable.deformable_object.DeformableObject.write_nodal_state_to_sim_mask.params.nodal_state"></span><strong>nodal_state</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.deformable.deformable_object.DeformableObject.write_nodal_state_to_sim_mask.params.nodal_state">¶</a> – Nodal state in simulation frame [m, m/s].
+<li><p><strong>nodal_state</strong> – Nodal state in simulation frame [m, m/s].
 Shape is (num_instances, max_sim_vertices_per_body, 6).</p></li>
-<li><p><span class="target" id="isaaclab_contrib.deformable.deformable_object.DeformableObject.write_nodal_state_to_sim_mask.params.env_mask"></span><strong>env_mask</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.deformable.deformable_object.DeformableObject.write_nodal_state_to_sim_mask.params.env_mask">¶</a> – Environment mask. If None, then all indices are used.
+<li><p><strong>env_mask</strong> – Environment mask. If None, then all indices are used.
 Shape is (num_instances,).</p></li>
 </ul>
 </dd>
@@ -1319,9 +1320,9 @@ Shape is (num_instances,).</p></li>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_contrib.deformable.deformable_object.DeformableObject.write_nodal_pos_to_sim_mask.params.nodal_pos"></span><strong>nodal_pos</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.deformable.deformable_object.DeformableObject.write_nodal_pos_to_sim_mask.params.nodal_pos">¶</a> – Nodal positions in simulation frame [m].
+<li><p><strong>nodal_pos</strong> – Nodal positions in simulation frame [m].
 Shape is (num_instances, max_sim_vertices_per_body, 3).</p></li>
-<li><p><span class="target" id="isaaclab_contrib.deformable.deformable_object.DeformableObject.write_nodal_pos_to_sim_mask.params.env_mask"></span><strong>env_mask</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.deformable.deformable_object.DeformableObject.write_nodal_pos_to_sim_mask.params.env_mask">¶</a> – Environment mask. If None, then all indices are used.
+<li><p><strong>env_mask</strong> – Environment mask. If None, then all indices are used.
 Shape is (num_instances,).</p></li>
 </ul>
 </dd>
@@ -1335,9 +1336,9 @@ Shape is (num_instances,).</p></li>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_contrib.deformable.deformable_object.DeformableObject.write_nodal_velocity_to_sim_mask.params.nodal_vel"></span><strong>nodal_vel</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.deformable.deformable_object.DeformableObject.write_nodal_velocity_to_sim_mask.params.nodal_vel">¶</a> – Nodal velocities in simulation frame [m/s].
+<li><p><strong>nodal_vel</strong> – Nodal velocities in simulation frame [m/s].
 Shape is (num_instances, max_sim_vertices_per_body, 3).</p></li>
-<li><p><span class="target" id="isaaclab_contrib.deformable.deformable_object.DeformableObject.write_nodal_velocity_to_sim_mask.params.env_mask"></span><strong>env_mask</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.deformable.deformable_object.DeformableObject.write_nodal_velocity_to_sim_mask.params.env_mask">¶</a> – Environment mask. If None, then all indices are used.
+<li><p><strong>env_mask</strong> – Environment mask. If None, then all indices are used.
 Shape is (num_instances,).</p></li>
 </ul>
 </dd>
@@ -1351,9 +1352,9 @@ Shape is (num_instances,).</p></li>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_contrib.deformable.deformable_object.DeformableObject.write_nodal_kinematic_target_to_sim_mask.params.targets"></span><strong>targets</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.deformable.deformable_object.DeformableObject.write_nodal_kinematic_target_to_sim_mask.params.targets">¶</a> – The kinematic targets comprising of nodal positions and flags [m].
+<li><p><strong>targets</strong> – The kinematic targets comprising of nodal positions and flags [m].
 Shape is (num_instances, max_sim_vertices_per_body, 4).</p></li>
-<li><p><span class="target" id="isaaclab_contrib.deformable.deformable_object.DeformableObject.write_nodal_kinematic_target_to_sim_mask.params.env_mask"></span><strong>env_mask</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.deformable.deformable_object.DeformableObject.write_nodal_kinematic_target_to_sim_mask.params.env_mask">¶</a> – Environment mask. If None, then all indices are used.
+<li><p><strong>env_mask</strong> – Environment mask. If None, then all indices are used.
 Shape is (num_instances,).</p></li>
 </ul>
 </dd>
@@ -1369,10 +1370,10 @@ disabled this method is a no-op.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_contrib.deformable.deformable_object.DeformableObject.assert_shape_and_dtype.params.tensor"></span><strong>tensor</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.deformable.deformable_object.DeformableObject.assert_shape_and_dtype.params.tensor">¶</a> – The tensor or warp array to assert the shape of. Floats are skipped.</p></li>
-<li><p><span class="target" id="isaaclab_contrib.deformable.deformable_object.DeformableObject.assert_shape_and_dtype.params.shape"></span><strong>shape</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.deformable.deformable_object.DeformableObject.assert_shape_and_dtype.params.shape">¶</a> – The expected leading dimensions (e.g. <code class="docutils literal notranslate"><span class="pre">(num_envs,</span> <span class="pre">num_joints)</span></code>).</p></li>
-<li><p><span class="target" id="isaaclab_contrib.deformable.deformable_object.DeformableObject.assert_shape_and_dtype.params.dtype"></span><strong>dtype</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.deformable.deformable_object.DeformableObject.assert_shape_and_dtype.params.dtype">¶</a> – The expected warp dtype.</p></li>
-<li><p><span class="target" id="isaaclab_contrib.deformable.deformable_object.DeformableObject.assert_shape_and_dtype.params.name"></span><strong>name</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.deformable.deformable_object.DeformableObject.assert_shape_and_dtype.params.name">¶</a> – Optional parameter name for error messages.</p></li>
+<li><p><strong>tensor</strong> – The tensor or warp array to assert the shape of. Floats are skipped.</p></li>
+<li><p><strong>shape</strong> – The expected leading dimensions (e.g. <code class="docutils literal notranslate"><span class="pre">(num_envs,</span> <span class="pre">num_joints)</span></code>).</p></li>
+<li><p><strong>dtype</strong> – The expected warp dtype.</p></li>
+<li><p><strong>name</strong> – Optional parameter name for error messages.</p></li>
 </ul>
 </dd>
 </dl>
@@ -1391,11 +1392,11 @@ disabled this method is a no-op.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_contrib.deformable.deformable_object.DeformableObject.assert_shape_and_dtype_mask.params.tensor"></span><strong>tensor</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.deformable.deformable_object.DeformableObject.assert_shape_and_dtype_mask.params.tensor">¶</a> – The tensor or warp array to assert the shape of. Floats are skipped.</p></li>
-<li><p><span class="target" id="isaaclab_contrib.deformable.deformable_object.DeformableObject.assert_shape_and_dtype_mask.params.masks"></span><strong>masks</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.deformable.deformable_object.DeformableObject.assert_shape_and_dtype_mask.params.masks">¶</a> – Tuple of mask arrays whose <code class="docutils literal notranslate"><span class="pre">shape[0]</span></code> dimensions form the expected leading shape.</p></li>
-<li><p><span class="target" id="isaaclab_contrib.deformable.deformable_object.DeformableObject.assert_shape_and_dtype_mask.params.dtype"></span><strong>dtype</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.deformable.deformable_object.DeformableObject.assert_shape_and_dtype_mask.params.dtype">¶</a> – The expected warp dtype.</p></li>
-<li><p><span class="target" id="isaaclab_contrib.deformable.deformable_object.DeformableObject.assert_shape_and_dtype_mask.params.name"></span><strong>name</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.deformable.deformable_object.DeformableObject.assert_shape_and_dtype_mask.params.name">¶</a> – Optional parameter name for error messages.</p></li>
-<li><p><span class="target" id="isaaclab_contrib.deformable.deformable_object.DeformableObject.assert_shape_and_dtype_mask.params.trailing_dims"></span><strong>trailing_dims</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.deformable.deformable_object.DeformableObject.assert_shape_and_dtype_mask.params.trailing_dims">¶</a> – Extra trailing dimensions to append (e.g. <code class="docutils literal notranslate"><span class="pre">(9,)</span></code> for inertias with <code class="docutils literal notranslate"><span class="pre">wp.float32</span></code>).</p></li>
+<li><p><strong>tensor</strong> – The tensor or warp array to assert the shape of. Floats are skipped.</p></li>
+<li><p><strong>masks</strong> – Tuple of mask arrays whose <code class="docutils literal notranslate"><span class="pre">shape[0]</span></code> dimensions form the expected leading shape.</p></li>
+<li><p><strong>dtype</strong> – The expected warp dtype.</p></li>
+<li><p><strong>name</strong> – Optional parameter name for error messages.</p></li>
+<li><p><strong>trailing_dims</strong> – Extra trailing dimensions to append (e.g. <code class="docutils literal notranslate"><span class="pre">(9,)</span></code> for inertias with <code class="docutils literal notranslate"><span class="pre">wp.float32</span></code>).</p></li>
 </ul>
 </dd>
 </dl>
@@ -1426,7 +1427,7 @@ disabled this method is a no-op.</p>
 <dd><p>Sets whether to visualize the asset data.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab_contrib.deformable.deformable_object.DeformableObject.set_debug_vis.params.debug_vis"></span><strong>debug_vis</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.deformable.deformable_object.DeformableObject.set_debug_vis.params.debug_vis">¶</a> – Whether to visualize the asset data.</p>
+<dd class="field-odd"><p><strong>debug_vis</strong> – Whether to visualize the asset data.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>Whether the debug visualization was successfully set. False if the asset
@@ -1450,8 +1451,8 @@ may have an overhead if the number of prims is large.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_contrib.deformable.deformable_object.DeformableObject.set_visibility.params.visible"></span><strong>visible</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.deformable.deformable_object.DeformableObject.set_visibility.params.visible">¶</a> – Whether to make the prims visible or not.</p></li>
-<li><p><span class="target" id="isaaclab_contrib.deformable.deformable_object.DeformableObject.set_visibility.params.env_ids"></span><strong>env_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.deformable.deformable_object.DeformableObject.set_visibility.params.env_ids">¶</a> – The indices of the object to set visibility. Defaults to None (all instances).</p></li>
+<li><p><strong>visible</strong> – Whether to make the prims visible or not.</p></li>
+<li><p><strong>env_ids</strong> – The indices of the object to set visibility. Defaults to None (all instances).</p></li>
 </ul>
 </dd>
 </dl>
@@ -1467,11 +1468,11 @@ Internally, it calls the <a class="reference internal" href="../lab/isaaclab.uti
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_contrib.deformable.deformable_object.DeformableObject.transform_nodal_pos.params.nodal_pos"></span><strong>nodal_pos</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.deformable.deformable_object.DeformableObject.transform_nodal_pos.params.nodal_pos">¶</a> – The nodal positions in the simulation frame [m].
+<li><p><strong>nodal_pos</strong> – The nodal positions in the simulation frame [m].
 Shape is (N, max_sim_vertices_per_body, 3).</p></li>
-<li><p><span class="target" id="isaaclab_contrib.deformable.deformable_object.DeformableObject.transform_nodal_pos.params.pos"></span><strong>pos</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.deformable.deformable_object.DeformableObject.transform_nodal_pos.params.pos">¶</a> – The position transformation [m]. Shape is (N, 3).
+<li><p><strong>pos</strong> – The position transformation [m]. Shape is (N, 3).
 Defaults to None, in which case the position is assumed to be zero.</p></li>
-<li><p><span class="target" id="isaaclab_contrib.deformable.deformable_object.DeformableObject.transform_nodal_pos.params.quat"></span><strong>quat</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.deformable.deformable_object.DeformableObject.transform_nodal_pos.params.quat">¶</a> – The orientation transformation as quaternion (x, y, z, w). Shape is (N, 4).
+<li><p><strong>quat</strong> – The orientation transformation as quaternion (x, y, z, w). Shape is (N, 4).
 Defaults to None, in which case the orientation is assumed to be identity.</p></li>
 </ul>
 </dd>
@@ -1508,11 +1509,11 @@ the velocity only has a translational component. All the quantities are in the s
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_contrib.deformable.deformable_object.DeformableObject.write_nodal_state_to_sim_index.params.nodal_state"></span><strong>nodal_state</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.deformable.deformable_object.DeformableObject.write_nodal_state_to_sim_index.params.nodal_state">¶</a> – Nodal state in simulation frame [m, m/s].
+<li><p><strong>nodal_state</strong> – Nodal state in simulation frame [m, m/s].
 Shape is (len(env_ids), max_sim_vertices_per_body, 6)
 or (num_instances, max_sim_vertices_per_body, 6).</p></li>
-<li><p><span class="target" id="isaaclab_contrib.deformable.deformable_object.DeformableObject.write_nodal_state_to_sim_index.params.env_ids"></span><strong>env_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.deformable.deformable_object.DeformableObject.write_nodal_state_to_sim_index.params.env_ids">¶</a> – Environment indices. If None, then all indices are used.</p></li>
-<li><p><span class="target" id="isaaclab_contrib.deformable.deformable_object.DeformableObject.write_nodal_state_to_sim_index.params.full_data"></span><strong>full_data</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.deformable.deformable_object.DeformableObject.write_nodal_state_to_sim_index.params.full_data">¶</a> – Whether to expect full data. Defaults to False.</p></li>
+<li><p><strong>env_ids</strong> – Environment indices. If None, then all indices are used.</p></li>
+<li><p><strong>full_data</strong> – Whether to expect full data. Defaults to False.</p></li>
 </ul>
 </dd>
 </dl>
@@ -1617,7 +1618,7 @@ Shape is (num_instances, particles_per_body) with dtype vec4f.</p>
 <dd><p>Update the data for the deformable object.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab_contrib.deformable.deformable_object_data.DeformableObjectData.update.params.dt"></span><strong>dt</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.deformable.deformable_object_data.DeformableObjectData.update.params.dt">¶</a> – The time step for the update [s]. This must be a positive value.</p>
+<dd class="field-odd"><p><strong>dt</strong> – The time step for the update [s]. This must be a positive value.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -2206,7 +2207,7 @@ per-shape values parsed from USD/MJCF are kept.</p>
 <dd><p>Initialize the manager with simulation context.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab_contrib.deformable.vbd_manager.NewtonVBDManager.initialize.params.sim_context"></span><strong>sim_context</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.deformable.vbd_manager.NewtonVBDManager.initialize.params.sim_context">¶</a> – Parent simulation context.</p>
+<dd class="field-odd"><p><strong>sim_context</strong> – Parent simulation context.</p>
 </dd>
 </dl>
 <p>TODO: Subclass should not override this method, once deformables
@@ -2264,11 +2265,11 @@ fnmatch globs and delegates to <code class="xref py py-class docutils literal no
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_contrib.deformable.vbd_manager.NewtonVBDManager.add_contact_sensor.params.body_names_expr"></span><strong>body_names_expr</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.deformable.vbd_manager.NewtonVBDManager.add_contact_sensor.params.body_names_expr">¶</a> – Expression for body names to sense.</p></li>
-<li><p><span class="target" id="isaaclab_contrib.deformable.vbd_manager.NewtonVBDManager.add_contact_sensor.params.shape_names_expr"></span><strong>shape_names_expr</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.deformable.vbd_manager.NewtonVBDManager.add_contact_sensor.params.shape_names_expr">¶</a> – Expression for shape names to sense.</p></li>
-<li><p><span class="target" id="isaaclab_contrib.deformable.vbd_manager.NewtonVBDManager.add_contact_sensor.params.contact_partners_body_expr"></span><strong>contact_partners_body_expr</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.deformable.vbd_manager.NewtonVBDManager.add_contact_sensor.params.contact_partners_body_expr">¶</a> – Expression for contact partner body names.</p></li>
-<li><p><span class="target" id="isaaclab_contrib.deformable.vbd_manager.NewtonVBDManager.add_contact_sensor.params.contact_partners_shape_expr"></span><strong>contact_partners_shape_expr</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.deformable.vbd_manager.NewtonVBDManager.add_contact_sensor.params.contact_partners_shape_expr">¶</a> – Expression for contact partner shape names.</p></li>
-<li><p><span class="target" id="isaaclab_contrib.deformable.vbd_manager.NewtonVBDManager.add_contact_sensor.params.verbose"></span><strong>verbose</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.deformable.vbd_manager.NewtonVBDManager.add_contact_sensor.params.verbose">¶</a> – Print verbose information.</p></li>
+<li><p><strong>body_names_expr</strong> – Expression for body names to sense.</p></li>
+<li><p><strong>shape_names_expr</strong> – Expression for shape names to sense.</p></li>
+<li><p><strong>contact_partners_body_expr</strong> – Expression for contact partner body names.</p></li>
+<li><p><strong>contact_partners_shape_expr</strong> – Expression for contact partner shape names.</p></li>
+<li><p><strong>verbose</strong> – Print verbose information.</p></li>
 </ul>
 </dd>
 </dl>
@@ -2283,8 +2284,8 @@ site indices, appends it to the internal list, and returns its index.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_contrib.deformable.vbd_manager.NewtonVBDManager.add_frame_transform_sensor.params.shapes"></span><strong>shapes</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.deformable.vbd_manager.NewtonVBDManager.add_frame_transform_sensor.params.shapes">¶</a> – Ordered list of shape indices to measure.</p></li>
-<li><p><span class="target" id="isaaclab_contrib.deformable.vbd_manager.NewtonVBDManager.add_frame_transform_sensor.params.reference_sites"></span><strong>reference_sites</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.deformable.vbd_manager.NewtonVBDManager.add_frame_transform_sensor.params.reference_sites">¶</a> – 1:1 list of reference site indices (same length as shapes).</p></li>
+<li><p><strong>shapes</strong> – Ordered list of shape indices to measure.</p></li>
+<li><p><strong>reference_sites</strong> – 1:1 list of reference site indices (same length as shapes).</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -2301,7 +2302,7 @@ site indices, appends it to the internal list, and returns its index.</p>
 appends it to the internal list, and returns its index.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab_contrib.deformable.vbd_manager.NewtonVBDManager.add_imu_sensor.params.sites"></span><strong>sites</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.deformable.vbd_manager.NewtonVBDManager.add_imu_sensor.params.sites">¶</a> – Ordered list of site indices (one per environment).</p>
+<dd class="field-odd"><p><strong>sites</strong> – Ordered list of site indices (one per environment).</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>Index of the newly created sensor in the internal IMU sensor list.</p>
@@ -2339,12 +2340,12 @@ that match multiple bodies create one site per matched body.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_contrib.deformable.vbd_manager.NewtonVBDManager.cl_register_site.params.body_pattern"></span><strong>body_pattern</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.deformable.vbd_manager.NewtonVBDManager.cl_register_site.params.body_pattern">¶</a> – Regex pattern matched against body labels in the
+<li><p><strong>body_pattern</strong> – Regex pattern matched against body labels in the
 prototype builder (e.g. <code class="docutils literal notranslate"><span class="pre">&quot;Robot/link0&quot;</span></code> or <code class="docutils literal notranslate"><span class="pre">&quot;Robot/finger.*&quot;</span></code>
 for multi-body wildcards), or <code class="docutils literal notranslate"><span class="pre">None</span></code> for global sites
 (world-origin reference, etc.).</p></li>
-<li><p><span class="target" id="isaaclab_contrib.deformable.vbd_manager.NewtonVBDManager.cl_register_site.params.xform"></span><strong>xform</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.deformable.vbd_manager.NewtonVBDManager.cl_register_site.params.xform">¶</a> – Site transform relative to body.</p></li>
-<li><p><span class="target" id="isaaclab_contrib.deformable.vbd_manager.NewtonVBDManager.cl_register_site.params.per_world"></span><strong>per_world</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.deformable.vbd_manager.NewtonVBDManager.cl_register_site.params.per_world">¶</a> – When <code class="docutils literal notranslate"><span class="pre">True</span></code>, <code class="docutils literal notranslate"><span class="pre">body_pattern</span></code> must be <code class="docutils literal notranslate"><span class="pre">None</span></code> and one
+<li><p><strong>xform</strong> – Site transform relative to body.</p></li>
+<li><p><strong>per_world</strong> – When <code class="docutils literal notranslate"><span class="pre">True</span></code>, <code class="docutils literal notranslate"><span class="pre">body_pattern</span></code> must be <code class="docutils literal notranslate"><span class="pre">None</span></code> and one
 bodyless site is created in each cloned world’s frame.</p></li>
 </ul>
 </dd>
@@ -2394,9 +2395,9 @@ rough-terrain margin/gap still apply during early construction.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_contrib.deformable.vbd_manager.NewtonVBDManager.create_builder.params.up_axis"></span><strong>up_axis</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.deformable.vbd_manager.NewtonVBDManager.create_builder.params.up_axis">¶</a> – Override for the up-axis. Defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code>, which uses
+<li><p><strong>up_axis</strong> – Override for the up-axis. Defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code>, which uses
 the manager’s <code class="docutils literal notranslate"><span class="pre">_up_axis</span></code>.</p></li>
-<li><p><span class="target" id="isaaclab_contrib.deformable.vbd_manager.NewtonVBDManager.create_builder.params.**kwargs"></span><strong>**kwargs</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.deformable.vbd_manager.NewtonVBDManager.create_builder.params.**kwargs">¶</a> – Forwarded to <code class="xref py py-class docutils literal notranslate"><span class="pre">ModelBuilder</span></code>.</p></li>
+<li><p><strong>**kwargs</strong> – Forwarded to <code class="xref py py-class docutils literal notranslate"><span class="pre">ModelBuilder</span></code>.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -2411,7 +2412,7 @@ the manager’s <code class="docutils literal notranslate"><span class="pre">_up
 <dd><p>Remove a registered callback.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab_contrib.deformable.vbd_manager.NewtonVBDManager.deregister_callback.params.callback_id"></span><strong>callback_id</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.deformable.vbd_manager.NewtonVBDManager.deregister_callback.params.callback_id">¶</a> – The ID or CallbackHandle returned by register_callback().</p>
+<dd class="field-odd"><p><strong>callback_id</strong> – The ID or CallbackHandle returned by register_callback().</p>
 </dd>
 </dl>
 </dd></dl>
@@ -2425,8 +2426,8 @@ Subclasses may override or extend with platform-specific dispatch.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_contrib.deformable.vbd_manager.NewtonVBDManager.dispatch_event.params.event"></span><strong>event</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.deformable.vbd_manager.NewtonVBDManager.dispatch_event.params.event">¶</a> – The event to dispatch.</p></li>
-<li><p><span class="target" id="isaaclab_contrib.deformable.vbd_manager.NewtonVBDManager.dispatch_event.params.payload"></span><strong>payload</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.deformable.vbd_manager.NewtonVBDManager.dispatch_event.params.payload">¶</a> – Optional data to pass to callbacks.</p></li>
+<li><p><strong>event</strong> – The event to dispatch.</p></li>
+<li><p><strong>payload</strong> – Optional data to pass to callbacks.</p></li>
 </ul>
 </dd>
 </dl>
@@ -2592,11 +2593,11 @@ stepping.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_contrib.deformable.vbd_manager.NewtonVBDManager.invalidate_fk.params.env_mask"></span><strong>env_mask</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.deformable.vbd_manager.NewtonVBDManager.invalidate_fk.params.env_mask">¶</a> – Boolean mask of dirtied environments. Shape <code class="docutils literal notranslate"><span class="pre">(num_envs,)</span></code>.
+<li><p><strong>env_mask</strong> – Boolean mask of dirtied environments. Shape <code class="docutils literal notranslate"><span class="pre">(num_envs,)</span></code>.
 Used by <code class="docutils literal notranslate"><span class="pre">_mask</span></code> write methods.</p></li>
-<li><p><span class="target" id="isaaclab_contrib.deformable.vbd_manager.NewtonVBDManager.invalidate_fk.params.env_ids"></span><strong>env_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.deformable.vbd_manager.NewtonVBDManager.invalidate_fk.params.env_ids">¶</a> – Integer indices of dirtied environments.
+<li><p><strong>env_ids</strong> – Integer indices of dirtied environments.
 Used by <code class="docutils literal notranslate"><span class="pre">_index</span></code> write methods.</p></li>
-<li><p><span class="target" id="isaaclab_contrib.deformable.vbd_manager.NewtonVBDManager.invalidate_fk.params.articulation_ids"></span><strong>articulation_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.deformable.vbd_manager.NewtonVBDManager.invalidate_fk.params.articulation_ids">¶</a> – Mapping from <code class="docutils literal notranslate"><span class="pre">(world,</span> <span class="pre">arti)</span></code> to model articulation
+<li><p><strong>articulation_ids</strong> – Mapping from <code class="docutils literal notranslate"><span class="pre">(world,</span> <span class="pre">arti)</span></code> to model articulation
 index. Shape <code class="docutils literal notranslate"><span class="pre">(world_count,</span> <span class="pre">count_per_world)</span></code>. Obtained from
 <code class="docutils literal notranslate"><span class="pre">ArticulationView.articulation_ids</span></code>.</p></li>
 </ul>
@@ -2656,7 +2657,7 @@ Attributes are forwarded to the model in <a class="reference internal" href="#is
 so that subsequent <code class="docutils literal notranslate"><span class="pre">Contacts</span></code> creation includes them.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab_contrib.deformable.vbd_manager.NewtonVBDManager.request_extended_contact_attribute.params.attr"></span><strong>attr</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.deformable.vbd_manager.NewtonVBDManager.request_extended_contact_attribute.params.attr">¶</a> – Contact attribute name.</p>
+<dd class="field-odd"><p><strong>attr</strong> – Contact attribute name.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -2670,7 +2671,7 @@ Attributes are forwarded to the builder in <a class="reference internal" href="#
 so that subsequent <code class="docutils literal notranslate"><span class="pre">model.state()</span></code> calls allocate them.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab_contrib.deformable.vbd_manager.NewtonVBDManager.request_extended_state_attribute.params.attr"></span><strong>attr</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.deformable.vbd_manager.NewtonVBDManager.request_extended_state_attribute.params.attr">¶</a> – State attribute name (must be in <code class="docutils literal notranslate"><span class="pre">State.EXTENDED_ATTRIBUTES</span></code>).</p>
+<dd class="field-odd"><p><strong>attr</strong> – State attribute name (must be in <code class="docutils literal notranslate"><span class="pre">State.EXTENDED_ATTRIBUTES</span></code>).</p>
 </dd>
 </dl>
 </dd></dl>
@@ -2681,7 +2682,7 @@ so that subsequent <code class="docutils literal notranslate"><span class="pre">
 <dd><p>Reset physics simulation.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab_contrib.deformable.vbd_manager.NewtonVBDManager.reset.params.soft"></span><strong>soft</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.deformable.vbd_manager.NewtonVBDManager.reset.params.soft">¶</a> – If True, skip full reinitialization.</p>
+<dd class="field-odd"><p><strong>soft</strong> – If True, skip full reinitialization.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -2988,7 +2989,7 @@ manager uses the same temporary solutions from VBD Manager.</p>
 <dd><p>Initialize the manager with simulation context.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab_contrib.deformable.coupled_mjwarp_vbd_manager.NewtonCoupledMJWarpVBDManager.initialize.params.sim_context"></span><strong>sim_context</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.deformable.coupled_mjwarp_vbd_manager.NewtonCoupledMJWarpVBDManager.initialize.params.sim_context">¶</a> – Parent simulation context.</p>
+<dd class="field-odd"><p><strong>sim_context</strong> – Parent simulation context.</p>
 </dd>
 </dl>
 <p>TODO: Subclass should not override this method, once deformables
@@ -3052,11 +3053,11 @@ fnmatch globs and delegates to <code class="xref py py-class docutils literal no
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_contrib.deformable.coupled_mjwarp_vbd_manager.NewtonCoupledMJWarpVBDManager.add_contact_sensor.params.body_names_expr"></span><strong>body_names_expr</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.deformable.coupled_mjwarp_vbd_manager.NewtonCoupledMJWarpVBDManager.add_contact_sensor.params.body_names_expr">¶</a> – Expression for body names to sense.</p></li>
-<li><p><span class="target" id="isaaclab_contrib.deformable.coupled_mjwarp_vbd_manager.NewtonCoupledMJWarpVBDManager.add_contact_sensor.params.shape_names_expr"></span><strong>shape_names_expr</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.deformable.coupled_mjwarp_vbd_manager.NewtonCoupledMJWarpVBDManager.add_contact_sensor.params.shape_names_expr">¶</a> – Expression for shape names to sense.</p></li>
-<li><p><span class="target" id="isaaclab_contrib.deformable.coupled_mjwarp_vbd_manager.NewtonCoupledMJWarpVBDManager.add_contact_sensor.params.contact_partners_body_expr"></span><strong>contact_partners_body_expr</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.deformable.coupled_mjwarp_vbd_manager.NewtonCoupledMJWarpVBDManager.add_contact_sensor.params.contact_partners_body_expr">¶</a> – Expression for contact partner body names.</p></li>
-<li><p><span class="target" id="isaaclab_contrib.deformable.coupled_mjwarp_vbd_manager.NewtonCoupledMJWarpVBDManager.add_contact_sensor.params.contact_partners_shape_expr"></span><strong>contact_partners_shape_expr</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.deformable.coupled_mjwarp_vbd_manager.NewtonCoupledMJWarpVBDManager.add_contact_sensor.params.contact_partners_shape_expr">¶</a> – Expression for contact partner shape names.</p></li>
-<li><p><span class="target" id="isaaclab_contrib.deformable.coupled_mjwarp_vbd_manager.NewtonCoupledMJWarpVBDManager.add_contact_sensor.params.verbose"></span><strong>verbose</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.deformable.coupled_mjwarp_vbd_manager.NewtonCoupledMJWarpVBDManager.add_contact_sensor.params.verbose">¶</a> – Print verbose information.</p></li>
+<li><p><strong>body_names_expr</strong> – Expression for body names to sense.</p></li>
+<li><p><strong>shape_names_expr</strong> – Expression for shape names to sense.</p></li>
+<li><p><strong>contact_partners_body_expr</strong> – Expression for contact partner body names.</p></li>
+<li><p><strong>contact_partners_shape_expr</strong> – Expression for contact partner shape names.</p></li>
+<li><p><strong>verbose</strong> – Print verbose information.</p></li>
 </ul>
 </dd>
 </dl>
@@ -3071,8 +3072,8 @@ site indices, appends it to the internal list, and returns its index.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_contrib.deformable.coupled_mjwarp_vbd_manager.NewtonCoupledMJWarpVBDManager.add_frame_transform_sensor.params.shapes"></span><strong>shapes</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.deformable.coupled_mjwarp_vbd_manager.NewtonCoupledMJWarpVBDManager.add_frame_transform_sensor.params.shapes">¶</a> – Ordered list of shape indices to measure.</p></li>
-<li><p><span class="target" id="isaaclab_contrib.deformable.coupled_mjwarp_vbd_manager.NewtonCoupledMJWarpVBDManager.add_frame_transform_sensor.params.reference_sites"></span><strong>reference_sites</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.deformable.coupled_mjwarp_vbd_manager.NewtonCoupledMJWarpVBDManager.add_frame_transform_sensor.params.reference_sites">¶</a> – 1:1 list of reference site indices (same length as shapes).</p></li>
+<li><p><strong>shapes</strong> – Ordered list of shape indices to measure.</p></li>
+<li><p><strong>reference_sites</strong> – 1:1 list of reference site indices (same length as shapes).</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -3089,7 +3090,7 @@ site indices, appends it to the internal list, and returns its index.</p>
 appends it to the internal list, and returns its index.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab_contrib.deformable.coupled_mjwarp_vbd_manager.NewtonCoupledMJWarpVBDManager.add_imu_sensor.params.sites"></span><strong>sites</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.deformable.coupled_mjwarp_vbd_manager.NewtonCoupledMJWarpVBDManager.add_imu_sensor.params.sites">¶</a> – Ordered list of site indices (one per environment).</p>
+<dd class="field-odd"><p><strong>sites</strong> – Ordered list of site indices (one per environment).</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>Index of the newly created sensor in the internal IMU sensor list.</p>
@@ -3127,12 +3128,12 @@ that match multiple bodies create one site per matched body.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_contrib.deformable.coupled_mjwarp_vbd_manager.NewtonCoupledMJWarpVBDManager.cl_register_site.params.body_pattern"></span><strong>body_pattern</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.deformable.coupled_mjwarp_vbd_manager.NewtonCoupledMJWarpVBDManager.cl_register_site.params.body_pattern">¶</a> – Regex pattern matched against body labels in the
+<li><p><strong>body_pattern</strong> – Regex pattern matched against body labels in the
 prototype builder (e.g. <code class="docutils literal notranslate"><span class="pre">&quot;Robot/link0&quot;</span></code> or <code class="docutils literal notranslate"><span class="pre">&quot;Robot/finger.*&quot;</span></code>
 for multi-body wildcards), or <code class="docutils literal notranslate"><span class="pre">None</span></code> for global sites
 (world-origin reference, etc.).</p></li>
-<li><p><span class="target" id="isaaclab_contrib.deformable.coupled_mjwarp_vbd_manager.NewtonCoupledMJWarpVBDManager.cl_register_site.params.xform"></span><strong>xform</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.deformable.coupled_mjwarp_vbd_manager.NewtonCoupledMJWarpVBDManager.cl_register_site.params.xform">¶</a> – Site transform relative to body.</p></li>
-<li><p><span class="target" id="isaaclab_contrib.deformable.coupled_mjwarp_vbd_manager.NewtonCoupledMJWarpVBDManager.cl_register_site.params.per_world"></span><strong>per_world</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.deformable.coupled_mjwarp_vbd_manager.NewtonCoupledMJWarpVBDManager.cl_register_site.params.per_world">¶</a> – When <code class="docutils literal notranslate"><span class="pre">True</span></code>, <code class="docutils literal notranslate"><span class="pre">body_pattern</span></code> must be <code class="docutils literal notranslate"><span class="pre">None</span></code> and one
+<li><p><strong>xform</strong> – Site transform relative to body.</p></li>
+<li><p><strong>per_world</strong> – When <code class="docutils literal notranslate"><span class="pre">True</span></code>, <code class="docutils literal notranslate"><span class="pre">body_pattern</span></code> must be <code class="docutils literal notranslate"><span class="pre">None</span></code> and one
 bodyless site is created in each cloned world’s frame.</p></li>
 </ul>
 </dd>
@@ -3182,9 +3183,9 @@ rough-terrain margin/gap still apply during early construction.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_contrib.deformable.coupled_mjwarp_vbd_manager.NewtonCoupledMJWarpVBDManager.create_builder.params.up_axis"></span><strong>up_axis</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.deformable.coupled_mjwarp_vbd_manager.NewtonCoupledMJWarpVBDManager.create_builder.params.up_axis">¶</a> – Override for the up-axis. Defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code>, which uses
+<li><p><strong>up_axis</strong> – Override for the up-axis. Defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code>, which uses
 the manager’s <code class="docutils literal notranslate"><span class="pre">_up_axis</span></code>.</p></li>
-<li><p><span class="target" id="isaaclab_contrib.deformable.coupled_mjwarp_vbd_manager.NewtonCoupledMJWarpVBDManager.create_builder.params.**kwargs"></span><strong>**kwargs</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.deformable.coupled_mjwarp_vbd_manager.NewtonCoupledMJWarpVBDManager.create_builder.params.**kwargs">¶</a> – Forwarded to <code class="xref py py-class docutils literal notranslate"><span class="pre">ModelBuilder</span></code>.</p></li>
+<li><p><strong>**kwargs</strong> – Forwarded to <code class="xref py py-class docutils literal notranslate"><span class="pre">ModelBuilder</span></code>.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -3199,7 +3200,7 @@ the manager’s <code class="docutils literal notranslate"><span class="pre">_up
 <dd><p>Remove a registered callback.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab_contrib.deformable.coupled_mjwarp_vbd_manager.NewtonCoupledMJWarpVBDManager.deregister_callback.params.callback_id"></span><strong>callback_id</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.deformable.coupled_mjwarp_vbd_manager.NewtonCoupledMJWarpVBDManager.deregister_callback.params.callback_id">¶</a> – The ID or CallbackHandle returned by register_callback().</p>
+<dd class="field-odd"><p><strong>callback_id</strong> – The ID or CallbackHandle returned by register_callback().</p>
 </dd>
 </dl>
 </dd></dl>
@@ -3213,8 +3214,8 @@ Subclasses may override or extend with platform-specific dispatch.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_contrib.deformable.coupled_mjwarp_vbd_manager.NewtonCoupledMJWarpVBDManager.dispatch_event.params.event"></span><strong>event</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.deformable.coupled_mjwarp_vbd_manager.NewtonCoupledMJWarpVBDManager.dispatch_event.params.event">¶</a> – The event to dispatch.</p></li>
-<li><p><span class="target" id="isaaclab_contrib.deformable.coupled_mjwarp_vbd_manager.NewtonCoupledMJWarpVBDManager.dispatch_event.params.payload"></span><strong>payload</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.deformable.coupled_mjwarp_vbd_manager.NewtonCoupledMJWarpVBDManager.dispatch_event.params.payload">¶</a> – Optional data to pass to callbacks.</p></li>
+<li><p><strong>event</strong> – The event to dispatch.</p></li>
+<li><p><strong>payload</strong> – Optional data to pass to callbacks.</p></li>
 </ul>
 </dd>
 </dl>
@@ -3380,11 +3381,11 @@ stepping.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_contrib.deformable.coupled_mjwarp_vbd_manager.NewtonCoupledMJWarpVBDManager.invalidate_fk.params.env_mask"></span><strong>env_mask</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.deformable.coupled_mjwarp_vbd_manager.NewtonCoupledMJWarpVBDManager.invalidate_fk.params.env_mask">¶</a> – Boolean mask of dirtied environments. Shape <code class="docutils literal notranslate"><span class="pre">(num_envs,)</span></code>.
+<li><p><strong>env_mask</strong> – Boolean mask of dirtied environments. Shape <code class="docutils literal notranslate"><span class="pre">(num_envs,)</span></code>.
 Used by <code class="docutils literal notranslate"><span class="pre">_mask</span></code> write methods.</p></li>
-<li><p><span class="target" id="isaaclab_contrib.deformable.coupled_mjwarp_vbd_manager.NewtonCoupledMJWarpVBDManager.invalidate_fk.params.env_ids"></span><strong>env_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.deformable.coupled_mjwarp_vbd_manager.NewtonCoupledMJWarpVBDManager.invalidate_fk.params.env_ids">¶</a> – Integer indices of dirtied environments.
+<li><p><strong>env_ids</strong> – Integer indices of dirtied environments.
 Used by <code class="docutils literal notranslate"><span class="pre">_index</span></code> write methods.</p></li>
-<li><p><span class="target" id="isaaclab_contrib.deformable.coupled_mjwarp_vbd_manager.NewtonCoupledMJWarpVBDManager.invalidate_fk.params.articulation_ids"></span><strong>articulation_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.deformable.coupled_mjwarp_vbd_manager.NewtonCoupledMJWarpVBDManager.invalidate_fk.params.articulation_ids">¶</a> – Mapping from <code class="docutils literal notranslate"><span class="pre">(world,</span> <span class="pre">arti)</span></code> to model articulation
+<li><p><strong>articulation_ids</strong> – Mapping from <code class="docutils literal notranslate"><span class="pre">(world,</span> <span class="pre">arti)</span></code> to model articulation
 index. Shape <code class="docutils literal notranslate"><span class="pre">(world_count,</span> <span class="pre">count_per_world)</span></code>. Obtained from
 <code class="docutils literal notranslate"><span class="pre">ArticulationView.articulation_ids</span></code>.</p></li>
 </ul>
@@ -3444,7 +3445,7 @@ Attributes are forwarded to the model in <a class="reference internal" href="#is
 so that subsequent <code class="docutils literal notranslate"><span class="pre">Contacts</span></code> creation includes them.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab_contrib.deformable.coupled_mjwarp_vbd_manager.NewtonCoupledMJWarpVBDManager.request_extended_contact_attribute.params.attr"></span><strong>attr</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.deformable.coupled_mjwarp_vbd_manager.NewtonCoupledMJWarpVBDManager.request_extended_contact_attribute.params.attr">¶</a> – Contact attribute name.</p>
+<dd class="field-odd"><p><strong>attr</strong> – Contact attribute name.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -3458,7 +3459,7 @@ Attributes are forwarded to the builder in <a class="reference internal" href="#
 so that subsequent <code class="docutils literal notranslate"><span class="pre">model.state()</span></code> calls allocate them.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab_contrib.deformable.coupled_mjwarp_vbd_manager.NewtonCoupledMJWarpVBDManager.request_extended_state_attribute.params.attr"></span><strong>attr</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.deformable.coupled_mjwarp_vbd_manager.NewtonCoupledMJWarpVBDManager.request_extended_state_attribute.params.attr">¶</a> – State attribute name (must be in <code class="docutils literal notranslate"><span class="pre">State.EXTENDED_ATTRIBUTES</span></code>).</p>
+<dd class="field-odd"><p><strong>attr</strong> – State attribute name (must be in <code class="docutils literal notranslate"><span class="pre">State.EXTENDED_ATTRIBUTES</span></code>).</p>
 </dd>
 </dl>
 </dd></dl>
@@ -3469,7 +3470,7 @@ so that subsequent <code class="docutils literal notranslate"><span class="pre">
 <dd><p>Reset physics simulation.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab_contrib.deformable.coupled_mjwarp_vbd_manager.NewtonCoupledMJWarpVBDManager.reset.params.soft"></span><strong>soft</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.deformable.coupled_mjwarp_vbd_manager.NewtonCoupledMJWarpVBDManager.reset.params.soft">¶</a> – If True, skip full reinitialization.</p>
+<dd class="field-odd"><p><strong>soft</strong> – If True, skip full reinitialization.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -3753,7 +3754,7 @@ manager uses the same temporary solutions from VBD Manager.</p>
 <dd><p>Initialize the manager with simulation context.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab_contrib.deformable.coupled_featherstone_vbd_manager.NewtonCoupledFeatherstoneVBDManager.initialize.params.sim_context"></span><strong>sim_context</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.deformable.coupled_featherstone_vbd_manager.NewtonCoupledFeatherstoneVBDManager.initialize.params.sim_context">¶</a> – Parent simulation context.</p>
+<dd class="field-odd"><p><strong>sim_context</strong> – Parent simulation context.</p>
 </dd>
 </dl>
 <p>TODO: Subclass should not override this method, once deformables
@@ -3817,11 +3818,11 @@ fnmatch globs and delegates to <code class="xref py py-class docutils literal no
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_contrib.deformable.coupled_featherstone_vbd_manager.NewtonCoupledFeatherstoneVBDManager.add_contact_sensor.params.body_names_expr"></span><strong>body_names_expr</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.deformable.coupled_featherstone_vbd_manager.NewtonCoupledFeatherstoneVBDManager.add_contact_sensor.params.body_names_expr">¶</a> – Expression for body names to sense.</p></li>
-<li><p><span class="target" id="isaaclab_contrib.deformable.coupled_featherstone_vbd_manager.NewtonCoupledFeatherstoneVBDManager.add_contact_sensor.params.shape_names_expr"></span><strong>shape_names_expr</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.deformable.coupled_featherstone_vbd_manager.NewtonCoupledFeatherstoneVBDManager.add_contact_sensor.params.shape_names_expr">¶</a> – Expression for shape names to sense.</p></li>
-<li><p><span class="target" id="isaaclab_contrib.deformable.coupled_featherstone_vbd_manager.NewtonCoupledFeatherstoneVBDManager.add_contact_sensor.params.contact_partners_body_expr"></span><strong>contact_partners_body_expr</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.deformable.coupled_featherstone_vbd_manager.NewtonCoupledFeatherstoneVBDManager.add_contact_sensor.params.contact_partners_body_expr">¶</a> – Expression for contact partner body names.</p></li>
-<li><p><span class="target" id="isaaclab_contrib.deformable.coupled_featherstone_vbd_manager.NewtonCoupledFeatherstoneVBDManager.add_contact_sensor.params.contact_partners_shape_expr"></span><strong>contact_partners_shape_expr</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.deformable.coupled_featherstone_vbd_manager.NewtonCoupledFeatherstoneVBDManager.add_contact_sensor.params.contact_partners_shape_expr">¶</a> – Expression for contact partner shape names.</p></li>
-<li><p><span class="target" id="isaaclab_contrib.deformable.coupled_featherstone_vbd_manager.NewtonCoupledFeatherstoneVBDManager.add_contact_sensor.params.verbose"></span><strong>verbose</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.deformable.coupled_featherstone_vbd_manager.NewtonCoupledFeatherstoneVBDManager.add_contact_sensor.params.verbose">¶</a> – Print verbose information.</p></li>
+<li><p><strong>body_names_expr</strong> – Expression for body names to sense.</p></li>
+<li><p><strong>shape_names_expr</strong> – Expression for shape names to sense.</p></li>
+<li><p><strong>contact_partners_body_expr</strong> – Expression for contact partner body names.</p></li>
+<li><p><strong>contact_partners_shape_expr</strong> – Expression for contact partner shape names.</p></li>
+<li><p><strong>verbose</strong> – Print verbose information.</p></li>
 </ul>
 </dd>
 </dl>
@@ -3836,8 +3837,8 @@ site indices, appends it to the internal list, and returns its index.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_contrib.deformable.coupled_featherstone_vbd_manager.NewtonCoupledFeatherstoneVBDManager.add_frame_transform_sensor.params.shapes"></span><strong>shapes</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.deformable.coupled_featherstone_vbd_manager.NewtonCoupledFeatherstoneVBDManager.add_frame_transform_sensor.params.shapes">¶</a> – Ordered list of shape indices to measure.</p></li>
-<li><p><span class="target" id="isaaclab_contrib.deformable.coupled_featherstone_vbd_manager.NewtonCoupledFeatherstoneVBDManager.add_frame_transform_sensor.params.reference_sites"></span><strong>reference_sites</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.deformable.coupled_featherstone_vbd_manager.NewtonCoupledFeatherstoneVBDManager.add_frame_transform_sensor.params.reference_sites">¶</a> – 1:1 list of reference site indices (same length as shapes).</p></li>
+<li><p><strong>shapes</strong> – Ordered list of shape indices to measure.</p></li>
+<li><p><strong>reference_sites</strong> – 1:1 list of reference site indices (same length as shapes).</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -3854,7 +3855,7 @@ site indices, appends it to the internal list, and returns its index.</p>
 appends it to the internal list, and returns its index.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab_contrib.deformable.coupled_featherstone_vbd_manager.NewtonCoupledFeatherstoneVBDManager.add_imu_sensor.params.sites"></span><strong>sites</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.deformable.coupled_featherstone_vbd_manager.NewtonCoupledFeatherstoneVBDManager.add_imu_sensor.params.sites">¶</a> – Ordered list of site indices (one per environment).</p>
+<dd class="field-odd"><p><strong>sites</strong> – Ordered list of site indices (one per environment).</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>Index of the newly created sensor in the internal IMU sensor list.</p>
@@ -3892,12 +3893,12 @@ that match multiple bodies create one site per matched body.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_contrib.deformable.coupled_featherstone_vbd_manager.NewtonCoupledFeatherstoneVBDManager.cl_register_site.params.body_pattern"></span><strong>body_pattern</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.deformable.coupled_featherstone_vbd_manager.NewtonCoupledFeatherstoneVBDManager.cl_register_site.params.body_pattern">¶</a> – Regex pattern matched against body labels in the
+<li><p><strong>body_pattern</strong> – Regex pattern matched against body labels in the
 prototype builder (e.g. <code class="docutils literal notranslate"><span class="pre">&quot;Robot/link0&quot;</span></code> or <code class="docutils literal notranslate"><span class="pre">&quot;Robot/finger.*&quot;</span></code>
 for multi-body wildcards), or <code class="docutils literal notranslate"><span class="pre">None</span></code> for global sites
 (world-origin reference, etc.).</p></li>
-<li><p><span class="target" id="isaaclab_contrib.deformable.coupled_featherstone_vbd_manager.NewtonCoupledFeatherstoneVBDManager.cl_register_site.params.xform"></span><strong>xform</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.deformable.coupled_featherstone_vbd_manager.NewtonCoupledFeatherstoneVBDManager.cl_register_site.params.xform">¶</a> – Site transform relative to body.</p></li>
-<li><p><span class="target" id="isaaclab_contrib.deformable.coupled_featherstone_vbd_manager.NewtonCoupledFeatherstoneVBDManager.cl_register_site.params.per_world"></span><strong>per_world</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.deformable.coupled_featherstone_vbd_manager.NewtonCoupledFeatherstoneVBDManager.cl_register_site.params.per_world">¶</a> – When <code class="docutils literal notranslate"><span class="pre">True</span></code>, <code class="docutils literal notranslate"><span class="pre">body_pattern</span></code> must be <code class="docutils literal notranslate"><span class="pre">None</span></code> and one
+<li><p><strong>xform</strong> – Site transform relative to body.</p></li>
+<li><p><strong>per_world</strong> – When <code class="docutils literal notranslate"><span class="pre">True</span></code>, <code class="docutils literal notranslate"><span class="pre">body_pattern</span></code> must be <code class="docutils literal notranslate"><span class="pre">None</span></code> and one
 bodyless site is created in each cloned world’s frame.</p></li>
 </ul>
 </dd>
@@ -3947,9 +3948,9 @@ rough-terrain margin/gap still apply during early construction.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_contrib.deformable.coupled_featherstone_vbd_manager.NewtonCoupledFeatherstoneVBDManager.create_builder.params.up_axis"></span><strong>up_axis</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.deformable.coupled_featherstone_vbd_manager.NewtonCoupledFeatherstoneVBDManager.create_builder.params.up_axis">¶</a> – Override for the up-axis. Defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code>, which uses
+<li><p><strong>up_axis</strong> – Override for the up-axis. Defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code>, which uses
 the manager’s <code class="docutils literal notranslate"><span class="pre">_up_axis</span></code>.</p></li>
-<li><p><span class="target" id="isaaclab_contrib.deformable.coupled_featherstone_vbd_manager.NewtonCoupledFeatherstoneVBDManager.create_builder.params.**kwargs"></span><strong>**kwargs</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.deformable.coupled_featherstone_vbd_manager.NewtonCoupledFeatherstoneVBDManager.create_builder.params.**kwargs">¶</a> – Forwarded to <code class="xref py py-class docutils literal notranslate"><span class="pre">ModelBuilder</span></code>.</p></li>
+<li><p><strong>**kwargs</strong> – Forwarded to <code class="xref py py-class docutils literal notranslate"><span class="pre">ModelBuilder</span></code>.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -3964,7 +3965,7 @@ the manager’s <code class="docutils literal notranslate"><span class="pre">_up
 <dd><p>Remove a registered callback.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab_contrib.deformable.coupled_featherstone_vbd_manager.NewtonCoupledFeatherstoneVBDManager.deregister_callback.params.callback_id"></span><strong>callback_id</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.deformable.coupled_featherstone_vbd_manager.NewtonCoupledFeatherstoneVBDManager.deregister_callback.params.callback_id">¶</a> – The ID or CallbackHandle returned by register_callback().</p>
+<dd class="field-odd"><p><strong>callback_id</strong> – The ID or CallbackHandle returned by register_callback().</p>
 </dd>
 </dl>
 </dd></dl>
@@ -3978,8 +3979,8 @@ Subclasses may override or extend with platform-specific dispatch.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_contrib.deformable.coupled_featherstone_vbd_manager.NewtonCoupledFeatherstoneVBDManager.dispatch_event.params.event"></span><strong>event</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.deformable.coupled_featherstone_vbd_manager.NewtonCoupledFeatherstoneVBDManager.dispatch_event.params.event">¶</a> – The event to dispatch.</p></li>
-<li><p><span class="target" id="isaaclab_contrib.deformable.coupled_featherstone_vbd_manager.NewtonCoupledFeatherstoneVBDManager.dispatch_event.params.payload"></span><strong>payload</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.deformable.coupled_featherstone_vbd_manager.NewtonCoupledFeatherstoneVBDManager.dispatch_event.params.payload">¶</a> – Optional data to pass to callbacks.</p></li>
+<li><p><strong>event</strong> – The event to dispatch.</p></li>
+<li><p><strong>payload</strong> – Optional data to pass to callbacks.</p></li>
 </ul>
 </dd>
 </dl>
@@ -4145,11 +4146,11 @@ stepping.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_contrib.deformable.coupled_featherstone_vbd_manager.NewtonCoupledFeatherstoneVBDManager.invalidate_fk.params.env_mask"></span><strong>env_mask</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.deformable.coupled_featherstone_vbd_manager.NewtonCoupledFeatherstoneVBDManager.invalidate_fk.params.env_mask">¶</a> – Boolean mask of dirtied environments. Shape <code class="docutils literal notranslate"><span class="pre">(num_envs,)</span></code>.
+<li><p><strong>env_mask</strong> – Boolean mask of dirtied environments. Shape <code class="docutils literal notranslate"><span class="pre">(num_envs,)</span></code>.
 Used by <code class="docutils literal notranslate"><span class="pre">_mask</span></code> write methods.</p></li>
-<li><p><span class="target" id="isaaclab_contrib.deformable.coupled_featherstone_vbd_manager.NewtonCoupledFeatherstoneVBDManager.invalidate_fk.params.env_ids"></span><strong>env_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.deformable.coupled_featherstone_vbd_manager.NewtonCoupledFeatherstoneVBDManager.invalidate_fk.params.env_ids">¶</a> – Integer indices of dirtied environments.
+<li><p><strong>env_ids</strong> – Integer indices of dirtied environments.
 Used by <code class="docutils literal notranslate"><span class="pre">_index</span></code> write methods.</p></li>
-<li><p><span class="target" id="isaaclab_contrib.deformable.coupled_featherstone_vbd_manager.NewtonCoupledFeatherstoneVBDManager.invalidate_fk.params.articulation_ids"></span><strong>articulation_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.deformable.coupled_featherstone_vbd_manager.NewtonCoupledFeatherstoneVBDManager.invalidate_fk.params.articulation_ids">¶</a> – Mapping from <code class="docutils literal notranslate"><span class="pre">(world,</span> <span class="pre">arti)</span></code> to model articulation
+<li><p><strong>articulation_ids</strong> – Mapping from <code class="docutils literal notranslate"><span class="pre">(world,</span> <span class="pre">arti)</span></code> to model articulation
 index. Shape <code class="docutils literal notranslate"><span class="pre">(world_count,</span> <span class="pre">count_per_world)</span></code>. Obtained from
 <code class="docutils literal notranslate"><span class="pre">ArticulationView.articulation_ids</span></code>.</p></li>
 </ul>
@@ -4209,7 +4210,7 @@ Attributes are forwarded to the model in <a class="reference internal" href="#is
 so that subsequent <code class="docutils literal notranslate"><span class="pre">Contacts</span></code> creation includes them.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab_contrib.deformable.coupled_featherstone_vbd_manager.NewtonCoupledFeatherstoneVBDManager.request_extended_contact_attribute.params.attr"></span><strong>attr</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.deformable.coupled_featherstone_vbd_manager.NewtonCoupledFeatherstoneVBDManager.request_extended_contact_attribute.params.attr">¶</a> – Contact attribute name.</p>
+<dd class="field-odd"><p><strong>attr</strong> – Contact attribute name.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -4223,7 +4224,7 @@ Attributes are forwarded to the builder in <a class="reference internal" href="#
 so that subsequent <code class="docutils literal notranslate"><span class="pre">model.state()</span></code> calls allocate them.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab_contrib.deformable.coupled_featherstone_vbd_manager.NewtonCoupledFeatherstoneVBDManager.request_extended_state_attribute.params.attr"></span><strong>attr</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.deformable.coupled_featherstone_vbd_manager.NewtonCoupledFeatherstoneVBDManager.request_extended_state_attribute.params.attr">¶</a> – State attribute name (must be in <code class="docutils literal notranslate"><span class="pre">State.EXTENDED_ATTRIBUTES</span></code>).</p>
+<dd class="field-odd"><p><strong>attr</strong> – State attribute name (must be in <code class="docutils literal notranslate"><span class="pre">State.EXTENDED_ATTRIBUTES</span></code>).</p>
 </dd>
 </dl>
 </dd></dl>
@@ -4234,7 +4235,7 @@ so that subsequent <code class="docutils literal notranslate"><span class="pre">
 <dd><p>Reset physics simulation.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab_contrib.deformable.coupled_featherstone_vbd_manager.NewtonCoupledFeatherstoneVBDManager.reset.params.soft"></span><strong>soft</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.deformable.coupled_featherstone_vbd_manager.NewtonCoupledFeatherstoneVBDManager.reset.params.soft">¶</a> – If True, skip full reinitialization.</p>
+<dd class="field-odd"><p><strong>soft</strong> – If True, skip full reinitialization.</p>
 </dd>
 </dl>
 </dd></dl>

@@ -36,7 +36,6 @@
     <link rel="stylesheet" type="text/css" href="/opt/hostedtoolcache/Python/3.12.13/x64/lib/python3.12/site-packages/sphinxcontrib/icon/node_modules/@fortawesome/fontawesome-free/css/all.min.css?v=53359634" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx_paramlinks.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=8fb98eed" />
   
   <!-- So that users can add custom icons -->
@@ -162,6 +161,8 @@
             <option value="../../../../develop/source/api/lab/isaaclab.envs.mdp.html" >develop</option>
             <option value="isaaclab.envs.mdp.html" selected>main</option>
             <option value="../../../../release/3.0.0-beta2/source/api/lab/isaaclab.envs.mdp.html" >release/3.0.0-beta2</option>
+            <option value="../../../../v3.0.0-beta2/source/api/lab/isaaclab.envs.mdp.html" >v3.0.0-beta2</option>
+            <option value="../../../../v3.0.0-beta/source/api/lab/isaaclab.envs.mdp.html" >v3.0.0-beta</option>
             <option value="../../../../v2.3.2/source/api/lab/isaaclab.envs.mdp.html" >v2.3.2</option>
             <option value="../../../../v2.3.1/source/api/lab/isaaclab.envs.mdp.html" >v2.3.1</option>
             <option value="../../../../v2.3.0/source/api/lab/isaaclab.envs.mdp.html" >v2.3.0</option>
@@ -1247,8 +1248,8 @@ the same orientation.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.envs.mdp.observations.body_pose_w.params.env"></span><strong>env</strong><a class="paramlink headerlink reference internal" href="#isaaclab.envs.mdp.observations.body_pose_w.params.env">¶</a> – The environment.</p></li>
-<li><p><span class="target" id="isaaclab.envs.mdp.observations.body_pose_w.params.asset_cfg"></span><strong>asset_cfg</strong><a class="paramlink headerlink reference internal" href="#isaaclab.envs.mdp.observations.body_pose_w.params.asset_cfg">¶</a> – The SceneEntity associated with this observation.</p></li>
+<li><p><strong>env</strong> – The environment.</p></li>
+<li><p><strong>asset_cfg</strong> – The SceneEntity associated with this observation.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -1266,8 +1267,8 @@ Output is stacked horizontally per body.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.envs.mdp.observations.body_projected_gravity_b.params.env"></span><strong>env</strong><a class="paramlink headerlink reference internal" href="#isaaclab.envs.mdp.observations.body_projected_gravity_b.params.env">¶</a> – The environment.</p></li>
-<li><p><span class="target" id="isaaclab.envs.mdp.observations.body_projected_gravity_b.params.asset_cfg"></span><strong>asset_cfg</strong><a class="paramlink headerlink reference internal" href="#isaaclab.envs.mdp.observations.body_projected_gravity_b.params.asset_cfg">¶</a> – The Articulation associated with this observation.</p></li>
+<li><p><strong>env</strong> – The environment.</p></li>
+<li><p><strong>asset_cfg</strong> – The Articulation associated with this observation.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -1320,8 +1321,8 @@ Output is stacked horizontally per body.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.envs.mdp.observations.joint_effort.params.env"></span><strong>env</strong><a class="paramlink headerlink reference internal" href="#isaaclab.envs.mdp.observations.joint_effort.params.env">¶</a> – The environment.</p></li>
-<li><p><span class="target" id="isaaclab.envs.mdp.observations.joint_effort.params.asset_cfg"></span><strong>asset_cfg</strong><a class="paramlink headerlink reference internal" href="#isaaclab.envs.mdp.observations.joint_effort.params.asset_cfg">¶</a> – The SceneEntity associated with this observation.</p></li>
+<li><p><strong>env</strong> – The environment.</p></li>
+<li><p><strong>asset_cfg</strong> – The SceneEntity associated with this observation.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -1351,8 +1352,8 @@ Output is stacked horizontally per body.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.envs.mdp.observations.imu_orientation.params.env"></span><strong>env</strong><a class="paramlink headerlink reference internal" href="#isaaclab.envs.mdp.observations.imu_orientation.params.env">¶</a> – The environment.</p></li>
-<li><p><span class="target" id="isaaclab.envs.mdp.observations.imu_orientation.params.asset_cfg"></span><strong>asset_cfg</strong><a class="paramlink headerlink reference internal" href="#isaaclab.envs.mdp.observations.imu_orientation.params.asset_cfg">¶</a> – The SceneEntity associated with an IMU sensor. Defaults to SceneEntityCfg(“imu”).</p></li>
+<li><p><strong>env</strong> – The environment.</p></li>
+<li><p><strong>asset_cfg</strong> – The SceneEntity associated with an IMU sensor. Defaults to SceneEntityCfg(“imu”).</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -1368,8 +1369,8 @@ Output is stacked horizontally per body.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.envs.mdp.observations.imu_projected_gravity.params.env"></span><strong>env</strong><a class="paramlink headerlink reference internal" href="#isaaclab.envs.mdp.observations.imu_projected_gravity.params.env">¶</a> – The environment.</p></li>
-<li><p><span class="target" id="isaaclab.envs.mdp.observations.imu_projected_gravity.params.asset_cfg"></span><strong>asset_cfg</strong><a class="paramlink headerlink reference internal" href="#isaaclab.envs.mdp.observations.imu_projected_gravity.params.asset_cfg">¶</a> – The SceneEntity associated with an Imu sensor.</p></li>
+<li><p><strong>env</strong> – The environment.</p></li>
+<li><p><strong>asset_cfg</strong> – The SceneEntity associated with an Imu sensor.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -1385,8 +1386,8 @@ Output is stacked horizontally per body.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.envs.mdp.observations.imu_ang_vel.params.env"></span><strong>env</strong><a class="paramlink headerlink reference internal" href="#isaaclab.envs.mdp.observations.imu_ang_vel.params.env">¶</a> – The environment.</p></li>
-<li><p><span class="target" id="isaaclab.envs.mdp.observations.imu_ang_vel.params.asset_cfg"></span><strong>asset_cfg</strong><a class="paramlink headerlink reference internal" href="#isaaclab.envs.mdp.observations.imu_ang_vel.params.asset_cfg">¶</a> – The SceneEntity associated with an IMU sensor. Defaults to SceneEntityCfg(“imu”).</p></li>
+<li><p><strong>env</strong> – The environment.</p></li>
+<li><p><strong>asset_cfg</strong> – The SceneEntity associated with an IMU sensor. Defaults to SceneEntityCfg(“imu”).</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -1402,8 +1403,8 @@ Output is stacked horizontally per body.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.envs.mdp.observations.imu_lin_acc.params.env"></span><strong>env</strong><a class="paramlink headerlink reference internal" href="#isaaclab.envs.mdp.observations.imu_lin_acc.params.env">¶</a> – The environment.</p></li>
-<li><p><span class="target" id="isaaclab.envs.mdp.observations.imu_lin_acc.params.asset_cfg"></span><strong>asset_cfg</strong><a class="paramlink headerlink reference internal" href="#isaaclab.envs.mdp.observations.imu_lin_acc.params.asset_cfg">¶</a> – The SceneEntity associated with an IMU sensor. Defaults to SceneEntityCfg(“imu”).</p></li>
+<li><p><strong>env</strong> – The environment.</p></li>
+<li><p><strong>asset_cfg</strong> – The SceneEntity associated with an IMU sensor. Defaults to SceneEntityCfg(“imu”).</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -1425,12 +1426,12 @@ data-types:</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.envs.mdp.observations.image.params.env"></span><strong>env</strong><a class="paramlink headerlink reference internal" href="#isaaclab.envs.mdp.observations.image.params.env">¶</a> – The environment the cameras are placed within.</p></li>
-<li><p><span class="target" id="isaaclab.envs.mdp.observations.image.params.sensor_cfg"></span><strong>sensor_cfg</strong><a class="paramlink headerlink reference internal" href="#isaaclab.envs.mdp.observations.image.params.sensor_cfg">¶</a> – The desired sensor to read from. Defaults to SceneEntityCfg(“tiled_camera”).</p></li>
-<li><p><span class="target" id="isaaclab.envs.mdp.observations.image.params.data_type"></span><strong>data_type</strong><a class="paramlink headerlink reference internal" href="#isaaclab.envs.mdp.observations.image.params.data_type">¶</a> – The data type to pull from the desired camera. Defaults to “rgb”.</p></li>
-<li><p><span class="target" id="isaaclab.envs.mdp.observations.image.params.convert_perspective_to_orthogonal"></span><strong>convert_perspective_to_orthogonal</strong><a class="paramlink headerlink reference internal" href="#isaaclab.envs.mdp.observations.image.params.convert_perspective_to_orthogonal">¶</a> – Whether to orthogonalize perspective depth images.
+<li><p><strong>env</strong> – The environment the cameras are placed within.</p></li>
+<li><p><strong>sensor_cfg</strong> – The desired sensor to read from. Defaults to SceneEntityCfg(“tiled_camera”).</p></li>
+<li><p><strong>data_type</strong> – The data type to pull from the desired camera. Defaults to “rgb”.</p></li>
+<li><p><strong>convert_perspective_to_orthogonal</strong> – Whether to orthogonalize perspective depth images.
 This is used only when the data type is “distance_to_camera”. Defaults to False.</p></li>
-<li><p><span class="target" id="isaaclab.envs.mdp.observations.image.params.normalize"></span><strong>normalize</strong><a class="paramlink headerlink reference internal" href="#isaaclab.envs.mdp.observations.image.params.normalize">¶</a> – Whether to normalize the images. This depends on the selected data type.
+<li><p><strong>normalize</strong> – Whether to normalize the images. This depends on the selected data type.
 Defaults to True.</p></li>
 </ul>
 </dd>
@@ -1462,16 +1463,16 @@ These models are loaded from <a class="reference external" href="https://hugging
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.envs.mdp.observations.image_features.params.sensor_cfg"></span><strong>sensor_cfg</strong><a class="paramlink headerlink reference internal" href="#isaaclab.envs.mdp.observations.image_features.params.sensor_cfg">¶</a> – The sensor configuration to poll. Defaults to SceneEntityCfg(“tiled_camera”).</p></li>
-<li><p><span class="target" id="isaaclab.envs.mdp.observations.image_features.params.data_type"></span><strong>data_type</strong><a class="paramlink headerlink reference internal" href="#isaaclab.envs.mdp.observations.image_features.params.data_type">¶</a> – The sensor data type. Defaults to “rgb”.</p></li>
-<li><p><span class="target" id="isaaclab.envs.mdp.observations.image_features.params.convert_perspective_to_orthogonal"></span><strong>convert_perspective_to_orthogonal</strong><a class="paramlink headerlink reference internal" href="#isaaclab.envs.mdp.observations.image_features.params.convert_perspective_to_orthogonal">¶</a> – Whether to orthogonalize perspective depth images.
+<li><p><strong>sensor_cfg</strong> – The sensor configuration to poll. Defaults to SceneEntityCfg(“tiled_camera”).</p></li>
+<li><p><strong>data_type</strong> – The sensor data type. Defaults to “rgb”.</p></li>
+<li><p><strong>convert_perspective_to_orthogonal</strong> – Whether to orthogonalize perspective depth images.
 This is used only when the data type is “distance_to_camera”. Defaults to False.</p></li>
-<li><p><span class="target" id="isaaclab.envs.mdp.observations.image_features.params.model_zoo_cfg"></span><strong>model_zoo_cfg</strong><a class="paramlink headerlink reference internal" href="#isaaclab.envs.mdp.observations.image_features.params.model_zoo_cfg">¶</a> – A user-defined dictionary that maps different model names to their respective configurations.
+<li><p><strong>model_zoo_cfg</strong> – A user-defined dictionary that maps different model names to their respective configurations.
 Defaults to None. If None, the default model zoo configurations are used.</p></li>
-<li><p><span class="target" id="isaaclab.envs.mdp.observations.image_features.params.model_name"></span><strong>model_name</strong><a class="paramlink headerlink reference internal" href="#isaaclab.envs.mdp.observations.image_features.params.model_name">¶</a> – The name of the model to use for inference. Defaults to “resnet18”.</p></li>
-<li><p><span class="target" id="isaaclab.envs.mdp.observations.image_features.params.model_device"></span><strong>model_device</strong><a class="paramlink headerlink reference internal" href="#isaaclab.envs.mdp.observations.image_features.params.model_device">¶</a> – The device to store and infer the model on. This is useful when offloading the computation
+<li><p><strong>model_name</strong> – The name of the model to use for inference. Defaults to “resnet18”.</p></li>
+<li><p><strong>model_device</strong> – The device to store and infer the model on. This is useful when offloading the computation
 from the environment simulation device. Defaults to the environment device.</p></li>
-<li><p><span class="target" id="isaaclab.envs.mdp.observations.image_features.params.inference_kwargs"></span><strong>inference_kwargs</strong><a class="paramlink headerlink reference internal" href="#isaaclab.envs.mdp.observations.image_features.params.inference_kwargs">¶</a> – Additional keyword arguments to pass to the inference function. Defaults to None,
+<li><p><strong>inference_kwargs</strong> – Additional keyword arguments to pass to the inference function. Defaults to None,
 which means no additional arguments are passed.</p></li>
 </ul>
 </dd>
@@ -1504,8 +1505,8 @@ which means no additional arguments are passed.</p></li>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.envs.mdp.observations.image_features.params.cfg"></span><strong>cfg</strong><a class="paramlink headerlink reference internal" href="#isaaclab.envs.mdp.observations.image_features.params.cfg">¶</a> – The configuration object.</p></li>
-<li><p><span class="target" id="isaaclab.envs.mdp.observations.image_features.params.env"></span><strong>env</strong><a class="paramlink headerlink reference internal" href="#isaaclab.envs.mdp.observations.image_features.params.env">¶</a> – The environment instance.</p></li>
+<li><p><strong>cfg</strong> – The configuration object.</p></li>
+<li><p><strong>env</strong> – The environment instance.</p></li>
 </ul>
 </dd>
 </dl>
@@ -1517,7 +1518,7 @@ which means no additional arguments are passed.</p></li>
 <dd><p>Resets the manager term.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab.envs.mdp.observations.image_features.reset.params.env_ids"></span><strong>env_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab.envs.mdp.observations.image_features.reset.params.env_ids">¶</a> – The environment ids. Defaults to None, in which case
+<dd class="field-odd"><p><strong>env_ids</strong> – The environment ids. Defaults to None, in which case
 all environments are considered.</p>
 </dd>
 </dl>
@@ -3156,8 +3157,8 @@ Afterwards, these materials are randomly assigned to the geometries of the asset
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.envs.mdp.events.randomize_rigid_body_material.params.cfg"></span><strong>cfg</strong><a class="paramlink headerlink reference internal" href="#isaaclab.envs.mdp.events.randomize_rigid_body_material.params.cfg">¶</a> – The configuration of the event term.</p></li>
-<li><p><span class="target" id="isaaclab.envs.mdp.events.randomize_rigid_body_material.params.env"></span><strong>env</strong><a class="paramlink headerlink reference internal" href="#isaaclab.envs.mdp.events.randomize_rigid_body_material.params.env">¶</a> – The environment instance.</p></li>
+<li><p><strong>cfg</strong> – The configuration of the event term.</p></li>
+<li><p><strong>env</strong> – The environment instance.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Raises<span class="colon">:</span></dt>
@@ -3200,8 +3201,8 @@ only during the initialization of the environment.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.envs.mdp.events.randomize_rigid_body_mass.params.cfg"></span><strong>cfg</strong><a class="paramlink headerlink reference internal" href="#isaaclab.envs.mdp.events.randomize_rigid_body_mass.params.cfg">¶</a> – The configuration of the event term.</p></li>
-<li><p><span class="target" id="isaaclab.envs.mdp.events.randomize_rigid_body_mass.params.env"></span><strong>env</strong><a class="paramlink headerlink reference internal" href="#isaaclab.envs.mdp.events.randomize_rigid_body_mass.params.env">¶</a> – The environment instance.</p></li>
+<li><p><strong>cfg</strong> – The configuration of the event term.</p></li>
+<li><p><strong>env</strong> – The environment instance.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Raises<span class="colon">:</span></dt>
@@ -3294,8 +3295,8 @@ In such cases, it is recommended to use this function only during the initializa
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.envs.mdp.events.randomize_actuator_gains.params.cfg"></span><strong>cfg</strong><a class="paramlink headerlink reference internal" href="#isaaclab.envs.mdp.events.randomize_actuator_gains.params.cfg">¶</a> – The configuration of the event term.</p></li>
-<li><p><span class="target" id="isaaclab.envs.mdp.events.randomize_actuator_gains.params.env"></span><strong>env</strong><a class="paramlink headerlink reference internal" href="#isaaclab.envs.mdp.events.randomize_actuator_gains.params.env">¶</a> – The environment instance.</p></li>
+<li><p><strong>cfg</strong> – The configuration of the event term.</p></li>
+<li><p><strong>env</strong> – The environment instance.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Raises<span class="colon">:</span></dt>
@@ -3342,8 +3343,8 @@ only during the initialization of the environment.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.envs.mdp.events.randomize_joint_parameters.params.cfg"></span><strong>cfg</strong><a class="paramlink headerlink reference internal" href="#isaaclab.envs.mdp.events.randomize_joint_parameters.params.cfg">¶</a> – The configuration of the event term.</p></li>
-<li><p><span class="target" id="isaaclab.envs.mdp.events.randomize_joint_parameters.params.env"></span><strong>env</strong><a class="paramlink headerlink reference internal" href="#isaaclab.envs.mdp.events.randomize_joint_parameters.params.env">¶</a> – The environment instance.</p></li>
+<li><p><strong>cfg</strong> – The configuration of the event term.</p></li>
+<li><p><strong>env</strong> – The environment instance.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Raises<span class="colon">:</span></dt>
@@ -3384,8 +3385,8 @@ are not provided for a particular property, the function does not modify the pro
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.envs.mdp.events.randomize_fixed_tendon_parameters.params.cfg"></span><strong>cfg</strong><a class="paramlink headerlink reference internal" href="#isaaclab.envs.mdp.events.randomize_fixed_tendon_parameters.params.cfg">¶</a> – The configuration of the event term.</p></li>
-<li><p><span class="target" id="isaaclab.envs.mdp.events.randomize_fixed_tendon_parameters.params.env"></span><strong>env</strong><a class="paramlink headerlink reference internal" href="#isaaclab.envs.mdp.events.randomize_fixed_tendon_parameters.params.env">¶</a> – The environment instance.</p></li>
+<li><p><strong>cfg</strong> – The configuration of the event term.</p></li>
+<li><p><strong>env</strong> – The environment instance.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Raises<span class="colon">:</span></dt>
@@ -3566,8 +3567,8 @@ parser will parse the individual asset properties separately.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.envs.mdp.events.randomize_visual_texture_material.params.cfg"></span><strong>cfg</strong><a class="paramlink headerlink reference internal" href="#isaaclab.envs.mdp.events.randomize_visual_texture_material.params.cfg">¶</a> – The configuration of the event term.</p></li>
-<li><p><span class="target" id="isaaclab.envs.mdp.events.randomize_visual_texture_material.params.env"></span><strong>env</strong><a class="paramlink headerlink reference internal" href="#isaaclab.envs.mdp.events.randomize_visual_texture_material.params.env">¶</a> – The environment instance.</p></li>
+<li><p><strong>cfg</strong> – The configuration of the event term.</p></li>
+<li><p><strong>env</strong> – The environment instance.</p></li>
 </ul>
 </dd>
 </dl>
@@ -3612,8 +3613,8 @@ parser will parse the individual asset properties separately.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.envs.mdp.events.randomize_visual_color.params.cfg"></span><strong>cfg</strong><a class="paramlink headerlink reference internal" href="#isaaclab.envs.mdp.events.randomize_visual_color.params.cfg">¶</a> – The configuration of the event term.</p></li>
-<li><p><span class="target" id="isaaclab.envs.mdp.events.randomize_visual_color.params.env"></span><strong>env</strong><a class="paramlink headerlink reference internal" href="#isaaclab.envs.mdp.events.randomize_visual_color.params.env">¶</a> – The environment instance.</p></li>
+<li><p><strong>cfg</strong> – The configuration of the event term.</p></li>
+<li><p><strong>env</strong> – The environment instance.</p></li>
 </ul>
 </dd>
 </dl>
@@ -4514,8 +4515,8 @@ if two termination terms are active, the reward is 2.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.envs.mdp.rewards.is_terminated_term.params.cfg"></span><strong>cfg</strong><a class="paramlink headerlink reference internal" href="#isaaclab.envs.mdp.rewards.is_terminated_term.params.cfg">¶</a> – The configuration object.</p></li>
-<li><p><span class="target" id="isaaclab.envs.mdp.rewards.is_terminated_term.params.env"></span><strong>env</strong><a class="paramlink headerlink reference internal" href="#isaaclab.envs.mdp.rewards.is_terminated_term.params.env">¶</a> – The environment instance.</p></li>
+<li><p><strong>cfg</strong> – The configuration object.</p></li>
+<li><p><strong>env</strong> – The environment instance.</p></li>
 </ul>
 </dd>
 </dl>
@@ -4618,7 +4619,7 @@ contribute to the term.</p>
 <p>This is computed as a sum of the absolute value of the difference between the joint velocity and the soft limits.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab.envs.mdp.rewards.joint_vel_limits.params.soft_ratio"></span><strong>soft_ratio</strong><a class="paramlink headerlink reference internal" href="#isaaclab.envs.mdp.rewards.joint_vel_limits.params.soft_ratio">¶</a> – The ratio of the soft limits to be used.</p>
+<dd class="field-odd"><p><strong>soft_ratio</strong> – The ratio of the soft limits to be used.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -4834,8 +4835,8 @@ the curriculum introduced by the function.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.envs.mdp.curriculums.modify_reward_weight.params.cfg"></span><strong>cfg</strong><a class="paramlink headerlink reference internal" href="#isaaclab.envs.mdp.curriculums.modify_reward_weight.params.cfg">¶</a> – The configuration object.</p></li>
-<li><p><span class="target" id="isaaclab.envs.mdp.curriculums.modify_reward_weight.params.env"></span><strong>env</strong><a class="paramlink headerlink reference internal" href="#isaaclab.envs.mdp.curriculums.modify_reward_weight.params.env">¶</a> – The environment instance.</p></li>
+<li><p><strong>cfg</strong> – The configuration object.</p></li>
+<li><p><strong>env</strong> – The environment instance.</p></li>
 </ul>
 </dd>
 </dl>
@@ -4942,8 +4943,8 @@ be returned by the <cite>modify_fn</cite> to indicate that the current value sho
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.envs.mdp.curriculums.modify_env_param.params.cfg"></span><strong>cfg</strong><a class="paramlink headerlink reference internal" href="#isaaclab.envs.mdp.curriculums.modify_env_param.params.cfg">¶</a> – The configuration object.</p></li>
-<li><p><span class="target" id="isaaclab.envs.mdp.curriculums.modify_env_param.params.env"></span><strong>env</strong><a class="paramlink headerlink reference internal" href="#isaaclab.envs.mdp.curriculums.modify_env_param.params.env">¶</a> – The environment instance.</p></li>
+<li><p><strong>cfg</strong> – The configuration object.</p></li>
+<li><p><strong>env</strong> – The environment instance.</p></li>
 </ul>
 </dd>
 </dl>
@@ -4998,8 +4999,8 @@ thus transforming the simplified address into a full manager path.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.envs.mdp.curriculums.modify_term_cfg.params.cfg"></span><strong>cfg</strong><a class="paramlink headerlink reference internal" href="#isaaclab.envs.mdp.curriculums.modify_term_cfg.params.cfg">¶</a> – The configuration object.</p></li>
-<li><p><span class="target" id="isaaclab.envs.mdp.curriculums.modify_term_cfg.params.env"></span><strong>env</strong><a class="paramlink headerlink reference internal" href="#isaaclab.envs.mdp.curriculums.modify_term_cfg.params.env">¶</a> – The environment instance.</p></li>
+<li><p><strong>cfg</strong> – The configuration object.</p></li>
+<li><p><strong>env</strong> – The environment instance.</p></li>
 </ul>
 </dd>
 </dl>

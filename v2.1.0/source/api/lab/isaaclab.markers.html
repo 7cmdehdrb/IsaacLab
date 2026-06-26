@@ -36,7 +36,6 @@
     <link rel="stylesheet" type="text/css" href="/opt/hostedtoolcache/Python/3.12.13/x64/lib/python3.12/site-packages/sphinxcontrib/icon/node_modules/@fortawesome/fontawesome-free/css/all.min.css?v=53359634" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx_paramlinks.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=8fb98eed" />
   
   <!-- So that users can add custom icons -->
@@ -162,6 +161,8 @@
             <option value="../../../../develop/source/api/lab/isaaclab.markers.html" >develop</option>
             <option value="../../../../main/source/api/lab/isaaclab.markers.html" >main</option>
             <option value="../../../../release/3.0.0-beta2/source/api/lab/isaaclab.markers.html" >release/3.0.0-beta2</option>
+            <option value="../../../../v3.0.0-beta2/source/api/lab/isaaclab.markers.html" >v3.0.0-beta2</option>
+            <option value="../../../../v3.0.0-beta/source/api/lab/isaaclab.markers.html" >v3.0.0-beta</option>
             <option value="../../../../v2.3.2/source/api/lab/isaaclab.markers.html" >v2.3.2</option>
             <option value="../../../../v2.3.1/source/api/lab/isaaclab.markers.html" >v2.3.1</option>
             <option value="../../../../v2.3.0/source/api/lab/isaaclab.markers.html" >v2.3.0</option>
@@ -771,7 +772,7 @@ and create the <code class="xref py py-class docutils literal notranslate"><span
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab.markers.VisualizationMarkers.params.cfg"></span><strong>cfg</strong><a class="paramlink headerlink reference internal" href="#isaaclab.markers.VisualizationMarkers.params.cfg">¶</a> – The configuration for the markers.</p>
+<dd class="field-odd"><p><strong>cfg</strong> – The configuration for the markers.</p>
 </dd>
 <dt class="field-even">Raises<span class="colon">:</span></dt>
 <dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#ValueError" title="(in Python v3.14)"><strong>ValueError</strong></a> – When no markers are provided in the <code class="xref py py-obj docutils literal notranslate"><span class="pre">cfg</span></code>.</p>
@@ -798,7 +799,7 @@ and create the <code class="xref py py-class docutils literal notranslate"><span
 <p>The method does this through the USD API.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab.markers.VisualizationMarkers.set_visibility.params.visible"></span><strong>visible</strong><a class="paramlink headerlink reference internal" href="#isaaclab.markers.VisualizationMarkers.set_visibility.params.visible">¶</a> – flag to set the visibility.</p>
+<dd class="field-odd"><p><strong>visible</strong> – flag to set the visibility.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -848,13 +849,13 @@ yourself and pass the complete arrays to this function.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.markers.VisualizationMarkers.visualize.params.translations"></span><strong>translations</strong><a class="paramlink headerlink reference internal" href="#isaaclab.markers.VisualizationMarkers.visualize.params.translations">¶</a> – Translations w.r.t. parent prim frame. Shape is (M, 3).
+<li><p><strong>translations</strong> – Translations w.r.t. parent prim frame. Shape is (M, 3).
 Defaults to None, which means left unchanged.</p></li>
-<li><p><span class="target" id="isaaclab.markers.VisualizationMarkers.visualize.params.orientations"></span><strong>orientations</strong><a class="paramlink headerlink reference internal" href="#isaaclab.markers.VisualizationMarkers.visualize.params.orientations">¶</a> – Quaternion orientations (w, x, y, z) w.r.t. parent prim frame. Shape is (M, 4).
+<li><p><strong>orientations</strong> – Quaternion orientations (w, x, y, z) w.r.t. parent prim frame. Shape is (M, 4).
 Defaults to None, which means left unchanged.</p></li>
-<li><p><span class="target" id="isaaclab.markers.VisualizationMarkers.visualize.params.scales"></span><strong>scales</strong><a class="paramlink headerlink reference internal" href="#isaaclab.markers.VisualizationMarkers.visualize.params.scales">¶</a> – Scale applied before any rotation is applied. Shape is (M, 3).
+<li><p><strong>scales</strong> – Scale applied before any rotation is applied. Shape is (M, 3).
 Defaults to None, which means left unchanged.</p></li>
-<li><p><span class="target" id="isaaclab.markers.VisualizationMarkers.visualize.params.marker_indices"></span><strong>marker_indices</strong><a class="paramlink headerlink reference internal" href="#isaaclab.markers.VisualizationMarkers.visualize.params.marker_indices">¶</a> – Decides which marker prototype to visualize. Shape is (M).
+<li><p><strong>marker_indices</strong> – Decides which marker prototype to visualize. Shape is (M).
 Defaults to None, which means left unchanged provided that the total number of markers
 is the same as the previous call. If the number of markers is different, the function
 will update the number of markers in the scene.</p></li>

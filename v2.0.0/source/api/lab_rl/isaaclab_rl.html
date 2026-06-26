@@ -36,7 +36,6 @@
     <link rel="stylesheet" type="text/css" href="/opt/hostedtoolcache/Python/3.12.13/x64/lib/python3.12/site-packages/sphinxcontrib/icon/node_modules/@fortawesome/fontawesome-free/css/all.min.css?v=53359634" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx_paramlinks.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=8fb98eed" />
   
   <!-- So that users can add custom icons -->
@@ -162,6 +161,8 @@
             <option value="../../../../develop/source/api/lab_rl/isaaclab_rl.html" >develop</option>
             <option value="../../../../main/source/api/lab_rl/isaaclab_rl.html" >main</option>
             <option value="../../../../release/3.0.0-beta2/source/api/lab_rl/isaaclab_rl.html" >release/3.0.0-beta2</option>
+            <option value="../../../../v3.0.0-beta2/source/api/lab_rl/isaaclab_rl.html" >v3.0.0-beta2</option>
+            <option value="../../../../v3.0.0-beta/source/api/lab_rl/isaaclab_rl.html" >v3.0.0-beta</option>
             <option value="../../../../v2.3.2/source/api/lab_rl/isaaclab_rl.html" >v2.3.2</option>
             <option value="../../../../v2.3.1/source/api/lab_rl/isaaclab_rl.html" >v2.3.1</option>
             <option value="../../../../v2.3.0/source/api/lab_rl/isaaclab_rl.html" >v2.3.0</option>
@@ -850,10 +851,10 @@ wrapper.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_rl.rl_games.RlGamesVecEnvWrapper.params.env"></span><strong>env</strong><a class="paramlink headerlink reference internal" href="#isaaclab_rl.rl_games.RlGamesVecEnvWrapper.params.env">¶</a> – The environment to wrap around.</p></li>
-<li><p><span class="target" id="isaaclab_rl.rl_games.RlGamesVecEnvWrapper.params.rl_device"></span><strong>rl_device</strong><a class="paramlink headerlink reference internal" href="#isaaclab_rl.rl_games.RlGamesVecEnvWrapper.params.rl_device">¶</a> – The device on which agent computations are performed.</p></li>
-<li><p><span class="target" id="isaaclab_rl.rl_games.RlGamesVecEnvWrapper.params.clip_obs"></span><strong>clip_obs</strong><a class="paramlink headerlink reference internal" href="#isaaclab_rl.rl_games.RlGamesVecEnvWrapper.params.clip_obs">¶</a> – The clipping value for observations.</p></li>
-<li><p><span class="target" id="isaaclab_rl.rl_games.RlGamesVecEnvWrapper.params.clip_actions"></span><strong>clip_actions</strong><a class="paramlink headerlink reference internal" href="#isaaclab_rl.rl_games.RlGamesVecEnvWrapper.params.clip_actions">¶</a> – The clipping value for actions.</p></li>
+<li><p><strong>env</strong> – The environment to wrap around.</p></li>
+<li><p><strong>rl_device</strong> – The device on which agent computations are performed.</p></li>
+<li><p><strong>clip_obs</strong> – The clipping value for observations.</p></li>
+<li><p><strong>clip_actions</strong> – The clipping value for actions.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Raises<span class="colon">:</span></dt>
@@ -955,8 +956,8 @@ wrapper.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_rl.rl_games.RlGamesGpuEnv.params.config_name"></span><strong>config_name</strong><a class="paramlink headerlink reference internal" href="#isaaclab_rl.rl_games.RlGamesGpuEnv.params.config_name">¶</a> – The name of the environment configuration.</p></li>
-<li><p><span class="target" id="isaaclab_rl.rl_games.RlGamesGpuEnv.params.num_actors"></span><strong>num_actors</strong><a class="paramlink headerlink reference internal" href="#isaaclab_rl.rl_games.RlGamesGpuEnv.params.num_actors">¶</a> – The number of actors in the environment. This is not used in this wrapper.</p></li>
+<li><p><strong>config_name</strong> – The name of the environment configuration.</p></li>
+<li><p><strong>num_actors</strong> – The number of actors in the environment. This is not used in this wrapper.</p></li>
 </ul>
 </dd>
 </dl>
@@ -1027,10 +1028,10 @@ wrapper.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_rl.rsl_rl.export_policy_as_jit.params.actor_critic"></span><strong>actor_critic</strong><a class="paramlink headerlink reference internal" href="#isaaclab_rl.rsl_rl.export_policy_as_jit.params.actor_critic">¶</a> – The actor-critic torch module.</p></li>
-<li><p><span class="target" id="isaaclab_rl.rsl_rl.export_policy_as_jit.params.normalizer"></span><strong>normalizer</strong><a class="paramlink headerlink reference internal" href="#isaaclab_rl.rsl_rl.export_policy_as_jit.params.normalizer">¶</a> – The empirical normalizer module. If None, Identity is used.</p></li>
-<li><p><span class="target" id="isaaclab_rl.rsl_rl.export_policy_as_jit.params.path"></span><strong>path</strong><a class="paramlink headerlink reference internal" href="#isaaclab_rl.rsl_rl.export_policy_as_jit.params.path">¶</a> – The path to the saving directory.</p></li>
-<li><p><span class="target" id="isaaclab_rl.rsl_rl.export_policy_as_jit.params.filename"></span><strong>filename</strong><a class="paramlink headerlink reference internal" href="#isaaclab_rl.rsl_rl.export_policy_as_jit.params.filename">¶</a> – The name of exported JIT file. Defaults to “policy.pt”.</p></li>
+<li><p><strong>actor_critic</strong> – The actor-critic torch module.</p></li>
+<li><p><strong>normalizer</strong> – The empirical normalizer module. If None, Identity is used.</p></li>
+<li><p><strong>path</strong> – The path to the saving directory.</p></li>
+<li><p><strong>filename</strong> – The name of exported JIT file. Defaults to “policy.pt”.</p></li>
 </ul>
 </dd>
 </dl>
@@ -1043,11 +1044,11 @@ wrapper.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_rl.rsl_rl.export_policy_as_onnx.params.actor_critic"></span><strong>actor_critic</strong><a class="paramlink headerlink reference internal" href="#isaaclab_rl.rsl_rl.export_policy_as_onnx.params.actor_critic">¶</a> – The actor-critic torch module.</p></li>
-<li><p><span class="target" id="isaaclab_rl.rsl_rl.export_policy_as_onnx.params.normalizer"></span><strong>normalizer</strong><a class="paramlink headerlink reference internal" href="#isaaclab_rl.rsl_rl.export_policy_as_onnx.params.normalizer">¶</a> – The empirical normalizer module. If None, Identity is used.</p></li>
-<li><p><span class="target" id="isaaclab_rl.rsl_rl.export_policy_as_onnx.params.path"></span><strong>path</strong><a class="paramlink headerlink reference internal" href="#isaaclab_rl.rsl_rl.export_policy_as_onnx.params.path">¶</a> – The path to the saving directory.</p></li>
-<li><p><span class="target" id="isaaclab_rl.rsl_rl.export_policy_as_onnx.params.filename"></span><strong>filename</strong><a class="paramlink headerlink reference internal" href="#isaaclab_rl.rsl_rl.export_policy_as_onnx.params.filename">¶</a> – The name of exported ONNX file. Defaults to “policy.onnx”.</p></li>
-<li><p><span class="target" id="isaaclab_rl.rsl_rl.export_policy_as_onnx.params.verbose"></span><strong>verbose</strong><a class="paramlink headerlink reference internal" href="#isaaclab_rl.rsl_rl.export_policy_as_onnx.params.verbose">¶</a> – Whether to print the model summary. Defaults to False.</p></li>
+<li><p><strong>actor_critic</strong> – The actor-critic torch module.</p></li>
+<li><p><strong>normalizer</strong> – The empirical normalizer module. If None, Identity is used.</p></li>
+<li><p><strong>path</strong> – The path to the saving directory.</p></li>
+<li><p><strong>filename</strong> – The name of exported ONNX file. Defaults to “policy.onnx”.</p></li>
+<li><p><strong>verbose</strong> – Whether to print the model summary. Defaults to False.</p></li>
 </ul>
 </dd>
 </dl>
@@ -1521,7 +1522,7 @@ wrapper.</p>
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab_rl.rsl_rl.RslRlVecEnvWrapper.params.env"></span><strong>env</strong><a class="paramlink headerlink reference internal" href="#isaaclab_rl.rsl_rl.RslRlVecEnvWrapper.params.env">¶</a> – The environment to wrap around.</p>
+<dd class="field-odd"><p><strong>env</strong> – The environment to wrap around.</p>
 </dd>
 <dt class="field-even">Raises<span class="colon">:</span></dt>
 <dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#ValueError" title="(in Python v3.14)"><strong>ValueError</strong></a> – When the environment is not an instance of <code class="xref py py-class docutils literal notranslate"><span class="pre">ManagerBasedRLEnv</span></code> or <code class="xref py py-class docutils literal notranslate"><span class="pre">DirectRLEnv</span></code>.</p>
@@ -1617,9 +1618,9 @@ Internally it calls the <code class="xref py py-func docutils literal notranslat
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_rl.skrl.SkrlVecEnvWrapper.params.env"></span><strong>env</strong><a class="paramlink headerlink reference internal" href="#isaaclab_rl.skrl.SkrlVecEnvWrapper.params.env">¶</a> – The environment to wrap around.</p></li>
-<li><p><span class="target" id="isaaclab_rl.skrl.SkrlVecEnvWrapper.params.ml_framework"></span><strong>ml_framework</strong><a class="paramlink headerlink reference internal" href="#isaaclab_rl.skrl.SkrlVecEnvWrapper.params.ml_framework">¶</a> – The ML framework to use for the wrapper. Defaults to “torch”.</p></li>
-<li><p><span class="target" id="isaaclab_rl.skrl.SkrlVecEnvWrapper.params.wrapper"></span><strong>wrapper</strong><a class="paramlink headerlink reference internal" href="#isaaclab_rl.skrl.SkrlVecEnvWrapper.params.wrapper">¶</a> – The wrapper to use. Defaults to “isaaclab”: leave it to skrl to determine if the environment
+<li><p><strong>env</strong> – The environment to wrap around.</p></li>
+<li><p><strong>ml_framework</strong> – The ML framework to use for the wrapper. Defaults to “torch”.</p></li>
+<li><p><strong>wrapper</strong> – The wrapper to use. Defaults to “isaaclab”: leave it to skrl to determine if the environment
 will be wrapped as single-agent or multi-agent.</p></li>
 </ul>
 </dd>
@@ -1670,7 +1671,7 @@ will be wrapped as single-agent or multi-agent.</p></li>
 <dd><p>Convert simple YAML types to Stable-Baselines classes/components.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab_rl.sb3.process_sb3_cfg.params.cfg"></span><strong>cfg</strong><a class="paramlink headerlink reference internal" href="#isaaclab_rl.sb3.process_sb3_cfg.params.cfg">¶</a> – A configuration dictionary.</p>
+<dd class="field-odd"><p><strong>cfg</strong> – A configuration dictionary.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>A dictionary containing the converted configuration.</p>
@@ -1759,7 +1760,7 @@ wrapper.</p>
 <dd><p>Initialize the wrapper.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab_rl.sb3.Sb3VecEnvWrapper.params.env"></span><strong>env</strong><a class="paramlink headerlink reference internal" href="#isaaclab_rl.sb3.Sb3VecEnvWrapper.params.env">¶</a> – The environment to wrap around.</p>
+<dd class="field-odd"><p><strong>env</strong> – The environment to wrap around.</p>
 </dd>
 <dt class="field-even">Raises<span class="colon">:</span></dt>
 <dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#ValueError" title="(in Python v3.14)"><strong>ValueError</strong></a> – When the environment is not an instance of <code class="xref py py-class docutils literal notranslate"><span class="pre">ManagerBasedRLEnv</span></code> or <code class="xref py py-class docutils literal notranslate"><span class="pre">DirectRLEnv</span></code>.</p>

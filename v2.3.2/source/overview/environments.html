@@ -36,7 +36,6 @@
     <link rel="stylesheet" type="text/css" href="/opt/hostedtoolcache/Python/3.12.13/x64/lib/python3.12/site-packages/sphinxcontrib/icon/node_modules/@fortawesome/fontawesome-free/css/all.min.css?v=53359634" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx_paramlinks.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=8fb98eed" />
   
   <!-- So that users can add custom icons -->
@@ -162,6 +161,8 @@
             <option value="../../../develop/source/overview/environments.html" >develop</option>
             <option value="../../../main/source/overview/environments.html" >main</option>
             <option value="../../../release/3.0.0-beta2/source/overview/environments.html" >release/3.0.0-beta2</option>
+            <option value="../../../v3.0.0-beta2/source/overview/environments.html" >v3.0.0-beta2</option>
+            <option value="../../../v3.0.0-beta/source/overview/environments.html" >v3.0.0-beta</option>
             <option value="environments.html" selected>v2.3.2</option>
             <option value="../../../v2.3.1/source/overview/environments.html" >v2.3.1</option>
             <option value="../../../v2.3.0/source/overview/environments.html" >v2.3.0</option>
@@ -758,13 +759,13 @@ you would like to add to Isaac Lab, please feel free to open a pull request!</p>
 </td>
 <td><p>Move towards a direction with the MuJoCo ant robot</p></td>
 </tr>
-<tr class="row-even"><td><p><img alt="cartpole" src="../../_images/cartpole1.jpg" /></p></td>
+<tr class="row-even"><td><p><img alt="cartpole" src="../../_images/cartpole.jpg" /></p></td>
 <td><p><a class="reference external" href="https://github.com/isaac-sim/IsaacLab/blob/main/source/isaaclab_tasks/isaaclab_tasks/manager_based/classic/cartpole/cartpole_env_cfg.py">Isaac-Cartpole-v0</a></p>
 <p><a class="reference external" href="https://github.com/isaac-sim/IsaacLab/blob/main/source/isaaclab_tasks/isaaclab_tasks/direct/cartpole/cartpole_env.py">Isaac-Cartpole-Direct-v0</a></p>
 </td>
 <td><p>Move the cart to keep the pole upwards in the classic cartpole control</p></td>
 </tr>
-<tr class="row-odd"><td><p><img alt="cartpole" src="../../_images/cartpole1.jpg" /></p></td>
+<tr class="row-odd"><td><p><img alt="cartpole" src="../../_images/cartpole.jpg" /></p></td>
 <td><p><a class="reference external" href="https://github.com/isaac-sim/IsaacLab/blob/main/source/isaaclab_tasks/isaaclab_tasks/manager_based/classic/cartpole/cartpole_camera_env_cfg.py">Isaac-Cartpole-RGB-v0</a></p>
 <p><a class="reference external" href="https://github.com/isaac-sim/IsaacLab/blob/main/source/isaaclab_tasks/isaaclab_tasks/manager_based/classic/cartpole/cartpole_camera_env_cfg.py">Isaac-Cartpole-Depth-v0</a></p>
 <p><a class="reference external" href="https://github.com/isaac-sim/IsaacLab/blob/main/source/isaaclab_tasks/isaaclab_tasks/direct/cartpole/cartpole_camera_env.py">Isaac-Cartpole-RGB-Camera-Direct-v0</a></p>
@@ -773,7 +774,7 @@ you would like to add to Isaac Lab, please feel free to open a pull request!</p>
 <td><p>Move the cart to keep the pole upwards in the classic cartpole control
 and perceptive inputs. Requires running with <code class="docutils literal notranslate"><span class="pre">--enable_cameras</span></code>.</p></td>
 </tr>
-<tr class="row-even"><td><p><img alt="cartpole" src="../../_images/cartpole1.jpg" /></p></td>
+<tr class="row-even"><td><p><img alt="cartpole" src="../../_images/cartpole.jpg" /></p></td>
 <td><p><a class="reference external" href="https://github.com/isaac-sim/IsaacLab/blob/main/source/isaaclab_tasks/isaaclab_tasks/manager_based/classic/cartpole/cartpole_camera_env_cfg.py">Isaac-Cartpole-RGB-ResNet18-v0</a></p>
 <p><a class="reference external" href="https://github.com/isaac-sim/IsaacLab/blob/main/source/isaaclab_tasks/isaaclab_tasks/manager_based/classic/cartpole/cartpole_camera_env_cfg.py">Isaac-Cartpole-RGB-TheiaTiny-v0</a></p>
 </td>
@@ -1151,7 +1152,7 @@ sudo<span class="w"> </span>sh<span class="w"> </span>cuda_12.8.0_570.86.10_linu
 <td><p><a class="reference external" href="https://github.com/isaac-sim/IsaacLab/blob/main/source/isaaclab_tasks/isaaclab_tasks/manager_based/locomotion/velocity/config/g1/flat_env_cfg.py">Isaac-Velocity-Flat-G1-v0</a></p></td>
 <td><p>Track a velocity command on flat terrain with the Unitree G1 robot</p></td>
 </tr>
-<tr class="row-even"><td><p><img alt="velocity-rough-g1" src="../../_images/g1_rough1.jpg" /></p></td>
+<tr class="row-even"><td><p><img alt="velocity-rough-g1" src="../../_images/g1_rough.jpg" /></p></td>
 <td><p><a class="reference external" href="https://github.com/isaac-sim/IsaacLab/blob/main/source/isaaclab_tasks/isaaclab_tasks/manager_based/locomotion/velocity/config/g1/rough_env_cfg.py">Isaac-Velocity-Rough-G1-v0</a></p></td>
 <td><p>Track a velocity command on rough terrain with the Unitree G1 robot</p></td>
 </tr>
@@ -1246,7 +1247,7 @@ The AMP algorithm can be activated by adding the command line input <code class=
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><img alt="quadcopter" src="../../_images/quadcopter1.jpg" /></p></td>
+<tr class="row-even"><td><p><img alt="quadcopter" src="../../_images/quadcopter.jpg" /></p></td>
 <td><p><a class="reference external" href="https://github.com/isaac-sim/IsaacLab/blob/main/source/isaaclab_tasks/isaaclab_tasks/direct/quadcopter/quadcopter_env.py">Isaac-Quadcopter-Direct-v0</a></p></td>
 <td><p>Fly and hover the Crazyflie copter at a goal point by applying thrust.</p></td>
 </tr>

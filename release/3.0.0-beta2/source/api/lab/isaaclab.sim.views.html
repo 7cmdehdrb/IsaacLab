@@ -36,7 +36,6 @@
     <link rel="stylesheet" type="text/css" href="/opt/hostedtoolcache/Python/3.12.13/x64/lib/python3.12/site-packages/sphinxcontrib/icon/node_modules/@fortawesome/fontawesome-free/css/all.min.css?v=53359634" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx_paramlinks.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=8fb98eed" />
   
   <!-- So that users can add custom icons -->
@@ -162,6 +161,8 @@
             <option value="../../../../../develop/source/api/lab/isaaclab.sim.views.html" >develop</option>
             <option value="../../../../../main/source/api/lab/isaaclab.sim.views.html" >main</option>
             <option value="isaaclab.sim.views.html" selected>release/3.0.0-beta2</option>
+            <option value="../../../../../v3.0.0-beta2/source/api/lab/isaaclab.sim.views.html" >v3.0.0-beta2</option>
+            <option value="../../../../../v3.0.0-beta/source/api/lab/isaaclab.sim.views.html" >v3.0.0-beta</option>
             <option value="../../../../../v2.3.2/source/api/lab/isaaclab.sim.views.html" >v2.3.2</option>
             <option value="../../../../../v2.3.1/index.html" >v2.3.1</option>
             <option value="../../../../../v2.3.0/index.html" >v2.3.0</option>
@@ -874,7 +875,7 @@ implementation at runtime based on the active physics backend.</p>
 <dd><p>Get world-space positions and orientations for prims in the view.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab.sim.views.BaseFrameView.get_world_poses.params.indices"></span><strong>indices</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.views.BaseFrameView.get_world_poses.params.indices">¶</a> – Subset of prims to query.  <code class="docutils literal notranslate"><span class="pre">None</span></code> means all prims.</p>
+<dd class="field-odd"><p><strong>indices</strong> – Subset of prims to query.  <code class="docutils literal notranslate"><span class="pre">None</span></code> means all prims.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>A tuple <code class="docutils literal notranslate"><span class="pre">(positions,</span> <span class="pre">orientations)</span></code> of <a class="reference internal" href="isaaclab.utils.html#isaaclab.utils.warp.ProxyArray" title="isaaclab.utils.warp.ProxyArray"><code class="xref py py-class docutils literal notranslate"><span class="pre">ProxyArray</span></code></a>
@@ -891,9 +892,9 @@ cached zero-copy <code class="docutils literal notranslate"><span class="pre">to
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.sim.views.BaseFrameView.set_world_poses.params.positions"></span><strong>positions</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.views.BaseFrameView.set_world_poses.params.positions">¶</a> – World-space positions <code class="docutils literal notranslate"><span class="pre">(M,</span> <span class="pre">3)</span></code>. <code class="docutils literal notranslate"><span class="pre">None</span></code> leaves positions unchanged.</p></li>
-<li><p><span class="target" id="isaaclab.sim.views.BaseFrameView.set_world_poses.params.orientations"></span><strong>orientations</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.views.BaseFrameView.set_world_poses.params.orientations">¶</a> – World-space quaternions <code class="docutils literal notranslate"><span class="pre">(M,</span> <span class="pre">4)</span></code>. <code class="docutils literal notranslate"><span class="pre">None</span></code> leaves orientations unchanged.</p></li>
-<li><p><span class="target" id="isaaclab.sim.views.BaseFrameView.set_world_poses.params.indices"></span><strong>indices</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.views.BaseFrameView.set_world_poses.params.indices">¶</a> – Subset of prims to update.  <code class="docutils literal notranslate"><span class="pre">None</span></code> means all prims.</p></li>
+<li><p><strong>positions</strong> – World-space positions <code class="docutils literal notranslate"><span class="pre">(M,</span> <span class="pre">3)</span></code>. <code class="docutils literal notranslate"><span class="pre">None</span></code> leaves positions unchanged.</p></li>
+<li><p><strong>orientations</strong> – World-space quaternions <code class="docutils literal notranslate"><span class="pre">(M,</span> <span class="pre">4)</span></code>. <code class="docutils literal notranslate"><span class="pre">None</span></code> leaves orientations unchanged.</p></li>
+<li><p><strong>indices</strong> – Subset of prims to update.  <code class="docutils literal notranslate"><span class="pre">None</span></code> means all prims.</p></li>
 </ul>
 </dd>
 </dl>
@@ -905,7 +906,7 @@ cached zero-copy <code class="docutils literal notranslate"><span class="pre">to
 <dd><p>Get local-space positions and orientations for prims in the view.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab.sim.views.BaseFrameView.get_local_poses.params.indices"></span><strong>indices</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.views.BaseFrameView.get_local_poses.params.indices">¶</a> – Subset of prims to query.  <code class="docutils literal notranslate"><span class="pre">None</span></code> means all prims.</p>
+<dd class="field-odd"><p><strong>indices</strong> – Subset of prims to query.  <code class="docutils literal notranslate"><span class="pre">None</span></code> means all prims.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>A tuple <code class="docutils literal notranslate"><span class="pre">(translations,</span> <span class="pre">orientations)</span></code> of <a class="reference internal" href="isaaclab.utils.html#isaaclab.utils.warp.ProxyArray" title="isaaclab.utils.warp.ProxyArray"><code class="xref py py-class docutils literal notranslate"><span class="pre">ProxyArray</span></code></a>
@@ -922,9 +923,9 @@ cached zero-copy <code class="docutils literal notranslate"><span class="pre">to
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.sim.views.BaseFrameView.set_local_poses.params.translations"></span><strong>translations</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.views.BaseFrameView.set_local_poses.params.translations">¶</a> – Local-space translations <code class="docutils literal notranslate"><span class="pre">(M,</span> <span class="pre">3)</span></code>. <code class="docutils literal notranslate"><span class="pre">None</span></code> leaves translations unchanged.</p></li>
-<li><p><span class="target" id="isaaclab.sim.views.BaseFrameView.set_local_poses.params.orientations"></span><strong>orientations</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.views.BaseFrameView.set_local_poses.params.orientations">¶</a> – Local-space quaternions <code class="docutils literal notranslate"><span class="pre">(M,</span> <span class="pre">4)</span></code>. <code class="docutils literal notranslate"><span class="pre">None</span></code> leaves orientations unchanged.</p></li>
-<li><p><span class="target" id="isaaclab.sim.views.BaseFrameView.set_local_poses.params.indices"></span><strong>indices</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.views.BaseFrameView.set_local_poses.params.indices">¶</a> – Subset of prims to update.  <code class="docutils literal notranslate"><span class="pre">None</span></code> means all prims.</p></li>
+<li><p><strong>translations</strong> – Local-space translations <code class="docutils literal notranslate"><span class="pre">(M,</span> <span class="pre">3)</span></code>. <code class="docutils literal notranslate"><span class="pre">None</span></code> leaves translations unchanged.</p></li>
+<li><p><strong>orientations</strong> – Local-space quaternions <code class="docutils literal notranslate"><span class="pre">(M,</span> <span class="pre">4)</span></code>. <code class="docutils literal notranslate"><span class="pre">None</span></code> leaves orientations unchanged.</p></li>
+<li><p><strong>indices</strong> – Subset of prims to update.  <code class="docutils literal notranslate"><span class="pre">None</span></code> means all prims.</p></li>
 </ul>
 </dd>
 </dl>
@@ -936,7 +937,7 @@ cached zero-copy <code class="docutils literal notranslate"><span class="pre">to
 <dd><p>Get scales for prims in the view.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab.sim.views.BaseFrameView.get_scales.params.indices"></span><strong>indices</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.views.BaseFrameView.get_scales.params.indices">¶</a> – Subset of prims to query.  <code class="docutils literal notranslate"><span class="pre">None</span></code> means all prims.</p>
+<dd class="field-odd"><p><strong>indices</strong> – Subset of prims to query.  <code class="docutils literal notranslate"><span class="pre">None</span></code> means all prims.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>A <code class="docutils literal notranslate"><span class="pre">wp.array</span></code> of shape <code class="docutils literal notranslate"><span class="pre">(M,</span> <span class="pre">3)</span></code>.</p>
@@ -951,8 +952,8 @@ cached zero-copy <code class="docutils literal notranslate"><span class="pre">to
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.sim.views.BaseFrameView.set_scales.params.scales"></span><strong>scales</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.views.BaseFrameView.set_scales.params.scales">¶</a> – Scales <code class="docutils literal notranslate"><span class="pre">(M,</span> <span class="pre">3)</span></code> as <code class="docutils literal notranslate"><span class="pre">wp.array</span></code>.</p></li>
-<li><p><span class="target" id="isaaclab.sim.views.BaseFrameView.set_scales.params.indices"></span><strong>indices</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.views.BaseFrameView.set_scales.params.indices">¶</a> – Subset of prims to update.  <code class="docutils literal notranslate"><span class="pre">None</span></code> means all prims.</p></li>
+<li><p><strong>scales</strong> – Scales <code class="docutils literal notranslate"><span class="pre">(M,</span> <span class="pre">3)</span></code> as <code class="docutils literal notranslate"><span class="pre">wp.array</span></code>.</p></li>
+<li><p><strong>indices</strong> – Subset of prims to update.  <code class="docutils literal notranslate"><span class="pre">None</span></code> means all prims.</p></li>
 </ul>
 </dd>
 </dl>
@@ -1050,16 +1051,16 @@ time-sampled keyframes separately.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.sim.views.UsdFrameView.params.prim_path"></span><strong>prim_path</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.views.UsdFrameView.params.prim_path">¶</a> – USD prim path pattern to match prims. Supports wildcards (<code class="docutils literal notranslate"><span class="pre">*</span></code>) and
+<li><p><strong>prim_path</strong> – USD prim path pattern to match prims. Supports wildcards (<code class="docutils literal notranslate"><span class="pre">*</span></code>) and
 regex patterns (e.g., <code class="docutils literal notranslate"><span class="pre">&quot;/World/Env_.*/Robot&quot;</span></code>). See
 <code class="xref py py-func docutils literal notranslate"><span class="pre">isaaclab.sim.utils.find_matching_prims()</span></code> for pattern syntax.</p></li>
-<li><p><span class="target" id="isaaclab.sim.views.UsdFrameView.params.device"></span><strong>device</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.views.UsdFrameView.params.device">¶</a> – Device to place arrays on. Can be <code class="docutils literal notranslate"><span class="pre">&quot;cpu&quot;</span></code> or CUDA devices like
+<li><p><strong>device</strong> – Device to place arrays on. Can be <code class="docutils literal notranslate"><span class="pre">&quot;cpu&quot;</span></code> or CUDA devices like
 <code class="docutils literal notranslate"><span class="pre">&quot;cuda:0&quot;</span></code>. Defaults to <code class="docutils literal notranslate"><span class="pre">&quot;cpu&quot;</span></code>.</p></li>
-<li><p><span class="target" id="isaaclab.sim.views.UsdFrameView.params.validate_xform_ops"></span><strong>validate_xform_ops</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.views.UsdFrameView.params.validate_xform_ops">¶</a> – Whether to validate that the prims have standard xform operations.
+<li><p><strong>validate_xform_ops</strong> – Whether to validate that the prims have standard xform operations.
 Defaults to True.</p></li>
-<li><p><span class="target" id="isaaclab.sim.views.UsdFrameView.params.stage"></span><strong>stage</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.views.UsdFrameView.params.stage">¶</a> – USD stage to search for prims. Defaults to None, in which case the current
+<li><p><strong>stage</strong> – USD stage to search for prims. Defaults to None, in which case the current
 active stage from the simulation context is used.</p></li>
-<li><p><span class="target" id="isaaclab.sim.views.UsdFrameView.params.**kwargs"></span><strong>**kwargs</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.views.UsdFrameView.params.**kwargs">¶</a> – Additional keyword arguments (ignored). Allows forward-compatible
+<li><p><strong>**kwargs</strong> – Additional keyword arguments (ignored). Allows forward-compatible
 construction when callers pass backend-specific options.</p></li>
 </ul>
 </dd>
@@ -1104,9 +1105,9 @@ parent before writing to USD xform ops.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.sim.views.UsdFrameView.set_world_poses.params.positions"></span><strong>positions</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.views.UsdFrameView.set_world_poses.params.positions">¶</a> – World-space positions of shape <code class="docutils literal notranslate"><span class="pre">(M,</span> <span class="pre">3)</span></code>.</p></li>
-<li><p><span class="target" id="isaaclab.sim.views.UsdFrameView.set_world_poses.params.orientations"></span><strong>orientations</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.views.UsdFrameView.set_world_poses.params.orientations">¶</a> – World-space quaternions <code class="docutils literal notranslate"><span class="pre">(w,</span> <span class="pre">x,</span> <span class="pre">y,</span> <span class="pre">z)</span></code> of shape <code class="docutils literal notranslate"><span class="pre">(M,</span> <span class="pre">4)</span></code>.</p></li>
-<li><p><span class="target" id="isaaclab.sim.views.UsdFrameView.set_world_poses.params.indices"></span><strong>indices</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.views.UsdFrameView.set_world_poses.params.indices">¶</a> – Indices of prims to set poses for. Defaults to None (all prims).</p></li>
+<li><p><strong>positions</strong> – World-space positions of shape <code class="docutils literal notranslate"><span class="pre">(M,</span> <span class="pre">3)</span></code>.</p></li>
+<li><p><strong>orientations</strong> – World-space quaternions <code class="docutils literal notranslate"><span class="pre">(w,</span> <span class="pre">x,</span> <span class="pre">y,</span> <span class="pre">z)</span></code> of shape <code class="docutils literal notranslate"><span class="pre">(M,</span> <span class="pre">4)</span></code>.</p></li>
+<li><p><strong>indices</strong> – Indices of prims to set poses for. Defaults to None (all prims).</p></li>
 </ul>
 </dd>
 </dl>
@@ -1119,9 +1120,9 @@ parent before writing to USD xform ops.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.sim.views.UsdFrameView.set_local_poses.params.translations"></span><strong>translations</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.views.UsdFrameView.set_local_poses.params.translations">¶</a> – Local-space translations of shape <code class="docutils literal notranslate"><span class="pre">(M,</span> <span class="pre">3)</span></code>.</p></li>
-<li><p><span class="target" id="isaaclab.sim.views.UsdFrameView.set_local_poses.params.orientations"></span><strong>orientations</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.views.UsdFrameView.set_local_poses.params.orientations">¶</a> – Local-space quaternions <code class="docutils literal notranslate"><span class="pre">(w,</span> <span class="pre">x,</span> <span class="pre">y,</span> <span class="pre">z)</span></code> of shape <code class="docutils literal notranslate"><span class="pre">(M,</span> <span class="pre">4)</span></code>.</p></li>
-<li><p><span class="target" id="isaaclab.sim.views.UsdFrameView.set_local_poses.params.indices"></span><strong>indices</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.views.UsdFrameView.set_local_poses.params.indices">¶</a> – Indices of prims to set poses for. Defaults to None (all prims).</p></li>
+<li><p><strong>translations</strong> – Local-space translations of shape <code class="docutils literal notranslate"><span class="pre">(M,</span> <span class="pre">3)</span></code>.</p></li>
+<li><p><strong>orientations</strong> – Local-space quaternions <code class="docutils literal notranslate"><span class="pre">(w,</span> <span class="pre">x,</span> <span class="pre">y,</span> <span class="pre">z)</span></code> of shape <code class="docutils literal notranslate"><span class="pre">(M,</span> <span class="pre">4)</span></code>.</p></li>
+<li><p><strong>indices</strong> – Indices of prims to set poses for. Defaults to None (all prims).</p></li>
 </ul>
 </dd>
 </dl>
@@ -1134,8 +1135,8 @@ parent before writing to USD xform ops.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.sim.views.UsdFrameView.set_scales.params.scales"></span><strong>scales</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.views.UsdFrameView.set_scales.params.scales">¶</a> – Scales of shape <code class="docutils literal notranslate"><span class="pre">(M,</span> <span class="pre">3)</span></code>.</p></li>
-<li><p><span class="target" id="isaaclab.sim.views.UsdFrameView.set_scales.params.indices"></span><strong>indices</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.views.UsdFrameView.set_scales.params.indices">¶</a> – Indices of prims to set scales for. Defaults to None (all prims).</p></li>
+<li><p><strong>scales</strong> – Scales of shape <code class="docutils literal notranslate"><span class="pre">(M,</span> <span class="pre">3)</span></code>.</p></li>
+<li><p><strong>indices</strong> – Indices of prims to set scales for. Defaults to None (all prims).</p></li>
 </ul>
 </dd>
 </dl>
@@ -1148,8 +1149,8 @@ parent before writing to USD xform ops.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.sim.views.UsdFrameView.set_visibility.params.visibility"></span><strong>visibility</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.views.UsdFrameView.set_visibility.params.visibility">¶</a> – Visibility as a boolean tensor of shape <code class="docutils literal notranslate"><span class="pre">(M,)</span></code>.</p></li>
-<li><p><span class="target" id="isaaclab.sim.views.UsdFrameView.set_visibility.params.indices"></span><strong>indices</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.views.UsdFrameView.set_visibility.params.indices">¶</a> – Indices of prims to set visibility for. Defaults to None (all prims).</p></li>
+<li><p><strong>visibility</strong> – Visibility as a boolean tensor of shape <code class="docutils literal notranslate"><span class="pre">(M,)</span></code>.</p></li>
+<li><p><strong>indices</strong> – Indices of prims to set visibility for. Defaults to None (all prims).</p></li>
 </ul>
 </dd>
 </dl>
@@ -1161,7 +1162,7 @@ parent before writing to USD xform ops.</p>
 <dd><p>Get world-space poses for prims in the view.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab.sim.views.UsdFrameView.get_world_poses.params.indices"></span><strong>indices</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.views.UsdFrameView.get_world_poses.params.indices">¶</a> – Indices of prims to get poses for. Defaults to None (all prims).</p>
+<dd class="field-odd"><p><strong>indices</strong> – Indices of prims to get poses for. Defaults to None (all prims).</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>A tuple <code class="docutils literal notranslate"><span class="pre">(positions,</span> <span class="pre">orientations)</span></code> of <a class="reference internal" href="isaaclab.utils.html#isaaclab.utils.warp.ProxyArray" title="isaaclab.utils.warp.ProxyArray"><code class="xref py py-class docutils literal notranslate"><span class="pre">ProxyArray</span></code></a>
@@ -1177,7 +1178,7 @@ cached zero-copy <code class="docutils literal notranslate"><span class="pre">to
 <dd><p>Get local-space poses for prims in the view.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab.sim.views.UsdFrameView.get_local_poses.params.indices"></span><strong>indices</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.views.UsdFrameView.get_local_poses.params.indices">¶</a> – Indices of prims to get poses for. Defaults to None (all prims).</p>
+<dd class="field-odd"><p><strong>indices</strong> – Indices of prims to get poses for. Defaults to None (all prims).</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>A tuple <code class="docutils literal notranslate"><span class="pre">(translations,</span> <span class="pre">orientations)</span></code> of <a class="reference internal" href="isaaclab.utils.html#isaaclab.utils.warp.ProxyArray" title="isaaclab.utils.warp.ProxyArray"><code class="xref py py-class docutils literal notranslate"><span class="pre">ProxyArray</span></code></a>
@@ -1193,7 +1194,7 @@ cached zero-copy <code class="docutils literal notranslate"><span class="pre">to
 <dd><p>Get scales for prims in the view.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab.sim.views.UsdFrameView.get_scales.params.indices"></span><strong>indices</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.views.UsdFrameView.get_scales.params.indices">¶</a> – Indices of prims to get scales for. Defaults to None (all prims).</p>
+<dd class="field-odd"><p><strong>indices</strong> – Indices of prims to get scales for. Defaults to None (all prims).</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>A <code class="docutils literal notranslate"><span class="pre">wp.array</span></code> of shape <code class="docutils literal notranslate"><span class="pre">(M,</span> <span class="pre">3)</span></code>.</p>
@@ -1207,7 +1208,7 @@ cached zero-copy <code class="docutils literal notranslate"><span class="pre">to
 <dd><p>Get visibility for prims in the view.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab.sim.views.UsdFrameView.get_visibility.params.indices"></span><strong>indices</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.views.UsdFrameView.get_visibility.params.indices">¶</a> – Indices of prims to get visibility for. Defaults to None (all prims).</p>
+<dd class="field-odd"><p><strong>indices</strong> – Indices of prims to get visibility for. Defaults to None (all prims).</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>A tensor of shape <code class="docutils literal notranslate"><span class="pre">(M,)</span></code> containing the visibility of each prim (bool).</p>

@@ -36,7 +36,6 @@
     <link rel="stylesheet" type="text/css" href="/opt/hostedtoolcache/Python/3.12.13/x64/lib/python3.12/site-packages/sphinxcontrib/icon/node_modules/@fortawesome/fontawesome-free/css/all.min.css?v=53359634" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx_paramlinks.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=8fb98eed" />
   
   <!-- So that users can add custom icons -->
@@ -162,6 +161,8 @@
             <option value="../../../../develop/source/api/lab/isaaclab.sim.schemas.html" >develop</option>
             <option value="../../../../main/source/api/lab/isaaclab.sim.schemas.html" >main</option>
             <option value="../../../../release/3.0.0-beta2/source/api/lab/isaaclab.sim.schemas.html" >release/3.0.0-beta2</option>
+            <option value="../../../../v3.0.0-beta2/source/api/lab/isaaclab.sim.schemas.html" >v3.0.0-beta2</option>
+            <option value="../../../../v3.0.0-beta/source/api/lab/isaaclab.sim.schemas.html" >v3.0.0-beta</option>
             <option value="../../../../v2.3.2/source/api/lab/isaaclab.sim.schemas.html" >v2.3.2</option>
             <option value="../../../../v2.3.1/source/api/lab/isaaclab.sim.schemas.html" >v2.3.1</option>
             <option value="../../../../v2.3.0/source/api/lab/isaaclab.sim.schemas.html" >v2.3.0</option>
@@ -945,9 +946,9 @@ frame and the root link. The joint is created with the name “FixedJoint” und
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.sim.schemas.define_articulation_root_properties.params.prim_path"></span><strong>prim_path</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.schemas.define_articulation_root_properties.params.prim_path">¶</a> – The prim path where to apply the articulation root schema.</p></li>
-<li><p><span class="target" id="isaaclab.sim.schemas.define_articulation_root_properties.params.cfg"></span><strong>cfg</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.schemas.define_articulation_root_properties.params.cfg">¶</a> – The configuration for the articulation root.</p></li>
-<li><p><span class="target" id="isaaclab.sim.schemas.define_articulation_root_properties.params.stage"></span><strong>stage</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.schemas.define_articulation_root_properties.params.stage">¶</a> – The stage where to find the prim. Defaults to None, in which case the
+<li><p><strong>prim_path</strong> – The prim path where to apply the articulation root schema.</p></li>
+<li><p><strong>cfg</strong> – The configuration for the articulation root.</p></li>
+<li><p><strong>stage</strong> – The stage where to find the prim. Defaults to None, in which case the
 current stage is used.</p></li>
 </ul>
 </dd>
@@ -987,9 +988,9 @@ the root link.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.sim.schemas.modify_articulation_root_properties.params.prim_path"></span><strong>prim_path</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.schemas.modify_articulation_root_properties.params.prim_path">¶</a> – The prim path to the articulation root.</p></li>
-<li><p><span class="target" id="isaaclab.sim.schemas.modify_articulation_root_properties.params.cfg"></span><strong>cfg</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.schemas.modify_articulation_root_properties.params.cfg">¶</a> – The configuration for the articulation root.</p></li>
-<li><p><span class="target" id="isaaclab.sim.schemas.modify_articulation_root_properties.params.stage"></span><strong>stage</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.schemas.modify_articulation_root_properties.params.stage">¶</a> – The stage where to find the prim. Defaults to None, in which case the
+<li><p><strong>prim_path</strong> – The prim path to the articulation root.</p></li>
+<li><p><strong>cfg</strong> – The configuration for the articulation root.</p></li>
+<li><p><strong>stage</strong> – The stage where to find the prim. Defaults to None, in which case the
 current stage is used.</p></li>
 </ul>
 </dd>
@@ -1169,9 +1170,9 @@ still derives velocities for the kinematic body based on the external motion.</p
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.sim.schemas.define_rigid_body_properties.params.prim_path"></span><strong>prim_path</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.schemas.define_rigid_body_properties.params.prim_path">¶</a> – The prim path where to apply the rigid body schema.</p></li>
-<li><p><span class="target" id="isaaclab.sim.schemas.define_rigid_body_properties.params.cfg"></span><strong>cfg</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.schemas.define_rigid_body_properties.params.cfg">¶</a> – The configuration for the rigid body.</p></li>
-<li><p><span class="target" id="isaaclab.sim.schemas.define_rigid_body_properties.params.stage"></span><strong>stage</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.schemas.define_rigid_body_properties.params.stage">¶</a> – The stage where to find the prim. Defaults to None, in which case the
+<li><p><strong>prim_path</strong> – The prim path where to apply the rigid body schema.</p></li>
+<li><p><strong>cfg</strong> – The configuration for the rigid body.</p></li>
+<li><p><strong>stage</strong> – The stage where to find the prim. Defaults to None, in which case the
 current stage is used.</p></li>
 </ul>
 </dd>
@@ -1201,9 +1202,9 @@ schemas. The latter contains the PhysX parameters for the rigid body.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.sim.schemas.modify_rigid_body_properties.params.prim_path"></span><strong>prim_path</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.schemas.modify_rigid_body_properties.params.prim_path">¶</a> – The prim path to the rigid body.</p></li>
-<li><p><span class="target" id="isaaclab.sim.schemas.modify_rigid_body_properties.params.cfg"></span><strong>cfg</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.schemas.modify_rigid_body_properties.params.cfg">¶</a> – The configuration for the rigid body.</p></li>
-<li><p><span class="target" id="isaaclab.sim.schemas.modify_rigid_body_properties.params.stage"></span><strong>stage</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.schemas.modify_rigid_body_properties.params.stage">¶</a> – The stage where to find the prim. Defaults to None, in which case the
+<li><p><strong>prim_path</strong> – The prim path to the rigid body.</p></li>
+<li><p><strong>cfg</strong> – The configuration for the rigid body.</p></li>
+<li><p><strong>stage</strong> – The stage where to find the prim. Defaults to None, in which case the
 current stage is used.</p></li>
 </ul>
 </dd>
@@ -1223,9 +1224,9 @@ reporting API can only be added to rigid bodies.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.sim.schemas.activate_contact_sensors.params.prim_path"></span><strong>prim_path</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.schemas.activate_contact_sensors.params.prim_path">¶</a> – The prim path under which to search and prepare contact sensors.</p></li>
-<li><p><span class="target" id="isaaclab.sim.schemas.activate_contact_sensors.params.threshold"></span><strong>threshold</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.schemas.activate_contact_sensors.params.threshold">¶</a> – The threshold for the contact sensor. Defaults to 0.0.</p></li>
-<li><p><span class="target" id="isaaclab.sim.schemas.activate_contact_sensors.params.stage"></span><strong>stage</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.schemas.activate_contact_sensors.params.stage">¶</a> – The stage where to find the prim. Defaults to None, in which case the
+<li><p><strong>prim_path</strong> – The prim path under which to search and prepare contact sensors.</p></li>
+<li><p><strong>threshold</strong> – The threshold for the contact sensor. Defaults to 0.0.</p></li>
+<li><p><strong>stage</strong> – The stage where to find the prim. Defaults to None, in which case the
 current stage is used.</p></li>
 </ul>
 </dd>
@@ -1320,9 +1321,9 @@ If the radius is zero, no torsional friction is applied.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.sim.schemas.define_collision_properties.params.prim_path"></span><strong>prim_path</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.schemas.define_collision_properties.params.prim_path">¶</a> – The prim path where to apply the rigid body schema.</p></li>
-<li><p><span class="target" id="isaaclab.sim.schemas.define_collision_properties.params.cfg"></span><strong>cfg</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.schemas.define_collision_properties.params.cfg">¶</a> – The configuration for the collider.</p></li>
-<li><p><span class="target" id="isaaclab.sim.schemas.define_collision_properties.params.stage"></span><strong>stage</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.schemas.define_collision_properties.params.stage">¶</a> – The stage where to find the prim. Defaults to None, in which case the
+<li><p><strong>prim_path</strong> – The prim path where to apply the rigid body schema.</p></li>
+<li><p><strong>cfg</strong> – The configuration for the collider.</p></li>
+<li><p><strong>stage</strong> – The stage where to find the prim. Defaults to None, in which case the
 current stage is used.</p></li>
 </ul>
 </dd>
@@ -1349,9 +1350,9 @@ tune them and their effect on the simulation, please refer to the
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.sim.schemas.modify_collision_properties.params.prim_path"></span><strong>prim_path</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.schemas.modify_collision_properties.params.prim_path">¶</a> – The prim path of parent.</p></li>
-<li><p><span class="target" id="isaaclab.sim.schemas.modify_collision_properties.params.cfg"></span><strong>cfg</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.schemas.modify_collision_properties.params.cfg">¶</a> – The configuration for the collider.</p></li>
-<li><p><span class="target" id="isaaclab.sim.schemas.modify_collision_properties.params.stage"></span><strong>stage</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.schemas.modify_collision_properties.params.stage">¶</a> – The stage where to find the prim. Defaults to None, in which case the
+<li><p><strong>prim_path</strong> – The prim path of parent.</p></li>
+<li><p><strong>cfg</strong> – The configuration for the collider.</p></li>
+<li><p><strong>stage</strong> – The stage where to find the prim. Defaults to None, in which case the
 current stage is used.</p></li>
 </ul>
 </dd>
@@ -1414,9 +1415,9 @@ approximation of the body.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.sim.schemas.define_mass_properties.params.prim_path"></span><strong>prim_path</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.schemas.define_mass_properties.params.prim_path">¶</a> – The prim path where to apply the rigid body schema.</p></li>
-<li><p><span class="target" id="isaaclab.sim.schemas.define_mass_properties.params.cfg"></span><strong>cfg</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.schemas.define_mass_properties.params.cfg">¶</a> – The configuration for the mass properties.</p></li>
-<li><p><span class="target" id="isaaclab.sim.schemas.define_mass_properties.params.stage"></span><strong>stage</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.schemas.define_mass_properties.params.stage">¶</a> – The stage where to find the prim. Defaults to None, in which case the
+<li><p><strong>prim_path</strong> – The prim path where to apply the rigid body schema.</p></li>
+<li><p><strong>cfg</strong> – The configuration for the mass properties.</p></li>
+<li><p><strong>stage</strong> – The stage where to find the prim. Defaults to None, in which case the
 current stage is used.</p></li>
 </ul>
 </dd>
@@ -1448,9 +1449,9 @@ before using this property.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.sim.schemas.modify_mass_properties.params.prim_path"></span><strong>prim_path</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.schemas.modify_mass_properties.params.prim_path">¶</a> – The prim path of the rigid body.</p></li>
-<li><p><span class="target" id="isaaclab.sim.schemas.modify_mass_properties.params.cfg"></span><strong>cfg</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.schemas.modify_mass_properties.params.cfg">¶</a> – The configuration for the mass properties.</p></li>
-<li><p><span class="target" id="isaaclab.sim.schemas.modify_mass_properties.params.stage"></span><strong>stage</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.schemas.modify_mass_properties.params.stage">¶</a> – The stage where to find the prim. Defaults to None, in which case the
+<li><p><strong>prim_path</strong> – The prim path of the rigid body.</p></li>
+<li><p><strong>cfg</strong> – The configuration for the mass properties.</p></li>
+<li><p><strong>stage</strong> – The stage where to find the prim. Defaults to None, in which case the
 current stage is used.</p></li>
 </ul>
 </dd>
@@ -1562,9 +1563,9 @@ properties only.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.sim.schemas.modify_joint_drive_properties.params.prim_path"></span><strong>prim_path</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.schemas.modify_joint_drive_properties.params.prim_path">¶</a> – The prim path where to apply the joint drive schema.</p></li>
-<li><p><span class="target" id="isaaclab.sim.schemas.modify_joint_drive_properties.params.cfg"></span><strong>cfg</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.schemas.modify_joint_drive_properties.params.cfg">¶</a> – The configuration for the joint drive.</p></li>
-<li><p><span class="target" id="isaaclab.sim.schemas.modify_joint_drive_properties.params.stage"></span><strong>stage</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.schemas.modify_joint_drive_properties.params.stage">¶</a> – The stage where to find the prim. Defaults to None, in which case the
+<li><p><strong>prim_path</strong> – The prim path where to apply the joint drive schema.</p></li>
+<li><p><strong>cfg</strong> – The configuration for the joint drive.</p></li>
+<li><p><strong>stage</strong> – The stage where to find the prim. Defaults to None, in which case the
 current stage is used.</p></li>
 </ul>
 </dd>
@@ -1670,9 +1671,9 @@ between a driven and passive revolute joints.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.sim.schemas.modify_fixed_tendon_properties.params.prim_path"></span><strong>prim_path</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.schemas.modify_fixed_tendon_properties.params.prim_path">¶</a> – The prim path to the tendon attachment.</p></li>
-<li><p><span class="target" id="isaaclab.sim.schemas.modify_fixed_tendon_properties.params.cfg"></span><strong>cfg</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.schemas.modify_fixed_tendon_properties.params.cfg">¶</a> – The configuration for the tendon attachment.</p></li>
-<li><p><span class="target" id="isaaclab.sim.schemas.modify_fixed_tendon_properties.params.stage"></span><strong>stage</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.schemas.modify_fixed_tendon_properties.params.stage">¶</a> – The stage where to find the prim. Defaults to None, in which case the
+<li><p><strong>prim_path</strong> – The prim path to the tendon attachment.</p></li>
+<li><p><strong>cfg</strong> – The configuration for the tendon attachment.</p></li>
+<li><p><strong>stage</strong> – The stage where to find the prim. Defaults to None, in which case the
 current stage is used.</p></li>
 </ul>
 </dd>
@@ -1924,9 +1925,9 @@ body schema can only be applied to a single mesh.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.sim.schemas.define_deformable_body_properties.params.prim_path"></span><strong>prim_path</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.schemas.define_deformable_body_properties.params.prim_path">¶</a> – The prim path where to apply the deformable body schema.</p></li>
-<li><p><span class="target" id="isaaclab.sim.schemas.define_deformable_body_properties.params.cfg"></span><strong>cfg</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.schemas.define_deformable_body_properties.params.cfg">¶</a> – The configuration for the deformable body.</p></li>
-<li><p><span class="target" id="isaaclab.sim.schemas.define_deformable_body_properties.params.stage"></span><strong>stage</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.schemas.define_deformable_body_properties.params.stage">¶</a> – The stage where to find the prim. Defaults to None, in which case the
+<li><p><strong>prim_path</strong> – The prim path where to apply the deformable body schema.</p></li>
+<li><p><strong>cfg</strong> – The configuration for the deformable body.</p></li>
+<li><p><strong>stage</strong> – The stage where to find the prim. Defaults to None, in which case the
 current stage is used.</p></li>
 </ul>
 </dd>
@@ -1971,9 +1972,9 @@ works with the PhysX schemas shipped with Isaac Sim 4.0.0 onwards. It may change
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.sim.schemas.modify_deformable_body_properties.params.prim_path"></span><strong>prim_path</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.schemas.modify_deformable_body_properties.params.prim_path">¶</a> – The prim path to the deformable body.</p></li>
-<li><p><span class="target" id="isaaclab.sim.schemas.modify_deformable_body_properties.params.cfg"></span><strong>cfg</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.schemas.modify_deformable_body_properties.params.cfg">¶</a> – The configuration for the deformable body.</p></li>
-<li><p><span class="target" id="isaaclab.sim.schemas.modify_deformable_body_properties.params.stage"></span><strong>stage</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.schemas.modify_deformable_body_properties.params.stage">¶</a> – The stage where to find the prim. Defaults to None, in which case the
+<li><p><strong>prim_path</strong> – The prim path to the deformable body.</p></li>
+<li><p><strong>cfg</strong> – The configuration for the deformable body.</p></li>
+<li><p><strong>stage</strong> – The stage where to find the prim. Defaults to None, in which case the
 current stage is used.</p></li>
 </ul>
 </dd>

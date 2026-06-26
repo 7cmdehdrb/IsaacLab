@@ -36,7 +36,6 @@
     <link rel="stylesheet" type="text/css" href="/opt/hostedtoolcache/Python/3.12.13/x64/lib/python3.12/site-packages/sphinxcontrib/icon/node_modules/@fortawesome/fontawesome-free/css/all.min.css?v=53359634" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx_paramlinks.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=8fb98eed" />
   
   <!-- So that users can add custom icons -->
@@ -164,6 +163,8 @@
             <option value="../../../../develop/source/api/lab/isaaclab.controllers.html" >develop</option>
             <option value="../../../../main/source/api/lab/isaaclab.controllers.html" >main</option>
             <option value="../../../../release/3.0.0-beta2/source/api/lab/isaaclab.controllers.html" >release/3.0.0-beta2</option>
+            <option value="../../../../v3.0.0-beta2/source/api/lab/isaaclab.controllers.html" >v3.0.0-beta2</option>
+            <option value="../../../../v3.0.0-beta/source/api/lab/isaaclab.controllers.html" >v3.0.0-beta</option>
             <option value="../../../../v2.3.2/source/api/lab/isaaclab.controllers.html" >v2.3.2</option>
             <option value="isaaclab.controllers.html" selected>v2.3.1</option>
             <option value="../../../../v2.3.0/source/api/lab/isaaclab.controllers.html" >v2.3.0</option>
@@ -843,9 +844,9 @@ by Samuel R. Buss (University of California, San Diego)</p></li>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.controllers.DifferentialIKController.params.cfg"></span><strong>cfg</strong><a class="paramlink headerlink reference internal" href="#isaaclab.controllers.DifferentialIKController.params.cfg">¶</a> – The configuration for the controller.</p></li>
-<li><p><span class="target" id="isaaclab.controllers.DifferentialIKController.params.num_envs"></span><strong>num_envs</strong><a class="paramlink headerlink reference internal" href="#isaaclab.controllers.DifferentialIKController.params.num_envs">¶</a> – The number of environments.</p></li>
-<li><p><span class="target" id="isaaclab.controllers.DifferentialIKController.params.device"></span><strong>device</strong><a class="paramlink headerlink reference internal" href="#isaaclab.controllers.DifferentialIKController.params.device">¶</a> – The device to use for computations.</p></li>
+<li><p><strong>cfg</strong> – The configuration for the controller.</p></li>
+<li><p><strong>num_envs</strong> – The number of environments.</p></li>
+<li><p><strong>device</strong> – The device to use for computations.</p></li>
 </ul>
 </dd>
 </dl>
@@ -863,7 +864,7 @@ by Samuel R. Buss (University of California, San Diego)</p></li>
 <dd><p>Reset the internals.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab.controllers.DifferentialIKController.reset.params.env_ids"></span><strong>env_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab.controllers.DifferentialIKController.reset.params.env_ids">¶</a> – The environment indices to reset. If None, then all environments are reset.</p>
+<dd class="field-odd"><p><strong>env_ids</strong> – The environment indices to reset. If None, then all environments are reset.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -878,10 +879,10 @@ applies the relative mode if the command type is <code class="docutils literal n
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.controllers.DifferentialIKController.set_command.params.command"></span><strong>command</strong><a class="paramlink headerlink reference internal" href="#isaaclab.controllers.DifferentialIKController.set_command.params.command">¶</a> – The input command in shape (N, 3) or (N, 6) or (N, 7).</p></li>
-<li><p><span class="target" id="isaaclab.controllers.DifferentialIKController.set_command.params.ee_pos"></span><strong>ee_pos</strong><a class="paramlink headerlink reference internal" href="#isaaclab.controllers.DifferentialIKController.set_command.params.ee_pos">¶</a> – The current end-effector position in shape (N, 3).
+<li><p><strong>command</strong> – The input command in shape (N, 3) or (N, 6) or (N, 7).</p></li>
+<li><p><strong>ee_pos</strong> – The current end-effector position in shape (N, 3).
 This is only needed if the command type is <code class="docutils literal notranslate"><span class="pre">position_rel</span></code> or <code class="docutils literal notranslate"><span class="pre">pose_rel</span></code>.</p></li>
-<li><p><span class="target" id="isaaclab.controllers.DifferentialIKController.set_command.params.ee_quat"></span><strong>ee_quat</strong><a class="paramlink headerlink reference internal" href="#isaaclab.controllers.DifferentialIKController.set_command.params.ee_quat">¶</a> – The current end-effector orientation (w, x, y, z) in shape (N, 4).
+<li><p><strong>ee_quat</strong> – The current end-effector orientation (w, x, y, z) in shape (N, 4).
 This is only needed if the command type is <code class="docutils literal notranslate"><span class="pre">position_*</span></code> or <code class="docutils literal notranslate"><span class="pre">pose_rel</span></code>.</p></li>
 </ul>
 </dd>
@@ -902,10 +903,10 @@ This is only needed if the command type is <code class="docutils literal notrans
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.controllers.DifferentialIKController.compute.params.ee_pos"></span><strong>ee_pos</strong><a class="paramlink headerlink reference internal" href="#isaaclab.controllers.DifferentialIKController.compute.params.ee_pos">¶</a> – The current end-effector position in shape (N, 3).</p></li>
-<li><p><span class="target" id="isaaclab.controllers.DifferentialIKController.compute.params.ee_quat"></span><strong>ee_quat</strong><a class="paramlink headerlink reference internal" href="#isaaclab.controllers.DifferentialIKController.compute.params.ee_quat">¶</a> – The current end-effector orientation in shape (N, 4).</p></li>
-<li><p><span class="target" id="isaaclab.controllers.DifferentialIKController.compute.params.jacobian"></span><strong>jacobian</strong><a class="paramlink headerlink reference internal" href="#isaaclab.controllers.DifferentialIKController.compute.params.jacobian">¶</a> – The geometric jacobian matrix in shape (N, 6, num_joints).</p></li>
-<li><p><span class="target" id="isaaclab.controllers.DifferentialIKController.compute.params.joint_pos"></span><strong>joint_pos</strong><a class="paramlink headerlink reference internal" href="#isaaclab.controllers.DifferentialIKController.compute.params.joint_pos">¶</a> – The current joint positions in shape (N, num_joints).</p></li>
+<li><p><strong>ee_pos</strong> – The current end-effector position in shape (N, 3).</p></li>
+<li><p><strong>ee_quat</strong> – The current end-effector orientation in shape (N, 4).</p></li>
+<li><p><strong>jacobian</strong> – The geometric jacobian matrix in shape (N, 6, num_joints).</p></li>
+<li><p><strong>joint_pos</strong> – The current joint positions in shape (N, num_joints).</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -1050,9 +1051,9 @@ by Marco Hutter (ETH Zurich)</p></li>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.controllers.OperationalSpaceController.params.cfg"></span><strong>cfg</strong><a class="paramlink headerlink reference internal" href="#isaaclab.controllers.OperationalSpaceController.params.cfg">¶</a> – The configuration for operational-space controller.</p></li>
-<li><p><span class="target" id="isaaclab.controllers.OperationalSpaceController.params.num_envs"></span><strong>num_envs</strong><a class="paramlink headerlink reference internal" href="#isaaclab.controllers.OperationalSpaceController.params.num_envs">¶</a> – The number of environments.</p></li>
-<li><p><span class="target" id="isaaclab.controllers.OperationalSpaceController.params.device"></span><strong>device</strong><a class="paramlink headerlink reference internal" href="#isaaclab.controllers.OperationalSpaceController.params.device">¶</a> – The device to use for computations.</p></li>
+<li><p><strong>cfg</strong> – The configuration for operational-space controller.</p></li>
+<li><p><strong>num_envs</strong> – The number of environments.</p></li>
+<li><p><strong>device</strong> – The device to use for computations.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Raises<span class="colon">:</span></dt>
@@ -1080,12 +1081,12 @@ by Marco Hutter (ETH Zurich)</p></li>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.controllers.OperationalSpaceController.set_command.params.command"></span><strong>command</strong><a class="paramlink headerlink reference internal" href="#isaaclab.controllers.OperationalSpaceController.set_command.params.command">¶</a> (<a class="reference external" href="https://docs.pytorch.org/docs/2.11/tensors.html#torch.Tensor" title="(in PyTorch v2.11)"><em>torch.Tensor</em></a>) – A concatenated tensor of shape (<code class="docutils literal notranslate"><span class="pre">num_envs</span></code>, <code class="docutils literal notranslate"><span class="pre">action_dim</span></code>) containing task-space
+<li><p><strong>command</strong> (<a class="reference external" href="https://docs.pytorch.org/docs/2.11/tensors.html#torch.Tensor" title="(in PyTorch v2.11)"><em>torch.Tensor</em></a>) – A concatenated tensor of shape (<code class="docutils literal notranslate"><span class="pre">num_envs</span></code>, <code class="docutils literal notranslate"><span class="pre">action_dim</span></code>) containing task-space
 targets (i.e., pose/wrench) and impedance parameters.</p></li>
-<li><p><span class="target" id="isaaclab.controllers.OperationalSpaceController.set_command.params.current_ee_pose_b"></span><strong>current_ee_pose_b</strong><a class="paramlink headerlink reference internal" href="#isaaclab.controllers.OperationalSpaceController.set_command.params.current_ee_pose_b">¶</a> (<a class="reference external" href="https://docs.pytorch.org/docs/2.11/tensors.html#torch.Tensor" title="(in PyTorch v2.11)"><em>torch.Tensor</em></a><em>, </em><em>optional</em>) – Current end-effector pose, in root frame, of shape
+<li><p><strong>current_ee_pose_b</strong> (<a class="reference external" href="https://docs.pytorch.org/docs/2.11/tensors.html#torch.Tensor" title="(in PyTorch v2.11)"><em>torch.Tensor</em></a><em>, </em><em>optional</em>) – Current end-effector pose, in root frame, of shape
 (<code class="docutils literal notranslate"><span class="pre">num_envs</span></code>, 7), containing position and quaternion <code class="docutils literal notranslate"><span class="pre">(w,</span> <span class="pre">x,</span> <span class="pre">y,</span> <span class="pre">z)</span></code>. Required for relative
 commands. Defaults to None.</p></li>
-<li><p><span class="target" id="isaaclab.controllers.OperationalSpaceController.set_command.params.current_task_frame_pose_b"></span><strong>current_task_frame_pose_b</strong><a class="paramlink headerlink reference internal" href="#isaaclab.controllers.OperationalSpaceController.set_command.params.current_task_frame_pose_b">¶</a> – Current pose of the task frame, in root frame, in which the targets and the
+<li><p><strong>current_task_frame_pose_b</strong> – Current pose of the task frame, in root frame, in which the targets and the
 (motion/wrench) control axes are defined. It is a tensor of shape (<code class="docutils literal notranslate"><span class="pre">num_envs</span></code>, 7),
 containing position and the quaternion <code class="docutils literal notranslate"><span class="pre">(w,</span> <span class="pre">x,</span> <span class="pre">y,</span> <span class="pre">z)</span></code>. Defaults to None.</p></li>
 </ul>
@@ -1125,23 +1126,23 @@ Damping ratio: shape (<code class="docutils literal notranslate"><span class="pr
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.controllers.OperationalSpaceController.compute.params.jacobian_b"></span><strong>jacobian_b</strong><a class="paramlink headerlink reference internal" href="#isaaclab.controllers.OperationalSpaceController.compute.params.jacobian_b">¶</a> – The Jacobian matrix of the end-effector in root frame. It is a tensor of shape
+<li><p><strong>jacobian_b</strong> – The Jacobian matrix of the end-effector in root frame. It is a tensor of shape
 (<code class="docutils literal notranslate"><span class="pre">num_envs</span></code>, 6, <code class="docutils literal notranslate"><span class="pre">num_DoF</span></code>).</p></li>
-<li><p><span class="target" id="isaaclab.controllers.OperationalSpaceController.compute.params.current_ee_pose_b"></span><strong>current_ee_pose_b</strong><a class="paramlink headerlink reference internal" href="#isaaclab.controllers.OperationalSpaceController.compute.params.current_ee_pose_b">¶</a> – The current end-effector pose in root frame. It is a tensor of shape
+<li><p><strong>current_ee_pose_b</strong> – The current end-effector pose in root frame. It is a tensor of shape
 (<code class="docutils literal notranslate"><span class="pre">num_envs</span></code>, 7), which contains the position and quaternion <code class="docutils literal notranslate"><span class="pre">(w,</span> <span class="pre">x,</span> <span class="pre">y,</span> <span class="pre">z)</span></code>. Defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p></li>
-<li><p><span class="target" id="isaaclab.controllers.OperationalSpaceController.compute.params.current_ee_vel_b"></span><strong>current_ee_vel_b</strong><a class="paramlink headerlink reference internal" href="#isaaclab.controllers.OperationalSpaceController.compute.params.current_ee_vel_b">¶</a> – The current end-effector velocity in root frame. It is a tensor of shape
+<li><p><strong>current_ee_vel_b</strong> – The current end-effector velocity in root frame. It is a tensor of shape
 (<code class="docutils literal notranslate"><span class="pre">num_envs</span></code>, 6), which contains the linear and angular velocities. Defaults to None.</p></li>
-<li><p><span class="target" id="isaaclab.controllers.OperationalSpaceController.compute.params.current_ee_force_b"></span><strong>current_ee_force_b</strong><a class="paramlink headerlink reference internal" href="#isaaclab.controllers.OperationalSpaceController.compute.params.current_ee_force_b">¶</a> – The current external force on the end-effector in root frame. It is a tensor of
+<li><p><strong>current_ee_force_b</strong> – The current external force on the end-effector in root frame. It is a tensor of
 shape (<code class="docutils literal notranslate"><span class="pre">num_envs</span></code>, 3), which contains the linear force. Defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p></li>
-<li><p><span class="target" id="isaaclab.controllers.OperationalSpaceController.compute.params.mass_matrix"></span><strong>mass_matrix</strong><a class="paramlink headerlink reference internal" href="#isaaclab.controllers.OperationalSpaceController.compute.params.mass_matrix">¶</a> – The joint-space mass/inertia matrix. It is a tensor of shape (<code class="docutils literal notranslate"><span class="pre">num_envs</span></code>, <code class="docutils literal notranslate"><span class="pre">num_DoF</span></code>,
+<li><p><strong>mass_matrix</strong> – The joint-space mass/inertia matrix. It is a tensor of shape (<code class="docutils literal notranslate"><span class="pre">num_envs</span></code>, <code class="docutils literal notranslate"><span class="pre">num_DoF</span></code>,
 <code class="docutils literal notranslate"><span class="pre">num_DoF</span></code>). Defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p></li>
-<li><p><span class="target" id="isaaclab.controllers.OperationalSpaceController.compute.params.gravity"></span><strong>gravity</strong><a class="paramlink headerlink reference internal" href="#isaaclab.controllers.OperationalSpaceController.compute.params.gravity">¶</a> – The joint-space gravity vector. It is a tensor of shape (<code class="docutils literal notranslate"><span class="pre">num_envs</span></code>, <code class="docutils literal notranslate"><span class="pre">num_DoF</span></code>). Defaults
+<li><p><strong>gravity</strong> – The joint-space gravity vector. It is a tensor of shape (<code class="docutils literal notranslate"><span class="pre">num_envs</span></code>, <code class="docutils literal notranslate"><span class="pre">num_DoF</span></code>). Defaults
 to <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p></li>
-<li><p><span class="target" id="isaaclab.controllers.OperationalSpaceController.compute.params.current_joint_pos"></span><strong>current_joint_pos</strong><a class="paramlink headerlink reference internal" href="#isaaclab.controllers.OperationalSpaceController.compute.params.current_joint_pos">¶</a> – The current joint positions. It is a tensor of shape (<code class="docutils literal notranslate"><span class="pre">num_envs</span></code>, <code class="docutils literal notranslate"><span class="pre">num_DoF</span></code>).
+<li><p><strong>current_joint_pos</strong> – The current joint positions. It is a tensor of shape (<code class="docutils literal notranslate"><span class="pre">num_envs</span></code>, <code class="docutils literal notranslate"><span class="pre">num_DoF</span></code>).
 Defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p></li>
-<li><p><span class="target" id="isaaclab.controllers.OperationalSpaceController.compute.params.current_joint_vel"></span><strong>current_joint_vel</strong><a class="paramlink headerlink reference internal" href="#isaaclab.controllers.OperationalSpaceController.compute.params.current_joint_vel">¶</a> – The current joint velocities. It is a tensor of shape (<code class="docutils literal notranslate"><span class="pre">num_envs</span></code>, <code class="docutils literal notranslate"><span class="pre">num_DoF</span></code>).
+<li><p><strong>current_joint_vel</strong> – The current joint velocities. It is a tensor of shape (<code class="docutils literal notranslate"><span class="pre">num_envs</span></code>, <code class="docutils literal notranslate"><span class="pre">num_DoF</span></code>).
 Defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p></li>
-<li><p><span class="target" id="isaaclab.controllers.OperationalSpaceController.compute.params.nullspace_joint_pos_target"></span><strong>nullspace_joint_pos_target</strong><a class="paramlink headerlink reference internal" href="#isaaclab.controllers.OperationalSpaceController.compute.params.nullspace_joint_pos_target">¶</a> – The target joint positions the null space controller is trying to enforce, when
+<li><p><strong>nullspace_joint_pos_target</strong> – The target joint positions the null space controller is trying to enforce, when
 possible. It is a tensor of shape (<code class="docutils literal notranslate"><span class="pre">num_envs</span></code>, <code class="docutils literal notranslate"><span class="pre">num_DoF</span></code>).</p></li>
 </ul>
 </dd>
@@ -1392,12 +1393,12 @@ weighted task errors while respecting joint velocity limits.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.controllers.pink_ik.PinkIKController.params.cfg"></span><strong>cfg</strong><a class="paramlink headerlink reference internal" href="#isaaclab.controllers.pink_ik.PinkIKController.params.cfg">¶</a> – The configuration for the Pink IK controller containing task definitions, solver parameters,
+<li><p><strong>cfg</strong> – The configuration for the Pink IK controller containing task definitions, solver parameters,
 and joint configurations.</p></li>
-<li><p><span class="target" id="isaaclab.controllers.pink_ik.PinkIKController.params.robot_cfg"></span><strong>robot_cfg</strong><a class="paramlink headerlink reference internal" href="#isaaclab.controllers.pink_ik.PinkIKController.params.robot_cfg">¶</a> – The robot articulation configuration containing initial joint positions and robot
+<li><p><strong>robot_cfg</strong> – The robot articulation configuration containing initial joint positions and robot
 specifications.</p></li>
-<li><p><span class="target" id="isaaclab.controllers.pink_ik.PinkIKController.params.device"></span><strong>device</strong><a class="paramlink headerlink reference internal" href="#isaaclab.controllers.pink_ik.PinkIKController.params.device">¶</a> – The device to use for computations (e.g., ‘cuda:0’, ‘cpu’).</p></li>
-<li><p><span class="target" id="isaaclab.controllers.pink_ik.PinkIKController.params.controlled_joint_indices"></span><strong>controlled_joint_indices</strong><a class="paramlink headerlink reference internal" href="#isaaclab.controllers.pink_ik.PinkIKController.params.controlled_joint_indices">¶</a> – A list of joint indices in the USD asset controlled by the Pink IK controller.</p></li>
+<li><p><strong>device</strong> – The device to use for computations (e.g., ‘cuda:0’, ‘cpu’).</p></li>
+<li><p><strong>controlled_joint_indices</strong> – A list of joint indices in the USD asset controlled by the Pink IK controller.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Raises<span class="colon">:</span></dt>
@@ -1415,7 +1416,7 @@ joint configuration. This is useful for maintaining desired joint configurations
 task allows redundancy.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab.controllers.pink_ik.PinkIKController.update_null_space_joint_targets.params.curr_joint_pos"></span><strong>curr_joint_pos</strong><a class="paramlink headerlink reference internal" href="#isaaclab.controllers.pink_ik.PinkIKController.update_null_space_joint_targets.params.curr_joint_pos">¶</a> – The current joint positions of shape (num_joints,).</p>
+<dd class="field-odd"><p><strong>curr_joint_pos</strong> – The current joint positions of shape (num_joints,).</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1430,8 +1431,8 @@ minimize task errors while respecting constraints.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.controllers.pink_ik.PinkIKController.compute.params.curr_joint_pos"></span><strong>curr_joint_pos</strong><a class="paramlink headerlink reference internal" href="#isaaclab.controllers.pink_ik.PinkIKController.compute.params.curr_joint_pos">¶</a> – The current joint positions of shape (num_joints,).</p></li>
-<li><p><span class="target" id="isaaclab.controllers.pink_ik.PinkIKController.compute.params.dt"></span><strong>dt</strong><a class="paramlink headerlink reference internal" href="#isaaclab.controllers.pink_ik.PinkIKController.compute.params.dt">¶</a> – The time step for computing joint position changes in seconds.</p></li>
+<li><p><strong>curr_joint_pos</strong> – The current joint positions of shape (num_joints,).</p></li>
+<li><p><strong>dt</strong> – The time step for computing joint position changes in seconds.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -1652,14 +1653,14 @@ errors in critical joints like shoulders and waist.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.controllers.pink_ik.NullSpacePostureTask.params.cost"></span><strong>cost</strong><a class="paramlink headerlink reference internal" href="#isaaclab.controllers.pink_ik.NullSpacePostureTask.params.cost">¶</a> – Task weighting factor in the optimization objective.
+<li><p><strong>cost</strong> – Task weighting factor in the optimization objective.
 Units: <span class="math notranslate nohighlight">\([\text{cost}] / [\text{rad}]\)</span>.</p></li>
-<li><p><span class="target" id="isaaclab.controllers.pink_ik.NullSpacePostureTask.params.lm_damping"></span><strong>lm_damping</strong><a class="paramlink headerlink reference internal" href="#isaaclab.controllers.pink_ik.NullSpacePostureTask.params.lm_damping">¶</a> – Levenberg-Marquardt regularization scale (unitless). Defaults to 0.0.</p></li>
-<li><p><span class="target" id="isaaclab.controllers.pink_ik.NullSpacePostureTask.params.gain"></span><strong>gain</strong><a class="paramlink headerlink reference internal" href="#isaaclab.controllers.pink_ik.NullSpacePostureTask.params.gain">¶</a> – Task gain <span class="math notranslate nohighlight">\(\alpha \in [0, 1]\)</span> for low-pass filtering.
+<li><p><strong>lm_damping</strong> – Levenberg-Marquardt regularization scale (unitless). Defaults to 0.0.</p></li>
+<li><p><strong>gain</strong> – Task gain <span class="math notranslate nohighlight">\(\alpha \in [0, 1]\)</span> for low-pass filtering.
 Defaults to 1.0 (no filtering).</p></li>
-<li><p><span class="target" id="isaaclab.controllers.pink_ik.NullSpacePostureTask.params.controlled_frames"></span><strong>controlled_frames</strong><a class="paramlink headerlink reference internal" href="#isaaclab.controllers.pink_ik.NullSpacePostureTask.params.controlled_frames">¶</a> – Frame names whose Jacobians define the primary tasks for
+<li><p><strong>controlled_frames</strong> – Frame names whose Jacobians define the primary tasks for
 null space projection. If None or empty, no projection is applied.</p></li>
-<li><p><span class="target" id="isaaclab.controllers.pink_ik.NullSpacePostureTask.params.controlled_joints"></span><strong>controlled_joints</strong><a class="paramlink headerlink reference internal" href="#isaaclab.controllers.pink_ik.NullSpacePostureTask.params.controlled_joints">¶</a> – Joint names to control in the posture task. If None or
+<li><p><strong>controlled_joints</strong> – Joint names to control in the posture task. If None or
 empty, all actuated joints are controlled.</p></li>
 </ul>
 </dd>

@@ -35,7 +35,6 @@
     <link rel="stylesheet" type="text/css" href="/opt/hostedtoolcache/Python/3.12.13/x64/lib/python3.12/site-packages/sphinxcontrib/icon/node_modules/@fortawesome/fontawesome-free/css/all.min.css?v=53359634" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx_paramlinks.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=8fb98eed" />
   
   <!-- So that users can add custom icons -->
@@ -161,6 +160,8 @@
             <option value="../../../../../develop/index.html" >develop</option>
             <option value="../../../../../main/index.html" >main</option>
             <option value="newton_manager.html" selected>release/3.0.0-beta2</option>
+            <option value="../../../../../v3.0.0-beta2/index.html" >v3.0.0-beta2</option>
+            <option value="../../../../../v3.0.0-beta/index.html" >v3.0.0-beta</option>
             <option value="../../../../../v2.3.2/index.html" >v2.3.2</option>
             <option value="../../../../../v2.3.1/index.html" >v2.3.1</option>
             <option value="../../../../../v2.3.0/index.html" >v2.3.0</option>
@@ -849,7 +850,7 @@
 
 
 <div class="viewcode-block" id="NewtonManager">
-<a class="viewcode-back" href="../../../source/api/lab_newton/isaaclab_newton.physics.html#isaaclab_contrib.deformable.vbd_manager.NewtonManager">[docs]</a>
+<a class="viewcode-back" href="../../../source/api/lab_newton/isaaclab_newton.physics.html#isaaclab_newton.physics.NewtonManager">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">NewtonManager</span><span class="p">(</span><span class="n">PhysicsManager</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Abstract Newton physics manager for Isaac Lab.</span>
 
@@ -966,7 +967,7 @@
     <span class="n">_world_xforms</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">wp</span><span class="o">.</span><span class="n">transform</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
 
 <div class="viewcode-block" id="NewtonManager.initialize">
-<a class="viewcode-back" href="../../../source/api/lab_newton/isaaclab_newton.physics.html#isaaclab_contrib.deformable.vbd_manager.NewtonManager.initialize">[docs]</a>
+<a class="viewcode-back" href="../../../source/api/lab_newton/isaaclab_newton.physics.html#isaaclab_newton.physics.NewtonManager.initialize">[docs]</a>
     <span class="nd">@classmethod</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">initialize</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">sim_context</span><span class="p">:</span> <span class="n">SimulationContext</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Initialize the manager with simulation context.</span>
@@ -998,7 +999,7 @@
 
 
 <div class="viewcode-block" id="NewtonManager.reset">
-<a class="viewcode-back" href="../../../source/api/lab_newton/isaaclab_newton.physics.html#isaaclab_contrib.deformable.vbd_manager.NewtonManager.reset">[docs]</a>
+<a class="viewcode-back" href="../../../source/api/lab_newton/isaaclab_newton.physics.html#isaaclab_newton.physics.NewtonManager.reset">[docs]</a>
     <span class="nd">@classmethod</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">reset</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">soft</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Reset physics simulation.</span>
@@ -1012,7 +1013,7 @@
 
 
 <div class="viewcode-block" id="NewtonManager.forward">
-<a class="viewcode-back" href="../../../source/api/lab_newton/isaaclab_newton.physics.html#isaaclab_contrib.deformable.vbd_manager.NewtonManager.forward">[docs]</a>
+<a class="viewcode-back" href="../../../source/api/lab_newton/isaaclab_newton.physics.html#isaaclab_newton.physics.NewtonManager.forward">[docs]</a>
     <span class="nd">@classmethod</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">forward</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Update articulation kinematics without stepping physics.</span>
@@ -1027,7 +1028,7 @@
 
 
 <div class="viewcode-block" id="NewtonManager.pre_render">
-<a class="viewcode-back" href="../../../source/api/lab_newton/isaaclab_newton.physics.html#isaaclab_contrib.deformable.vbd_manager.NewtonManager.pre_render">[docs]</a>
+<a class="viewcode-back" href="../../../source/api/lab_newton/isaaclab_newton.physics.html#isaaclab_newton.physics.NewtonManager.pre_render">[docs]</a>
     <span class="nd">@classmethod</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">pre_render</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Flush deferred Fabric writes before cameras/visualizers read the scene.&quot;&quot;&quot;</span>
@@ -1036,7 +1037,7 @@
 
 
 <div class="viewcode-block" id="NewtonManager.sync_transforms_to_usd">
-<a class="viewcode-back" href="../../../source/api/lab_newton/isaaclab_newton.physics.html#isaaclab_contrib.deformable.vbd_manager.NewtonManager.sync_transforms_to_usd">[docs]</a>
+<a class="viewcode-back" href="../../../source/api/lab_newton/isaaclab_newton.physics.html#isaaclab_newton.physics.NewtonManager.sync_transforms_to_usd">[docs]</a>
     <span class="nd">@classmethod</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">sync_transforms_to_usd</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Write Newton body_q to USD Fabric world matrices for Kit viewport / RTX rendering.</span>
@@ -1137,7 +1138,7 @@
 
 
 <div class="viewcode-block" id="NewtonManager.sync_particles_to_usd">
-<a class="viewcode-back" href="../../../source/api/lab_newton/isaaclab_newton.physics.html#isaaclab_contrib.deformable.vbd_manager.NewtonManager.sync_particles_to_usd">[docs]</a>
+<a class="viewcode-back" href="../../../source/api/lab_newton/isaaclab_newton.physics.html#isaaclab_newton.physics.NewtonManager.sync_particles_to_usd">[docs]</a>
     <span class="nd">@classmethod</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">sync_particles_to_usd</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Write Newton particle_q to Fabric mesh point arrays for Kit viewport rendering.</span>
@@ -1213,7 +1214,7 @@
         <span class="bp">cls</span><span class="o">.</span><span class="n">_mark_particles_dirty</span><span class="p">()</span>
 
 <div class="viewcode-block" id="NewtonManager.step">
-<a class="viewcode-back" href="../../../source/api/lab_newton/isaaclab_newton.physics.html#isaaclab_contrib.deformable.vbd_manager.NewtonManager.step">[docs]</a>
+<a class="viewcode-back" href="../../../source/api/lab_newton/isaaclab_newton.physics.html#isaaclab_newton.physics.NewtonManager.step">[docs]</a>
     <span class="nd">@classmethod</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">step</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Step the physics simulation.</span>
@@ -1306,7 +1307,7 @@
 
 
 <div class="viewcode-block" id="NewtonManager.close">
-<a class="viewcode-back" href="../../../source/api/lab_newton/isaaclab_newton.physics.html#isaaclab_contrib.deformable.vbd_manager.NewtonManager.close">[docs]</a>
+<a class="viewcode-back" href="../../../source/api/lab_newton/isaaclab_newton.physics.html#isaaclab_newton.physics.NewtonManager.close">[docs]</a>
     <span class="nd">@classmethod</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">close</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Clean up Newton physics resources.&quot;&quot;&quot;</span>
@@ -1315,7 +1316,7 @@
 
 
 <div class="viewcode-block" id="NewtonManager.get_scene_data_backend">
-<a class="viewcode-back" href="../../../source/api/lab_newton/isaaclab_newton.physics.html#isaaclab_contrib.deformable.vbd_manager.NewtonManager.get_scene_data_backend">[docs]</a>
+<a class="viewcode-back" href="../../../source/api/lab_newton/isaaclab_newton.physics.html#isaaclab_newton.physics.NewtonManager.get_scene_data_backend">[docs]</a>
     <span class="nd">@classmethod</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">get_scene_data_backend</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SceneDataBackend</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the SceneDataBackend for the SceneDataProvider.&quot;&quot;&quot;</span>
@@ -1323,7 +1324,7 @@
 
 
 <div class="viewcode-block" id="NewtonManager.register_callback">
-<a class="viewcode-back" href="../../../source/api/lab_newton/isaaclab_newton.physics.html#isaaclab_contrib.deformable.vbd_manager.NewtonManager.register_callback">[docs]</a>
+<a class="viewcode-back" href="../../../source/api/lab_newton/isaaclab_newton.physics.html#isaaclab_newton.physics.NewtonManager.register_callback">[docs]</a>
     <span class="nd">@classmethod</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">register_callback</span><span class="p">(</span>
         <span class="bp">cls</span><span class="p">,</span>
@@ -1338,7 +1339,7 @@
 
 
 <div class="viewcode-block" id="NewtonManager.get_physics_sim_view">
-<a class="viewcode-back" href="../../../source/api/lab_newton/isaaclab_newton.physics.html#isaaclab_contrib.deformable.vbd_manager.NewtonManager.get_physics_sim_view">[docs]</a>
+<a class="viewcode-back" href="../../../source/api/lab_newton/isaaclab_newton.physics.html#isaaclab_newton.physics.NewtonManager.get_physics_sim_view">[docs]</a>
     <span class="nd">@classmethod</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">get_physics_sim_view</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Get the list of registered views.</span>
@@ -1353,7 +1354,7 @@
 
 
 <div class="viewcode-block" id="NewtonManager.is_fabric_enabled">
-<a class="viewcode-back" href="../../../source/api/lab_newton/isaaclab_newton.physics.html#isaaclab_contrib.deformable.vbd_manager.NewtonManager.is_fabric_enabled">[docs]</a>
+<a class="viewcode-back" href="../../../source/api/lab_newton/isaaclab_newton.physics.html#isaaclab_newton.physics.NewtonManager.is_fabric_enabled">[docs]</a>
     <span class="nd">@classmethod</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">is_fabric_enabled</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Check if fabric interface is enabled (not applicable for Newton).&quot;&quot;&quot;</span>
@@ -1361,7 +1362,7 @@
 
 
 <div class="viewcode-block" id="NewtonManager.clear">
-<a class="viewcode-back" href="../../../source/api/lab_newton/isaaclab_newton.physics.html#isaaclab_contrib.deformable.vbd_manager.NewtonManager.clear">[docs]</a>
+<a class="viewcode-back" href="../../../source/api/lab_newton/isaaclab_newton.physics.html#isaaclab_newton.physics.NewtonManager.clear">[docs]</a>
     <span class="nd">@classmethod</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">clear</span><span class="p">(</span><span class="bp">cls</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Clear all Newton-specific state (callbacks cleared by super().close()).&quot;&quot;&quot;</span>
@@ -1417,7 +1418,7 @@
 
 
 <div class="viewcode-block" id="NewtonManager.set_builder">
-<a class="viewcode-back" href="../../../source/api/lab_newton/isaaclab_newton.physics.html#isaaclab_contrib.deformable.vbd_manager.NewtonManager.set_builder">[docs]</a>
+<a class="viewcode-back" href="../../../source/api/lab_newton/isaaclab_newton.physics.html#isaaclab_newton.physics.NewtonManager.set_builder">[docs]</a>
     <span class="nd">@classmethod</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">set_builder</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">builder</span><span class="p">:</span> <span class="n">ModelBuilder</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Set the Newton model builder.&quot;&quot;&quot;</span>
@@ -1425,7 +1426,7 @@
 
 
 <div class="viewcode-block" id="NewtonManager.create_builder">
-<a class="viewcode-back" href="../../../source/api/lab_newton/isaaclab_newton.physics.html#isaaclab_contrib.deformable.vbd_manager.NewtonManager.create_builder">[docs]</a>
+<a class="viewcode-back" href="../../../source/api/lab_newton/isaaclab_newton.physics.html#isaaclab_newton.physics.NewtonManager.create_builder">[docs]</a>
     <span class="nd">@classmethod</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">create_builder</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">up_axis</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ModelBuilder</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a :class:`ModelBuilder` configured with default settings.</span>
@@ -1454,7 +1455,7 @@
 
 
 <div class="viewcode-block" id="NewtonManager.cl_register_site">
-<a class="viewcode-back" href="../../../source/api/lab_newton/isaaclab_newton.physics.html#isaaclab_contrib.deformable.vbd_manager.NewtonManager.cl_register_site">[docs]</a>
+<a class="viewcode-back" href="../../../source/api/lab_newton/isaaclab_newton.physics.html#isaaclab_newton.physics.NewtonManager.cl_register_site">[docs]</a>
     <span class="nd">@classmethod</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">cl_register_site</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">body_pattern</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span><span class="p">,</span> <span class="n">xform</span><span class="p">:</span> <span class="n">wp</span><span class="o">.</span><span class="n">transform</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">per_world</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Register a site request for injection into prototypes before replication.</span>
@@ -1494,7 +1495,7 @@
 
 
 <div class="viewcode-block" id="NewtonManager.request_extended_state_attribute">
-<a class="viewcode-back" href="../../../source/api/lab_newton/isaaclab_newton.physics.html#isaaclab_contrib.deformable.vbd_manager.NewtonManager.request_extended_state_attribute">[docs]</a>
+<a class="viewcode-back" href="../../../source/api/lab_newton/isaaclab_newton.physics.html#isaaclab_newton.physics.NewtonManager.request_extended_state_attribute">[docs]</a>
     <span class="nd">@classmethod</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">request_extended_state_attribute</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">attr</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Request an extended state attribute (e.g. ``&quot;body_qdd&quot;``).</span>
@@ -1510,7 +1511,7 @@
 
 
 <div class="viewcode-block" id="NewtonManager.request_extended_contact_attribute">
-<a class="viewcode-back" href="../../../source/api/lab_newton/isaaclab_newton.physics.html#isaaclab_contrib.deformable.vbd_manager.NewtonManager.request_extended_contact_attribute">[docs]</a>
+<a class="viewcode-back" href="../../../source/api/lab_newton/isaaclab_newton.physics.html#isaaclab_newton.physics.NewtonManager.request_extended_contact_attribute">[docs]</a>
     <span class="nd">@classmethod</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">request_extended_contact_attribute</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">attr</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Request an extended contact attribute (e.g. ``&quot;force&quot;``).</span>
@@ -1637,7 +1638,7 @@
         <span class="bp">cls</span><span class="o">.</span><span class="n">_cl_pending_sites</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
 
 <div class="viewcode-block" id="NewtonManager.add_model_change">
-<a class="viewcode-back" href="../../../source/api/lab_newton/isaaclab_newton.physics.html#isaaclab_contrib.deformable.vbd_manager.NewtonManager.add_model_change">[docs]</a>
+<a class="viewcode-back" href="../../../source/api/lab_newton/isaaclab_newton.physics.html#isaaclab_newton.physics.NewtonManager.add_model_change">[docs]</a>
     <span class="nd">@classmethod</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">add_model_change</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">change</span><span class="p">:</span> <span class="n">SolverNotifyFlags</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Register a model change to notify the solver.&quot;&quot;&quot;</span>
@@ -1645,7 +1646,7 @@
 
 
 <div class="viewcode-block" id="NewtonManager.invalidate_fk">
-<a class="viewcode-back" href="../../../source/api/lab_newton/isaaclab_newton.physics.html#isaaclab_contrib.deformable.vbd_manager.NewtonManager.invalidate_fk">[docs]</a>
+<a class="viewcode-back" href="../../../source/api/lab_newton/isaaclab_newton.physics.html#isaaclab_newton.physics.NewtonManager.invalidate_fk">[docs]</a>
     <span class="nd">@classmethod</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">invalidate_fk</span><span class="p">(</span>
         <span class="bp">cls</span><span class="p">,</span>
@@ -1694,7 +1695,7 @@
 
 
 <div class="viewcode-block" id="NewtonManager.start_simulation">
-<a class="viewcode-back" href="../../../source/api/lab_newton/isaaclab_newton.physics.html#isaaclab_contrib.deformable.vbd_manager.NewtonManager.start_simulation">[docs]</a>
+<a class="viewcode-back" href="../../../source/api/lab_newton/isaaclab_newton.physics.html#isaaclab_newton.physics.NewtonManager.start_simulation">[docs]</a>
     <span class="nd">@classmethod</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">start_simulation</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Start simulation by finalizing model and initializing state.</span>
@@ -1785,7 +1786,7 @@
 
 
 <div class="viewcode-block" id="NewtonManager.instantiate_builder_from_stage">
-<a class="viewcode-back" href="../../../source/api/lab_newton/isaaclab_newton.physics.html#isaaclab_contrib.deformable.vbd_manager.NewtonManager.instantiate_builder_from_stage">[docs]</a>
+<a class="viewcode-back" href="../../../source/api/lab_newton/isaaclab_newton.physics.html#isaaclab_newton.physics.NewtonManager.instantiate_builder_from_stage">[docs]</a>
     <span class="nd">@classmethod</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">instantiate_builder_from_stage</span><span class="p">(</span><span class="bp">cls</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Create builder from USD stage.</span>
@@ -1968,7 +1969,7 @@
     <span class="c1"># ----- Lifecycle orchestration ----------------------------------------</span>
 
 <div class="viewcode-block" id="NewtonManager.initialize_solver">
-<a class="viewcode-back" href="../../../source/api/lab_newton/isaaclab_newton.physics.html#isaaclab_contrib.deformable.vbd_manager.NewtonManager.initialize_solver">[docs]</a>
+<a class="viewcode-back" href="../../../source/api/lab_newton/isaaclab_newton.physics.html#isaaclab_newton.physics.NewtonManager.initialize_solver">[docs]</a>
     <span class="nd">@classmethod</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">initialize_solver</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Initialize the solver and collision pipeline.</span>
@@ -2289,7 +2290,7 @@
 
     <span class="c1"># State accessors (used extensively by articulation/rigid object data)</span>
 <div class="viewcode-block" id="NewtonManager.get_model">
-<a class="viewcode-back" href="../../../source/api/lab_newton/isaaclab_newton.physics.html#isaaclab_contrib.deformable.vbd_manager.NewtonManager.get_model">[docs]</a>
+<a class="viewcode-back" href="../../../source/api/lab_newton/isaaclab_newton.physics.html#isaaclab_newton.physics.NewtonManager.get_model">[docs]</a>
     <span class="nd">@classmethod</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">get_model</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Model</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Get the Newton model.</span>
@@ -2305,7 +2306,7 @@
 
 
 <div class="viewcode-block" id="NewtonManager.get_state_0">
-<a class="viewcode-back" href="../../../source/api/lab_newton/isaaclab_newton.physics.html#isaaclab_contrib.deformable.vbd_manager.NewtonManager.get_state_0">[docs]</a>
+<a class="viewcode-back" href="../../../source/api/lab_newton/isaaclab_newton.physics.html#isaaclab_newton.physics.NewtonManager.get_state_0">[docs]</a>
     <span class="nd">@classmethod</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">get_state_0</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">State</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Get the current state.&quot;&quot;&quot;</span>
@@ -2314,7 +2315,7 @@
 
 
 <div class="viewcode-block" id="NewtonManager.get_state">
-<a class="viewcode-back" href="../../../source/api/lab_newton/isaaclab_newton.physics.html#isaaclab_contrib.deformable.vbd_manager.NewtonManager.get_state">[docs]</a>
+<a class="viewcode-back" href="../../../source/api/lab_newton/isaaclab_newton.physics.html#isaaclab_newton.physics.NewtonManager.get_state">[docs]</a>
     <span class="nd">@classmethod</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">get_state</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">scene_data_provider</span><span class="p">:</span> <span class="n">SceneDataProvider</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">State</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Get the current Newton state for visualization.</span>
@@ -2332,7 +2333,7 @@
 
 
 <div class="viewcode-block" id="NewtonManager.get_contacts">
-<a class="viewcode-back" href="../../../source/api/lab_newton/isaaclab_newton.physics.html#isaaclab_contrib.deformable.vbd_manager.NewtonManager.get_contacts">[docs]</a>
+<a class="viewcode-back" href="../../../source/api/lab_newton/isaaclab_newton.physics.html#isaaclab_newton.physics.NewtonManager.get_contacts">[docs]</a>
     <span class="nd">@classmethod</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">get_contacts</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Contacts</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Get the current Newton contact buffer, if the active solver exposes one.&quot;&quot;&quot;</span>
@@ -2550,7 +2551,7 @@
         <span class="k">return</span> <span class="n">builder</span>
 
 <div class="viewcode-block" id="NewtonManager.get_scene_data_provider">
-<a class="viewcode-back" href="../../../source/api/lab_newton/isaaclab_newton.physics.html#isaaclab_contrib.deformable.vbd_manager.NewtonManager.get_scene_data_provider">[docs]</a>
+<a class="viewcode-back" href="../../../source/api/lab_newton/isaaclab_newton.physics.html#isaaclab_newton.physics.NewtonManager.get_scene_data_provider">[docs]</a>
     <span class="nd">@classmethod</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">get_scene_data_provider</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SceneDataProvider</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the active scene data provider, or None if unavailable.</span>
@@ -2569,7 +2570,7 @@
 
 
 <div class="viewcode-block" id="NewtonManager.update_visualization_state">
-<a class="viewcode-back" href="../../../source/api/lab_newton/isaaclab_newton.physics.html#isaaclab_contrib.deformable.vbd_manager.NewtonManager.update_visualization_state">[docs]</a>
+<a class="viewcode-back" href="../../../source/api/lab_newton/isaaclab_newton.physics.html#isaaclab_newton.physics.NewtonManager.update_visualization_state">[docs]</a>
     <span class="nd">@classmethod</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">update_visualization_state</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">scene_data_provider</span><span class="p">:</span> <span class="n">SceneDataProvider</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Refresh visualization state for the active sim backend.</span>
@@ -2635,7 +2636,7 @@
         <span class="k">return</span> <span class="n">resolved_paths</span>
 
 <div class="viewcode-block" id="NewtonManager.get_state_1">
-<a class="viewcode-back" href="../../../source/api/lab_newton/isaaclab_newton.physics.html#isaaclab_contrib.deformable.vbd_manager.NewtonManager.get_state_1">[docs]</a>
+<a class="viewcode-back" href="../../../source/api/lab_newton/isaaclab_newton.physics.html#isaaclab_newton.physics.NewtonManager.get_state_1">[docs]</a>
     <span class="nd">@classmethod</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">get_state_1</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">State</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Get the next state.&quot;&quot;&quot;</span>
@@ -2643,7 +2644,7 @@
 
 
 <div class="viewcode-block" id="NewtonManager.get_control">
-<a class="viewcode-back" href="../../../source/api/lab_newton/isaaclab_newton.physics.html#isaaclab_contrib.deformable.vbd_manager.NewtonManager.get_control">[docs]</a>
+<a class="viewcode-back" href="../../../source/api/lab_newton/isaaclab_newton.physics.html#isaaclab_newton.physics.NewtonManager.get_control">[docs]</a>
     <span class="nd">@classmethod</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">get_control</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Control</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Get the control object.&quot;&quot;&quot;</span>
@@ -2651,7 +2652,7 @@
 
 
 <div class="viewcode-block" id="NewtonManager.get_dt">
-<a class="viewcode-back" href="../../../source/api/lab_newton/isaaclab_newton.physics.html#isaaclab_contrib.deformable.vbd_manager.NewtonManager.get_dt">[docs]</a>
+<a class="viewcode-back" href="../../../source/api/lab_newton/isaaclab_newton.physics.html#isaaclab_newton.physics.NewtonManager.get_dt">[docs]</a>
     <span class="nd">@classmethod</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">get_dt</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Get the physics timestep. Alias for get_physics_dt().&quot;&quot;&quot;</span>
@@ -2659,7 +2660,7 @@
 
 
 <div class="viewcode-block" id="NewtonManager.get_solver_dt">
-<a class="viewcode-back" href="../../../source/api/lab_newton/isaaclab_newton.physics.html#isaaclab_contrib.deformable.vbd_manager.NewtonManager.get_solver_dt">[docs]</a>
+<a class="viewcode-back" href="../../../source/api/lab_newton/isaaclab_newton.physics.html#isaaclab_newton.physics.NewtonManager.get_solver_dt">[docs]</a>
     <span class="nd">@classmethod</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">get_solver_dt</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Get the solver substep timestep.&quot;&quot;&quot;</span>
@@ -2681,7 +2682,7 @@
         <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_adapter</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_adapter</span><span class="o">.</span><span class="n">is_all_graphable</span>
 
 <div class="viewcode-block" id="NewtonManager.activate_newton_actuator_path">
-<a class="viewcode-back" href="../../../source/api/lab_newton/isaaclab_newton.physics.html#isaaclab_contrib.deformable.vbd_manager.NewtonManager.activate_newton_actuator_path">[docs]</a>
+<a class="viewcode-back" href="../../../source/api/lab_newton/isaaclab_newton.physics.html#isaaclab_newton.physics.NewtonManager.activate_newton_actuator_path">[docs]</a>
     <span class="nd">@classmethod</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">activate_newton_actuator_path</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Opt an articulation into the Newton actuator fast path.</span>
@@ -2719,7 +2720,7 @@
 
 
 <div class="viewcode-block" id="NewtonManager.register_post_actuator_callback">
-<a class="viewcode-back" href="../../../source/api/lab_newton/isaaclab_newton.physics.html#isaaclab_contrib.deformable.vbd_manager.NewtonManager.register_post_actuator_callback">[docs]</a>
+<a class="viewcode-back" href="../../../source/api/lab_newton/isaaclab_newton.physics.html#isaaclab_newton.physics.NewtonManager.register_post_actuator_callback">[docs]</a>
     <span class="nd">@classmethod</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">register_post_actuator_callback</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">callback</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[],</span> <span class="kc">None</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Append a hook to the list invoked after the actuator step on every iteration.</span>
@@ -2736,7 +2737,7 @@
 
 
 <div class="viewcode-block" id="NewtonManager.set_decimation">
-<a class="viewcode-back" href="../../../source/api/lab_newton/isaaclab_newton.physics.html#isaaclab_contrib.deformable.vbd_manager.NewtonManager.set_decimation">[docs]</a>
+<a class="viewcode-back" href="../../../source/api/lab_newton/isaaclab_newton.physics.html#isaaclab_newton.physics.NewtonManager.set_decimation">[docs]</a>
     <span class="nd">@classmethod</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">set_decimation</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">decimation</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Set the decimation count and re-capture the CUDA graph.</span>
@@ -2757,7 +2758,7 @@
 
 
 <div class="viewcode-block" id="NewtonManager.handles_decimation">
-<a class="viewcode-back" href="../../../source/api/lab_newton/isaaclab_newton.physics.html#isaaclab_contrib.deformable.vbd_manager.NewtonManager.handles_decimation">[docs]</a>
+<a class="viewcode-back" href="../../../source/api/lab_newton/isaaclab_newton.physics.html#isaaclab_newton.physics.NewtonManager.handles_decimation">[docs]</a>
     <span class="nd">@classmethod</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">handles_decimation</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;``True`` when :meth:`step` executes the full decimation loop internally.</span>
@@ -2770,7 +2771,7 @@
 
 
 <div class="viewcode-block" id="NewtonManager.add_contact_sensor">
-<a class="viewcode-back" href="../../../source/api/lab_newton/isaaclab_newton.physics.html#isaaclab_contrib.deformable.vbd_manager.NewtonManager.add_contact_sensor">[docs]</a>
+<a class="viewcode-back" href="../../../source/api/lab_newton/isaaclab_newton.physics.html#isaaclab_newton.physics.NewtonManager.add_contact_sensor">[docs]</a>
     <span class="nd">@classmethod</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">add_contact_sensor</span><span class="p">(</span>
         <span class="bp">cls</span><span class="p">,</span>
@@ -2862,7 +2863,7 @@
 
 
 <div class="viewcode-block" id="NewtonManager.add_frame_transform_sensor">
-<a class="viewcode-back" href="../../../source/api/lab_newton/isaaclab_newton.physics.html#isaaclab_contrib.deformable.vbd_manager.NewtonManager.add_frame_transform_sensor">[docs]</a>
+<a class="viewcode-back" href="../../../source/api/lab_newton/isaaclab_newton.physics.html#isaaclab_newton.physics.NewtonManager.add_frame_transform_sensor">[docs]</a>
     <span class="nd">@classmethod</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">add_frame_transform_sensor</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">shapes</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span> <span class="n">reference_sites</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Add a frame transform sensor for measuring relative transforms.</span>
@@ -2889,7 +2890,7 @@
 
 
 <div class="viewcode-block" id="NewtonManager.add_imu_sensor">
-<a class="viewcode-back" href="../../../source/api/lab_newton/isaaclab_newton.physics.html#isaaclab_contrib.deformable.vbd_manager.NewtonManager.add_imu_sensor">[docs]</a>
+<a class="viewcode-back" href="../../../source/api/lab_newton/isaaclab_newton.physics.html#isaaclab_newton.physics.NewtonManager.add_imu_sensor">[docs]</a>
     <span class="nd">@classmethod</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">add_imu_sensor</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">sites</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Add an IMU sensor for measuring acceleration and angular velocity at sites.</span>

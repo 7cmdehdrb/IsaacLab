@@ -36,7 +36,6 @@
     <link rel="stylesheet" type="text/css" href="/opt/hostedtoolcache/Python/3.12.13/x64/lib/python3.12/site-packages/sphinxcontrib/icon/node_modules/@fortawesome/fontawesome-free/css/all.min.css?v=53359634" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx_paramlinks.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=8fb98eed" />
   
   <!-- So that users can add custom icons -->
@@ -162,6 +161,8 @@
             <option value="../../../../develop/source/how-to/proxy_array.html" >develop</option>
             <option value="../../../../main/index.html" >main</option>
             <option value="proxy_array.html" selected>release/3.0.0-beta2</option>
+            <option value="../../../../v3.0.0-beta2/source/how-to/proxy_array.html" >v3.0.0-beta2</option>
+            <option value="../../../../v3.0.0-beta/index.html" >v3.0.0-beta</option>
             <option value="../../../../v2.3.2/index.html" >v2.3.2</option>
             <option value="../../../../v2.3.1/index.html" >v2.3.1</option>
             <option value="../../../../v2.3.0/index.html" >v2.3.0</option>
@@ -932,7 +933,7 @@ be reassigned. If the underlying simulation memory is re-allocated, construct
 a new <a class="reference internal" href="../api/lab/isaaclab.utils.html#isaaclab.utils.warp.ProxyArray" title="isaaclab.utils.warp.ProxyArray"><code class="xref py py-class docutils literal notranslate"><span class="pre">ProxyArray</span></code></a> instead of mutating an existing one.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab.utils.warp.ProxyArray.params.wp_array"></span><strong>wp_array</strong><a class="paramlink headerlink reference internal" href="#isaaclab.utils.warp.ProxyArray.params.wp_array">¶</a> – The warp array to wrap.</p>
+<dd class="field-odd"><p><strong>wp_array</strong> – The warp array to wrap.</p>
 </dd>
 <dt class="field-even">Raises<span class="colon">:</span></dt>
 <dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#TypeError" title="(in Python v3.14)"><strong>TypeError</strong></a> – If <code class="docutils literal notranslate"><span class="pre">wp_array</span></code> is not a <a class="reference external" href="https://nvidia.github.io/warp/stable/api_reference/_generated/warp.array.html#warp.array" title="(in Warp v1.14.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">warp.array</span></code></a>.</p>

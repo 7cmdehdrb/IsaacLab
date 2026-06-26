@@ -36,7 +36,6 @@
     <link rel="stylesheet" type="text/css" href="/opt/hostedtoolcache/Python/3.12.13/x64/lib/python3.12/site-packages/sphinxcontrib/icon/node_modules/@fortawesome/fontawesome-free/css/all.min.css?v=53359634" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx_paramlinks.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=8fb98eed" />
   
   <!-- So that users can add custom icons -->
@@ -162,6 +161,8 @@
             <option value="../../../../develop/source/api/lab/isaaclab.sim.utils.html" >develop</option>
             <option value="../../../../main/source/api/lab/isaaclab.sim.utils.html" >main</option>
             <option value="../../../../release/3.0.0-beta2/source/api/lab/isaaclab.sim.utils.html" >release/3.0.0-beta2</option>
+            <option value="../../../../v3.0.0-beta2/source/api/lab/isaaclab.sim.utils.html" >v3.0.0-beta2</option>
+            <option value="../../../../v3.0.0-beta/source/api/lab/isaaclab.sim.utils.html" >v3.0.0-beta</option>
             <option value="isaaclab.sim.utils.html" selected>v2.3.2</option>
             <option value="../../../../v2.3.1/index.html" >v2.3.1</option>
             <option value="../../../../v2.3.0/index.html" >v2.3.0</option>
@@ -893,7 +894,7 @@ compatibility, it falls back to creating a new stage attached to the USD context
 <dd><p>Open the given usd file and replace currently opened stage.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab.sim.utils.stage.open_stage.params.usd_path"></span><strong>usd_path</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.utils.stage.open_stage.params.usd_path">¶</a> – The path to the USD file to open.</p>
+<dd class="field-odd"><p><strong>usd_path</strong> – The path to the USD file to open.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>True if operation is successful, otherwise False.</p>
@@ -918,7 +919,7 @@ compatibility, it falls back to a no-op context manager in Isaac Sim &lt; 5.0.</
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab.sim.utils.stage.use_stage.params.stage"></span><strong>stage</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.utils.stage.use_stage.params.stage">¶</a> – The stage to set in the context.</p>
+<dd class="field-odd"><p><strong>stage</strong> – The stage to set in the context.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>A context manager that sets the stage in the context.</p>
@@ -970,8 +971,8 @@ application update cycle that includes rendering, physics, and other systems.</p
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.sim.utils.stage.save_stage.params.usd_path"></span><strong>usd_path</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.utils.stage.save_stage.params.usd_path">¶</a> – The file path to save the current stage to</p></li>
-<li><p><span class="target" id="isaaclab.sim.utils.stage.save_stage.params.save_and_reload_in_place"></span><strong>save_and_reload_in_place</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.utils.stage.save_stage.params.save_and_reload_in_place">¶</a> – Whether to open the saved USD file in place. Defaults to True.</p></li>
+<li><p><strong>usd_path</strong> – The file path to save the current stage to</p></li>
+<li><p><strong>save_and_reload_in_place</strong> – Whether to open the saved USD file in place. Defaults to True.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -997,7 +998,7 @@ new one in order to work on it.</p>
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab.sim.utils.stage.close_stage.params.callback_fn"></span><strong>callback_fn</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.utils.stage.close_stage.params.callback_fn">¶</a> – A callback function to call while closing the stage.
+<dd class="field-odd"><p><strong>callback_fn</strong> – A callback function to call while closing the stage.
 The function should take two arguments: a boolean indicating whether the stage is closing
 and a string indicating the error message if the stage closing fails. Defaults to None,
 in which case the stage will be closed without a callback.</p>
@@ -1040,7 +1041,7 @@ all prims that are not the root prim, are not under the /Render namespace, have 
 metadata, are not ancestral to any other prim, and are not hidden in the stage window.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab.sim.utils.stage.clear_stage.params.predicate"></span><strong>predicate</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.utils.stage.clear_stage.params.predicate">¶</a> – A user defined function that takes the USD prim as an argument and
+<dd class="field-odd"><p><strong>predicate</strong> – A user defined function that takes the USD prim as an argument and
 returns a boolean indicating if the prim should be deleted. If the predicate is None,
 a default predicate will be used that deletes all prims.</p>
 </dd>
@@ -1083,7 +1084,7 @@ a default predicate will be used that deletes all prims.</p>
 <dd><p>Get the current open USD or Fabric stage</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab.sim.utils.stage.get_current_stage.params.fabric"></span><strong>fabric</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.utils.stage.get_current_stage.params.fabric">¶</a> – True to get the fabric stage. False to get the USD stage. Defaults to False.</p>
+<dd class="field-odd"><p><strong>fabric</strong> – True to get the fabric stage. False to get the USD stage. Defaults to False.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>The USD or Fabric stage as specified by the input arg fabric.</p>
@@ -1130,7 +1131,7 @@ compatibility, it returns without attaching to the USD context.</p>
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab.sim.utils.stage.attach_stage_to_usd_context.params.attaching_early"></span><strong>attaching_early</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.utils.stage.attach_stage_to_usd_context.params.attaching_early">¶</a> – Whether to attach the stage to the usd context before stage is created. Defaults to False.</p>
+<dd class="field-odd"><p><strong>attaching_early</strong> – Whether to attach the stage to the usd context before stage is created. Defaults to False.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1178,8 +1179,8 @@ it appends a suffix with an incrementing number to the given path.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.sim.utils.queries.get_next_free_prim_path.params.path"></span><strong>path</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.utils.queries.get_next_free_prim_path.params.path">¶</a> – The base prim path to check.</p></li>
-<li><p><span class="target" id="isaaclab.sim.utils.queries.get_next_free_prim_path.params.stage"></span><strong>stage</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.utils.queries.get_next_free_prim_path.params.stage">¶</a> – The stage to check. Defaults to the current stage.</p></li>
+<li><p><strong>path</strong> – The base prim path to check.</p></li>
+<li><p><strong>stage</strong> – The stage to check. Defaults to the current stage.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -1206,9 +1207,9 @@ that passes the predicate function. This includes the prim itself if it passes t
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.sim.utils.queries.get_first_matching_ancestor_prim.params.prim_path"></span><strong>prim_path</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.utils.queries.get_first_matching_ancestor_prim.params.prim_path">¶</a> – The path of the prim in the stage.</p></li>
-<li><p><span class="target" id="isaaclab.sim.utils.queries.get_first_matching_ancestor_prim.params.predicate"></span><strong>predicate</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.utils.queries.get_first_matching_ancestor_prim.params.predicate">¶</a> – The function to test the prims against. It takes a prim as input and returns a boolean.</p></li>
-<li><p><span class="target" id="isaaclab.sim.utils.queries.get_first_matching_ancestor_prim.params.stage"></span><strong>stage</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.utils.queries.get_first_matching_ancestor_prim.params.stage">¶</a> – The stage where the prim exists. Defaults to None, in which case the current stage is used.</p></li>
+<li><p><strong>prim_path</strong> – The path of the prim in the stage.</p></li>
+<li><p><strong>predicate</strong> – The function to test the prims against. It takes a prim as input and returns a boolean.</p></li>
+<li><p><strong>stage</strong> – The stage where the prim exists. Defaults to None, in which case the current stage is used.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -1238,10 +1239,10 @@ By default, instance prims are now traversed.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.sim.utils.queries.get_first_matching_child_prim.params.prim_path"></span><strong>prim_path</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.utils.queries.get_first_matching_child_prim.params.prim_path">¶</a> – The path of the prim in the stage.</p></li>
-<li><p><span class="target" id="isaaclab.sim.utils.queries.get_first_matching_child_prim.params.predicate"></span><strong>predicate</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.utils.queries.get_first_matching_child_prim.params.predicate">¶</a> – The function to test the prims against. It takes a prim as input and returns a boolean.</p></li>
-<li><p><span class="target" id="isaaclab.sim.utils.queries.get_first_matching_child_prim.params.stage"></span><strong>stage</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.utils.queries.get_first_matching_child_prim.params.stage">¶</a> – The stage where the prim exists. Defaults to None, in which case the current stage is used.</p></li>
-<li><p><span class="target" id="isaaclab.sim.utils.queries.get_first_matching_child_prim.params.traverse_instance_prims"></span><strong>traverse_instance_prims</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.utils.queries.get_first_matching_child_prim.params.traverse_instance_prims">¶</a> – Whether to traverse instance prims. Defaults to True.</p></li>
+<li><p><strong>prim_path</strong> – The path of the prim in the stage.</p></li>
+<li><p><strong>predicate</strong> – The function to test the prims against. It takes a prim as input and returns a boolean.</p></li>
+<li><p><strong>stage</strong> – The stage where the prim exists. Defaults to None, in which case the current stage is used.</p></li>
+<li><p><strong>traverse_instance_prims</strong> – Whether to traverse instance prims. Defaults to True.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -1270,13 +1271,13 @@ By default, instance prims are now traversed.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.sim.utils.queries.get_all_matching_child_prims.params.prim_path"></span><strong>prim_path</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.utils.queries.get_all_matching_child_prims.params.prim_path">¶</a> – The root prim path to start the search from.</p></li>
-<li><p><span class="target" id="isaaclab.sim.utils.queries.get_all_matching_child_prims.params.predicate"></span><strong>predicate</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.utils.queries.get_all_matching_child_prims.params.predicate">¶</a> – The predicate that checks if the prim matches the desired criteria. It takes a prim as input
+<li><p><strong>prim_path</strong> – The root prim path to start the search from.</p></li>
+<li><p><strong>predicate</strong> – The predicate that checks if the prim matches the desired criteria. It takes a prim as input
 and returns a boolean. Defaults to a function that always returns True.</p></li>
-<li><p><span class="target" id="isaaclab.sim.utils.queries.get_all_matching_child_prims.params.depth"></span><strong>depth</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.utils.queries.get_all_matching_child_prims.params.depth">¶</a> – The maximum depth for traversal, should be bigger than zero if specified.
+<li><p><strong>depth</strong> – The maximum depth for traversal, should be bigger than zero if specified.
 Defaults to None (i.e: traversal happens till the end of the tree).</p></li>
-<li><p><span class="target" id="isaaclab.sim.utils.queries.get_all_matching_child_prims.params.stage"></span><strong>stage</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.utils.queries.get_all_matching_child_prims.params.stage">¶</a> – The stage where the prim exists. Defaults to None, in which case the current stage is used.</p></li>
-<li><p><span class="target" id="isaaclab.sim.utils.queries.get_all_matching_child_prims.params.traverse_instance_prims"></span><strong>traverse_instance_prims</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.utils.queries.get_all_matching_child_prims.params.traverse_instance_prims">¶</a> – Whether to traverse instance prims. Defaults to True.</p></li>
+<li><p><strong>stage</strong> – The stage where the prim exists. Defaults to None, in which case the current stage is used.</p></li>
+<li><p><strong>traverse_instance_prims</strong> – Whether to traverse instance prims. Defaults to True.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -1295,8 +1296,8 @@ Defaults to None (i.e: traversal happens till the end of the tree).</p></li>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.sim.utils.queries.find_first_matching_prim.params.prim_path_regex"></span><strong>prim_path_regex</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.utils.queries.find_first_matching_prim.params.prim_path_regex">¶</a> – The regex expression for prim path.</p></li>
-<li><p><span class="target" id="isaaclab.sim.utils.queries.find_first_matching_prim.params.stage"></span><strong>stage</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.utils.queries.find_first_matching_prim.params.stage">¶</a> – The stage where the prim exists. Defaults to None, in which case the current stage is used.</p></li>
+<li><p><strong>prim_path_regex</strong> – The regex expression for prim path.</p></li>
+<li><p><strong>stage</strong> – The stage where the prim exists. Defaults to None, in which case the current stage is used.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -1315,8 +1316,8 @@ Defaults to None (i.e: traversal happens till the end of the tree).</p></li>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.sim.utils.queries.find_matching_prims.params.prim_path_regex"></span><strong>prim_path_regex</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.utils.queries.find_matching_prims.params.prim_path_regex">¶</a> – The regex expression for prim path.</p></li>
-<li><p><span class="target" id="isaaclab.sim.utils.queries.find_matching_prims.params.stage"></span><strong>stage</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.utils.queries.find_matching_prims.params.stage">¶</a> – The stage where the prim exists. Defaults to None, in which case the current stage is used.</p></li>
+<li><p><strong>prim_path_regex</strong> – The regex expression for prim path.</p></li>
+<li><p><strong>stage</strong> – The stage where the prim exists. Defaults to None, in which case the current stage is used.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -1335,8 +1336,8 @@ Defaults to None (i.e: traversal happens till the end of the tree).</p></li>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.sim.utils.queries.find_matching_prim_paths.params.prim_path_regex"></span><strong>prim_path_regex</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.utils.queries.find_matching_prim_paths.params.prim_path_regex">¶</a> – The regex expression for prim path.</p></li>
-<li><p><span class="target" id="isaaclab.sim.utils.queries.find_matching_prim_paths.params.stage"></span><strong>stage</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.utils.queries.find_matching_prim_paths.params.stage">¶</a> – The stage where the prim exists. Defaults to None, in which case the current stage is used.</p></li>
+<li><p><strong>prim_path_regex</strong> – The regex expression for prim path.</p></li>
+<li><p><strong>stage</strong> – The stage where the prim exists. Defaults to None, in which case the current stage is used.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -1360,10 +1361,10 @@ fixed joint prim exists, it returns None.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.sim.utils.queries.find_global_fixed_joint_prim.params.prim_path"></span><strong>prim_path</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.utils.queries.find_global_fixed_joint_prim.params.prim_path">¶</a> – The prim path to search for the fixed joint prim.</p></li>
-<li><p><span class="target" id="isaaclab.sim.utils.queries.find_global_fixed_joint_prim.params.check_enabled_only"></span><strong>check_enabled_only</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.utils.queries.find_global_fixed_joint_prim.params.check_enabled_only">¶</a> – Whether to consider only enabled fixed joints. Defaults to False.
+<li><p><strong>prim_path</strong> – The prim path to search for the fixed joint prim.</p></li>
+<li><p><strong>check_enabled_only</strong> – Whether to consider only enabled fixed joints. Defaults to False.
 If False, then all joints (enabled or disabled) are considered.</p></li>
-<li><p><span class="target" id="isaaclab.sim.utils.queries.find_global_fixed_joint_prim.params.stage"></span><strong>stage</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.utils.queries.find_global_fixed_joint_prim.params.stage">¶</a> – The stage where the prim exists. Defaults to None, in which case the current stage is used.</p></li>
+<li><p><strong>stage</strong> – The stage where the prim exists. Defaults to None, in which case the current stage is used.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -1465,24 +1466,24 @@ and scale, in that order. See <code class="xref py py-func docutils literal notr
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.sim.utils.prims.create_prim.params.prim_path"></span><strong>prim_path</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.utils.prims.create_prim.params.prim_path">¶</a> – The path of the new prim.</p></li>
-<li><p><span class="target" id="isaaclab.sim.utils.prims.create_prim.params.prim_type"></span><strong>prim_type</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.utils.prims.create_prim.params.prim_type">¶</a> – Prim type name. Defaults to “Xform”, in which case a simple Xform prim is created.</p></li>
-<li><p><span class="target" id="isaaclab.sim.utils.prims.create_prim.params.position"></span><strong>position</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.utils.prims.create_prim.params.position">¶</a> – Prim position in world space as (x, y, z). If the prim has a parent, this is
+<li><p><strong>prim_path</strong> – The path of the new prim.</p></li>
+<li><p><strong>prim_type</strong> – Prim type name. Defaults to “Xform”, in which case a simple Xform prim is created.</p></li>
+<li><p><strong>position</strong> – Prim position in world space as (x, y, z). If the prim has a parent, this is
 automatically converted to local space relative to the parent. Cannot be used with
 <code class="docutils literal notranslate"><span class="pre">translation</span></code>. Defaults to None, in which case no position is applied.</p></li>
-<li><p><span class="target" id="isaaclab.sim.utils.prims.create_prim.params.translation"></span><strong>translation</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.utils.prims.create_prim.params.translation">¶</a> – Prim translation in local space as (x, y, z). This is applied directly without
+<li><p><strong>translation</strong> – Prim translation in local space as (x, y, z). This is applied directly without
 any coordinate transformation. Cannot be used with <code class="docutils literal notranslate"><span class="pre">position</span></code>. Defaults to None,
 in which case no translation is applied.</p></li>
-<li><p><span class="target" id="isaaclab.sim.utils.prims.create_prim.params.orientation"></span><strong>orientation</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.utils.prims.create_prim.params.orientation">¶</a> – Prim rotation as a quaternion (w, x, y, z). When used with <code class="docutils literal notranslate"><span class="pre">position</span></code>, the
+<li><p><strong>orientation</strong> – Prim rotation as a quaternion (w, x, y, z). When used with <code class="docutils literal notranslate"><span class="pre">position</span></code>, the
 orientation is also converted from world space to local space. When used with <code class="docutils literal notranslate"><span class="pre">translation</span></code>,
 it is applied directly as local orientation. Defaults to None.</p></li>
-<li><p><span class="target" id="isaaclab.sim.utils.prims.create_prim.params.scale"></span><strong>scale</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.utils.prims.create_prim.params.scale">¶</a> – Scaling factor in x, y, z. Applied in local space. Defaults to None,
+<li><p><strong>scale</strong> – Scaling factor in x, y, z. Applied in local space. Defaults to None,
 in which case a uniform scale of 1.0 is applied.</p></li>
-<li><p><span class="target" id="isaaclab.sim.utils.prims.create_prim.params.usd_path"></span><strong>usd_path</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.utils.prims.create_prim.params.usd_path">¶</a> – Path to the USD file that this prim will reference. Defaults to None.</p></li>
-<li><p><span class="target" id="isaaclab.sim.utils.prims.create_prim.params.semantic_label"></span><strong>semantic_label</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.utils.prims.create_prim.params.semantic_label">¶</a> – Semantic label to apply to the prim. Defaults to None, in which case no label is added.</p></li>
-<li><p><span class="target" id="isaaclab.sim.utils.prims.create_prim.params.semantic_type"></span><strong>semantic_type</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.utils.prims.create_prim.params.semantic_type">¶</a> – Semantic type for the label. Defaults to “class”.</p></li>
-<li><p><span class="target" id="isaaclab.sim.utils.prims.create_prim.params.attributes"></span><strong>attributes</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.utils.prims.create_prim.params.attributes">¶</a> – Key-value pairs of prim attributes to set. Defaults to None, in which case no attributes are set.</p></li>
-<li><p><span class="target" id="isaaclab.sim.utils.prims.create_prim.params.stage"></span><strong>stage</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.utils.prims.create_prim.params.stage">¶</a> – The stage to create the prim in. Defaults to None, in which case the current stage is used.</p></li>
+<li><p><strong>usd_path</strong> – Path to the USD file that this prim will reference. Defaults to None.</p></li>
+<li><p><strong>semantic_label</strong> – Semantic label to apply to the prim. Defaults to None, in which case no label is added.</p></li>
+<li><p><strong>semantic_type</strong> – Semantic type for the label. Defaults to “class”.</p></li>
+<li><p><strong>attributes</strong> – Key-value pairs of prim attributes to set. Defaults to None, in which case no attributes are set.</p></li>
+<li><p><strong>stage</strong> – The stage to create the prim in. Defaults to None, in which case the current stage is used.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -1526,9 +1527,9 @@ in which case a uniform scale of 1.0 is applied.</p></li>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.sim.utils.prims.delete_prim.params.prim_path"></span><strong>prim_path</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.utils.prims.delete_prim.params.prim_path">¶</a> – The path of the prim to delete. If a list of paths is provided,
+<li><p><strong>prim_path</strong> – The path of the prim to delete. If a list of paths is provided,
 the function will delete all the prims in the list.</p></li>
-<li><p><span class="target" id="isaaclab.sim.utils.prims.delete_prim.params.stage"></span><strong>stage</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.utils.prims.delete_prim.params.stage">¶</a> – The stage to delete the prim in. Defaults to None, in which case the current stage is used.</p></li>
+<li><p><strong>stage</strong> – The stage to delete the prim in. Defaults to None, in which case the current stage is used.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -1559,10 +1560,10 @@ significant recomposition costs, especially in large or deeply layered stages.</
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.sim.utils.prims.move_prim.params.path_from"></span><strong>path_from</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.utils.prims.move_prim.params.path_from">¶</a> – Path of the USD Prim you wish to move</p></li>
-<li><p><span class="target" id="isaaclab.sim.utils.prims.move_prim.params.path_to"></span><strong>path_to</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.utils.prims.move_prim.params.path_to">¶</a> – Final destination of the prim</p></li>
-<li><p><span class="target" id="isaaclab.sim.utils.prims.move_prim.params.keep_world_transform"></span><strong>keep_world_transform</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.utils.prims.move_prim.params.keep_world_transform">¶</a> – Whether to keep the world transform of the prim. Defaults to True.</p></li>
-<li><p><span class="target" id="isaaclab.sim.utils.prims.move_prim.params.stage"></span><strong>stage</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.utils.prims.move_prim.params.stage">¶</a> – The stage to move the prim in. Defaults to None, in which case the current stage is used.</p></li>
+<li><p><strong>path_from</strong> – Path of the USD Prim you wish to move</p></li>
+<li><p><strong>path_to</strong> – Final destination of the prim</p></li>
+<li><p><strong>keep_world_transform</strong> – Whether to keep the world transform of the prim. Defaults to True.</p></li>
+<li><p><strong>stage</strong> – The stage to move the prim in. Defaults to None, in which case the current stage is used.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -1589,8 +1590,8 @@ want to apply a different material on an instanced prim, we need to make the pri
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.sim.utils.prims.make_uninstanceable.params.prim_path"></span><strong>prim_path</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.utils.prims.make_uninstanceable.params.prim_path">¶</a> – The prim path to check.</p></li>
-<li><p><span class="target" id="isaaclab.sim.utils.prims.make_uninstanceable.params.stage"></span><strong>stage</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.utils.prims.make_uninstanceable.params.stage">¶</a> – The stage where the prim exists. Defaults to None, in which case the current stage is used.</p></li>
+<li><p><strong>prim_path</strong> – The prim path to check.</p></li>
+<li><p><strong>stage</strong> – The stage where the prim exists. Defaults to None, in which case the current stage is used.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Raises<span class="colon">:</span></dt>
@@ -1610,8 +1611,8 @@ want to apply a different material on an instanced prim, we need to make the pri
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.sim.utils.prims.set_prim_visibility.params.prim"></span><strong>prim</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.utils.prims.set_prim_visibility.params.prim">¶</a> – the USD prim</p></li>
-<li><p><span class="target" id="isaaclab.sim.utils.prims.set_prim_visibility.params.visible"></span><strong>visible</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.utils.prims.set_prim_visibility.params.visible">¶</a> – flag to set the visibility of the usd prim in stage.</p></li>
+<li><p><strong>prim</strong> – the USD prim</p></li>
+<li><p><strong>visible</strong> – flag to set the visibility of the usd prim in stage.</p></li>
 </ul>
 </dd>
 </dl>
@@ -1635,10 +1636,10 @@ attribute exists on the schema and sets the value of the attribute if it exists.
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.sim.utils.prims.safe_set_attribute_on_usd_schema.params.schema_api"></span><strong>schema_api</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.utils.prims.safe_set_attribute_on_usd_schema.params.schema_api">¶</a> – The USD schema to set the attribute on.</p></li>
-<li><p><span class="target" id="isaaclab.sim.utils.prims.safe_set_attribute_on_usd_schema.params.name"></span><strong>name</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.utils.prims.safe_set_attribute_on_usd_schema.params.name">¶</a> – The name of the attribute.</p></li>
-<li><p><span class="target" id="isaaclab.sim.utils.prims.safe_set_attribute_on_usd_schema.params.value"></span><strong>value</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.utils.prims.safe_set_attribute_on_usd_schema.params.value">¶</a> – The value to set the attribute to.</p></li>
-<li><p><span class="target" id="isaaclab.sim.utils.prims.safe_set_attribute_on_usd_schema.params.camel_case"></span><strong>camel_case</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.utils.prims.safe_set_attribute_on_usd_schema.params.camel_case">¶</a> – Whether to convert the attribute name to camel case.</p></li>
+<li><p><strong>schema_api</strong> – The USD schema to set the attribute on.</p></li>
+<li><p><strong>name</strong> – The name of the attribute.</p></li>
+<li><p><strong>value</strong> – The value to set the attribute to.</p></li>
+<li><p><strong>camel_case</strong> – Whether to convert the attribute name to camel case.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Raises<span class="colon">:</span></dt>
@@ -1657,10 +1658,10 @@ allows us to set the value of the attributes in these cases.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.sim.utils.prims.safe_set_attribute_on_usd_prim.params.prim"></span><strong>prim</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.utils.prims.safe_set_attribute_on_usd_prim.params.prim">¶</a> – The USD prim to set the attribute on.</p></li>
-<li><p><span class="target" id="isaaclab.sim.utils.prims.safe_set_attribute_on_usd_prim.params.attr_name"></span><strong>attr_name</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.utils.prims.safe_set_attribute_on_usd_prim.params.attr_name">¶</a> – The name of the attribute.</p></li>
-<li><p><span class="target" id="isaaclab.sim.utils.prims.safe_set_attribute_on_usd_prim.params.value"></span><strong>value</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.utils.prims.safe_set_attribute_on_usd_prim.params.value">¶</a> – The value to set the attribute to.</p></li>
-<li><p><span class="target" id="isaaclab.sim.utils.prims.safe_set_attribute_on_usd_prim.params.camel_case"></span><strong>camel_case</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.utils.prims.safe_set_attribute_on_usd_prim.params.camel_case">¶</a> – Whether to convert the attribute name to camel case.</p></li>
+<li><p><strong>prim</strong> – The USD prim to set the attribute on.</p></li>
+<li><p><strong>attr_name</strong> – The name of the attribute.</p></li>
+<li><p><strong>value</strong> – The value to set the attribute to.</p></li>
+<li><p><strong>camel_case</strong> – Whether to convert the attribute name to camel case.</p></li>
 </ul>
 </dd>
 </dl>
@@ -1683,13 +1684,13 @@ If it is supposed to be a RGB color, the value must be of type <code class="xref
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.sim.utils.prims.change_prim_property.params.prop_path"></span><strong>prop_path</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.utils.prims.change_prim_property.params.prop_path">¶</a> – Property path in the format <code class="docutils literal notranslate"><span class="pre">/World/Prim.propertyName</span></code>.</p></li>
-<li><p><span class="target" id="isaaclab.sim.utils.prims.change_prim_property.params.value"></span><strong>value</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.utils.prims.change_prim_property.params.value">¶</a> – Value to set. If None, the attribute value goes to its default value.
+<li><p><strong>prop_path</strong> – Property path in the format <code class="docutils literal notranslate"><span class="pre">/World/Prim.propertyName</span></code>.</p></li>
+<li><p><strong>value</strong> – Value to set. If None, the attribute value goes to its default value.
 If the attribute has no default value, it is a silent no-op.</p></li>
-<li><p><span class="target" id="isaaclab.sim.utils.prims.change_prim_property.params.stage"></span><strong>stage</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.utils.prims.change_prim_property.params.stage">¶</a> – The USD stage. Defaults to None, in which case the current stage is used.</p></li>
-<li><p><span class="target" id="isaaclab.sim.utils.prims.change_prim_property.params.type_to_create_if_not_exist"></span><strong>type_to_create_if_not_exist</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.utils.prims.change_prim_property.params.type_to_create_if_not_exist">¶</a> – If not None and property doesn’t exist, a new property will
+<li><p><strong>stage</strong> – The USD stage. Defaults to None, in which case the current stage is used.</p></li>
+<li><p><strong>type_to_create_if_not_exist</strong> – If not None and property doesn’t exist, a new property will
 be created with the given type and value. Defaults to None.</p></li>
-<li><p><span class="target" id="isaaclab.sim.utils.prims.change_prim_property.params.is_custom"></span><strong>is_custom</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.utils.prims.change_prim_property.params.is_custom">¶</a> – If the property is created, specify if it is a custom property (not part of
+<li><p><strong>is_custom</strong> – If the property is created, specify if it is a custom property (not part of
 the schema). Defaults to False.</p></li>
 </ul>
 </dd>
@@ -1730,11 +1731,11 @@ the stage up-axis and meters-per-unit to match the current stage.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.sim.utils.prims.export_prim_to_file.params.path"></span><strong>path</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.utils.prims.export_prim_to_file.params.path">¶</a> – The filepath path to export the prim to.</p></li>
-<li><p><span class="target" id="isaaclab.sim.utils.prims.export_prim_to_file.params.source_prim_path"></span><strong>source_prim_path</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.utils.prims.export_prim_to_file.params.source_prim_path">¶</a> – The prim path to export.</p></li>
-<li><p><span class="target" id="isaaclab.sim.utils.prims.export_prim_to_file.params.target_prim_path"></span><strong>target_prim_path</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.utils.prims.export_prim_to_file.params.target_prim_path">¶</a> – The prim path to set as the default prim in the target layer.
+<li><p><strong>path</strong> – The filepath path to export the prim to.</p></li>
+<li><p><strong>source_prim_path</strong> – The prim path to export.</p></li>
+<li><p><strong>target_prim_path</strong> – The prim path to set as the default prim in the target layer.
 Defaults to None, in which case the source prim path is used.</p></li>
-<li><p><span class="target" id="isaaclab.sim.utils.prims.export_prim_to_file.params.stage"></span><strong>stage</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.utils.prims.export_prim_to_file.params.stage">¶</a> – The stage where the prim exists. Defaults to None, in which case the
+<li><p><strong>stage</strong> – The stage where the prim exists. Defaults to None, in which case the
 current stage is used.</p></li>
 </ul>
 </dd>
@@ -1759,7 +1760,7 @@ does not succeed to apply the function to any prim. This is because the user may
 apply the function to a prim that does not have valid attributes, or the prim may be an instanced prim.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab.sim.utils.prims.apply_nested.params.func"></span><strong>func</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.utils.prims.apply_nested.params.func">¶</a> – The function to apply to all prims under a specified prim-path. The function
+<dd class="field-odd"><p><strong>func</strong> – The function to apply to all prims under a specified prim-path. The function
 must take the prim-path and other arguments. It should return a boolean indicating whether
 the function succeeded or not.</p>
 </dd>
@@ -1787,7 +1788,7 @@ In case no matching prim paths are found, the decorator raises a <code class="do
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab.sim.utils.prims.clone.params.func"></span><strong>func</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.utils.prims.clone.params.func">¶</a> – The function to decorate.</p>
+<dd class="field-odd"><p><strong>func</strong> – The function to decorate.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>The decorated function that spawns the prim and clones it at each matching prim path.
@@ -1809,11 +1810,11 @@ and all its descendants.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.sim.utils.prims.bind_visual_material.params.prim_path"></span><strong>prim_path</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.utils.prims.bind_visual_material.params.prim_path">¶</a> – The prim path where to apply the material.</p></li>
-<li><p><span class="target" id="isaaclab.sim.utils.prims.bind_visual_material.params.material_path"></span><strong>material_path</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.utils.prims.bind_visual_material.params.material_path">¶</a> – The prim path of the material to apply.</p></li>
-<li><p><span class="target" id="isaaclab.sim.utils.prims.bind_visual_material.params.stage"></span><strong>stage</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.utils.prims.bind_visual_material.params.stage">¶</a> – The stage where the prim and material exist.
+<li><p><strong>prim_path</strong> – The prim path where to apply the material.</p></li>
+<li><p><strong>material_path</strong> – The prim path of the material to apply.</p></li>
+<li><p><strong>stage</strong> – The stage where the prim and material exist.
 Defaults to None, in which case the current stage is used.</p></li>
-<li><p><span class="target" id="isaaclab.sim.utils.prims.bind_visual_material.params.stronger_than_descendants"></span><strong>stronger_than_descendants</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.utils.prims.bind_visual_material.params.stronger_than_descendants">¶</a> – Whether the material should override the material of its descendants.
+<li><p><strong>stronger_than_descendants</strong> – Whether the material should override the material of its descendants.
 Defaults to True.</p></li>
 </ul>
 </dd>
@@ -1838,11 +1839,11 @@ and all its descendants.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.sim.utils.prims.bind_physics_material.params.prim_path"></span><strong>prim_path</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.utils.prims.bind_physics_material.params.prim_path">¶</a> – The prim path where to apply the material.</p></li>
-<li><p><span class="target" id="isaaclab.sim.utils.prims.bind_physics_material.params.material_path"></span><strong>material_path</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.utils.prims.bind_physics_material.params.material_path">¶</a> – The prim path of the material to apply.</p></li>
-<li><p><span class="target" id="isaaclab.sim.utils.prims.bind_physics_material.params.stage"></span><strong>stage</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.utils.prims.bind_physics_material.params.stage">¶</a> – The stage where the prim and material exist.
+<li><p><strong>prim_path</strong> – The prim path where to apply the material.</p></li>
+<li><p><strong>material_path</strong> – The prim path of the material to apply.</p></li>
+<li><p><strong>stage</strong> – The stage where the prim and material exist.
 Defaults to None, in which case the current stage is used.</p></li>
-<li><p><span class="target" id="isaaclab.sim.utils.prims.bind_physics_material.params.stronger_than_descendants"></span><strong>stronger_than_descendants</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.utils.prims.bind_physics_material.params.stronger_than_descendants">¶</a> – Whether the material should override the material of its descendants.
+<li><p><strong>stronger_than_descendants</strong> – Whether the material should override the material of its descendants.
 Defaults to True.</p></li>
 </ul>
 </dd>
@@ -1864,10 +1865,10 @@ convert the units to match. This is done using the <code class="xref py py-mod d
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.sim.utils.prims.add_usd_reference.params.prim_path"></span><strong>prim_path</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.utils.prims.add_usd_reference.params.prim_path">¶</a> – The prim path where the reference will be attached.</p></li>
-<li><p><span class="target" id="isaaclab.sim.utils.prims.add_usd_reference.params.usd_path"></span><strong>usd_path</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.utils.prims.add_usd_reference.params.usd_path">¶</a> – The path to USD file to reference.</p></li>
-<li><p><span class="target" id="isaaclab.sim.utils.prims.add_usd_reference.params.prim_type"></span><strong>prim_type</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.utils.prims.add_usd_reference.params.prim_type">¶</a> – The type of prim to create if it doesn’t exist. Defaults to “Xform”.</p></li>
-<li><p><span class="target" id="isaaclab.sim.utils.prims.add_usd_reference.params.stage"></span><strong>stage</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.utils.prims.add_usd_reference.params.stage">¶</a> – The stage to add the reference to. Defaults to None, in which case the current stage is used.</p></li>
+<li><p><strong>prim_path</strong> – The prim path where the reference will be attached.</p></li>
+<li><p><strong>usd_path</strong> – The path to USD file to reference.</p></li>
+<li><p><strong>prim_type</strong> – The type of prim to create if it doesn’t exist. Defaults to “Xform”.</p></li>
+<li><p><strong>stage</strong> – The stage to add the reference to. Defaults to None, in which case the current stage is used.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -1886,8 +1887,8 @@ convert the units to match. This is done using the <code class="xref py py-mod d
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.sim.utils.prims.get_usd_references.params.prim_path"></span><strong>prim_path</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.utils.prims.get_usd_references.params.prim_path">¶</a> – The prim path to get the USD references from.</p></li>
-<li><p><span class="target" id="isaaclab.sim.utils.prims.get_usd_references.params.stage"></span><strong>stage</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.utils.prims.get_usd_references.params.stage">¶</a> – The stage to get the USD references from. Defaults to None, in which case the current stage is used.</p></li>
+<li><p><strong>prim_path</strong> – The prim path to get the USD references from.</p></li>
+<li><p><strong>stage</strong> – The stage to get the USD references from. Defaults to None, in which case the current stage is used.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -1935,9 +1936,9 @@ selections as follows:</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.sim.utils.prims.select_usd_variants.params.prim_path"></span><strong>prim_path</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.utils.prims.select_usd_variants.params.prim_path">¶</a> – The path of the USD prim.</p></li>
-<li><p><span class="target" id="isaaclab.sim.utils.prims.select_usd_variants.params.variants"></span><strong>variants</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.utils.prims.select_usd_variants.params.variants">¶</a> – A dictionary or config class mapping variant set names to variant selections.</p></li>
-<li><p><span class="target" id="isaaclab.sim.utils.prims.select_usd_variants.params.stage"></span><strong>stage</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.utils.prims.select_usd_variants.params.stage">¶</a> – The USD stage. Defaults to None, in which case, the current stage is used.</p></li>
+<li><p><strong>prim_path</strong> – The path of the USD prim.</p></li>
+<li><p><strong>variants</strong> – A dictionary or config class mapping variant set names to variant selections.</p></li>
+<li><p><strong>stage</strong> – The USD stage. Defaults to None, in which case, the current stage is used.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Raises<span class="colon">:</span></dt>
@@ -2020,16 +2021,16 @@ becomes a final scale of (100, 100, 100).</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.sim.utils.transforms.standardize_xform_ops.params.prim"></span><strong>prim</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.utils.transforms.standardize_xform_ops.params.prim">¶</a> – The USD prim to standardize. Must be a valid prim that supports the
+<li><p><strong>prim</strong> – The USD prim to standardize. Must be a valid prim that supports the
 UsdGeom.Xformable schema (e.g., Xform, Mesh, Cube, etc.). Material and
 Shader prims are not Xformable and will return False.</p></li>
-<li><p><span class="target" id="isaaclab.sim.utils.transforms.standardize_xform_ops.params.translation"></span><strong>translation</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.utils.transforms.standardize_xform_ops.params.translation">¶</a> – Optional translation vector (x, y, z) in local space. If provided,
+<li><p><strong>translation</strong> – Optional translation vector (x, y, z) in local space. If provided,
 overrides the prim’s current translation. If None, preserves the current
 local translation. Defaults to None.</p></li>
-<li><p><span class="target" id="isaaclab.sim.utils.transforms.standardize_xform_ops.params.orientation"></span><strong>orientation</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.utils.transforms.standardize_xform_ops.params.orientation">¶</a> – Optional orientation quaternion (w, x, y, z) in local space. If provided,
+<li><p><strong>orientation</strong> – Optional orientation quaternion (w, x, y, z) in local space. If provided,
 overrides the prim’s current orientation. If None, preserves the current
 local orientation. Defaults to None.</p></li>
-<li><p><span class="target" id="isaaclab.sim.utils.transforms.standardize_xform_ops.params.scale"></span><strong>scale</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.utils.transforms.standardize_xform_ops.params.scale">¶</a> – Optional scale vector (x, y, z). If provided, overrides the prim’s current scale.
+<li><p><strong>scale</strong> – Optional scale vector (x, y, z). If provided, overrides the prim’s current scale.
 If None, preserves the current scale (after unit resolution) or uses (1, 1, 1)
 if no scale exists. Defaults to None.</p></li>
 </ul>
@@ -2083,7 +2084,7 @@ error message when returning False.</p>
 [translate, orient, scale].</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab.sim.utils.transforms.validate_standard_xform_ops.params.prim"></span><strong>prim</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.utils.transforms.validate_standard_xform_ops.params.prim">¶</a> – The USD prim to validate.</p>
+<dd class="field-odd"><p><strong>prim</strong> – The USD prim to validate.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -2106,8 +2107,8 @@ scale at each level. Please open an issue if you need this functionality.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.sim.utils.transforms.resolve_prim_pose.params.prim"></span><strong>prim</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.utils.transforms.resolve_prim_pose.params.prim">¶</a> – The USD prim to resolve the pose for.</p></li>
-<li><p><span class="target" id="isaaclab.sim.utils.transforms.resolve_prim_pose.params.ref_prim"></span><strong>ref_prim</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.utils.transforms.resolve_prim_pose.params.ref_prim">¶</a> – The USD prim to compute the pose with respect to.
+<li><p><strong>prim</strong> – The USD prim to resolve the pose for.</p></li>
+<li><p><strong>ref_prim</strong> – The USD prim to compute the pose with respect to.
 Defaults to None, in which case the world frame is used.</p></li>
 </ul>
 </dd>
@@ -2153,7 +2154,7 @@ the prim hierarchy and accounting for the rotations and scales of the prims.</p>
 then the scale of the prim in the world frame is (4, 10, 18).</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab.sim.utils.transforms.resolve_prim_scale.params.prim"></span><strong>prim</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.utils.transforms.resolve_prim_scale.params.prim">¶</a> – The USD prim to resolve the scale for.</p>
+<dd class="field-odd"><p><strong>prim</strong> – The USD prim to resolve the scale for.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>The scale of the prim in the x, y, and z directions in the world frame.</p>
@@ -2194,10 +2195,10 @@ unchanged, as they are already effectively in local/world space.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.sim.utils.transforms.convert_world_pose_to_local.params.position"></span><strong>position</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.utils.transforms.convert_world_pose_to_local.params.position">¶</a> – The world-space position as (x, y, z).</p></li>
-<li><p><span class="target" id="isaaclab.sim.utils.transforms.convert_world_pose_to_local.params.orientation"></span><strong>orientation</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.utils.transforms.convert_world_pose_to_local.params.orientation">¶</a> – The world-space orientation as quaternion (w, x, y, z). If None, only position is converted
+<li><p><strong>position</strong> – The world-space position as (x, y, z).</p></li>
+<li><p><strong>orientation</strong> – The world-space orientation as quaternion (w, x, y, z). If None, only position is converted
 and None is returned for orientation.</p></li>
-<li><p><span class="target" id="isaaclab.sim.utils.transforms.convert_world_pose_to_local.params.ref_prim"></span><strong>ref_prim</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.utils.transforms.convert_world_pose_to_local.params.ref_prim">¶</a> – The reference USD prim to compute the local transform relative to. If this is
+<li><p><strong>ref_prim</strong> – The reference USD prim to compute the local transform relative to. If this is
 the root prim (“/”), the world pose is returned unchanged.</p></li>
 </ul>
 </dd>
@@ -2277,10 +2278,10 @@ For previous versions, the function falls back to use the deprecated <code class
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.sim.utils.semantics.add_labels.params.prim"></span><strong>prim</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.utils.semantics.add_labels.params.prim">¶</a> – The USD prim to add or update labels on.</p></li>
-<li><p><span class="target" id="isaaclab.sim.utils.semantics.add_labels.params.labels"></span><strong>labels</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.utils.semantics.add_labels.params.labels">¶</a> – The list of labels to apply.</p></li>
-<li><p><span class="target" id="isaaclab.sim.utils.semantics.add_labels.params.instance_name"></span><strong>instance_name</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.utils.semantics.add_labels.params.instance_name">¶</a> – The name of the semantic instance. Defaults to “class”.</p></li>
-<li><p><span class="target" id="isaaclab.sim.utils.semantics.add_labels.params.overwrite"></span><strong>overwrite</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.utils.semantics.add_labels.params.overwrite">¶</a> – Whether to overwrite existing labels for this instance. If False,
+<li><p><strong>prim</strong> – The USD prim to add or update labels on.</p></li>
+<li><p><strong>labels</strong> – The list of labels to apply.</p></li>
+<li><p><strong>instance_name</strong> – The name of the semantic instance. Defaults to “class”.</p></li>
+<li><p><strong>overwrite</strong> – Whether to overwrite existing labels for this instance. If False,
 the new labels are appended to existing ones (if any). Defaults to True.</p></li>
 </ul>
 </dd>
@@ -2297,7 +2298,7 @@ please use <a class="reference external" href="https://docs.isaacsim.omniverse.n
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab.sim.utils.semantics.get_labels.params.prim"></span><strong>prim</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.utils.semantics.get_labels.params.prim">¶</a> – The USD prim to return labels for.</p>
+<dd class="field-odd"><p><strong>prim</strong> – The USD prim to return labels for.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>A dictionary mapping instance names to a list of labels.
@@ -2317,10 +2318,10 @@ please use <a class="reference external" href="https://docs.isaacsim.omniverse.n
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.sim.utils.semantics.remove_labels.params.prim"></span><strong>prim</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.utils.semantics.remove_labels.params.prim">¶</a> – The USD prim to remove labels from.</p></li>
-<li><p><span class="target" id="isaaclab.sim.utils.semantics.remove_labels.params.instance_name"></span><strong>instance_name</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.utils.semantics.remove_labels.params.instance_name">¶</a> – The specific instance name to remove. Defaults to None, in which case
+<li><p><strong>prim</strong> – The USD prim to remove labels from.</p></li>
+<li><p><strong>instance_name</strong> – The specific instance name to remove. Defaults to None, in which case
 <em>all</em> labels are removed.</p></li>
-<li><p><span class="target" id="isaaclab.sim.utils.semantics.remove_labels.params.include_descendants"></span><strong>include_descendants</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.utils.semantics.remove_labels.params.include_descendants">¶</a> – Whether to also traverse children and remove labels recursively.
+<li><p><strong>include_descendants</strong> – Whether to also traverse children and remove labels recursively.
 Defaults to False.</p></li>
 </ul>
 </dd>
@@ -2343,8 +2344,8 @@ please use <a class="reference external" href="https://docs.isaacsim.omniverse.n
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.sim.utils.semantics.check_missing_labels.params.prim_path"></span><strong>prim_path</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.utils.semantics.check_missing_labels.params.prim_path">¶</a> – The prim path to search from. If None, the entire stage is inspected.</p></li>
-<li><p><span class="target" id="isaaclab.sim.utils.semantics.check_missing_labels.params.stage"></span><strong>stage</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.utils.semantics.check_missing_labels.params.stage">¶</a> – The stage to search from. If None, the current stage is used.</p></li>
+<li><p><strong>prim_path</strong> – The prim path to search from. If None, the entire stage is inspected.</p></li>
+<li><p><strong>stage</strong> – The stage to search from. If None, the current stage is used.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -2366,8 +2367,8 @@ please use <a class="reference external" href="https://docs.isaacsim.omniverse.n
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.sim.utils.semantics.count_total_labels.params.prim_path"></span><strong>prim_path</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.utils.semantics.count_total_labels.params.prim_path">¶</a> – The prim path to search from. If None, the entire stage is inspected.</p></li>
-<li><p><span class="target" id="isaaclab.sim.utils.semantics.count_total_labels.params.stage"></span><strong>stage</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.utils.semantics.count_total_labels.params.stage">¶</a> – The stage to search from. If None, the current stage is used.</p></li>
+<li><p><strong>prim_path</strong> – The prim path to search from. If None, the entire stage is inspected.</p></li>
+<li><p><strong>stage</strong> – The stage to search from. If None, the current stage is used.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -2434,9 +2435,9 @@ and are provided mainly for convenience.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.sim.utils.legacy.add_reference_to_stage.params.usd_path"></span><strong>usd_path</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.utils.legacy.add_reference_to_stage.params.usd_path">¶</a> – The path to the USD file to reference.</p></li>
-<li><p><span class="target" id="isaaclab.sim.utils.legacy.add_reference_to_stage.params.path"></span><strong>path</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.utils.legacy.add_reference_to_stage.params.path">¶</a> – The prim path to add the reference to.</p></li>
-<li><p><span class="target" id="isaaclab.sim.utils.legacy.add_reference_to_stage.params.prim_type"></span><strong>prim_type</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.utils.legacy.add_reference_to_stage.params.prim_type">¶</a> – The type of prim to create if it doesn’t exist. Defaults to “Xform”.</p></li>
+<li><p><strong>usd_path</strong> – The path to the USD file to reference.</p></li>
+<li><p><strong>path</strong> – The prim path to add the reference to.</p></li>
+<li><p><strong>prim_type</strong> – The type of prim to create if it doesn’t exist. Defaults to “Xform”.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -2481,7 +2482,7 @@ and are provided mainly for convenience.</p>
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab.sim.utils.legacy.traverse_stage.params.fabric"></span><strong>fabric</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.utils.legacy.traverse_stage.params.fabric">¶</a> – True for fabric stage and False for USD stage. Defaults to False.</p>
+<dd class="field-odd"><p><strong>fabric</strong> – True for fabric stage and False for USD stage. Defaults to False.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>An iterable of all the prims in the stage.</p>
@@ -2506,8 +2507,8 @@ and are provided mainly for convenience.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.sim.utils.legacy.get_prim_at_path.params.prim_path"></span><strong>prim_path</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.utils.legacy.get_prim_at_path.params.prim_path">¶</a> – The path of the prim to get.</p></li>
-<li><p><span class="target" id="isaaclab.sim.utils.legacy.get_prim_at_path.params.fabric"></span><strong>fabric</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.utils.legacy.get_prim_at_path.params.fabric">¶</a> – Whether to get the prim from the fabric stage. Defaults to False.</p></li>
+<li><p><strong>prim_path</strong> – The path of the prim to get.</p></li>
+<li><p><strong>fabric</strong> – Whether to get the prim from the fabric stage. Defaults to False.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -2533,7 +2534,7 @@ and are provided mainly for convenience.</p>
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab.sim.utils.legacy.get_prim_path.params.prim"></span><strong>prim</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.utils.legacy.get_prim_path.params.prim">¶</a> – The USD prim to get the path of.</p>
+<dd class="field-odd"><p><strong>prim</strong> – The USD prim to get the path of.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>The path of the specified USD prim.</p>
@@ -2559,8 +2560,8 @@ and are provided mainly for convenience.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.sim.utils.legacy.is_prim_path_valid.params.prim_path"></span><strong>prim_path</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.utils.legacy.is_prim_path_valid.params.prim_path">¶</a> – path of the prim in the stage</p></li>
-<li><p><span class="target" id="isaaclab.sim.utils.legacy.is_prim_path_valid.params.fabric"></span><strong>fabric</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.utils.legacy.is_prim_path_valid.params.fabric">¶</a> – True for fabric stage and False for USD stage. Defaults to False.</p></li>
+<li><p><strong>prim_path</strong> – path of the prim in the stage</p></li>
+<li><p><strong>fabric</strong> – True for fabric stage and False for USD stage. Defaults to False.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -2591,9 +2592,9 @@ function instead.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.sim.utils.legacy.define_prim.params.prim_path"></span><strong>prim_path</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.utils.legacy.define_prim.params.prim_path">¶</a> – path of the prim in the stage</p></li>
-<li><p><span class="target" id="isaaclab.sim.utils.legacy.define_prim.params.prim_type"></span><strong>prim_type</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.utils.legacy.define_prim.params.prim_type">¶</a> – The type of the prim to create. Defaults to “Xform”.</p></li>
-<li><p><span class="target" id="isaaclab.sim.utils.legacy.define_prim.params.fabric"></span><strong>fabric</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.utils.legacy.define_prim.params.fabric">¶</a> – True for fabric stage and False for USD stage. Defaults to False.</p></li>
+<li><p><strong>prim_path</strong> – path of the prim in the stage</p></li>
+<li><p><strong>prim_type</strong> – The type of the prim to create. Defaults to “Xform”.</p></li>
+<li><p><strong>fabric</strong> – True for fabric stage and False for USD stage. Defaults to False.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -2623,8 +2624,8 @@ function instead.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.sim.utils.legacy.get_prim_type_name.params.prim_path"></span><strong>prim_path</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.utils.legacy.get_prim_type_name.params.prim_path">¶</a> – path of the prim in the stage or the prim itself</p></li>
-<li><p><span class="target" id="isaaclab.sim.utils.legacy.get_prim_type_name.params.fabric"></span><strong>fabric</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.utils.legacy.get_prim_type_name.params.fabric">¶</a> – True for fabric stage and False for USD stage. Defaults to False.</p></li>
+<li><p><strong>prim_path</strong> – path of the prim in the stage or the prim itself</p></li>
+<li><p><strong>fabric</strong> – True for fabric stage and False for USD stage. Defaults to False.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -2647,8 +2648,8 @@ function instead.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.sim.utils.legacy.get_next_free_path.params.path"></span><strong>path</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.utils.legacy.get_next_free_path.params.path">¶</a> – The base prim path to check.</p></li>
-<li><p><span class="target" id="isaaclab.sim.utils.legacy.get_next_free_path.params.stage"></span><strong>stage</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.utils.legacy.get_next_free_path.params.stage">¶</a> – The stage to check. Defaults to the current stage.</p></li>
+<li><p><strong>path</strong> – The base prim path to check.</p></li>
+<li><p><strong>stage</strong> – The stage to check. Defaults to the current stage.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>

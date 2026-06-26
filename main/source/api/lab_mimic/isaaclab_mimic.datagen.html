@@ -36,7 +36,6 @@
     <link rel="stylesheet" type="text/css" href="/opt/hostedtoolcache/Python/3.12.13/x64/lib/python3.12/site-packages/sphinxcontrib/icon/node_modules/@fortawesome/fontawesome-free/css/all.min.css?v=53359634" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx_paramlinks.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=8fb98eed" />
   
   <!-- So that users can add custom icons -->
@@ -162,6 +161,8 @@
             <option value="../../../../develop/source/api/lab_mimic/isaaclab_mimic.datagen.html" >develop</option>
             <option value="isaaclab_mimic.datagen.html" selected>main</option>
             <option value="../../../../release/3.0.0-beta2/source/api/lab_mimic/isaaclab_mimic.datagen.html" >release/3.0.0-beta2</option>
+            <option value="../../../../v3.0.0-beta2/source/api/lab_mimic/isaaclab_mimic.datagen.html" >v3.0.0-beta2</option>
+            <option value="../../../../v3.0.0-beta/source/api/lab_mimic/isaaclab_mimic.datagen.html" >v3.0.0-beta</option>
             <option value="../../../../v2.3.2/source/api/lab_mimic/isaaclab_mimic.datagen.html" >v2.3.2</option>
             <option value="../../../../v2.3.1/source/api/lab_mimic/isaaclab_mimic.datagen.html" >v2.3.1</option>
             <option value="../../../../v2.3.0/source/api/lab_mimic/isaaclab_mimic.datagen.html" >v2.3.0</option>
@@ -840,10 +841,10 @@ end-effector to execute.</p>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_mimic.datagen.DataGenerator.params.env"></span><strong>env</strong><a class="paramlink headerlink reference internal" href="#isaaclab_mimic.datagen.DataGenerator.params.env">¶</a> – environment to use for data generation</p></li>
-<li><p><span class="target" id="isaaclab_mimic.datagen.DataGenerator.params.src_demo_datagen_info_pool"></span><strong>src_demo_datagen_info_pool</strong><a class="paramlink headerlink reference internal" href="#isaaclab_mimic.datagen.DataGenerator.params.src_demo_datagen_info_pool">¶</a> – source demo datagen info pool</p></li>
-<li><p><span class="target" id="isaaclab_mimic.datagen.DataGenerator.params.dataset_path"></span><strong>dataset_path</strong><a class="paramlink headerlink reference internal" href="#isaaclab_mimic.datagen.DataGenerator.params.dataset_path">¶</a> – path to hdf5 dataset to use for generation</p></li>
-<li><p><span class="target" id="isaaclab_mimic.datagen.DataGenerator.params.demo_keys"></span><strong>demo_keys</strong><a class="paramlink headerlink reference internal" href="#isaaclab_mimic.datagen.DataGenerator.params.demo_keys">¶</a> – list of demonstration keys to use in file. If not provided,
+<li><p><strong>env</strong> – environment to use for data generation</p></li>
+<li><p><strong>src_demo_datagen_info_pool</strong> – source demo datagen info pool</p></li>
+<li><p><strong>dataset_path</strong> – path to hdf5 dataset to use for generation</p></li>
+<li><p><strong>demo_keys</strong> – list of demonstration keys to use in file. If not provided,
 all demonstration keys will be used.</p></li>
 </ul>
 </dd>
@@ -865,14 +866,14 @@ end index (and start index when skillgen is enabled) of each subtask can have a 
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_mimic.datagen.DataGenerator.select_source_demo.params.eef_name"></span><strong>eef_name</strong><a class="paramlink headerlink reference internal" href="#isaaclab_mimic.datagen.DataGenerator.select_source_demo.params.eef_name">¶</a> – name of end effector</p></li>
-<li><p><span class="target" id="isaaclab_mimic.datagen.DataGenerator.select_source_demo.params.eef_pose"></span><strong>eef_pose</strong><a class="paramlink headerlink reference internal" href="#isaaclab_mimic.datagen.DataGenerator.select_source_demo.params.eef_pose">¶</a> – current end effector pose</p></li>
-<li><p><span class="target" id="isaaclab_mimic.datagen.DataGenerator.select_source_demo.params.object_pose"></span><strong>object_pose</strong><a class="paramlink headerlink reference internal" href="#isaaclab_mimic.datagen.DataGenerator.select_source_demo.params.object_pose">¶</a> – current object pose for this subtask</p></li>
-<li><p><span class="target" id="isaaclab_mimic.datagen.DataGenerator.select_source_demo.params.src_demo_current_subtask_boundaries"></span><strong>src_demo_current_subtask_boundaries</strong><a class="paramlink headerlink reference internal" href="#isaaclab_mimic.datagen.DataGenerator.select_source_demo.params.src_demo_current_subtask_boundaries">¶</a> – start and end indices for subtask segment
+<li><p><strong>eef_name</strong> – name of end effector</p></li>
+<li><p><strong>eef_pose</strong> – current end effector pose</p></li>
+<li><p><strong>object_pose</strong> – current object pose for this subtask</p></li>
+<li><p><strong>src_demo_current_subtask_boundaries</strong> – start and end indices for subtask segment
 in source demonstrations of shape (N, 2)</p></li>
-<li><p><span class="target" id="isaaclab_mimic.datagen.DataGenerator.select_source_demo.params.subtask_object_name"></span><strong>subtask_object_name</strong><a class="paramlink headerlink reference internal" href="#isaaclab_mimic.datagen.DataGenerator.select_source_demo.params.subtask_object_name">¶</a> – name of reference object for this subtask</p></li>
-<li><p><span class="target" id="isaaclab_mimic.datagen.DataGenerator.select_source_demo.params.selection_strategy_name"></span><strong>selection_strategy_name</strong><a class="paramlink headerlink reference internal" href="#isaaclab_mimic.datagen.DataGenerator.select_source_demo.params.selection_strategy_name">¶</a> – name of selection strategy</p></li>
-<li><p><span class="target" id="isaaclab_mimic.datagen.DataGenerator.select_source_demo.params.selection_strategy_kwargs"></span><strong>selection_strategy_kwargs</strong><a class="paramlink headerlink reference internal" href="#isaaclab_mimic.datagen.DataGenerator.select_source_demo.params.selection_strategy_kwargs">¶</a> – extra kwargs for running selection strategy</p></li>
+<li><p><strong>subtask_object_name</strong> – name of reference object for this subtask</p></li>
+<li><p><strong>selection_strategy_name</strong> – name of selection strategy</p></li>
+<li><p><strong>selection_strategy_kwargs</strong> – extra kwargs for running selection strategy</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -903,14 +904,14 @@ provided by a concurrent task/coordination scheme.</p></li>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_mimic.datagen.DataGenerator.generate_eef_subtask_trajectory.params.env_id"></span><strong>env_id</strong><a class="paramlink headerlink reference internal" href="#isaaclab_mimic.datagen.DataGenerator.generate_eef_subtask_trajectory.params.env_id">¶</a> – Environment index used to query current robot/object poses.</p></li>
-<li><p><span class="target" id="isaaclab_mimic.datagen.DataGenerator.generate_eef_subtask_trajectory.params.eef_name"></span><strong>eef_name</strong><a class="paramlink headerlink reference internal" href="#isaaclab_mimic.datagen.DataGenerator.generate_eef_subtask_trajectory.params.eef_name">¶</a> – End-effector key whose subtask trajectory is being generated.</p></li>
-<li><p><span class="target" id="isaaclab_mimic.datagen.DataGenerator.generate_eef_subtask_trajectory.params.subtask_ind"></span><strong>subtask_ind</strong><a class="paramlink headerlink reference internal" href="#isaaclab_mimic.datagen.DataGenerator.generate_eef_subtask_trajectory.params.subtask_ind">¶</a> – Index of the subtask within <cite>subtask_configs[eef_name]</cite>.</p></li>
-<li><p><span class="target" id="isaaclab_mimic.datagen.DataGenerator.generate_eef_subtask_trajectory.params.all_randomized_subtask_boundaries"></span><strong>all_randomized_subtask_boundaries</strong><a class="paramlink headerlink reference internal" href="#isaaclab_mimic.datagen.DataGenerator.generate_eef_subtask_trajectory.params.all_randomized_subtask_boundaries">¶</a> – For each EEF, an array of per-demo
+<li><p><strong>env_id</strong> – Environment index used to query current robot/object poses.</p></li>
+<li><p><strong>eef_name</strong> – End-effector key whose subtask trajectory is being generated.</p></li>
+<li><p><strong>subtask_ind</strong> – Index of the subtask within <cite>subtask_configs[eef_name]</cite>.</p></li>
+<li><p><strong>all_randomized_subtask_boundaries</strong> – For each EEF, an array of per-demo
 randomized (start, end) indices for every subtask.</p></li>
-<li><p><span class="target" id="isaaclab_mimic.datagen.DataGenerator.generate_eef_subtask_trajectory.params.runtime_subtask_constraints_dict"></span><strong>runtime_subtask_constraints_dict</strong><a class="paramlink headerlink reference internal" href="#isaaclab_mimic.datagen.DataGenerator.generate_eef_subtask_trajectory.params.runtime_subtask_constraints_dict">¶</a> – In/out dictionary carrying runtime fields
+<li><p><strong>runtime_subtask_constraints_dict</strong> – In/out dictionary carrying runtime fields
 for constraints (e.g., selected source ID, delta transform, synchronous steps).</p></li>
-<li><p><span class="target" id="isaaclab_mimic.datagen.DataGenerator.generate_eef_subtask_trajectory.params.selected_src_demo_inds"></span><strong>selected_src_demo_inds</strong><a class="paramlink headerlink reference internal" href="#isaaclab_mimic.datagen.DataGenerator.generate_eef_subtask_trajectory.params.selected_src_demo_inds">¶</a> – Per-EEF mapping for the currently selected source demo index
+<li><p><strong>selected_src_demo_inds</strong> – Per-EEF mapping for the currently selected source demo index
 (may be reused across arms if configured).</p></li>
 </ul>
 </dd>
@@ -945,13 +946,13 @@ and uses the first waypoint’s gripper action and the subtask’s action noise.
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_mimic.datagen.DataGenerator.merge_eef_subtask_trajectory.params.env_id"></span><strong>env_id</strong><a class="paramlink headerlink reference internal" href="#isaaclab_mimic.datagen.DataGenerator.merge_eef_subtask_trajectory.params.env_id">¶</a> – Environment index to query the current robot EEF pose when needed.</p></li>
-<li><p><span class="target" id="isaaclab_mimic.datagen.DataGenerator.merge_eef_subtask_trajectory.params.eef_name"></span><strong>eef_name</strong><a class="paramlink headerlink reference internal" href="#isaaclab_mimic.datagen.DataGenerator.merge_eef_subtask_trajectory.params.eef_name">¶</a> – Name/key of the end-effector whose trajectory is being merged.</p></li>
-<li><p><span class="target" id="isaaclab_mimic.datagen.DataGenerator.merge_eef_subtask_trajectory.params.subtask_index"></span><strong>subtask_index</strong><a class="paramlink headerlink reference internal" href="#isaaclab_mimic.datagen.DataGenerator.merge_eef_subtask_trajectory.params.subtask_index">¶</a> – Index of the subtask within <cite>subtask_configs[eef_name]</cite> driving interpolation parameters.</p></li>
-<li><p><span class="target" id="isaaclab_mimic.datagen.DataGenerator.merge_eef_subtask_trajectory.params.prev_executed_traj"></span><strong>prev_executed_traj</strong><a class="paramlink headerlink reference internal" href="#isaaclab_mimic.datagen.DataGenerator.merge_eef_subtask_trajectory.params.prev_executed_traj">¶</a> – The previously executed trajectory used to
+<li><p><strong>env_id</strong> – Environment index to query the current robot EEF pose when needed.</p></li>
+<li><p><strong>eef_name</strong> – Name/key of the end-effector whose trajectory is being merged.</p></li>
+<li><p><strong>subtask_index</strong> – Index of the subtask within <cite>subtask_configs[eef_name]</cite> driving interpolation parameters.</p></li>
+<li><p><strong>prev_executed_traj</strong> – The previously executed trajectory used to
 seed interpolation from its last target waypoint. Required when interpolation-from-last-target
 is enabled and this is not the first subtask.</p></li>
-<li><p><span class="target" id="isaaclab_mimic.datagen.DataGenerator.merge_eef_subtask_trajectory.params.subtask_trajectory"></span><strong>subtask_trajectory</strong><a class="paramlink headerlink reference internal" href="#isaaclab_mimic.datagen.DataGenerator.merge_eef_subtask_trajectory.params.subtask_trajectory">¶</a> – Trajectory segment for the current subtask that will be merged after the initial interpolation segment.</p></li>
+<li><p><strong>subtask_trajectory</strong> – Trajectory segment for the current subtask that will be merged after the initial interpolation segment.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -968,13 +969,13 @@ with the temporary initial waypoint removed.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_mimic.datagen.DataGenerator.generate.params.env_id"></span><strong>env_id</strong><a class="paramlink headerlink reference internal" href="#isaaclab_mimic.datagen.DataGenerator.generate.params.env_id">¶</a> – environment ID</p></li>
-<li><p><span class="target" id="isaaclab_mimic.datagen.DataGenerator.generate.params.success_term"></span><strong>success_term</strong><a class="paramlink headerlink reference internal" href="#isaaclab_mimic.datagen.DataGenerator.generate.params.success_term">¶</a> – success function to check if the task is successful</p></li>
-<li><p><span class="target" id="isaaclab_mimic.datagen.DataGenerator.generate.params.env_reset_queue"></span><strong>env_reset_queue</strong><a class="paramlink headerlink reference internal" href="#isaaclab_mimic.datagen.DataGenerator.generate.params.env_reset_queue">¶</a> – queue to store environment IDs for reset</p></li>
-<li><p><span class="target" id="isaaclab_mimic.datagen.DataGenerator.generate.params.env_action_queue"></span><strong>env_action_queue</strong><a class="paramlink headerlink reference internal" href="#isaaclab_mimic.datagen.DataGenerator.generate.params.env_action_queue">¶</a> – queue to store actions for each environment</p></li>
-<li><p><span class="target" id="isaaclab_mimic.datagen.DataGenerator.generate.params.pause_subtask"></span><strong>pause_subtask</strong><a class="paramlink headerlink reference internal" href="#isaaclab_mimic.datagen.DataGenerator.generate.params.pause_subtask">¶</a> – whether to pause the subtask generation</p></li>
-<li><p><span class="target" id="isaaclab_mimic.datagen.DataGenerator.generate.params.export_demo"></span><strong>export_demo</strong><a class="paramlink headerlink reference internal" href="#isaaclab_mimic.datagen.DataGenerator.generate.params.export_demo">¶</a> – whether to export the demo</p></li>
-<li><p><span class="target" id="isaaclab_mimic.datagen.DataGenerator.generate.params.motion_planner"></span><strong>motion_planner</strong><a class="paramlink headerlink reference internal" href="#isaaclab_mimic.datagen.DataGenerator.generate.params.motion_planner">¶</a> – motion planner to use for motion planning</p></li>
+<li><p><strong>env_id</strong> – environment ID</p></li>
+<li><p><strong>success_term</strong> – success function to check if the task is successful</p></li>
+<li><p><strong>env_reset_queue</strong> – queue to store environment IDs for reset</p></li>
+<li><p><strong>env_action_queue</strong> – queue to store actions for each environment</p></li>
+<li><p><strong>pause_subtask</strong> – whether to pause the subtask generation</p></li>
+<li><p><strong>export_demo</strong> – whether to export the demo</p></li>
+<li><p><strong>motion_planner</strong> – motion planner to use for motion planning</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -1036,17 +1037,17 @@ the precise start of a subtask from a demonstration.</p></li>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_mimic.datagen.DatagenInfo.params.eef_pose"></span><strong>eef_pose</strong><a class="paramlink headerlink reference internal" href="#isaaclab_mimic.datagen.DatagenInfo.params.eef_pose">¶</a> (<a class="reference external" href="https://docs.pytorch.org/docs/2.11/tensors.html#torch.Tensor" title="(in PyTorch v2.11)"><em>torch.Tensor</em></a><em> or </em><em>None</em>) – robot end effector poses of shape […, 4, 4]</p></li>
-<li><p><span class="target" id="isaaclab_mimic.datagen.DatagenInfo.params.object_poses"></span><strong>object_poses</strong><a class="paramlink headerlink reference internal" href="#isaaclab_mimic.datagen.DatagenInfo.params.object_poses">¶</a> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)"><em>dict</em></a><em> or </em><em>None</em>) – dictionary mapping object name to object poses
+<li><p><strong>eef_pose</strong> (<a class="reference external" href="https://docs.pytorch.org/docs/2.11/tensors.html#torch.Tensor" title="(in PyTorch v2.11)"><em>torch.Tensor</em></a><em> or </em><em>None</em>) – robot end effector poses of shape […, 4, 4]</p></li>
+<li><p><strong>object_poses</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)"><em>dict</em></a><em> or </em><em>None</em>) – dictionary mapping object name to object poses
 of shape […, 4, 4]</p></li>
-<li><p><span class="target" id="isaaclab_mimic.datagen.DatagenInfo.params.subtask_start_signals"></span><strong>subtask_start_signals</strong><a class="paramlink headerlink reference internal" href="#isaaclab_mimic.datagen.DatagenInfo.params.subtask_start_signals">¶</a> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)"><em>dict</em></a><em> or </em><em>None</em>) – dictionary mapping subtask name to a binary
+<li><p><strong>subtask_start_signals</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)"><em>dict</em></a><em> or </em><em>None</em>) – dictionary mapping subtask name to a binary
 indicator (0 or 1) on whether subtask has started. This is required when using skillgen.
 Each value in the dictionary could be an int, float, or torch.Tensor of shape […, 1].</p></li>
-<li><p><span class="target" id="isaaclab_mimic.datagen.DatagenInfo.params.subtask_term_signals"></span><strong>subtask_term_signals</strong><a class="paramlink headerlink reference internal" href="#isaaclab_mimic.datagen.DatagenInfo.params.subtask_term_signals">¶</a> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)"><em>dict</em></a><em> or </em><em>None</em>) – dictionary mapping subtask name to a binary
+<li><p><strong>subtask_term_signals</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)"><em>dict</em></a><em> or </em><em>None</em>) – dictionary mapping subtask name to a binary
 indicator (0 or 1) on whether subtask has been completed. Each value in the
 dictionary could be an int, float, or torch.Tensor of shape […, 1].</p></li>
-<li><p><span class="target" id="isaaclab_mimic.datagen.DatagenInfo.params.target_eef_pose"></span><strong>target_eef_pose</strong><a class="paramlink headerlink reference internal" href="#isaaclab_mimic.datagen.DatagenInfo.params.target_eef_pose">¶</a> (<a class="reference external" href="https://docs.pytorch.org/docs/2.11/tensors.html#torch.Tensor" title="(in PyTorch v2.11)"><em>torch.Tensor</em></a><em> or </em><em>None</em>) – target end effector poses of shape […, 4, 4]</p></li>
-<li><p><span class="target" id="isaaclab_mimic.datagen.DatagenInfo.params.gripper_action"></span><strong>gripper_action</strong><a class="paramlink headerlink reference internal" href="#isaaclab_mimic.datagen.DatagenInfo.params.gripper_action">¶</a> (<a class="reference external" href="https://docs.pytorch.org/docs/2.11/tensors.html#torch.Tensor" title="(in PyTorch v2.11)"><em>torch.Tensor</em></a><em> or </em><em>None</em>) – gripper actions of shape […, D] where D
+<li><p><strong>target_eef_pose</strong> (<a class="reference external" href="https://docs.pytorch.org/docs/2.11/tensors.html#torch.Tensor" title="(in PyTorch v2.11)"><em>torch.Tensor</em></a><em> or </em><em>None</em>) – target end effector poses of shape […, 4, 4]</p></li>
+<li><p><strong>gripper_action</strong> (<a class="reference external" href="https://docs.pytorch.org/docs/2.11/tensors.html#torch.Tensor" title="(in PyTorch v2.11)"><em>torch.Tensor</em></a><em> or </em><em>None</em>) – gripper actions of shape […, D] where D
 is the dimension of the gripper actuation action for the robot arm</p></li>
 </ul>
 </dd>
@@ -1104,9 +1105,9 @@ consuming the data, so it can be shared across multiple mimic data generators.</
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_mimic.datagen.DataGenInfoPool.params.env_cfg"></span><strong>env_cfg</strong><a class="paramlink headerlink reference internal" href="#isaaclab_mimic.datagen.DataGenInfoPool.params.env_cfg">¶</a> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)"><em>dict</em></a>) – environment configuration</p></li>
-<li><p><span class="target" id="isaaclab_mimic.datagen.DataGenInfoPool.params.device"></span><strong>device</strong><a class="paramlink headerlink reference internal" href="#isaaclab_mimic.datagen.DataGenInfoPool.params.device">¶</a> (<a class="reference external" href="https://docs.pytorch.org/docs/2.11/tensor_attributes.html#torch.device" title="(in PyTorch v2.11)"><em>torch.device</em></a>) – device to store the data</p></li>
-<li><p><span class="target" id="isaaclab_mimic.datagen.DataGenInfoPool.params.asyncio_lock"></span><strong>asyncio_lock</strong><a class="paramlink headerlink reference internal" href="#isaaclab_mimic.datagen.DataGenInfoPool.params.asyncio_lock">¶</a> (<a class="reference external" href="https://docs.python.org/3/library/asyncio-sync.html#asyncio.Lock" title="(in Python v3.14)"><em>asyncio.Lock</em></a><em> or </em><em>None</em>) – asyncio lock to use for thread safety</p></li>
+<li><p><strong>env_cfg</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)"><em>dict</em></a>) – environment configuration</p></li>
+<li><p><strong>device</strong> (<a class="reference external" href="https://docs.pytorch.org/docs/2.11/tensor_attributes.html#torch.device" title="(in PyTorch v2.11)"><em>torch.device</em></a>) – device to store the data</p></li>
+<li><p><strong>asyncio_lock</strong> (<a class="reference external" href="https://docs.python.org/3/library/asyncio-sync.html#asyncio.Lock" title="(in Python v3.14)"><em>asyncio.Lock</em></a><em> or </em><em>None</em>) – asyncio lock to use for thread safety</p></li>
 </ul>
 </dd>
 </dl>
@@ -1142,7 +1143,7 @@ consuming the data, so it can be shared across multiple mimic data generators.</
 <dd><p>Add a datagen info from the given episode.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab_mimic.datagen.DataGenInfoPool.add_episode.params.episode"></span><strong>episode</strong><a class="paramlink headerlink reference internal" href="#isaaclab_mimic.datagen.DataGenInfoPool.add_episode.params.episode">¶</a> (<em>EpisodeData</em>) – episode to add</p>
+<dd class="field-odd"><p><strong>episode</strong> (<em>EpisodeData</em>) – episode to add</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1154,8 +1155,8 @@ consuming the data, so it can be shared across multiple mimic data generators.</
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_mimic.datagen.DataGenInfoPool.load_from_dataset_file.params.file_path"></span><strong>file_path</strong><a class="paramlink headerlink reference internal" href="#isaaclab_mimic.datagen.DataGenInfoPool.load_from_dataset_file.params.file_path">¶</a> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>) – path to the dataset file</p></li>
-<li><p><span class="target" id="isaaclab_mimic.datagen.DataGenInfoPool.load_from_dataset_file.params.select_demo_keys"></span><strong>select_demo_keys</strong><a class="paramlink headerlink reference internal" href="#isaaclab_mimic.datagen.DataGenInfoPool.load_from_dataset_file.params.select_demo_keys">¶</a> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em> or </em><em>None</em>) – keys of the demos to load</p></li>
+<li><p><strong>file_path</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>) – path to the dataset file</p></li>
+<li><p><strong>select_demo_keys</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em> or </em><em>None</em>) – keys of the demos to load</p></li>
 </ul>
 </dd>
 </dl>
@@ -1191,9 +1192,9 @@ current subtask.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_mimic.datagen.RandomStrategy.select_source_demo.params.eef_pose"></span><strong>eef_pose</strong><a class="paramlink headerlink reference internal" href="#isaaclab_mimic.datagen.RandomStrategy.select_source_demo.params.eef_pose">¶</a> (<a class="reference external" href="https://docs.pytorch.org/docs/2.11/tensors.html#torch.Tensor" title="(in PyTorch v2.11)"><em>torch.Tensor</em></a>) – current 4x4 eef pose</p></li>
-<li><p><span class="target" id="isaaclab_mimic.datagen.RandomStrategy.select_source_demo.params.object_pose"></span><strong>object_pose</strong><a class="paramlink headerlink reference internal" href="#isaaclab_mimic.datagen.RandomStrategy.select_source_demo.params.object_pose">¶</a> (<a class="reference external" href="https://docs.pytorch.org/docs/2.11/tensors.html#torch.Tensor" title="(in PyTorch v2.11)"><em>torch.Tensor</em></a>) – current 4x4 object pose, for the object in this subtask</p></li>
-<li><p><span class="target" id="isaaclab_mimic.datagen.RandomStrategy.select_source_demo.params.src_subtask_datagen_infos"></span><strong>src_subtask_datagen_infos</strong><a class="paramlink headerlink reference internal" href="#isaaclab_mimic.datagen.RandomStrategy.select_source_demo.params.src_subtask_datagen_infos">¶</a> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><em>list</em></a>) – DatagenInfo instance for the relevant subtask segment
+<li><p><strong>eef_pose</strong> (<a class="reference external" href="https://docs.pytorch.org/docs/2.11/tensors.html#torch.Tensor" title="(in PyTorch v2.11)"><em>torch.Tensor</em></a>) – current 4x4 eef pose</p></li>
+<li><p><strong>object_pose</strong> (<a class="reference external" href="https://docs.pytorch.org/docs/2.11/tensors.html#torch.Tensor" title="(in PyTorch v2.11)"><em>torch.Tensor</em></a>) – current 4x4 object pose, for the object in this subtask</p></li>
+<li><p><strong>src_subtask_datagen_infos</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><em>list</em></a>) – DatagenInfo instance for the relevant subtask segment
 in the source demonstrations</p></li>
 </ul>
 </dd>
@@ -1242,13 +1243,13 @@ current subtask.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_mimic.datagen.NearestNeighborObjectStrategy.select_source_demo.params.eef_pose"></span><strong>eef_pose</strong><a class="paramlink headerlink reference internal" href="#isaaclab_mimic.datagen.NearestNeighborObjectStrategy.select_source_demo.params.eef_pose">¶</a> (<a class="reference external" href="https://docs.pytorch.org/docs/2.11/tensors.html#torch.Tensor" title="(in PyTorch v2.11)"><em>torch.Tensor</em></a>) – current 4x4 eef pose</p></li>
-<li><p><span class="target" id="isaaclab_mimic.datagen.NearestNeighborObjectStrategy.select_source_demo.params.object_pose"></span><strong>object_pose</strong><a class="paramlink headerlink reference internal" href="#isaaclab_mimic.datagen.NearestNeighborObjectStrategy.select_source_demo.params.object_pose">¶</a> (<a class="reference external" href="https://docs.pytorch.org/docs/2.11/tensors.html#torch.Tensor" title="(in PyTorch v2.11)"><em>torch.Tensor</em></a>) – current 4x4 object pose, for the object in this subtask</p></li>
-<li><p><span class="target" id="isaaclab_mimic.datagen.NearestNeighborObjectStrategy.select_source_demo.params.src_subtask_datagen_infos"></span><strong>src_subtask_datagen_infos</strong><a class="paramlink headerlink reference internal" href="#isaaclab_mimic.datagen.NearestNeighborObjectStrategy.select_source_demo.params.src_subtask_datagen_infos">¶</a> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><em>list</em></a>) – DatagenInfo instance for the relevant subtask segment
+<li><p><strong>eef_pose</strong> (<a class="reference external" href="https://docs.pytorch.org/docs/2.11/tensors.html#torch.Tensor" title="(in PyTorch v2.11)"><em>torch.Tensor</em></a>) – current 4x4 eef pose</p></li>
+<li><p><strong>object_pose</strong> (<a class="reference external" href="https://docs.pytorch.org/docs/2.11/tensors.html#torch.Tensor" title="(in PyTorch v2.11)"><em>torch.Tensor</em></a>) – current 4x4 object pose, for the object in this subtask</p></li>
+<li><p><strong>src_subtask_datagen_infos</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><em>list</em></a>) – DatagenInfo instance for the relevant subtask segment
 in the source demonstrations</p></li>
-<li><p><span class="target" id="isaaclab_mimic.datagen.NearestNeighborObjectStrategy.select_source_demo.params.pos_weight"></span><strong>pos_weight</strong><a class="paramlink headerlink reference internal" href="#isaaclab_mimic.datagen.NearestNeighborObjectStrategy.select_source_demo.params.pos_weight">¶</a> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><em>float</em></a>) – weight on position for minimizing pose distance</p></li>
-<li><p><span class="target" id="isaaclab_mimic.datagen.NearestNeighborObjectStrategy.select_source_demo.params.rot_weight"></span><strong>rot_weight</strong><a class="paramlink headerlink reference internal" href="#isaaclab_mimic.datagen.NearestNeighborObjectStrategy.select_source_demo.params.rot_weight">¶</a> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><em>float</em></a>) – weight on rotation for minimizing pose distance</p></li>
-<li><p><span class="target" id="isaaclab_mimic.datagen.NearestNeighborObjectStrategy.select_source_demo.params.nn_k"></span><strong>nn_k</strong><a class="paramlink headerlink reference internal" href="#isaaclab_mimic.datagen.NearestNeighborObjectStrategy.select_source_demo.params.nn_k">¶</a> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a>) – pick source demo index uniformly at randomly from the top &#64;nn_k nearest neighbors</p></li>
+<li><p><strong>pos_weight</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><em>float</em></a>) – weight on position for minimizing pose distance</p></li>
+<li><p><strong>rot_weight</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><em>float</em></a>) – weight on rotation for minimizing pose distance</p></li>
+<li><p><strong>nn_k</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a>) – pick source demo index uniformly at randomly from the top &#64;nn_k nearest neighbors</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -1297,13 +1298,13 @@ current subtask.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_mimic.datagen.NearestNeighborRobotDistanceStrategy.select_source_demo.params.eef_pose"></span><strong>eef_pose</strong><a class="paramlink headerlink reference internal" href="#isaaclab_mimic.datagen.NearestNeighborRobotDistanceStrategy.select_source_demo.params.eef_pose">¶</a> (<a class="reference external" href="https://docs.pytorch.org/docs/2.11/tensors.html#torch.Tensor" title="(in PyTorch v2.11)"><em>torch.Tensor</em></a>) – current 4x4 eef pose</p></li>
-<li><p><span class="target" id="isaaclab_mimic.datagen.NearestNeighborRobotDistanceStrategy.select_source_demo.params.object_pose"></span><strong>object_pose</strong><a class="paramlink headerlink reference internal" href="#isaaclab_mimic.datagen.NearestNeighborRobotDistanceStrategy.select_source_demo.params.object_pose">¶</a> (<a class="reference external" href="https://docs.pytorch.org/docs/2.11/tensors.html#torch.Tensor" title="(in PyTorch v2.11)"><em>torch.Tensor</em></a>) – current 4x4 object pose, for the object in this subtask</p></li>
-<li><p><span class="target" id="isaaclab_mimic.datagen.NearestNeighborRobotDistanceStrategy.select_source_demo.params.src_subtask_datagen_infos"></span><strong>src_subtask_datagen_infos</strong><a class="paramlink headerlink reference internal" href="#isaaclab_mimic.datagen.NearestNeighborRobotDistanceStrategy.select_source_demo.params.src_subtask_datagen_infos">¶</a> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><em>list</em></a>) – DatagenInfo instance for the relevant subtask segment
+<li><p><strong>eef_pose</strong> (<a class="reference external" href="https://docs.pytorch.org/docs/2.11/tensors.html#torch.Tensor" title="(in PyTorch v2.11)"><em>torch.Tensor</em></a>) – current 4x4 eef pose</p></li>
+<li><p><strong>object_pose</strong> (<a class="reference external" href="https://docs.pytorch.org/docs/2.11/tensors.html#torch.Tensor" title="(in PyTorch v2.11)"><em>torch.Tensor</em></a>) – current 4x4 object pose, for the object in this subtask</p></li>
+<li><p><strong>src_subtask_datagen_infos</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><em>list</em></a>) – DatagenInfo instance for the relevant subtask segment
 in the source demonstrations</p></li>
-<li><p><span class="target" id="isaaclab_mimic.datagen.NearestNeighborRobotDistanceStrategy.select_source_demo.params.pos_weight"></span><strong>pos_weight</strong><a class="paramlink headerlink reference internal" href="#isaaclab_mimic.datagen.NearestNeighborRobotDistanceStrategy.select_source_demo.params.pos_weight">¶</a> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><em>float</em></a>) – weight on position for minimizing pose distance</p></li>
-<li><p><span class="target" id="isaaclab_mimic.datagen.NearestNeighborRobotDistanceStrategy.select_source_demo.params.rot_weight"></span><strong>rot_weight</strong><a class="paramlink headerlink reference internal" href="#isaaclab_mimic.datagen.NearestNeighborRobotDistanceStrategy.select_source_demo.params.rot_weight">¶</a> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><em>float</em></a>) – weight on rotation for minimizing pose distance</p></li>
-<li><p><span class="target" id="isaaclab_mimic.datagen.NearestNeighborRobotDistanceStrategy.select_source_demo.params.nn_k"></span><strong>nn_k</strong><a class="paramlink headerlink reference internal" href="#isaaclab_mimic.datagen.NearestNeighborRobotDistanceStrategy.select_source_demo.params.nn_k">¶</a> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a>) – pick source demo index uniformly at randomly from the top &#64;nn_k nearest neighbors</p></li>
+<li><p><strong>pos_weight</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><em>float</em></a>) – weight on position for minimizing pose distance</p></li>
+<li><p><strong>rot_weight</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><em>float</em></a>) – weight on rotation for minimizing pose distance</p></li>
+<li><p><strong>nn_k</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a>) – pick source demo index uniformly at randomly from the top &#64;nn_k nearest neighbors</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -1344,9 +1345,9 @@ in the source demonstrations</p></li>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_mimic.datagen.Waypoint.params.pose"></span><strong>pose</strong><a class="paramlink headerlink reference internal" href="#isaaclab_mimic.datagen.Waypoint.params.pose">¶</a> (<a class="reference external" href="https://docs.pytorch.org/docs/2.11/tensors.html#torch.Tensor" title="(in PyTorch v2.11)"><em>torch.Tensor</em></a>) – 4x4 pose target for robot controller</p></li>
-<li><p><span class="target" id="isaaclab_mimic.datagen.Waypoint.params.gripper_action"></span><strong>gripper_action</strong><a class="paramlink headerlink reference internal" href="#isaaclab_mimic.datagen.Waypoint.params.gripper_action">¶</a> (<a class="reference external" href="https://docs.pytorch.org/docs/2.11/tensors.html#torch.Tensor" title="(in PyTorch v2.11)"><em>torch.Tensor</em></a>) – gripper action for robot controller</p></li>
-<li><p><span class="target" id="isaaclab_mimic.datagen.Waypoint.params.noise"></span><strong>noise</strong><a class="paramlink headerlink reference internal" href="#isaaclab_mimic.datagen.Waypoint.params.noise">¶</a> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><em>float</em></a><em> or </em><em>None</em>) – action noise amplitude to apply during execution at this timestep
+<li><p><strong>pose</strong> (<a class="reference external" href="https://docs.pytorch.org/docs/2.11/tensors.html#torch.Tensor" title="(in PyTorch v2.11)"><em>torch.Tensor</em></a>) – 4x4 pose target for robot controller</p></li>
+<li><p><strong>gripper_action</strong> (<a class="reference external" href="https://docs.pytorch.org/docs/2.11/tensors.html#torch.Tensor" title="(in PyTorch v2.11)"><em>torch.Tensor</em></a>) – gripper action for robot controller</p></li>
+<li><p><strong>noise</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><em>float</em></a><em> or </em><em>None</em>) – action noise amplitude to apply during execution at this timestep
 (for arm actions, not gripper actions)</p></li>
 </ul>
 </dd>
@@ -1391,7 +1392,7 @@ in the source demonstrations</p></li>
 <span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sequence</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/isaaclab_mimic/datagen/waypoint.html#WaypointSequence.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#isaaclab_mimic.datagen.WaypointSequence.__init__" title="Link to this definition">#</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab_mimic.datagen.WaypointSequence.params.sequence"></span><strong>sequence</strong><a class="paramlink headerlink reference internal" href="#isaaclab_mimic.datagen.WaypointSequence.params.sequence">¶</a> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><em>list</em></a><em> or </em><em>None</em>) – if provided, should be a list of Waypoint objects</p>
+<dd class="field-odd"><p><strong>sequence</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><em>list</em></a><em> or </em><em>None</em>) – if provided, should be a list of Waypoint objects</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1404,10 +1405,10 @@ gripper actions, and action noise.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_mimic.datagen.WaypointSequence.from_poses.params.poses"></span><strong>poses</strong><a class="paramlink headerlink reference internal" href="#isaaclab_mimic.datagen.WaypointSequence.from_poses.params.poses">¶</a> (<a class="reference external" href="https://docs.pytorch.org/docs/2.11/tensors.html#torch.Tensor" title="(in PyTorch v2.11)"><em>torch.Tensor</em></a>) – sequence of pose matrices of shape (T, 4, 4)</p></li>
-<li><p><span class="target" id="isaaclab_mimic.datagen.WaypointSequence.from_poses.params.gripper_actions"></span><strong>gripper_actions</strong><a class="paramlink headerlink reference internal" href="#isaaclab_mimic.datagen.WaypointSequence.from_poses.params.gripper_actions">¶</a> (<a class="reference external" href="https://docs.pytorch.org/docs/2.11/tensors.html#torch.Tensor" title="(in PyTorch v2.11)"><em>torch.Tensor</em></a>) – sequence of gripper actions
+<li><p><strong>poses</strong> (<a class="reference external" href="https://docs.pytorch.org/docs/2.11/tensors.html#torch.Tensor" title="(in PyTorch v2.11)"><em>torch.Tensor</em></a>) – sequence of pose matrices of shape (T, 4, 4)</p></li>
+<li><p><strong>gripper_actions</strong> (<a class="reference external" href="https://docs.pytorch.org/docs/2.11/tensors.html#torch.Tensor" title="(in PyTorch v2.11)"><em>torch.Tensor</em></a>) – sequence of gripper actions
 that should be applied at each timestep of shape (T, D).</p></li>
-<li><p><span class="target" id="isaaclab_mimic.datagen.WaypointSequence.from_poses.params.action_noise"></span><strong>action_noise</strong><a class="paramlink headerlink reference internal" href="#isaaclab_mimic.datagen.WaypointSequence.from_poses.params.action_noise">¶</a> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><em>float</em></a><em> or </em><a class="reference external" href="https://docs.pytorch.org/docs/2.11/tensors.html#torch.Tensor" title="(in PyTorch v2.11)"><em>torch.Tensor</em></a>) – sequence of action noise
+<li><p><strong>action_noise</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><em>float</em></a><em> or </em><a class="reference external" href="https://docs.pytorch.org/docs/2.11/tensors.html#torch.Tensor" title="(in PyTorch v2.11)"><em>torch.Tensor</em></a>) – sequence of action noise
 magnitudes that should be applied at each timestep. If a
 single float is provided, the noise magnitude will be
 constant over the trajectory.</p></li>
@@ -1498,7 +1499,7 @@ rest. Returns 2 WaypointSequence objects.</p>
 <dd><p>Directly append sequence to list (no interpolation).</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab_mimic.datagen.WaypointTrajectory.add_waypoint_sequence.params.sequence"></span><strong>sequence</strong><a class="paramlink headerlink reference internal" href="#isaaclab_mimic.datagen.WaypointTrajectory.add_waypoint_sequence.params.sequence">¶</a> (<em>WaypointSequence instance</em>) – sequence to add</p>
+<dd class="field-odd"><p><strong>sequence</strong> (<em>WaypointSequence instance</em>) – sequence to add</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1513,14 +1514,14 @@ constant set of target poses (set &#64;skip_interpolation to True).</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_mimic.datagen.WaypointTrajectory.add_waypoint_sequence_for_target_pose.params.pose"></span><strong>pose</strong><a class="paramlink headerlink reference internal" href="#isaaclab_mimic.datagen.WaypointTrajectory.add_waypoint_sequence_for_target_pose.params.pose">¶</a> (<a class="reference external" href="https://docs.pytorch.org/docs/2.11/tensors.html#torch.Tensor" title="(in PyTorch v2.11)"><em>torch.Tensor</em></a>) – 4x4 target pose</p></li>
-<li><p><span class="target" id="isaaclab_mimic.datagen.WaypointTrajectory.add_waypoint_sequence_for_target_pose.params.gripper_action"></span><strong>gripper_action</strong><a class="paramlink headerlink reference internal" href="#isaaclab_mimic.datagen.WaypointTrajectory.add_waypoint_sequence_for_target_pose.params.gripper_action">¶</a> (<a class="reference external" href="https://docs.pytorch.org/docs/2.11/tensors.html#torch.Tensor" title="(in PyTorch v2.11)"><em>torch.Tensor</em></a>) – value for gripper action</p></li>
-<li><p><span class="target" id="isaaclab_mimic.datagen.WaypointTrajectory.add_waypoint_sequence_for_target_pose.params.num_steps"></span><strong>num_steps</strong><a class="paramlink headerlink reference internal" href="#isaaclab_mimic.datagen.WaypointTrajectory.add_waypoint_sequence_for_target_pose.params.num_steps">¶</a> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a>) – number of action steps when trying to reach this waypoint. Will
+<li><p><strong>pose</strong> (<a class="reference external" href="https://docs.pytorch.org/docs/2.11/tensors.html#torch.Tensor" title="(in PyTorch v2.11)"><em>torch.Tensor</em></a>) – 4x4 target pose</p></li>
+<li><p><strong>gripper_action</strong> (<a class="reference external" href="https://docs.pytorch.org/docs/2.11/tensors.html#torch.Tensor" title="(in PyTorch v2.11)"><em>torch.Tensor</em></a>) – value for gripper action</p></li>
+<li><p><strong>num_steps</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a>) – number of action steps when trying to reach this waypoint. Will
 add intermediate linearly interpolated points between the last pose on this trajectory
 and the target pose, so that the total number of steps is &#64;num_steps.</p></li>
-<li><p><span class="target" id="isaaclab_mimic.datagen.WaypointTrajectory.add_waypoint_sequence_for_target_pose.params.skip_interpolation"></span><strong>skip_interpolation</strong><a class="paramlink headerlink reference internal" href="#isaaclab_mimic.datagen.WaypointTrajectory.add_waypoint_sequence_for_target_pose.params.skip_interpolation">¶</a> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><em>bool</em></a>) – if True, keep the target pose fixed and repeat it &#64;num_steps
+<li><p><strong>skip_interpolation</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><em>bool</em></a>) – if True, keep the target pose fixed and repeat it &#64;num_steps
 times instead of using linearly interpolated targets.</p></li>
-<li><p><span class="target" id="isaaclab_mimic.datagen.WaypointTrajectory.add_waypoint_sequence_for_target_pose.params.action_noise"></span><strong>action_noise</strong><a class="paramlink headerlink reference internal" href="#isaaclab_mimic.datagen.WaypointTrajectory.add_waypoint_sequence_for_target_pose.params.action_noise">¶</a> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><em>float</em></a>) – scale of random gaussian noise to add during action execution (e.g.
+<li><p><strong>action_noise</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><em>float</em></a>) – scale of random gaussian noise to add during action execution (e.g.
 when &#64;execute is called)</p></li>
 </ul>
 </dd>
@@ -1546,12 +1547,12 @@ sequence is now empty, it is also removed.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_mimic.datagen.WaypointTrajectory.merge.params.other"></span><strong>other</strong><a class="paramlink headerlink reference internal" href="#isaaclab_mimic.datagen.WaypointTrajectory.merge.params.other">¶</a> (<em>WaypointTrajectory object</em>) – the other trajectory to merge into this one</p></li>
-<li><p><span class="target" id="isaaclab_mimic.datagen.WaypointTrajectory.merge.params.num_steps_interp"></span><strong>num_steps_interp</strong><a class="paramlink headerlink reference internal" href="#isaaclab_mimic.datagen.WaypointTrajectory.merge.params.num_steps_interp">¶</a> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a><em> or </em><em>None</em>) – if not None, add a waypoint sequence that interpolates
+<li><p><strong>other</strong> (<em>WaypointTrajectory object</em>) – the other trajectory to merge into this one</p></li>
+<li><p><strong>num_steps_interp</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a><em> or </em><em>None</em>) – if not None, add a waypoint sequence that interpolates
 between the end of the current trajectory and the start of &#64;other</p></li>
-<li><p><span class="target" id="isaaclab_mimic.datagen.WaypointTrajectory.merge.params.num_steps_fixed"></span><strong>num_steps_fixed</strong><a class="paramlink headerlink reference internal" href="#isaaclab_mimic.datagen.WaypointTrajectory.merge.params.num_steps_fixed">¶</a> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a><em> or </em><em>None</em>) – if not None, add a waypoint sequence that has constant
+<li><p><strong>num_steps_fixed</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a><em> or </em><em>None</em>) – if not None, add a waypoint sequence that has constant
 target poses corresponding to the first target pose in &#64;other</p></li>
-<li><p><span class="target" id="isaaclab_mimic.datagen.WaypointTrajectory.merge.params.action_noise"></span><strong>action_noise</strong><a class="paramlink headerlink reference internal" href="#isaaclab_mimic.datagen.WaypointTrajectory.merge.params.action_noise">¶</a> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><em>float</em></a>) – noise to use during the interpolation segment</p></li>
+<li><p><strong>action_noise</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><em>float</em></a>) – noise to use during the interpolation segment</p></li>
 </ul>
 </dd>
 </dl>

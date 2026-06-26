@@ -36,7 +36,6 @@
     <link rel="stylesheet" type="text/css" href="/opt/hostedtoolcache/Python/3.12.13/x64/lib/python3.12/site-packages/sphinxcontrib/icon/node_modules/@fortawesome/fontawesome-free/css/all.min.css?v=53359634" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx_paramlinks.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=8fb98eed" />
   
   <!-- So that users can add custom icons -->
@@ -164,6 +163,8 @@
             <option value="../../../../../develop/source/api/lab_contrib/isaaclab_contrib.assets.html" >develop</option>
             <option value="../../../../../main/source/api/lab_contrib/isaaclab_contrib.assets.html" >main</option>
             <option value="isaaclab_contrib.assets.html" selected>release/3.0.0-beta2</option>
+            <option value="../../../../../v3.0.0-beta2/source/api/lab_contrib/isaaclab_contrib.assets.html" >v3.0.0-beta2</option>
+            <option value="../../../../../v3.0.0-beta/source/api/lab_contrib/isaaclab_contrib.assets.html" >v3.0.0-beta</option>
             <option value="../../../../../v2.3.2/source/api/lab_contrib/isaaclab_contrib.assets.html" >v2.3.2</option>
             <option value="../../../../../v2.3.1/index.html" >v2.3.1</option>
             <option value="../../../../../v2.3.0/index.html" >v2.3.0</option>
@@ -1670,7 +1671,7 @@ attribute. They are used to compute the thruster commands during the <a class="r
 <dd><p>Initialize the multirotor articulation.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab_contrib.assets.Multirotor.params.cfg"></span><strong>cfg</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.params.cfg">¶</a> – A configuration instance.</p>
+<dd class="field-odd"><p><strong>cfg</strong> – A configuration instance.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1735,12 +1736,12 @@ and constraints (thrust limits) to these targets.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.set_thrust_target.params.target"></span><strong>target</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.set_thrust_target.params.target">¶</a> – Target thrust values. Shape is (num_envs, num_thrusters) or (num_envs,).
+<li><p><strong>target</strong> – Target thrust values. Shape is (num_envs, num_thrusters) or (num_envs,).
 The values are typically in the same units as configured in the thruster actuator
 (e.g., Newtons for force, or revolutions per second for RPS).</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.set_thrust_target.params.thruster_ids"></span><strong>thruster_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.set_thrust_target.params.thruster_ids">¶</a> – Indices of thrusters to set. Defaults to None (all thrusters).
+<li><p><strong>thruster_ids</strong> – Indices of thrusters to set. Defaults to None (all thrusters).
 Can be a sequence of integers, a slice, or None.</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.set_thrust_target.params.env_ids"></span><strong>env_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.set_thrust_target.params.env_ids">¶</a> – Environment indices to set. Defaults to None (all environments).
+<li><p><strong>env_ids</strong> – Environment indices to set. Defaults to None (all environments).
 Can be a sequence of integers or None.</p></li>
 </ul>
 </dd>
@@ -1768,7 +1769,7 @@ multirotor-specific state (thruster targets) to their default values as specifie
 in the configuration.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab_contrib.assets.Multirotor.reset.params.env_ids"></span><strong>env_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.reset.params.env_ids">¶</a> – Environment indices to reset. Defaults to None (all environments).
+<dd class="field-odd"><p><strong>env_ids</strong> – Environment indices to reset. Defaults to None (all environments).
 Can be a sequence of integers or None.</p>
 </dd>
 </dl>
@@ -1811,10 +1812,10 @@ disabled this method is a no-op.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.assert_shape_and_dtype.params.tensor"></span><strong>tensor</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.assert_shape_and_dtype.params.tensor">¶</a> – The tensor or warp array to assert the shape of. Floats are skipped.</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.assert_shape_and_dtype.params.shape"></span><strong>shape</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.assert_shape_and_dtype.params.shape">¶</a> – The expected leading dimensions (e.g. <code class="docutils literal notranslate"><span class="pre">(num_envs,</span> <span class="pre">num_joints)</span></code>).</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.assert_shape_and_dtype.params.dtype"></span><strong>dtype</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.assert_shape_and_dtype.params.dtype">¶</a> – The expected warp dtype.</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.assert_shape_and_dtype.params.name"></span><strong>name</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.assert_shape_and_dtype.params.name">¶</a> – Optional parameter name for error messages.</p></li>
+<li><p><strong>tensor</strong> – The tensor or warp array to assert the shape of. Floats are skipped.</p></li>
+<li><p><strong>shape</strong> – The expected leading dimensions (e.g. <code class="docutils literal notranslate"><span class="pre">(num_envs,</span> <span class="pre">num_joints)</span></code>).</p></li>
+<li><p><strong>dtype</strong> – The expected warp dtype.</p></li>
+<li><p><strong>name</strong> – Optional parameter name for error messages.</p></li>
 </ul>
 </dd>
 </dl>
@@ -1833,11 +1834,11 @@ disabled this method is a no-op.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.assert_shape_and_dtype_mask.params.tensor"></span><strong>tensor</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.assert_shape_and_dtype_mask.params.tensor">¶</a> – The tensor or warp array to assert the shape of. Floats are skipped.</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.assert_shape_and_dtype_mask.params.masks"></span><strong>masks</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.assert_shape_and_dtype_mask.params.masks">¶</a> – Tuple of mask arrays whose <code class="docutils literal notranslate"><span class="pre">shape[0]</span></code> dimensions form the expected leading shape.</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.assert_shape_and_dtype_mask.params.dtype"></span><strong>dtype</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.assert_shape_and_dtype_mask.params.dtype">¶</a> – The expected warp dtype.</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.assert_shape_and_dtype_mask.params.name"></span><strong>name</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.assert_shape_and_dtype_mask.params.name">¶</a> – Optional parameter name for error messages.</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.assert_shape_and_dtype_mask.params.trailing_dims"></span><strong>trailing_dims</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.assert_shape_and_dtype_mask.params.trailing_dims">¶</a> – Extra trailing dimensions to append (e.g. <code class="docutils literal notranslate"><span class="pre">(9,)</span></code> for inertias with <code class="docutils literal notranslate"><span class="pre">wp.float32</span></code>).</p></li>
+<li><p><strong>tensor</strong> – The tensor or warp array to assert the shape of. Floats are skipped.</p></li>
+<li><p><strong>masks</strong> – Tuple of mask arrays whose <code class="docutils literal notranslate"><span class="pre">shape[0]</span></code> dimensions form the expected leading shape.</p></li>
+<li><p><strong>dtype</strong> – The expected warp dtype.</p></li>
+<li><p><strong>name</strong> – Optional parameter name for error messages.</p></li>
+<li><p><strong>trailing_dims</strong> – Extra trailing dimensions to append (e.g. <code class="docutils literal notranslate"><span class="pre">(9,)</span></code> for inertias with <code class="docutils literal notranslate"><span class="pre">wp.float32</span></code>).</p></li>
 </ul>
 </dd>
 </dl>
@@ -1870,8 +1871,8 @@ information on the name matching.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.find_bodies.params.name_keys"></span><strong>name_keys</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.find_bodies.params.name_keys">¶</a> – A regular expression or a list of regular expressions to match the body names.</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.find_bodies.params.preserve_order"></span><strong>preserve_order</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.find_bodies.params.preserve_order">¶</a> – Whether to preserve the order of the name keys in the output. Defaults to False.</p></li>
+<li><p><strong>name_keys</strong> – A regular expression or a list of regular expressions to match the body names.</p></li>
+<li><p><strong>preserve_order</strong> – Whether to preserve the order of the name keys in the output. Defaults to False.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -1889,11 +1890,11 @@ on the name matching.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.find_fixed_tendons.params.name_keys"></span><strong>name_keys</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.find_fixed_tendons.params.name_keys">¶</a> – A regular expression or a list of regular expressions to match the joint
+<li><p><strong>name_keys</strong> – A regular expression or a list of regular expressions to match the joint
 names with fixed tendons.</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.find_fixed_tendons.params.tendon_subsets"></span><strong>tendon_subsets</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.find_fixed_tendons.params.tendon_subsets">¶</a> – A subset of joints with fixed tendons to search for. Defaults to None, which means
+<li><p><strong>tendon_subsets</strong> – A subset of joints with fixed tendons to search for. Defaults to None, which means
 all joints in the articulation are searched.</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.find_fixed_tendons.params.preserve_order"></span><strong>preserve_order</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.find_fixed_tendons.params.preserve_order">¶</a> – Whether to preserve the order of the name keys in the output. Defaults to False.</p></li>
+<li><p><strong>preserve_order</strong> – Whether to preserve the order of the name keys in the output. Defaults to False.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -1911,10 +1912,10 @@ on the name matching.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.find_joints.params.name_keys"></span><strong>name_keys</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.find_joints.params.name_keys">¶</a> – A regular expression or a list of regular expressions to match the joint names.</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.find_joints.params.joint_subset"></span><strong>joint_subset</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.find_joints.params.joint_subset">¶</a> – A subset of joints to search for. Defaults to None, which means all joints
+<li><p><strong>name_keys</strong> – A regular expression or a list of regular expressions to match the joint names.</p></li>
+<li><p><strong>joint_subset</strong> – A subset of joints to search for. Defaults to None, which means all joints
 in the articulation are searched.</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.find_joints.params.preserve_order"></span><strong>preserve_order</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.find_joints.params.preserve_order">¶</a> – Whether to preserve the order of the name keys in the output. Defaults to False.</p></li>
+<li><p><strong>preserve_order</strong> – Whether to preserve the order of the name keys in the output. Defaults to False.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -1932,10 +1933,10 @@ on the name matching.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.find_spatial_tendons.params.name_keys"></span><strong>name_keys</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.find_spatial_tendons.params.name_keys">¶</a> – A regular expression or a list of regular expressions to match the tendon names.</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.find_spatial_tendons.params.tendon_subsets"></span><strong>tendon_subsets</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.find_spatial_tendons.params.tendon_subsets">¶</a> – A subset of tendons to search for. Defaults to None, which means all tendons
+<li><p><strong>name_keys</strong> – A regular expression or a list of regular expressions to match the tendon names.</p></li>
+<li><p><strong>tendon_subsets</strong> – A subset of tendons to search for. Defaults to None, which means all tendons
 in the articulation are searched.</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.find_spatial_tendons.params.preserve_order"></span><strong>preserve_order</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.find_spatial_tendons.params.preserve_order">¶</a> – Whether to preserve the order of the name keys in the output. Defaults to False.</p></li>
+<li><p><strong>preserve_order</strong> – Whether to preserve the order of the name keys in the output. Defaults to False.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -2074,12 +2075,12 @@ is only supporting indexing, hence masks need to be converted to indices.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.set_coms_index.params.coms"></span><strong>coms</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.set_coms_index.params.coms">¶</a> – Center of mass pose of all bodies. Shape is (len(env_ids), len(body_ids), 7) or
+<li><p><strong>coms</strong> – Center of mass pose of all bodies. Shape is (len(env_ids), len(body_ids), 7) or
 (num_instances, num_bodies, 7) if full_data, or (len(env_ids), len(body_ids)) /
 (num_instances, num_bodies) with dtype wp.transformf.</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.set_coms_index.params.body_ids"></span><strong>body_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.set_coms_index.params.body_ids">¶</a> – The body indices to set the center of mass pose for. Defaults to None (all bodies).</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.set_coms_index.params.env_ids"></span><strong>env_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.set_coms_index.params.env_ids">¶</a> – The environment indices to set the center of mass pose for. Defaults to None (all environments).</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.set_coms_index.params.full_data"></span><strong>full_data</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.set_coms_index.params.full_data">¶</a> – Whether to expect full data. Defaults to False.</p></li>
+<li><p><strong>body_ids</strong> – The body indices to set the center of mass pose for. Defaults to None (all bodies).</p></li>
+<li><p><strong>env_ids</strong> – The environment indices to set the center of mass pose for. Defaults to None (all environments).</p></li>
+<li><p><strong>full_data</strong> – Whether to expect full data. Defaults to False.</p></li>
 </ul>
 </dd>
 </dl>
@@ -2101,10 +2102,10 @@ is only supporting indexing, hence masks need to be converted to indices.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.set_coms_mask.params.coms"></span><strong>coms</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.set_coms_mask.params.coms">¶</a> – Center of mass pose of all bodies. Shape is (num_instances, num_bodies, 7)
+<li><p><strong>coms</strong> – Center of mass pose of all bodies. Shape is (num_instances, num_bodies, 7)
 or (num_instances, num_bodies) with dtype wp.transformf.</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.set_coms_mask.params.body_mask"></span><strong>body_mask</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.set_coms_mask.params.body_mask">¶</a> – Body mask. If None, then all bodies are used.</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.set_coms_mask.params.env_mask"></span><strong>env_mask</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.set_coms_mask.params.env_mask">¶</a> – Environment mask. If None, then all the instances are updated. Shape is (num_instances,).</p></li>
+<li><p><strong>body_mask</strong> – Body mask. If None, then all bodies are used.</p></li>
+<li><p><strong>env_mask</strong> – Environment mask. If None, then all the instances are updated. Shape is (num_instances,).</p></li>
 </ul>
 </dd>
 </dl>
@@ -2116,7 +2117,7 @@ or (num_instances, num_bodies) with dtype wp.transformf.</p></li>
 <dd><p>Sets whether to visualize the asset data.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab_contrib.assets.Multirotor.set_debug_vis.params.debug_vis"></span><strong>debug_vis</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.set_debug_vis.params.debug_vis">¶</a> – Whether to visualize the asset data.</p>
+<dd class="field-odd"><p><strong>debug_vis</strong> – Whether to visualize the asset data.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>Whether the debug visualization was successfully set. False if the asset
@@ -2156,11 +2157,11 @@ is only supporting indexing, hence masks need to be converted to indices.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.set_fixed_tendon_damping_index.params.damping"></span><strong>damping</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.set_fixed_tendon_damping_index.params.damping">¶</a> – Fixed tendon damping. Shape is (len(env_ids), len(fixed_tendon_ids)) or
+<li><p><strong>damping</strong> – Fixed tendon damping. Shape is (len(env_ids), len(fixed_tendon_ids)) or
 (num_instances, num_fixed_tendons) if full_data.</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.set_fixed_tendon_damping_index.params.fixed_tendon_ids"></span><strong>fixed_tendon_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.set_fixed_tendon_damping_index.params.fixed_tendon_ids">¶</a> – The tendon indices to set the damping for. Defaults to None (all fixed tendons).</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.set_fixed_tendon_damping_index.params.env_ids"></span><strong>env_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.set_fixed_tendon_damping_index.params.env_ids">¶</a> – Environment indices. If None, then all indices are used.</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.set_fixed_tendon_damping_index.params.full_data"></span><strong>full_data</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.set_fixed_tendon_damping_index.params.full_data">¶</a> – Whether to expect full data. Defaults to False.</p></li>
+<li><p><strong>fixed_tendon_ids</strong> – The tendon indices to set the damping for. Defaults to None (all fixed tendons).</p></li>
+<li><p><strong>env_ids</strong> – Environment indices. If None, then all indices are used.</p></li>
+<li><p><strong>full_data</strong> – Whether to expect full data. Defaults to False.</p></li>
 </ul>
 </dd>
 </dl>
@@ -2185,9 +2186,9 @@ is only supporting indexing, hence masks need to be converted to indices.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.set_fixed_tendon_damping_mask.params.damping"></span><strong>damping</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.set_fixed_tendon_damping_mask.params.damping">¶</a> – Fixed tendon damping. Shape is (num_instances, num_fixed_tendons).</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.set_fixed_tendon_damping_mask.params.fixed_tendon_mask"></span><strong>fixed_tendon_mask</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.set_fixed_tendon_damping_mask.params.fixed_tendon_mask">¶</a> – Fixed tendon mask. If None, then all fixed tendons are used.</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.set_fixed_tendon_damping_mask.params.env_mask"></span><strong>env_mask</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.set_fixed_tendon_damping_mask.params.env_mask">¶</a> – Environment mask. If None, then all the instances are updated. Shape is (num_instances,).</p></li>
+<li><p><strong>damping</strong> – Fixed tendon damping. Shape is (num_instances, num_fixed_tendons).</p></li>
+<li><p><strong>fixed_tendon_mask</strong> – Fixed tendon mask. If None, then all fixed tendons are used.</p></li>
+<li><p><strong>env_mask</strong> – Environment mask. If None, then all the instances are updated. Shape is (num_instances,).</p></li>
 </ul>
 </dd>
 </dl>
@@ -2227,11 +2228,11 @@ is only supporting indexing, hence masks need to be converted to indices.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.set_fixed_tendon_limit_stiffness_index.params.limit_stiffness"></span><strong>limit_stiffness</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.set_fixed_tendon_limit_stiffness_index.params.limit_stiffness">¶</a> – Fixed tendon limit stiffness. Shape is (len(env_ids), len(fixed_tendon_ids)) or
+<li><p><strong>limit_stiffness</strong> – Fixed tendon limit stiffness. Shape is (len(env_ids), len(fixed_tendon_ids)) or
 (num_instances, num_fixed_tendons) if full_data.</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.set_fixed_tendon_limit_stiffness_index.params.fixed_tendon_ids"></span><strong>fixed_tendon_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.set_fixed_tendon_limit_stiffness_index.params.fixed_tendon_ids">¶</a> – The tendon indices to set the limit stiffness for. Defaults to None (all fixed tendons).</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.set_fixed_tendon_limit_stiffness_index.params.env_ids"></span><strong>env_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.set_fixed_tendon_limit_stiffness_index.params.env_ids">¶</a> – Environment indices. If None, then all indices are used.</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.set_fixed_tendon_limit_stiffness_index.params.full_data"></span><strong>full_data</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.set_fixed_tendon_limit_stiffness_index.params.full_data">¶</a> – Whether to expect full data. Defaults to False.</p></li>
+<li><p><strong>fixed_tendon_ids</strong> – The tendon indices to set the limit stiffness for. Defaults to None (all fixed tendons).</p></li>
+<li><p><strong>env_ids</strong> – Environment indices. If None, then all indices are used.</p></li>
+<li><p><strong>full_data</strong> – Whether to expect full data. Defaults to False.</p></li>
 </ul>
 </dd>
 </dl>
@@ -2256,9 +2257,9 @@ is only supporting indexing, hence masks need to be converted to indices.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.set_fixed_tendon_limit_stiffness_mask.params.limit_stiffness"></span><strong>limit_stiffness</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.set_fixed_tendon_limit_stiffness_mask.params.limit_stiffness">¶</a> – Fixed tendon limit stiffness. Shape is (num_instances, num_fixed_tendons).</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.set_fixed_tendon_limit_stiffness_mask.params.fixed_tendon_mask"></span><strong>fixed_tendon_mask</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.set_fixed_tendon_limit_stiffness_mask.params.fixed_tendon_mask">¶</a> – Fixed tendon mask. If None, then all fixed tendons are used.</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.set_fixed_tendon_limit_stiffness_mask.params.env_mask"></span><strong>env_mask</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.set_fixed_tendon_limit_stiffness_mask.params.env_mask">¶</a> – Environment mask. If None, then all the instances are updated. Shape is (num_instances,).</p></li>
+<li><p><strong>limit_stiffness</strong> – Fixed tendon limit stiffness. Shape is (num_instances, num_fixed_tendons).</p></li>
+<li><p><strong>fixed_tendon_mask</strong> – Fixed tendon mask. If None, then all fixed tendons are used.</p></li>
+<li><p><strong>env_mask</strong> – Environment mask. If None, then all the instances are updated. Shape is (num_instances,).</p></li>
 </ul>
 </dd>
 </dl>
@@ -2289,11 +2290,11 @@ is only supporting indexing, hence masks need to be converted to indices.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.set_fixed_tendon_offset_index.params.offset"></span><strong>offset</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.set_fixed_tendon_offset_index.params.offset">¶</a> – Fixed tendon offset. Shape is (len(env_ids), len(fixed_tendon_ids)) or
+<li><p><strong>offset</strong> – Fixed tendon offset. Shape is (len(env_ids), len(fixed_tendon_ids)) or
 (num_instances, num_fixed_tendons) if full_data.</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.set_fixed_tendon_offset_index.params.fixed_tendon_ids"></span><strong>fixed_tendon_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.set_fixed_tendon_offset_index.params.fixed_tendon_ids">¶</a> – The tendon indices to set the offset for. Defaults to None (all fixed tendons).</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.set_fixed_tendon_offset_index.params.env_ids"></span><strong>env_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.set_fixed_tendon_offset_index.params.env_ids">¶</a> – Environment indices. If None, then all indices are used.</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.set_fixed_tendon_offset_index.params.full_data"></span><strong>full_data</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.set_fixed_tendon_offset_index.params.full_data">¶</a> – Whether to expect full data. Defaults to False.</p></li>
+<li><p><strong>fixed_tendon_ids</strong> – The tendon indices to set the offset for. Defaults to None (all fixed tendons).</p></li>
+<li><p><strong>env_ids</strong> – Environment indices. If None, then all indices are used.</p></li>
+<li><p><strong>full_data</strong> – Whether to expect full data. Defaults to False.</p></li>
 </ul>
 </dd>
 </dl>
@@ -2318,9 +2319,9 @@ is only supporting indexing, hence masks need to be converted to indices.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.set_fixed_tendon_offset_mask.params.offset"></span><strong>offset</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.set_fixed_tendon_offset_mask.params.offset">¶</a> – Fixed tendon offset. Shape is (num_instances, num_fixed_tendons).</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.set_fixed_tendon_offset_mask.params.fixed_tendon_mask"></span><strong>fixed_tendon_mask</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.set_fixed_tendon_offset_mask.params.fixed_tendon_mask">¶</a> – Fixed tendon mask. If None, then all fixed tendons are used.</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.set_fixed_tendon_offset_mask.params.env_mask"></span><strong>env_mask</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.set_fixed_tendon_offset_mask.params.env_mask">¶</a> – Environment mask. If None, then all the instances are updated. Shape is (num_instances,).</p></li>
+<li><p><strong>offset</strong> – Fixed tendon offset. Shape is (num_instances, num_fixed_tendons).</p></li>
+<li><p><strong>fixed_tendon_mask</strong> – Fixed tendon mask. If None, then all fixed tendons are used.</p></li>
+<li><p><strong>env_mask</strong> – Environment mask. If None, then all the instances are updated. Shape is (num_instances,).</p></li>
 </ul>
 </dd>
 </dl>
@@ -2351,11 +2352,11 @@ is only supporting indexing, hence masks need to be converted to indices.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.set_fixed_tendon_position_limit_index.params.limit"></span><strong>limit</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.set_fixed_tendon_position_limit_index.params.limit">¶</a> – Fixed tendon position limit. Shape is (len(env_ids), len(fixed_tendon_ids)) or
+<li><p><strong>limit</strong> – Fixed tendon position limit. Shape is (len(env_ids), len(fixed_tendon_ids)) or
 (num_instances, num_fixed_tendons) if full_data.</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.set_fixed_tendon_position_limit_index.params.fixed_tendon_ids"></span><strong>fixed_tendon_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.set_fixed_tendon_position_limit_index.params.fixed_tendon_ids">¶</a> – The tendon indices to set the position limit for. Defaults to None (all fixed tendons).</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.set_fixed_tendon_position_limit_index.params.env_ids"></span><strong>env_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.set_fixed_tendon_position_limit_index.params.env_ids">¶</a> – Environment indices. If None, then all indices are used.</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.set_fixed_tendon_position_limit_index.params.full_data"></span><strong>full_data</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.set_fixed_tendon_position_limit_index.params.full_data">¶</a> – Whether to expect full data. Defaults to False.</p></li>
+<li><p><strong>fixed_tendon_ids</strong> – The tendon indices to set the position limit for. Defaults to None (all fixed tendons).</p></li>
+<li><p><strong>env_ids</strong> – Environment indices. If None, then all indices are used.</p></li>
+<li><p><strong>full_data</strong> – Whether to expect full data. Defaults to False.</p></li>
 </ul>
 </dd>
 </dl>
@@ -2380,9 +2381,9 @@ is only supporting indexing, hence masks need to be converted to indices.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.set_fixed_tendon_position_limit_mask.params.limit"></span><strong>limit</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.set_fixed_tendon_position_limit_mask.params.limit">¶</a> – Fixed tendon position limit. Shape is (num_instances, num_fixed_tendons).</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.set_fixed_tendon_position_limit_mask.params.fixed_tendon_mask"></span><strong>fixed_tendon_mask</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.set_fixed_tendon_position_limit_mask.params.fixed_tendon_mask">¶</a> – Fixed tendon mask. If None, then all fixed tendons are used.</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.set_fixed_tendon_position_limit_mask.params.env_mask"></span><strong>env_mask</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.set_fixed_tendon_position_limit_mask.params.env_mask">¶</a> – Environment mask. If None, then all the instances are updated. Shape is (num_instances,).</p></li>
+<li><p><strong>limit</strong> – Fixed tendon position limit. Shape is (num_instances, num_fixed_tendons).</p></li>
+<li><p><strong>fixed_tendon_mask</strong> – Fixed tendon mask. If None, then all fixed tendons are used.</p></li>
+<li><p><strong>env_mask</strong> – Environment mask. If None, then all the instances are updated. Shape is (num_instances,).</p></li>
 </ul>
 </dd>
 </dl>
@@ -2413,11 +2414,11 @@ is only supporting indexing, hence masks need to be converted to indices.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.set_fixed_tendon_rest_length_index.params.rest_length"></span><strong>rest_length</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.set_fixed_tendon_rest_length_index.params.rest_length">¶</a> – Fixed tendon rest length. Shape is (len(env_ids), len(fixed_tendon_ids)) or
+<li><p><strong>rest_length</strong> – Fixed tendon rest length. Shape is (len(env_ids), len(fixed_tendon_ids)) or
 (num_instances, num_fixed_tendons) if full_data.</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.set_fixed_tendon_rest_length_index.params.fixed_tendon_ids"></span><strong>fixed_tendon_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.set_fixed_tendon_rest_length_index.params.fixed_tendon_ids">¶</a> – The tendon indices to set the rest length for. Defaults to None (all fixed tendons).</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.set_fixed_tendon_rest_length_index.params.env_ids"></span><strong>env_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.set_fixed_tendon_rest_length_index.params.env_ids">¶</a> – Environment indices. If None, then all indices are used.</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.set_fixed_tendon_rest_length_index.params.full_data"></span><strong>full_data</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.set_fixed_tendon_rest_length_index.params.full_data">¶</a> – Whether to expect full data. Defaults to False.</p></li>
+<li><p><strong>fixed_tendon_ids</strong> – The tendon indices to set the rest length for. Defaults to None (all fixed tendons).</p></li>
+<li><p><strong>env_ids</strong> – Environment indices. If None, then all indices are used.</p></li>
+<li><p><strong>full_data</strong> – Whether to expect full data. Defaults to False.</p></li>
 </ul>
 </dd>
 </dl>
@@ -2442,9 +2443,9 @@ is only supporting indexing, hence masks need to be converted to indices.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.set_fixed_tendon_rest_length_mask.params.rest_length"></span><strong>rest_length</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.set_fixed_tendon_rest_length_mask.params.rest_length">¶</a> – Fixed tendon rest length. Shape is (num_instances, num_fixed_tendons).</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.set_fixed_tendon_rest_length_mask.params.fixed_tendon_mask"></span><strong>fixed_tendon_mask</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.set_fixed_tendon_rest_length_mask.params.fixed_tendon_mask">¶</a> – Fixed tendon mask. If None, then all fixed tendons are used.</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.set_fixed_tendon_rest_length_mask.params.env_mask"></span><strong>env_mask</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.set_fixed_tendon_rest_length_mask.params.env_mask">¶</a> – Environment mask. If None, then all the instances are updated. Shape is (num_instances,).</p></li>
+<li><p><strong>rest_length</strong> – Fixed tendon rest length. Shape is (num_instances, num_fixed_tendons).</p></li>
+<li><p><strong>fixed_tendon_mask</strong> – Fixed tendon mask. If None, then all fixed tendons are used.</p></li>
+<li><p><strong>env_mask</strong> – Environment mask. If None, then all the instances are updated. Shape is (num_instances,).</p></li>
 </ul>
 </dd>
 </dl>
@@ -2475,11 +2476,11 @@ is only supporting indexing, hence masks need to be converted to indices.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.set_fixed_tendon_stiffness_index.params.stiffness"></span><strong>stiffness</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.set_fixed_tendon_stiffness_index.params.stiffness">¶</a> – Fixed tendon stiffness. Shape is (len(env_ids), len(fixed_tendon_ids)) or
+<li><p><strong>stiffness</strong> – Fixed tendon stiffness. Shape is (len(env_ids), len(fixed_tendon_ids)) or
 (num_instances, num_fixed_tendons) if full_data.</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.set_fixed_tendon_stiffness_index.params.fixed_tendon_ids"></span><strong>fixed_tendon_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.set_fixed_tendon_stiffness_index.params.fixed_tendon_ids">¶</a> – The tendon indices to set the stiffness for. Defaults to None (all fixed tendons).</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.set_fixed_tendon_stiffness_index.params.env_ids"></span><strong>env_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.set_fixed_tendon_stiffness_index.params.env_ids">¶</a> – Environment indices. If None, then all indices are used.</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.set_fixed_tendon_stiffness_index.params.full_data"></span><strong>full_data</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.set_fixed_tendon_stiffness_index.params.full_data">¶</a> – Whether to expect full data. Defaults to False.</p></li>
+<li><p><strong>fixed_tendon_ids</strong> – The tendon indices to set the stiffness for. Defaults to None (all fixed tendons).</p></li>
+<li><p><strong>env_ids</strong> – Environment indices. If None, then all indices are used.</p></li>
+<li><p><strong>full_data</strong> – Whether to expect full data. Defaults to False.</p></li>
 </ul>
 </dd>
 </dl>
@@ -2504,9 +2505,9 @@ is only supporting indexing, hence masks need to be converted to indices.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.set_fixed_tendon_stiffness_mask.params.stiffness"></span><strong>stiffness</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.set_fixed_tendon_stiffness_mask.params.stiffness">¶</a> – Fixed tendon stiffness. Shape is (num_instances, num_fixed_tendons).</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.set_fixed_tendon_stiffness_mask.params.fixed_tendon_mask"></span><strong>fixed_tendon_mask</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.set_fixed_tendon_stiffness_mask.params.fixed_tendon_mask">¶</a> – Fixed tendon mask. If None, then all fixed tendons are used.</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.set_fixed_tendon_stiffness_mask.params.env_mask"></span><strong>env_mask</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.set_fixed_tendon_stiffness_mask.params.env_mask">¶</a> – Environment mask. If None, then all the instances are updated. Shape is (num_instances,).</p></li>
+<li><p><strong>stiffness</strong> – Fixed tendon stiffness. Shape is (num_instances, num_fixed_tendons).</p></li>
+<li><p><strong>fixed_tendon_mask</strong> – Fixed tendon mask. If None, then all fixed tendons are used.</p></li>
+<li><p><strong>env_mask</strong> – Environment mask. If None, then all the instances are updated. Shape is (num_instances,).</p></li>
 </ul>
 </dd>
 </dl>
@@ -2534,11 +2535,11 @@ is only supporting indexing, hence masks need to be converted to indices.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.set_inertias_index.params.inertias"></span><strong>inertias</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.set_inertias_index.params.inertias">¶</a> – Inertias of all bodies. Shape is (len(env_ids), len(body_ids), 9) or
+<li><p><strong>inertias</strong> – Inertias of all bodies. Shape is (len(env_ids), len(body_ids), 9) or
 (num_instances, num_bodies, 9) if full_data.</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.set_inertias_index.params.body_ids"></span><strong>body_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.set_inertias_index.params.body_ids">¶</a> – The body indices to set the inertias for. Defaults to None (all bodies).</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.set_inertias_index.params.env_ids"></span><strong>env_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.set_inertias_index.params.env_ids">¶</a> – The environment indices to set the inertias for. Defaults to None (all environments).</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.set_inertias_index.params.full_data"></span><strong>full_data</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.set_inertias_index.params.full_data">¶</a> – Whether to expect full data. Defaults to False.</p></li>
+<li><p><strong>body_ids</strong> – The body indices to set the inertias for. Defaults to None (all bodies).</p></li>
+<li><p><strong>env_ids</strong> – The environment indices to set the inertias for. Defaults to None (all environments).</p></li>
+<li><p><strong>full_data</strong> – Whether to expect full data. Defaults to False.</p></li>
 </ul>
 </dd>
 </dl>
@@ -2560,9 +2561,9 @@ is only supporting indexing, hence masks need to be converted to indices.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.set_inertias_mask.params.inertias"></span><strong>inertias</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.set_inertias_mask.params.inertias">¶</a> – Inertias of all bodies. Shape is (num_instances, num_bodies, 9).</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.set_inertias_mask.params.body_mask"></span><strong>body_mask</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.set_inertias_mask.params.body_mask">¶</a> – Body mask. If None, then all bodies are used.</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.set_inertias_mask.params.env_mask"></span><strong>env_mask</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.set_inertias_mask.params.env_mask">¶</a> – Environment mask. If None, then all the instances are updated. Shape is (num_instances,).</p></li>
+<li><p><strong>inertias</strong> – Inertias of all bodies. Shape is (num_instances, num_bodies, 9).</p></li>
+<li><p><strong>body_mask</strong> – Body mask. If None, then all bodies are used.</p></li>
+<li><p><strong>env_mask</strong> – Environment mask. If None, then all the instances are updated. Shape is (num_instances,).</p></li>
 </ul>
 </dd>
 </dl>
@@ -2592,11 +2593,11 @@ is only supporting indexing, hence masks need to be converted to indices.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.set_joint_effort_target_index.params.target"></span><strong>target</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.set_joint_effort_target_index.params.target">¶</a> – Joint effort targets. Shape is (len(env_ids), len(joint_ids)) or (num_instances, num_joints)
+<li><p><strong>target</strong> – Joint effort targets. Shape is (len(env_ids), len(joint_ids)) or (num_instances, num_joints)
 if full_data.</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.set_joint_effort_target_index.params.joint_ids"></span><strong>joint_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.set_joint_effort_target_index.params.joint_ids">¶</a> – The joint indices to set the targets for. Defaults to None (all joints).</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.set_joint_effort_target_index.params.env_ids"></span><strong>env_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.set_joint_effort_target_index.params.env_ids">¶</a> – The environment indices to set the targets for. Defaults to None (all environments).</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.set_joint_effort_target_index.params.full_data"></span><strong>full_data</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.set_joint_effort_target_index.params.full_data">¶</a> – Whether to expect full data. Defaults to False.</p></li>
+<li><p><strong>joint_ids</strong> – The joint indices to set the targets for. Defaults to None (all joints).</p></li>
+<li><p><strong>env_ids</strong> – The environment indices to set the targets for. Defaults to None (all environments).</p></li>
+<li><p><strong>full_data</strong> – Whether to expect full data. Defaults to False.</p></li>
 </ul>
 </dd>
 </dl>
@@ -2618,9 +2619,9 @@ is only supporting indexing, hence masks need to be converted to indices.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.set_joint_effort_target_mask.params.target"></span><strong>target</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.set_joint_effort_target_mask.params.target">¶</a> – Joint effort targets. Shape is (num_instances, num_joints).</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.set_joint_effort_target_mask.params.joint_mask"></span><strong>joint_mask</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.set_joint_effort_target_mask.params.joint_mask">¶</a> – Joint mask. If None, then all joints are used.</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.set_joint_effort_target_mask.params.env_mask"></span><strong>env_mask</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.set_joint_effort_target_mask.params.env_mask">¶</a> – Environment mask. If None, then all the instances are updated. Shape is (num_instances,).</p></li>
+<li><p><strong>target</strong> – Joint effort targets. Shape is (num_instances, num_joints).</p></li>
+<li><p><strong>joint_mask</strong> – Joint mask. If None, then all joints are used.</p></li>
+<li><p><strong>env_mask</strong> – Environment mask. If None, then all the instances are updated. Shape is (num_instances,).</p></li>
 </ul>
 </dd>
 </dl>
@@ -2650,11 +2651,11 @@ is only supporting indexing, hence masks need to be converted to indices.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.set_joint_position_target_index.params.target"></span><strong>target</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.set_joint_position_target_index.params.target">¶</a> – Joint position targets. Shape is (len(env_ids), len(joint_ids)) or (num_instances, num_joints)
+<li><p><strong>target</strong> – Joint position targets. Shape is (len(env_ids), len(joint_ids)) or (num_instances, num_joints)
 if full_data.</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.set_joint_position_target_index.params.joint_ids"></span><strong>joint_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.set_joint_position_target_index.params.joint_ids">¶</a> – The joint indices to set the targets for. Defaults to None (all joints).</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.set_joint_position_target_index.params.env_ids"></span><strong>env_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.set_joint_position_target_index.params.env_ids">¶</a> – The environment indices to set the targets for. Defaults to None (all environments).</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.set_joint_position_target_index.params.full_data"></span><strong>full_data</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.set_joint_position_target_index.params.full_data">¶</a> – Whether to expect full data. Defaults to False.</p></li>
+<li><p><strong>joint_ids</strong> – The joint indices to set the targets for. Defaults to None (all joints).</p></li>
+<li><p><strong>env_ids</strong> – The environment indices to set the targets for. Defaults to None (all environments).</p></li>
+<li><p><strong>full_data</strong> – Whether to expect full data. Defaults to False.</p></li>
 </ul>
 </dd>
 </dl>
@@ -2676,9 +2677,9 @@ is only supporting indexing, hence masks need to be converted to indices.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.set_joint_position_target_mask.params.target"></span><strong>target</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.set_joint_position_target_mask.params.target">¶</a> – Joint position targets. Shape is (num_instances, num_joints).</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.set_joint_position_target_mask.params.joint_mask"></span><strong>joint_mask</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.set_joint_position_target_mask.params.joint_mask">¶</a> – Joint mask. If None, then all joints are used.</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.set_joint_position_target_mask.params.env_mask"></span><strong>env_mask</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.set_joint_position_target_mask.params.env_mask">¶</a> – Environment mask. If None, then all the instances are updated. Shape is (num_instances,).</p></li>
+<li><p><strong>target</strong> – Joint position targets. Shape is (num_instances, num_joints).</p></li>
+<li><p><strong>joint_mask</strong> – Joint mask. If None, then all joints are used.</p></li>
+<li><p><strong>env_mask</strong> – Environment mask. If None, then all the instances are updated. Shape is (num_instances,).</p></li>
 </ul>
 </dd>
 </dl>
@@ -2708,11 +2709,11 @@ is only supporting indexing, hence masks need to be converted to indices.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.set_joint_velocity_target_index.params.target"></span><strong>target</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.set_joint_velocity_target_index.params.target">¶</a> – Joint velocity targets. Shape is (len(env_ids), len(joint_ids)) or (num_instances, num_joints)
+<li><p><strong>target</strong> – Joint velocity targets. Shape is (len(env_ids), len(joint_ids)) or (num_instances, num_joints)
 if full_data.</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.set_joint_velocity_target_index.params.joint_ids"></span><strong>joint_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.set_joint_velocity_target_index.params.joint_ids">¶</a> – The joint indices to set the targets for. Defaults to None (all joints).</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.set_joint_velocity_target_index.params.env_ids"></span><strong>env_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.set_joint_velocity_target_index.params.env_ids">¶</a> – The environment indices to set the targets for. Defaults to None (all environments).</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.set_joint_velocity_target_index.params.full_data"></span><strong>full_data</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.set_joint_velocity_target_index.params.full_data">¶</a> – Whether to expect full data. Defaults to False.</p></li>
+<li><p><strong>joint_ids</strong> – The joint indices to set the targets for. Defaults to None (all joints).</p></li>
+<li><p><strong>env_ids</strong> – The environment indices to set the targets for. Defaults to None (all environments).</p></li>
+<li><p><strong>full_data</strong> – Whether to expect full data. Defaults to False.</p></li>
 </ul>
 </dd>
 </dl>
@@ -2734,9 +2735,9 @@ is only supporting indexing, hence masks need to be converted to indices.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.set_joint_velocity_target_mask.params.target"></span><strong>target</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.set_joint_velocity_target_mask.params.target">¶</a> – Joint velocity targets. Shape is (num_instances, num_joints).</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.set_joint_velocity_target_mask.params.joint_mask"></span><strong>joint_mask</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.set_joint_velocity_target_mask.params.joint_mask">¶</a> – Joint mask. If None, then all joints are used.</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.set_joint_velocity_target_mask.params.env_mask"></span><strong>env_mask</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.set_joint_velocity_target_mask.params.env_mask">¶</a> – Environment mask. If None, then all the instances are updated. Shape is (num_instances,).</p></li>
+<li><p><strong>target</strong> – Joint velocity targets. Shape is (num_instances, num_joints).</p></li>
+<li><p><strong>joint_mask</strong> – Joint mask. If None, then all joints are used.</p></li>
+<li><p><strong>env_mask</strong> – Environment mask. If None, then all the instances are updated. Shape is (num_instances,).</p></li>
 </ul>
 </dd>
 </dl>
@@ -2764,11 +2765,11 @@ is only supporting indexing, hence masks need to be converted to indices.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.set_masses_index.params.masses"></span><strong>masses</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.set_masses_index.params.masses">¶</a> – Masses of all bodies. Shape is (len(env_ids), len(body_ids)) or (num_instances, num_bodies)
+<li><p><strong>masses</strong> – Masses of all bodies. Shape is (len(env_ids), len(body_ids)) or (num_instances, num_bodies)
 if full_data.</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.set_masses_index.params.body_ids"></span><strong>body_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.set_masses_index.params.body_ids">¶</a> – The body indices to set the masses for. Defaults to None (all bodies).</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.set_masses_index.params.env_ids"></span><strong>env_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.set_masses_index.params.env_ids">¶</a> – The environment indices to set the masses for. Defaults to None (all environments).</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.set_masses_index.params.full_data"></span><strong>full_data</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.set_masses_index.params.full_data">¶</a> – Whether to expect full data. Defaults to False.</p></li>
+<li><p><strong>body_ids</strong> – The body indices to set the masses for. Defaults to None (all bodies).</p></li>
+<li><p><strong>env_ids</strong> – The environment indices to set the masses for. Defaults to None (all environments).</p></li>
+<li><p><strong>full_data</strong> – Whether to expect full data. Defaults to False.</p></li>
 </ul>
 </dd>
 </dl>
@@ -2790,9 +2791,9 @@ is only supporting indexing, hence masks need to be converted to indices.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.set_masses_mask.params.masses"></span><strong>masses</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.set_masses_mask.params.masses">¶</a> – Masses of all bodies. Shape is (num_instances, num_bodies).</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.set_masses_mask.params.body_mask"></span><strong>body_mask</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.set_masses_mask.params.body_mask">¶</a> – Body mask. If None, then all bodies are used.</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.set_masses_mask.params.env_mask"></span><strong>env_mask</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.set_masses_mask.params.env_mask">¶</a> – Environment mask. If None, then all the instances are updated. Shape is (num_instances,).</p></li>
+<li><p><strong>masses</strong> – Masses of all bodies. Shape is (num_instances, num_bodies).</p></li>
+<li><p><strong>body_mask</strong> – Body mask. If None, then all bodies are used.</p></li>
+<li><p><strong>env_mask</strong> – Environment mask. If None, then all the instances are updated. Shape is (num_instances,).</p></li>
 </ul>
 </dd>
 </dl>
@@ -2823,11 +2824,11 @@ is only supporting indexing, hence masks need to be converted to indices.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.set_spatial_tendon_damping_index.params.damping"></span><strong>damping</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.set_spatial_tendon_damping_index.params.damping">¶</a> – Spatial tendon damping. Shape is (len(env_ids), len(spatial_tendon_ids)) or
+<li><p><strong>damping</strong> – Spatial tendon damping. Shape is (len(env_ids), len(spatial_tendon_ids)) or
 (num_instances, num_spatial_tendons) if full_data.</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.set_spatial_tendon_damping_index.params.spatial_tendon_ids"></span><strong>spatial_tendon_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.set_spatial_tendon_damping_index.params.spatial_tendon_ids">¶</a> – The tendon indices to set the damping for. Defaults to None (all spatial tendons).</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.set_spatial_tendon_damping_index.params.env_ids"></span><strong>env_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.set_spatial_tendon_damping_index.params.env_ids">¶</a> – Environment indices. If None, then all indices are used.</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.set_spatial_tendon_damping_index.params.full_data"></span><strong>full_data</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.set_spatial_tendon_damping_index.params.full_data">¶</a> – Whether to expect full data. Defaults to False.</p></li>
+<li><p><strong>spatial_tendon_ids</strong> – The tendon indices to set the damping for. Defaults to None (all spatial tendons).</p></li>
+<li><p><strong>env_ids</strong> – Environment indices. If None, then all indices are used.</p></li>
+<li><p><strong>full_data</strong> – Whether to expect full data. Defaults to False.</p></li>
 </ul>
 </dd>
 </dl>
@@ -2852,9 +2853,9 @@ is only supporting indexing, hence masks need to be converted to indices.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.set_spatial_tendon_damping_mask.params.damping"></span><strong>damping</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.set_spatial_tendon_damping_mask.params.damping">¶</a> – Spatial tendon damping. Shape is (num_instances, num_spatial_tendons).</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.set_spatial_tendon_damping_mask.params.spatial_tendon_mask"></span><strong>spatial_tendon_mask</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.set_spatial_tendon_damping_mask.params.spatial_tendon_mask">¶</a> – Spatial tendon mask. If None, then all spatial tendons are used.</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.set_spatial_tendon_damping_mask.params.env_mask"></span><strong>env_mask</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.set_spatial_tendon_damping_mask.params.env_mask">¶</a> – Environment mask. If None, then all the instances are updated. Shape is (num_instances,).</p></li>
+<li><p><strong>damping</strong> – Spatial tendon damping. Shape is (num_instances, num_spatial_tendons).</p></li>
+<li><p><strong>spatial_tendon_mask</strong> – Spatial tendon mask. If None, then all spatial tendons are used.</p></li>
+<li><p><strong>env_mask</strong> – Environment mask. If None, then all the instances are updated. Shape is (num_instances,).</p></li>
 </ul>
 </dd>
 </dl>
@@ -2885,12 +2886,12 @@ is only supporting indexing, hence masks need to be converted to indices.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.set_spatial_tendon_limit_stiffness_index.params.limit_stiffness"></span><strong>limit_stiffness</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.set_spatial_tendon_limit_stiffness_index.params.limit_stiffness">¶</a> – Spatial tendon limit stiffness. Shape is (len(env_ids), len(spatial_tendon_ids)) or
+<li><p><strong>limit_stiffness</strong> – Spatial tendon limit stiffness. Shape is (len(env_ids), len(spatial_tendon_ids)) or
 (num_instances, num_spatial_tendons) if full_data.</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.set_spatial_tendon_limit_stiffness_index.params.spatial_tendon_ids"></span><strong>spatial_tendon_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.set_spatial_tendon_limit_stiffness_index.params.spatial_tendon_ids">¶</a> – The tendon indices to set the limit stiffness for. Defaults to None
+<li><p><strong>spatial_tendon_ids</strong> – The tendon indices to set the limit stiffness for. Defaults to None
 (all spatial tendons).</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.set_spatial_tendon_limit_stiffness_index.params.env_ids"></span><strong>env_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.set_spatial_tendon_limit_stiffness_index.params.env_ids">¶</a> – Environment indices. If None, then all indices are used.</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.set_spatial_tendon_limit_stiffness_index.params.full_data"></span><strong>full_data</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.set_spatial_tendon_limit_stiffness_index.params.full_data">¶</a> – Whether to expect full data. Defaults to False.</p></li>
+<li><p><strong>env_ids</strong> – Environment indices. If None, then all indices are used.</p></li>
+<li><p><strong>full_data</strong> – Whether to expect full data. Defaults to False.</p></li>
 </ul>
 </dd>
 </dl>
@@ -2915,9 +2916,9 @@ is only supporting indexing, hence masks need to be converted to indices.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.set_spatial_tendon_limit_stiffness_mask.params.limit_stiffness"></span><strong>limit_stiffness</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.set_spatial_tendon_limit_stiffness_mask.params.limit_stiffness">¶</a> – Spatial tendon limit stiffness. Shape is (num_instances, num_spatial_tendons).</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.set_spatial_tendon_limit_stiffness_mask.params.spatial_tendon_mask"></span><strong>spatial_tendon_mask</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.set_spatial_tendon_limit_stiffness_mask.params.spatial_tendon_mask">¶</a> – Spatial tendon mask. If None, then all spatial tendons are used.</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.set_spatial_tendon_limit_stiffness_mask.params.env_mask"></span><strong>env_mask</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.set_spatial_tendon_limit_stiffness_mask.params.env_mask">¶</a> – Environment mask. If None, then all the instances are updated. Shape is (num_instances,).</p></li>
+<li><p><strong>limit_stiffness</strong> – Spatial tendon limit stiffness. Shape is (num_instances, num_spatial_tendons).</p></li>
+<li><p><strong>spatial_tendon_mask</strong> – Spatial tendon mask. If None, then all spatial tendons are used.</p></li>
+<li><p><strong>env_mask</strong> – Environment mask. If None, then all the instances are updated. Shape is (num_instances,).</p></li>
 </ul>
 </dd>
 </dl>
@@ -2948,11 +2949,11 @@ is only supporting indexing, hence masks need to be converted to indices.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.set_spatial_tendon_offset_index.params.offset"></span><strong>offset</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.set_spatial_tendon_offset_index.params.offset">¶</a> – Spatial tendon offset. Shape is (len(env_ids), len(spatial_tendon_ids)) or
+<li><p><strong>offset</strong> – Spatial tendon offset. Shape is (len(env_ids), len(spatial_tendon_ids)) or
 (num_instances, num_spatial_tendons) if full_data.</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.set_spatial_tendon_offset_index.params.spatial_tendon_ids"></span><strong>spatial_tendon_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.set_spatial_tendon_offset_index.params.spatial_tendon_ids">¶</a> – The tendon indices to set the offset for. Defaults to None (all spatial tendons).</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.set_spatial_tendon_offset_index.params.env_ids"></span><strong>env_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.set_spatial_tendon_offset_index.params.env_ids">¶</a> – Environment indices. If None, then all indices are used.</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.set_spatial_tendon_offset_index.params.full_data"></span><strong>full_data</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.set_spatial_tendon_offset_index.params.full_data">¶</a> – Whether to expect full data. Defaults to False.</p></li>
+<li><p><strong>spatial_tendon_ids</strong> – The tendon indices to set the offset for. Defaults to None (all spatial tendons).</p></li>
+<li><p><strong>env_ids</strong> – Environment indices. If None, then all indices are used.</p></li>
+<li><p><strong>full_data</strong> – Whether to expect full data. Defaults to False.</p></li>
 </ul>
 </dd>
 </dl>
@@ -2977,9 +2978,9 @@ is only supporting indexing, hence masks need to be converted to indices.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.set_spatial_tendon_offset_mask.params.offset"></span><strong>offset</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.set_spatial_tendon_offset_mask.params.offset">¶</a> – Spatial tendon offset. Shape is (num_instances, num_spatial_tendons).</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.set_spatial_tendon_offset_mask.params.spatial_tendon_mask"></span><strong>spatial_tendon_mask</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.set_spatial_tendon_offset_mask.params.spatial_tendon_mask">¶</a> – Spatial tendon mask. If None, then all spatial tendons are used.</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.set_spatial_tendon_offset_mask.params.env_mask"></span><strong>env_mask</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.set_spatial_tendon_offset_mask.params.env_mask">¶</a> – Environment mask. If None, then all the instances are updated. Shape is (num_instances,).</p></li>
+<li><p><strong>offset</strong> – Spatial tendon offset. Shape is (num_instances, num_spatial_tendons).</p></li>
+<li><p><strong>spatial_tendon_mask</strong> – Spatial tendon mask. If None, then all spatial tendons are used.</p></li>
+<li><p><strong>env_mask</strong> – Environment mask. If None, then all the instances are updated. Shape is (num_instances,).</p></li>
 </ul>
 </dd>
 </dl>
@@ -3010,11 +3011,11 @@ is only supporting indexing, hence masks need to be converted to indices.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.set_spatial_tendon_stiffness_index.params.stiffness"></span><strong>stiffness</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.set_spatial_tendon_stiffness_index.params.stiffness">¶</a> – Spatial tendon stiffness. Shape is (len(env_ids), len(spatial_tendon_ids)) or
+<li><p><strong>stiffness</strong> – Spatial tendon stiffness. Shape is (len(env_ids), len(spatial_tendon_ids)) or
 (num_instances, num_spatial_tendons) if full_data.</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.set_spatial_tendon_stiffness_index.params.spatial_tendon_ids"></span><strong>spatial_tendon_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.set_spatial_tendon_stiffness_index.params.spatial_tendon_ids">¶</a> – The tendon indices to set the stiffness for. Defaults to None (all spatial tendons).</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.set_spatial_tendon_stiffness_index.params.env_ids"></span><strong>env_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.set_spatial_tendon_stiffness_index.params.env_ids">¶</a> – Environment indices. If None, then all indices are used.</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.set_spatial_tendon_stiffness_index.params.full_data"></span><strong>full_data</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.set_spatial_tendon_stiffness_index.params.full_data">¶</a> – Whether to expect full data. Defaults to False.</p></li>
+<li><p><strong>spatial_tendon_ids</strong> – The tendon indices to set the stiffness for. Defaults to None (all spatial tendons).</p></li>
+<li><p><strong>env_ids</strong> – Environment indices. If None, then all indices are used.</p></li>
+<li><p><strong>full_data</strong> – Whether to expect full data. Defaults to False.</p></li>
 </ul>
 </dd>
 </dl>
@@ -3039,9 +3040,9 @@ is only supporting indexing, hence masks need to be converted to indices.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.set_spatial_tendon_stiffness_mask.params.stiffness"></span><strong>stiffness</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.set_spatial_tendon_stiffness_mask.params.stiffness">¶</a> – Spatial tendon stiffness. Shape is (num_instances, num_spatial_tendons).</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.set_spatial_tendon_stiffness_mask.params.spatial_tendon_mask"></span><strong>spatial_tendon_mask</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.set_spatial_tendon_stiffness_mask.params.spatial_tendon_mask">¶</a> – Spatial tendon mask. If None, then all spatial tendons are used.</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.set_spatial_tendon_stiffness_mask.params.env_mask"></span><strong>env_mask</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.set_spatial_tendon_stiffness_mask.params.env_mask">¶</a> – Environment mask. If None, then all the instances are updated. Shape is (num_instances,).</p></li>
+<li><p><strong>stiffness</strong> – Spatial tendon stiffness. Shape is (num_instances, num_spatial_tendons).</p></li>
+<li><p><strong>spatial_tendon_mask</strong> – Spatial tendon mask. If None, then all spatial tendons are used.</p></li>
+<li><p><strong>env_mask</strong> – Environment mask. If None, then all the instances are updated. Shape is (num_instances,).</p></li>
 </ul>
 </dd>
 </dl>
@@ -3062,8 +3063,8 @@ may have an overhead if the number of prims is large.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.set_visibility.params.visible"></span><strong>visible</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.set_visibility.params.visible">¶</a> – Whether to make the prims visible or not.</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.set_visibility.params.env_ids"></span><strong>env_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.set_visibility.params.env_ids">¶</a> – The indices of the object to set visibility. Defaults to None (all instances).</p></li>
+<li><p><strong>visible</strong> – Whether to make the prims visible or not.</p></li>
+<li><p><strong>env_ids</strong> – The indices of the object to set visibility. Defaults to None (all instances).</p></li>
 </ul>
 </dd>
 </dl>
@@ -3081,7 +3082,7 @@ may have an overhead if the number of prims is large.</p>
 <dd><p>Updates the simulation data.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab_contrib.assets.Multirotor.update.params.dt"></span><strong>dt</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.update.params.dt">¶</a> – The time step size in seconds.</p>
+<dd class="field-odd"><p><strong>dt</strong> – The time step size in seconds.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -3104,9 +3105,9 @@ per-slot index mapping.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.write_actuator_stiffness_to_sim.params.stiffness"></span><strong>stiffness</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.write_actuator_stiffness_to_sim.params.stiffness">¶</a> – Sub-grid of new kp values, shape <code class="docutils literal notranslate"><span class="pre">(len(env_ids),</span> <span class="pre">len(joint_ids))</span></code>.</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.write_actuator_stiffness_to_sim.params.env_ids"></span><strong>env_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.write_actuator_stiffness_to_sim.params.env_ids">¶</a> – 1D torch tensor of env indices.</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.write_actuator_stiffness_to_sim.params.joint_ids"></span><strong>joint_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.write_actuator_stiffness_to_sim.params.joint_ids">¶</a> – 1D torch tensor of articulation-local joint indices.</p></li>
+<li><p><strong>stiffness</strong> – Sub-grid of new kp values, shape <code class="docutils literal notranslate"><span class="pre">(len(env_ids),</span> <span class="pre">len(joint_ids))</span></code>.</p></li>
+<li><p><strong>env_ids</strong> – 1D torch tensor of env indices.</p></li>
+<li><p><strong>joint_ids</strong> – 1D torch tensor of articulation-local joint indices.</p></li>
 </ul>
 </dd>
 </dl>
@@ -3131,9 +3132,9 @@ is only supporting indexing, hence masks need to be converted to indices.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.write_fixed_tendon_properties_to_sim_index.params.fixed_tendon_ids"></span><strong>fixed_tendon_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.write_fixed_tendon_properties_to_sim_index.params.fixed_tendon_ids">¶</a> – The fixed tendon indices to write the properties for. Defaults to None
+<li><p><strong>fixed_tendon_ids</strong> – The fixed tendon indices to write the properties for. Defaults to None
 (all fixed tendons).</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.write_fixed_tendon_properties_to_sim_index.params.env_ids"></span><strong>env_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.write_fixed_tendon_properties_to_sim_index.params.env_ids">¶</a> – Environment indices. If None, then all indices are used.</p></li>
+<li><p><strong>env_ids</strong> – Environment indices. If None, then all indices are used.</p></li>
 </ul>
 </dd>
 </dl>
@@ -3150,7 +3151,7 @@ is only supporting indexing, hence masks need to be converted to indices.</p>
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab_contrib.assets.Multirotor.write_fixed_tendon_properties_to_sim_mask.params.env_mask"></span><strong>env_mask</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.write_fixed_tendon_properties_to_sim_mask.params.env_mask">¶</a> – Environment mask. If None, then all the instances are updated. Shape is (num_instances,).</p>
+<dd class="field-odd"><p><strong>env_mask</strong> – Environment mask. If None, then all the instances are updated. Shape is (num_instances,).</p>
 </dd>
 </dl>
 </dd></dl>
@@ -3179,10 +3180,10 @@ is only supporting indexing, hence masks need to be converted to indices.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.write_joint_armature_to_sim_index.params.armature"></span><strong>armature</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.write_joint_armature_to_sim_index.params.armature">¶</a> – Joint armature. Shape is (len(env_ids), len(joint_ids)) or (num_instances, num_joints).</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.write_joint_armature_to_sim_index.params.joint_ids"></span><strong>joint_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.write_joint_armature_to_sim_index.params.joint_ids">¶</a> – Joint indices. If None, then all joints are used.</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.write_joint_armature_to_sim_index.params.env_ids"></span><strong>env_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.write_joint_armature_to_sim_index.params.env_ids">¶</a> – Environment indices. If None, then all indices are used.</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.write_joint_armature_to_sim_index.params.full_data"></span><strong>full_data</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.write_joint_armature_to_sim_index.params.full_data">¶</a> – Whether to expect full data. Defaults to False.</p></li>
+<li><p><strong>armature</strong> – Joint armature. Shape is (len(env_ids), len(joint_ids)) or (num_instances, num_joints).</p></li>
+<li><p><strong>joint_ids</strong> – Joint indices. If None, then all joints are used.</p></li>
+<li><p><strong>env_ids</strong> – Environment indices. If None, then all indices are used.</p></li>
+<li><p><strong>full_data</strong> – Whether to expect full data. Defaults to False.</p></li>
 </ul>
 </dd>
 </dl>
@@ -3206,9 +3207,9 @@ is only supporting indexing, hence masks need to be converted to indices.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.write_joint_armature_to_sim_mask.params.armature"></span><strong>armature</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.write_joint_armature_to_sim_mask.params.armature">¶</a> – Joint armature. Shape is (num_instances, num_joints).</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.write_joint_armature_to_sim_mask.params.joint_mask"></span><strong>joint_mask</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.write_joint_armature_to_sim_mask.params.joint_mask">¶</a> – Joint mask. If None, then all joints are used.</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.write_joint_armature_to_sim_mask.params.env_mask"></span><strong>env_mask</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.write_joint_armature_to_sim_mask.params.env_mask">¶</a> – Environment mask. If None, then all the instances are updated. Shape is (num_instances,).</p></li>
+<li><p><strong>armature</strong> – Joint armature. Shape is (num_instances, num_joints).</p></li>
+<li><p><strong>joint_mask</strong> – Joint mask. If None, then all joints are used.</p></li>
+<li><p><strong>env_mask</strong> – Environment mask. If None, then all the instances are updated. Shape is (num_instances,).</p></li>
 </ul>
 </dd>
 </dl>
@@ -3236,10 +3237,10 @@ is only supporting indexing, hence masks need to be converted to indices.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.write_joint_damping_to_sim_index.params.damping"></span><strong>damping</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.write_joint_damping_to_sim_index.params.damping">¶</a> – Joint damping. Shape is (len(env_ids), len(joint_ids)) or (num_instances, num_joints).</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.write_joint_damping_to_sim_index.params.joint_ids"></span><strong>joint_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.write_joint_damping_to_sim_index.params.joint_ids">¶</a> – Joint indices. If None, then all joints are used.</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.write_joint_damping_to_sim_index.params.env_ids"></span><strong>env_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.write_joint_damping_to_sim_index.params.env_ids">¶</a> – Environment indices. If None, then all indices are used.</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.write_joint_damping_to_sim_index.params.full_data"></span><strong>full_data</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.write_joint_damping_to_sim_index.params.full_data">¶</a> – Whether to expect full data. Defaults to False.</p></li>
+<li><p><strong>damping</strong> – Joint damping. Shape is (len(env_ids), len(joint_ids)) or (num_instances, num_joints).</p></li>
+<li><p><strong>joint_ids</strong> – Joint indices. If None, then all joints are used.</p></li>
+<li><p><strong>env_ids</strong> – Environment indices. If None, then all indices are used.</p></li>
+<li><p><strong>full_data</strong> – Whether to expect full data. Defaults to False.</p></li>
 </ul>
 </dd>
 </dl>
@@ -3261,9 +3262,9 @@ is only supporting indexing, hence masks need to be converted to indices.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.write_joint_damping_to_sim_mask.params.damping"></span><strong>damping</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.write_joint_damping_to_sim_mask.params.damping">¶</a> – Joint damping. Shape is (num_instances, num_joints).</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.write_joint_damping_to_sim_mask.params.joint_mask"></span><strong>joint_mask</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.write_joint_damping_to_sim_mask.params.joint_mask">¶</a> – Joint mask. If None, then all joints are used.</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.write_joint_damping_to_sim_mask.params.env_mask"></span><strong>env_mask</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.write_joint_damping_to_sim_mask.params.env_mask">¶</a> – Environment mask. If None, then all the instances are updated. Shape is (num_instances,).</p></li>
+<li><p><strong>damping</strong> – Joint damping. Shape is (num_instances, num_joints).</p></li>
+<li><p><strong>joint_mask</strong> – Joint mask. If None, then all joints are used.</p></li>
+<li><p><strong>env_mask</strong> – Environment mask. If None, then all the instances are updated. Shape is (num_instances,).</p></li>
 </ul>
 </dd>
 </dl>
@@ -3291,11 +3292,11 @@ is only supporting indexing, hence masks need to be converted to indices.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.write_joint_dynamic_friction_coefficient_to_sim_index.params.joint_dynamic_friction_coeff"></span><strong>joint_dynamic_friction_coeff</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.write_joint_dynamic_friction_coefficient_to_sim_index.params.joint_dynamic_friction_coeff">¶</a> – Joint dynamic friction coefficient. Shape is (len(env_ids), len(joint_ids))
+<li><p><strong>joint_dynamic_friction_coeff</strong> – Joint dynamic friction coefficient. Shape is (len(env_ids), len(joint_ids))
 or (num_instances, num_joints) if full_data.</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.write_joint_dynamic_friction_coefficient_to_sim_index.params.joint_ids"></span><strong>joint_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.write_joint_dynamic_friction_coefficient_to_sim_index.params.joint_ids">¶</a> – Joint indices. If None, then all joints are used.</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.write_joint_dynamic_friction_coefficient_to_sim_index.params.env_ids"></span><strong>env_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.write_joint_dynamic_friction_coefficient_to_sim_index.params.env_ids">¶</a> – Environment indices. If None, then all indices are used.</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.write_joint_dynamic_friction_coefficient_to_sim_index.params.full_data"></span><strong>full_data</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.write_joint_dynamic_friction_coefficient_to_sim_index.params.full_data">¶</a> – Whether to expect full data. Defaults to False.</p></li>
+<li><p><strong>joint_ids</strong> – Joint indices. If None, then all joints are used.</p></li>
+<li><p><strong>env_ids</strong> – Environment indices. If None, then all indices are used.</p></li>
+<li><p><strong>full_data</strong> – Whether to expect full data. Defaults to False.</p></li>
 </ul>
 </dd>
 </dl>
@@ -3317,9 +3318,9 @@ is only supporting indexing, hence masks need to be converted to indices.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.write_joint_dynamic_friction_coefficient_to_sim_mask.params.joint_dynamic_friction_coeff"></span><strong>joint_dynamic_friction_coeff</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.write_joint_dynamic_friction_coefficient_to_sim_mask.params.joint_dynamic_friction_coeff">¶</a> – Joint dynamic friction coefficient. Shape is (num_instances, num_joints).</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.write_joint_dynamic_friction_coefficient_to_sim_mask.params.joint_mask"></span><strong>joint_mask</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.write_joint_dynamic_friction_coefficient_to_sim_mask.params.joint_mask">¶</a> – Joint mask. If None, then all joints are used.</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.write_joint_dynamic_friction_coefficient_to_sim_mask.params.env_mask"></span><strong>env_mask</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.write_joint_dynamic_friction_coefficient_to_sim_mask.params.env_mask">¶</a> – Environment mask. If None, then all the instances are updated. Shape is (num_instances,).</p></li>
+<li><p><strong>joint_dynamic_friction_coeff</strong> – Joint dynamic friction coefficient. Shape is (num_instances, num_joints).</p></li>
+<li><p><strong>joint_mask</strong> – Joint mask. If None, then all joints are used.</p></li>
+<li><p><strong>env_mask</strong> – Environment mask. If None, then all the instances are updated. Shape is (num_instances,).</p></li>
 </ul>
 </dd>
 </dl>
@@ -3349,10 +3350,10 @@ is only supporting indexing, hence masks need to be converted to indices.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.write_joint_effort_limit_to_sim_index.params.limits"></span><strong>limits</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.write_joint_effort_limit_to_sim_index.params.limits">¶</a> – Joint torque limits. Shape is (len(env_ids), len(joint_ids)) or (num_instances, num_joints).</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.write_joint_effort_limit_to_sim_index.params.joint_ids"></span><strong>joint_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.write_joint_effort_limit_to_sim_index.params.joint_ids">¶</a> – Joint indices. If None, then all joints are used.</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.write_joint_effort_limit_to_sim_index.params.env_ids"></span><strong>env_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.write_joint_effort_limit_to_sim_index.params.env_ids">¶</a> – Environment indices. If None, then all indices are used.</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.write_joint_effort_limit_to_sim_index.params.full_data"></span><strong>full_data</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.write_joint_effort_limit_to_sim_index.params.full_data">¶</a> – Whether to expect full data. Defaults to False.</p></li>
+<li><p><strong>limits</strong> – Joint torque limits. Shape is (len(env_ids), len(joint_ids)) or (num_instances, num_joints).</p></li>
+<li><p><strong>joint_ids</strong> – Joint indices. If None, then all joints are used.</p></li>
+<li><p><strong>env_ids</strong> – Environment indices. If None, then all indices are used.</p></li>
+<li><p><strong>full_data</strong> – Whether to expect full data. Defaults to False.</p></li>
 </ul>
 </dd>
 </dl>
@@ -3376,9 +3377,9 @@ is only supporting indexing, hence masks need to be converted to indices.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.write_joint_effort_limit_to_sim_mask.params.limits"></span><strong>limits</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.write_joint_effort_limit_to_sim_mask.params.limits">¶</a> – Joint torque limits. Shape is (num_instances, num_joints).</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.write_joint_effort_limit_to_sim_mask.params.joint_mask"></span><strong>joint_mask</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.write_joint_effort_limit_to_sim_mask.params.joint_mask">¶</a> – Joint mask. If None, then all joints are used.</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.write_joint_effort_limit_to_sim_mask.params.env_mask"></span><strong>env_mask</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.write_joint_effort_limit_to_sim_mask.params.env_mask">¶</a> – Environment mask. If None, then all the instances are updated. Shape is (num_instances,).</p></li>
+<li><p><strong>limits</strong> – Joint torque limits. Shape is (num_instances, num_joints).</p></li>
+<li><p><strong>joint_mask</strong> – Joint mask. If None, then all joints are used.</p></li>
+<li><p><strong>env_mask</strong> – Environment mask. If None, then all the instances are updated. Shape is (num_instances,).</p></li>
 </ul>
 </dd>
 </dl>
@@ -3416,15 +3417,15 @@ is only supporting indexing, hence masks need to be converted to indices.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.write_joint_friction_coefficient_to_sim_index.params.joint_friction_coeff"></span><strong>joint_friction_coeff</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.write_joint_friction_coefficient_to_sim_index.params.joint_friction_coeff">¶</a> – Static friction coefficient <span class="math notranslate nohighlight">\(\mu_s\)</span>.
+<li><p><strong>joint_friction_coeff</strong> – Static friction coefficient <span class="math notranslate nohighlight">\(\mu_s\)</span>.
 Shape is (len(env_ids), len(joint_ids)) or (num_instances, num_joints).</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.write_joint_friction_coefficient_to_sim_index.params.joint_dynamic_friction_coeff"></span><strong>joint_dynamic_friction_coeff</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.write_joint_friction_coefficient_to_sim_index.params.joint_dynamic_friction_coeff">¶</a> – Dynamic (Coulomb) friction coefficient <span class="math notranslate nohighlight">\(\mu_d\)</span>.
+<li><p><strong>joint_dynamic_friction_coeff</strong> – Dynamic (Coulomb) friction coefficient <span class="math notranslate nohighlight">\(\mu_d\)</span>.
 Same shape as above. If None, the dynamic coefficient is not updated.</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.write_joint_friction_coefficient_to_sim_index.params.joint_viscous_friction_coeff"></span><strong>joint_viscous_friction_coeff</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.write_joint_friction_coefficient_to_sim_index.params.joint_viscous_friction_coeff">¶</a> – Viscous friction coefficient <span class="math notranslate nohighlight">\(c_v\)</span>.
+<li><p><strong>joint_viscous_friction_coeff</strong> – Viscous friction coefficient <span class="math notranslate nohighlight">\(c_v\)</span>.
 Same shape as above. If None, the viscous coefficient is not updated.</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.write_joint_friction_coefficient_to_sim_index.params.joint_ids"></span><strong>joint_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.write_joint_friction_coefficient_to_sim_index.params.joint_ids">¶</a> – Joint indices. If None, then all joints are used.</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.write_joint_friction_coefficient_to_sim_index.params.env_ids"></span><strong>env_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.write_joint_friction_coefficient_to_sim_index.params.env_ids">¶</a> – Environment indices. If None, then all indices are used.</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.write_joint_friction_coefficient_to_sim_index.params.full_data"></span><strong>full_data</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.write_joint_friction_coefficient_to_sim_index.params.full_data">¶</a> – Whether to expect full data. Defaults to False.</p></li>
+<li><p><strong>joint_ids</strong> – Joint indices. If None, then all joints are used.</p></li>
+<li><p><strong>env_ids</strong> – Environment indices. If None, then all indices are used.</p></li>
+<li><p><strong>full_data</strong> – Whether to expect full data. Defaults to False.</p></li>
 </ul>
 </dd>
 </dl>
@@ -3456,14 +3457,14 @@ is only supporting indexing, hence masks need to be converted to indices.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.write_joint_friction_coefficient_to_sim_mask.params.joint_friction_coeff"></span><strong>joint_friction_coeff</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.write_joint_friction_coefficient_to_sim_mask.params.joint_friction_coeff">¶</a> – Static friction coefficient <span class="math notranslate nohighlight">\(\mu_s\)</span>.
+<li><p><strong>joint_friction_coeff</strong> – Static friction coefficient <span class="math notranslate nohighlight">\(\mu_s\)</span>.
 Shape is (num_instances, num_joints).</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.write_joint_friction_coefficient_to_sim_mask.params.joint_dynamic_friction_coeff"></span><strong>joint_dynamic_friction_coeff</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.write_joint_friction_coefficient_to_sim_mask.params.joint_dynamic_friction_coeff">¶</a> – Dynamic (Coulomb) friction coefficient <span class="math notranslate nohighlight">\(\mu_d\)</span>.
+<li><p><strong>joint_dynamic_friction_coeff</strong> – Dynamic (Coulomb) friction coefficient <span class="math notranslate nohighlight">\(\mu_d\)</span>.
 Same shape as above. If None, the dynamic coefficient is not updated.</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.write_joint_friction_coefficient_to_sim_mask.params.joint_viscous_friction_coeff"></span><strong>joint_viscous_friction_coeff</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.write_joint_friction_coefficient_to_sim_mask.params.joint_viscous_friction_coeff">¶</a> – Viscous friction coefficient <span class="math notranslate nohighlight">\(c_v\)</span>.
+<li><p><strong>joint_viscous_friction_coeff</strong> – Viscous friction coefficient <span class="math notranslate nohighlight">\(c_v\)</span>.
 Same shape as above. If None, the viscous coefficient is not updated.</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.write_joint_friction_coefficient_to_sim_mask.params.joint_mask"></span><strong>joint_mask</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.write_joint_friction_coefficient_to_sim_mask.params.joint_mask">¶</a> – Joint mask. If None, then all joints are used.</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.write_joint_friction_coefficient_to_sim_mask.params.env_mask"></span><strong>env_mask</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.write_joint_friction_coefficient_to_sim_mask.params.env_mask">¶</a> – Environment mask. If None, then all the instances are updated. Shape is (num_instances,).</p></li>
+<li><p><strong>joint_mask</strong> – Joint mask. If None, then all joints are used.</p></li>
+<li><p><strong>env_mask</strong> – Environment mask. If None, then all the instances are updated. Shape is (num_instances,).</p></li>
 </ul>
 </dd>
 </dl>
@@ -3509,12 +3510,12 @@ is only supporting indexing, hence masks need to be converted to indices.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.write_joint_position_limit_to_sim_index.params.limits"></span><strong>limits</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.write_joint_position_limit_to_sim_index.params.limits">¶</a> – Joint limits. Shape is (len(env_ids), len(joint_ids), 2) or (num_instances, num_joints, 2).
+<li><p><strong>limits</strong> – Joint limits. Shape is (len(env_ids), len(joint_ids), 2) or (num_instances, num_joints, 2).
 In warp the expected shape is (num_instances, num_joints), with dtype wp.vec2f.</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.write_joint_position_limit_to_sim_index.params.joint_ids"></span><strong>joint_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.write_joint_position_limit_to_sim_index.params.joint_ids">¶</a> – Joint indices. If None, then all joints are used.</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.write_joint_position_limit_to_sim_index.params.env_ids"></span><strong>env_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.write_joint_position_limit_to_sim_index.params.env_ids">¶</a> – Environment indices. If None, then all indices are used.</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.write_joint_position_limit_to_sim_index.params.full_data"></span><strong>full_data</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.write_joint_position_limit_to_sim_index.params.full_data">¶</a> – Whether to expect full data. Defaults to False.</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.write_joint_position_limit_to_sim_index.params.warn_limit_violation"></span><strong>warn_limit_violation</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.write_joint_position_limit_to_sim_index.params.warn_limit_violation">¶</a> – Whether to use warning or info level logging when default joint positions
+<li><p><strong>joint_ids</strong> – Joint indices. If None, then all joints are used.</p></li>
+<li><p><strong>env_ids</strong> – Environment indices. If None, then all indices are used.</p></li>
+<li><p><strong>full_data</strong> – Whether to expect full data. Defaults to False.</p></li>
+<li><p><strong>warn_limit_violation</strong> – Whether to use warning or info level logging when default joint positions
 exceed the new limits. Defaults to True.</p></li>
 </ul>
 </dd>
@@ -3537,10 +3538,10 @@ is only supporting indexing, hence masks need to be converted to indices.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.write_joint_position_limit_to_sim_mask.params.limits"></span><strong>limits</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.write_joint_position_limit_to_sim_mask.params.limits">¶</a> – Joint limits. Shape is (num_instances, num_joints, 2).</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.write_joint_position_limit_to_sim_mask.params.joint_mask"></span><strong>joint_mask</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.write_joint_position_limit_to_sim_mask.params.joint_mask">¶</a> – Joint mask. If None, then all joints are used.</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.write_joint_position_limit_to_sim_mask.params.env_mask"></span><strong>env_mask</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.write_joint_position_limit_to_sim_mask.params.env_mask">¶</a> – Environment mask. If None, then all the instances are updated. Shape is (num_instances,).</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.write_joint_position_limit_to_sim_mask.params.warn_limit_violation"></span><strong>warn_limit_violation</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.write_joint_position_limit_to_sim_mask.params.warn_limit_violation">¶</a> – Whether to use warning or info level logging when default joint positions
+<li><p><strong>limits</strong> – Joint limits. Shape is (num_instances, num_joints, 2).</p></li>
+<li><p><strong>joint_mask</strong> – Joint mask. If None, then all joints are used.</p></li>
+<li><p><strong>env_mask</strong> – Environment mask. If None, then all the instances are updated. Shape is (num_instances,).</p></li>
+<li><p><strong>warn_limit_violation</strong> – Whether to use warning or info level logging when default joint positions
 exceed the new limits. Defaults to True.</p></li>
 </ul>
 </dd>
@@ -3569,10 +3570,10 @@ is only supporting indexing, hence masks need to be converted to indices.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.write_joint_position_to_sim_index.params.position"></span><strong>position</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.write_joint_position_to_sim_index.params.position">¶</a> – Joint positions. Shape is (len(env_ids), len(joint_ids)) or (num_instances, num_joints).</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.write_joint_position_to_sim_index.params.joint_ids"></span><strong>joint_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.write_joint_position_to_sim_index.params.joint_ids">¶</a> – Joint indices. If None, then all joints are used.</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.write_joint_position_to_sim_index.params.env_ids"></span><strong>env_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.write_joint_position_to_sim_index.params.env_ids">¶</a> – Environment indices. If None, then all indices are used.</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.write_joint_position_to_sim_index.params.full_data"></span><strong>full_data</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.write_joint_position_to_sim_index.params.full_data">¶</a> – Whether to expect full data. Defaults to False.</p></li>
+<li><p><strong>position</strong> – Joint positions. Shape is (len(env_ids), len(joint_ids)) or (num_instances, num_joints).</p></li>
+<li><p><strong>joint_ids</strong> – Joint indices. If None, then all joints are used.</p></li>
+<li><p><strong>env_ids</strong> – Environment indices. If None, then all indices are used.</p></li>
+<li><p><strong>full_data</strong> – Whether to expect full data. Defaults to False.</p></li>
 </ul>
 </dd>
 </dl>
@@ -3594,9 +3595,9 @@ is only supporting indexing, hence masks need to be converted to indices.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.write_joint_position_to_sim_mask.params.position"></span><strong>position</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.write_joint_position_to_sim_mask.params.position">¶</a> – Joint positions. Shape is (num_instances, num_joints).</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.write_joint_position_to_sim_mask.params.joint_mask"></span><strong>joint_mask</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.write_joint_position_to_sim_mask.params.joint_mask">¶</a> – Joint mask. If None, then all joints are used.</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.write_joint_position_to_sim_mask.params.env_mask"></span><strong>env_mask</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.write_joint_position_to_sim_mask.params.env_mask">¶</a> – Environment mask. If None, then all the instances are updated. Shape is (num_instances,).</p></li>
+<li><p><strong>position</strong> – Joint positions. Shape is (num_instances, num_joints).</p></li>
+<li><p><strong>joint_mask</strong> – Joint mask. If None, then all joints are used.</p></li>
+<li><p><strong>env_mask</strong> – Environment mask. If None, then all the instances are updated. Shape is (num_instances,).</p></li>
 </ul>
 </dd>
 </dl>
@@ -3625,11 +3626,11 @@ is only supporting indexing, hence masks need to be converted to indices.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.write_joint_state_to_sim_index.params.position"></span><strong>position</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.write_joint_state_to_sim_index.params.position">¶</a> – Joint positions. Shape is (len(env_ids), len(joint_ids)) or (num_instances, num_joints).</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.write_joint_state_to_sim_index.params.velocity"></span><strong>velocity</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.write_joint_state_to_sim_index.params.velocity">¶</a> – Joint velocities. Shape is (len(env_ids), len(joint_ids)) or (num_instances, num_joints).</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.write_joint_state_to_sim_index.params.joint_ids"></span><strong>joint_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.write_joint_state_to_sim_index.params.joint_ids">¶</a> – Joint indices. If None, then all joints are used.</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.write_joint_state_to_sim_index.params.env_ids"></span><strong>env_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.write_joint_state_to_sim_index.params.env_ids">¶</a> – Environment indices. If None, then all indices are used.</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.write_joint_state_to_sim_index.params.full_data"></span><strong>full_data</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.write_joint_state_to_sim_index.params.full_data">¶</a> – Whether to expect full data. Defaults to False.</p></li>
+<li><p><strong>position</strong> – Joint positions. Shape is (len(env_ids), len(joint_ids)) or (num_instances, num_joints).</p></li>
+<li><p><strong>velocity</strong> – Joint velocities. Shape is (len(env_ids), len(joint_ids)) or (num_instances, num_joints).</p></li>
+<li><p><strong>joint_ids</strong> – Joint indices. If None, then all joints are used.</p></li>
+<li><p><strong>env_ids</strong> – Environment indices. If None, then all indices are used.</p></li>
+<li><p><strong>full_data</strong> – Whether to expect full data. Defaults to False.</p></li>
 </ul>
 </dd>
 </dl>
@@ -3651,10 +3652,10 @@ is only supporting indexing, hence masks need to be converted to indices.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.write_joint_state_to_sim_mask.params.position"></span><strong>position</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.write_joint_state_to_sim_mask.params.position">¶</a> – Joint positions. Shape is (num_instances, num_joints).</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.write_joint_state_to_sim_mask.params.velocity"></span><strong>velocity</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.write_joint_state_to_sim_mask.params.velocity">¶</a> – Joint velocities. Shape is (num_instances, num_joints).</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.write_joint_state_to_sim_mask.params.joint_mask"></span><strong>joint_mask</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.write_joint_state_to_sim_mask.params.joint_mask">¶</a> – Joint mask. If None, then all joints are used.</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.write_joint_state_to_sim_mask.params.env_mask"></span><strong>env_mask</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.write_joint_state_to_sim_mask.params.env_mask">¶</a> – Environment mask. If None, then all the instances are updated. Shape is (num_instances,).</p></li>
+<li><p><strong>position</strong> – Joint positions. Shape is (num_instances, num_joints).</p></li>
+<li><p><strong>velocity</strong> – Joint velocities. Shape is (num_instances, num_joints).</p></li>
+<li><p><strong>joint_mask</strong> – Joint mask. If None, then all joints are used.</p></li>
+<li><p><strong>env_mask</strong> – Environment mask. If None, then all the instances are updated. Shape is (num_instances,).</p></li>
 </ul>
 </dd>
 </dl>
@@ -3682,10 +3683,10 @@ is only supporting indexing, hence masks need to be converted to indices.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.write_joint_stiffness_to_sim_index.params.stiffness"></span><strong>stiffness</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.write_joint_stiffness_to_sim_index.params.stiffness">¶</a> – Joint stiffness. Shape is (len(env_ids), len(joint_ids)) or (num_instances, num_joints).</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.write_joint_stiffness_to_sim_index.params.joint_ids"></span><strong>joint_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.write_joint_stiffness_to_sim_index.params.joint_ids">¶</a> – Joint indices. If None, then all joints are used.</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.write_joint_stiffness_to_sim_index.params.env_ids"></span><strong>env_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.write_joint_stiffness_to_sim_index.params.env_ids">¶</a> – Environment indices. If None, then all indices are used.</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.write_joint_stiffness_to_sim_index.params.full_data"></span><strong>full_data</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.write_joint_stiffness_to_sim_index.params.full_data">¶</a> – Whether to expect full data. Defaults to False.</p></li>
+<li><p><strong>stiffness</strong> – Joint stiffness. Shape is (len(env_ids), len(joint_ids)) or (num_instances, num_joints).</p></li>
+<li><p><strong>joint_ids</strong> – Joint indices. If None, then all joints are used.</p></li>
+<li><p><strong>env_ids</strong> – Environment indices. If None, then all indices are used.</p></li>
+<li><p><strong>full_data</strong> – Whether to expect full data. Defaults to False.</p></li>
 </ul>
 </dd>
 </dl>
@@ -3707,9 +3708,9 @@ is only supporting indexing, hence masks need to be converted to indices.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.write_joint_stiffness_to_sim_mask.params.stiffness"></span><strong>stiffness</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.write_joint_stiffness_to_sim_mask.params.stiffness">¶</a> – Joint stiffness. Shape is (num_instances, num_joints).</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.write_joint_stiffness_to_sim_mask.params.joint_mask"></span><strong>joint_mask</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.write_joint_stiffness_to_sim_mask.params.joint_mask">¶</a> – Joint mask. If None, then all joints are used.</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.write_joint_stiffness_to_sim_mask.params.env_mask"></span><strong>env_mask</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.write_joint_stiffness_to_sim_mask.params.env_mask">¶</a> – Environment mask. If None, then all the instances are updated. Shape is (num_instances,).</p></li>
+<li><p><strong>stiffness</strong> – Joint stiffness. Shape is (num_instances, num_joints).</p></li>
+<li><p><strong>joint_mask</strong> – Joint mask. If None, then all joints are used.</p></li>
+<li><p><strong>env_mask</strong> – Environment mask. If None, then all the instances are updated. Shape is (num_instances,).</p></li>
 </ul>
 </dd>
 </dl>
@@ -3740,10 +3741,10 @@ is only supporting indexing, hence masks need to be converted to indices.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.write_joint_velocity_limit_to_sim_index.params.limits"></span><strong>limits</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.write_joint_velocity_limit_to_sim_index.params.limits">¶</a> – Joint max velocity. Shape is (len(env_ids), len(joint_ids)) or (num_instances, num_joints).</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.write_joint_velocity_limit_to_sim_index.params.joint_ids"></span><strong>joint_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.write_joint_velocity_limit_to_sim_index.params.joint_ids">¶</a> – Joint indices. If None, then all joints are used.</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.write_joint_velocity_limit_to_sim_index.params.env_ids"></span><strong>env_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.write_joint_velocity_limit_to_sim_index.params.env_ids">¶</a> – Environment indices. If None, then all indices are used.</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.write_joint_velocity_limit_to_sim_index.params.full_data"></span><strong>full_data</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.write_joint_velocity_limit_to_sim_index.params.full_data">¶</a> – Whether to expect full data. Defaults to False.</p></li>
+<li><p><strong>limits</strong> – Joint max velocity. Shape is (len(env_ids), len(joint_ids)) or (num_instances, num_joints).</p></li>
+<li><p><strong>joint_ids</strong> – Joint indices. If None, then all joints are used.</p></li>
+<li><p><strong>env_ids</strong> – Environment indices. If None, then all indices are used.</p></li>
+<li><p><strong>full_data</strong> – Whether to expect full data. Defaults to False.</p></li>
 </ul>
 </dd>
 </dl>
@@ -3768,9 +3769,9 @@ is only supporting indexing, hence masks need to be converted to indices.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.write_joint_velocity_limit_to_sim_mask.params.limits"></span><strong>limits</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.write_joint_velocity_limit_to_sim_mask.params.limits">¶</a> – Joint max velocity. Shape is (num_instances, num_joints).</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.write_joint_velocity_limit_to_sim_mask.params.joint_mask"></span><strong>joint_mask</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.write_joint_velocity_limit_to_sim_mask.params.joint_mask">¶</a> – Joint mask. If None, then all joints are used.</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.write_joint_velocity_limit_to_sim_mask.params.env_mask"></span><strong>env_mask</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.write_joint_velocity_limit_to_sim_mask.params.env_mask">¶</a> – Environment mask. If None, then all the instances are updated. Shape is (num_instances,).</p></li>
+<li><p><strong>limits</strong> – Joint max velocity. Shape is (num_instances, num_joints).</p></li>
+<li><p><strong>joint_mask</strong> – Joint mask. If None, then all joints are used.</p></li>
+<li><p><strong>env_mask</strong> – Environment mask. If None, then all the instances are updated. Shape is (num_instances,).</p></li>
 </ul>
 </dd>
 </dl>
@@ -3798,10 +3799,10 @@ is only supporting indexing, hence masks need to be converted to indices.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.write_joint_velocity_to_sim_index.params.velocity"></span><strong>velocity</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.write_joint_velocity_to_sim_index.params.velocity">¶</a> – Joint velocities. Shape is (len(env_ids), len(joint_ids)) or (num_instances, num_joints).</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.write_joint_velocity_to_sim_index.params.joint_ids"></span><strong>joint_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.write_joint_velocity_to_sim_index.params.joint_ids">¶</a> – Joint indices. If None, then all joints are used.</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.write_joint_velocity_to_sim_index.params.env_ids"></span><strong>env_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.write_joint_velocity_to_sim_index.params.env_ids">¶</a> – Environment indices. If None, then all indices are used.</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.write_joint_velocity_to_sim_index.params.full_data"></span><strong>full_data</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.write_joint_velocity_to_sim_index.params.full_data">¶</a> – Whether to expect full data. Defaults to False.</p></li>
+<li><p><strong>velocity</strong> – Joint velocities. Shape is (len(env_ids), len(joint_ids)) or (num_instances, num_joints).</p></li>
+<li><p><strong>joint_ids</strong> – Joint indices. If None, then all joints are used.</p></li>
+<li><p><strong>env_ids</strong> – Environment indices. If None, then all indices are used.</p></li>
+<li><p><strong>full_data</strong> – Whether to expect full data. Defaults to False.</p></li>
 </ul>
 </dd>
 </dl>
@@ -3823,9 +3824,9 @@ is only supporting indexing, hence masks need to be converted to indices.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.write_joint_velocity_to_sim_mask.params.velocity"></span><strong>velocity</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.write_joint_velocity_to_sim_mask.params.velocity">¶</a> – Joint velocities. Shape is (num_instances, num_joints).</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.write_joint_velocity_to_sim_mask.params.joint_mask"></span><strong>joint_mask</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.write_joint_velocity_to_sim_mask.params.joint_mask">¶</a> – Joint mask. If None, then all joints are used.</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.write_joint_velocity_to_sim_mask.params.env_mask"></span><strong>env_mask</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.write_joint_velocity_to_sim_mask.params.env_mask">¶</a> – Environment mask. If None, then all the instances are updated. Shape is (num_instances,).</p></li>
+<li><p><strong>velocity</strong> – Joint velocities. Shape is (num_instances, num_joints).</p></li>
+<li><p><strong>joint_mask</strong> – Joint mask. If None, then all joints are used.</p></li>
+<li><p><strong>env_mask</strong> – Environment mask. If None, then all the instances are updated. Shape is (num_instances,).</p></li>
 </ul>
 </dd>
 </dl>
@@ -3853,11 +3854,11 @@ is only supporting indexing, hence masks need to be converted to indices.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.write_joint_viscous_friction_coefficient_to_sim_index.params.joint_viscous_friction_coeff"></span><strong>joint_viscous_friction_coeff</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.write_joint_viscous_friction_coefficient_to_sim_index.params.joint_viscous_friction_coeff">¶</a> – Joint viscous friction coefficient. Shape is (len(env_ids), len(joint_ids))
+<li><p><strong>joint_viscous_friction_coeff</strong> – Joint viscous friction coefficient. Shape is (len(env_ids), len(joint_ids))
 or (num_instances, num_joints) if full_data.</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.write_joint_viscous_friction_coefficient_to_sim_index.params.joint_ids"></span><strong>joint_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.write_joint_viscous_friction_coefficient_to_sim_index.params.joint_ids">¶</a> – Joint indices. If None, then all joints are used.</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.write_joint_viscous_friction_coefficient_to_sim_index.params.env_ids"></span><strong>env_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.write_joint_viscous_friction_coefficient_to_sim_index.params.env_ids">¶</a> – Environment indices. If None, then all indices are used.</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.write_joint_viscous_friction_coefficient_to_sim_index.params.full_data"></span><strong>full_data</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.write_joint_viscous_friction_coefficient_to_sim_index.params.full_data">¶</a> – Whether to expect full data. Defaults to False.</p></li>
+<li><p><strong>joint_ids</strong> – Joint indices. If None, then all joints are used.</p></li>
+<li><p><strong>env_ids</strong> – Environment indices. If None, then all indices are used.</p></li>
+<li><p><strong>full_data</strong> – Whether to expect full data. Defaults to False.</p></li>
 </ul>
 </dd>
 </dl>
@@ -3879,9 +3880,9 @@ is only supporting indexing, hence masks need to be converted to indices.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.write_joint_viscous_friction_coefficient_to_sim_mask.params.joint_viscous_friction_coeff"></span><strong>joint_viscous_friction_coeff</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.write_joint_viscous_friction_coefficient_to_sim_mask.params.joint_viscous_friction_coeff">¶</a> – Joint viscous friction coefficient. Shape is (num_instances, num_joints).</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.write_joint_viscous_friction_coefficient_to_sim_mask.params.joint_mask"></span><strong>joint_mask</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.write_joint_viscous_friction_coefficient_to_sim_mask.params.joint_mask">¶</a> – Joint mask. If None, then all joints are used.</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.write_joint_viscous_friction_coefficient_to_sim_mask.params.env_mask"></span><strong>env_mask</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.write_joint_viscous_friction_coefficient_to_sim_mask.params.env_mask">¶</a> – Environment mask. If None, then all the instances are updated. Shape is (num_instances,).</p></li>
+<li><p><strong>joint_viscous_friction_coeff</strong> – Joint viscous friction coefficient. Shape is (num_instances, num_joints).</p></li>
+<li><p><strong>joint_mask</strong> – Joint mask. If None, then all joints are used.</p></li>
+<li><p><strong>env_mask</strong> – Environment mask. If None, then all the instances are updated. Shape is (num_instances,).</p></li>
 </ul>
 </dd>
 </dl>
@@ -3911,10 +3912,10 @@ is only supporting indexing, hence masks need to be converted to indices.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.write_root_com_pose_to_sim_index.params.root_pose"></span><strong>root_pose</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.write_root_com_pose_to_sim_index.params.root_pose">¶</a> – Root center of mass poses in simulation frame. Shape is (len(env_ids), 7) or (num_instances, 7),
+<li><p><strong>root_pose</strong> – Root center of mass poses in simulation frame. Shape is (len(env_ids), 7) or (num_instances, 7),
 or (len(env_ids),) / (num_instances,) with dtype wp.transformf.</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.write_root_com_pose_to_sim_index.params.env_ids"></span><strong>env_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.write_root_com_pose_to_sim_index.params.env_ids">¶</a> – Environment indices. If None, then all indices are used.</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.write_root_com_pose_to_sim_index.params.full_data"></span><strong>full_data</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.write_root_com_pose_to_sim_index.params.full_data">¶</a> – Whether to expect full data. Defaults to False.</p></li>
+<li><p><strong>env_ids</strong> – Environment indices. If None, then all indices are used.</p></li>
+<li><p><strong>full_data</strong> – Whether to expect full data. Defaults to False.</p></li>
 </ul>
 </dd>
 </dl>
@@ -3938,9 +3939,9 @@ is only supporting indexing, hence masks need to be converted to indices.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.write_root_com_pose_to_sim_mask.params.root_pose"></span><strong>root_pose</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.write_root_com_pose_to_sim_mask.params.root_pose">¶</a> – Root center of mass poses in simulation frame. Shape is (num_instances, 7)
+<li><p><strong>root_pose</strong> – Root center of mass poses in simulation frame. Shape is (num_instances, 7)
 or (num_instances,) with dtype wp.transformf.</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.write_root_com_pose_to_sim_mask.params.env_mask"></span><strong>env_mask</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.write_root_com_pose_to_sim_mask.params.env_mask">¶</a> – Environment mask. If None, then all the instances are updated. Shape is (num_instances,).</p></li>
+<li><p><strong>env_mask</strong> – Environment mask. If None, then all the instances are updated. Shape is (num_instances,).</p></li>
 </ul>
 </dd>
 </dl>
@@ -3980,10 +3981,10 @@ is only supporting indexing, hence masks need to be converted to indices.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.write_root_com_velocity_to_sim_index.params.root_velocity"></span><strong>root_velocity</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.write_root_com_velocity_to_sim_index.params.root_velocity">¶</a> – Root center of mass velocities in simulation world frame. Shape is (len(env_ids), 6) or
+<li><p><strong>root_velocity</strong> – Root center of mass velocities in simulation world frame. Shape is (len(env_ids), 6) or
 (num_instances, 6), or (len(env_ids),) / (num_instances,) with dtype wp.spatial_vectorf.</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.write_root_com_velocity_to_sim_index.params.env_ids"></span><strong>env_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.write_root_com_velocity_to_sim_index.params.env_ids">¶</a> – Environment indices. If None, then all indices are used.</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.write_root_com_velocity_to_sim_index.params.full_data"></span><strong>full_data</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.write_root_com_velocity_to_sim_index.params.full_data">¶</a> – Whether to expect full data. Defaults to False.</p></li>
+<li><p><strong>env_ids</strong> – Environment indices. If None, then all indices are used.</p></li>
+<li><p><strong>full_data</strong> – Whether to expect full data. Defaults to False.</p></li>
 </ul>
 </dd>
 </dl>
@@ -4010,9 +4011,9 @@ is only supporting indexing, hence masks need to be converted to indices.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.write_root_com_velocity_to_sim_mask.params.root_velocity"></span><strong>root_velocity</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.write_root_com_velocity_to_sim_mask.params.root_velocity">¶</a> – Root center of mass velocities in simulation world frame.
+<li><p><strong>root_velocity</strong> – Root center of mass velocities in simulation world frame.
 Shape is (num_instances, 6) or (num_instances,) with dtype wp.spatial_vectorf.</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.write_root_com_velocity_to_sim_mask.params.env_mask"></span><strong>env_mask</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.write_root_com_velocity_to_sim_mask.params.env_mask">¶</a> – Environment mask. If None, then all the instances are updated. Shape is (num_instances,).</p></li>
+<li><p><strong>env_mask</strong> – Environment mask. If None, then all the instances are updated. Shape is (num_instances,).</p></li>
 </ul>
 </dd>
 </dl>
@@ -4041,10 +4042,10 @@ is only supporting indexing, hence masks need to be converted to indices.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.write_root_link_pose_to_sim_index.params.root_pose"></span><strong>root_pose</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.write_root_link_pose_to_sim_index.params.root_pose">¶</a> – Root poses in simulation frame. Shape is (len(env_ids), 7) or (num_instances, 7),
+<li><p><strong>root_pose</strong> – Root poses in simulation frame. Shape is (len(env_ids), 7) or (num_instances, 7),
 or (len(env_ids),) / (num_instances,) with dtype wp.transformf.</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.write_root_link_pose_to_sim_index.params.env_ids"></span><strong>env_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.write_root_link_pose_to_sim_index.params.env_ids">¶</a> – Environment indices. If None, then all indices are used.</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.write_root_link_pose_to_sim_index.params.full_data"></span><strong>full_data</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.write_root_link_pose_to_sim_index.params.full_data">¶</a> – Whether to expect full data. Defaults to False.</p></li>
+<li><p><strong>env_ids</strong> – Environment indices. If None, then all indices are used.</p></li>
+<li><p><strong>full_data</strong> – Whether to expect full data. Defaults to False.</p></li>
 </ul>
 </dd>
 </dl>
@@ -4067,9 +4068,9 @@ is only supporting indexing, hence masks need to be converted to indices.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.write_root_link_pose_to_sim_mask.params.root_pose"></span><strong>root_pose</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.write_root_link_pose_to_sim_mask.params.root_pose">¶</a> – Root poses in simulation frame. Shape is (num_instances, 7)
+<li><p><strong>root_pose</strong> – Root poses in simulation frame. Shape is (num_instances, 7)
 or (num_instances,) with dtype wp.transformf.</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.write_root_link_pose_to_sim_mask.params.env_mask"></span><strong>env_mask</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.write_root_link_pose_to_sim_mask.params.env_mask">¶</a> – Environment mask. If None, then all the instances are updated. Shape is (num_instances,).</p></li>
+<li><p><strong>env_mask</strong> – Environment mask. If None, then all the instances are updated. Shape is (num_instances,).</p></li>
 </ul>
 </dd>
 </dl>
@@ -4109,10 +4110,10 @@ is only supporting indexing, hence masks need to be converted to indices.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.write_root_link_velocity_to_sim_index.params.root_velocity"></span><strong>root_velocity</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.write_root_link_velocity_to_sim_index.params.root_velocity">¶</a> – Root frame velocities in simulation world frame. Shape is (len(env_ids), 6) or
+<li><p><strong>root_velocity</strong> – Root frame velocities in simulation world frame. Shape is (len(env_ids), 6) or
 (num_instances, 6), or (len(env_ids),) / (num_instances,) with dtype wp.spatial_vectorf.</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.write_root_link_velocity_to_sim_index.params.env_ids"></span><strong>env_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.write_root_link_velocity_to_sim_index.params.env_ids">¶</a> – Environment indices. If None, then all indices are used.</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.write_root_link_velocity_to_sim_index.params.full_data"></span><strong>full_data</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.write_root_link_velocity_to_sim_index.params.full_data">¶</a> – Whether to expect full data. Defaults to False.</p></li>
+<li><p><strong>env_ids</strong> – Environment indices. If None, then all indices are used.</p></li>
+<li><p><strong>full_data</strong> – Whether to expect full data. Defaults to False.</p></li>
 </ul>
 </dd>
 </dl>
@@ -4139,9 +4140,9 @@ is only supporting indexing, hence masks need to be converted to indices.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.write_root_link_velocity_to_sim_mask.params.root_velocity"></span><strong>root_velocity</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.write_root_link_velocity_to_sim_mask.params.root_velocity">¶</a> – Root frame velocities in simulation world frame.
+<li><p><strong>root_velocity</strong> – Root frame velocities in simulation world frame.
 Shape is (num_instances, 6) or (num_instances,) with dtype wp.spatial_vectorf.</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.write_root_link_velocity_to_sim_mask.params.env_mask"></span><strong>env_mask</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.write_root_link_velocity_to_sim_mask.params.env_mask">¶</a> – Environment mask. If None, then all the instances are updated. Shape is (num_instances,).</p></li>
+<li><p><strong>env_mask</strong> – Environment mask. If None, then all the instances are updated. Shape is (num_instances,).</p></li>
 </ul>
 </dd>
 </dl>
@@ -4170,9 +4171,9 @@ is only supporting indexing, hence masks need to be converted to indices.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.write_root_pose_to_sim_index.params.root_pose"></span><strong>root_pose</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.write_root_pose_to_sim_index.params.root_pose">¶</a> – Root poses in simulation frame. Shape is (len(env_ids), 7)
+<li><p><strong>root_pose</strong> – Root poses in simulation frame. Shape is (len(env_ids), 7)
 or (len(env_ids),) with dtype wp.transformf.</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.write_root_pose_to_sim_index.params.env_ids"></span><strong>env_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.write_root_pose_to_sim_index.params.env_ids">¶</a> – Environment indices. If None, then all indices are used.</p></li>
+<li><p><strong>env_ids</strong> – Environment indices. If None, then all indices are used.</p></li>
 </ul>
 </dd>
 </dl>
@@ -4195,9 +4196,9 @@ is only supporting indexing, hence masks need to be converted to indices.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.write_root_pose_to_sim_mask.params.root_pose"></span><strong>root_pose</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.write_root_pose_to_sim_mask.params.root_pose">¶</a> – Root poses in simulation frame. Shape is (num_instances, 7)
+<li><p><strong>root_pose</strong> – Root poses in simulation frame. Shape is (num_instances, 7)
 or (num_instances,) with dtype wp.transformf.</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.write_root_pose_to_sim_mask.params.env_mask"></span><strong>env_mask</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.write_root_pose_to_sim_mask.params.env_mask">¶</a> – Environment mask. If None, then all the instances are updated. Shape is (num_instances,).</p></li>
+<li><p><strong>env_mask</strong> – Environment mask. If None, then all the instances are updated. Shape is (num_instances,).</p></li>
 </ul>
 </dd>
 </dl>
@@ -4237,9 +4238,9 @@ is only supporting indexing, hence masks need to be converted to indices.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.write_root_velocity_to_sim_index.params.root_velocity"></span><strong>root_velocity</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.write_root_velocity_to_sim_index.params.root_velocity">¶</a> – Root center of mass velocities in simulation world frame.
+<li><p><strong>root_velocity</strong> – Root center of mass velocities in simulation world frame.
 Shape is (len(env_ids), 6) or (len(env_ids),) with dtype wp.spatial_vectorf.</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.write_root_velocity_to_sim_index.params.env_ids"></span><strong>env_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.write_root_velocity_to_sim_index.params.env_ids">¶</a> – Environment indices. If None, then all indices are used.</p></li>
+<li><p><strong>env_ids</strong> – Environment indices. If None, then all indices are used.</p></li>
 </ul>
 </dd>
 </dl>
@@ -4266,9 +4267,9 @@ is only supporting indexing, hence masks need to be converted to indices.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.write_root_velocity_to_sim_mask.params.root_velocity"></span><strong>root_velocity</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.write_root_velocity_to_sim_mask.params.root_velocity">¶</a> – Root center of mass velocities in simulation world frame.
+<li><p><strong>root_velocity</strong> – Root center of mass velocities in simulation world frame.
 Shape is (num_instances, 6) or (num_instances,) with dtype wp.spatial_vectorf.</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.write_root_velocity_to_sim_mask.params.env_mask"></span><strong>env_mask</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.write_root_velocity_to_sim_mask.params.env_mask">¶</a> – Environment mask. If None, then all the instances are updated. Shape is (num_instances,).</p></li>
+<li><p><strong>env_mask</strong> – Environment mask. If None, then all the instances are updated. Shape is (num_instances,).</p></li>
 </ul>
 </dd>
 </dl>
@@ -4291,7 +4292,7 @@ is only supporting indexing, hence masks need to be converted to indices.</p>
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab_contrib.assets.Multirotor.write_spatial_tendon_properties_to_sim_index.params.env_ids"></span><strong>env_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.write_spatial_tendon_properties_to_sim_index.params.env_ids">¶</a> – Environment indices. If None, then all indices are used.</p>
+<dd class="field-odd"><p><strong>env_ids</strong> – Environment indices. If None, then all indices are used.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -4308,8 +4309,8 @@ is only supporting indexing, hence masks need to be converted to indices.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.write_spatial_tendon_properties_to_sim_mask.params.spatial_tendon_mask"></span><strong>spatial_tendon_mask</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.write_spatial_tendon_properties_to_sim_mask.params.spatial_tendon_mask">¶</a> – Spatial tendon mask. If None, then all spatial tendons are used.</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.Multirotor.write_spatial_tendon_properties_to_sim_mask.params.env_mask"></span><strong>env_mask</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.Multirotor.write_spatial_tendon_properties_to_sim_mask.params.env_mask">¶</a> – Environment mask. If None, then all the instances are updated. Shape is (num_instances,).</p></li>
+<li><p><strong>spatial_tendon_mask</strong> – Spatial tendon mask. If None, then all spatial tendons are used.</p></li>
+<li><p><strong>env_mask</strong> – Environment mask. If None, then all the instances are updated. Shape is (num_instances,).</p></li>
 </ul>
 </dd>
 </dl>
@@ -5216,8 +5217,8 @@ the default might be <code class="docutils literal notranslate"><span class="pre
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_contrib.assets.MultirotorData.params.root_view"></span><strong>root_view</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.MultirotorData.params.root_view">¶</a> – The root articulation view.</p></li>
-<li><p><span class="target" id="isaaclab_contrib.assets.MultirotorData.params.device"></span><strong>device</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.MultirotorData.params.device">¶</a> – The device used for processing.</p></li>
+<li><p><strong>root_view</strong> – The root articulation view.</p></li>
+<li><p><strong>device</strong> – The device used for processing.</p></li>
 </ul>
 </dd>
 </dl>
@@ -6263,7 +6264,7 @@ force or RPS for rotational speed).</p>
 <dd><p>Updates the data for the articulation.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab_contrib.assets.MultirotorData.update.params.dt"></span><strong>dt</strong><a class="paramlink headerlink reference internal" href="#isaaclab_contrib.assets.MultirotorData.update.params.dt">¶</a> – The time step for the update. This must be a positive value.</p>
+<dd class="field-odd"><p><strong>dt</strong> – The time step for the update. This must be a positive value.</p>
 </dd>
 </dl>
 </dd></dl>

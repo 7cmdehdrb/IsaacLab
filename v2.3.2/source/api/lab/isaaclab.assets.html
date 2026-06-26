@@ -36,7 +36,6 @@
     <link rel="stylesheet" type="text/css" href="/opt/hostedtoolcache/Python/3.12.13/x64/lib/python3.12/site-packages/sphinxcontrib/icon/node_modules/@fortawesome/fontawesome-free/css/all.min.css?v=53359634" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx_paramlinks.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=8fb98eed" />
   
   <!-- So that users can add custom icons -->
@@ -164,6 +163,8 @@
             <option value="../../../../develop/source/api/lab/isaaclab.assets.html" >develop</option>
             <option value="../../../../main/source/api/lab/isaaclab.assets.html" >main</option>
             <option value="../../../../release/3.0.0-beta2/source/api/lab/isaaclab.assets.html" >release/3.0.0-beta2</option>
+            <option value="../../../../v3.0.0-beta2/source/api/lab/isaaclab.assets.html" >v3.0.0-beta2</option>
+            <option value="../../../../v3.0.0-beta/source/api/lab/isaaclab.assets.html" >v3.0.0-beta</option>
             <option value="isaaclab.assets.html" selected>v2.3.2</option>
             <option value="../../../../v2.3.1/source/api/lab/isaaclab.assets.html" >v2.3.1</option>
             <option value="../../../../v2.3.0/source/api/lab/isaaclab.assets.html" >v2.3.0</option>
@@ -1347,7 +1348,7 @@ to True. The debug visualization is implemented through the <code class="xref py
 <dd><p>Initialize the asset base.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab.assets.AssetBase.params.cfg"></span><strong>cfg</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.AssetBase.params.cfg">¶</a> – The configuration class for the asset.</p>
+<dd class="field-odd"><p><strong>cfg</strong> – The configuration class for the asset.</p>
 </dd>
 <dt class="field-even">Raises<span class="colon">:</span></dt>
 <dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#RuntimeError" title="(in Python v3.14)"><strong>RuntimeError</strong></a> – If no prims found at input prim path or prim path expression.</p>
@@ -1402,8 +1403,8 @@ may have an overhead if the number of prims is large.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.assets.AssetBase.set_visibility.params.visible"></span><strong>visible</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.AssetBase.set_visibility.params.visible">¶</a> – Whether to make the prims visible or not.</p></li>
-<li><p><span class="target" id="isaaclab.assets.AssetBase.set_visibility.params.env_ids"></span><strong>env_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.AssetBase.set_visibility.params.env_ids">¶</a> – The indices of the object to set visibility. Defaults to None (all instances).</p></li>
+<li><p><strong>visible</strong> – Whether to make the prims visible or not.</p></li>
+<li><p><strong>env_ids</strong> – The indices of the object to set visibility. Defaults to None (all instances).</p></li>
 </ul>
 </dd>
 </dl>
@@ -1415,7 +1416,7 @@ may have an overhead if the number of prims is large.</p>
 <dd><p>Sets whether to visualize the asset data.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab.assets.AssetBase.set_debug_vis.params.debug_vis"></span><strong>debug_vis</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.AssetBase.set_debug_vis.params.debug_vis">¶</a> – Whether to visualize the asset data.</p>
+<dd class="field-odd"><p><strong>debug_vis</strong> – Whether to visualize the asset data.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>Whether the debug visualization was successfully set. False if the asset
@@ -1430,7 +1431,7 @@ does not support debug visualization.</p>
 <dd><p>Resets all internal buffers of selected environments.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab.assets.AssetBase.reset.params.env_ids"></span><strong>env_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.AssetBase.reset.params.env_ids">¶</a> – The indices of the object to reset. Defaults to None (all instances).</p>
+<dd class="field-odd"><p><strong>env_ids</strong> – The indices of the object to reset. Defaults to None (all instances).</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1449,7 +1450,7 @@ does not support debug visualization.</p>
 accelerations which are not provided by the simulator.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab.assets.AssetBase.update.params.dt"></span><strong>dt</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.AssetBase.update.params.dt">¶</a> – The amount of time passed from last <code class="docutils literal notranslate"><span class="pre">update</span></code> call.</p>
+<dd class="field-odd"><p><strong>dt</strong> – The amount of time passed from last <code class="docutils literal notranslate"><span class="pre">update</span></code> call.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1655,7 +1656,7 @@ in Isaac Sim perform additional USD-related operations which are slow and also n
 <dd><p>Initialize the rigid object.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab.assets.RigidObject.params.cfg"></span><strong>cfg</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.RigidObject.params.cfg">¶</a> – A configuration instance.</p>
+<dd class="field-odd"><p><strong>cfg</strong> – A configuration instance.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1721,7 +1722,7 @@ are constant over a period of time, things like the thrust of a motor for instan
 <dd><p>Resets all internal buffers of selected environments.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab.assets.RigidObject.reset.params.env_ids"></span><strong>env_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.RigidObject.reset.params.env_ids">¶</a> – The indices of the object to reset. Defaults to None (all instances).</p>
+<dd class="field-odd"><p><strong>env_ids</strong> – The indices of the object to reset. Defaults to None (all instances).</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1745,7 +1746,7 @@ This ensures that the external wrench is applied at every simulation step.</p>
 accelerations which are not provided by the simulator.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab.assets.RigidObject.update.params.dt"></span><strong>dt</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.RigidObject.update.params.dt">¶</a> – The amount of time passed from last <code class="docutils literal notranslate"><span class="pre">update</span></code> call.</p>
+<dd class="field-odd"><p><strong>dt</strong> – The amount of time passed from last <code class="docutils literal notranslate"><span class="pre">update</span></code> call.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1759,8 +1760,8 @@ information on the name matching.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.assets.RigidObject.find_bodies.params.name_keys"></span><strong>name_keys</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.RigidObject.find_bodies.params.name_keys">¶</a> – A regular expression or a list of regular expressions to match the body names.</p></li>
-<li><p><span class="target" id="isaaclab.assets.RigidObject.find_bodies.params.preserve_order"></span><strong>preserve_order</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.RigidObject.find_bodies.params.preserve_order">¶</a> – Whether to preserve the order of the name keys in the output. Defaults to False.</p></li>
+<li><p><strong>name_keys</strong> – A regular expression or a list of regular expressions to match the body names.</p></li>
+<li><p><strong>preserve_order</strong> – Whether to preserve the order of the name keys in the output. Defaults to False.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -1778,8 +1779,8 @@ and angular velocity. All the quantities are in the simulation frame.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.assets.RigidObject.write_root_state_to_sim.params.root_state"></span><strong>root_state</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.RigidObject.write_root_state_to_sim.params.root_state">¶</a> – Root state in simulation frame. Shape is (len(env_ids), 13).</p></li>
-<li><p><span class="target" id="isaaclab.assets.RigidObject.write_root_state_to_sim.params.env_ids"></span><strong>env_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.RigidObject.write_root_state_to_sim.params.env_ids">¶</a> – Environment indices. If None, then all indices are used.</p></li>
+<li><p><strong>root_state</strong> – Root state in simulation frame. Shape is (len(env_ids), 13).</p></li>
+<li><p><strong>env_ids</strong> – Environment indices. If None, then all indices are used.</p></li>
 </ul>
 </dd>
 </dl>
@@ -1794,8 +1795,8 @@ and angular velocity. All the quantities are in the simulation frame.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.assets.RigidObject.write_root_com_state_to_sim.params.root_state"></span><strong>root_state</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.RigidObject.write_root_com_state_to_sim.params.root_state">¶</a> – Root state in simulation frame. Shape is (len(env_ids), 13).</p></li>
-<li><p><span class="target" id="isaaclab.assets.RigidObject.write_root_com_state_to_sim.params.env_ids"></span><strong>env_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.RigidObject.write_root_com_state_to_sim.params.env_ids">¶</a> – Environment indices. If None, then all indices are used.</p></li>
+<li><p><strong>root_state</strong> – Root state in simulation frame. Shape is (len(env_ids), 13).</p></li>
+<li><p><strong>env_ids</strong> – Environment indices. If None, then all indices are used.</p></li>
 </ul>
 </dd>
 </dl>
@@ -1810,8 +1811,8 @@ and angular velocity. All the quantities are in the simulation frame.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.assets.RigidObject.write_root_link_state_to_sim.params.root_state"></span><strong>root_state</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.RigidObject.write_root_link_state_to_sim.params.root_state">¶</a> – Root state in simulation frame. Shape is (len(env_ids), 13).</p></li>
-<li><p><span class="target" id="isaaclab.assets.RigidObject.write_root_link_state_to_sim.params.env_ids"></span><strong>env_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.RigidObject.write_root_link_state_to_sim.params.env_ids">¶</a> – Environment indices. If None, then all indices are used.</p></li>
+<li><p><strong>root_state</strong> – Root state in simulation frame. Shape is (len(env_ids), 13).</p></li>
+<li><p><strong>env_ids</strong> – Environment indices. If None, then all indices are used.</p></li>
 </ul>
 </dd>
 </dl>
@@ -1825,8 +1826,8 @@ and angular velocity. All the quantities are in the simulation frame.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.assets.RigidObject.write_root_pose_to_sim.params.root_pose"></span><strong>root_pose</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.RigidObject.write_root_pose_to_sim.params.root_pose">¶</a> – Root link poses in simulation frame. Shape is (len(env_ids), 7).</p></li>
-<li><p><span class="target" id="isaaclab.assets.RigidObject.write_root_pose_to_sim.params.env_ids"></span><strong>env_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.RigidObject.write_root_pose_to_sim.params.env_ids">¶</a> – Environment indices. If None, then all indices are used.</p></li>
+<li><p><strong>root_pose</strong> – Root link poses in simulation frame. Shape is (len(env_ids), 7).</p></li>
+<li><p><strong>env_ids</strong> – Environment indices. If None, then all indices are used.</p></li>
 </ul>
 </dd>
 </dl>
@@ -1840,8 +1841,8 @@ and angular velocity. All the quantities are in the simulation frame.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.assets.RigidObject.write_root_link_pose_to_sim.params.root_pose"></span><strong>root_pose</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.RigidObject.write_root_link_pose_to_sim.params.root_pose">¶</a> – Root link poses in simulation frame. Shape is (len(env_ids), 7).</p></li>
-<li><p><span class="target" id="isaaclab.assets.RigidObject.write_root_link_pose_to_sim.params.env_ids"></span><strong>env_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.RigidObject.write_root_link_pose_to_sim.params.env_ids">¶</a> – Environment indices. If None, then all indices are used.</p></li>
+<li><p><strong>root_pose</strong> – Root link poses in simulation frame. Shape is (len(env_ids), 7).</p></li>
+<li><p><strong>env_ids</strong> – Environment indices. If None, then all indices are used.</p></li>
 </ul>
 </dd>
 </dl>
@@ -1856,8 +1857,8 @@ The orientation is the orientation of the principle axes of inertia.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.assets.RigidObject.write_root_com_pose_to_sim.params.root_pose"></span><strong>root_pose</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.RigidObject.write_root_com_pose_to_sim.params.root_pose">¶</a> – Root center of mass poses in simulation frame. Shape is (len(env_ids), 7).</p></li>
-<li><p><span class="target" id="isaaclab.assets.RigidObject.write_root_com_pose_to_sim.params.env_ids"></span><strong>env_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.RigidObject.write_root_com_pose_to_sim.params.env_ids">¶</a> – Environment indices. If None, then all indices are used.</p></li>
+<li><p><strong>root_pose</strong> – Root center of mass poses in simulation frame. Shape is (len(env_ids), 7).</p></li>
+<li><p><strong>env_ids</strong> – Environment indices. If None, then all indices are used.</p></li>
 </ul>
 </dd>
 </dl>
@@ -1872,8 +1873,8 @@ NOTE: This sets the velocity of the root’s center of mass rather than the root
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.assets.RigidObject.write_root_velocity_to_sim.params.root_velocity"></span><strong>root_velocity</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.RigidObject.write_root_velocity_to_sim.params.root_velocity">¶</a> – Root center of mass velocities in simulation world frame. Shape is (len(env_ids), 6).</p></li>
-<li><p><span class="target" id="isaaclab.assets.RigidObject.write_root_velocity_to_sim.params.env_ids"></span><strong>env_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.RigidObject.write_root_velocity_to_sim.params.env_ids">¶</a> – Environment indices. If None, then all indices are used.</p></li>
+<li><p><strong>root_velocity</strong> – Root center of mass velocities in simulation world frame. Shape is (len(env_ids), 6).</p></li>
+<li><p><strong>env_ids</strong> – Environment indices. If None, then all indices are used.</p></li>
 </ul>
 </dd>
 </dl>
@@ -1888,8 +1889,8 @@ NOTE: This sets the velocity of the root’s center of mass rather than the root
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.assets.RigidObject.write_root_com_velocity_to_sim.params.root_velocity"></span><strong>root_velocity</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.RigidObject.write_root_com_velocity_to_sim.params.root_velocity">¶</a> – Root center of mass velocities in simulation world frame. Shape is (len(env_ids), 6).</p></li>
-<li><p><span class="target" id="isaaclab.assets.RigidObject.write_root_com_velocity_to_sim.params.env_ids"></span><strong>env_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.RigidObject.write_root_com_velocity_to_sim.params.env_ids">¶</a> – Environment indices. If None, then all indices are used.</p></li>
+<li><p><strong>root_velocity</strong> – Root center of mass velocities in simulation world frame. Shape is (len(env_ids), 6).</p></li>
+<li><p><strong>env_ids</strong> – Environment indices. If None, then all indices are used.</p></li>
 </ul>
 </dd>
 </dl>
@@ -1904,8 +1905,8 @@ NOTE: This sets the velocity of the root’s frame rather than the roots center 
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.assets.RigidObject.write_root_link_velocity_to_sim.params.root_velocity"></span><strong>root_velocity</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.RigidObject.write_root_link_velocity_to_sim.params.root_velocity">¶</a> – Root frame velocities in simulation world frame. Shape is (len(env_ids), 6).</p></li>
-<li><p><span class="target" id="isaaclab.assets.RigidObject.write_root_link_velocity_to_sim.params.env_ids"></span><strong>env_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.RigidObject.write_root_link_velocity_to_sim.params.env_ids">¶</a> – Environment indices. If None, then all indices are used.</p></li>
+<li><p><strong>root_velocity</strong> – Root frame velocities in simulation world frame. Shape is (len(env_ids), 6).</p></li>
+<li><p><strong>env_ids</strong> – Environment indices. If None, then all indices are used.</p></li>
 </ul>
 </dd>
 </dl>
@@ -1937,13 +1938,13 @@ right before the simulation step.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.assets.RigidObject.set_external_force_and_torque.params.forces"></span><strong>forces</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.RigidObject.set_external_force_and_torque.params.forces">¶</a> – External forces in bodies’ local frame. Shape is (len(env_ids), len(body_ids), 3).</p></li>
-<li><p><span class="target" id="isaaclab.assets.RigidObject.set_external_force_and_torque.params.torques"></span><strong>torques</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.RigidObject.set_external_force_and_torque.params.torques">¶</a> – External torques in bodies’ local frame. Shape is (len(env_ids), len(body_ids), 3).</p></li>
-<li><p><span class="target" id="isaaclab.assets.RigidObject.set_external_force_and_torque.params.positions"></span><strong>positions</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.RigidObject.set_external_force_and_torque.params.positions">¶</a> – External wrench positions in bodies’ local frame. Shape is (len(env_ids), len(body_ids), 3).
+<li><p><strong>forces</strong> – External forces in bodies’ local frame. Shape is (len(env_ids), len(body_ids), 3).</p></li>
+<li><p><strong>torques</strong> – External torques in bodies’ local frame. Shape is (len(env_ids), len(body_ids), 3).</p></li>
+<li><p><strong>positions</strong> – External wrench positions in bodies’ local frame. Shape is (len(env_ids), len(body_ids), 3).
 Defaults to None.</p></li>
-<li><p><span class="target" id="isaaclab.assets.RigidObject.set_external_force_and_torque.params.body_ids"></span><strong>body_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.RigidObject.set_external_force_and_torque.params.body_ids">¶</a> – Body indices to apply external wrench to. Defaults to None (all bodies).</p></li>
-<li><p><span class="target" id="isaaclab.assets.RigidObject.set_external_force_and_torque.params.env_ids"></span><strong>env_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.RigidObject.set_external_force_and_torque.params.env_ids">¶</a> – Environment indices to apply external wrench to. Defaults to None (all instances).</p></li>
-<li><p><span class="target" id="isaaclab.assets.RigidObject.set_external_force_and_torque.params.is_global"></span><strong>is_global</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.RigidObject.set_external_force_and_torque.params.is_global">¶</a> – Whether to apply the external wrench in the global frame. Defaults to False. If set to False,
+<li><p><strong>body_ids</strong> – Body indices to apply external wrench to. Defaults to None (all bodies).</p></li>
+<li><p><strong>env_ids</strong> – Environment indices to apply external wrench to. Defaults to None (all instances).</p></li>
+<li><p><strong>is_global</strong> – Whether to apply the external wrench in the global frame. Defaults to False. If set to False,
 the external wrench is applied in the link frame of the bodies.</p></li>
 </ul>
 </dd>
@@ -1975,7 +1976,7 @@ the external wrench is applied in the link frame of the bodies.</p></li>
 <dd><p>Sets whether to visualize the asset data.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab.assets.RigidObject.set_debug_vis.params.debug_vis"></span><strong>debug_vis</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.RigidObject.set_debug_vis.params.debug_vis">¶</a> – Whether to visualize the asset data.</p>
+<dd class="field-odd"><p><strong>debug_vis</strong> – Whether to visualize the asset data.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>Whether the debug visualization was successfully set. False if the asset
@@ -1999,8 +2000,8 @@ may have an overhead if the number of prims is large.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.assets.RigidObject.set_visibility.params.visible"></span><strong>visible</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.RigidObject.set_visibility.params.visible">¶</a> – Whether to make the prims visible or not.</p></li>
-<li><p><span class="target" id="isaaclab.assets.RigidObject.set_visibility.params.env_ids"></span><strong>env_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.RigidObject.set_visibility.params.env_ids">¶</a> – The indices of the object to set visibility. Defaults to None (all instances).</p></li>
+<li><p><strong>visible</strong> – Whether to make the prims visible or not.</p></li>
+<li><p><strong>env_ids</strong> – The indices of the object to set visibility. Defaults to None (all instances).</p></li>
 </ul>
 </dd>
 </dl>
@@ -2243,7 +2244,7 @@ is older than the current simulation timestamp. The timestamp is updated wheneve
 <dd><p>Updates the data for the rigid object.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab.assets.RigidObjectData.update.params.dt"></span><strong>dt</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.RigidObjectData.update.params.dt">¶</a> – The time step for the update. This must be a positive value.</p>
+<dd class="field-odd"><p><strong>dt</strong> – The time step for the update. This must be a positive value.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -2978,7 +2979,7 @@ could contain the same rigid object multiple times, leading to ambiguity.</p>
 <dd><p>Initialize the rigid object collection.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab.assets.RigidObjectCollection.params.cfg"></span><strong>cfg</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.RigidObjectCollection.params.cfg">¶</a> – A configuration instance.</p>
+<dd class="field-odd"><p><strong>cfg</strong> – A configuration instance.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -3050,8 +3051,8 @@ are constant over a period of time, things like the thrust of a motor for instan
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.assets.RigidObjectCollection.reset.params.env_ids"></span><strong>env_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.RigidObjectCollection.reset.params.env_ids">¶</a> – The indices of the object to reset. Defaults to None (all instances).</p></li>
-<li><p><span class="target" id="isaaclab.assets.RigidObjectCollection.reset.params.object_ids"></span><strong>object_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.RigidObjectCollection.reset.params.object_ids">¶</a> – The indices of the object to reset. Defaults to None (all objects).</p></li>
+<li><p><strong>env_ids</strong> – The indices of the object to reset. Defaults to None (all instances).</p></li>
+<li><p><strong>object_ids</strong> – The indices of the object to reset. Defaults to None (all objects).</p></li>
 </ul>
 </dd>
 </dl>
@@ -3076,7 +3077,7 @@ This ensures that the external wrench is applied at every simulation step.</p>
 accelerations which are not provided by the simulator.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab.assets.RigidObjectCollection.update.params.dt"></span><strong>dt</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.RigidObjectCollection.update.params.dt">¶</a> – The amount of time passed from last <code class="docutils literal notranslate"><span class="pre">update</span></code> call.</p>
+<dd class="field-odd"><p><strong>dt</strong> – The amount of time passed from last <code class="docutils literal notranslate"><span class="pre">update</span></code> call.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -3090,8 +3091,8 @@ information on the name matching.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.assets.RigidObjectCollection.find_objects.params.name_keys"></span><strong>name_keys</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.RigidObjectCollection.find_objects.params.name_keys">¶</a> – A regular expression or a list of regular expressions to match the object names.</p></li>
-<li><p><span class="target" id="isaaclab.assets.RigidObjectCollection.find_objects.params.preserve_order"></span><strong>preserve_order</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.RigidObjectCollection.find_objects.params.preserve_order">¶</a> – Whether to preserve the order of the name keys in the output. Defaults to False.</p></li>
+<li><p><strong>name_keys</strong> – A regular expression or a list of regular expressions to match the object names.</p></li>
+<li><p><strong>preserve_order</strong> – Whether to preserve the order of the name keys in the output. Defaults to False.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -3109,9 +3110,9 @@ and angular velocity. All the quantities are in the simulation frame.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.assets.RigidObjectCollection.write_object_state_to_sim.params.object_state"></span><strong>object_state</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.RigidObjectCollection.write_object_state_to_sim.params.object_state">¶</a> – Object state in simulation frame. Shape is (len(env_ids), len(object_ids), 13).</p></li>
-<li><p><span class="target" id="isaaclab.assets.RigidObjectCollection.write_object_state_to_sim.params.env_ids"></span><strong>env_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.RigidObjectCollection.write_object_state_to_sim.params.env_ids">¶</a> – Environment indices. If None, then all indices are used.</p></li>
-<li><p><span class="target" id="isaaclab.assets.RigidObjectCollection.write_object_state_to_sim.params.object_ids"></span><strong>object_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.RigidObjectCollection.write_object_state_to_sim.params.object_ids">¶</a> – Object indices. If None, then all indices are used.</p></li>
+<li><p><strong>object_state</strong> – Object state in simulation frame. Shape is (len(env_ids), len(object_ids), 13).</p></li>
+<li><p><strong>env_ids</strong> – Environment indices. If None, then all indices are used.</p></li>
+<li><p><strong>object_ids</strong> – Object indices. If None, then all indices are used.</p></li>
 </ul>
 </dd>
 </dl>
@@ -3126,9 +3127,9 @@ and angular velocity. All the quantities are in the simulation frame.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.assets.RigidObjectCollection.write_object_com_state_to_sim.params.object_state"></span><strong>object_state</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.RigidObjectCollection.write_object_com_state_to_sim.params.object_state">¶</a> – Object state in simulation frame. Shape is (len(env_ids), len(object_ids), 13).</p></li>
-<li><p><span class="target" id="isaaclab.assets.RigidObjectCollection.write_object_com_state_to_sim.params.env_ids"></span><strong>env_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.RigidObjectCollection.write_object_com_state_to_sim.params.env_ids">¶</a> – Environment indices. If None, then all indices are used.</p></li>
-<li><p><span class="target" id="isaaclab.assets.RigidObjectCollection.write_object_com_state_to_sim.params.object_ids"></span><strong>object_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.RigidObjectCollection.write_object_com_state_to_sim.params.object_ids">¶</a> – Object indices. If None, then all indices are used.</p></li>
+<li><p><strong>object_state</strong> – Object state in simulation frame. Shape is (len(env_ids), len(object_ids), 13).</p></li>
+<li><p><strong>env_ids</strong> – Environment indices. If None, then all indices are used.</p></li>
+<li><p><strong>object_ids</strong> – Object indices. If None, then all indices are used.</p></li>
 </ul>
 </dd>
 </dl>
@@ -3143,9 +3144,9 @@ and angular velocity. All the quantities are in the simulation frame.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.assets.RigidObjectCollection.write_object_link_state_to_sim.params.object_state"></span><strong>object_state</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.RigidObjectCollection.write_object_link_state_to_sim.params.object_state">¶</a> – Object state in simulation frame. Shape is (len(env_ids), len(object_ids), 13).</p></li>
-<li><p><span class="target" id="isaaclab.assets.RigidObjectCollection.write_object_link_state_to_sim.params.env_ids"></span><strong>env_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.RigidObjectCollection.write_object_link_state_to_sim.params.env_ids">¶</a> – Environment indices. If None, then all indices are used.</p></li>
-<li><p><span class="target" id="isaaclab.assets.RigidObjectCollection.write_object_link_state_to_sim.params.object_ids"></span><strong>object_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.RigidObjectCollection.write_object_link_state_to_sim.params.object_ids">¶</a> – Object indices. If None, then all indices are used.</p></li>
+<li><p><strong>object_state</strong> – Object state in simulation frame. Shape is (len(env_ids), len(object_ids), 13).</p></li>
+<li><p><strong>env_ids</strong> – Environment indices. If None, then all indices are used.</p></li>
+<li><p><strong>object_ids</strong> – Object indices. If None, then all indices are used.</p></li>
 </ul>
 </dd>
 </dl>
@@ -3159,9 +3160,9 @@ and angular velocity. All the quantities are in the simulation frame.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.assets.RigidObjectCollection.write_object_pose_to_sim.params.object_pose"></span><strong>object_pose</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.RigidObjectCollection.write_object_pose_to_sim.params.object_pose">¶</a> – Object poses in simulation frame. Shape is (len(env_ids), len(object_ids), 7).</p></li>
-<li><p><span class="target" id="isaaclab.assets.RigidObjectCollection.write_object_pose_to_sim.params.env_ids"></span><strong>env_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.RigidObjectCollection.write_object_pose_to_sim.params.env_ids">¶</a> – Environment indices. If None, then all indices are used.</p></li>
-<li><p><span class="target" id="isaaclab.assets.RigidObjectCollection.write_object_pose_to_sim.params.object_ids"></span><strong>object_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.RigidObjectCollection.write_object_pose_to_sim.params.object_ids">¶</a> – Object indices. If None, then all indices are used.</p></li>
+<li><p><strong>object_pose</strong> – Object poses in simulation frame. Shape is (len(env_ids), len(object_ids), 7).</p></li>
+<li><p><strong>env_ids</strong> – Environment indices. If None, then all indices are used.</p></li>
+<li><p><strong>object_ids</strong> – Object indices. If None, then all indices are used.</p></li>
 </ul>
 </dd>
 </dl>
@@ -3175,9 +3176,9 @@ and angular velocity. All the quantities are in the simulation frame.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.assets.RigidObjectCollection.write_object_link_pose_to_sim.params.object_pose"></span><strong>object_pose</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.RigidObjectCollection.write_object_link_pose_to_sim.params.object_pose">¶</a> – Object poses in simulation frame. Shape is (len(env_ids), len(object_ids), 7).</p></li>
-<li><p><span class="target" id="isaaclab.assets.RigidObjectCollection.write_object_link_pose_to_sim.params.env_ids"></span><strong>env_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.RigidObjectCollection.write_object_link_pose_to_sim.params.env_ids">¶</a> – Environment indices. If None, then all indices are used.</p></li>
-<li><p><span class="target" id="isaaclab.assets.RigidObjectCollection.write_object_link_pose_to_sim.params.object_ids"></span><strong>object_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.RigidObjectCollection.write_object_link_pose_to_sim.params.object_ids">¶</a> – Object indices. If None, then all indices are used.</p></li>
+<li><p><strong>object_pose</strong> – Object poses in simulation frame. Shape is (len(env_ids), len(object_ids), 7).</p></li>
+<li><p><strong>env_ids</strong> – Environment indices. If None, then all indices are used.</p></li>
+<li><p><strong>object_ids</strong> – Object indices. If None, then all indices are used.</p></li>
 </ul>
 </dd>
 </dl>
@@ -3192,9 +3193,9 @@ The orientation is the orientation of the principle axes of inertia.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.assets.RigidObjectCollection.write_object_com_pose_to_sim.params.object_pose"></span><strong>object_pose</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.RigidObjectCollection.write_object_com_pose_to_sim.params.object_pose">¶</a> – Object poses in simulation frame. Shape is (len(env_ids), len(object_ids), 7).</p></li>
-<li><p><span class="target" id="isaaclab.assets.RigidObjectCollection.write_object_com_pose_to_sim.params.env_ids"></span><strong>env_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.RigidObjectCollection.write_object_com_pose_to_sim.params.env_ids">¶</a> – Environment indices. If None, then all indices are used.</p></li>
-<li><p><span class="target" id="isaaclab.assets.RigidObjectCollection.write_object_com_pose_to_sim.params.object_ids"></span><strong>object_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.RigidObjectCollection.write_object_com_pose_to_sim.params.object_ids">¶</a> – Object indices. If None, then all indices are used.</p></li>
+<li><p><strong>object_pose</strong> – Object poses in simulation frame. Shape is (len(env_ids), len(object_ids), 7).</p></li>
+<li><p><strong>env_ids</strong> – Environment indices. If None, then all indices are used.</p></li>
+<li><p><strong>object_ids</strong> – Object indices. If None, then all indices are used.</p></li>
 </ul>
 </dd>
 </dl>
@@ -3207,9 +3208,9 @@ The orientation is the orientation of the principle axes of inertia.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.assets.RigidObjectCollection.write_object_velocity_to_sim.params.object_velocity"></span><strong>object_velocity</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.RigidObjectCollection.write_object_velocity_to_sim.params.object_velocity">¶</a> – Object velocities in simulation frame. Shape is (len(env_ids), len(object_ids), 6).</p></li>
-<li><p><span class="target" id="isaaclab.assets.RigidObjectCollection.write_object_velocity_to_sim.params.env_ids"></span><strong>env_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.RigidObjectCollection.write_object_velocity_to_sim.params.env_ids">¶</a> – Environment indices. If None, then all indices are used.</p></li>
-<li><p><span class="target" id="isaaclab.assets.RigidObjectCollection.write_object_velocity_to_sim.params.object_ids"></span><strong>object_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.RigidObjectCollection.write_object_velocity_to_sim.params.object_ids">¶</a> – Object indices. If None, then all indices are used.</p></li>
+<li><p><strong>object_velocity</strong> – Object velocities in simulation frame. Shape is (len(env_ids), len(object_ids), 6).</p></li>
+<li><p><strong>env_ids</strong> – Environment indices. If None, then all indices are used.</p></li>
+<li><p><strong>object_ids</strong> – Object indices. If None, then all indices are used.</p></li>
 </ul>
 </dd>
 </dl>
@@ -3222,9 +3223,9 @@ The orientation is the orientation of the principle axes of inertia.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.assets.RigidObjectCollection.write_object_com_velocity_to_sim.params.object_velocity"></span><strong>object_velocity</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.RigidObjectCollection.write_object_com_velocity_to_sim.params.object_velocity">¶</a> – Object velocities in simulation frame. Shape is (len(env_ids), len(object_ids), 6).</p></li>
-<li><p><span class="target" id="isaaclab.assets.RigidObjectCollection.write_object_com_velocity_to_sim.params.env_ids"></span><strong>env_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.RigidObjectCollection.write_object_com_velocity_to_sim.params.env_ids">¶</a> – Environment indices. If None, then all indices are used.</p></li>
-<li><p><span class="target" id="isaaclab.assets.RigidObjectCollection.write_object_com_velocity_to_sim.params.object_ids"></span><strong>object_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.RigidObjectCollection.write_object_com_velocity_to_sim.params.object_ids">¶</a> – Object indices. If None, then all indices are used.</p></li>
+<li><p><strong>object_velocity</strong> – Object velocities in simulation frame. Shape is (len(env_ids), len(object_ids), 6).</p></li>
+<li><p><strong>env_ids</strong> – Environment indices. If None, then all indices are used.</p></li>
+<li><p><strong>object_ids</strong> – Object indices. If None, then all indices are used.</p></li>
 </ul>
 </dd>
 </dl>
@@ -3239,9 +3240,9 @@ NOTE: This sets the velocity of the object’s frame rather than the objects cen
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.assets.RigidObjectCollection.write_object_link_velocity_to_sim.params.object_velocity"></span><strong>object_velocity</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.RigidObjectCollection.write_object_link_velocity_to_sim.params.object_velocity">¶</a> – Object velocities in simulation frame. Shape is (len(env_ids), len(object_ids), 6).</p></li>
-<li><p><span class="target" id="isaaclab.assets.RigidObjectCollection.write_object_link_velocity_to_sim.params.env_ids"></span><strong>env_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.RigidObjectCollection.write_object_link_velocity_to_sim.params.env_ids">¶</a> – Environment indices. If None, then all indices are used.</p></li>
-<li><p><span class="target" id="isaaclab.assets.RigidObjectCollection.write_object_link_velocity_to_sim.params.object_ids"></span><strong>object_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.RigidObjectCollection.write_object_link_velocity_to_sim.params.object_ids">¶</a> – Object indices. If None, then all indices are used.</p></li>
+<li><p><strong>object_velocity</strong> – Object velocities in simulation frame. Shape is (len(env_ids), len(object_ids), 6).</p></li>
+<li><p><strong>env_ids</strong> – Environment indices. If None, then all indices are used.</p></li>
+<li><p><strong>object_ids</strong> – Object indices. If None, then all indices are used.</p></li>
 </ul>
 </dd>
 </dl>
@@ -3272,12 +3273,12 @@ right before the simulation step.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.assets.RigidObjectCollection.set_external_force_and_torque.params.forces"></span><strong>forces</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.RigidObjectCollection.set_external_force_and_torque.params.forces">¶</a> – External forces in bodies’ local frame. Shape is (len(env_ids), len(object_ids), 3).</p></li>
-<li><p><span class="target" id="isaaclab.assets.RigidObjectCollection.set_external_force_and_torque.params.torques"></span><strong>torques</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.RigidObjectCollection.set_external_force_and_torque.params.torques">¶</a> – External torques in bodies’ local frame. Shape is (len(env_ids), len(object_ids), 3).</p></li>
-<li><p><span class="target" id="isaaclab.assets.RigidObjectCollection.set_external_force_and_torque.params.positions"></span><strong>positions</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.RigidObjectCollection.set_external_force_and_torque.params.positions">¶</a> – External wrench positions in bodies’ local frame. Shape is (len(env_ids), len(object_ids), 3).</p></li>
-<li><p><span class="target" id="isaaclab.assets.RigidObjectCollection.set_external_force_and_torque.params.object_ids"></span><strong>object_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.RigidObjectCollection.set_external_force_and_torque.params.object_ids">¶</a> – Object indices to apply external wrench to. Defaults to None (all objects).</p></li>
-<li><p><span class="target" id="isaaclab.assets.RigidObjectCollection.set_external_force_and_torque.params.env_ids"></span><strong>env_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.RigidObjectCollection.set_external_force_and_torque.params.env_ids">¶</a> – Environment indices to apply external wrench to. Defaults to None (all instances).</p></li>
-<li><p><span class="target" id="isaaclab.assets.RigidObjectCollection.set_external_force_and_torque.params.is_global"></span><strong>is_global</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.RigidObjectCollection.set_external_force_and_torque.params.is_global">¶</a> – Whether to apply the external wrench in the global frame. Defaults to False. If set to False,
+<li><p><strong>forces</strong> – External forces in bodies’ local frame. Shape is (len(env_ids), len(object_ids), 3).</p></li>
+<li><p><strong>torques</strong> – External torques in bodies’ local frame. Shape is (len(env_ids), len(object_ids), 3).</p></li>
+<li><p><strong>positions</strong> – External wrench positions in bodies’ local frame. Shape is (len(env_ids), len(object_ids), 3).</p></li>
+<li><p><strong>object_ids</strong> – Object indices to apply external wrench to. Defaults to None (all objects).</p></li>
+<li><p><strong>env_ids</strong> – Environment indices to apply external wrench to. Defaults to None (all instances).</p></li>
+<li><p><strong>is_global</strong> – Whether to apply the external wrench in the global frame. Defaults to False. If set to False,
 the external wrench is applied in the link frame of the bodies.</p></li>
 </ul>
 </dd>
@@ -3291,7 +3292,7 @@ the external wrench is applied in the link frame of the bodies.</p></li>
 (num_instances, num_objects, data_dim).</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab.assets.RigidObjectCollection.reshape_view_to_data.params.data"></span><strong>data</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.RigidObjectCollection.reshape_view_to_data.params.data">¶</a> – The data coming from the <a class="reference internal" href="#isaaclab.assets.RigidObjectCollection.root_physx_view" title="isaaclab.assets.RigidObjectCollection.root_physx_view"><code class="xref py py-attr docutils literal notranslate"><span class="pre">root_physx_view</span></code></a>. Shape is (num_instances * num_objects, data_dim).</p>
+<dd class="field-odd"><p><strong>data</strong> – The data coming from the <a class="reference internal" href="#isaaclab.assets.RigidObjectCollection.root_physx_view" title="isaaclab.assets.RigidObjectCollection.root_physx_view"><code class="xref py py-attr docutils literal notranslate"><span class="pre">root_physx_view</span></code></a>. Shape is (num_instances * num_objects, data_dim).</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>The reshaped data. Shape is (num_instances, num_objects, data_dim).</p>
@@ -3305,7 +3306,7 @@ the external wrench is applied in the link frame of the bodies.</p></li>
 <dd><p>Reshapes and arranges the data to the be consistent with data from the <a class="reference internal" href="#isaaclab.assets.RigidObjectCollection.root_physx_view" title="isaaclab.assets.RigidObjectCollection.root_physx_view"><code class="xref py py-attr docutils literal notranslate"><span class="pre">root_physx_view</span></code></a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab.assets.RigidObjectCollection.reshape_data_to_view.params.data"></span><strong>data</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.RigidObjectCollection.reshape_data_to_view.params.data">¶</a> – The data to be reshaped. Shape is (num_instances, num_objects, data_dim).</p>
+<dd class="field-odd"><p><strong>data</strong> – The data to be reshaped. Shape is (num_instances, num_objects, data_dim).</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>The reshaped data. Shape is (num_instances * num_objects, data_dim).</p>
@@ -3338,7 +3339,7 @@ the external wrench is applied in the link frame of the bodies.</p></li>
 <dd><p>Sets whether to visualize the asset data.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab.assets.RigidObjectCollection.set_debug_vis.params.debug_vis"></span><strong>debug_vis</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.RigidObjectCollection.set_debug_vis.params.debug_vis">¶</a> – Whether to visualize the asset data.</p>
+<dd class="field-odd"><p><strong>debug_vis</strong> – Whether to visualize the asset data.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>Whether the debug visualization was successfully set. False if the asset
@@ -3362,8 +3363,8 @@ may have an overhead if the number of prims is large.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.assets.RigidObjectCollection.set_visibility.params.visible"></span><strong>visible</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.RigidObjectCollection.set_visibility.params.visible">¶</a> – Whether to make the prims visible or not.</p></li>
-<li><p><span class="target" id="isaaclab.assets.RigidObjectCollection.set_visibility.params.env_ids"></span><strong>env_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.RigidObjectCollection.set_visibility.params.env_ids">¶</a> – The indices of the object to set visibility. Defaults to None (all instances).</p></li>
+<li><p><strong>visible</strong> – Whether to make the prims visible or not.</p></li>
+<li><p><strong>env_ids</strong> – The indices of the object to set visibility. Defaults to None (all instances).</p></li>
 </ul>
 </dd>
 </dl>
@@ -3543,7 +3544,7 @@ is older than the current simulation timestamp. The timestamp is updated wheneve
 <dd><p>Updates the data for the rigid object collection.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab.assets.RigidObjectCollectionData.update.params.dt"></span><strong>dt</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.RigidObjectCollectionData.update.params.dt">¶</a> – The time step for the update. This must be a positive value.</p>
+<dd class="field-odd"><p><strong>dt</strong> – The time step for the update. This must be a positive value.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -4173,7 +4174,7 @@ attribute. They are used to compute the joint commands during the <a class="refe
 <dd><p>Initialize the articulation.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab.assets.Articulation.params.cfg"></span><strong>cfg</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.Articulation.params.cfg">¶</a> – A configuration instance.</p>
+<dd class="field-odd"><p><strong>cfg</strong> – A configuration instance.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -4290,7 +4291,7 @@ applied to the simulation.</p>
 <dd><p>Resets all internal buffers of selected environments.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab.assets.Articulation.reset.params.env_ids"></span><strong>env_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.Articulation.reset.params.env_ids">¶</a> – The indices of the object to reset. Defaults to None (all instances).</p>
+<dd class="field-odd"><p><strong>env_ids</strong> – The indices of the object to reset. Defaults to None (all instances).</p>
 </dd>
 </dl>
 </dd></dl>
@@ -4316,7 +4317,7 @@ This ensures that the external wrench is applied at every simulation step.</p>
 accelerations which are not provided by the simulator.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab.assets.Articulation.update.params.dt"></span><strong>dt</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.Articulation.update.params.dt">¶</a> – The amount of time passed from last <code class="docutils literal notranslate"><span class="pre">update</span></code> call.</p>
+<dd class="field-odd"><p><strong>dt</strong> – The amount of time passed from last <code class="docutils literal notranslate"><span class="pre">update</span></code> call.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -4330,8 +4331,8 @@ information on the name matching.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.assets.Articulation.find_bodies.params.name_keys"></span><strong>name_keys</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.Articulation.find_bodies.params.name_keys">¶</a> – A regular expression or a list of regular expressions to match the body names.</p></li>
-<li><p><span class="target" id="isaaclab.assets.Articulation.find_bodies.params.preserve_order"></span><strong>preserve_order</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.Articulation.find_bodies.params.preserve_order">¶</a> – Whether to preserve the order of the name keys in the output. Defaults to False.</p></li>
+<li><p><strong>name_keys</strong> – A regular expression or a list of regular expressions to match the body names.</p></li>
+<li><p><strong>preserve_order</strong> – Whether to preserve the order of the name keys in the output. Defaults to False.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -4349,10 +4350,10 @@ on the name matching.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.assets.Articulation.find_joints.params.name_keys"></span><strong>name_keys</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.Articulation.find_joints.params.name_keys">¶</a> – A regular expression or a list of regular expressions to match the joint names.</p></li>
-<li><p><span class="target" id="isaaclab.assets.Articulation.find_joints.params.joint_subset"></span><strong>joint_subset</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.Articulation.find_joints.params.joint_subset">¶</a> – A subset of joints to search for. Defaults to None, which means all joints
+<li><p><strong>name_keys</strong> – A regular expression or a list of regular expressions to match the joint names.</p></li>
+<li><p><strong>joint_subset</strong> – A subset of joints to search for. Defaults to None, which means all joints
 in the articulation are searched.</p></li>
-<li><p><span class="target" id="isaaclab.assets.Articulation.find_joints.params.preserve_order"></span><strong>preserve_order</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.Articulation.find_joints.params.preserve_order">¶</a> – Whether to preserve the order of the name keys in the output. Defaults to False.</p></li>
+<li><p><strong>preserve_order</strong> – Whether to preserve the order of the name keys in the output. Defaults to False.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -4370,11 +4371,11 @@ on the name matching.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.assets.Articulation.find_fixed_tendons.params.name_keys"></span><strong>name_keys</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.Articulation.find_fixed_tendons.params.name_keys">¶</a> – A regular expression or a list of regular expressions to match the joint
+<li><p><strong>name_keys</strong> – A regular expression or a list of regular expressions to match the joint
 names with fixed tendons.</p></li>
-<li><p><span class="target" id="isaaclab.assets.Articulation.find_fixed_tendons.params.tendon_subsets"></span><strong>tendon_subsets</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.Articulation.find_fixed_tendons.params.tendon_subsets">¶</a> – A subset of joints with fixed tendons to search for. Defaults to None, which means
+<li><p><strong>tendon_subsets</strong> – A subset of joints with fixed tendons to search for. Defaults to None, which means
 all joints in the articulation are searched.</p></li>
-<li><p><span class="target" id="isaaclab.assets.Articulation.find_fixed_tendons.params.preserve_order"></span><strong>preserve_order</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.Articulation.find_fixed_tendons.params.preserve_order">¶</a> – Whether to preserve the order of the name keys in the output. Defaults to False.</p></li>
+<li><p><strong>preserve_order</strong> – Whether to preserve the order of the name keys in the output. Defaults to False.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -4392,10 +4393,10 @@ on the name matching.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.assets.Articulation.find_spatial_tendons.params.name_keys"></span><strong>name_keys</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.Articulation.find_spatial_tendons.params.name_keys">¶</a> – A regular expression or a list of regular expressions to match the tendon names.</p></li>
-<li><p><span class="target" id="isaaclab.assets.Articulation.find_spatial_tendons.params.tendon_subsets"></span><strong>tendon_subsets</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.Articulation.find_spatial_tendons.params.tendon_subsets">¶</a> – A subset of tendons to search for. Defaults to None, which means all tendons
+<li><p><strong>name_keys</strong> – A regular expression or a list of regular expressions to match the tendon names.</p></li>
+<li><p><strong>tendon_subsets</strong> – A subset of tendons to search for. Defaults to None, which means all tendons
 in the articulation are searched.</p></li>
-<li><p><span class="target" id="isaaclab.assets.Articulation.find_spatial_tendons.params.preserve_order"></span><strong>preserve_order</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.Articulation.find_spatial_tendons.params.preserve_order">¶</a> – Whether to preserve the order of the name keys in the output. Defaults to False.</p></li>
+<li><p><strong>preserve_order</strong> – Whether to preserve the order of the name keys in the output. Defaults to False.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -4413,8 +4414,8 @@ and angular velocity. All the quantities are in the simulation frame.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.assets.Articulation.write_root_state_to_sim.params.root_state"></span><strong>root_state</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.Articulation.write_root_state_to_sim.params.root_state">¶</a> – Root state in simulation frame. Shape is (len(env_ids), 13).</p></li>
-<li><p><span class="target" id="isaaclab.assets.Articulation.write_root_state_to_sim.params.env_ids"></span><strong>env_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.Articulation.write_root_state_to_sim.params.env_ids">¶</a> – Environment indices. If None, then all indices are used.</p></li>
+<li><p><strong>root_state</strong> – Root state in simulation frame. Shape is (len(env_ids), 13).</p></li>
+<li><p><strong>env_ids</strong> – Environment indices. If None, then all indices are used.</p></li>
 </ul>
 </dd>
 </dl>
@@ -4429,8 +4430,8 @@ and angular velocity. All the quantities are in the simulation frame.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.assets.Articulation.write_root_com_state_to_sim.params.root_state"></span><strong>root_state</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.Articulation.write_root_com_state_to_sim.params.root_state">¶</a> – Root state in simulation frame. Shape is (len(env_ids), 13).</p></li>
-<li><p><span class="target" id="isaaclab.assets.Articulation.write_root_com_state_to_sim.params.env_ids"></span><strong>env_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.Articulation.write_root_com_state_to_sim.params.env_ids">¶</a> – Environment indices. If None, then all indices are used.</p></li>
+<li><p><strong>root_state</strong> – Root state in simulation frame. Shape is (len(env_ids), 13).</p></li>
+<li><p><strong>env_ids</strong> – Environment indices. If None, then all indices are used.</p></li>
 </ul>
 </dd>
 </dl>
@@ -4445,8 +4446,8 @@ and angular velocity. All the quantities are in the simulation frame.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.assets.Articulation.write_root_link_state_to_sim.params.root_state"></span><strong>root_state</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.Articulation.write_root_link_state_to_sim.params.root_state">¶</a> – Root state in simulation frame. Shape is (len(env_ids), 13).</p></li>
-<li><p><span class="target" id="isaaclab.assets.Articulation.write_root_link_state_to_sim.params.env_ids"></span><strong>env_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.Articulation.write_root_link_state_to_sim.params.env_ids">¶</a> – Environment indices. If None, then all indices are used.</p></li>
+<li><p><strong>root_state</strong> – Root state in simulation frame. Shape is (len(env_ids), 13).</p></li>
+<li><p><strong>env_ids</strong> – Environment indices. If None, then all indices are used.</p></li>
 </ul>
 </dd>
 </dl>
@@ -4460,8 +4461,8 @@ and angular velocity. All the quantities are in the simulation frame.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.assets.Articulation.write_root_pose_to_sim.params.root_pose"></span><strong>root_pose</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.Articulation.write_root_pose_to_sim.params.root_pose">¶</a> – Root poses in simulation frame. Shape is (len(env_ids), 7).</p></li>
-<li><p><span class="target" id="isaaclab.assets.Articulation.write_root_pose_to_sim.params.env_ids"></span><strong>env_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.Articulation.write_root_pose_to_sim.params.env_ids">¶</a> – Environment indices. If None, then all indices are used.</p></li>
+<li><p><strong>root_pose</strong> – Root poses in simulation frame. Shape is (len(env_ids), 7).</p></li>
+<li><p><strong>env_ids</strong> – Environment indices. If None, then all indices are used.</p></li>
 </ul>
 </dd>
 </dl>
@@ -4475,8 +4476,8 @@ and angular velocity. All the quantities are in the simulation frame.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.assets.Articulation.write_root_link_pose_to_sim.params.root_pose"></span><strong>root_pose</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.Articulation.write_root_link_pose_to_sim.params.root_pose">¶</a> – Root poses in simulation frame. Shape is (len(env_ids), 7).</p></li>
-<li><p><span class="target" id="isaaclab.assets.Articulation.write_root_link_pose_to_sim.params.env_ids"></span><strong>env_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.Articulation.write_root_link_pose_to_sim.params.env_ids">¶</a> – Environment indices. If None, then all indices are used.</p></li>
+<li><p><strong>root_pose</strong> – Root poses in simulation frame. Shape is (len(env_ids), 7).</p></li>
+<li><p><strong>env_ids</strong> – Environment indices. If None, then all indices are used.</p></li>
 </ul>
 </dd>
 </dl>
@@ -4491,8 +4492,8 @@ The orientation is the orientation of the principle axes of inertia.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.assets.Articulation.write_root_com_pose_to_sim.params.root_pose"></span><strong>root_pose</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.Articulation.write_root_com_pose_to_sim.params.root_pose">¶</a> – Root center of mass poses in simulation frame. Shape is (len(env_ids), 7).</p></li>
-<li><p><span class="target" id="isaaclab.assets.Articulation.write_root_com_pose_to_sim.params.env_ids"></span><strong>env_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.Articulation.write_root_com_pose_to_sim.params.env_ids">¶</a> – Environment indices. If None, then all indices are used.</p></li>
+<li><p><strong>root_pose</strong> – Root center of mass poses in simulation frame. Shape is (len(env_ids), 7).</p></li>
+<li><p><strong>env_ids</strong> – Environment indices. If None, then all indices are used.</p></li>
 </ul>
 </dd>
 </dl>
@@ -4507,8 +4508,8 @@ NOTE: This sets the velocity of the root’s center of mass rather than the root
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.assets.Articulation.write_root_velocity_to_sim.params.root_velocity"></span><strong>root_velocity</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.Articulation.write_root_velocity_to_sim.params.root_velocity">¶</a> – Root center of mass velocities in simulation world frame. Shape is (len(env_ids), 6).</p></li>
-<li><p><span class="target" id="isaaclab.assets.Articulation.write_root_velocity_to_sim.params.env_ids"></span><strong>env_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.Articulation.write_root_velocity_to_sim.params.env_ids">¶</a> – Environment indices. If None, then all indices are used.</p></li>
+<li><p><strong>root_velocity</strong> – Root center of mass velocities in simulation world frame. Shape is (len(env_ids), 6).</p></li>
+<li><p><strong>env_ids</strong> – Environment indices. If None, then all indices are used.</p></li>
 </ul>
 </dd>
 </dl>
@@ -4523,8 +4524,8 @@ NOTE: This sets the velocity of the root’s center of mass rather than the root
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.assets.Articulation.write_root_com_velocity_to_sim.params.root_velocity"></span><strong>root_velocity</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.Articulation.write_root_com_velocity_to_sim.params.root_velocity">¶</a> – Root center of mass velocities in simulation world frame. Shape is (len(env_ids), 6).</p></li>
-<li><p><span class="target" id="isaaclab.assets.Articulation.write_root_com_velocity_to_sim.params.env_ids"></span><strong>env_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.Articulation.write_root_com_velocity_to_sim.params.env_ids">¶</a> – Environment indices. If None, then all indices are used.</p></li>
+<li><p><strong>root_velocity</strong> – Root center of mass velocities in simulation world frame. Shape is (len(env_ids), 6).</p></li>
+<li><p><strong>env_ids</strong> – Environment indices. If None, then all indices are used.</p></li>
 </ul>
 </dd>
 </dl>
@@ -4539,8 +4540,8 @@ NOTE: This sets the velocity of the root’s frame rather than the roots center 
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.assets.Articulation.write_root_link_velocity_to_sim.params.root_velocity"></span><strong>root_velocity</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.Articulation.write_root_link_velocity_to_sim.params.root_velocity">¶</a> – Root frame velocities in simulation world frame. Shape is (len(env_ids), 6).</p></li>
-<li><p><span class="target" id="isaaclab.assets.Articulation.write_root_link_velocity_to_sim.params.env_ids"></span><strong>env_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.Articulation.write_root_link_velocity_to_sim.params.env_ids">¶</a> – Environment indices. If None, then all indices are used.</p></li>
+<li><p><strong>root_velocity</strong> – Root frame velocities in simulation world frame. Shape is (len(env_ids), 6).</p></li>
+<li><p><strong>env_ids</strong> – Environment indices. If None, then all indices are used.</p></li>
 </ul>
 </dd>
 </dl>
@@ -4553,10 +4554,10 @@ NOTE: This sets the velocity of the root’s frame rather than the roots center 
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.assets.Articulation.write_joint_state_to_sim.params.position"></span><strong>position</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.Articulation.write_joint_state_to_sim.params.position">¶</a> – Joint positions. Shape is (len(env_ids), len(joint_ids)).</p></li>
-<li><p><span class="target" id="isaaclab.assets.Articulation.write_joint_state_to_sim.params.velocity"></span><strong>velocity</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.Articulation.write_joint_state_to_sim.params.velocity">¶</a> – Joint velocities. Shape is (len(env_ids), len(joint_ids)).</p></li>
-<li><p><span class="target" id="isaaclab.assets.Articulation.write_joint_state_to_sim.params.joint_ids"></span><strong>joint_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.Articulation.write_joint_state_to_sim.params.joint_ids">¶</a> – The joint indices to set the targets for. Defaults to None (all joints).</p></li>
-<li><p><span class="target" id="isaaclab.assets.Articulation.write_joint_state_to_sim.params.env_ids"></span><strong>env_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.Articulation.write_joint_state_to_sim.params.env_ids">¶</a> – The environment indices to set the targets for. Defaults to None (all environments).</p></li>
+<li><p><strong>position</strong> – Joint positions. Shape is (len(env_ids), len(joint_ids)).</p></li>
+<li><p><strong>velocity</strong> – Joint velocities. Shape is (len(env_ids), len(joint_ids)).</p></li>
+<li><p><strong>joint_ids</strong> – The joint indices to set the targets for. Defaults to None (all joints).</p></li>
+<li><p><strong>env_ids</strong> – The environment indices to set the targets for. Defaults to None (all environments).</p></li>
 </ul>
 </dd>
 </dl>
@@ -4569,9 +4570,9 @@ NOTE: This sets the velocity of the root’s frame rather than the roots center 
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.assets.Articulation.write_joint_position_to_sim.params.position"></span><strong>position</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.Articulation.write_joint_position_to_sim.params.position">¶</a> – Joint positions. Shape is (len(env_ids), len(joint_ids)).</p></li>
-<li><p><span class="target" id="isaaclab.assets.Articulation.write_joint_position_to_sim.params.joint_ids"></span><strong>joint_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.Articulation.write_joint_position_to_sim.params.joint_ids">¶</a> – The joint indices to set the targets for. Defaults to None (all joints).</p></li>
-<li><p><span class="target" id="isaaclab.assets.Articulation.write_joint_position_to_sim.params.env_ids"></span><strong>env_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.Articulation.write_joint_position_to_sim.params.env_ids">¶</a> – The environment indices to set the targets for. Defaults to None (all environments).</p></li>
+<li><p><strong>position</strong> – Joint positions. Shape is (len(env_ids), len(joint_ids)).</p></li>
+<li><p><strong>joint_ids</strong> – The joint indices to set the targets for. Defaults to None (all joints).</p></li>
+<li><p><strong>env_ids</strong> – The environment indices to set the targets for. Defaults to None (all environments).</p></li>
 </ul>
 </dd>
 </dl>
@@ -4584,9 +4585,9 @@ NOTE: This sets the velocity of the root’s frame rather than the roots center 
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.assets.Articulation.write_joint_velocity_to_sim.params.velocity"></span><strong>velocity</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.Articulation.write_joint_velocity_to_sim.params.velocity">¶</a> – Joint velocities. Shape is (len(env_ids), len(joint_ids)).</p></li>
-<li><p><span class="target" id="isaaclab.assets.Articulation.write_joint_velocity_to_sim.params.joint_ids"></span><strong>joint_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.Articulation.write_joint_velocity_to_sim.params.joint_ids">¶</a> – The joint indices to set the targets for. Defaults to None (all joints).</p></li>
-<li><p><span class="target" id="isaaclab.assets.Articulation.write_joint_velocity_to_sim.params.env_ids"></span><strong>env_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.Articulation.write_joint_velocity_to_sim.params.env_ids">¶</a> – The environment indices to set the targets for. Defaults to None (all environments).</p></li>
+<li><p><strong>velocity</strong> – Joint velocities. Shape is (len(env_ids), len(joint_ids)).</p></li>
+<li><p><strong>joint_ids</strong> – The joint indices to set the targets for. Defaults to None (all joints).</p></li>
+<li><p><strong>env_ids</strong> – The environment indices to set the targets for. Defaults to None (all environments).</p></li>
 </ul>
 </dd>
 </dl>
@@ -4599,9 +4600,9 @@ NOTE: This sets the velocity of the root’s frame rather than the roots center 
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.assets.Articulation.write_joint_stiffness_to_sim.params.stiffness"></span><strong>stiffness</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.Articulation.write_joint_stiffness_to_sim.params.stiffness">¶</a> – Joint stiffness. Shape is (len(env_ids), len(joint_ids)).</p></li>
-<li><p><span class="target" id="isaaclab.assets.Articulation.write_joint_stiffness_to_sim.params.joint_ids"></span><strong>joint_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.Articulation.write_joint_stiffness_to_sim.params.joint_ids">¶</a> – The joint indices to set the stiffness for. Defaults to None (all joints).</p></li>
-<li><p><span class="target" id="isaaclab.assets.Articulation.write_joint_stiffness_to_sim.params.env_ids"></span><strong>env_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.Articulation.write_joint_stiffness_to_sim.params.env_ids">¶</a> – The environment indices to set the stiffness for. Defaults to None (all environments).</p></li>
+<li><p><strong>stiffness</strong> – Joint stiffness. Shape is (len(env_ids), len(joint_ids)).</p></li>
+<li><p><strong>joint_ids</strong> – The joint indices to set the stiffness for. Defaults to None (all joints).</p></li>
+<li><p><strong>env_ids</strong> – The environment indices to set the stiffness for. Defaults to None (all environments).</p></li>
 </ul>
 </dd>
 </dl>
@@ -4614,9 +4615,9 @@ NOTE: This sets the velocity of the root’s frame rather than the roots center 
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.assets.Articulation.write_joint_damping_to_sim.params.damping"></span><strong>damping</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.Articulation.write_joint_damping_to_sim.params.damping">¶</a> – Joint damping. Shape is (len(env_ids), len(joint_ids)).</p></li>
-<li><p><span class="target" id="isaaclab.assets.Articulation.write_joint_damping_to_sim.params.joint_ids"></span><strong>joint_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.Articulation.write_joint_damping_to_sim.params.joint_ids">¶</a> – The joint indices to set the damping for. Defaults to None (all joints).</p></li>
-<li><p><span class="target" id="isaaclab.assets.Articulation.write_joint_damping_to_sim.params.env_ids"></span><strong>env_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.Articulation.write_joint_damping_to_sim.params.env_ids">¶</a> – The environment indices to set the damping for. Defaults to None (all environments).</p></li>
+<li><p><strong>damping</strong> – Joint damping. Shape is (len(env_ids), len(joint_ids)).</p></li>
+<li><p><strong>joint_ids</strong> – The joint indices to set the damping for. Defaults to None (all joints).</p></li>
+<li><p><strong>env_ids</strong> – The environment indices to set the damping for. Defaults to None (all environments).</p></li>
 </ul>
 </dd>
 </dl>
@@ -4629,10 +4630,10 @@ NOTE: This sets the velocity of the root’s frame rather than the roots center 
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.assets.Articulation.write_joint_position_limit_to_sim.params.limits"></span><strong>limits</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.Articulation.write_joint_position_limit_to_sim.params.limits">¶</a> – Joint limits. Shape is (len(env_ids), len(joint_ids), 2).</p></li>
-<li><p><span class="target" id="isaaclab.assets.Articulation.write_joint_position_limit_to_sim.params.joint_ids"></span><strong>joint_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.Articulation.write_joint_position_limit_to_sim.params.joint_ids">¶</a> – The joint indices to set the limits for. Defaults to None (all joints).</p></li>
-<li><p><span class="target" id="isaaclab.assets.Articulation.write_joint_position_limit_to_sim.params.env_ids"></span><strong>env_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.Articulation.write_joint_position_limit_to_sim.params.env_ids">¶</a> – The environment indices to set the limits for. Defaults to None (all environments).</p></li>
-<li><p><span class="target" id="isaaclab.assets.Articulation.write_joint_position_limit_to_sim.params.warn_limit_violation"></span><strong>warn_limit_violation</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.Articulation.write_joint_position_limit_to_sim.params.warn_limit_violation">¶</a> – Whether to use warning or info level logging when default joint positions
+<li><p><strong>limits</strong> – Joint limits. Shape is (len(env_ids), len(joint_ids), 2).</p></li>
+<li><p><strong>joint_ids</strong> – The joint indices to set the limits for. Defaults to None (all joints).</p></li>
+<li><p><strong>env_ids</strong> – The environment indices to set the limits for. Defaults to None (all environments).</p></li>
+<li><p><strong>warn_limit_violation</strong> – Whether to use warning or info level logging when default joint positions
 exceed the new limits. Defaults to True.</p></li>
 </ul>
 </dd>
@@ -4649,9 +4650,9 @@ faster than this velocity, the physics engine will actually try to brake the joi
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.assets.Articulation.write_joint_velocity_limit_to_sim.params.limits"></span><strong>limits</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.Articulation.write_joint_velocity_limit_to_sim.params.limits">¶</a> – Joint max velocity. Shape is (len(env_ids), len(joint_ids)).</p></li>
-<li><p><span class="target" id="isaaclab.assets.Articulation.write_joint_velocity_limit_to_sim.params.joint_ids"></span><strong>joint_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.Articulation.write_joint_velocity_limit_to_sim.params.joint_ids">¶</a> – The joint indices to set the max velocity for. Defaults to None (all joints).</p></li>
-<li><p><span class="target" id="isaaclab.assets.Articulation.write_joint_velocity_limit_to_sim.params.env_ids"></span><strong>env_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.Articulation.write_joint_velocity_limit_to_sim.params.env_ids">¶</a> – The environment indices to set the max velocity for. Defaults to None (all environments).</p></li>
+<li><p><strong>limits</strong> – Joint max velocity. Shape is (len(env_ids), len(joint_ids)).</p></li>
+<li><p><strong>joint_ids</strong> – The joint indices to set the max velocity for. Defaults to None (all joints).</p></li>
+<li><p><strong>env_ids</strong> – The environment indices to set the max velocity for. Defaults to None (all environments).</p></li>
 </ul>
 </dd>
 </dl>
@@ -4666,9 +4667,9 @@ computed effort exceeds this limit, the physics engine will clip the effort to t
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.assets.Articulation.write_joint_effort_limit_to_sim.params.limits"></span><strong>limits</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.Articulation.write_joint_effort_limit_to_sim.params.limits">¶</a> – Joint torque limits. Shape is (len(env_ids), len(joint_ids)).</p></li>
-<li><p><span class="target" id="isaaclab.assets.Articulation.write_joint_effort_limit_to_sim.params.joint_ids"></span><strong>joint_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.Articulation.write_joint_effort_limit_to_sim.params.joint_ids">¶</a> – The joint indices to set the joint torque limits for. Defaults to None (all joints).</p></li>
-<li><p><span class="target" id="isaaclab.assets.Articulation.write_joint_effort_limit_to_sim.params.env_ids"></span><strong>env_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.Articulation.write_joint_effort_limit_to_sim.params.env_ids">¶</a> – The environment indices to set the joint torque limits for. Defaults to None (all environments).</p></li>
+<li><p><strong>limits</strong> – Joint torque limits. Shape is (len(env_ids), len(joint_ids)).</p></li>
+<li><p><strong>joint_ids</strong> – The joint indices to set the joint torque limits for. Defaults to None (all joints).</p></li>
+<li><p><strong>env_ids</strong> – The environment indices to set the joint torque limits for. Defaults to None (all environments).</p></li>
 </ul>
 </dd>
 </dl>
@@ -4683,9 +4684,9 @@ simulation stability by reducing the joint velocities.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.assets.Articulation.write_joint_armature_to_sim.params.armature"></span><strong>armature</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.Articulation.write_joint_armature_to_sim.params.armature">¶</a> – Joint armature. Shape is (len(env_ids), len(joint_ids)).</p></li>
-<li><p><span class="target" id="isaaclab.assets.Articulation.write_joint_armature_to_sim.params.joint_ids"></span><strong>joint_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.Articulation.write_joint_armature_to_sim.params.joint_ids">¶</a> – The joint indices to set the joint torque limits for. Defaults to None (all joints).</p></li>
-<li><p><span class="target" id="isaaclab.assets.Articulation.write_joint_armature_to_sim.params.env_ids"></span><strong>env_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.Articulation.write_joint_armature_to_sim.params.env_ids">¶</a> – The environment indices to set the joint torque limits for. Defaults to None (all environments).</p></li>
+<li><p><strong>armature</strong> – Joint armature. Shape is (len(env_ids), len(joint_ids)).</p></li>
+<li><p><strong>joint_ids</strong> – The joint indices to set the joint torque limits for. Defaults to None (all joints).</p></li>
+<li><p><strong>env_ids</strong> – The environment indices to set the joint torque limits for. Defaults to None (all environments).</p></li>
 </ul>
 </dd>
 </dl>
@@ -4708,14 +4709,14 @@ are set. The model combines Coulomb (static &amp; dynamic) friction with a visco
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.assets.Articulation.write_joint_friction_coefficient_to_sim.params.joint_friction_coeff"></span><strong>joint_friction_coeff</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.Articulation.write_joint_friction_coefficient_to_sim.params.joint_friction_coeff">¶</a> – Static friction coefficient <span class="math notranslate nohighlight">\(\mu_s\)</span>.
+<li><p><strong>joint_friction_coeff</strong> – Static friction coefficient <span class="math notranslate nohighlight">\(\mu_s\)</span>.
 Shape is (len(env_ids), len(joint_ids)). Scalars are broadcast to all selections.</p></li>
-<li><p><span class="target" id="isaaclab.assets.Articulation.write_joint_friction_coefficient_to_sim.params.joint_dynamic_friction_coeff"></span><strong>joint_dynamic_friction_coeff</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.Articulation.write_joint_friction_coefficient_to_sim.params.joint_dynamic_friction_coeff">¶</a> – Dynamic (Coulomb) friction coefficient <span class="math notranslate nohighlight">\(\mu_d\)</span>.
+<li><p><strong>joint_dynamic_friction_coeff</strong> – Dynamic (Coulomb) friction coefficient <span class="math notranslate nohighlight">\(\mu_d\)</span>.
 Same shape as above. If None, the dynamic coefficient is not updated.</p></li>
-<li><p><span class="target" id="isaaclab.assets.Articulation.write_joint_friction_coefficient_to_sim.params.joint_viscous_friction_coeff"></span><strong>joint_viscous_friction_coeff</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.Articulation.write_joint_friction_coefficient_to_sim.params.joint_viscous_friction_coeff">¶</a> – Viscous friction coefficient <span class="math notranslate nohighlight">\(c_v\)</span>.
+<li><p><strong>joint_viscous_friction_coeff</strong> – Viscous friction coefficient <span class="math notranslate nohighlight">\(c_v\)</span>.
 Same shape as above. If None, the viscous coefficient is not updated.</p></li>
-<li><p><span class="target" id="isaaclab.assets.Articulation.write_joint_friction_coefficient_to_sim.params.joint_ids"></span><strong>joint_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.Articulation.write_joint_friction_coefficient_to_sim.params.joint_ids">¶</a> – The joint indices to set the friction coefficients for. Defaults to None (all joints).</p></li>
-<li><p><span class="target" id="isaaclab.assets.Articulation.write_joint_friction_coefficient_to_sim.params.env_ids"></span><strong>env_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.Articulation.write_joint_friction_coefficient_to_sim.params.env_ids">¶</a> – The environment indices to set the friction coefficients for. Defaults to None (all environments).</p></li>
+<li><p><strong>joint_ids</strong> – The joint indices to set the friction coefficients for. Defaults to None (all joints).</p></li>
+<li><p><strong>env_ids</strong> – The environment indices to set the friction coefficients for. Defaults to None (all environments).</p></li>
 </ul>
 </dd>
 </dl>
@@ -4747,12 +4748,12 @@ right before the simulation step.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.assets.Articulation.set_external_force_and_torque.params.forces"></span><strong>forces</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.Articulation.set_external_force_and_torque.params.forces">¶</a> – External forces in bodies’ local frame. Shape is (len(env_ids), len(body_ids), 3).</p></li>
-<li><p><span class="target" id="isaaclab.assets.Articulation.set_external_force_and_torque.params.torques"></span><strong>torques</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.Articulation.set_external_force_and_torque.params.torques">¶</a> – External torques in bodies’ local frame. Shape is (len(env_ids), len(body_ids), 3).</p></li>
-<li><p><span class="target" id="isaaclab.assets.Articulation.set_external_force_and_torque.params.positions"></span><strong>positions</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.Articulation.set_external_force_and_torque.params.positions">¶</a> – Positions to apply external wrench. Shape is (len(env_ids), len(body_ids), 3). Defaults to None.</p></li>
-<li><p><span class="target" id="isaaclab.assets.Articulation.set_external_force_and_torque.params.body_ids"></span><strong>body_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.Articulation.set_external_force_and_torque.params.body_ids">¶</a> – Body indices to apply external wrench to. Defaults to None (all bodies).</p></li>
-<li><p><span class="target" id="isaaclab.assets.Articulation.set_external_force_and_torque.params.env_ids"></span><strong>env_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.Articulation.set_external_force_and_torque.params.env_ids">¶</a> – Environment indices to apply external wrench to. Defaults to None (all instances).</p></li>
-<li><p><span class="target" id="isaaclab.assets.Articulation.set_external_force_and_torque.params.is_global"></span><strong>is_global</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.Articulation.set_external_force_and_torque.params.is_global">¶</a> – Whether to apply the external wrench in the global frame. Defaults to False. If set to False,
+<li><p><strong>forces</strong> – External forces in bodies’ local frame. Shape is (len(env_ids), len(body_ids), 3).</p></li>
+<li><p><strong>torques</strong> – External torques in bodies’ local frame. Shape is (len(env_ids), len(body_ids), 3).</p></li>
+<li><p><strong>positions</strong> – Positions to apply external wrench. Shape is (len(env_ids), len(body_ids), 3). Defaults to None.</p></li>
+<li><p><strong>body_ids</strong> – Body indices to apply external wrench to. Defaults to None (all bodies).</p></li>
+<li><p><strong>env_ids</strong> – Environment indices to apply external wrench to. Defaults to None (all instances).</p></li>
+<li><p><strong>is_global</strong> – Whether to apply the external wrench in the global frame. Defaults to False. If set to False,
 the external wrench is applied in the link frame of the articulations’ bodies.</p></li>
 </ul>
 </dd>
@@ -4768,9 +4769,9 @@ the desired values. To apply the joint targets, call the <a class="reference int
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.assets.Articulation.set_joint_position_target.params.target"></span><strong>target</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.Articulation.set_joint_position_target.params.target">¶</a> – Joint position targets. Shape is (len(env_ids), len(joint_ids)).</p></li>
-<li><p><span class="target" id="isaaclab.assets.Articulation.set_joint_position_target.params.joint_ids"></span><strong>joint_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.Articulation.set_joint_position_target.params.joint_ids">¶</a> – The joint indices to set the targets for. Defaults to None (all joints).</p></li>
-<li><p><span class="target" id="isaaclab.assets.Articulation.set_joint_position_target.params.env_ids"></span><strong>env_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.Articulation.set_joint_position_target.params.env_ids">¶</a> – The environment indices to set the targets for. Defaults to None (all environments).</p></li>
+<li><p><strong>target</strong> – Joint position targets. Shape is (len(env_ids), len(joint_ids)).</p></li>
+<li><p><strong>joint_ids</strong> – The joint indices to set the targets for. Defaults to None (all joints).</p></li>
+<li><p><strong>env_ids</strong> – The environment indices to set the targets for. Defaults to None (all environments).</p></li>
 </ul>
 </dd>
 </dl>
@@ -4785,9 +4786,9 @@ the desired values. To apply the joint targets, call the <a class="reference int
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.assets.Articulation.set_joint_velocity_target.params.target"></span><strong>target</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.Articulation.set_joint_velocity_target.params.target">¶</a> – Joint velocity targets. Shape is (len(env_ids), len(joint_ids)).</p></li>
-<li><p><span class="target" id="isaaclab.assets.Articulation.set_joint_velocity_target.params.joint_ids"></span><strong>joint_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.Articulation.set_joint_velocity_target.params.joint_ids">¶</a> – The joint indices to set the targets for. Defaults to None (all joints).</p></li>
-<li><p><span class="target" id="isaaclab.assets.Articulation.set_joint_velocity_target.params.env_ids"></span><strong>env_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.Articulation.set_joint_velocity_target.params.env_ids">¶</a> – The environment indices to set the targets for. Defaults to None (all environments).</p></li>
+<li><p><strong>target</strong> – Joint velocity targets. Shape is (len(env_ids), len(joint_ids)).</p></li>
+<li><p><strong>joint_ids</strong> – The joint indices to set the targets for. Defaults to None (all joints).</p></li>
+<li><p><strong>env_ids</strong> – The environment indices to set the targets for. Defaults to None (all environments).</p></li>
 </ul>
 </dd>
 </dl>
@@ -4802,9 +4803,9 @@ the desired values. To apply the joint targets, call the <a class="reference int
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.assets.Articulation.set_joint_effort_target.params.target"></span><strong>target</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.Articulation.set_joint_effort_target.params.target">¶</a> – Joint effort targets. Shape is (len(env_ids), len(joint_ids)).</p></li>
-<li><p><span class="target" id="isaaclab.assets.Articulation.set_joint_effort_target.params.joint_ids"></span><strong>joint_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.Articulation.set_joint_effort_target.params.joint_ids">¶</a> – The joint indices to set the targets for. Defaults to None (all joints).</p></li>
-<li><p><span class="target" id="isaaclab.assets.Articulation.set_joint_effort_target.params.env_ids"></span><strong>env_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.Articulation.set_joint_effort_target.params.env_ids">¶</a> – The environment indices to set the targets for. Defaults to None (all environments).</p></li>
+<li><p><strong>target</strong> – Joint effort targets. Shape is (len(env_ids), len(joint_ids)).</p></li>
+<li><p><strong>joint_ids</strong> – The joint indices to set the targets for. Defaults to None (all joints).</p></li>
+<li><p><strong>env_ids</strong> – The environment indices to set the targets for. Defaults to None (all environments).</p></li>
 </ul>
 </dd>
 </dl>
@@ -4820,9 +4821,9 @@ the desired values. To apply the tendon stiffness, call the
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.assets.Articulation.set_fixed_tendon_stiffness.params.stiffness"></span><strong>stiffness</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.Articulation.set_fixed_tendon_stiffness.params.stiffness">¶</a> – Fixed tendon stiffness. Shape is (len(env_ids), len(fixed_tendon_ids)).</p></li>
-<li><p><span class="target" id="isaaclab.assets.Articulation.set_fixed_tendon_stiffness.params.fixed_tendon_ids"></span><strong>fixed_tendon_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.Articulation.set_fixed_tendon_stiffness.params.fixed_tendon_ids">¶</a> – The tendon indices to set the stiffness for. Defaults to None (all fixed tendons).</p></li>
-<li><p><span class="target" id="isaaclab.assets.Articulation.set_fixed_tendon_stiffness.params.env_ids"></span><strong>env_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.Articulation.set_fixed_tendon_stiffness.params.env_ids">¶</a> – The environment indices to set the stiffness for. Defaults to None (all environments).</p></li>
+<li><p><strong>stiffness</strong> – Fixed tendon stiffness. Shape is (len(env_ids), len(fixed_tendon_ids)).</p></li>
+<li><p><strong>fixed_tendon_ids</strong> – The tendon indices to set the stiffness for. Defaults to None (all fixed tendons).</p></li>
+<li><p><strong>env_ids</strong> – The environment indices to set the stiffness for. Defaults to None (all environments).</p></li>
 </ul>
 </dd>
 </dl>
@@ -4837,9 +4838,9 @@ the desired values. To apply the tendon damping, call the <a class="reference in
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.assets.Articulation.set_fixed_tendon_damping.params.damping"></span><strong>damping</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.Articulation.set_fixed_tendon_damping.params.damping">¶</a> – Fixed tendon damping. Shape is (len(env_ids), len(fixed_tendon_ids)).</p></li>
-<li><p><span class="target" id="isaaclab.assets.Articulation.set_fixed_tendon_damping.params.fixed_tendon_ids"></span><strong>fixed_tendon_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.Articulation.set_fixed_tendon_damping.params.fixed_tendon_ids">¶</a> – The tendon indices to set the damping for. Defaults to None (all fixed tendons).</p></li>
-<li><p><span class="target" id="isaaclab.assets.Articulation.set_fixed_tendon_damping.params.env_ids"></span><strong>env_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.Articulation.set_fixed_tendon_damping.params.env_ids">¶</a> – The environment indices to set the damping for. Defaults to None (all environments).</p></li>
+<li><p><strong>damping</strong> – Fixed tendon damping. Shape is (len(env_ids), len(fixed_tendon_ids)).</p></li>
+<li><p><strong>fixed_tendon_ids</strong> – The tendon indices to set the damping for. Defaults to None (all fixed tendons).</p></li>
+<li><p><strong>env_ids</strong> – The environment indices to set the damping for. Defaults to None (all environments).</p></li>
 </ul>
 </dd>
 </dl>
@@ -4855,9 +4856,9 @@ the desired values. To apply the tendon limit stiffness, call the
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.assets.Articulation.set_fixed_tendon_limit_stiffness.params.limit_stiffness"></span><strong>limit_stiffness</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.Articulation.set_fixed_tendon_limit_stiffness.params.limit_stiffness">¶</a> – Fixed tendon limit stiffness. Shape is (len(env_ids), len(fixed_tendon_ids)).</p></li>
-<li><p><span class="target" id="isaaclab.assets.Articulation.set_fixed_tendon_limit_stiffness.params.fixed_tendon_ids"></span><strong>fixed_tendon_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.Articulation.set_fixed_tendon_limit_stiffness.params.fixed_tendon_ids">¶</a> – The tendon indices to set the limit stiffness for. Defaults to None (all fixed tendons).</p></li>
-<li><p><span class="target" id="isaaclab.assets.Articulation.set_fixed_tendon_limit_stiffness.params.env_ids"></span><strong>env_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.Articulation.set_fixed_tendon_limit_stiffness.params.env_ids">¶</a> – The environment indices to set the limit stiffness for. Defaults to None (all environments).</p></li>
+<li><p><strong>limit_stiffness</strong> – Fixed tendon limit stiffness. Shape is (len(env_ids), len(fixed_tendon_ids)).</p></li>
+<li><p><strong>fixed_tendon_ids</strong> – The tendon indices to set the limit stiffness for. Defaults to None (all fixed tendons).</p></li>
+<li><p><strong>env_ids</strong> – The environment indices to set the limit stiffness for. Defaults to None (all environments).</p></li>
 </ul>
 </dd>
 </dl>
@@ -4889,9 +4890,9 @@ the desired values. To apply the tendon rest length, call the
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.assets.Articulation.set_fixed_tendon_rest_length.params.rest_length"></span><strong>rest_length</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.Articulation.set_fixed_tendon_rest_length.params.rest_length">¶</a> – Fixed tendon rest length. Shape is (len(env_ids), len(fixed_tendon_ids)).</p></li>
-<li><p><span class="target" id="isaaclab.assets.Articulation.set_fixed_tendon_rest_length.params.fixed_tendon_ids"></span><strong>fixed_tendon_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.Articulation.set_fixed_tendon_rest_length.params.fixed_tendon_ids">¶</a> – The tendon indices to set the rest length for. Defaults to None (all fixed tendons).</p></li>
-<li><p><span class="target" id="isaaclab.assets.Articulation.set_fixed_tendon_rest_length.params.env_ids"></span><strong>env_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.Articulation.set_fixed_tendon_rest_length.params.env_ids">¶</a> – The environment indices to set the rest length for. Defaults to None (all environments).</p></li>
+<li><p><strong>rest_length</strong> – Fixed tendon rest length. Shape is (len(env_ids), len(fixed_tendon_ids)).</p></li>
+<li><p><strong>fixed_tendon_ids</strong> – The tendon indices to set the rest length for. Defaults to None (all fixed tendons).</p></li>
+<li><p><strong>env_ids</strong> – The environment indices to set the rest length for. Defaults to None (all environments).</p></li>
 </ul>
 </dd>
 </dl>
@@ -4906,9 +4907,9 @@ the desired values. To apply the tendon offset, call the <a class="reference int
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.assets.Articulation.set_fixed_tendon_offset.params.offset"></span><strong>offset</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.Articulation.set_fixed_tendon_offset.params.offset">¶</a> – Fixed tendon offset. Shape is (len(env_ids), len(fixed_tendon_ids)).</p></li>
-<li><p><span class="target" id="isaaclab.assets.Articulation.set_fixed_tendon_offset.params.fixed_tendon_ids"></span><strong>fixed_tendon_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.Articulation.set_fixed_tendon_offset.params.fixed_tendon_ids">¶</a> – The tendon indices to set the offset for. Defaults to None (all fixed tendons).</p></li>
-<li><p><span class="target" id="isaaclab.assets.Articulation.set_fixed_tendon_offset.params.env_ids"></span><strong>env_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.Articulation.set_fixed_tendon_offset.params.env_ids">¶</a> – The environment indices to set the offset for. Defaults to None (all environments).</p></li>
+<li><p><strong>offset</strong> – Fixed tendon offset. Shape is (len(env_ids), len(fixed_tendon_ids)).</p></li>
+<li><p><strong>fixed_tendon_ids</strong> – The tendon indices to set the offset for. Defaults to None (all fixed tendons).</p></li>
+<li><p><strong>env_ids</strong> – The environment indices to set the offset for. Defaults to None (all environments).</p></li>
 </ul>
 </dd>
 </dl>
@@ -4921,8 +4922,8 @@ the desired values. To apply the tendon offset, call the <a class="reference int
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.assets.Articulation.write_fixed_tendon_properties_to_sim.params.fixed_tendon_ids"></span><strong>fixed_tendon_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.Articulation.write_fixed_tendon_properties_to_sim.params.fixed_tendon_ids">¶</a> – The fixed tendon indices to set the limits for. Defaults to None (all fixed tendons).</p></li>
-<li><p><span class="target" id="isaaclab.assets.Articulation.write_fixed_tendon_properties_to_sim.params.env_ids"></span><strong>env_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.Articulation.write_fixed_tendon_properties_to_sim.params.env_ids">¶</a> – The environment indices to set the limits for. Defaults to None (all environments).</p></li>
+<li><p><strong>fixed_tendon_ids</strong> – The fixed tendon indices to set the limits for. Defaults to None (all fixed tendons).</p></li>
+<li><p><strong>env_ids</strong> – The environment indices to set the limits for. Defaults to None (all environments).</p></li>
 </ul>
 </dd>
 </dl>
@@ -4938,9 +4939,9 @@ the desired values. To apply the tendon stiffness, call the
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.assets.Articulation.set_spatial_tendon_stiffness.params.stiffness"></span><strong>stiffness</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.Articulation.set_spatial_tendon_stiffness.params.stiffness">¶</a> – Spatial tendon stiffness. Shape is (len(env_ids), len(spatial_tendon_ids)).</p></li>
-<li><p><span class="target" id="isaaclab.assets.Articulation.set_spatial_tendon_stiffness.params.spatial_tendon_ids"></span><strong>spatial_tendon_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.Articulation.set_spatial_tendon_stiffness.params.spatial_tendon_ids">¶</a> – The tendon indices to set the stiffness for. Defaults to None (all spatial tendons).</p></li>
-<li><p><span class="target" id="isaaclab.assets.Articulation.set_spatial_tendon_stiffness.params.env_ids"></span><strong>env_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.Articulation.set_spatial_tendon_stiffness.params.env_ids">¶</a> – The environment indices to set the stiffness for. Defaults to None (all environments).</p></li>
+<li><p><strong>stiffness</strong> – Spatial tendon stiffness. Shape is (len(env_ids), len(spatial_tendon_ids)).</p></li>
+<li><p><strong>spatial_tendon_ids</strong> – The tendon indices to set the stiffness for. Defaults to None (all spatial tendons).</p></li>
+<li><p><strong>env_ids</strong> – The environment indices to set the stiffness for. Defaults to None (all environments).</p></li>
 </ul>
 </dd>
 </dl>
@@ -4956,10 +4957,10 @@ the desired values. To apply the tendon damping, call the
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.assets.Articulation.set_spatial_tendon_damping.params.damping"></span><strong>damping</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.Articulation.set_spatial_tendon_damping.params.damping">¶</a> – Spatial tendon damping. Shape is (len(env_ids), len(spatial_tendon_ids)).</p></li>
-<li><p><span class="target" id="isaaclab.assets.Articulation.set_spatial_tendon_damping.params.spatial_tendon_ids"></span><strong>spatial_tendon_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.Articulation.set_spatial_tendon_damping.params.spatial_tendon_ids">¶</a> – The tendon indices to set the damping for. Defaults to None,
+<li><p><strong>damping</strong> – Spatial tendon damping. Shape is (len(env_ids), len(spatial_tendon_ids)).</p></li>
+<li><p><strong>spatial_tendon_ids</strong> – The tendon indices to set the damping for. Defaults to None,
 which means all spatial tendons.</p></li>
-<li><p><span class="target" id="isaaclab.assets.Articulation.set_spatial_tendon_damping.params.env_ids"></span><strong>env_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.Articulation.set_spatial_tendon_damping.params.env_ids">¶</a> – The environment indices to set the damping for. Defaults to None, which means all environments.</p></li>
+<li><p><strong>env_ids</strong> – The environment indices to set the damping for. Defaults to None, which means all environments.</p></li>
 </ul>
 </dd>
 </dl>
@@ -4975,10 +4976,10 @@ the desired values. To apply the tendon limit stiffness, call the
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.assets.Articulation.set_spatial_tendon_limit_stiffness.params.limit_stiffness"></span><strong>limit_stiffness</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.Articulation.set_spatial_tendon_limit_stiffness.params.limit_stiffness">¶</a> – Spatial tendon limit stiffness. Shape is (len(env_ids), len(spatial_tendon_ids)).</p></li>
-<li><p><span class="target" id="isaaclab.assets.Articulation.set_spatial_tendon_limit_stiffness.params.spatial_tendon_ids"></span><strong>spatial_tendon_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.Articulation.set_spatial_tendon_limit_stiffness.params.spatial_tendon_ids">¶</a> – The tendon indices to set the limit stiffness for. Defaults to None,
+<li><p><strong>limit_stiffness</strong> – Spatial tendon limit stiffness. Shape is (len(env_ids), len(spatial_tendon_ids)).</p></li>
+<li><p><strong>spatial_tendon_ids</strong> – The tendon indices to set the limit stiffness for. Defaults to None,
 which means all spatial tendons.</p></li>
-<li><p><span class="target" id="isaaclab.assets.Articulation.set_spatial_tendon_limit_stiffness.params.env_ids"></span><strong>env_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.Articulation.set_spatial_tendon_limit_stiffness.params.env_ids">¶</a> – The environment indices to set the limit stiffness for. Defaults to None (all environments).</p></li>
+<li><p><strong>env_ids</strong> – The environment indices to set the limit stiffness for. Defaults to None (all environments).</p></li>
 </ul>
 </dd>
 </dl>
@@ -4994,9 +4995,9 @@ the desired values. To apply the tendon offset, call the
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.assets.Articulation.set_spatial_tendon_offset.params.offset"></span><strong>offset</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.Articulation.set_spatial_tendon_offset.params.offset">¶</a> – Spatial tendon offset. Shape is (len(env_ids), len(spatial_tendon_ids)).</p></li>
-<li><p><span class="target" id="isaaclab.assets.Articulation.set_spatial_tendon_offset.params.spatial_tendon_ids"></span><strong>spatial_tendon_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.Articulation.set_spatial_tendon_offset.params.spatial_tendon_ids">¶</a> – The tendon indices to set the offset for. Defaults to None (all spatial tendons).</p></li>
-<li><p><span class="target" id="isaaclab.assets.Articulation.set_spatial_tendon_offset.params.env_ids"></span><strong>env_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.Articulation.set_spatial_tendon_offset.params.env_ids">¶</a> – The environment indices to set the offset for. Defaults to None (all environments).</p></li>
+<li><p><strong>offset</strong> – Spatial tendon offset. Shape is (len(env_ids), len(spatial_tendon_ids)).</p></li>
+<li><p><strong>spatial_tendon_ids</strong> – The tendon indices to set the offset for. Defaults to None (all spatial tendons).</p></li>
+<li><p><strong>env_ids</strong> – The environment indices to set the offset for. Defaults to None (all environments).</p></li>
 </ul>
 </dd>
 </dl>
@@ -5009,9 +5010,9 @@ the desired values. To apply the tendon offset, call the
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.assets.Articulation.write_spatial_tendon_properties_to_sim.params.spatial_tendon_ids"></span><strong>spatial_tendon_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.Articulation.write_spatial_tendon_properties_to_sim.params.spatial_tendon_ids">¶</a> – The spatial tendon indices to set the properties for. Defaults to None,
+<li><p><strong>spatial_tendon_ids</strong> – The spatial tendon indices to set the properties for. Defaults to None,
 which means all spatial tendons.</p></li>
-<li><p><span class="target" id="isaaclab.assets.Articulation.write_spatial_tendon_properties_to_sim.params.env_ids"></span><strong>env_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.Articulation.write_spatial_tendon_properties_to_sim.params.env_ids">¶</a> – The environment indices to set the properties for. Defaults to None,
+<li><p><strong>env_ids</strong> – The environment indices to set the properties for. Defaults to None,
 which means all environments.</p></li>
 </ul>
 </dd>
@@ -5052,7 +5053,7 @@ which means all environments.</p></li>
 <dd><p>Sets whether to visualize the asset data.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab.assets.Articulation.set_debug_vis.params.debug_vis"></span><strong>debug_vis</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.Articulation.set_debug_vis.params.debug_vis">¶</a> – Whether to visualize the asset data.</p>
+<dd class="field-odd"><p><strong>debug_vis</strong> – Whether to visualize the asset data.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>Whether the debug visualization was successfully set. False if the asset
@@ -5076,8 +5077,8 @@ may have an overhead if the number of prims is large.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.assets.Articulation.set_visibility.params.visible"></span><strong>visible</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.Articulation.set_visibility.params.visible">¶</a> – Whether to make the prims visible or not.</p></li>
-<li><p><span class="target" id="isaaclab.assets.Articulation.set_visibility.params.env_ids"></span><strong>env_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.Articulation.set_visibility.params.env_ids">¶</a> – The indices of the object to set visibility. Defaults to None (all instances).</p></li>
+<li><p><strong>visible</strong> – Whether to make the prims visible or not.</p></li>
+<li><p><strong>env_ids</strong> – The indices of the object to set visibility. Defaults to None (all instances).</p></li>
 </ul>
 </dd>
 </dl>
@@ -6747,7 +6748,7 @@ necessary.</p>
 <dd><p>Initialize the deformable object.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab.assets.DeformableObject.params.cfg"></span><strong>cfg</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.DeformableObject.params.cfg">¶</a> – A configuration instance.</p>
+<dd class="field-odd"><p><strong>cfg</strong> – A configuration instance.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -6824,7 +6825,7 @@ If the material is not available, then the material properties will be set to de
 <dd><p>Resets all internal buffers of selected environments.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab.assets.DeformableObject.reset.params.env_ids"></span><strong>env_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.DeformableObject.reset.params.env_ids">¶</a> – The indices of the object to reset. Defaults to None (all instances).</p>
+<dd class="field-odd"><p><strong>env_ids</strong> – The indices of the object to reset. Defaults to None (all instances).</p>
 </dd>
 </dl>
 </dd></dl>
@@ -6843,7 +6844,7 @@ If the material is not available, then the material properties will be set to de
 accelerations which are not provided by the simulator.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab.assets.DeformableObject.update.params.dt"></span><strong>dt</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.DeformableObject.update.params.dt">¶</a> – The amount of time passed from last <code class="docutils literal notranslate"><span class="pre">update</span></code> call.</p>
+<dd class="field-odd"><p><strong>dt</strong> – The amount of time passed from last <code class="docutils literal notranslate"><span class="pre">update</span></code> call.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -6857,9 +6858,9 @@ a translational component. All the quantities are in the simulation frame.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.assets.DeformableObject.write_nodal_state_to_sim.params.nodal_state"></span><strong>nodal_state</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.DeformableObject.write_nodal_state_to_sim.params.nodal_state">¶</a> – Nodal state in simulation frame.
+<li><p><strong>nodal_state</strong> – Nodal state in simulation frame.
 Shape is (len(env_ids), max_sim_vertices_per_body, 6).</p></li>
-<li><p><span class="target" id="isaaclab.assets.DeformableObject.write_nodal_state_to_sim.params.env_ids"></span><strong>env_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.DeformableObject.write_nodal_state_to_sim.params.env_ids">¶</a> – Environment indices. If None, then all indices are used.</p></li>
+<li><p><strong>env_ids</strong> – Environment indices. If None, then all indices are used.</p></li>
 </ul>
 </dd>
 </dl>
@@ -6874,9 +6875,9 @@ The positions are in the simulation frame.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.assets.DeformableObject.write_nodal_pos_to_sim.params.nodal_pos"></span><strong>nodal_pos</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.DeformableObject.write_nodal_pos_to_sim.params.nodal_pos">¶</a> – Nodal positions in simulation frame.
+<li><p><strong>nodal_pos</strong> – Nodal positions in simulation frame.
 Shape is (len(env_ids), max_sim_vertices_per_body, 3).</p></li>
-<li><p><span class="target" id="isaaclab.assets.DeformableObject.write_nodal_pos_to_sim.params.env_ids"></span><strong>env_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.DeformableObject.write_nodal_pos_to_sim.params.env_ids">¶</a> – Environment indices. If None, then all indices are used.</p></li>
+<li><p><strong>env_ids</strong> – Environment indices. If None, then all indices are used.</p></li>
 </ul>
 </dd>
 </dl>
@@ -6892,9 +6893,9 @@ simulation frame.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.assets.DeformableObject.write_nodal_velocity_to_sim.params.nodal_vel"></span><strong>nodal_vel</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.DeformableObject.write_nodal_velocity_to_sim.params.nodal_vel">¶</a> – Nodal velocities in simulation frame.
+<li><p><strong>nodal_vel</strong> – Nodal velocities in simulation frame.
 Shape is (len(env_ids), max_sim_vertices_per_body, 3).</p></li>
-<li><p><span class="target" id="isaaclab.assets.DeformableObject.write_nodal_velocity_to_sim.params.env_ids"></span><strong>env_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.DeformableObject.write_nodal_velocity_to_sim.params.env_ids">¶</a> – Environment indices. If None, then all indices are used.</p></li>
+<li><p><strong>env_ids</strong> – Environment indices. If None, then all indices are used.</p></li>
 </ul>
 </dd>
 </dl>
@@ -6914,9 +6915,9 @@ frame.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.assets.DeformableObject.write_nodal_kinematic_target_to_sim.params.targets"></span><strong>targets</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.DeformableObject.write_nodal_kinematic_target_to_sim.params.targets">¶</a> – The kinematic targets comprising of nodal positions and flags.
+<li><p><strong>targets</strong> – The kinematic targets comprising of nodal positions and flags.
 Shape is (len(env_ids), max_sim_vertices_per_body, 4).</p></li>
-<li><p><span class="target" id="isaaclab.assets.DeformableObject.write_nodal_kinematic_target_to_sim.params.env_ids"></span><strong>env_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.DeformableObject.write_nodal_kinematic_target_to_sim.params.env_ids">¶</a> – Environment indices. If None, then all indices are used.</p></li>
+<li><p><strong>env_ids</strong> – Environment indices. If None, then all indices are used.</p></li>
 </ul>
 </dd>
 </dl>
@@ -6932,10 +6933,10 @@ Internally, it calls the <a class="reference internal" href="isaaclab.utils.html
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.assets.DeformableObject.transform_nodal_pos.params.nodal_pos"></span><strong>nodal_pos</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.DeformableObject.transform_nodal_pos.params.nodal_pos">¶</a> – The nodal positions in the simulation frame. Shape is (N, max_sim_vertices_per_body, 3).</p></li>
-<li><p><span class="target" id="isaaclab.assets.DeformableObject.transform_nodal_pos.params.pos"></span><strong>pos</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.DeformableObject.transform_nodal_pos.params.pos">¶</a> – The position transformation. Shape is (N, 3).
+<li><p><strong>nodal_pos</strong> – The nodal positions in the simulation frame. Shape is (N, max_sim_vertices_per_body, 3).</p></li>
+<li><p><strong>pos</strong> – The position transformation. Shape is (N, 3).
 Defaults to None, in which case the position is assumed to be zero.</p></li>
-<li><p><span class="target" id="isaaclab.assets.DeformableObject.transform_nodal_pos.params.quat"></span><strong>quat</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.DeformableObject.transform_nodal_pos.params.quat">¶</a> – The orientation transformation as quaternion (w, x, y, z). Shape is (N, 4).
+<li><p><strong>quat</strong> – The orientation transformation as quaternion (w, x, y, z). Shape is (N, 4).
 Defaults to None, in which case the orientation is assumed to be identity.</p></li>
 </ul>
 </dd>
@@ -6970,7 +6971,7 @@ Defaults to None, in which case the orientation is assumed to be identity.</p></
 <dd><p>Sets whether to visualize the asset data.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab.assets.DeformableObject.set_debug_vis.params.debug_vis"></span><strong>debug_vis</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.DeformableObject.set_debug_vis.params.debug_vis">¶</a> – Whether to visualize the asset data.</p>
+<dd class="field-odd"><p><strong>debug_vis</strong> – Whether to visualize the asset data.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>Whether the debug visualization was successfully set. False if the asset
@@ -6994,8 +6995,8 @@ may have an overhead if the number of prims is large.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.assets.DeformableObject.set_visibility.params.visible"></span><strong>visible</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.DeformableObject.set_visibility.params.visible">¶</a> – Whether to make the prims visible or not.</p></li>
-<li><p><span class="target" id="isaaclab.assets.DeformableObject.set_visibility.params.env_ids"></span><strong>env_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.DeformableObject.set_visibility.params.env_ids">¶</a> – The indices of the object to set visibility. Defaults to None (all instances).</p></li>
+<li><p><strong>visible</strong> – Whether to make the prims visible or not.</p></li>
+<li><p><strong>env_ids</strong> – The indices of the object to set visibility. Defaults to None (all instances).</p></li>
 </ul>
 </dd>
 </dl>
@@ -7081,7 +7082,7 @@ is older than the current simulation timestamp. The timestamp is updated wheneve
 <dd><p>Updates the data for the deformable object.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab.assets.DeformableObjectData.update.params.dt"></span><strong>dt</strong><a class="paramlink headerlink reference internal" href="#isaaclab.assets.DeformableObjectData.update.params.dt">¶</a> – The time step for the update. This must be a positive value.</p>
+<dd class="field-odd"><p><strong>dt</strong> – The time step for the update. This must be a positive value.</p>
 </dd>
 </dl>
 </dd></dl>

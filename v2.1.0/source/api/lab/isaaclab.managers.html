@@ -36,7 +36,6 @@
     <link rel="stylesheet" type="text/css" href="/opt/hostedtoolcache/Python/3.12.13/x64/lib/python3.12/site-packages/sphinxcontrib/icon/node_modules/@fortawesome/fontawesome-free/css/all.min.css?v=53359634" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx_paramlinks.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=8fb98eed" />
   
   <!-- So that users can add custom icons -->
@@ -162,6 +161,8 @@
             <option value="../../../../develop/source/api/lab/isaaclab.managers.html" >develop</option>
             <option value="../../../../main/source/api/lab/isaaclab.managers.html" >main</option>
             <option value="../../../../release/3.0.0-beta2/source/api/lab/isaaclab.managers.html" >release/3.0.0-beta2</option>
+            <option value="../../../../v3.0.0-beta2/source/api/lab/isaaclab.managers.html" >v3.0.0-beta2</option>
+            <option value="../../../../v3.0.0-beta/source/api/lab/isaaclab.managers.html" >v3.0.0-beta</option>
             <option value="../../../../v2.3.2/source/api/lab/isaaclab.managers.html" >v2.3.2</option>
             <option value="../../../../v2.3.1/source/api/lab/isaaclab.managers.html" >v2.3.1</option>
             <option value="../../../../v2.3.0/source/api/lab/isaaclab.managers.html" >v2.3.0</option>
@@ -1117,7 +1118,7 @@ and names of the joints and bodies. It is an expensive operation as it resolves 
 and should be called only once.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab.managers.SceneEntityCfg.resolve.params.scene"></span><strong>scene</strong><a class="paramlink headerlink reference internal" href="#isaaclab.managers.SceneEntityCfg.resolve.params.scene">¶</a> – The interactive scene instance.</p>
+<dd class="field-odd"><p><strong>scene</strong> – The interactive scene instance.</p>
 </dd>
 <dt class="field-even">Raises<span class="colon">:</span></dt>
 <dd class="field-even"><ul class="simple">
@@ -1185,8 +1186,8 @@ has already started.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.managers.ManagerBase.params.cfg"></span><strong>cfg</strong><a class="paramlink headerlink reference internal" href="#isaaclab.managers.ManagerBase.params.cfg">¶</a> – The configuration object. If None, the manager is initialized without any terms.</p></li>
-<li><p><span class="target" id="isaaclab.managers.ManagerBase.params.env"></span><strong>env</strong><a class="paramlink headerlink reference internal" href="#isaaclab.managers.ManagerBase.params.env">¶</a> – The environment instance.</p></li>
+<li><p><strong>cfg</strong> – The configuration object. If None, the manager is initialized without any terms.</p></li>
+<li><p><strong>env</strong> – The environment instance.</p></li>
 </ul>
 </dd>
 </dl>
@@ -1216,7 +1217,7 @@ has already started.</p>
 <dd><p>Resets the manager and returns logging information for the current time-step.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab.managers.ManagerBase.reset.params.env_ids"></span><strong>env_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab.managers.ManagerBase.reset.params.env_ids">¶</a> – The environment ids for which to log data.
+<dd class="field-odd"><p><strong>env_ids</strong> – The environment ids for which to log data.
 Defaults None, which logs data for all environments.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -1236,7 +1237,7 @@ performed on the active terms in the manager.</p>
 information on the name matching.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab.managers.ManagerBase.find_terms.params.name_keys"></span><strong>name_keys</strong><a class="paramlink headerlink reference internal" href="#isaaclab.managers.ManagerBase.find_terms.params.name_keys">¶</a> – A regular expression or a list of regular expressions to match the term names.</p>
+<dd class="field-odd"><p><strong>name_keys</strong> – A regular expression or a list of regular expressions to match the term names.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>A list of term names that match the input keys.</p>
@@ -1313,8 +1314,8 @@ manager. Each term should the <a class="reference internal" href="#isaaclab.mana
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.managers.ManagerTermBase.params.cfg"></span><strong>cfg</strong><a class="paramlink headerlink reference internal" href="#isaaclab.managers.ManagerTermBase.params.cfg">¶</a> – The configuration object.</p></li>
-<li><p><span class="target" id="isaaclab.managers.ManagerTermBase.params.env"></span><strong>env</strong><a class="paramlink headerlink reference internal" href="#isaaclab.managers.ManagerTermBase.params.env">¶</a> – The environment instance.</p></li>
+<li><p><strong>cfg</strong> – The configuration object.</p></li>
+<li><p><strong>env</strong> – The environment instance.</p></li>
 </ul>
 </dd>
 </dl>
@@ -1338,7 +1339,7 @@ manager. Each term should the <a class="reference internal" href="#isaaclab.mana
 <dd><p>Resets the manager term.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab.managers.ManagerTermBase.reset.params.env_ids"></span><strong>env_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab.managers.ManagerTermBase.reset.params.env_ids">¶</a> – The environment ids. Defaults to None, in which case
+<dd class="field-odd"><p><strong>env_ids</strong> – The environment ids. Defaults to None, in which case
 all environments are considered.</p>
 </dd>
 </dl>
@@ -1479,8 +1480,8 @@ The observations are clipped and scaled as per the configuration settings.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.managers.ObservationManager.params.cfg"></span><strong>cfg</strong><a class="paramlink headerlink reference internal" href="#isaaclab.managers.ObservationManager.params.cfg">¶</a> – The configuration object or dictionary (<code class="docutils literal notranslate"><span class="pre">dict[str,</span> <span class="pre">ObservationGroupCfg]</span></code>).</p></li>
-<li><p><span class="target" id="isaaclab.managers.ObservationManager.params.env"></span><strong>env</strong><a class="paramlink headerlink reference internal" href="#isaaclab.managers.ObservationManager.params.env">¶</a> – The environment instance.</p></li>
+<li><p><strong>cfg</strong> – The configuration object or dictionary (<code class="docutils literal notranslate"><span class="pre">dict[str,</span> <span class="pre">ObservationGroupCfg]</span></code>).</p></li>
+<li><p><strong>env</strong> – The environment instance.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Raises<span class="colon">:</span></dt>
@@ -1500,7 +1501,7 @@ The observations are clipped and scaled as per the configuration settings.</p>
 <p>The first element of the tuple is the name of the term and the second element is the raw value(s) of the term.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab.managers.ObservationManager.get_active_iterable_terms.params.env_idx"></span><strong>env_idx</strong><a class="paramlink headerlink reference internal" href="#isaaclab.managers.ObservationManager.get_active_iterable_terms.params.env_idx">¶</a> – The specific environment to pull the active terms from.</p>
+<dd class="field-odd"><p><strong>env_idx</strong> – The specific environment to pull the active terms from.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>The active terms.</p>
@@ -1550,7 +1551,7 @@ configuration.</p>
 <dd><p>Resets the manager and returns logging information for the current time-step.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab.managers.ObservationManager.reset.params.env_ids"></span><strong>env_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab.managers.ObservationManager.reset.params.env_ids">¶</a> – The environment ids for which to log data.
+<dd class="field-odd"><p><strong>env_ids</strong> – The environment ids for which to log data.
 Defaults None, which logs data for all environments.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -1595,7 +1596,7 @@ could be artificially constrained or amplified, which might misrepresent how noi
 in the data.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab.managers.ObservationManager.compute_group.params.group_name"></span><strong>group_name</strong><a class="paramlink headerlink reference internal" href="#isaaclab.managers.ObservationManager.compute_group.params.group_name">¶</a> – The name of the group for which to compute the observations. Defaults to None,
+<dd class="field-odd"><p><strong>group_name</strong> – The name of the group for which to compute the observations. Defaults to None,
 in which case observations for all the groups are computed and returned.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -1626,7 +1627,7 @@ performed on the active terms in the manager.</p>
 information on the name matching.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab.managers.ObservationManager.find_terms.params.name_keys"></span><strong>name_keys</strong><a class="paramlink headerlink reference internal" href="#isaaclab.managers.ObservationManager.find_terms.params.name_keys">¶</a> – A regular expression or a list of regular expressions to match the term names.</p>
+<dd class="field-odd"><p><strong>name_keys</strong> – A regular expression or a list of regular expressions to match the term names.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>A list of term names that match the input keys.</p>
@@ -1893,8 +1894,8 @@ scene (such as robots). It should be called before every simulation step.</p></l
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.managers.ActionManager.params.cfg"></span><strong>cfg</strong><a class="paramlink headerlink reference internal" href="#isaaclab.managers.ActionManager.params.cfg">¶</a> – The configuration object or dictionary (<code class="docutils literal notranslate"><span class="pre">dict[str,</span> <span class="pre">ActionTermCfg]</span></code>).</p></li>
-<li><p><span class="target" id="isaaclab.managers.ActionManager.params.env"></span><strong>env</strong><a class="paramlink headerlink reference internal" href="#isaaclab.managers.ActionManager.params.env">¶</a> – The environment instance.</p></li>
+<li><p><strong>cfg</strong> – The configuration object or dictionary (<code class="docutils literal notranslate"><span class="pre">dict[str,</span> <span class="pre">ActionTermCfg]</span></code>).</p></li>
+<li><p><strong>env</strong> – The environment instance.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Raises<span class="colon">:</span></dt>
@@ -1946,7 +1947,7 @@ scene (such as robots). It should be called before every simulation step.</p></l
 <p>The first element of the tuple is the name of the term and the second element is the raw value(s) of the term.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab.managers.ActionManager.get_active_iterable_terms.params.env_idx"></span><strong>env_idx</strong><a class="paramlink headerlink reference internal" href="#isaaclab.managers.ActionManager.get_active_iterable_terms.params.env_idx">¶</a> – The specific environment to pull the active terms from.</p>
+<dd class="field-odd"><p><strong>env_idx</strong> – The specific environment to pull the active terms from.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>The active terms.</p>
@@ -1958,7 +1959,7 @@ scene (such as robots). It should be called before every simulation step.</p></l
 <dt class="sig sig-object py" id="isaaclab.managers.ActionManager.set_debug_vis">
 <span class="sig-name descname"><span class="pre">set_debug_vis</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">debug_vis</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><span class="pre">bool</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/isaaclab/managers/action_manager.html#ActionManager.set_debug_vis"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#isaaclab.managers.ActionManager.set_debug_vis" title="Link to this definition">#</a></dt>
 <dd><p>Sets whether to visualize the action data.
-:param _sphinx_paramlinks_isaaclab.managers.ActionManager.set_debug_vis.debug_vis: Whether to visualize the action data.</p>
+:param debug_vis: Whether to visualize the action data.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Whether the debug visualization was successfully set. False if the action
@@ -1973,7 +1974,7 @@ does not support debug visualization.</p>
 <dd><p>Resets the action history.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab.managers.ActionManager.reset.params.env_ids"></span><strong>env_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab.managers.ActionManager.reset.params.env_ids">¶</a> – The environment ids. Defaults to None, in which case
+<dd class="field-odd"><p><strong>env_ids</strong> – The environment ids. Defaults to None, in which case
 all environments are considered.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -1992,7 +1993,7 @@ all environments are considered.</p>
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab.managers.ActionManager.process_action.params.action"></span><strong>action</strong><a class="paramlink headerlink reference internal" href="#isaaclab.managers.ActionManager.process_action.params.action">¶</a> – The actions to process.</p>
+<dd class="field-odd"><p><strong>action</strong> – The actions to process.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -2013,7 +2014,7 @@ all environments are considered.</p>
 <dd><p>Returns the action term with the specified name.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab.managers.ActionManager.get_term.params.name"></span><strong>name</strong><a class="paramlink headerlink reference internal" href="#isaaclab.managers.ActionManager.get_term.params.name">¶</a> – The name of the action term.</p>
+<dd class="field-odd"><p><strong>name</strong> – The name of the action term.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>The action term with the specified name.</p>
@@ -2038,7 +2039,7 @@ performed on the active terms in the manager.</p>
 information on the name matching.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab.managers.ActionManager.find_terms.params.name_keys"></span><strong>name_keys</strong><a class="paramlink headerlink reference internal" href="#isaaclab.managers.ActionManager.find_terms.params.name_keys">¶</a> – A regular expression or a list of regular expressions to match the term names.</p>
+<dd class="field-odd"><p><strong>name_keys</strong> – A regular expression or a list of regular expressions to match the term names.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>A list of term names that match the input keys.</p>
@@ -2120,8 +2121,8 @@ responsible for applying the processed actions to the asset managed by the term.
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.managers.ActionTerm.params.cfg"></span><strong>cfg</strong><a class="paramlink headerlink reference internal" href="#isaaclab.managers.ActionTerm.params.cfg">¶</a> – The configuration object.</p></li>
-<li><p><span class="target" id="isaaclab.managers.ActionTerm.params.env"></span><strong>env</strong><a class="paramlink headerlink reference internal" href="#isaaclab.managers.ActionTerm.params.env">¶</a> – The environment instance.</p></li>
+<li><p><strong>cfg</strong> – The configuration object.</p></li>
+<li><p><strong>env</strong> – The environment instance.</p></li>
 </ul>
 </dd>
 </dl>
@@ -2155,7 +2156,7 @@ responsible for applying the processed actions to the asset managed by the term.
 <dt class="sig sig-object py" id="isaaclab.managers.ActionTerm.set_debug_vis">
 <span class="sig-name descname"><span class="pre">set_debug_vis</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">debug_vis</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><span class="pre">bool</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><span class="pre">bool</span></a></span></span><a class="reference internal" href="../../../_modules/isaaclab/managers/action_manager.html#ActionTerm.set_debug_vis"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#isaaclab.managers.ActionTerm.set_debug_vis" title="Link to this definition">#</a></dt>
 <dd><p>Sets whether to visualize the action term data.
-:param _sphinx_paramlinks_isaaclab.managers.ActionTerm.set_debug_vis.debug_vis: Whether to visualize the action term data.</p>
+:param debug_vis: Whether to visualize the action term data.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Whether the debug visualization was successfully set. False if the action term does
@@ -2174,7 +2175,7 @@ not support debug visualization.</p>
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab.managers.ActionTerm.process_actions.params.actions"></span><strong>actions</strong><a class="paramlink headerlink reference internal" href="#isaaclab.managers.ActionTerm.process_actions.params.actions">¶</a> – The actions to process.</p>
+<dd class="field-odd"><p><strong>actions</strong> – The actions to process.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -2207,7 +2208,7 @@ not support debug visualization.</p>
 <dd><p>Resets the manager term.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab.managers.ActionTerm.reset.params.env_ids"></span><strong>env_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab.managers.ActionTerm.reset.params.env_ids">¶</a> – The environment ids. Defaults to None, in which case
+<dd class="field-odd"><p><strong>env_ids</strong> – The environment ids. Defaults to None, in which case
 all environments are considered.</p>
 </dd>
 </dl>
@@ -2350,8 +2351,8 @@ directly handled by the manager itself. The other modes are handled by the envir
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.managers.EventManager.params.cfg"></span><strong>cfg</strong><a class="paramlink headerlink reference internal" href="#isaaclab.managers.EventManager.params.cfg">¶</a> – A configuration object or dictionary (<code class="docutils literal notranslate"><span class="pre">dict[str,</span> <span class="pre">EventTermCfg]</span></code>).</p></li>
-<li><p><span class="target" id="isaaclab.managers.EventManager.params.env"></span><strong>env</strong><a class="paramlink headerlink reference internal" href="#isaaclab.managers.EventManager.params.env">¶</a> – An environment object.</p></li>
+<li><p><strong>cfg</strong> – A configuration object or dictionary (<code class="docutils literal notranslate"><span class="pre">dict[str,</span> <span class="pre">EventTermCfg]</span></code>).</p></li>
+<li><p><strong>env</strong> – An environment object.</p></li>
 </ul>
 </dd>
 </dl>
@@ -2376,7 +2377,7 @@ directly handled by the manager itself. The other modes are handled by the envir
 <dd><p>Resets the manager and returns logging information for the current time-step.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab.managers.EventManager.reset.params.env_ids"></span><strong>env_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab.managers.EventManager.reset.params.env_ids">¶</a> – The environment ids for which to log data.
+<dd class="field-odd"><p><strong>env_ids</strong> – The environment ids for which to log data.
 Defaults None, which logs data for all environments.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -2400,12 +2401,12 @@ the number of environment steps between resets.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.managers.EventManager.apply.params.mode"></span><strong>mode</strong><a class="paramlink headerlink reference internal" href="#isaaclab.managers.EventManager.apply.params.mode">¶</a> – The mode of event.</p></li>
-<li><p><span class="target" id="isaaclab.managers.EventManager.apply.params.env_ids"></span><strong>env_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab.managers.EventManager.apply.params.env_ids">¶</a> – The indices of the environments to apply the event to.
+<li><p><strong>mode</strong> – The mode of event.</p></li>
+<li><p><strong>env_ids</strong> – The indices of the environments to apply the event to.
 Defaults to None, in which case the event is applied to all environments when applicable.</p></li>
-<li><p><span class="target" id="isaaclab.managers.EventManager.apply.params.dt"></span><strong>dt</strong><a class="paramlink headerlink reference internal" href="#isaaclab.managers.EventManager.apply.params.dt">¶</a> – The time step of the environment. This is only used for the “interval” mode.
+<li><p><strong>dt</strong> – The time step of the environment. This is only used for the “interval” mode.
 Defaults to None to simplify the call for other modes.</p></li>
-<li><p><span class="target" id="isaaclab.managers.EventManager.apply.params.global_env_step_count"></span><strong>global_env_step_count</strong><a class="paramlink headerlink reference internal" href="#isaaclab.managers.EventManager.apply.params.global_env_step_count">¶</a> – The total number of environment steps that have happened. This is only used
+<li><p><strong>global_env_step_count</strong> – The total number of environment steps that have happened. This is only used
 for the “reset” mode. Defaults to None to simplify the call for other modes.</p></li>
 </ul>
 </dd>
@@ -2430,8 +2431,8 @@ It then updates the configuration of the term with the first matching name.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.managers.EventManager.set_term_cfg.params.term_name"></span><strong>term_name</strong><a class="paramlink headerlink reference internal" href="#isaaclab.managers.EventManager.set_term_cfg.params.term_name">¶</a> – The name of the event term.</p></li>
-<li><p><span class="target" id="isaaclab.managers.EventManager.set_term_cfg.params.cfg"></span><strong>cfg</strong><a class="paramlink headerlink reference internal" href="#isaaclab.managers.EventManager.set_term_cfg.params.cfg">¶</a> – The configuration for the event term.</p></li>
+<li><p><strong>term_name</strong> – The name of the event term.</p></li>
+<li><p><strong>cfg</strong> – The configuration for the event term.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Raises<span class="colon">:</span></dt>
@@ -2448,7 +2449,7 @@ It then updates the configuration of the term with the first matching name.</p>
 It then returns the configuration of the term with the first matching name.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab.managers.EventManager.get_term_cfg.params.term_name"></span><strong>term_name</strong><a class="paramlink headerlink reference internal" href="#isaaclab.managers.EventManager.get_term_cfg.params.term_name">¶</a> – The name of the event term.</p>
+<dd class="field-odd"><p><strong>term_name</strong> – The name of the event term.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>The configuration of the event term.</p>
@@ -2476,7 +2477,7 @@ performed on the active terms in the manager.</p>
 information on the name matching.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab.managers.EventManager.find_terms.params.name_keys"></span><strong>name_keys</strong><a class="paramlink headerlink reference internal" href="#isaaclab.managers.EventManager.find_terms.params.name_keys">¶</a> – A regular expression or a list of regular expressions to match the term names.</p>
+<dd class="field-odd"><p><strong>name_keys</strong> – A regular expression or a list of regular expressions to match the term names.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>A list of term names that match the input keys.</p>
@@ -2666,8 +2667,8 @@ Each command generator term should also have a corresponding configuration class
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.managers.CommandManager.params.cfg"></span><strong>cfg</strong><a class="paramlink headerlink reference internal" href="#isaaclab.managers.CommandManager.params.cfg">¶</a> – The configuration object or dictionary (<code class="docutils literal notranslate"><span class="pre">dict[str,</span> <span class="pre">CommandTermCfg]</span></code>).</p></li>
-<li><p><span class="target" id="isaaclab.managers.CommandManager.params.env"></span><strong>env</strong><a class="paramlink headerlink reference internal" href="#isaaclab.managers.CommandManager.params.env">¶</a> – The environment instance.</p></li>
+<li><p><strong>cfg</strong> – The configuration object or dictionary (<code class="docutils literal notranslate"><span class="pre">dict[str,</span> <span class="pre">CommandTermCfg]</span></code>).</p></li>
+<li><p><strong>env</strong> – The environment instance.</p></li>
 </ul>
 </dd>
 </dl>
@@ -2692,7 +2693,7 @@ Each command generator term should also have a corresponding configuration class
 <p>The first element of the tuple is the name of the term and the second element is the raw value(s) of the term.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab.managers.CommandManager.get_active_iterable_terms.params.env_idx"></span><strong>env_idx</strong><a class="paramlink headerlink reference internal" href="#isaaclab.managers.CommandManager.get_active_iterable_terms.params.env_idx">¶</a> – The specific environment to pull the active terms from.</p>
+<dd class="field-odd"><p><strong>env_idx</strong> – The specific environment to pull the active terms from.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>The active terms.</p>
@@ -2706,7 +2707,7 @@ Each command generator term should also have a corresponding configuration class
 <dd><p>Sets whether to visualize the command data.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab.managers.CommandManager.set_debug_vis.params.debug_vis"></span><strong>debug_vis</strong><a class="paramlink headerlink reference internal" href="#isaaclab.managers.CommandManager.set_debug_vis.params.debug_vis">¶</a> – Whether to visualize the command data.</p>
+<dd class="field-odd"><p><strong>debug_vis</strong> – Whether to visualize the command data.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>Whether the debug visualization was successfully set. False if the command
@@ -2723,7 +2724,7 @@ generator does not support debug visualization.</p>
 at the beginning of each episode.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab.managers.CommandManager.reset.params.env_ids"></span><strong>env_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab.managers.CommandManager.reset.params.env_ids">¶</a> – The list of environment IDs to reset. Defaults to None.</p>
+<dd class="field-odd"><p><strong>env_ids</strong> – The list of environment IDs to reset. Defaults to None.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>A dictionary containing the information to log under the “Metrics/{term_name}/{metric_name}” key.</p>
@@ -2738,7 +2739,7 @@ at the beginning of each episode.</p>
 <p>This function calls each command term managed by the class.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab.managers.CommandManager.compute.params.dt"></span><strong>dt</strong><a class="paramlink headerlink reference internal" href="#isaaclab.managers.CommandManager.compute.params.dt">¶</a> – The time-step interval of the environment.</p>
+<dd class="field-odd"><p><strong>dt</strong> – The time-step interval of the environment.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -2749,7 +2750,7 @@ at the beginning of each episode.</p>
 <dd><p>Returns the command for the specified command term.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab.managers.CommandManager.get_command.params.name"></span><strong>name</strong><a class="paramlink headerlink reference internal" href="#isaaclab.managers.CommandManager.get_command.params.name">¶</a> – The name of the command term.</p>
+<dd class="field-odd"><p><strong>name</strong> – The name of the command term.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>The command tensor of the specified command term.</p>
@@ -2763,7 +2764,7 @@ at the beginning of each episode.</p>
 <dd><p>Returns the command term with the specified name.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab.managers.CommandManager.get_term.params.name"></span><strong>name</strong><a class="paramlink headerlink reference internal" href="#isaaclab.managers.CommandManager.get_term.params.name">¶</a> – The name of the command term.</p>
+<dd class="field-odd"><p><strong>name</strong> – The name of the command term.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>The command term with the specified name.</p>
@@ -2829,7 +2830,7 @@ that can be used to visualize the command in the simulator.</p>
 <dd><p>Sets whether to visualize the command data.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab.managers.CommandTerm.set_debug_vis.params.debug_vis"></span><strong>debug_vis</strong><a class="paramlink headerlink reference internal" href="#isaaclab.managers.CommandTerm.set_debug_vis.params.debug_vis">¶</a> – Whether to visualize the command data.</p>
+<dd class="field-odd"><p><strong>debug_vis</strong> – Whether to visualize the command data.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>Whether the debug visualization was successfully set. False if the command
@@ -2846,7 +2847,7 @@ generator does not support debug visualization.</p>
 at the beginning of each episode.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab.managers.CommandTerm.reset.params.env_ids"></span><strong>env_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab.managers.CommandTerm.reset.params.env_ids">¶</a> – The list of environment IDs to reset. Defaults to None.</p>
+<dd class="field-odd"><p><strong>env_ids</strong> – The list of environment IDs to reset. Defaults to None.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>A dictionary containing the information to log under the “{name}” key.</p>
@@ -2860,7 +2861,7 @@ at the beginning of each episode.</p>
 <dd><p>Compute the command.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab.managers.CommandTerm.compute.params.dt"></span><strong>dt</strong><a class="paramlink headerlink reference internal" href="#isaaclab.managers.CommandTerm.compute.params.dt">¶</a> – The time step passed since the last call to compute.</p>
+<dd class="field-odd"><p><strong>dt</strong> – The time step passed since the last call to compute.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -2965,8 +2966,8 @@ respect to the chosen time-step interval in the environment.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.managers.RewardManager.params.cfg"></span><strong>cfg</strong><a class="paramlink headerlink reference internal" href="#isaaclab.managers.RewardManager.params.cfg">¶</a> – The configuration object or dictionary (<code class="docutils literal notranslate"><span class="pre">dict[str,</span> <span class="pre">RewardTermCfg]</span></code>).</p></li>
-<li><p><span class="target" id="isaaclab.managers.RewardManager.params.env"></span><strong>env</strong><a class="paramlink headerlink reference internal" href="#isaaclab.managers.RewardManager.params.env">¶</a> – The environment instance.</p></li>
+<li><p><strong>cfg</strong> – The configuration object or dictionary (<code class="docutils literal notranslate"><span class="pre">dict[str,</span> <span class="pre">RewardTermCfg]</span></code>).</p></li>
+<li><p><strong>env</strong> – The environment instance.</p></li>
 </ul>
 </dd>
 </dl>
@@ -2984,7 +2985,7 @@ respect to the chosen time-step interval in the environment.</p>
 <dd><p>Returns the episodic sum of individual reward terms.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab.managers.RewardManager.reset.params.env_ids"></span><strong>env_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab.managers.RewardManager.reset.params.env_ids">¶</a> – The environment ids for which the episodic sum of
+<dd class="field-odd"><p><strong>env_ids</strong> – The environment ids for which the episodic sum of
 individual reward terms is to be returned. Defaults to all the environment ids.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -3001,7 +3002,7 @@ individual reward terms is to be returned. Defaults to all the environment ids.<
 reward signal. It also updates the episodic sums corresponding to individual reward terms.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab.managers.RewardManager.compute.params.dt"></span><strong>dt</strong><a class="paramlink headerlink reference internal" href="#isaaclab.managers.RewardManager.compute.params.dt">¶</a> – The time-step interval of the environment.</p>
+<dd class="field-odd"><p><strong>dt</strong> – The time-step interval of the environment.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>The net reward signal of shape (num_envs,).</p>
@@ -3016,8 +3017,8 @@ reward signal. It also updates the episodic sums corresponding to individual rew
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.managers.RewardManager.set_term_cfg.params.term_name"></span><strong>term_name</strong><a class="paramlink headerlink reference internal" href="#isaaclab.managers.RewardManager.set_term_cfg.params.term_name">¶</a> – The name of the reward term.</p></li>
-<li><p><span class="target" id="isaaclab.managers.RewardManager.set_term_cfg.params.cfg"></span><strong>cfg</strong><a class="paramlink headerlink reference internal" href="#isaaclab.managers.RewardManager.set_term_cfg.params.cfg">¶</a> – The configuration for the reward term.</p></li>
+<li><p><strong>term_name</strong> – The name of the reward term.</p></li>
+<li><p><strong>cfg</strong> – The configuration for the reward term.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Raises<span class="colon">:</span></dt>
@@ -3032,7 +3033,7 @@ reward signal. It also updates the episodic sums corresponding to individual rew
 <dd><p>Gets the configuration for the specified term.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab.managers.RewardManager.get_term_cfg.params.term_name"></span><strong>term_name</strong><a class="paramlink headerlink reference internal" href="#isaaclab.managers.RewardManager.get_term_cfg.params.term_name">¶</a> – The name of the reward term.</p>
+<dd class="field-odd"><p><strong>term_name</strong> – The name of the reward term.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>The configuration of the reward term.</p>
@@ -3050,7 +3051,7 @@ reward signal. It also updates the episodic sums corresponding to individual rew
 <p>The first element of the tuple is the name of the term and the second element is the raw value(s) of the term.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab.managers.RewardManager.get_active_iterable_terms.params.env_idx"></span><strong>env_idx</strong><a class="paramlink headerlink reference internal" href="#isaaclab.managers.RewardManager.get_active_iterable_terms.params.env_idx">¶</a> – The specific environment to pull the active terms from.</p>
+<dd class="field-odd"><p><strong>env_idx</strong> – The specific environment to pull the active terms from.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>The active terms.</p>
@@ -3075,7 +3076,7 @@ performed on the active terms in the manager.</p>
 information on the name matching.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab.managers.RewardManager.find_terms.params.name_keys"></span><strong>name_keys</strong><a class="paramlink headerlink reference internal" href="#isaaclab.managers.RewardManager.find_terms.params.name_keys">¶</a> – A regular expression or a list of regular expressions to match the term names.</p>
+<dd class="field-odd"><p><strong>name_keys</strong> – A regular expression or a list of regular expressions to match the term names.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>A list of term names that match the input keys.</p>
@@ -3197,8 +3198,8 @@ configuration <a class="reference internal" href="#isaaclab.managers.Termination
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.managers.TerminationManager.params.cfg"></span><strong>cfg</strong><a class="paramlink headerlink reference internal" href="#isaaclab.managers.TerminationManager.params.cfg">¶</a> – The configuration object or dictionary (<code class="docutils literal notranslate"><span class="pre">dict[str,</span> <span class="pre">TerminationTermCfg]</span></code>).</p></li>
-<li><p><span class="target" id="isaaclab.managers.TerminationManager.params.env"></span><strong>env</strong><a class="paramlink headerlink reference internal" href="#isaaclab.managers.TerminationManager.params.env">¶</a> – An environment object.</p></li>
+<li><p><strong>cfg</strong> – The configuration object or dictionary (<code class="docutils literal notranslate"><span class="pre">dict[str,</span> <span class="pre">TerminationTermCfg]</span></code>).</p></li>
+<li><p><strong>env</strong> – An environment object.</p></li>
 </ul>
 </dd>
 </dl>
@@ -3239,7 +3240,7 @@ This state may correspond to task success, task failure, robot falling, etc.</p>
 <dd><p>Returns the episodic counts of individual termination terms.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab.managers.TerminationManager.reset.params.env_ids"></span><strong>env_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab.managers.TerminationManager.reset.params.env_ids">¶</a> – The environment ids. Defaults to None, in which case
+<dd class="field-odd"><p><strong>env_ids</strong> – The environment ids. Defaults to None, in which case
 all environments are considered.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -3267,7 +3268,7 @@ to compute the net termination signal.</p>
 <dd><p>Returns the termination term with the specified name.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab.managers.TerminationManager.get_term.params.name"></span><strong>name</strong><a class="paramlink headerlink reference internal" href="#isaaclab.managers.TerminationManager.get_term.params.name">¶</a> – The name of the termination term.</p>
+<dd class="field-odd"><p><strong>name</strong> – The name of the termination term.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>The corresponding termination term value. Shape is (num_envs,).</p>
@@ -3282,7 +3283,7 @@ to compute the net termination signal.</p>
 <p>The first element of the tuple is the name of the term and the second element is the raw value(s) of the term.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab.managers.TerminationManager.get_active_iterable_terms.params.env_idx"></span><strong>env_idx</strong><a class="paramlink headerlink reference internal" href="#isaaclab.managers.TerminationManager.get_active_iterable_terms.params.env_idx">¶</a> – The specific environment to pull the active terms from.</p>
+<dd class="field-odd"><p><strong>env_idx</strong> – The specific environment to pull the active terms from.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>The active terms.</p>
@@ -3297,8 +3298,8 @@ to compute the net termination signal.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.managers.TerminationManager.set_term_cfg.params.term_name"></span><strong>term_name</strong><a class="paramlink headerlink reference internal" href="#isaaclab.managers.TerminationManager.set_term_cfg.params.term_name">¶</a> – The name of the termination term.</p></li>
-<li><p><span class="target" id="isaaclab.managers.TerminationManager.set_term_cfg.params.cfg"></span><strong>cfg</strong><a class="paramlink headerlink reference internal" href="#isaaclab.managers.TerminationManager.set_term_cfg.params.cfg">¶</a> – The configuration for the termination term.</p></li>
+<li><p><strong>term_name</strong> – The name of the termination term.</p></li>
+<li><p><strong>cfg</strong> – The configuration for the termination term.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Raises<span class="colon">:</span></dt>
@@ -3313,7 +3314,7 @@ to compute the net termination signal.</p>
 <dd><p>Gets the configuration for the specified term.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab.managers.TerminationManager.get_term_cfg.params.term_name"></span><strong>term_name</strong><a class="paramlink headerlink reference internal" href="#isaaclab.managers.TerminationManager.get_term_cfg.params.term_name">¶</a> – The name of the termination term.</p>
+<dd class="field-odd"><p><strong>term_name</strong> – The name of the termination term.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>The configuration of the termination term.</p>
@@ -3341,7 +3342,7 @@ performed on the active terms in the manager.</p>
 information on the name matching.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab.managers.TerminationManager.find_terms.params.name_keys"></span><strong>name_keys</strong><a class="paramlink headerlink reference internal" href="#isaaclab.managers.TerminationManager.find_terms.params.name_keys">¶</a> – A regular expression or a list of regular expressions to match the term names.</p>
+<dd class="field-odd"><p><strong>name_keys</strong> – A regular expression or a list of regular expressions to match the term names.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>A list of term names that match the input keys.</p>
@@ -3465,8 +3466,8 @@ parameters. Each curriculum term should instantiate the <a class="reference inte
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.managers.CurriculumManager.params.cfg"></span><strong>cfg</strong><a class="paramlink headerlink reference internal" href="#isaaclab.managers.CurriculumManager.params.cfg">¶</a> – The configuration object or dictionary (<code class="docutils literal notranslate"><span class="pre">dict[str,</span> <span class="pre">CurriculumTermCfg]</span></code>)</p></li>
-<li><p><span class="target" id="isaaclab.managers.CurriculumManager.params.env"></span><strong>env</strong><a class="paramlink headerlink reference internal" href="#isaaclab.managers.CurriculumManager.params.env">¶</a> – An environment object.</p></li>
+<li><p><strong>cfg</strong> – The configuration object or dictionary (<code class="docutils literal notranslate"><span class="pre">dict[str,</span> <span class="pre">CurriculumTermCfg]</span></code>)</p></li>
+<li><p><strong>env</strong> – An environment object.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Raises<span class="colon">:</span></dt>
@@ -3508,7 +3509,7 @@ to maintain consistency with other classes.</p>
 <p>This function calls each curriculum term managed by the class.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab.managers.CurriculumManager.compute.params.env_ids"></span><strong>env_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab.managers.CurriculumManager.compute.params.env_ids">¶</a> – The list of environment IDs to update.
+<dd class="field-odd"><p><strong>env_ids</strong> – The list of environment IDs to update.
 If None, all the environments are updated. Defaults to None.</p>
 </dd>
 </dl>
@@ -3521,7 +3522,7 @@ If None, all the environments are updated. Defaults to None.</p>
 <p>The first element of the tuple is the name of the term and the second element is the raw value(s) of the term.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab.managers.CurriculumManager.get_active_iterable_terms.params.env_idx"></span><strong>env_idx</strong><a class="paramlink headerlink reference internal" href="#isaaclab.managers.CurriculumManager.get_active_iterable_terms.params.env_idx">¶</a> – The specific environment to pull the active terms from.</p>
+<dd class="field-odd"><p><strong>env_idx</strong> – The specific environment to pull the active terms from.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>The active terms.</p>
@@ -3546,7 +3547,7 @@ performed on the active terms in the manager.</p>
 information on the name matching.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab.managers.CurriculumManager.find_terms.params.name_keys"></span><strong>name_keys</strong><a class="paramlink headerlink reference internal" href="#isaaclab.managers.CurriculumManager.find_terms.params.name_keys">¶</a> – A regular expression or a list of regular expressions to match the term names.</p>
+<dd class="field-odd"><p><strong>name_keys</strong> – A regular expression or a list of regular expressions to match the term names.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>A list of term names that match the input keys.</p>
@@ -3680,8 +3681,8 @@ in the <a class="reference internal" href="#isaaclab.managers.SceneEntityCfg" ti
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.managers.RecorderManager.params.cfg"></span><strong>cfg</strong><a class="paramlink headerlink reference internal" href="#isaaclab.managers.RecorderManager.params.cfg">¶</a> – The configuration object or dictionary (<code class="docutils literal notranslate"><span class="pre">dict[str,</span> <span class="pre">RecorderTermCfg]</span></code>).</p></li>
-<li><p><span class="target" id="isaaclab.managers.RecorderManager.params.env"></span><strong>env</strong><a class="paramlink headerlink reference internal" href="#isaaclab.managers.RecorderManager.params.env">¶</a> – The environment instance.</p></li>
+<li><p><strong>cfg</strong> – The configuration object or dictionary (<code class="docutils literal notranslate"><span class="pre">dict[str,</span> <span class="pre">RecorderTermCfg]</span></code>).</p></li>
+<li><p><strong>env</strong> – The environment instance.</p></li>
 </ul>
 </dd>
 </dl>
@@ -3727,7 +3728,7 @@ in the <a class="reference internal" href="#isaaclab.managers.SceneEntityCfg" ti
 <dd><p>Resets the recorder data.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab.managers.RecorderManager.reset.params.env_ids"></span><strong>env_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab.managers.RecorderManager.reset.params.env_ids">¶</a> – The environment ids. Defaults to None, in which case
+<dd class="field-odd"><p><strong>env_ids</strong> – The environment ids. Defaults to None, in which case
 all environments are considered.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -3742,7 +3743,7 @@ all environments are considered.</p>
 <dd><p>Returns the episode data for the given environment id.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab.managers.RecorderManager.get_episode.params.env_id"></span><strong>env_id</strong><a class="paramlink headerlink reference internal" href="#isaaclab.managers.RecorderManager.get_episode.params.env_id">¶</a> – The environment id.</p>
+<dd class="field-odd"><p><strong>env_id</strong> – The environment id.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>The episode data for the given environment id.</p>
@@ -3757,12 +3758,12 @@ all environments are considered.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.managers.RecorderManager.add_to_episodes.params.key"></span><strong>key</strong><a class="paramlink headerlink reference internal" href="#isaaclab.managers.RecorderManager.add_to_episodes.params.key">¶</a> – The key of the given value to be added to the episodes. The key can contain nested keys
+<li><p><strong>key</strong> – The key of the given value to be added to the episodes. The key can contain nested keys
 separated by ‘/’. For example, “obs/joint_pos” would add the given value under [‘obs’][‘policy’]
 in the underlying dictionary in the episode data.</p></li>
-<li><p><span class="target" id="isaaclab.managers.RecorderManager.add_to_episodes.params.value"></span><strong>value</strong><a class="paramlink headerlink reference internal" href="#isaaclab.managers.RecorderManager.add_to_episodes.params.value">¶</a> – The value to be added to the episodes. The value can be a tensor or a nested dictionary of tensors.
+<li><p><strong>value</strong> – The value to be added to the episodes. The value can be a tensor or a nested dictionary of tensors.
 The shape of a tensor in the value is (env_ids, …).</p></li>
-<li><p><span class="target" id="isaaclab.managers.RecorderManager.add_to_episodes.params.env_ids"></span><strong>env_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab.managers.RecorderManager.add_to_episodes.params.env_ids">¶</a> – The environment ids. Defaults to None, in which case all environments are considered.</p></li>
+<li><p><strong>env_ids</strong> – The environment ids. Defaults to None, in which case all environments are considered.</p></li>
 </ul>
 </dd>
 </dl>
@@ -3775,8 +3776,8 @@ The shape of a tensor in the value is (env_ids, …).</p></li>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.managers.RecorderManager.set_success_to_episodes.params.env_ids"></span><strong>env_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab.managers.RecorderManager.set_success_to_episodes.params.env_ids">¶</a> – The environment ids. Defaults to None, in which case all environments are considered.</p></li>
-<li><p><span class="target" id="isaaclab.managers.RecorderManager.set_success_to_episodes.params.success_values"></span><strong>success_values</strong><a class="paramlink headerlink reference internal" href="#isaaclab.managers.RecorderManager.set_success_to_episodes.params.success_values">¶</a> – The task success values to be set to the episodes. The shape of the tensor is (env_ids, 1).</p></li>
+<li><p><strong>env_ids</strong> – The environment ids. Defaults to None, in which case all environments are considered.</p></li>
+<li><p><strong>success_values</strong> – The task success values to be set to the episodes. The shape of the tensor is (env_ids, 1).</p></li>
 </ul>
 </dd>
 </dl>
@@ -3799,7 +3800,7 @@ performed on the active terms in the manager.</p>
 information on the name matching.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab.managers.RecorderManager.find_terms.params.name_keys"></span><strong>name_keys</strong><a class="paramlink headerlink reference internal" href="#isaaclab.managers.RecorderManager.find_terms.params.name_keys">¶</a> – A regular expression or a list of regular expressions to match the term names.</p>
+<dd class="field-odd"><p><strong>name_keys</strong> – A regular expression or a list of regular expressions to match the term names.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>A list of term names that match the input keys.</p>
@@ -3843,7 +3844,7 @@ information on the name matching.</p>
 <dd><p>Trigger recorder terms for pre-reset functions.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab.managers.RecorderManager.record_pre_reset.params.env_ids"></span><strong>env_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab.managers.RecorderManager.record_pre_reset.params.env_ids">¶</a> – The environment ids in which a reset is triggered.</p>
+<dd class="field-odd"><p><strong>env_ids</strong> – The environment ids in which a reset is triggered.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -3854,7 +3855,7 @@ information on the name matching.</p>
 <dd><p>Trigger recorder terms for post-reset functions.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab.managers.RecorderManager.record_post_reset.params.env_ids"></span><strong>env_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab.managers.RecorderManager.record_post_reset.params.env_ids">¶</a> – The environment ids in which a reset is triggered.</p>
+<dd class="field-odd"><p><strong>env_ids</strong> – The environment ids in which a reset is triggered.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -3865,7 +3866,7 @@ information on the name matching.</p>
 <dd><p>Concludes and exports the episodes for the given environment ids.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab.managers.RecorderManager.export_episodes.params.env_ids"></span><strong>env_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab.managers.RecorderManager.export_episodes.params.env_ids">¶</a> – The environment ids. Defaults to None, in which case
+<dd class="field-odd"><p><strong>env_ids</strong> – The environment ids. Defaults to None, in which case
 all environments are considered.</p>
 </dd>
 </dl>

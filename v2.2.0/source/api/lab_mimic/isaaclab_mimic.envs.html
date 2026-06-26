@@ -36,7 +36,6 @@
     <link rel="stylesheet" type="text/css" href="/opt/hostedtoolcache/Python/3.12.13/x64/lib/python3.12/site-packages/sphinxcontrib/icon/node_modules/@fortawesome/fontawesome-free/css/all.min.css?v=53359634" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx_paramlinks.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=8fb98eed" />
   
   <!-- So that users can add custom icons -->
@@ -162,6 +161,8 @@
             <option value="../../../../develop/source/api/lab_mimic/isaaclab_mimic.envs.html" >develop</option>
             <option value="../../../../main/source/api/lab_mimic/isaaclab_mimic.envs.html" >main</option>
             <option value="../../../../release/3.0.0-beta2/source/api/lab_mimic/isaaclab_mimic.envs.html" >release/3.0.0-beta2</option>
+            <option value="../../../../v3.0.0-beta2/source/api/lab_mimic/isaaclab_mimic.envs.html" >v3.0.0-beta2</option>
+            <option value="../../../../v3.0.0-beta/source/api/lab_mimic/isaaclab_mimic.envs.html" >v3.0.0-beta</option>
             <option value="../../../../v2.3.2/source/api/lab_mimic/isaaclab_mimic.envs.html" >v2.3.2</option>
             <option value="../../../../v2.3.1/source/api/lab_mimic/isaaclab_mimic.envs.html" >v2.3.1</option>
             <option value="../../../../v2.3.0/source/api/lab_mimic/isaaclab_mimic.envs.html" >v2.3.0</option>
@@ -810,8 +811,8 @@
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_mimic.envs.FrankaCubeStackIKRelMimicEnv.get_robot_eef_pose.params.eef_name"></span><strong>eef_name</strong><a class="paramlink headerlink reference internal" href="#isaaclab_mimic.envs.FrankaCubeStackIKRelMimicEnv.get_robot_eef_pose.params.eef_name">¶</a> – Name of the end effector.</p></li>
-<li><p><span class="target" id="isaaclab_mimic.envs.FrankaCubeStackIKRelMimicEnv.get_robot_eef_pose.params.env_ids"></span><strong>env_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab_mimic.envs.FrankaCubeStackIKRelMimicEnv.get_robot_eef_pose.params.env_ids">¶</a> – Environment indices to get the pose for. If None, all envs are considered.</p></li>
+<li><p><strong>eef_name</strong> – Name of the end effector.</p></li>
+<li><p><strong>env_ids</strong> – Environment indices to get the pose for. If None, all envs are considered.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -829,10 +830,10 @@ Noise is added to the target pose action if specified.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_mimic.envs.FrankaCubeStackIKRelMimicEnv.target_eef_pose_to_action.params.target_eef_pose_dict"></span><strong>target_eef_pose_dict</strong><a class="paramlink headerlink reference internal" href="#isaaclab_mimic.envs.FrankaCubeStackIKRelMimicEnv.target_eef_pose_to_action.params.target_eef_pose_dict">¶</a> – Dictionary of 4x4 target eef pose for each end-effector.</p></li>
-<li><p><span class="target" id="isaaclab_mimic.envs.FrankaCubeStackIKRelMimicEnv.target_eef_pose_to_action.params.gripper_action_dict"></span><strong>gripper_action_dict</strong><a class="paramlink headerlink reference internal" href="#isaaclab_mimic.envs.FrankaCubeStackIKRelMimicEnv.target_eef_pose_to_action.params.gripper_action_dict">¶</a> – Dictionary of gripper actions for each end-effector.</p></li>
-<li><p><span class="target" id="isaaclab_mimic.envs.FrankaCubeStackIKRelMimicEnv.target_eef_pose_to_action.params.noise"></span><strong>noise</strong><a class="paramlink headerlink reference internal" href="#isaaclab_mimic.envs.FrankaCubeStackIKRelMimicEnv.target_eef_pose_to_action.params.noise">¶</a> – Noise to add to the action. If None, no noise is added.</p></li>
-<li><p><span class="target" id="isaaclab_mimic.envs.FrankaCubeStackIKRelMimicEnv.target_eef_pose_to_action.params.env_id"></span><strong>env_id</strong><a class="paramlink headerlink reference internal" href="#isaaclab_mimic.envs.FrankaCubeStackIKRelMimicEnv.target_eef_pose_to_action.params.env_id">¶</a> – Environment index to get the action for.</p></li>
+<li><p><strong>target_eef_pose_dict</strong> – Dictionary of 4x4 target eef pose for each end-effector.</p></li>
+<li><p><strong>gripper_action_dict</strong> – Dictionary of gripper actions for each end-effector.</p></li>
+<li><p><strong>noise</strong> – Noise to add to the action. If None, no noise is added.</p></li>
+<li><p><strong>env_id</strong> – Environment index to get the action for.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -849,7 +850,7 @@ Inverse of &#64;target_eef_pose_to_action. Usually used to infer a sequence of t
 from a demonstration trajectory using the recorded actions.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab_mimic.envs.FrankaCubeStackIKRelMimicEnv.action_to_target_eef_pose.params.action"></span><strong>action</strong><a class="paramlink headerlink reference internal" href="#isaaclab_mimic.envs.FrankaCubeStackIKRelMimicEnv.action_to_target_eef_pose.params.action">¶</a> – Environment action. Shape is (num_envs, action_dim)</p>
+<dd class="field-odd"><p><strong>action</strong> – Environment action. Shape is (num_envs, action_dim)</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>A dictionary of eef pose torch.Tensor that &#64;action corresponds to</p>
@@ -863,7 +864,7 @@ from a demonstration trajectory using the recorded actions.</p>
 <dd><p>Extracts the gripper actuation part from a sequence of env actions (compatible with env.step).</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab_mimic.envs.FrankaCubeStackIKRelMimicEnv.actions_to_gripper_actions.params.actions"></span><strong>actions</strong><a class="paramlink headerlink reference internal" href="#isaaclab_mimic.envs.FrankaCubeStackIKRelMimicEnv.actions_to_gripper_actions.params.actions">¶</a> – environment actions. The shape is (num_envs, num steps in a demo, action_dim).</p>
+<dd class="field-odd"><p><strong>actions</strong> – environment actions. The shape is (num_envs, num steps in a demo, action_dim).</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>A dictionary of torch.Tensor gripper actions. Key to each dict is an eef_name.</p>
@@ -881,7 +882,7 @@ dataset annotation tool. This method can be kept unimplemented if intending to u
 subtask term signal annotation.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab_mimic.envs.FrankaCubeStackIKRelMimicEnv.get_subtask_term_signals.params.env_ids"></span><strong>env_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab_mimic.envs.FrankaCubeStackIKRelMimicEnv.get_subtask_term_signals.params.env_ids">¶</a> – Environment indices to get the termination signals for. If None, all envs are considered.</p>
+<dd class="field-odd"><p><strong>env_ids</strong> – Environment indices to get the termination signals for. If None, all envs are considered.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>A dictionary termination signal flags (False or True) for each subtask.</p>
@@ -896,8 +897,8 @@ subtask term signal annotation.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_mimic.envs.FrankaCubeStackIKRelMimicEnv.params.cfg"></span><strong>cfg</strong><a class="paramlink headerlink reference internal" href="#isaaclab_mimic.envs.FrankaCubeStackIKRelMimicEnv.params.cfg">¶</a> – The configuration for the environment.</p></li>
-<li><p><span class="target" id="isaaclab_mimic.envs.FrankaCubeStackIKRelMimicEnv.params.render_mode"></span><strong>render_mode</strong><a class="paramlink headerlink reference internal" href="#isaaclab_mimic.envs.FrankaCubeStackIKRelMimicEnv.params.render_mode">¶</a> – The render mode for the environment. Defaults to None, which
+<li><p><strong>cfg</strong> – The configuration for the environment.</p></li>
+<li><p><strong>render_mode</strong> – The render mode for the environment. Defaults to None, which
 is similar to <code class="docutils literal notranslate"><span class="pre">&quot;human&quot;</span></code>.</p></li>
 </ul>
 </dd>
@@ -927,7 +928,7 @@ is similar to <code class="docutils literal notranslate"><span class="pre">&quot
 <dd><p>Gets the pose of each object relevant to Isaac Lab Mimic data generation in the current scene.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab_mimic.envs.FrankaCubeStackIKRelMimicEnv.get_object_poses.params.env_ids"></span><strong>env_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab_mimic.envs.FrankaCubeStackIKRelMimicEnv.get_object_poses.params.env_ids">¶</a> – Environment indices to get the pose for. If None, all envs are considered.</p>
+<dd class="field-odd"><p><strong>env_ids</strong> – Environment indices to get the pose for. If None, all envs are considered.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>A dictionary that maps object names to object pose matrix (4x4 torch.Tensor)</p>
@@ -1001,7 +1002,7 @@ x-by-y pixel image, suitable for turning into a video.</p></li>
 </ul>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab_mimic.envs.FrankaCubeStackIKRelMimicEnv.render.params.recompute"></span><strong>recompute</strong><a class="paramlink headerlink reference internal" href="#isaaclab_mimic.envs.FrankaCubeStackIKRelMimicEnv.render.params.recompute">¶</a> – Whether to force a render even if the simulator has already rendered the scene.
+<dd class="field-odd"><p><strong>recompute</strong> – Whether to force a render even if the simulator has already rendered the scene.
 Defaults to False.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -1028,9 +1029,9 @@ are not repeated.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_mimic.envs.FrankaCubeStackIKRelMimicEnv.reset.params.seed"></span><strong>seed</strong><a class="paramlink headerlink reference internal" href="#isaaclab_mimic.envs.FrankaCubeStackIKRelMimicEnv.reset.params.seed">¶</a> – The seed to use for randomization. Defaults to None, in which case the seed is not set.</p></li>
-<li><p><span class="target" id="isaaclab_mimic.envs.FrankaCubeStackIKRelMimicEnv.reset.params.env_ids"></span><strong>env_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab_mimic.envs.FrankaCubeStackIKRelMimicEnv.reset.params.env_ids">¶</a> – The environment ids to reset. Defaults to None, in which case all environments are reset.</p></li>
-<li><p><span class="target" id="isaaclab_mimic.envs.FrankaCubeStackIKRelMimicEnv.reset.params.options"></span><strong>options</strong><a class="paramlink headerlink reference internal" href="#isaaclab_mimic.envs.FrankaCubeStackIKRelMimicEnv.reset.params.options">¶</a> – <p>Additional information to specify how the environment is reset. Defaults to None.</p>
+<li><p><strong>seed</strong> – The seed to use for randomization. Defaults to None, in which case the seed is not set.</p></li>
+<li><p><strong>env_ids</strong> – The environment ids to reset. Defaults to None, in which case all environments are reset.</p></li>
+<li><p><strong>options</strong> – <p>Additional information to specify how the environment is reset. Defaults to None.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>This argument is used for compatibility with Gymnasium environment definition.</p>
@@ -1056,11 +1057,11 @@ instead of using the randomization events for resetting the environments.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_mimic.envs.FrankaCubeStackIKRelMimicEnv.reset_to.params.state"></span><strong>state</strong><a class="paramlink headerlink reference internal" href="#isaaclab_mimic.envs.FrankaCubeStackIKRelMimicEnv.reset_to.params.state">¶</a> – The state to reset the specified environments to. Please refer to
+<li><p><strong>state</strong> – The state to reset the specified environments to. Please refer to
 <code class="xref py py-meth docutils literal notranslate"><span class="pre">InteractiveScene.get_state()</span></code> for the format.</p></li>
-<li><p><span class="target" id="isaaclab_mimic.envs.FrankaCubeStackIKRelMimicEnv.reset_to.params.env_ids"></span><strong>env_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab_mimic.envs.FrankaCubeStackIKRelMimicEnv.reset_to.params.env_ids">¶</a> – The environment ids to reset. Defaults to None, in which case all environments are reset.</p></li>
-<li><p><span class="target" id="isaaclab_mimic.envs.FrankaCubeStackIKRelMimicEnv.reset_to.params.seed"></span><strong>seed</strong><a class="paramlink headerlink reference internal" href="#isaaclab_mimic.envs.FrankaCubeStackIKRelMimicEnv.reset_to.params.seed">¶</a> – The seed to use for randomization. Defaults to None, in which case the seed is not set.</p></li>
-<li><p><span class="target" id="isaaclab_mimic.envs.FrankaCubeStackIKRelMimicEnv.reset_to.params.is_relative"></span><strong>is_relative</strong><a class="paramlink headerlink reference internal" href="#isaaclab_mimic.envs.FrankaCubeStackIKRelMimicEnv.reset_to.params.is_relative">¶</a> – If set to True, the state is considered relative to the environment origins.
+<li><p><strong>env_ids</strong> – The environment ids to reset. Defaults to None, in which case all environments are reset.</p></li>
+<li><p><strong>seed</strong> – The seed to use for randomization. Defaults to None, in which case the seed is not set.</p></li>
+<li><p><strong>is_relative</strong> – If set to True, the state is considered relative to the environment origins.
 Defaults to False.</p></li>
 </ul>
 </dd>
@@ -1073,7 +1074,7 @@ Defaults to False.</p></li>
 <dd><p>Set the seed for the environment.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab_mimic.envs.FrankaCubeStackIKRelMimicEnv.seed.params.seed"></span><strong>seed</strong><a class="paramlink headerlink reference internal" href="#isaaclab_mimic.envs.FrankaCubeStackIKRelMimicEnv.seed.params.seed">¶</a> – The seed for random generator. Defaults to -1.</p>
+<dd class="field-odd"><p><strong>seed</strong> – The seed for random generator. Defaults to -1.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>The seed used for random generator.</p>
@@ -1111,7 +1112,7 @@ and used in utils/env_utils.py.</p>
 </ol>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab_mimic.envs.FrankaCubeStackIKRelMimicEnv.step.params.action"></span><strong>action</strong><a class="paramlink headerlink reference internal" href="#isaaclab_mimic.envs.FrankaCubeStackIKRelMimicEnv.step.params.action">¶</a> – The actions to apply on the environment. Shape is (num_envs, action_dim).</p>
+<dd class="field-odd"><p><strong>action</strong> – The actions to apply on the environment. Shape is (num_envs, action_dim).</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>A tuple containing the observations, rewards, resets (terminated and truncated) and extras.</p>

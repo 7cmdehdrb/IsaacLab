@@ -36,7 +36,6 @@
     <link rel="stylesheet" type="text/css" href="/opt/hostedtoolcache/Python/3.12.13/x64/lib/python3.12/site-packages/sphinxcontrib/icon/node_modules/@fortawesome/fontawesome-free/css/all.min.css?v=53359634" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx_paramlinks.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=8fb98eed" />
   
   <!-- So that users can add custom icons -->
@@ -164,6 +163,8 @@
             <option value="../../../../../develop/source/api/lab/isaaclab.devices.html" >develop</option>
             <option value="../../../../../main/source/api/lab/isaaclab.devices.html" >main</option>
             <option value="isaaclab.devices.html" selected>release/3.0.0-beta2</option>
+            <option value="../../../../../v3.0.0-beta2/source/api/lab/isaaclab.devices.html" >v3.0.0-beta2</option>
+            <option value="../../../../../v3.0.0-beta/source/api/lab/isaaclab.devices.html" >v3.0.0-beta</option>
             <option value="../../../../../v2.3.2/source/api/lab/isaaclab.devices.html" >v2.3.2</option>
             <option value="../../../../../v2.3.1/source/api/lab/isaaclab.devices.html" >v2.3.1</option>
             <option value="../../../../../v2.3.0/source/api/lab/isaaclab.devices.html" >v2.3.0</option>
@@ -912,7 +913,7 @@ and _get_raw_data() can be ignored entirely.</p></li>
 <dd><p>Initialize the teleoperation interface.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab.devices.DeviceBase.params.retargeters"></span><strong>retargeters</strong><a class="paramlink headerlink reference internal" href="#isaaclab.devices.DeviceBase.params.retargeters">¶</a> – List of components that transform device data into robot commands.
+<dd class="field-odd"><p><strong>retargeters</strong> – List of components that transform device data into robot commands.
 If None or empty list, the device will output its native data format.</p>
 </dd>
 </dl>
@@ -931,8 +932,8 @@ If None or empty list, the device will output its native data format.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.devices.DeviceBase.add_callback.params.key"></span><strong>key</strong><a class="paramlink headerlink reference internal" href="#isaaclab.devices.DeviceBase.add_callback.params.key">¶</a> – The button to check against.</p></li>
-<li><p><span class="target" id="isaaclab.devices.DeviceBase.add_callback.params.func"></span><strong>func</strong><a class="paramlink headerlink reference internal" href="#isaaclab.devices.DeviceBase.add_callback.params.func">¶</a> – The function to call when key is pressed. The callback function should not
+<li><p><strong>key</strong> – The button to check against.</p></li>
+<li><p><strong>func</strong> – The function to call when key is pressed. The callback function should not
 take any arguments.</p></li>
 </ul>
 </dd>
@@ -1023,7 +1024,7 @@ various types of transformations including:
 <dd><p>Initialize the retargeter.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab.devices.RetargeterBase.params.cfg"></span><strong>cfg</strong><a class="paramlink headerlink reference internal" href="#isaaclab.devices.RetargeterBase.params.cfg">¶</a> – Configuration for the retargeter</p>
+<dd class="field-odd"><p><strong>cfg</strong> – Configuration for the retargeter</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1040,7 +1041,7 @@ various types of transformations including:
 <dd><p>Retarget input data to desired output format.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab.devices.RetargeterBase.retarget.params.data"></span><strong>data</strong><a class="paramlink headerlink reference internal" href="#isaaclab.devices.RetargeterBase.retarget.params.data">¶</a> – Raw input data to be transformed</p>
+<dd class="field-odd"><p><strong>data</strong> – Raw input data to be transformed</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>Retargeted data in implementation-specific format</p>
@@ -1140,10 +1141,10 @@ task-space commands.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.devices.Se2Gamepad.params.v_x_sensitivity"></span><strong>v_x_sensitivity</strong><a class="paramlink headerlink reference internal" href="#isaaclab.devices.Se2Gamepad.params.v_x_sensitivity">¶</a> – Magnitude of linear velocity along x-direction scaling. Defaults to 1.0.</p></li>
-<li><p><span class="target" id="isaaclab.devices.Se2Gamepad.params.v_y_sensitivity"></span><strong>v_y_sensitivity</strong><a class="paramlink headerlink reference internal" href="#isaaclab.devices.Se2Gamepad.params.v_y_sensitivity">¶</a> – Magnitude of linear velocity along y-direction scaling. Defaults to 1.0.</p></li>
-<li><p><span class="target" id="isaaclab.devices.Se2Gamepad.params.omega_z_sensitivity"></span><strong>omega_z_sensitivity</strong><a class="paramlink headerlink reference internal" href="#isaaclab.devices.Se2Gamepad.params.omega_z_sensitivity">¶</a> – Magnitude of angular velocity along z-direction scaling. Defaults to 1.0.</p></li>
-<li><p><span class="target" id="isaaclab.devices.Se2Gamepad.params.dead_zone"></span><strong>dead_zone</strong><a class="paramlink headerlink reference internal" href="#isaaclab.devices.Se2Gamepad.params.dead_zone">¶</a> – Magnitude of dead zone for gamepad. An event value from the gamepad less than
+<li><p><strong>v_x_sensitivity</strong> – Magnitude of linear velocity along x-direction scaling. Defaults to 1.0.</p></li>
+<li><p><strong>v_y_sensitivity</strong> – Magnitude of linear velocity along y-direction scaling. Defaults to 1.0.</p></li>
+<li><p><strong>omega_z_sensitivity</strong> – Magnitude of angular velocity along z-direction scaling. Defaults to 1.0.</p></li>
+<li><p><strong>dead_zone</strong> – Magnitude of dead zone for gamepad. An event value from the gamepad less than
 this value will be ignored. Defaults to 0.01.</p></li>
 </ul>
 </dd>
@@ -1165,8 +1166,8 @@ this value will be ignored. Defaults to 0.01.</p></li>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.devices.Se2Gamepad.add_callback.params.key"></span><strong>key</strong><a class="paramlink headerlink reference internal" href="#isaaclab.devices.Se2Gamepad.add_callback.params.key">¶</a> – The gamepad button to check against.</p></li>
-<li><p><span class="target" id="isaaclab.devices.Se2Gamepad.add_callback.params.func"></span><strong>func</strong><a class="paramlink headerlink reference internal" href="#isaaclab.devices.Se2Gamepad.add_callback.params.func">¶</a> – The function to call when key is pressed. The callback function should not
+<li><p><strong>key</strong> – The gamepad button to check against.</p></li>
+<li><p><strong>func</strong> – The function to call when key is pressed. The callback function should not
 take any arguments.</p></li>
 </ul>
 </dd>
@@ -1305,7 +1306,7 @@ task-space commands.</p>
 <dd><p>Initialize the gamepad layer.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab.devices.Se3Gamepad.params.cfg"></span><strong>cfg</strong><a class="paramlink headerlink reference internal" href="#isaaclab.devices.Se3Gamepad.params.cfg">¶</a> – Configuration object for gamepad settings.</p>
+<dd class="field-odd"><p><strong>cfg</strong> – Configuration object for gamepad settings.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1325,8 +1326,8 @@ task-space commands.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.devices.Se3Gamepad.add_callback.params.key"></span><strong>key</strong><a class="paramlink headerlink reference internal" href="#isaaclab.devices.Se3Gamepad.add_callback.params.key">¶</a> – The gamepad button to check against.</p></li>
-<li><p><span class="target" id="isaaclab.devices.Se3Gamepad.add_callback.params.func"></span><strong>func</strong><a class="paramlink headerlink reference internal" href="#isaaclab.devices.Se3Gamepad.add_callback.params.func">¶</a> – The function to call when key is pressed. The callback function should not
+<li><p><strong>key</strong> – The gamepad button to check against.</p></li>
+<li><p><strong>func</strong> – The function to call when key is pressed. The callback function should not
 take any arguments.</p></li>
 </ul>
 </dd>
@@ -1459,9 +1460,9 @@ task-space commands.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.devices.Se2Keyboard.params.v_x_sensitivity"></span><strong>v_x_sensitivity</strong><a class="paramlink headerlink reference internal" href="#isaaclab.devices.Se2Keyboard.params.v_x_sensitivity">¶</a> – Magnitude of linear velocity along x-direction scaling. Defaults to 0.8.</p></li>
-<li><p><span class="target" id="isaaclab.devices.Se2Keyboard.params.v_y_sensitivity"></span><strong>v_y_sensitivity</strong><a class="paramlink headerlink reference internal" href="#isaaclab.devices.Se2Keyboard.params.v_y_sensitivity">¶</a> – Magnitude of linear velocity along y-direction scaling. Defaults to 0.4.</p></li>
-<li><p><span class="target" id="isaaclab.devices.Se2Keyboard.params.omega_z_sensitivity"></span><strong>omega_z_sensitivity</strong><a class="paramlink headerlink reference internal" href="#isaaclab.devices.Se2Keyboard.params.omega_z_sensitivity">¶</a> – Magnitude of angular velocity along z-direction scaling. Defaults to 1.0.</p></li>
+<li><p><strong>v_x_sensitivity</strong> – Magnitude of linear velocity along x-direction scaling. Defaults to 0.8.</p></li>
+<li><p><strong>v_y_sensitivity</strong> – Magnitude of linear velocity along y-direction scaling. Defaults to 0.4.</p></li>
+<li><p><strong>omega_z_sensitivity</strong> – Magnitude of angular velocity along z-direction scaling. Defaults to 1.0.</p></li>
 </ul>
 </dd>
 </dl>
@@ -1482,8 +1483,8 @@ task-space commands.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.devices.Se2Keyboard.add_callback.params.key"></span><strong>key</strong><a class="paramlink headerlink reference internal" href="#isaaclab.devices.Se2Keyboard.add_callback.params.key">¶</a> – The keyboard button to check against.</p></li>
-<li><p><span class="target" id="isaaclab.devices.Se2Keyboard.add_callback.params.func"></span><strong>func</strong><a class="paramlink headerlink reference internal" href="#isaaclab.devices.Se2Keyboard.add_callback.params.func">¶</a> – The function to call when key is pressed. The callback function should not
+<li><p><strong>key</strong> – The keyboard button to check against.</p></li>
+<li><p><strong>func</strong> – The function to call when key is pressed. The callback function should not
 take any arguments.</p></li>
 </ul>
 </dd>
@@ -1622,7 +1623,7 @@ task-space commands.</p>
 <dd><p>Initialize the keyboard layer.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab.devices.Se3Keyboard.params.cfg"></span><strong>cfg</strong><a class="paramlink headerlink reference internal" href="#isaaclab.devices.Se3Keyboard.params.cfg">¶</a> – Configuration object for keyboard settings.</p>
+<dd class="field-odd"><p><strong>cfg</strong> – Configuration object for keyboard settings.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1642,8 +1643,8 @@ task-space commands.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.devices.Se3Keyboard.add_callback.params.key"></span><strong>key</strong><a class="paramlink headerlink reference internal" href="#isaaclab.devices.Se3Keyboard.add_callback.params.key">¶</a> – The keyboard button to check against.</p></li>
-<li><p><span class="target" id="isaaclab.devices.Se3Keyboard.add_callback.params.func"></span><strong>func</strong><a class="paramlink headerlink reference internal" href="#isaaclab.devices.Se3Keyboard.add_callback.params.func">¶</a> – The function to call when key is pressed. The callback function should not
+<li><p><strong>key</strong> – The keyboard button to check against.</p></li>
+<li><p><strong>func</strong> – The function to call when key is pressed. The callback function should not
 take any arguments.</p></li>
 </ul>
 </dd>
@@ -1752,7 +1753,7 @@ It uses the <a class="reference external" href="https://github.com/libusb/hidapi
 <dd><p>Initialize the spacemouse layer.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab.devices.Se2SpaceMouse.params.cfg"></span><strong>cfg</strong><a class="paramlink headerlink reference internal" href="#isaaclab.devices.Se2SpaceMouse.params.cfg">¶</a> – Configuration for the spacemouse device.</p>
+<dd class="field-odd"><p><strong>cfg</strong> – Configuration for the spacemouse device.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1770,8 +1771,8 @@ It uses the <a class="reference external" href="https://github.com/libusb/hidapi
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.devices.Se2SpaceMouse.add_callback.params.key"></span><strong>key</strong><a class="paramlink headerlink reference internal" href="#isaaclab.devices.Se2SpaceMouse.add_callback.params.key">¶</a> – The keyboard button to check against.</p></li>
-<li><p><span class="target" id="isaaclab.devices.Se2SpaceMouse.add_callback.params.func"></span><strong>func</strong><a class="paramlink headerlink reference internal" href="#isaaclab.devices.Se2SpaceMouse.add_callback.params.func">¶</a> – The function to call when key is pressed. The callback function should not
+<li><p><strong>key</strong> – The keyboard button to check against.</p></li>
+<li><p><strong>func</strong> – The function to call when key is pressed. The callback function should not
 take any arguments.</p></li>
 </ul>
 </dd>
@@ -1871,7 +1872,7 @@ It uses the <a class="reference external" href="https://github.com/libusb/hidapi
 <dd><p>Initialize the space-mouse layer.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab.devices.Se3SpaceMouse.params.cfg"></span><strong>cfg</strong><a class="paramlink headerlink reference internal" href="#isaaclab.devices.Se3SpaceMouse.params.cfg">¶</a> – Configuration object for space-mouse settings.</p>
+<dd class="field-odd"><p><strong>cfg</strong> – Configuration object for space-mouse settings.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1889,8 +1890,8 @@ It uses the <a class="reference external" href="https://github.com/libusb/hidapi
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.devices.Se3SpaceMouse.add_callback.params.key"></span><strong>key</strong><a class="paramlink headerlink reference internal" href="#isaaclab.devices.Se3SpaceMouse.add_callback.params.key">¶</a> – The keyboard button to check against.</p></li>
-<li><p><span class="target" id="isaaclab.devices.Se3SpaceMouse.add_callback.params.func"></span><strong>func</strong><a class="paramlink headerlink reference internal" href="#isaaclab.devices.Se3SpaceMouse.add_callback.params.func">¶</a> – The function to call when key is pressed. The callback function should not
+<li><p><strong>key</strong> – The keyboard button to check against.</p></li>
+<li><p><strong>func</strong> – The function to call when key is pressed. The callback function should not
 take any arguments.</p></li>
 </ul>
 </dd>
@@ -2013,8 +2014,8 @@ Install dependencies: pip install websockets</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.devices.HaplyDevice.params.cfg"></span><strong>cfg</strong><a class="paramlink headerlink reference internal" href="#isaaclab.devices.HaplyDevice.params.cfg">¶</a> – Configuration object for Haply device settings.</p></li>
-<li><p><span class="target" id="isaaclab.devices.HaplyDevice.params.retargeters"></span><strong>retargeters</strong><a class="paramlink headerlink reference internal" href="#isaaclab.devices.HaplyDevice.params.retargeters">¶</a> – Optional list of retargeting components that transform device data
+<li><p><strong>cfg</strong> – Configuration object for Haply device settings.</p></li>
+<li><p><strong>retargeters</strong> – Optional list of retargeting components that transform device data
 into robot commands. If None or empty, the device outputs its native data format.</p></li>
 </ul>
 </dd>
@@ -2040,8 +2041,8 @@ into robot commands. If None or empty, the device outputs its native data format
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.devices.HaplyDevice.add_callback.params.key"></span><strong>key</strong><a class="paramlink headerlink reference internal" href="#isaaclab.devices.HaplyDevice.add_callback.params.key">¶</a> – The button to check against. Valid values are “a”, “b”, “c”.</p></li>
-<li><p><span class="target" id="isaaclab.devices.HaplyDevice.add_callback.params.func"></span><strong>func</strong><a class="paramlink headerlink reference internal" href="#isaaclab.devices.HaplyDevice.add_callback.params.func">¶</a> – The function to call when button is pressed. The callback function should not
+<li><p><strong>key</strong> – The button to check against. Valid values are “a”, “b”, “c”.</p></li>
+<li><p><strong>func</strong> – The function to call when button is pressed. The callback function should not
 take any arguments.</p></li>
 </ul>
 </dd>
@@ -2082,8 +2083,8 @@ Forces are clipped to [-limit_force, limit_force] range for safety.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.devices.HaplyDevice.push_force.params.forces"></span><strong>forces</strong><a class="paramlink headerlink reference internal" href="#isaaclab.devices.HaplyDevice.push_force.params.forces">¶</a> – Tensor of shape (N, 3) with forces [fx, fy, fz].</p></li>
-<li><p><span class="target" id="isaaclab.devices.HaplyDevice.push_force.params.position"></span><strong>position</strong><a class="paramlink headerlink reference internal" href="#isaaclab.devices.HaplyDevice.push_force.params.position">¶</a> – Tensor of shape (N) with indices specifying which forces to use.</p></li>
+<li><p><strong>forces</strong> – Tensor of shape (N, 3) with forces [fx, fy, fz].</p></li>
+<li><p><strong>position</strong> – Tensor of shape (N) with indices specifying which forces to use.</p></li>
 </ul>
 </dd>
 </dl>
@@ -2183,8 +2184,8 @@ data is transformed into robot control commands suitable for teleoperation.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.devices.OpenXRDevice.params.cfg"></span><strong>cfg</strong><a class="paramlink headerlink reference internal" href="#isaaclab.devices.OpenXRDevice.params.cfg">¶</a> – Configuration object for OpenXR settings.</p></li>
-<li><p><span class="target" id="isaaclab.devices.OpenXRDevice.params.retargeters"></span><strong>retargeters</strong><a class="paramlink headerlink reference internal" href="#isaaclab.devices.OpenXRDevice.params.retargeters">¶</a> – List of retargeter instances to use for transforming raw tracking data.</p></li>
+<li><p><strong>cfg</strong> – Configuration object for OpenXR settings.</p></li>
+<li><p><strong>retargeters</strong> – List of retargeter instances to use for transforming raw tracking data.</p></li>
 </ul>
 </dd>
 </dl>
@@ -2203,8 +2204,8 @@ data is transformed into robot control commands suitable for teleoperation.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.devices.OpenXRDevice.add_callback.params.key"></span><strong>key</strong><a class="paramlink headerlink reference internal" href="#isaaclab.devices.OpenXRDevice.add_callback.params.key">¶</a> – The message type to bind to. Valid values are “START”, “STOP”, and “RESET”.</p></li>
-<li><p><span class="target" id="isaaclab.devices.OpenXRDevice.add_callback.params.func"></span><strong>func</strong><a class="paramlink headerlink reference internal" href="#isaaclab.devices.OpenXRDevice.add_callback.params.func">¶</a> – The function to call when the message is received. The callback function should not
+<li><p><strong>key</strong> – The message type to bind to. Valid values are “START”, “STOP”, and “RESET”.</p></li>
+<li><p><strong>func</strong> – The function to call when the message is received. The callback function should not
 take any arguments.</p></li>
 </ul>
 </dd>
@@ -2318,8 +2319,8 @@ data is transformed into robot control commands suitable for teleoperation.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.devices.ManusVive.params.cfg"></span><strong>cfg</strong><a class="paramlink headerlink reference internal" href="#isaaclab.devices.ManusVive.params.cfg">¶</a> – Configuration object for Manus+Vive settings.</p></li>
-<li><p><span class="target" id="isaaclab.devices.ManusVive.params.retargeters"></span><strong>retargeters</strong><a class="paramlink headerlink reference internal" href="#isaaclab.devices.ManusVive.params.retargeters">¶</a> – List of retargeter instances to use for transforming raw tracking data.</p></li>
+<li><p><strong>cfg</strong> – Configuration object for Manus+Vive settings.</p></li>
+<li><p><strong>retargeters</strong> – List of retargeter instances to use for transforming raw tracking data.</p></li>
 </ul>
 </dd>
 </dl>
@@ -2338,8 +2339,8 @@ data is transformed into robot control commands suitable for teleoperation.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.devices.ManusVive.add_callback.params.key"></span><strong>key</strong><a class="paramlink headerlink reference internal" href="#isaaclab.devices.ManusVive.add_callback.params.key">¶</a> – The message key to bind (‘START’, ‘STOP’, ‘RESET’).</p></li>
-<li><p><span class="target" id="isaaclab.devices.ManusVive.add_callback.params.func"></span><strong>func</strong><a class="paramlink headerlink reference internal" href="#isaaclab.devices.ManusVive.add_callback.params.func">¶</a> – The function to invoke when the message key is received.</p></li>
+<li><p><strong>key</strong> – The message key to bind (‘START’, ‘STOP’, ‘RESET’).</p></li>
+<li><p><strong>func</strong> – The function to invoke when the message key is received.</p></li>
 </ul>
 </dd>
 </dl>
@@ -2431,7 +2432,7 @@ toggling between states when the finger distance is near the threshold.</p>
 <dd><p>Initialize the retargeter.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab.devices.openxr.retargeters.GripperRetargeter.params.cfg"></span><strong>cfg</strong><a class="paramlink headerlink reference internal" href="#isaaclab.devices.openxr.retargeters.GripperRetargeter.params.cfg">¶</a> – Configuration for the retargeter</p>
+<dd class="field-odd"><p><strong>cfg</strong> – Configuration for the retargeter</p>
 </dd>
 </dl>
 </dd></dl>
@@ -2442,7 +2443,7 @@ toggling between states when the finger distance is near the threshold.</p>
 <dd><p>Convert hand joint poses to gripper command.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab.devices.openxr.retargeters.GripperRetargeter.retarget.params.data"></span><strong>data</strong><a class="paramlink headerlink reference internal" href="#isaaclab.devices.openxr.retargeters.GripperRetargeter.retarget.params.data">¶</a> – Dictionary mapping tracking targets to joint data dictionaries.
+<dd class="field-odd"><p><strong>data</strong> – Dictionary mapping tracking targets to joint data dictionaries.
 The joint names are defined in isaaclab.devices.openxr.common.HAND_JOINT_NAMES</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -2514,12 +2515,12 @@ rather than using relative movements. It can either:
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.devices.openxr.retargeters.Se3AbsRetargeter.params.bound_hand"></span><strong>bound_hand</strong><a class="paramlink headerlink reference internal" href="#isaaclab.devices.openxr.retargeters.Se3AbsRetargeter.params.bound_hand">¶</a> – The hand to track (DeviceBase.TrackingTarget.HAND_LEFT or DeviceBase.TrackingTarget.HAND_RIGHT)</p></li>
-<li><p><span class="target" id="isaaclab.devices.openxr.retargeters.Se3AbsRetargeter.params.zero_out_xy_rotation"></span><strong>zero_out_xy_rotation</strong><a class="paramlink headerlink reference internal" href="#isaaclab.devices.openxr.retargeters.Se3AbsRetargeter.params.zero_out_xy_rotation">¶</a> – If True, zero out rotation around x and y axes</p></li>
-<li><p><span class="target" id="isaaclab.devices.openxr.retargeters.Se3AbsRetargeter.params.use_wrist_rotation"></span><strong>use_wrist_rotation</strong><a class="paramlink headerlink reference internal" href="#isaaclab.devices.openxr.retargeters.Se3AbsRetargeter.params.use_wrist_rotation">¶</a> – If True, use wrist rotation instead of finger average</p></li>
-<li><p><span class="target" id="isaaclab.devices.openxr.retargeters.Se3AbsRetargeter.params.use_wrist_position"></span><strong>use_wrist_position</strong><a class="paramlink headerlink reference internal" href="#isaaclab.devices.openxr.retargeters.Se3AbsRetargeter.params.use_wrist_position">¶</a> – If True, use wrist position instead of pinch position</p></li>
-<li><p><span class="target" id="isaaclab.devices.openxr.retargeters.Se3AbsRetargeter.params.enable_visualization"></span><strong>enable_visualization</strong><a class="paramlink headerlink reference internal" href="#isaaclab.devices.openxr.retargeters.Se3AbsRetargeter.params.enable_visualization">¶</a> – If True, visualize the target pose in the scene</p></li>
-<li><p><span class="target" id="isaaclab.devices.openxr.retargeters.Se3AbsRetargeter.params.device"></span><strong>device</strong><a class="paramlink headerlink reference internal" href="#isaaclab.devices.openxr.retargeters.Se3AbsRetargeter.params.device">¶</a> – The device to place the returned tensor on (‘cpu’ or ‘cuda’)</p></li>
+<li><p><strong>bound_hand</strong> – The hand to track (DeviceBase.TrackingTarget.HAND_LEFT or DeviceBase.TrackingTarget.HAND_RIGHT)</p></li>
+<li><p><strong>zero_out_xy_rotation</strong> – If True, zero out rotation around x and y axes</p></li>
+<li><p><strong>use_wrist_rotation</strong> – If True, use wrist rotation instead of finger average</p></li>
+<li><p><strong>use_wrist_position</strong> – If True, use wrist position instead of pinch position</p></li>
+<li><p><strong>enable_visualization</strong> – If True, visualize the target pose in the scene</p></li>
+<li><p><strong>device</strong> – The device to place the returned tensor on (‘cpu’ or ‘cuda’)</p></li>
 </ul>
 </dd>
 </dl>
@@ -2531,7 +2532,7 @@ rather than using relative movements. It can either:
 <dd><p>Convert hand joint poses to robot end-effector command.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab.devices.openxr.retargeters.Se3AbsRetargeter.retarget.params.data"></span><strong>data</strong><a class="paramlink headerlink reference internal" href="#isaaclab.devices.openxr.retargeters.Se3AbsRetargeter.retarget.params.data">¶</a> – Dictionary mapping tracking targets to joint data dictionaries.
+<dd class="field-odd"><p><strong>data</strong> – Dictionary mapping tracking targets to joint data dictionaries.
 The joint names are defined in isaaclab.devices.openxr.common.HAND_JOINT_NAMES</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -2608,18 +2609,18 @@ It can either:
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.devices.openxr.retargeters.Se3RelRetargeter.params.bound_hand"></span><strong>bound_hand</strong><a class="paramlink headerlink reference internal" href="#isaaclab.devices.openxr.retargeters.Se3RelRetargeter.params.bound_hand">¶</a> – The hand to track (DeviceBase.TrackingTarget.HAND_LEFT or DeviceBase.TrackingTarget.HAND_RIGHT)</p></li>
-<li><p><span class="target" id="isaaclab.devices.openxr.retargeters.Se3RelRetargeter.params.zero_out_xy_rotation"></span><strong>zero_out_xy_rotation</strong><a class="paramlink headerlink reference internal" href="#isaaclab.devices.openxr.retargeters.Se3RelRetargeter.params.zero_out_xy_rotation">¶</a> – If True, ignore rotations around x and y axes, allowing only z-axis rotation</p></li>
-<li><p><span class="target" id="isaaclab.devices.openxr.retargeters.Se3RelRetargeter.params.use_wrist_rotation"></span><strong>use_wrist_rotation</strong><a class="paramlink headerlink reference internal" href="#isaaclab.devices.openxr.retargeters.Se3RelRetargeter.params.use_wrist_rotation">¶</a> – If True, use wrist rotation for control instead of averaging finger orientations</p></li>
-<li><p><span class="target" id="isaaclab.devices.openxr.retargeters.Se3RelRetargeter.params.use_wrist_position"></span><strong>use_wrist_position</strong><a class="paramlink headerlink reference internal" href="#isaaclab.devices.openxr.retargeters.Se3RelRetargeter.params.use_wrist_position">¶</a> – If True, use wrist position instead of pinch position (midpoint between fingers)</p></li>
-<li><p><span class="target" id="isaaclab.devices.openxr.retargeters.Se3RelRetargeter.params.delta_pos_scale_factor"></span><strong>delta_pos_scale_factor</strong><a class="paramlink headerlink reference internal" href="#isaaclab.devices.openxr.retargeters.Se3RelRetargeter.params.delta_pos_scale_factor">¶</a> – Amplification factor for position changes (higher = larger robot movements)</p></li>
-<li><p><span class="target" id="isaaclab.devices.openxr.retargeters.Se3RelRetargeter.params.delta_rot_scale_factor"></span><strong>delta_rot_scale_factor</strong><a class="paramlink headerlink reference internal" href="#isaaclab.devices.openxr.retargeters.Se3RelRetargeter.params.delta_rot_scale_factor">¶</a> – Amplification factor for rotation changes (higher = larger robot rotations)</p></li>
-<li><p><span class="target" id="isaaclab.devices.openxr.retargeters.Se3RelRetargeter.params.alpha_pos"></span><strong>alpha_pos</strong><a class="paramlink headerlink reference internal" href="#isaaclab.devices.openxr.retargeters.Se3RelRetargeter.params.alpha_pos">¶</a> – Position smoothing parameter (0-1); higher values track more closely to input,
+<li><p><strong>bound_hand</strong> – The hand to track (DeviceBase.TrackingTarget.HAND_LEFT or DeviceBase.TrackingTarget.HAND_RIGHT)</p></li>
+<li><p><strong>zero_out_xy_rotation</strong> – If True, ignore rotations around x and y axes, allowing only z-axis rotation</p></li>
+<li><p><strong>use_wrist_rotation</strong> – If True, use wrist rotation for control instead of averaging finger orientations</p></li>
+<li><p><strong>use_wrist_position</strong> – If True, use wrist position instead of pinch position (midpoint between fingers)</p></li>
+<li><p><strong>delta_pos_scale_factor</strong> – Amplification factor for position changes (higher = larger robot movements)</p></li>
+<li><p><strong>delta_rot_scale_factor</strong> – Amplification factor for rotation changes (higher = larger robot rotations)</p></li>
+<li><p><strong>alpha_pos</strong> – Position smoothing parameter (0-1); higher values track more closely to input,
 lower values smooth more</p></li>
-<li><p><span class="target" id="isaaclab.devices.openxr.retargeters.Se3RelRetargeter.params.alpha_rot"></span><strong>alpha_rot</strong><a class="paramlink headerlink reference internal" href="#isaaclab.devices.openxr.retargeters.Se3RelRetargeter.params.alpha_rot">¶</a> – Rotation smoothing parameter (0-1); higher values track more closely to input,
+<li><p><strong>alpha_rot</strong> – Rotation smoothing parameter (0-1); higher values track more closely to input,
 lower values smooth more</p></li>
-<li><p><span class="target" id="isaaclab.devices.openxr.retargeters.Se3RelRetargeter.params.enable_visualization"></span><strong>enable_visualization</strong><a class="paramlink headerlink reference internal" href="#isaaclab.devices.openxr.retargeters.Se3RelRetargeter.params.enable_visualization">¶</a> – If True, show a visual marker representing the target end-effector pose</p></li>
-<li><p><span class="target" id="isaaclab.devices.openxr.retargeters.Se3RelRetargeter.params.device"></span><strong>device</strong><a class="paramlink headerlink reference internal" href="#isaaclab.devices.openxr.retargeters.Se3RelRetargeter.params.device">¶</a> – The device to place the returned tensor on (‘cpu’ or ‘cuda’)</p></li>
+<li><p><strong>enable_visualization</strong> – If True, show a visual marker representing the target end-effector pose</p></li>
+<li><p><strong>device</strong> – The device to place the returned tensor on (‘cpu’ or ‘cuda’)</p></li>
 </ul>
 </dd>
 </dl>
@@ -2631,7 +2632,7 @@ lower values smooth more</p></li>
 <dd><p>Convert hand joint poses to robot end-effector command.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab.devices.openxr.retargeters.Se3RelRetargeter.retarget.params.data"></span><strong>data</strong><a class="paramlink headerlink reference internal" href="#isaaclab.devices.openxr.retargeters.Se3RelRetargeter.retarget.params.data">¶</a> – Dictionary mapping tracking targets to joint data dictionaries.
+<dd class="field-odd"><p><strong>data</strong> – Dictionary mapping tracking targets to joint data dictionaries.
 The joint names are defined in isaaclab.devices.openxr.common.HAND_JOINT_NAMES</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -2703,10 +2704,10 @@ for the GR1T2 robot’s hands.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.devices.openxr.retargeters.GR1T2Retargeter.params.enable_visualization"></span><strong>enable_visualization</strong><a class="paramlink headerlink reference internal" href="#isaaclab.devices.openxr.retargeters.GR1T2Retargeter.params.enable_visualization">¶</a> – If True, visualize tracked hand joints</p></li>
-<li><p><span class="target" id="isaaclab.devices.openxr.retargeters.GR1T2Retargeter.params.num_open_xr_hand_joints"></span><strong>num_open_xr_hand_joints</strong><a class="paramlink headerlink reference internal" href="#isaaclab.devices.openxr.retargeters.GR1T2Retargeter.params.num_open_xr_hand_joints">¶</a> – Number of joints tracked by OpenXR</p></li>
-<li><p><span class="target" id="isaaclab.devices.openxr.retargeters.GR1T2Retargeter.params.device"></span><strong>device</strong><a class="paramlink headerlink reference internal" href="#isaaclab.devices.openxr.retargeters.GR1T2Retargeter.params.device">¶</a> – PyTorch device for computations</p></li>
-<li><p><span class="target" id="isaaclab.devices.openxr.retargeters.GR1T2Retargeter.params.hand_joint_names"></span><strong>hand_joint_names</strong><a class="paramlink headerlink reference internal" href="#isaaclab.devices.openxr.retargeters.GR1T2Retargeter.params.hand_joint_names">¶</a> – List of robot hand joint names</p></li>
+<li><p><strong>enable_visualization</strong> – If True, visualize tracked hand joints</p></li>
+<li><p><strong>num_open_xr_hand_joints</strong> – Number of joints tracked by OpenXR</p></li>
+<li><p><strong>device</strong> – PyTorch device for computations</p></li>
+<li><p><strong>hand_joint_names</strong> – List of robot hand joint names</p></li>
 </ul>
 </dd>
 </dl>
@@ -2718,7 +2719,7 @@ for the GR1T2 robot’s hands.</p>
 <dd><p>Convert hand joint poses to robot end-effector commands.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab.devices.openxr.retargeters.GR1T2Retargeter.retarget.params.data"></span><strong>data</strong><a class="paramlink headerlink reference internal" href="#isaaclab.devices.openxr.retargeters.GR1T2Retargeter.retarget.params.data">¶</a> – Dictionary mapping tracking targets to joint data dictionaries.</p>
+<dd class="field-odd"><p><strong>data</strong> – Dictionary mapping tracking targets to joint data dictionaries.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>Left wrist pose

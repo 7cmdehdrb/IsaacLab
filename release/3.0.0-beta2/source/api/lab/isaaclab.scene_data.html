@@ -36,7 +36,6 @@
     <link rel="stylesheet" type="text/css" href="/opt/hostedtoolcache/Python/3.12.13/x64/lib/python3.12/site-packages/sphinxcontrib/icon/node_modules/@fortawesome/fontawesome-free/css/all.min.css?v=53359634" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx_paramlinks.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=8fb98eed" />
   
   <!-- So that users can add custom icons -->
@@ -162,6 +161,8 @@
             <option value="../../../../../develop/source/api/lab/isaaclab.scene_data.html" >develop</option>
             <option value="../../../../../main/index.html" >main</option>
             <option value="isaaclab.scene_data.html" selected>release/3.0.0-beta2</option>
+            <option value="../../../../../v3.0.0-beta2/source/api/lab/isaaclab.scene_data.html" >v3.0.0-beta2</option>
+            <option value="../../../../../v3.0.0-beta/index.html" >v3.0.0-beta</option>
             <option value="../../../../../v2.3.2/index.html" >v2.3.2</option>
             <option value="../../../../../v2.3.1/index.html" >v2.3.1</option>
             <option value="../../../../../v2.3.0/index.html" >v2.3.0</option>
@@ -889,7 +890,7 @@ physics backends (<code class="docutils literal notranslate"><span class="pre">i
 <dd><p>Initialize the scene data provider.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab.scene_data.SceneDataProvider.params.backend"></span><strong>backend</strong><a class="paramlink headerlink reference internal" href="#isaaclab.scene_data.SceneDataProvider.params.backend">¶</a> – The simulation backend that supplies raw transform data.</p>
+<dd class="field-odd"><p><strong>backend</strong> – The simulation backend that supplies raw transform data.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -973,13 +974,13 @@ to reorder the output if provided.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.scene_data.SceneDataProvider.get_transforms.params.output"></span><strong>output</strong><a class="paramlink headerlink reference internal" href="#isaaclab.scene_data.SceneDataProvider.get_transforms.params.output">¶</a> – A pre-allocated <a class="reference internal" href="#isaaclab.scene_data.SceneDataFormat" title="isaaclab.scene_data.SceneDataFormat"><code class="xref py py-class docutils literal notranslate"><span class="pre">SceneDataFormat</span></code></a> struct that determines the
+<li><p><strong>output</strong> – A pre-allocated <a class="reference internal" href="#isaaclab.scene_data.SceneDataFormat" title="isaaclab.scene_data.SceneDataFormat"><code class="xref py py-class docutils literal notranslate"><span class="pre">SceneDataFormat</span></code></a> struct that determines the
 target format. Uninitialized (<code class="docutils literal notranslate"><span class="pre">None</span></code>) fields are allocated automatically
 when a conversion kernel is needed.</p></li>
-<li><p><span class="target" id="isaaclab.scene_data.SceneDataProvider.get_transforms.params.mapping"></span><strong>mapping</strong><a class="paramlink headerlink reference internal" href="#isaaclab.scene_data.SceneDataProvider.get_transforms.params.mapping">¶</a> – Optional index remapping array produced by
+<li><p><strong>mapping</strong> – Optional index remapping array produced by
 <a class="reference internal" href="#isaaclab.scene_data.SceneDataProvider.create_mapping" title="isaaclab.scene_data.SceneDataProvider.create_mapping"><code class="xref py py-meth docutils literal notranslate"><span class="pre">create_mapping()</span></code></a>. When <code class="docutils literal notranslate"><span class="pre">None</span></code>, input and output indices are
 identical.</p></li>
-<li><p><span class="target" id="isaaclab.scene_data.SceneDataProvider.get_transforms.params.allow_passthrough"></span><strong>allow_passthrough</strong><a class="paramlink headerlink reference internal" href="#isaaclab.scene_data.SceneDataProvider.get_transforms.params.allow_passthrough">¶</a> – If <code class="docutils literal notranslate"><span class="pre">True</span></code> and the formats already match, the output
+<li><p><strong>allow_passthrough</strong> – If <code class="docutils literal notranslate"><span class="pre">True</span></code> and the formats already match, the output
 struct’s fields are set to reference the input arrays directly
 (zero-copy). If <code class="docutils literal notranslate"><span class="pre">False</span></code>, the data is always copied.</p></li>
 </ul>
@@ -999,7 +1000,7 @@ kernel exists for the input/output format pair.</p>
 fields are left untouched.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab.scene_data.SceneDataProvider.init_output.params.output"></span><strong>output</strong><a class="paramlink headerlink reference internal" href="#isaaclab.scene_data.SceneDataProvider.init_output.params.output">¶</a> – A <a class="reference internal" href="#isaaclab.scene_data.SceneDataFormat" title="isaaclab.scene_data.SceneDataFormat"><code class="xref py py-class docutils literal notranslate"><span class="pre">SceneDataFormat</span></code></a> struct whose <code class="docutils literal notranslate"><span class="pre">None</span></code>-valued fields
+<dd class="field-odd"><p><strong>output</strong> – A <a class="reference internal" href="#isaaclab.scene_data.SceneDataFormat" title="isaaclab.scene_data.SceneDataFormat"><code class="xref py py-class docutils literal notranslate"><span class="pre">SceneDataFormat</span></code></a> struct whose <code class="docutils literal notranslate"><span class="pre">None</span></code>-valued fields
 will be replaced with empty arrays of length <a class="reference internal" href="#isaaclab.scene_data.SceneDataProvider.transform_count" title="isaaclab.scene_data.SceneDataProvider.transform_count"><code class="xref py py-attr docutils literal notranslate"><span class="pre">transform_count</span></code></a>.</p>
 </dd>
 </dl>
@@ -1015,7 +1016,7 @@ appear in <code class="docutils literal notranslate"><span class="pre">paths</sp
 skipped during conversion.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab.scene_data.SceneDataProvider.create_mapping.params.paths"></span><strong>paths</strong><a class="paramlink headerlink reference internal" href="#isaaclab.scene_data.SceneDataProvider.create_mapping.params.paths">¶</a> – Desired output ordering expressed as prim paths. Use <code class="docutils literal notranslate"><span class="pre">None</span></code> for
+<dd class="field-odd"><p><strong>paths</strong> – Desired output ordering expressed as prim paths. Use <code class="docutils literal notranslate"><span class="pre">None</span></code> for
 slots that should not receive any transform.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>

@@ -36,7 +36,6 @@
     <link rel="stylesheet" type="text/css" href="/opt/hostedtoolcache/Python/3.12.13/x64/lib/python3.12/site-packages/sphinxcontrib/icon/node_modules/@fortawesome/fontawesome-free/css/all.min.css?v=53359634" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx_paramlinks.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=8fb98eed" />
   
   <!-- So that users can add custom icons -->
@@ -164,6 +163,8 @@
             <option value="../../../../develop/source/api/lab/isaaclab.terrains.html" >develop</option>
             <option value="../../../../main/source/api/lab/isaaclab.terrains.html" >main</option>
             <option value="../../../../release/3.0.0-beta2/source/api/lab/isaaclab.terrains.html" >release/3.0.0-beta2</option>
+            <option value="../../../../v3.0.0-beta2/source/api/lab/isaaclab.terrains.html" >v3.0.0-beta2</option>
+            <option value="../../../../v3.0.0-beta/source/api/lab/isaaclab.terrains.html" >v3.0.0-beta</option>
             <option value="../../../../v2.3.2/source/api/lab/isaaclab.terrains.html" >v2.3.2</option>
             <option value="../../../../v2.3.1/source/api/lab/isaaclab.terrains.html" >v2.3.1</option>
             <option value="../../../../v2.3.0/source/api/lab/isaaclab.terrains.html" >v2.3.0</option>
@@ -1170,7 +1171,7 @@ curriculum. For example, in a game, the player starts with easy levels and progr
 <dd><p>Initialize the terrain importer.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab.terrains.TerrainImporter.params.cfg"></span><strong>cfg</strong><a class="paramlink headerlink reference internal" href="#isaaclab.terrains.TerrainImporter.params.cfg">¶</a> – The configuration for the terrain importer.</p>
+<dd class="field-odd"><p><strong>cfg</strong> – The configuration for the terrain importer.</p>
 </dd>
 <dt class="field-even">Raises<span class="colon">:</span></dt>
 <dd class="field-even"><ul class="simple">
@@ -1231,7 +1232,7 @@ is not available and the function returns an empty dictionary.</p>
 <dd><p>Set the debug visualization of the terrain importer.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab.terrains.TerrainImporter.set_debug_vis.params.debug_vis"></span><strong>debug_vis</strong><a class="paramlink headerlink reference internal" href="#isaaclab.terrains.TerrainImporter.set_debug_vis.params.debug_vis">¶</a> – Whether to visualize the terrain origins.</p>
+<dd class="field-odd"><p><strong>debug_vis</strong> – Whether to visualize the terrain origins.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>Whether the debug visualization was successfully set. False if the terrain
@@ -1250,9 +1251,9 @@ importer does not support debug visualization.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.terrains.TerrainImporter.import_ground_plane.params.name"></span><strong>name</strong><a class="paramlink headerlink reference internal" href="#isaaclab.terrains.TerrainImporter.import_ground_plane.params.name">¶</a> – The name of the imported terrain. This name is used to create the USD prim
+<li><p><strong>name</strong> – The name of the imported terrain. This name is used to create the USD prim
 corresponding to the terrain.</p></li>
-<li><p><span class="target" id="isaaclab.terrains.TerrainImporter.import_ground_plane.params.size"></span><strong>size</strong><a class="paramlink headerlink reference internal" href="#isaaclab.terrains.TerrainImporter.import_ground_plane.params.size">¶</a> – The size of the plane. Defaults to (2.0e6, 2.0e6).</p></li>
+<li><p><strong>size</strong> – The size of the plane. Defaults to (2.0e6, 2.0e6).</p></li>
 </ul>
 </dd>
 <dt class="field-even">Raises<span class="colon">:</span></dt>
@@ -1270,9 +1271,9 @@ contains the mesh as a <code class="xref py py-class docutils literal notranslat
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.terrains.TerrainImporter.import_mesh.params.name"></span><strong>name</strong><a class="paramlink headerlink reference internal" href="#isaaclab.terrains.TerrainImporter.import_mesh.params.name">¶</a> – The name of the imported terrain. This name is used to create the USD prim
+<li><p><strong>name</strong> – The name of the imported terrain. This name is used to create the USD prim
 corresponding to the terrain.</p></li>
-<li><p><span class="target" id="isaaclab.terrains.TerrainImporter.import_mesh.params.mesh"></span><strong>mesh</strong><a class="paramlink headerlink reference internal" href="#isaaclab.terrains.TerrainImporter.import_mesh.params.mesh">¶</a> – The mesh to import.</p></li>
+<li><p><strong>mesh</strong> – The mesh to import.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Raises<span class="colon">:</span></dt>
@@ -1293,9 +1294,9 @@ be defined in the USD file.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.terrains.TerrainImporter.import_usd.params.name"></span><strong>name</strong><a class="paramlink headerlink reference internal" href="#isaaclab.terrains.TerrainImporter.import_usd.params.name">¶</a> – The name of the imported terrain. This name is used to create the USD prim
+<li><p><strong>name</strong> – The name of the imported terrain. This name is used to create the USD prim
 corresponding to the terrain.</p></li>
-<li><p><span class="target" id="isaaclab.terrains.TerrainImporter.import_usd.params.usd_path"></span><strong>usd_path</strong><a class="paramlink headerlink reference internal" href="#isaaclab.terrains.TerrainImporter.import_usd.params.usd_path">¶</a> – The path to the USD file.</p></li>
+<li><p><strong>usd_path</strong> – The path to the USD file.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Raises<span class="colon">:</span></dt>
@@ -1310,7 +1311,7 @@ corresponding to the terrain.</p></li>
 <dd><p>Configure the origins of the environments based on the added terrain.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab.terrains.TerrainImporter.configure_env_origins.params.origins"></span><strong>origins</strong><a class="paramlink headerlink reference internal" href="#isaaclab.terrains.TerrainImporter.configure_env_origins.params.origins">¶</a> – The origins of the sub-terrains. Shape is (num_rows, num_cols, 3).</p>
+<dd class="field-odd"><p><strong>origins</strong> – The origins of the sub-terrains. Shape is (num_rows, num_cols, 3).</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1560,8 +1561,8 @@ completely reproducible.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.terrains.TerrainGenerator.params.cfg"></span><strong>cfg</strong><a class="paramlink headerlink reference internal" href="#isaaclab.terrains.TerrainGenerator.params.cfg">¶</a> – Configuration for the terrain generator.</p></li>
-<li><p><span class="target" id="isaaclab.terrains.TerrainGenerator.params.device"></span><strong>device</strong><a class="paramlink headerlink reference internal" href="#isaaclab.terrains.TerrainGenerator.params.device">¶</a> – The device to use for the flat patches tensor.</p></li>
+<li><p><strong>cfg</strong> – Configuration for the terrain generator.</p></li>
+<li><p><strong>device</strong> – The device to use for the flat patches tensor.</p></li>
 </ul>
 </dd>
 </dl>
@@ -1959,8 +1960,8 @@ corresponding configurations.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.terrains.height_field.hf_terrains.random_uniform_terrain.params.difficulty"></span><strong>difficulty</strong><a class="paramlink headerlink reference internal" href="#isaaclab.terrains.height_field.hf_terrains.random_uniform_terrain.params.difficulty">¶</a> – The difficulty of the terrain. This is a value between 0 and 1.</p></li>
-<li><p><span class="target" id="isaaclab.terrains.height_field.hf_terrains.random_uniform_terrain.params.cfg"></span><strong>cfg</strong><a class="paramlink headerlink reference internal" href="#isaaclab.terrains.height_field.hf_terrains.random_uniform_terrain.params.cfg">¶</a> – The configuration for the terrain.</p></li>
+<li><p><strong>difficulty</strong> – The difficulty of the terrain. This is a value between 0 and 1.</p></li>
+<li><p><strong>cfg</strong> – The configuration for the terrain.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -2111,8 +2112,8 @@ the platform is at the bottom.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.terrains.height_field.hf_terrains.pyramid_sloped_terrain.params.difficulty"></span><strong>difficulty</strong><a class="paramlink headerlink reference internal" href="#isaaclab.terrains.height_field.hf_terrains.pyramid_sloped_terrain.params.difficulty">¶</a> – The difficulty of the terrain. This is a value between 0 and 1.</p></li>
-<li><p><span class="target" id="isaaclab.terrains.height_field.hf_terrains.pyramid_sloped_terrain.params.cfg"></span><strong>cfg</strong><a class="paramlink headerlink reference internal" href="#isaaclab.terrains.height_field.hf_terrains.pyramid_sloped_terrain.params.cfg">¶</a> – The configuration for the terrain.</p></li>
+<li><p><strong>difficulty</strong> – The difficulty of the terrain. This is a value between 0 and 1.</p></li>
+<li><p><strong>cfg</strong> – The configuration for the terrain.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -2378,8 +2379,8 @@ the platform is at the bottom.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.terrains.height_field.hf_terrains.pyramid_stairs_terrain.params.difficulty"></span><strong>difficulty</strong><a class="paramlink headerlink reference internal" href="#isaaclab.terrains.height_field.hf_terrains.pyramid_stairs_terrain.params.difficulty">¶</a> – The difficulty of the terrain. This is a value between 0 and 1.</p></li>
-<li><p><span class="target" id="isaaclab.terrains.height_field.hf_terrains.pyramid_stairs_terrain.params.cfg"></span><strong>cfg</strong><a class="paramlink headerlink reference internal" href="#isaaclab.terrains.height_field.hf_terrains.pyramid_stairs_terrain.params.cfg">¶</a> – The configuration for the terrain.</p></li>
+<li><p><strong>difficulty</strong> – The difficulty of the terrain. This is a value between 0 and 1.</p></li>
+<li><p><strong>cfg</strong> – The configuration for the terrain.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -2662,8 +2663,8 @@ from the center of the terrain.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.terrains.height_field.hf_terrains.discrete_obstacles_terrain.params.difficulty"></span><strong>difficulty</strong><a class="paramlink headerlink reference internal" href="#isaaclab.terrains.height_field.hf_terrains.discrete_obstacles_terrain.params.difficulty">¶</a> – The difficulty of the terrain. This is a value between 0 and 1.</p></li>
-<li><p><span class="target" id="isaaclab.terrains.height_field.hf_terrains.discrete_obstacles_terrain.params.cfg"></span><strong>cfg</strong><a class="paramlink headerlink reference internal" href="#isaaclab.terrains.height_field.hf_terrains.discrete_obstacles_terrain.params.cfg">¶</a> – The configuration for the terrain.</p></li>
+<li><p><strong>difficulty</strong> – The difficulty of the terrain. This is a value between 0 and 1.</p></li>
+<li><p><strong>cfg</strong> – The configuration for the terrain.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -2826,8 +2827,8 @@ is generated by adding sinusoidal waves based on the number of waves and the amp
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.terrains.height_field.hf_terrains.wave_terrain.params.difficulty"></span><strong>difficulty</strong><a class="paramlink headerlink reference internal" href="#isaaclab.terrains.height_field.hf_terrains.wave_terrain.params.difficulty">¶</a> – The difficulty of the terrain. This is a value between 0 and 1.</p></li>
-<li><p><span class="target" id="isaaclab.terrains.height_field.hf_terrains.wave_terrain.params.cfg"></span><strong>cfg</strong><a class="paramlink headerlink reference internal" href="#isaaclab.terrains.height_field.hf_terrains.wave_terrain.params.cfg">¶</a> – The configuration for the terrain.</p></li>
+<li><p><strong>difficulty</strong> – The difficulty of the terrain. This is a value between 0 and 1.</p></li>
+<li><p><strong>cfg</strong> – The configuration for the terrain.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -2960,8 +2961,8 @@ in which case no correction is applied.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.terrains.height_field.hf_terrains.stepping_stones_terrain.params.difficulty"></span><strong>difficulty</strong><a class="paramlink headerlink reference internal" href="#isaaclab.terrains.height_field.hf_terrains.stepping_stones_terrain.params.difficulty">¶</a> – The difficulty of the terrain. This is a value between 0 and 1.</p></li>
-<li><p><span class="target" id="isaaclab.terrains.height_field.hf_terrains.stepping_stones_terrain.params.cfg"></span><strong>cfg</strong><a class="paramlink headerlink reference internal" href="#isaaclab.terrains.height_field.hf_terrains.stepping_stones_terrain.params.cfg">¶</a> – The configuration for the terrain.</p></li>
+<li><p><strong>difficulty</strong> – The difficulty of the terrain. This is a value between 0 and 1.</p></li>
+<li><p><strong>cfg</strong> – The configuration for the terrain.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -3129,8 +3130,8 @@ efficient than the height-field representation, but it is not as flexible.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.terrains.trimesh.mesh_terrains.flat_terrain.params.difficulty"></span><strong>difficulty</strong><a class="paramlink headerlink reference internal" href="#isaaclab.terrains.trimesh.mesh_terrains.flat_terrain.params.difficulty">¶</a> – The difficulty of the terrain. This is a value between 0 and 1.</p></li>
-<li><p><span class="target" id="isaaclab.terrains.trimesh.mesh_terrains.flat_terrain.params.cfg"></span><strong>cfg</strong><a class="paramlink headerlink reference internal" href="#isaaclab.terrains.trimesh.mesh_terrains.flat_terrain.params.cfg">¶</a> – The configuration for the terrain.</p></li>
+<li><p><strong>difficulty</strong> – The difficulty of the terrain. This is a value between 0 and 1.</p></li>
+<li><p><strong>cfg</strong> – The configuration for the terrain.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -3206,8 +3207,8 @@ no border will be added.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.terrains.trimesh.mesh_terrains.pyramid_stairs_terrain.params.difficulty"></span><strong>difficulty</strong><a class="paramlink headerlink reference internal" href="#isaaclab.terrains.trimesh.mesh_terrains.pyramid_stairs_terrain.params.difficulty">¶</a> – The difficulty of the terrain. This is a value between 0 and 1.</p></li>
-<li><p><span class="target" id="isaaclab.terrains.trimesh.mesh_terrains.pyramid_stairs_terrain.params.cfg"></span><strong>cfg</strong><a class="paramlink headerlink reference internal" href="#isaaclab.terrains.trimesh.mesh_terrains.pyramid_stairs_terrain.params.cfg">¶</a> – The configuration for the terrain.</p></li>
+<li><p><strong>difficulty</strong> – The difficulty of the terrain. This is a value between 0 and 1.</p></li>
+<li><p><strong>cfg</strong> – The configuration for the terrain.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -3332,8 +3333,8 @@ no border will be added.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.terrains.trimesh.mesh_terrains.inverted_pyramid_stairs_terrain.params.difficulty"></span><strong>difficulty</strong><a class="paramlink headerlink reference internal" href="#isaaclab.terrains.trimesh.mesh_terrains.inverted_pyramid_stairs_terrain.params.difficulty">¶</a> – The difficulty of the terrain. This is a value between 0 and 1.</p></li>
-<li><p><span class="target" id="isaaclab.terrains.trimesh.mesh_terrains.inverted_pyramid_stairs_terrain.params.cfg"></span><strong>cfg</strong><a class="paramlink headerlink reference internal" href="#isaaclab.terrains.trimesh.mesh_terrains.inverted_pyramid_stairs_terrain.params.cfg">¶</a> – The configuration for the terrain.</p></li>
+<li><p><strong>difficulty</strong> – The difficulty of the terrain. This is a value between 0 and 1.</p></li>
+<li><p><strong>cfg</strong> – The configuration for the terrain.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -3464,8 +3465,8 @@ from the platform (like a plus sign). The remaining area remains empty and no bo
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.terrains.trimesh.mesh_terrains.random_grid_terrain.params.difficulty"></span><strong>difficulty</strong><a class="paramlink headerlink reference internal" href="#isaaclab.terrains.trimesh.mesh_terrains.random_grid_terrain.params.difficulty">¶</a> – The difficulty of the terrain. This is a value between 0 and 1.</p></li>
-<li><p><span class="target" id="isaaclab.terrains.trimesh.mesh_terrains.random_grid_terrain.params.cfg"></span><strong>cfg</strong><a class="paramlink headerlink reference internal" href="#isaaclab.terrains.trimesh.mesh_terrains.random_grid_terrain.params.cfg">¶</a> – The configuration for the terrain.</p></li>
+<li><p><strong>difficulty</strong> – The difficulty of the terrain. This is a value between 0 and 1.</p></li>
+<li><p><strong>cfg</strong> – The configuration for the terrain.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -3582,8 +3583,8 @@ and the terrain border. Each set of rails is extruded to the same height.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.terrains.trimesh.mesh_terrains.rails_terrain.params.difficulty"></span><strong>difficulty</strong><a class="paramlink headerlink reference internal" href="#isaaclab.terrains.trimesh.mesh_terrains.rails_terrain.params.difficulty">¶</a> – The difficulty of the terrain. this is a value between 0 and 1.</p></li>
-<li><p><span class="target" id="isaaclab.terrains.trimesh.mesh_terrains.rails_terrain.params.cfg"></span><strong>cfg</strong><a class="paramlink headerlink reference internal" href="#isaaclab.terrains.trimesh.mesh_terrains.rails_terrain.params.cfg">¶</a> – The configuration for the terrain.</p></li>
+<li><p><strong>difficulty</strong> – The difficulty of the terrain. this is a value between 0 and 1.</p></li>
+<li><p><strong>cfg</strong> – The configuration for the terrain.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -3686,8 +3687,8 @@ contains two levels.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.terrains.trimesh.mesh_terrains.pit_terrain.params.difficulty"></span><strong>difficulty</strong><a class="paramlink headerlink reference internal" href="#isaaclab.terrains.trimesh.mesh_terrains.pit_terrain.params.difficulty">¶</a> – The difficulty of the terrain. This is a value between 0 and 1.</p></li>
-<li><p><span class="target" id="isaaclab.terrains.trimesh.mesh_terrains.pit_terrain.params.cfg"></span><strong>cfg</strong><a class="paramlink headerlink reference internal" href="#isaaclab.terrains.trimesh.mesh_terrains.pit_terrain.params.cfg">¶</a> – The configuration for the terrain.</p></li>
+<li><p><strong>difficulty</strong> – The difficulty of the terrain. This is a value between 0 and 1.</p></li>
+<li><p><strong>cfg</strong> – The configuration for the terrain.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -3789,8 +3790,8 @@ then two boxes of height <code class="xref py py-obj docutils literal notranslat
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.terrains.trimesh.mesh_terrains.box_terrain.params.difficulty"></span><strong>difficulty</strong><a class="paramlink headerlink reference internal" href="#isaaclab.terrains.trimesh.mesh_terrains.box_terrain.params.difficulty">¶</a> – The difficulty of the terrain. This is a value between 0 and 1.</p></li>
-<li><p><span class="target" id="isaaclab.terrains.trimesh.mesh_terrains.box_terrain.params.cfg"></span><strong>cfg</strong><a class="paramlink headerlink reference internal" href="#isaaclab.terrains.trimesh.mesh_terrains.box_terrain.params.cfg">¶</a> – The configuration for the terrain.</p></li>
+<li><p><strong>difficulty</strong> – The difficulty of the terrain. This is a value between 0 and 1.</p></li>
+<li><p><strong>cfg</strong> – The configuration for the terrain.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -3889,8 +3890,8 @@ of width <code class="xref py py-obj docutils literal notranslate"><span class="
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.terrains.trimesh.mesh_terrains.gap_terrain.params.difficulty"></span><strong>difficulty</strong><a class="paramlink headerlink reference internal" href="#isaaclab.terrains.trimesh.mesh_terrains.gap_terrain.params.difficulty">¶</a> – The difficulty of the terrain. This is a value between 0 and 1.</p></li>
-<li><p><span class="target" id="isaaclab.terrains.trimesh.mesh_terrains.gap_terrain.params.cfg"></span><strong>cfg</strong><a class="paramlink headerlink reference internal" href="#isaaclab.terrains.trimesh.mesh_terrains.gap_terrain.params.cfg">¶</a> – The configuration for the terrain.</p></li>
+<li><p><strong>difficulty</strong> – The difficulty of the terrain. This is a value between 0 and 1.</p></li>
+<li><p><strong>cfg</strong> – The configuration for the terrain.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -3982,8 +3983,8 @@ is <code class="xref py py-obj docutils literal notranslate"><span class="pre">r
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.terrains.trimesh.mesh_terrains.floating_ring_terrain.params.difficulty"></span><strong>difficulty</strong><a class="paramlink headerlink reference internal" href="#isaaclab.terrains.trimesh.mesh_terrains.floating_ring_terrain.params.difficulty">¶</a> – The difficulty of the terrain. This is a value between 0 and 1.</p></li>
-<li><p><span class="target" id="isaaclab.terrains.trimesh.mesh_terrains.floating_ring_terrain.params.cfg"></span><strong>cfg</strong><a class="paramlink headerlink reference internal" href="#isaaclab.terrains.trimesh.mesh_terrains.floating_ring_terrain.params.cfg">¶</a> – The configuration for the terrain.</p></li>
+<li><p><strong>difficulty</strong> – The difficulty of the terrain. This is a value between 0 and 1.</p></li>
+<li><p><strong>cfg</strong> – The configuration for the terrain.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -4092,8 +4093,8 @@ spaced around the cylinder and connect to the peripheral of the terrain.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.terrains.trimesh.mesh_terrains.star_terrain.params.difficulty"></span><strong>difficulty</strong><a class="paramlink headerlink reference internal" href="#isaaclab.terrains.trimesh.mesh_terrains.star_terrain.params.difficulty">¶</a> – The difficulty of the terrain. This is a value between 0 and 1.</p></li>
-<li><p><span class="target" id="isaaclab.terrains.trimesh.mesh_terrains.star_terrain.params.cfg"></span><strong>cfg</strong><a class="paramlink headerlink reference internal" href="#isaaclab.terrains.trimesh.mesh_terrains.star_terrain.params.cfg">¶</a> – The configuration for the terrain.</p></li>
+<li><p><strong>difficulty</strong> – The difficulty of the terrain. This is a value between 0 and 1.</p></li>
+<li><p><strong>cfg</strong> – The configuration for the terrain.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -4212,8 +4213,8 @@ is used to linearly interpolate between the minimum and maximum values of the pa
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.terrains.trimesh.mesh_terrains.repeated_objects_terrain.params.difficulty"></span><strong>difficulty</strong><a class="paramlink headerlink reference internal" href="#isaaclab.terrains.trimesh.mesh_terrains.repeated_objects_terrain.params.difficulty">¶</a> – The difficulty of the terrain. This is a value between 0 and 1.</p></li>
-<li><p><span class="target" id="isaaclab.terrains.trimesh.mesh_terrains.repeated_objects_terrain.params.cfg"></span><strong>cfg</strong><a class="paramlink headerlink reference internal" href="#isaaclab.terrains.trimesh.mesh_terrains.repeated_objects_terrain.params.cfg">¶</a> – The configuration for the terrain.</p></li>
+<li><p><strong>difficulty</strong> – The difficulty of the terrain. This is a value between 0 and 1.</p></li>
+<li><p><strong>cfg</strong> – The configuration for the terrain.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -4881,14 +4882,14 @@ using the Turbo colormap. If the z-coordinates are all the same, the vertices wi
 with a single color.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab.terrains.utils.color_meshes_by_height.params.meshes"></span><strong>meshes</strong><a class="paramlink headerlink reference internal" href="#isaaclab.terrains.utils.color_meshes_by_height.params.meshes">¶</a> – A list of trimesh objects.</p>
+<dd class="field-odd"><p><strong>meshes</strong> – A list of trimesh objects.</p>
 </dd>
 <dt class="field-even">Keyword Arguments<span class="colon">:</span></dt>
 <dd class="field-even"><ul class="simple">
-<li><p><span class="target" id="isaaclab.terrains.utils.color_meshes_by_height.params.color"></span><strong>color</strong><a class="paramlink headerlink reference internal" href="#isaaclab.terrains.utils.color_meshes_by_height.params.color">¶</a> – A list of 3 integers in the range [0,255] representing the RGB
+<li><p><strong>color</strong> – A list of 3 integers in the range [0,255] representing the RGB
 color of the mesh. Used when the z-coordinates of all vertices are the same.
 Defaults to [172, 216, 230].</p></li>
-<li><p><span class="target" id="isaaclab.terrains.utils.color_meshes_by_height.params.color_map"></span><strong>color_map</strong><a class="paramlink headerlink reference internal" href="#isaaclab.terrains.utils.color_meshes_by_height.params.color_map">¶</a> – The name of the color map to be used. Defaults to “turbo”.</p></li>
+<li><p><strong>color_map</strong> – The name of the color map to be used. Defaults to “turbo”.</p></li>
 </ul>
 </dd>
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -4912,16 +4913,16 @@ following steps:</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.terrains.utils.create_prim_from_mesh.params.prim_path"></span><strong>prim_path</strong><a class="paramlink headerlink reference internal" href="#isaaclab.terrains.utils.create_prim_from_mesh.params.prim_path">¶</a> – The path to the primitive to be created.</p></li>
-<li><p><span class="target" id="isaaclab.terrains.utils.create_prim_from_mesh.params.mesh"></span><strong>mesh</strong><a class="paramlink headerlink reference internal" href="#isaaclab.terrains.utils.create_prim_from_mesh.params.mesh">¶</a> – The mesh to be used for the primitive.</p></li>
+<li><p><strong>prim_path</strong> – The path to the primitive to be created.</p></li>
+<li><p><strong>mesh</strong> – The mesh to be used for the primitive.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Keyword Arguments<span class="colon">:</span></dt>
 <dd class="field-even"><ul class="simple">
-<li><p><span class="target" id="isaaclab.terrains.utils.create_prim_from_mesh.params.translation"></span><strong>translation</strong><a class="paramlink headerlink reference internal" href="#isaaclab.terrains.utils.create_prim_from_mesh.params.translation">¶</a> – The translation of the terrain. Defaults to None.</p></li>
-<li><p><span class="target" id="isaaclab.terrains.utils.create_prim_from_mesh.params.orientation"></span><strong>orientation</strong><a class="paramlink headerlink reference internal" href="#isaaclab.terrains.utils.create_prim_from_mesh.params.orientation">¶</a> – The orientation of the terrain. Defaults to None.</p></li>
-<li><p><span class="target" id="isaaclab.terrains.utils.create_prim_from_mesh.params.visual_material"></span><strong>visual_material</strong><a class="paramlink headerlink reference internal" href="#isaaclab.terrains.utils.create_prim_from_mesh.params.visual_material">¶</a> – The visual material to apply. Defaults to None.</p></li>
-<li><p><span class="target" id="isaaclab.terrains.utils.create_prim_from_mesh.params.physics_material"></span><strong>physics_material</strong><a class="paramlink headerlink reference internal" href="#isaaclab.terrains.utils.create_prim_from_mesh.params.physics_material">¶</a> – The physics material to apply. Defaults to None.</p></li>
+<li><p><strong>translation</strong> – The translation of the terrain. Defaults to None.</p></li>
+<li><p><strong>orientation</strong> – The orientation of the terrain. Defaults to None.</p></li>
+<li><p><strong>visual_material</strong> – The visual material to apply. Defaults to None.</p></li>
+<li><p><strong>physics_material</strong> – The physics material to apply. Defaults to None.</p></li>
 </ul>
 </dd>
 </dl>
@@ -4945,15 +4946,15 @@ patches based on the height of the points.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.terrains.utils.find_flat_patches.params.wp_mesh"></span><strong>wp_mesh</strong><a class="paramlink headerlink reference internal" href="#isaaclab.terrains.utils.find_flat_patches.params.wp_mesh">¶</a> – The warp mesh to find patches in.</p></li>
-<li><p><span class="target" id="isaaclab.terrains.utils.find_flat_patches.params.num_patches"></span><strong>num_patches</strong><a class="paramlink headerlink reference internal" href="#isaaclab.terrains.utils.find_flat_patches.params.num_patches">¶</a> – The desired number of patches to find.</p></li>
-<li><p><span class="target" id="isaaclab.terrains.utils.find_flat_patches.params.patch_radius"></span><strong>patch_radius</strong><a class="paramlink headerlink reference internal" href="#isaaclab.terrains.utils.find_flat_patches.params.patch_radius">¶</a> – The radii used to form patches. If a list is provided, multiple patch sizes are checked.
+<li><p><strong>wp_mesh</strong> – The warp mesh to find patches in.</p></li>
+<li><p><strong>num_patches</strong> – The desired number of patches to find.</p></li>
+<li><p><strong>patch_radius</strong> – The radii used to form patches. If a list is provided, multiple patch sizes are checked.
 This is useful to deal with holes or other artifacts in the mesh.</p></li>
-<li><p><span class="target" id="isaaclab.terrains.utils.find_flat_patches.params.origin"></span><strong>origin</strong><a class="paramlink headerlink reference internal" href="#isaaclab.terrains.utils.find_flat_patches.params.origin">¶</a> – The origin defining the center of the search space. This is specified in the mesh frame.</p></li>
-<li><p><span class="target" id="isaaclab.terrains.utils.find_flat_patches.params.x_range"></span><strong>x_range</strong><a class="paramlink headerlink reference internal" href="#isaaclab.terrains.utils.find_flat_patches.params.x_range">¶</a> – The range of X coordinates to sample from.</p></li>
-<li><p><span class="target" id="isaaclab.terrains.utils.find_flat_patches.params.y_range"></span><strong>y_range</strong><a class="paramlink headerlink reference internal" href="#isaaclab.terrains.utils.find_flat_patches.params.y_range">¶</a> – The range of Y coordinates to sample from.</p></li>
-<li><p><span class="target" id="isaaclab.terrains.utils.find_flat_patches.params.z_range"></span><strong>z_range</strong><a class="paramlink headerlink reference internal" href="#isaaclab.terrains.utils.find_flat_patches.params.z_range">¶</a> – The range of valid Z coordinates used for filtering patches.</p></li>
-<li><p><span class="target" id="isaaclab.terrains.utils.find_flat_patches.params.max_height_diff"></span><strong>max_height_diff</strong><a class="paramlink headerlink reference internal" href="#isaaclab.terrains.utils.find_flat_patches.params.max_height_diff">¶</a> – The maximum allowable distance between the lowest and highest points
+<li><p><strong>origin</strong> – The origin defining the center of the search space. This is specified in the mesh frame.</p></li>
+<li><p><strong>x_range</strong> – The range of X coordinates to sample from.</p></li>
+<li><p><strong>y_range</strong> – The range of Y coordinates to sample from.</p></li>
+<li><p><strong>z_range</strong> – The range of valid Z coordinates used for filtering patches.</p></li>
+<li><p><strong>max_height_diff</strong> – The maximum allowable distance between the lowest and highest points
 on a patch to consider it as valid. If the difference is greater than this value,
 the patch is rejected.</p></li>
 </ul>
