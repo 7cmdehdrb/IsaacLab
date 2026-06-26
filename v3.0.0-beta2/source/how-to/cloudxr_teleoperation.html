@@ -1,0 +1,1302 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Setting up Isaac Teleop with CloudXR &#8212; Isaac Lab Documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="../../_static/twemoji.css" />
+    <link rel="stylesheet" type="text/css" href="/opt/hostedtoolcache/Python/3.12.13/x64/lib/python3.12/site-packages/sphinxcontrib/icon/node_modules/@fortawesome/fontawesome-free/css/all.min.css?v=53359634" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=8fb98eed" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="https://unpkg.com/twemoji@latest/dist/twemoji.min.js"></script>
+    <script src="../../_static/twemoji.js"></script>
+    <script src="/opt/hostedtoolcache/Python/3.12.13/x64/lib/python3.12/site-packages/sphinxcontrib/icon/node_modules/@fortawesome/fontawesome-free/js/all.min.js?v=ec35c6c9"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'source/how-to/cloudxr_teleoperation';</script>
+    <link rel="icon" href="../../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Setting up Haply Teleoperation" href="haply_teleoperation.html" />
+    <link rel="prev" title="Mastering Omniverse for Robotics" href="master_omniverse.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="3.0.0" />
+    <meta name="docbuild:last-update" content="Jun 26, 2026"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/NVIDIA-logo-white.png" class="logo__image only-light" alt=""/>
+    <img src="../../_static/NVIDIA-logo-black.png" class="logo__image only-dark pst-js-only" alt=""/>
+  
+  
+    <p class="title logo__title">Isaac Lab Documentation</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+<nav class="bd-links bd-docs-nav">
+    <div class="bd-toc-item navbar-nav">
+      <ul class="nav bd-sidenav">
+        <li class="toctree-l1 has-children" style="display: flex; justify-content: center; align-items: center; flex-direction: column;">
+          <div  style ="text-align:center;">
+            <label for="version-select" style="font-weight: bold; display: block;">Version</label>
+          </div>
+          <select id="version-select" class="version-dropdown" style="margin: 0 auto; display: block;" onchange="location = this.value;">
+            <option value="../../../develop/source/how-to/cloudxr_teleoperation.html" >develop</option>
+            <option value="../../../main/source/how-to/cloudxr_teleoperation.html" >main</option>
+            <option value="../../../release/3.0.0-beta2/source/how-to/cloudxr_teleoperation.html" >release/3.0.0-beta2</option>
+            <option value="cloudxr_teleoperation.html" selected>v3.0.0-beta2</option>
+            <option value="../../../v3.0.0-beta/source/how-to/cloudxr_teleoperation.html" >v3.0.0-beta</option>
+            <option value="../../../v2.3.2/source/how-to/cloudxr_teleoperation.html" >v2.3.2</option>
+            <option value="../../../v2.3.1/source/how-to/cloudxr_teleoperation.html" >v2.3.1</option>
+            <option value="../../../v2.3.0/source/how-to/cloudxr_teleoperation.html" >v2.3.0</option>
+            <option value="../../../v2.2.1/source/how-to/cloudxr_teleoperation.html" >v2.2.1</option>
+            <option value="../../../v2.2.0/source/how-to/cloudxr_teleoperation.html" >v2.2.0</option>
+            <option value="../../../v2.1.1/source/how-to/cloudxr_teleoperation.html" >v2.1.1</option>
+            <option value="../../../v2.1.0/source/how-to/cloudxr_teleoperation.html" >v2.1.0</option>
+            <option value="../../../v2.0.2/index.html" >v2.0.2</option>
+            <option value="../../../v2.0.1/index.html" >v2.0.1</option>
+            <option value="../../../v2.0.0/index.html" >v2.0.0</option>
+          </select>
+        </li>
+      </ul>
+    </div>
+</nav>
+</div>
+        <div class="sidebar-primary-item"><ul class="navbar-icon-links"
+    aria-label="Quick Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/isaac-sim/IsaacLab" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://developer.nvidia.com/isaac-sim" title="Isaac Sim" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="https://img.shields.io/badge/IsaacSim-6.0.0-silver.svg" class="icon-link-image" alt="Isaac Sim"/></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://img.shields.io/github/stars/isaac-sim/IsaacLab?color=fedcba" title="Stars" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="https://img.shields.io/github/stars/isaac-sim/IsaacLab?color=fedcba" class="icon-link-image" alt="Stars"/></a>
+        </li>
+</ul></div>
+        <div class="sidebar-primary-item">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Isaac Lab</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../setup/ecosystem.html">Isaac Lab Ecosystem</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../setup/installation/index.html">Local Installation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../setup/installation/kitless_installation.html">Kit-less Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../setup/installation/pip_installation.html">Installation using Isaac Sim Pip Package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../setup/installation/binaries_installation.html">Installation using Isaac Sim Pre-built Binaries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../setup/installation/source_installation.html">Installation using Isaac Sim Source Code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../setup/installation/isaaclab_pip_installation.html">Installation using Isaac Lab Pip Packages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../setup/installation/asset_caching.html">Asset Caching</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../setup/installation/uv_run.html">uv run (experimental)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../deployment/index.html">Container Deployment</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../deployment/docker.html">Docker Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../deployment/run_docker_example.html">Running an example with Docker</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../deployment/cluster.html">Cluster Guide</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../setup/installation/cloud_installation.html">Cloud Deployment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../refs/reference_architecture/index.html">Reference Architecture</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../setup/quickstart.html">Quickstart</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../setup/quickstart_details.html">Quickstart Details</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../overview/own-project/index.html">Build your Own Project or Task</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../overview/own-project/template.html">Create new project or task</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview/own-project/project_structure.html">Project Structure</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../setup/walkthrough/index.html">Walkthrough</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../setup/walkthrough/concepts_env_design.html">Environment Design Background</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../setup/walkthrough/api_env_design.html">Classes and Configs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../setup/walkthrough/technical_env_design.html">Environment Design</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../setup/walkthrough/training_jetbot_gt.html">Training the Jetbot: Ground Truth</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../setup/walkthrough/training_jetbot_reward_exploration.html">Exploring the RL problem</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../tutorials/index.html">Tutorials</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/00_sim/create_empty.html">Creating an empty scene</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/00_sim/spawn_prims.html">Spawning prims into the scene</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/00_sim/launch_app.html">Deep-dive into AppLauncher</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/01_assets/add_new_robot.html">Adding a New Robot to Isaac Lab</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/01_assets/run_rigid_object.html">Interacting with a rigid object</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/01_assets/run_articulation.html">Interacting with an articulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/01_assets/run_deformable_object.html">Interacting with a deformable object</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/01_assets/run_surface_gripper.html">Interacting with a surface gripper</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/02_scene/create_scene.html">Using the Interactive Scene</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/03_envs/create_manager_base_env.html">Creating a Manager-Based Base Environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/03_envs/create_manager_rl_env.html">Creating a Manager-Based RL Environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/03_envs/create_direct_rl_env.html">Creating a Direct Workflow RL Environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/03_envs/register_rl_env_gym.html">Registering an Environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/03_envs/run_rl_training.html">Training with an RL Agent</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/03_envs/configuring_rl_training.html">Configuring an RL Agent</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/03_envs/modify_direct_rl_env.html">Modifying an existing Direct RL Environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/03_envs/policy_inference_in_usd.html">Policy Inference in USD Environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/04_sensors/add_sensors_on_robot.html">Adding sensors on a robot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/05_controllers/run_diff_ik.html">Using a task-space controller</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/05_controllers/run_osc.html">Using an operational space controller</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/06_exporting/exporting_direct_workflow_policies_with_leapp.html">Exporting Direct Workflow Policies with LEAPP</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">How-to Guides</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="import_new_asset.html">Importing a New Asset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="write_articulation_cfg.html">Writing an Asset Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="robots.html">Robot Configurations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="make_fixed_prim.html">Making a physics prim fixed in the simulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multi_asset_spawning.html">Spawning Multiple Assets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cloning.html">Cloning Environments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="save_camera_output.html">Saving rendered images and 3D re-projection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="estimate_how_many_cameras_can_run.html">Find How Many/What Cameras You Should Train With</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configure_rendering.html">Configuring RTX Rendering Settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="draw_markers.html">Creating Visualization Markers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="visualizer_tiled_camera.html">Using Visualizer Tiled Cameras</a></li>
+<li class="toctree-l2"><a class="reference internal" href="proxy_array.html">Working with ProxyArray</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wrap_rl_env.html">Wrapping environments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="add_own_library.html">Adding your own learning library</a></li>
+<li class="toctree-l2"><a class="reference internal" href="record_animation.html">Recording Animations of Simulations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="record_video.html">Recording video clips during training</a></li>
+<li class="toctree-l2"><a class="reference internal" href="curriculums.html">Curriculum Utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="master_omniverse.html">Mastering Omniverse for Robotics</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Setting up Isaac Teleop with CloudXR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="haply_teleoperation.html">Setting up Haply Teleoperation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="simulation_performance.html">PhysX Simulation Performance and Tuning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="optimize_stage_creation.html">Optimize Stage Creation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="profile_with_nsys.html">Profiling Isaac Lab with Nsight Systems</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../overview/developer-guide/index.html">Developer’s Guide</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../overview/developer-guide/vs_code.html">Setting up Visual Studio Code</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../overview/developer-guide/repo_structure.html">Repository organization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview/developer-guide/development.html">Extension Development</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../testing/index.html">Testing</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../testing/mock_interfaces.html">Mock Interfaces for Unit Testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../testing/micro_benchmarks.html">Micro-Benchmarks for Performance Testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../testing/benchmarks.html">Benchmarking Framework</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Overview</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../overview/core-concepts/index.html">Core Concepts</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../overview/core-concepts/multi_backend_architecture.html">Multi-Backend Architecture</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../overview/core-concepts/physical-backends/index.html">Physics Backends</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../overview/core-concepts/physical-backends/physx/index.html">PhysX Backend</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../overview/core-concepts/physical-backends/physx/installation.html">Installation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../overview/core-concepts/physical-backends/physx/configuration.html">PhysX Configuration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../overview/core-concepts/physical-backends/physx/supported-features.html">Supported Features</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../overview/core-concepts/physical-backends/newton/index.html">Newton Backend</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../overview/core-concepts/physical-backends/newton/installation.html">Installation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../overview/core-concepts/physical-backends/newton/supported-features.html">Supported Features</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../overview/core-concepts/physical-backends/newton/mjwarp-solver.html">MJWarp Solver</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../overview/core-concepts/physical-backends/newton/kamino-solver.html">Kamino Solver</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../overview/core-concepts/physical-backends/newton/using-vbd-solver.html">VBD Solver</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../overview/core-concepts/physical-backends/newton/newton-manager-abstraction.html">Newton Manager Abstraction</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../overview/core-concepts/physical-backends/newton/warp-environments.html">Warp Experimental Environments</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../overview/core-concepts/physical-backends/newton/warp-env-migration.html">Warp Environment Migration Guide</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3"><a class="reference internal" href="../overview/core-concepts/physical-backends/ovphysx/index.html">OvPhysX Backend</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../overview/core-concepts/physical-backends/solver-comparison.html">Solver Comparison</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview/core-concepts/schema_cfgs.html">Schema Configuration Classes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview/core-concepts/task_workflows.html">Task Design Workflows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview/core-concepts/actuators.html">Actuators</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../overview/core-concepts/sensors/index.html">Sensors</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../overview/core-concepts/sensors/camera.html">Camera</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../overview/core-concepts/sensors/contact_sensor.html">Contact Sensor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../overview/core-concepts/sensors/frame_transformer.html">Frame Transformer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../overview/core-concepts/sensors/imu.html">Inertial Measurement Unit (IMU)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../overview/core-concepts/sensors/pva.html">Pose Velocity Acceleration (PVA) Sensor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../overview/core-concepts/sensors/joint_wrench_sensor.html">Joint Wrench Sensor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../overview/core-concepts/sensors/ray_caster.html">Ray Caster</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview/core-concepts/renderers.html">Renderers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview/core-concepts/motion_generators.html">Motion Generators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview/core-concepts/scene_data_providers.html">Scene Data Provider</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview/core-concepts/visualization.html">Visualization</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../overview/environments.html">Available Environments</a></li>
+
+<li class="toctree-l1 has-children"><a class="reference internal" href="../overview/reinforcement-learning/index.html">Reinforcement Learning</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../overview/reinforcement-learning/rl_existing_scripts.html">Reinforcement Learning Workflows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview/reinforcement-learning/rl_frameworks.html">Reinforcement Learning Library Comparison</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview/reinforcement-learning/performance_benchmarks.html">Performance Benchmarks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview/reinforcement-learning/training_guide.html">Debugging and Training Guide</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../overview/imitation-learning/index.html">Imitation Learning</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../overview/imitation-learning/teleop_imitation.html">Synthetic Data Generation and Imitation Learning with Isaac Lab Mimic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview/imitation-learning/humanoids_imitation.html">Examples: Data Generation and Imitation Learning for Humanoids</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview/imitation-learning/augmented_imitation.html">Augmented Imitation Learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview/imitation-learning/skillgen.html">SkillGen for Automated Demonstration Generation</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../overview/showroom.html">Showroom Demos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../overview/simple_agents.html">Simple Agents</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Features</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../features/isaac_teleop.html">Isaac Teleop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../features/hydra.html">Hydra Configuration System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../features/multi_gpu.html">Multi-GPU and Multi-Node Training</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../features/population_based_training.html">Population Based Training</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../features/ray.html">Ray Job Dispatch and Tuning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../features/reproducibility.html">Reproducibility and Determinism</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Experimental Features</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../experimental-features/bleeding-edge.html">Welcome to the bleeding edge!</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../experimental-features/visuo_tactile_sensor.html">Visuo-Tactile Sensor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../experimental-features/rlinf_vla_posttraining.html">RL Post-Training for VLA Models</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Resources</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../policy_deployment/index.html">Sim2Real Deployment of Policies Trained in Isaac Lab</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../policy_deployment/01_io_descriptors/io_descriptors_101.html">IO Descriptors 101</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../policy_deployment/02_gear_assembly/gear_assembly_policy.html">Training a Gear Insertion Policy and ROS Deployment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../policy_deployment/03_compass_with_NuRec/compass_navigation_policy_with_NuRec.html">Training and Deploying COMPASS Policies with NuRec Assets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../policy_deployment/04_reach/reach_policy.html">Training a Reach Policy for Real Robot Deployment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../policy_deployment/05_leapp/exporting_policies_with_leapp.html">Exporting Policies with LEAPP</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Migration Guides</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../migration/migrating_to_isaaclab_3-0.html">Migrating to Isaac Lab 3.0</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../migration/migrating_deformables.html">Migration of Deformables</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../migration/migrating_from_isaacgymenvs.html">From IsaacGymEnvs</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../migration/comparing_simulation_isaacgym.html">Comparing Simulations Between Isaac Gym and Isaac Lab</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../migration/migrating_from_omniisaacgymenvs.html">From OmniIsaacGymEnvs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../migration/migrating_from_orbit.html">From Orbit</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Source API</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../api/index.html">API Reference</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../api/lab/isaaclab.app.html">isaaclab.app</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/lab/isaaclab.actuators.html">isaaclab.actuators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/lab/isaaclab.assets.html">isaaclab.assets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/lab/isaaclab.cloner.html">isaaclab.cloner</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/lab/isaaclab.controllers.html">isaaclab.controllers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/lab/isaaclab.devices.html">isaaclab.devices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/lab/isaaclab.envs.html">isaaclab.envs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/lab/isaaclab.managers.html">isaaclab.managers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/lab/isaaclab.markers.html">isaaclab.markers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/lab/isaaclab.physics.html">isaaclab.physics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/lab/isaaclab.renderers.html">isaaclab.renderers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/lab/isaaclab.scene.html">isaaclab.scene</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/lab/isaaclab.scene_data.html">isaaclab.scene_data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/lab/isaaclab.sensors.html">isaaclab.sensors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/lab/isaaclab.sim.html">isaaclab.sim</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/lab/isaaclab.terrains.html">isaaclab.terrains</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/lab/isaaclab.utils.html">isaaclab.utils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/lab/isaaclab.visualizers.html">isaaclab.visualizers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/lab/isaaclab.envs.mdp.html">isaaclab.envs.mdp</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/lab/isaaclab.envs.ui.html">isaaclab.envs.ui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/lab/isaaclab.sensors.patterns.html">isaaclab.sensors.patterns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/lab/isaaclab.sim.converters.html">isaaclab.sim.converters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/lab/isaaclab.sim.schemas.html">isaaclab.sim.schemas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/lab/isaaclab.sim.spawners.html">isaaclab.sim.spawners</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/lab/isaaclab.sim.views.html">isaaclab.sim.views</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/lab/isaaclab.sim.utils.html">isaaclab.sim.utils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/lab_rl/isaaclab_rl.html">isaaclab_rl</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/lab_mimic/isaaclab_mimic.datagen.html">isaaclab_mimic.datagen</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/lab_mimic/isaaclab_mimic.envs.html">isaaclab_mimic.envs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/lab_contrib/isaaclab_contrib.actuators.html">isaaclab_contrib.actuators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/lab_contrib/isaaclab_contrib.assets.html">isaaclab_contrib.assets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/lab_contrib/isaaclab_contrib.controllers.html">isaaclab_contrib.controllers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/lab_contrib/isaaclab_contrib.deformable.html">isaaclab_contrib.deformable</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/lab_contrib/isaaclab_contrib.mdp.html">isaaclab_contrib.mdp</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/lab_contrib/isaaclab_contrib.rl.html">isaaclab_contrib.rl</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/lab_contrib/isaaclab_contrib.sensors.html">isaaclab_contrib.sensors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/lab_tasks/isaaclab_tasks.utils.html">isaaclab_tasks.utils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/lab_teleop/isaaclab_teleop.html">isaaclab_teleop</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/lab_physx/isaaclab_physx.assets.html">isaaclab_physx.assets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/lab_physx/isaaclab_physx.cloner.html">isaaclab_physx.cloner</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/lab_physx/isaaclab_physx.physics.html">isaaclab_physx.physics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/lab_physx/isaaclab_physx.renderers.html">isaaclab_physx.renderers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/lab_physx/isaaclab_physx.sensors.html">isaaclab_physx.sensors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/lab_physx/isaaclab_physx.sim.schemas.html">isaaclab_physx.sim.schemas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/lab_physx/isaaclab_physx.sim.spawners.html">isaaclab_physx.sim.spawners</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/lab_newton/isaaclab_newton.assets.html">isaaclab_newton.assets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/lab_newton/isaaclab_newton.cloner.html">isaaclab_newton.cloner</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/lab_newton/isaaclab_newton.physics.html">isaaclab_newton.physics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/lab_newton/isaaclab_newton.renderers.html">isaaclab_newton.renderers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/lab_newton/isaaclab_newton.sensors.html">isaaclab_newton.sensors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/lab_newton/isaaclab_newton.sim.schemas.html">isaaclab_newton.sim.schemas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/lab_newton/isaaclab_newton.sim.spawners.html">isaaclab_newton.sim.spawners</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/lab_ov/isaaclab_ov.renderers.html">isaaclab_ov.renderers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/lab_assets/isaaclab_assets.robots.html">isaaclab_assets.robots</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/lab_assets/isaaclab_assets.sensors.html">isaaclab_assets.sensors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/lab_visualizers/isaaclab_visualizers.kit.html">isaaclab_visualizers.kit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/lab_visualizers/isaaclab_visualizers.newton.html">isaaclab_visualizers.newton</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/lab_visualizers/isaaclab_visualizers.rerun.html">isaaclab_visualizers.rerun</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/lab_visualizers/isaaclab_visualizers.viser.html">isaaclab_visualizers.viser</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/lab_ovphysx/isaaclab_ovphysx.assets.html">isaaclab_ovphysx.assets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/lab_ovphysx/isaaclab_ovphysx.cloner.html">isaaclab_ovphysx.cloner</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/lab_ovphysx/isaaclab_ovphysx.physics.html">isaaclab_ovphysx.physics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/lab_experimental/isaaclab_experimental.envs.html">isaaclab_experimental.envs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/lab_experimental/isaaclab_experimental.managers.html">isaaclab_experimental.managers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/lab_experimental/isaaclab_experimental.utils.html">isaaclab_experimental.utils</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">References</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../refs/additional_resources.html">Additional Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../refs/contributing.html">Contribution Guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../refs/troubleshooting.html">Tricks and Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../refs/migration.html">Migration Guide (Isaac Sim)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../refs/issues.html">Known Issues</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../refs/release_notes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../refs/changelog.html">Extensions Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../refs/license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../refs/bibliography.html">Bibliography</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Project Links</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference external" href="https://github.com/isaac-sim/IsaacLab">GitHub</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://docs.isaacsim.omniverse.nvidia.com/latest/index.html">NVIDIA Isaac Sim</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://nvidia-omniverse.github.io/PhysX/physx/5.4.1/index.html">NVIDIA PhysX</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/newton-physics/newton">NVIDIA Newton</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/isaac-sim/IsaacLab" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/isaac-sim/IsaacLab/edit/main/docs/source/how-to/cloudxr_teleoperation.rst" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/isaac-sim/IsaacLab/issues/new?title=Issue%20on%20page%20%2Fsource/how-to/cloudxr_teleoperation.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/source/how-to/cloudxr_teleoperation.rst" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.rst</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Setting up Isaac Teleop with CloudXR</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisites">Prerequisites</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#install-isaac-teleop">Install Isaac Teleop</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#run-isaac-lab-with-cloudxr">Run Isaac Lab with CloudXR</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#connect-an-xr-device">Connect an XR Device</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#manus-gloves">Manus Gloves</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#run-with-docker">Run with Docker</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="setting-up-isaac-teleop-with-cloudxr">
+<span id="cloudxr-teleoperation"></span><h1>Setting up Isaac Teleop with CloudXR<a class="headerlink" href="#setting-up-isaac-teleop-with-cloudxr" title="Link to this heading">#</a></h1>
+<p><a class="reference external" href="https://github.com/NVIDIA/IsaacTeleop">Isaac Teleop</a> (<a class="github reference external" href="https://github.com/NVIDIA/IsaacTeleop">NVIDIA/IsaacTeleop</a>) is the unified framework for high-fidelity
+teleoperation in Isaac Lab. It provides standardized device interfaces, a flexible retargeting
+pipeline, and bundled <a class="reference external" href="https://developer.nvidia.com/cloudxr-sdk">NVIDIA CloudXR</a> streaming for immersive XR-based teleoperation.</p>
+<p>This guide walks you through setting up CloudXR, connecting an XR device, and running your first
+teleoperation session. For additional details see the <a class="reference external" href="https://nvidia.github.io/IsaacTeleop/main/getting_started/quick_start.html">Isaac Teleop Quick Start</a>.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>For architecture details, retargeting pipelines, control scheme recommendations, and how to
+add new embodiments or devices, see the <a class="reference internal" href="../features/isaac_teleop.html#isaac-teleop-feature"><span class="std std-ref">Isaac Teleop</span></a> page.</p>
+</div>
+<section id="prerequisites">
+<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><strong>Isaac Lab</strong> installed and working (see <a class="reference internal" href="../setup/installation/index.html#isaaclab-installation-root"><span class="std std-ref">Local Installation</span></a>).</p></li>
+<li><p><strong>Isaac Lab workstation</strong></p>
+<ul>
+<li><p>Ubuntu 22.04 or Ubuntu 24.04</p></li>
+<li><p>CPU: x86_64 (ARM support coming soon)</p></li>
+<li><p>GPU: NVIDIA GPU required. For 45 FPS with 120 Hz physics:</p>
+<ul>
+<li><p>CPU: AMD Ryzen Threadripper 7960x or higher</p></li>
+<li><p>GPU: 1x RTX PRO 6000 (or equivalent, e.g. 1x RTX 5090) or higher</p></li>
+<li><p>Memory: 64 GB RAM</p></li>
+</ul>
+</li>
+<li><p>For driver requirements see the <a class="reference external" href="https://docs.omniverse.nvidia.com/materials-and-rendering/latest/common/technical-requirements.html">Technical Requirements</a> guide.</p></li>
+<li><p>Python 3.12 or newer</p></li>
+<li><p>CUDA 12.8 (recommended)</p></li>
+<li><p>NVIDIA Driver 580.95.05 (recommended)</p></li>
+</ul>
+</li>
+<li><p><strong>Wifi 6 capable router</strong></p>
+<ul>
+<li><p>A strong wireless connection is essential for a high-quality streaming experience. Refer to
+the <a class="reference external" href="https://docs.nvidia.com/cloudxr-sdk/latest/requirement/network_setup.html">CloudXR Network Setup</a> guide for detailed requirements, router configuration, and
+troubleshooting.</p></li>
+<li><p>We recommend a dedicated router; concurrent usage will degrade quality.</p></li>
+<li><p>The XR device and Isaac Lab workstation must be IP-reachable from one another. Many
+institutional wireless networks prevent device-to-device connectivity.</p></li>
+</ul>
+</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Teleoperation is not currently supported on DGX Spark.</p>
+</div>
+</section>
+<section id="install-isaac-teleop">
+<span id="id1"></span><h2>Install Isaac Teleop<a class="headerlink" href="#install-isaac-teleop" title="Link to this heading">#</a></h2>
+<ol class="arabic">
+<li><p>Install the system libraries required by the CloudXR runtime:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt-get<span class="w"> </span>update<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>libvulkan1<span class="w"> </span>libbsd0
+</pre></div>
+</div>
+<p>The CloudXR runtime links against Vulkan at runtime. If your system already has the
+NVIDIA driver installed, <code class="docutils literal notranslate"><span class="pre">libvulkan1</span></code> may already be present.</p>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">isaacteleop</span></code> is installed automatically as a dependency of <code class="docutils literal notranslate"><span class="pre">isaaclab_teleop</span></code>.
+No separate pip install step is required. For building from source or plugin
+development, see the <a class="reference external" href="https://github.com/NVIDIA/IsaacTeleop">Isaac Teleop GitHub</a>.</p></li>
+<li><p>Configure the firewall to allow CloudXR traffic. The required ports depend on the
+client type.</p>
+<p><strong>For Apple native clients</strong> (CloudXR Framework):</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Signaling (use one based on connection mode)</span>
+sudo<span class="w"> </span>ufw<span class="w"> </span>allow<span class="w"> </span><span class="m">48010</span>/tcp<span class="w">   </span><span class="c1"># Standard mode</span>
+sudo<span class="w"> </span>ufw<span class="w"> </span>allow<span class="w"> </span><span class="m">48322</span>/tcp<span class="w">   </span><span class="c1"># Secure mode</span>
+<span class="c1"># Video</span>
+sudo<span class="w"> </span>ufw<span class="w"> </span>allow<span class="w"> </span><span class="m">47998</span>/udp
+sudo<span class="w"> </span>ufw<span class="w"> </span>allow<span class="w"> </span><span class="m">48005</span>/udp
+sudo<span class="w"> </span>ufw<span class="w"> </span>allow<span class="w"> </span><span class="m">48008</span>/udp
+sudo<span class="w"> </span>ufw<span class="w"> </span>allow<span class="w"> </span><span class="m">48012</span>/udp
+<span class="c1"># Input</span>
+sudo<span class="w"> </span>ufw<span class="w"> </span>allow<span class="w"> </span><span class="m">47999</span>/udp
+<span class="c1"># Audio</span>
+sudo<span class="w"> </span>ufw<span class="w"> </span>allow<span class="w"> </span><span class="m">48000</span>/udp
+sudo<span class="w"> </span>ufw<span class="w"> </span>allow<span class="w"> </span><span class="m">48002</span>/udp
+</pre></div>
+</div>
+<p><strong>For web clients</strong> (CloudXR.js via the built-in WSS proxy):</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>ufw<span class="w"> </span>allow<span class="w"> </span><span class="m">49100</span>/tcp<span class="w">   </span><span class="c1"># Signaling (WebRTC)</span>
+sudo<span class="w"> </span>ufw<span class="w"> </span>allow<span class="w"> </span><span class="m">47998</span>/udp<span class="w">   </span><span class="c1"># Media stream</span>
+sudo<span class="w"> </span>ufw<span class="w"> </span>allow<span class="w"> </span><span class="m">48322</span>/tcp<span class="w">   </span><span class="c1"># WSS proxy (HTTPS)</span>
+</pre></div>
+</div>
+<p>For full network requirements and Windows firewall instructions, see the
+<a class="reference external" href="https://docs.nvidia.com/cloudxr-sdk/latest/requirement/network_setup.html#firewall-configuration">CloudXR Network Setup</a>
+documentation.</p>
+</li>
+</ol>
+</section>
+<section id="run-isaac-lab-with-cloudxr">
+<span id="run-isaac-lab-with-the-cloudxr-runtime"></span><h2>Run Isaac Lab with CloudXR<a class="headerlink" href="#run-isaac-lab-with-cloudxr" title="Link to this heading">#</a></h2>
+<p>The CloudXR runtime launches automatically when a teleop script is started. No separate
+terminal or <code class="docutils literal notranslate"><span class="pre">source</span></code> step is needed. Launch a teleoperation script directly:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./isaaclab.sh<span class="w"> </span>-p<span class="w"> </span>scripts/environments/teleoperation/teleop_se3_agent.py<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--task<span class="w"> </span>Isaac-PickPlace-GR1T2-WaistEnabled-Abs-v0<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--visualizer<span class="w"> </span>kit<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--xr
+</pre></div>
+</div>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p><strong>First run — EULA acceptance required.</strong>
+On the first launch, Isaac Sim will prompt you to accept the NVIDIA Omniverse License
+Agreement before the simulation starts:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>By installing or using Isaac Sim, I agree to the terms of NVIDIA OMNIVERSE LICENSE AGREEMENT
+in https://docs.isaacsim.omniverse.nvidia.com/latest/common/NVIDIA_Omniverse_License_Agreement.html
+
+Do you accept the EULA? (Yes/No):
+</pre></div>
+</div>
+<p>Type <code class="docutils literal notranslate"><span class="pre">Yes</span></code> and press <strong>Enter</strong> to continue. If this prompt goes unnoticed the script
+will appear to hang — check your terminal output if Isaac Sim does not start within a
+few seconds.</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">Isaac-PickPlace-GR1T2-WaistEnabled-Abs-v0</span></code> task above uses <strong>hand tracking</strong> as its
+input mode. Make sure your XR device has hand tracking enabled (optical hand tracking on
+Quest 3, or the built-in hand tracking on Apple Vision Pro). Different tasks require
+different input modes (motion controllers vs hand tracking) – see the
+<a class="reference internal" href="../features/isaac_teleop.html#isaac-teleop-control-schemes"><span class="std std-ref">Choose a Control Scheme</span></a> table for the full list.</p>
+</div>
+<p>To switch the CloudXR device profile at launch time (e.g. from Quest to Apple Vision Pro),
+use the <code class="docutils literal notranslate"><span class="pre">--cloudxr_env</span></code> flag:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./isaaclab.sh<span class="w"> </span>-p<span class="w"> </span>scripts/environments/teleoperation/teleop_se3_agent.py<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--task<span class="w"> </span>Isaac-PickPlace-GR1T2-WaistEnabled-Abs-v0<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--visualizer<span class="w"> </span>kit<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--xr<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--cloudxr_env<span class="w"> </span>avp
+</pre></div>
+</div>
+<p>For details on the shipped <code class="docutils literal notranslate"><span class="pre">.env</span></code> profiles and how to customise them, see
+<a class="reference internal" href="../features/isaac_teleop.html#isaac-teleop-cloudxr-profiles"><span class="std std-ref">CloudXR Environment Profiles</span></a> in the feature guide.</p>
+<p>Then in the Isaac Sim UI:</p>
+<ol class="arabic">
+<li><p>Locate the panel named <strong>XR</strong> and choose the following options:</p>
+<ul class="simple">
+<li><p>Selected Output Plugin: <strong>OpenXR</strong></p></li>
+<li><p>OpenXR Runtime: <strong>System OpenXR Runtime</strong></p></li>
+</ul>
+<figure class="align-center" style="width: 50%">
+<img alt="Isaac Sim UI: XR Panel" src="../../_images/cloudxr_ar_panel.jpg" />
+</figure>
+</li>
+<li><p>Click <strong>Start XR</strong>.</p></li>
+</ol>
+<p>You should see “Waiting for connection” displayed in the status bar at the bottom of the viewport.
+The dual-eye stereo render only becomes active once a headset connects and playback begins on the device.</p>
+<figure class="align-center" style="width: 100%">
+<img alt="Isaac Lab viewport showing &quot;Waiting for connection&quot; status after clicking Start XR" src="../../_images/cloudxr_viewport.jpg" />
+</figure>
+<p>Isaac Lab is now ready to receive connections from a CloudXR client.</p>
+</section>
+<section id="connect-an-xr-device">
+<span id="connect-xr-device"></span><h2>Connect an XR Device<a class="headerlink" href="#connect-an-xr-device" title="Link to this heading">#</a></h2>
+<p>Isaac Teleop supports several XR headsets. You only need <strong>one</strong> of the devices below –
+choose the tab that matches your hardware.</p>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-0" name="sd-tab-set-0" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-0">
+Meta Quest 3 / Pico 4 Ultra</label><div class="sd-tab-content docutils">
+<p id="connect-quest-pico">Meta Quest 3 and Pico 4 Ultra connect to Isaac Lab via the
+<a class="reference external" href="https://docs.nvidia.com/cloudxr-sdk/latest/usr_guide/cloudxr_js/index.html">CloudXR.js</a>
+WebXR client. The built-in environments default to the <code class="docutils literal notranslate"><span class="pre">cloudxrjs-cloudxr.env</span></code> profile
+(<code class="docutils literal notranslate"><span class="pre">auto-webrtc</span></code>), which is the correct setting for these devices.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Pico 4 Ultra requires Pico OS 15.4.4U or later and must use HTTPS mode.</p>
+</div>
+<ol class="arabic">
+<li><p>Launch the teleop script as shown in
+<a class="reference internal" href="#run-isaac-lab-with-the-cloudxr-runtime"><span class="std std-ref">Run Isaac Lab with CloudXR</span></a>. The CloudXR runtime and WSS proxy
+start automatically.</p></li>
+<li><p>Open the browser on your headset and navigate to the hosted CloudXR.js client:
+<a class="reference external" href="https://nvidia.github.io/IsaacTeleop/client/release-1.3.x">https://nvidia.github.io/IsaacTeleop/client/release-1.3.x</a>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The web client URL is versioned. The <code class="docutils literal notranslate"><span class="pre">release-1.3.x</span></code> path corresponds to the
+Isaac Teleop version Isaac Lab is pinned to (<code class="docutils literal notranslate"><span class="pre">isaacteleop~=1.3.0</span></code> in
+<code class="docutils literal notranslate"><span class="pre">source/isaaclab_teleop/setup.py</span></code>). When Isaac Lab bumps its Isaac Teleop
+pin, update this link to the matching client release.</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>For rapid development, you can test the CloudXR.js client on a desktop browser
+before deploying to headsets.</p>
+</div>
+</li>
+<li><p>Enter the IP address of your Isaac Lab host machine in the <strong>Server IP</strong> field.</p></li>
+<li><p>Because the WSS proxy uses a self-signed certificate, you must accept it before
+connecting. Click the <strong>Click https://&lt;ip&gt;:48322/ to accept cert</strong> link that
+appears on the page.</p>
+<a class="reference internal image-reference" href="../../_images/cloudxr_accept_cert.jpg"><img alt="CloudXR.js certificate acceptance link" class="align-center" src="../../_images/cloudxr_accept_cert.jpg" style="width: 400px;" />
+</a>
+<p>A new tab opens with a <strong>“Your connection is not private”</strong> warning. Click
+<strong>Advanced</strong>, then click <strong>Proceed to &lt;ip&gt; (unsafe)</strong>.</p>
+<a class="reference internal image-reference" href="../../_images/cloudxr_accept_cert_not_private.jpg"><img alt="Browser privacy warning for self-signed certificate" class="align-center" src="../../_images/cloudxr_accept_cert_not_private.jpg" style="width: 500px;" />
+</a>
+<p>The browser will show a <strong>“Certificate Accepted”</strong> page confirming the certificate
+has been accepted. Close this tab and return to the CloudXR.js client page.</p>
+<a class="reference internal image-reference" href="../../_images/cloudxr_accept_cert_accepted.jpg"><img alt="Certificate accepted confirmation page" class="align-center" src="../../_images/cloudxr_accept_cert_accepted.jpg" style="width: 400px;" />
+</a>
+</li>
+<li><p>Click <strong>Connect</strong> to begin teleoperation.</p>
+<p>For advanced configuration, troubleshooting, and additional details, see the
+<a class="reference external" href="https://docs.nvidia.com/cloudxr-sdk/latest/usr_guide/cloudxr_js/index.html">CloudXR.js User Guide</a>.</p>
+</li>
+</ol>
+</div>
+<input id="sd-tab-item-1" name="sd-tab-set-0" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-1">
+Apple Vision Pro</label><div class="sd-tab-content docutils">
+<p id="use-apple-vision-pro">Apple Vision Pro connects to Isaac Lab via the native <a class="reference external" href="https://github.com/isaac-sim/isaac-xr-teleop-sample-client-apple">Isaac XR Teleop Sample Client</a> app.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Apple Vision Pro requires the <code class="docutils literal notranslate"><span class="pre">auto-native</span></code> device profile. Pass the <code class="docutils literal notranslate"><span class="pre">avp</span></code>
+shorthand when launching the teleop script:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./isaaclab.sh<span class="w"> </span>-p<span class="w"> </span>scripts/environments/teleoperation/teleop_se3_agent.py<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--task<span class="w"> </span>Isaac-PickPlace-GR1T2-WaistEnabled-Abs-v0<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--visualizer<span class="w"> </span>kit<span class="w"> </span>--xr<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--cloudxr_env<span class="w"> </span>avp
+</pre></div>
+</div>
+<p>See <a class="reference internal" href="../features/isaac_teleop.html#isaac-teleop-cloudxr-profiles"><span class="std std-ref">CloudXR Environment Profiles</span></a> for details on the shipped profiles.</p>
+</div>
+<p class="rubric" id="build-apple-vision-pro">Build and Install the Client App</p>
+<p>Requirements:</p>
+<ul class="simple">
+<li><p>Apple Vision Pro with visionOS 26, Apple M3 Pro chip (11-core CPU), 16 GB unified memory</p></li>
+<li><p>Apple Silicon Mac with macOS Sequoia 15.6+ and Xcode 26.0</p></li>
+</ul>
+<p>On your Mac:</p>
+<ol class="arabic">
+<li><p>Clone the <a class="reference external" href="https://github.com/isaac-sim/isaac-xr-teleop-sample-client-apple">Isaac XR Teleop Sample Client</a> repository:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>git@github.com:isaac-sim/isaac-xr-teleop-sample-client-apple.git
+</pre></div>
+</div>
+</li>
+<li><p>Check out the version that matches your Isaac Lab version:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<tbody>
+<tr class="row-odd"><td><p>Isaac Lab Version</p></td>
+<td><p>Client App Version</p></td>
+</tr>
+<tr class="row-even"><td><p>3.0</p></td>
+<td><p>v3.0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>2.3</p></td>
+<td><p>v2.3.0</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>checkout<span class="w"> </span>&lt;client_app_version&gt;
+</pre></div>
+</div>
+</li>
+<li><p>Follow the README in the repository to build and install the app on your Apple Vision
+Pro.</p></li>
+</ol>
+<p class="rubric" id="teleoperate-apple-vision-pro">Teleoperate with Apple Vision Pro</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p><strong>Before wearing the headset</strong>, verify connectivity from your Mac:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>nc<span class="w"> </span>-vz<span class="w"> </span>&lt;isaac-lab-ip&gt;<span class="w"> </span><span class="m">48010</span>
+</pre></div>
+</div>
+<p>Expected output: <code class="docutils literal notranslate"><span class="pre">Connection</span> <span class="pre">to</span> <span class="pre">&lt;ip&gt;</span> <span class="pre">port</span> <span class="pre">48010</span> <span class="pre">[tcp/*]</span> <span class="pre">succeeded!</span></code></p>
+</div>
+<p>On your Isaac Lab workstation, ensure Isaac Lab and CloudXR are running as described in
+<a class="reference internal" href="#run-isaac-lab-with-the-cloudxr-runtime"><span class="std std-ref">Run Isaac Lab with CloudXR</span></a>.</p>
+<p>On your Apple Vision Pro:</p>
+<ol class="arabic">
+<li><p>Open the Isaac XR Teleop Sample Client.</p>
+<figure class="align-center" style="width: 50%">
+<img alt="Apple Vision Pro connect UI" src="../../_images/cloudxr_avp_connect_ui.jpg" />
+</figure>
+</li>
+<li><p>Enter the IP address of your Isaac Lab workstation and click <strong>Connect</strong>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The Apple Vision Pro and workstation must be IP-reachable from one another. We
+recommend a dedicated Wifi 6 router.</p>
+</div>
+</li>
+<li><p>After a brief period you should see the simulation rendered in the headset along with
+teleoperation controls.</p>
+<figure class="align-center" style="width: 50%">
+<img alt="Apple Vision Pro teleop UI" src="../../_images/cloudxr_avp_teleop_ui.jpg" />
+</figure>
+</li>
+<li><p>Click <strong>Play</strong> to begin teleoperating. Use <strong>Play</strong>, <strong>Stop</strong>, and <strong>Reset</strong> to control
+the session.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>For bimanual tasks, visionOS voice control enables hands-free UI:</p>
+<ol class="arabic simple">
+<li><p><strong>Settings</strong> &gt; <strong>Accessibility</strong> &gt; <strong>Voice Control</strong> &gt; Turn on <strong>Voice Control</strong></p></li>
+<li><p>Enable <strong>&lt;item name&gt;</strong> under <strong>Commands</strong> &gt; <strong>Basic Navigation</strong></p></li>
+<li><p>Say “Play”, “Stop”, or “Reset” while the app is connected.</p></li>
+</ol>
+</div>
+</li>
+<li><p>Teleoperate the robot by moving your hands.</p>
+<figure class="align-center">
+<img alt="Bimanual dexterous teleoperation with CloudXR" src="https://download.isaacsim.omniverse.nvidia.com/isaaclab/images/cloudxr_bimanual_teleop.gif" />
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If the IK solver fails, an error message appears in the headset. Click <strong>Reset</strong> to
+return the robot to its original pose and continue.</p>
+<figure class="align-center" style="width: 80%">
+<img alt="IK error message in XR device" src="../../_images/cloudxr_avp_ik_error.jpg" />
+</figure>
+</div>
+</li>
+<li><p>Click <strong>Disconnect</strong> when finished.</p></li>
+</ol>
+</div>
+</div>
+</section>
+<section id="manus-gloves">
+<span id="manus-vive-handtracking"></span><h2>Manus Gloves<a class="headerlink" href="#manus-gloves" title="Link to this heading">#</a></h2>
+<p>Manus gloves provide high-fidelity finger tracking via the Manus SDK. This is useful when optical
+hand tracking from the headset is occluded or when higher-precision finger data is needed.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Manus gloves and other external push-device peripherals require
+<code class="docutils literal notranslate"><span class="pre">NV_CXR_ENABLE_PUSH_DEVICES=1</span></code>. The shipped <code class="docutils literal notranslate"><span class="pre">.env</span></code> profiles set this to <code class="docutils literal notranslate"><span class="pre">0</span></code>
+(optimised for headset optical hand tracking). To use Manus gloves, create a custom
+<code class="docutils literal notranslate"><span class="pre">.env</span></code> file with the value set to <code class="docutils literal notranslate"><span class="pre">1</span></code> and pass it via <code class="docutils literal notranslate"><span class="pre">--cloudxr_env</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Copy a shipped profile and enable push devices</span>
+cp<span class="w"> </span><span class="k">$(</span>python<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;from isaaclab_teleop import CLOUDXR_JS_ENV; print(CLOUDXR_JS_ENV)&quot;</span><span class="k">)</span><span class="w"> </span>~/manus.env
+sed<span class="w"> </span>-i<span class="w"> </span><span class="s1">&#39;s/NV_CXR_ENABLE_PUSH_DEVICES=0/NV_CXR_ENABLE_PUSH_DEVICES=1/&#39;</span><span class="w"> </span>~/manus.env
+
+./isaaclab.sh<span class="w"> </span>-p<span class="w"> </span>scripts/environments/teleoperation/teleop_se3_agent.py<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--task<span class="w"> </span>Isaac-PickPlace-GR1T2-WaistEnabled-Abs-v0<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--visualizer<span class="w"> </span>kit<span class="w"> </span>--xr<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--cloudxr_env<span class="w"> </span>~/manus.env
+</pre></div>
+</div>
+<p>See <a class="reference internal" href="../features/isaac_teleop.html#isaac-teleop-cloudxr-profiles"><span class="std std-ref">CloudXR Environment Profiles</span></a> for full details on customising profiles.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Manus glove support has been migrated into Isaac Teleop as a native plugin. The previous
+<code class="docutils literal notranslate"><span class="pre">isaac-teleop-device-plugins</span></code> repository and the <code class="docutils literal notranslate"><span class="pre">libsurvive</span></code>-based Vive tracker integration
+are no longer required.</p>
+</div>
+<p>Requirements:</p>
+<ul class="simple">
+<li><p>Manus gloves with a Manus SDK license</p></li>
+</ul>
+<p>The Manus plugin is included in the <code class="docutils literal notranslate"><span class="pre">isaacteleop</span></code> package and activated automatically when
+configured in the environment’s retargeting pipeline. Manus tracking data flows through the same
+API as headset-based optical hand tracking in Isaac Teleop, so the same retargeters and pipelines
+work with both input sources.</p>
+<p>For plugin configuration details, see the <a class="reference external" href="https://github.com/NVIDIA/IsaacTeleop/blob/main/docs/source/device/manus.rst">Manus plugin documentation</a>.</p>
+<p>The recommended workflow:</p>
+<ol class="arabic simple">
+<li><p>Start Isaac Lab and click <strong>Start XR</strong>.</p></li>
+<li><p>Put on the Manus gloves and headset.</p></li>
+<li><p>Use voice commands to launch the Isaac XR Teleop Sample Client and connect to Isaac Lab.</p></li>
+</ol>
+</section>
+<section id="run-with-docker">
+<h2>Run with Docker<a class="headerlink" href="#run-with-docker" title="Link to this heading">#</a></h2>
+<p>Teleoperation runs in a <strong>single container</strong>. Build the image yourself and run a single container.
+Do <strong>not</strong> use Docker Compose, which is a multi-container setup as we had in Isaac Lab 2.x. All
+components run inside one container with Isaac Lab in this release.</p>
+<p>The CloudXR runtime auto-launches when a teleop script is started, so no separate
+runtime command is needed.</p>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>Recent Isaac Lab Docker images (3.0.0-beta2 and later) run as a <strong>non-root</strong> user
+(uid/gid 1000). Persistent named volumes or host directories that were created by an
+earlier root-based image are owned by <code class="docutils literal notranslate"><span class="pre">root</span></code> and are <strong>not writable</strong> by the runtime
+user. The XR teleop workflow trips on this first, because it writes the extension
+registry cache under the runtime home. The failure looks like:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">Error</span><span class="p">]</span> <span class="p">[</span><span class="n">carb</span><span class="o">.</span><span class="n">scripting</span><span class="o">-</span><span class="n">python</span><span class="o">.</span><span class="n">plugin</span><span class="p">]</span> <span class="ne">PermissionError</span><span class="p">:</span> <span class="p">[</span><span class="n">Errno</span> <span class="mi">13</span><span class="p">]</span> <span class="n">Permission</span> <span class="n">denied</span><span class="p">:</span> <span class="s1">&#39;/root/.local/share/ov/data/exts&#39;</span>
+</pre></div>
+</div>
+<p>followed by a cascade of extension-registry errors that abort the app <em>before</em> the XR
+session can start:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">Error</span><span class="p">]</span> <span class="p">[</span><span class="n">omni</span><span class="o">.</span><span class="n">ext</span><span class="o">.</span><span class="n">plugin</span><span class="p">]</span> <span class="n">Syncing</span> <span class="k">with</span> <span class="n">extension</span> <span class="n">registry</span> <span class="n">unavailable</span><span class="o">.</span>
+<span class="p">[</span><span class="n">Error</span><span class="p">]</span> <span class="p">[</span><span class="n">omni</span><span class="o">.</span><span class="n">ext</span><span class="o">.</span><span class="n">plugin</span><span class="p">]</span> <span class="n">Failed</span> <span class="n">to</span> <span class="n">resolve</span> <span class="n">extension</span> <span class="n">dependencies</span><span class="o">.</span> <span class="n">Failure</span> <span class="n">hints</span><span class="p">:</span>
+  <span class="o">*</span> <span class="n">No</span> <span class="n">versions</span> <span class="n">of</span> <span class="n">omni</span><span class="o">.</span><span class="n">kit</span><span class="o">.</span><span class="n">xr</span><span class="o">.</span><span class="n">bundle</span><span class="o">.</span><span class="n">generic</span> <span class="n">that</span> <span class="n">satisfies</span><span class="p">:</span> <span class="n">isaaclab</span><span class="o">.</span><span class="n">python</span><span class="o">.</span><span class="n">xr</span><span class="o">.</span><span class="n">openxr</span><span class="o">-</span><span class="mf">3.0.0</span> <span class="o">...</span>
+<span class="p">[</span><span class="n">Error</span><span class="p">]</span> <span class="p">[</span><span class="n">omni</span><span class="o">.</span><span class="n">kit</span><span class="o">.</span><span class="n">app</span><span class="o">.</span><span class="n">plugin</span><span class="p">]</span> <span class="n">Exiting</span> <span class="n">app</span> <span class="n">because</span> <span class="n">of</span> <span class="n">dependency</span> <span class="n">solver</span> <span class="n">failure</span><span class="o">...</span>
+</pre></div>
+</div>
+<p>The XR bundle is not actually missing – the registry never synced because its cache
+directory could not be created. To fix it, make the persistent storage writable by
+uid/gid 1000 before relaunching:</p>
+<ul>
+<li><p><strong>Docker Compose:</strong> recreate the named volumes, e.g.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>compose<span class="w"> </span>--file<span class="w"> </span>docker-compose.yaml<span class="w"> </span>--profile<span class="w"> </span>base<span class="w"> </span>--env-file<span class="w"> </span>.env.base<span class="w"> </span>down<span class="w"> </span>--volumes
+</pre></div>
+</div>
+<p>See <a class="reference internal" href="../deployment/docker.html#deployment-docker"><span class="std std-ref">Docker Guide</span></a> for details. To preserve cached data instead of
+deleting it, <code class="docutils literal notranslate"><span class="pre">chown</span></code> the volume: <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">run</span> <span class="pre">--rm</span> <span class="pre">-v</span> <span class="pre">docker_isaac-data:/data</span> <span class="pre">alpine</span>
+<span class="pre">chown</span> <span class="pre">-R</span> <span class="pre">1000:1000</span> <span class="pre">/data</span></code>.</p>
+</li>
+<li><p><strong>Single container with bind mounts:</strong> pre-create the host directories and
+<code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">chown</span> <span class="pre">-R</span> <span class="pre">1000:1000</span></code> them before launching, so the non-root user can write to
+them.</p></li>
+</ul>
+</div>
+<p>Run the teleop script (e.g. <code class="docutils literal notranslate"><span class="pre">record_demos.py</span></code> to record demonstrations):</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./isaaclab.sh<span class="w"> </span>-p<span class="w"> </span>scripts/tools/record_demos.py<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--task<span class="w"> </span>Isaac-PickPlace-Locomanipulation-G1-Abs-v0<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--num_demos<span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--dataset_file<span class="w"> </span>./datasets/dataset.hdf5<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--xr<span class="w"> </span>--visualizer<span class="w"> </span>kit
+</pre></div>
+</div>
+<p>Then in the Isaac Sim UI, set the XR panel to <strong>System OpenXR Runtime</strong> and click <strong>Start XR</strong>.</p>
+<p>For a fully headless experience, replace <code class="docutils literal notranslate"><span class="pre">--visualizer</span> <span class="pre">kit</span></code> with <code class="docutils literal notranslate"><span class="pre">--headless</span></code> and the XR
+teleop session will run automatically.</p>
+<div class="admonition-next-steps admonition">
+<p class="admonition-title">Next Steps</p>
+<ul class="simple">
+<li><p><strong>Architecture, retargeting, and control schemes</strong>: <a class="reference internal" href="../features/isaac_teleop.html#isaac-teleop-feature"><span class="std std-ref">Isaac Teleop</span></a></p></li>
+<li><p><strong>Teleoperation for imitation learning</strong>: <a class="reference internal" href="../overview/imitation-learning/teleop_imitation.html#teleoperation-imitation-learning"><span class="std std-ref">Synthetic Data Generation and Imitation Learning with Isaac Lab Mimic</span></a></p></li>
+<li><p><strong>API reference</strong>: <a class="reference internal" href="../api/lab_teleop/isaaclab_teleop.html#isaaclab-teleop-api"><span class="std std-ref">isaaclab_teleop</span></a></p></li>
+</ul>
+</div>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="master_omniverse.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Mastering Omniverse for Robotics</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="haply_teleoperation.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Setting up Haply Teleoperation</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisites">Prerequisites</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#install-isaac-teleop">Install Isaac Teleop</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#run-isaac-lab-with-cloudxr">Run Isaac Lab with CloudXR</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#connect-an-xr-device">Connect an XR Device</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#manus-gloves">Manus Gloves</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#run-with-docker">Run with Docker</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By The Isaac Lab Project Developers.
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022-2025, The Isaac Lab Project Developers..
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    <p class="last-updated">
+  Last updated on Jun 26, 2026.
+  <br/>
+</p>
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
