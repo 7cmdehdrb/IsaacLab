@@ -36,6 +36,7 @@
     <link rel="stylesheet" type="text/css" href="/opt/hostedtoolcache/Python/3.12.13/x64/lib/python3.12/site-packages/sphinxcontrib/icon/node_modules/@fortawesome/fontawesome-free/css/all.min.css?v=53359634" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx_paramlinks.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=8fb98eed" />
   
   <!-- So that users can add custom icons -->
@@ -63,7 +64,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="3.0.0" />
-    <meta name="docbuild:last-update" content="Jun 26, 2026"/>
+    <meta name="docbuild:last-update" content="Jun 27, 2026"/>
   </head>
   
   
@@ -161,8 +162,6 @@
             <option value="docker.html" selected>develop</option>
             <option value="../../../main/source/deployment/docker.html" >main</option>
             <option value="../../../release/3.0.0-beta2/source/deployment/docker.html" >release/3.0.0-beta2</option>
-            <option value="../../../v3.0.0-beta2/source/deployment/docker.html" >v3.0.0-beta2</option>
-            <option value="../../../v3.0.0-beta/source/deployment/docker.html" >v3.0.0-beta</option>
             <option value="../../../v2.3.2/source/deployment/docker.html" >v2.3.2</option>
             <option value="../../../v2.3.1/source/deployment/docker.html" >v2.3.1</option>
             <option value="../../../v2.3.0/source/deployment/docker.html" >v2.3.0</option>
@@ -1080,7 +1079,7 @@ For example, we provide the docker image for release 2.0.0 and 2.1.0, but not 2.
 In the future, we will provide docker images for every minor release of Isaac Lab.</p>
 </div>
 <p>To pull the minimal Isaac Lab container, run:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>pull<span class="w"> </span>nvcr.io/nvidia/isaac-lab:3.0.0-beta1
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>pull<span class="w"> </span>nvcr.io/nvidia/isaac-lab:3.0.0-beta2
 </pre></div>
 </div>
 <div class="admonition attention">
@@ -1108,7 +1107,7 @@ sudo<span class="w"> </span>chown<span class="w"> </span>-R<span class="w"> </sp
 <span class="w">   </span>-v<span class="w"> </span>~/docker/isaac-sim/logs:/root/.nvidia-omniverse/logs:rw<span class="w"> </span><span class="se">\</span>
 <span class="w">   </span>-v<span class="w"> </span>~/docker/isaac-sim/data:/root/.local/share/ov/data:rw<span class="w"> </span><span class="se">\</span>
 <span class="w">   </span>-v<span class="w"> </span>~/docker/isaac-sim/documents:/root/Documents:rw<span class="w"> </span><span class="se">\</span>
-<span class="w">   </span>nvcr.io/nvidia/isaac-lab:3.0.0-beta1
+<span class="w">   </span>nvcr.io/nvidia/isaac-lab:3.0.0-beta2
 </pre></div>
 </div>
 <p>To enable rendering through X11 forwarding, run:</p>
@@ -1125,7 +1124,7 @@ docker<span class="w"> </span>run<span class="w"> </span>--name<span class="w"> 
 <span class="w">   </span>-v<span class="w"> </span>~/docker/isaac-sim/logs:/root/.nvidia-omniverse/logs:rw<span class="w"> </span><span class="se">\</span>
 <span class="w">   </span>-v<span class="w"> </span>~/docker/isaac-sim/data:/root/.local/share/ov/data:rw<span class="w"> </span><span class="se">\</span>
 <span class="w">   </span>-v<span class="w"> </span>~/docker/isaac-sim/documents:/root/Documents:rw<span class="w"> </span><span class="se">\</span>
-<span class="w">   </span>nvcr.io/nvidia/isaac-lab:3.0.0-beta1
+<span class="w">   </span>nvcr.io/nvidia/isaac-lab:3.0.0-beta2
 </pre></div>
 </div>
 <p>To run an example within the container, run:</p>
@@ -1232,7 +1231,7 @@ By The Isaac Lab Project Developers.
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Jun 26, 2026.
+  Last updated on Jun 27, 2026.
   <br/>
 </p>
   </div>

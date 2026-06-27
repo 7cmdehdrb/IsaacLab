@@ -35,6 +35,7 @@
     <link rel="stylesheet" type="text/css" href="/opt/hostedtoolcache/Python/3.12.13/x64/lib/python3.12/site-packages/sphinxcontrib/icon/node_modules/@fortawesome/fontawesome-free/css/all.min.css?v=53359634" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx_paramlinks.css" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/custom.css?v=8fb98eed" />
   
   <!-- So that users can add custom icons -->
@@ -60,7 +61,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="3.0.0" />
-    <meta name="docbuild:last-update" content="Jun 26, 2026"/>
+    <meta name="docbuild:last-update" content="Jun 27, 2026"/>
   </head>
   
   
@@ -160,8 +161,6 @@
             <option value="schemas.html" selected>develop</option>
             <option value="../../../../../main/index.html" >main</option>
             <option value="../../../../../release/3.0.0-beta2/index.html" >release/3.0.0-beta2</option>
-            <option value="../../../../../v3.0.0-beta2/index.html" >v3.0.0-beta2</option>
-            <option value="../../../../../v3.0.0-beta/index.html" >v3.0.0-beta</option>
             <option value="../../../../../v2.3.2/index.html" >v2.3.2</option>
             <option value="../../../../../v2.3.1/index.html" >v2.3.1</option>
             <option value="../../../../../v2.3.0/index.html" >v2.3.0</option>
@@ -1700,6 +1699,48 @@
 <span class="sd">&quot;&quot;&quot;</span>
 
 
+<span class="k">def</span><span class="w"> </span><span class="nf">apply_fixed_tendon_properties</span><span class="p">(</span>
+    <span class="n">prim_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">fragments</span><span class="p">:</span> <span class="n">Iterable</span><span class="p">[</span><span class="n">schemas_cfg</span><span class="o">.</span><span class="n">FixedTendonFragment</span><span class="p">],</span> <span class="n">stage</span><span class="p">:</span> <span class="n">Usd</span><span class="o">.</span><span class="n">Stage</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Apply a list of fixed-tendon fragments to a prim.</span>
+
+<span class="sd">    Fixed tendons are a *tune-not-apply* family: the applied ``PhysxTendonAxisRootAPI``</span>
+<span class="sd">    multi-instance schemas already exist on the prim (authored in the source asset). This writer</span>
+<span class="sd">    therefore applies no anchor schema; it only dispatches each fragment via its</span>
+<span class="sd">    :attr:`~isaaclab.sim.schemas.SchemaFragment.func`, which tunes the existing instances.</span>
+<span class="sd">    Backend fragments carry backend-specific funcs, so core never imports a backend.</span>
+
+<span class="sd">    Each fragment tunes only its own schema and returns ``False`` when that schema is not</span>
+<span class="sd">    present on the prim. A prim carries a single tendon backend, so compose backends across</span>
+<span class="sd">    prims rather than mixing PhysX and Mujoco fragments in one list on one prim.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        prim_path: The prim path to apply the fixed-tendon schemas on.</span>
+<span class="sd">        fragments: An iterable of :class:`~isaaclab.sim.schemas.FixedTendonFragment` instances.</span>
+<span class="sd">        stage: The stage where to find the prim. Defaults to None, in which case the current</span>
+<span class="sd">            stage is used.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        True if all fragments applied successfully, False if any fragment reported failure.</span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">        ValueError: If the prim at ``prim_path`` is not valid.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">stage</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">stage</span> <span class="o">=</span> <span class="n">get_current_stage</span><span class="p">()</span>
+    <span class="n">prim</span> <span class="o">=</span> <span class="n">stage</span><span class="o">.</span><span class="n">GetPrimAtPath</span><span class="p">(</span><span class="n">prim_path</span><span class="p">)</span>
+    <span class="c1"># fail loudly on an invalid path (matches the sibling apply_* writers)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">prim</span><span class="o">.</span><span class="n">IsValid</span><span class="p">():</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Prim path &#39;</span><span class="si">{</span><span class="n">prim_path</span><span class="si">}</span><span class="s2">&#39; is not valid.&quot;</span><span class="p">)</span>
+    <span class="c1"># tune-not-apply: the PhysxTendonAxisRootAPI instances already exist; apply no anchor.</span>
+    <span class="c1"># aggregate per-fragment results so a reported failure is not silently masked.</span>
+    <span class="n">success</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="k">for</span> <span class="n">cfg</span> <span class="ow">in</span> <span class="n">fragments</span><span class="p">:</span>
+        <span class="n">func</span> <span class="o">=</span> <span class="n">cfg</span><span class="o">.</span><span class="n">func</span> <span class="k">if</span> <span class="nb">callable</span><span class="p">(</span><span class="n">cfg</span><span class="o">.</span><span class="n">func</span><span class="p">)</span> <span class="k">else</span> <span class="n">string_to_callable</span><span class="p">(</span><span class="n">cfg</span><span class="o">.</span><span class="n">func</span><span class="p">)</span>
+        <span class="n">success</span> <span class="o">=</span> <span class="nb">bool</span><span class="p">(</span><span class="n">func</span><span class="p">(</span><span class="n">cfg</span><span class="p">,</span> <span class="n">prim_path</span><span class="p">,</span> <span class="n">stage</span><span class="p">))</span> <span class="ow">and</span> <span class="n">success</span>
+    <span class="k">return</span> <span class="n">success</span>
+
+
 <div class="viewcode-block" id="modify_fixed_tendon_properties">
 <a class="viewcode-back" href="../../../../source/api/lab/isaaclab.sim.schemas.html#isaaclab.sim.schemas.modify_fixed_tendon_properties">[docs]</a>
 <span class="nd">@apply_nested</span>
@@ -1733,6 +1774,9 @@
 <span class="sd">    Raises:</span>
 <span class="sd">        ValueError: If the input prim path is not valid.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Retained for backward compatibility with callers passing PhysxFixedTendonPropertiesCfg</span>
+    <span class="c1"># directly. Will be removed in a future release once callers adopt the fragment-based</span>
+    <span class="c1"># apply_fixed_tendon_properties path.</span>
     <span class="c1"># get stage handle</span>
     <span class="k">if</span> <span class="n">stage</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">stage</span> <span class="o">=</span> <span class="n">get_current_stage</span><span class="p">()</span>
@@ -1760,6 +1804,7 @@
                     <span class="n">camel_case</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
                 <span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
+        <span class="c1"># NOTE: ``mjc:*`` branch (``MjcTendon`` prim) kept inline; future split candidate into isaaclab_newton.</span>
         <span class="c1"># only stiffness and damping in the cfg map to mjc attributes</span>
         <span class="k">for</span> <span class="n">attr_name</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">cfg</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
             <span class="n">safe_set_attribute_on_usd_prim</span><span class="p">(</span>
@@ -1773,6 +1818,50 @@
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">Spatial tendon properties.</span>
 <span class="sd">&quot;&quot;&quot;</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">apply_spatial_tendon_properties</span><span class="p">(</span>
+    <span class="n">prim_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">fragments</span><span class="p">:</span> <span class="n">Iterable</span><span class="p">[</span><span class="n">schemas_cfg</span><span class="o">.</span><span class="n">SpatialTendonFragment</span><span class="p">],</span> <span class="n">stage</span><span class="p">:</span> <span class="n">Usd</span><span class="o">.</span><span class="n">Stage</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Apply a list of spatial-tendon fragments to a prim.</span>
+
+<span class="sd">    Spatial tendons are a *tune-not-apply* family: the applied</span>
+<span class="sd">    ``PhysxTendonAttachmentRootAPI`` / ``PhysxTendonAttachmentLeafAPI`` multi-instance schemas</span>
+<span class="sd">    already exist on the prim (authored in the source asset). This writer therefore applies no</span>
+<span class="sd">    anchor schema; it only dispatches each fragment via its</span>
+<span class="sd">    :attr:`~isaaclab.sim.schemas.SchemaFragment.func`, which tunes the existing instances.</span>
+<span class="sd">    Backend fragments carry backend-specific funcs, so core never imports a backend.</span>
+
+<span class="sd">    Each fragment tunes only its own schema and returns ``False`` when that schema is not</span>
+<span class="sd">    present on the prim. A prim carries a single tendon backend, so compose backends across</span>
+<span class="sd">    prims rather than mixing PhysX and Mujoco fragments in one list on one prim.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        prim_path: The prim path to apply the spatial-tendon schemas on.</span>
+<span class="sd">        fragments: An iterable of :class:`~isaaclab.sim.schemas.SpatialTendonFragment` instances.</span>
+<span class="sd">        stage: The stage where to find the prim. Defaults to None, in which case the current</span>
+<span class="sd">            stage is used.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        True if all fragments applied successfully, False if any fragment reported failure.</span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">        ValueError: If the prim at ``prim_path`` is not valid.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">stage</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">stage</span> <span class="o">=</span> <span class="n">get_current_stage</span><span class="p">()</span>
+    <span class="n">prim</span> <span class="o">=</span> <span class="n">stage</span><span class="o">.</span><span class="n">GetPrimAtPath</span><span class="p">(</span><span class="n">prim_path</span><span class="p">)</span>
+    <span class="c1"># fail loudly on an invalid path (matches the sibling apply_* writers)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">prim</span><span class="o">.</span><span class="n">IsValid</span><span class="p">():</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Prim path &#39;</span><span class="si">{</span><span class="n">prim_path</span><span class="si">}</span><span class="s2">&#39; is not valid.&quot;</span><span class="p">)</span>
+    <span class="c1"># tune-not-apply: the PhysxTendonAttachmentRootAPI / PhysxTendonAttachmentLeafAPI instances</span>
+    <span class="c1"># already exist; apply no anchor.</span>
+    <span class="c1"># aggregate per-fragment results so a reported failure is not silently masked.</span>
+    <span class="n">success</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="k">for</span> <span class="n">cfg</span> <span class="ow">in</span> <span class="n">fragments</span><span class="p">:</span>
+        <span class="n">func</span> <span class="o">=</span> <span class="n">cfg</span><span class="o">.</span><span class="n">func</span> <span class="k">if</span> <span class="nb">callable</span><span class="p">(</span><span class="n">cfg</span><span class="o">.</span><span class="n">func</span><span class="p">)</span> <span class="k">else</span> <span class="n">string_to_callable</span><span class="p">(</span><span class="n">cfg</span><span class="o">.</span><span class="n">func</span><span class="p">)</span>
+        <span class="n">success</span> <span class="o">=</span> <span class="nb">bool</span><span class="p">(</span><span class="n">func</span><span class="p">(</span><span class="n">cfg</span><span class="p">,</span> <span class="n">prim_path</span><span class="p">,</span> <span class="n">stage</span><span class="p">))</span> <span class="ow">and</span> <span class="n">success</span>
+    <span class="k">return</span> <span class="n">success</span>
 
 
 <div class="viewcode-block" id="modify_spatial_tendon_properties">
@@ -1810,6 +1899,9 @@
 <span class="sd">    Raises:</span>
 <span class="sd">        ValueError: If the input prim path is not valid.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Retained for backward compatibility with callers passing PhysxSpatialTendonPropertiesCfg</span>
+    <span class="c1"># directly. Will be removed in a future release once callers adopt the fragment-based</span>
+    <span class="c1"># apply_spatial_tendon_properties path.</span>
     <span class="c1"># obtain stage</span>
     <span class="k">if</span> <span class="n">stage</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">stage</span> <span class="o">=</span> <span class="n">get_current_stage</span><span class="p">()</span>
@@ -2361,7 +2453,7 @@ By The Isaac Lab Project Developers.
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Jun 26, 2026.
+  Last updated on Jun 27, 2026.
   <br/>
 </p>
   </div>
