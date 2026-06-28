@@ -61,7 +61,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="3.0.0" />
-    <meta name="docbuild:last-update" content="Jun 27, 2026"/>
+    <meta name="docbuild:last-update" content="Jun 28, 2026"/>
   </head>
   
   
@@ -695,6 +695,7 @@
     <span class="n">FixedTendonFragment</span><span class="p">,</span>
     <span class="n">JointDriveBaseCfg</span><span class="p">,</span>
     <span class="n">MeshCollisionBaseCfg</span><span class="p">,</span>
+    <span class="n">MeshCollisionFragment</span><span class="p">,</span>
     <span class="n">RigidBodyBaseCfg</span><span class="p">,</span>
     <span class="n">RigidBodyFragment</span><span class="p">,</span>
 <span class="p">)</span>
@@ -1030,6 +1031,118 @@
 
 
 
+<span class="c1"># -------------------------------------------------------------------------------------</span>
+<span class="c1"># Mesh-collision cooking fragments (single-namespace; Newton cooking add-on schemas).</span>
+<span class="c1">#</span>
+<span class="c1"># Each fragment owns the ``newton`` namespace + its applied schema, dispatched via ``apply_namespaced``.</span>
+<span class="c1"># They author no ``mesh_approximation_name`` (the token is set by the PhysX/USD fragment in the same</span>
+<span class="c1"># list), so they only tune Newton-native cooking attributes.</span>
+<span class="c1"># -------------------------------------------------------------------------------------</span>
+
+
+<span class="nd">@configclass</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">NewtonMeshCollisionCfg</span><span class="p">(</span><span class="n">MeshCollisionFragment</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;``newton:maxHullVertices`` mesh-cooking attribute from ``NewtonMeshCollisionAPI``.</span>
+
+<span class="sd">    A single-namespace fragment (see :class:`~isaaclab.sim.schemas.SchemaFragment`) carrying</span>
+<span class="sd">    Newton&#39;s convex-hull vertex limit. Dispatched alongside the USD/PhysX mesh-collision fragments</span>
+<span class="sd">    via :func:`~isaaclab.sim.schemas.apply_mesh_collision_properties`.</span>
+
+<span class="sd">    .. note::</span>
+<span class="sd">        If the values are None, they are not modified.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">_usd_namespace</span><span class="p">:</span> <span class="n">ClassVar</span><span class="p">[</span><span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;newton&quot;</span>
+    <span class="n">_usd_applied_schema</span><span class="p">:</span> <span class="n">ClassVar</span><span class="p">[</span><span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;NewtonMeshCollisionAPI&quot;</span>
+
+    <span class="n">max_hull_vertices</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Maximum vertices in the convex hull approximation [dimensionless].</span>
+
+<span class="sd">    Only relevant when ``physics:approximation = &quot;convexHull&quot;``.</span>
+<span class="sd">    Written to ``newton:maxHullVertices`` via ``NewtonMeshCollisionAPI``.</span>
+<span class="sd">    Set to ``-1`` to use as many vertices as needed for a perfect hull.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+
+<span class="nd">@configclass</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">NewtonSDFCollisionCfg</span><span class="p">(</span><span class="n">MeshCollisionFragment</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;``newton:*`` SDF and hydroelastic mesh-cooking attributes from ``NewtonSDFCollisionAPI``.</span>
+
+<span class="sd">    A single-namespace fragment carrying Newton SDF generation and hydroelastic-contact attributes</span>
+<span class="sd">    consumed by Newton&#39;s USD importer. Mirrors the legacy</span>
+<span class="sd">    :class:`NewtonSDFCollisionPropertiesCfg`. Dispatched alongside the USD/PhysX mesh-collision</span>
+<span class="sd">    fragments via :func:`~isaaclab.sim.schemas.apply_mesh_collision_properties`.</span>
+
+<span class="sd">    .. note::</span>
+<span class="sd">        These ``newton:sdf*`` / ``newton:hydroelastic*`` attributes are read by Newton&#39;s USD</span>
+<span class="sd">        importer starting in Newton 1.3.0 (which also detects the unregistered</span>
+<span class="sd">        ``NewtonSDFCollisionAPI`` token via the raw ``apiSchemas`` list-op). On older Newton builds</span>
+<span class="sd">        they are authored but inert.</span>
+
+<span class="sd">    .. note::</span>
+<span class="sd">        If the values are None, they are not modified.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">_usd_namespace</span><span class="p">:</span> <span class="n">ClassVar</span><span class="p">[</span><span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;newton&quot;</span>
+    <span class="c1"># ``NewtonSDFCollisionAPI`` is authored into the prim&#39;s ``apiSchemas`` listOp (matching the</span>
+    <span class="c1"># legacy ``NewtonSDFCollisionPropertiesCfg``). It is not a *registered* applied API schema in</span>
+    <span class="c1"># the current Newton build, so it does not appear in the composed ``GetAppliedSchemas()`` until</span>
+    <span class="c1"># the schema ships -- but it is authored, and Newton&#39;s importer reads the ``newton:*`` attrs.</span>
+    <span class="n">_usd_applied_schema</span><span class="p">:</span> <span class="n">ClassVar</span><span class="p">[</span><span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;NewtonSDFCollisionAPI&quot;</span>
+
+    <span class="n">sdf_max_resolution</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Maximum SDF grid dimension [dimensionless].</span>
+
+<span class="sd">    Newton requires this value to be divisible by 8. If :attr:`sdf_target_voxel_size` is also</span>
+<span class="sd">    authored, Newton uses the target voxel size and ignores this resolution.</span>
+<span class="sd">    Written to ``newton:sdfMaxResolution`` via ``NewtonSDFCollisionAPI``.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">sdf_narrow_band_inner</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Inner narrow-band distance for SDF generation [m].</span>
+
+<span class="sd">    Written to ``newton:sdfNarrowBandInner`` via ``NewtonSDFCollisionAPI``.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">sdf_narrow_band_outer</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Outer narrow-band distance for SDF generation [m].</span>
+
+<span class="sd">    Written to ``newton:sdfNarrowBandOuter`` via ``NewtonSDFCollisionAPI``.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">sdf_target_voxel_size</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Target SDF voxel size [m].</span>
+
+<span class="sd">    Takes precedence over :attr:`sdf_max_resolution` in Newton&#39;s USD importer.</span>
+<span class="sd">    Written to ``newton:sdfTargetVoxelSize`` via ``NewtonSDFCollisionAPI``.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">sdf_texture_format</span><span class="p">:</span> <span class="n">Literal</span><span class="p">[</span><span class="s2">&quot;uint8&quot;</span><span class="p">,</span> <span class="s2">&quot;uint16&quot;</span><span class="p">,</span> <span class="s2">&quot;float32&quot;</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Subgrid texture storage format for generated SDFs.</span>
+
+<span class="sd">    Written to ``newton:sdfTextureFormat`` via ``NewtonSDFCollisionAPI``.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">sdf_padding</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;SDF AABB padding [m].</span>
+
+<span class="sd">    Written to ``newton:sdfPadding`` via ``NewtonSDFCollisionAPI``.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">hydroelastic_enabled</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Whether Newton should use SDF-based hydroelastic contacts for this shape.</span>
+
+<span class="sd">    Both participating collision shapes must enable hydroelastic contacts for Newton to use this</span>
+<span class="sd">    path. Written to ``newton:hydroelasticEnabled`` via ``NewtonSDFCollisionAPI``.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">hydroelastic_stiffness</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Hydroelastic contact stiffness.</span>
+
+<span class="sd">    Written to ``newton:hydroelasticStiffness`` via ``NewtonSDFCollisionAPI``.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+
 <div class="viewcode-block" id="NewtonMaterialPropertiesCfg">
 <a class="viewcode-back" href="../../../../source/api/lab_newton/isaaclab_newton.sim.schemas.html#isaaclab_newton.sim.schemas.NewtonMaterialPropertiesCfg">[docs]</a>
 <span class="nd">@configclass</span>
@@ -1167,7 +1280,7 @@ By The Isaac Lab Project Developers.
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Jun 27, 2026.
+  Last updated on Jun 28, 2026.
   <br/>
 </p>
   </div>

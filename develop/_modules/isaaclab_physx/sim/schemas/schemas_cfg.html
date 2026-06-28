@@ -61,7 +61,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="3.0.0" />
-    <meta name="docbuild:last-update" content="Jun 27, 2026"/>
+    <meta name="docbuild:last-update" content="Jun 28, 2026"/>
   </head>
   
   
@@ -696,6 +696,7 @@
     <span class="n">FixedTendonFragment</span><span class="p">,</span>
     <span class="n">JointDriveBaseCfg</span><span class="p">,</span>
     <span class="n">MeshCollisionBaseCfg</span><span class="p">,</span>
+    <span class="n">MeshCollisionFragment</span><span class="p">,</span>
     <span class="n">RigidBodyBaseCfg</span><span class="p">,</span>
     <span class="n">RigidBodyFragment</span><span class="p">,</span>
     <span class="n">SpatialTendonFragment</span><span class="p">,</span>
@@ -1294,6 +1295,171 @@
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">__post_init__</span><span class="p">()</span>
 
 
+<span class="c1"># -------------------------------------------------------------------------------------</span>
+<span class="c1"># Mesh-collision cooking fragments (single-namespace; PhysX cooking add-on schemas).</span>
+<span class="c1">#</span>
+<span class="c1"># Each fragment owns one ``physx*Collision:*`` namespace + applied schema; its</span>
+<span class="c1"># ``mesh_approximation_name`` default encodes the ``physics:approximation`` token its cooking</span>
+<span class="c1"># schema implies. The token is written by the family writer</span>
+<span class="c1"># ``isaaclab.sim.schemas.apply_mesh_collision_properties``; tuning attrs go via ``apply_namespaced``.</span>
+<span class="c1"># -------------------------------------------------------------------------------------</span>
+
+
+<span class="nd">@configclass</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">PhysxConvexHullCfg</span><span class="p">(</span><span class="n">MeshCollisionFragment</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;``physxConvexHullCollision:*`` mesh-cooking attributes from `PhysxConvexHullCollisionAPI`_.</span>
+
+<span class="sd">    A single-namespace fragment (see :class:`~isaaclab.sim.schemas.SchemaFragment`) for the PhysX</span>
+<span class="sd">    convex-hull cooking schema. The ``convexHull`` token is written to ``physics:approximation`` by</span>
+<span class="sd">    :func:`~isaaclab.sim.schemas.apply_mesh_collision_properties`.</span>
+
+<span class="sd">    .. _PhysxConvexHullCollisionAPI: https://docs.omniverse.nvidia.com/kit/docs/omni_usd_schema_physics/latest/class_physx_schema_physx_convex_hull_collision_a_p_i.html</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">_usd_namespace</span><span class="p">:</span> <span class="n">ClassVar</span><span class="p">[</span><span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;physxConvexHullCollision&quot;</span>
+    <span class="n">_usd_applied_schema</span><span class="p">:</span> <span class="n">ClassVar</span><span class="p">[</span><span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;PhysxConvexHullCollisionAPI&quot;</span>
+
+    <span class="n">mesh_approximation_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;convexHull&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Name of mesh collision approximation method. Default: &quot;convexHull&quot;.&quot;&quot;&quot;</span>
+
+    <span class="n">hull_vertex_limit</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Convex hull vertex limit used for convex hull cooking [dimensionless]. Defaults to 64.&quot;&quot;&quot;</span>
+
+    <span class="n">min_thickness</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Convex hull min thickness [m]. Range: [0, inf). Default value is 0.001.&quot;&quot;&quot;</span>
+
+
+<span class="nd">@configclass</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">PhysxConvexDecompositionCfg</span><span class="p">(</span><span class="n">MeshCollisionFragment</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;``physxConvexDecompositionCollision:*`` mesh-cooking attributes from `PhysxConvexDecompositionCollisionAPI`_.</span>
+
+<span class="sd">    A single-namespace fragment for the PhysX convex-decomposition cooking schema. The</span>
+<span class="sd">    ``convexDecomposition`` token is written to ``physics:approximation`` by</span>
+<span class="sd">    :func:`~isaaclab.sim.schemas.apply_mesh_collision_properties`.</span>
+
+<span class="sd">    .. _PhysxConvexDecompositionCollisionAPI: https://docs.omniverse.nvidia.com/kit/docs/omni_usd_schema_physics/latest/class_physx_schema_physx_convex_decomposition_collision_a_p_i.html</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">_usd_namespace</span><span class="p">:</span> <span class="n">ClassVar</span><span class="p">[</span><span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;physxConvexDecompositionCollision&quot;</span>
+    <span class="n">_usd_applied_schema</span><span class="p">:</span> <span class="n">ClassVar</span><span class="p">[</span><span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;PhysxConvexDecompositionCollisionAPI&quot;</span>
+
+    <span class="n">mesh_approximation_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;convexDecomposition&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Name of mesh collision approximation method. Default: &quot;convexDecomposition&quot;.&quot;&quot;&quot;</span>
+
+    <span class="n">hull_vertex_limit</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Convex hull vertex limit used for convex hull cooking [dimensionless]. Defaults to 64.&quot;&quot;&quot;</span>
+
+    <span class="n">max_convex_hulls</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Maximum of convex hulls created during convex decomposition [dimensionless]. Default value is 32.&quot;&quot;&quot;</span>
+
+    <span class="n">min_thickness</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Convex hull min thickness [m]. Range: [0, inf). Default value is 0.001.&quot;&quot;&quot;</span>
+
+    <span class="n">voxel_resolution</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Voxel resolution used for convex decomposition [dimensionless]. Defaults to 500,000 voxels.&quot;&quot;&quot;</span>
+
+    <span class="n">error_percentage</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Convex decomposition error percentage parameter [%]. Defaults to 10 percent.&quot;&quot;&quot;</span>
+
+    <span class="n">shrink_wrap</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Attempts to adjust the convex hull points so that they are projected onto the surface of the</span>
+<span class="sd">    original graphics mesh. Defaults to False.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+
+<span class="nd">@configclass</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">PhysxTriangleMeshCfg</span><span class="p">(</span><span class="n">MeshCollisionFragment</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;``physxTriangleMeshCollision:*`` mesh-cooking attributes from `PhysxTriangleMeshCollisionAPI`_.</span>
+
+<span class="sd">    A single-namespace fragment for the PhysX triangle-mesh cooking schema (PhysX-only colliders).</span>
+
+<span class="sd">    .. _PhysxTriangleMeshCollisionAPI: https://docs.omniverse.nvidia.com/kit/docs/omni_usd_schema_physics/latest/class_physx_schema_physx_triangle_mesh_collision_a_p_i.html</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">_usd_namespace</span><span class="p">:</span> <span class="n">ClassVar</span><span class="p">[</span><span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;physxTriangleMeshCollision&quot;</span>
+    <span class="n">_usd_applied_schema</span><span class="p">:</span> <span class="n">ClassVar</span><span class="p">[</span><span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;PhysxTriangleMeshCollisionAPI&quot;</span>
+
+    <span class="n">mesh_approximation_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;none&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Name of mesh collision approximation method. Default: &quot;none&quot; (uses triangle mesh).&quot;&quot;&quot;</span>
+
+    <span class="n">weld_tolerance</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Mesh weld tolerance controlling the distance at which vertices are welded [m].</span>
+
+<span class="sd">    Default ``-inf`` autocomputes the welding tolerance from the mesh size; ``0`` disables welding.</span>
+<span class="sd">    Range: [0, inf).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+
+<span class="nd">@configclass</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">PhysxTriangleMeshSimplificationCfg</span><span class="p">(</span><span class="n">MeshCollisionFragment</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;``physxTriangleMeshSimplificationCollision:*`` attributes from `PhysxTriangleMeshSimplificationCollisionAPI`_.</span>
+
+<span class="sd">    A single-namespace fragment for the PhysX triangle-mesh-simplification cooking schema. The</span>
+<span class="sd">    ``meshSimplification`` token is written to ``physics:approximation`` by</span>
+<span class="sd">    :func:`~isaaclab.sim.schemas.apply_mesh_collision_properties`.</span>
+
+<span class="sd">    .. _PhysxTriangleMeshSimplificationCollisionAPI: https://docs.omniverse.nvidia.com/kit/docs/omni_usd_schema_physics/latest/class_physx_schema_physx_triangle_mesh_simplification_collision_a_p_i.html</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">_usd_namespace</span><span class="p">:</span> <span class="n">ClassVar</span><span class="p">[</span><span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;physxTriangleMeshSimplificationCollision&quot;</span>
+    <span class="n">_usd_applied_schema</span><span class="p">:</span> <span class="n">ClassVar</span><span class="p">[</span><span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;PhysxTriangleMeshSimplificationCollisionAPI&quot;</span>
+
+    <span class="n">mesh_approximation_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;meshSimplification&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Name of mesh collision approximation method. Default: &quot;meshSimplification&quot;.&quot;&quot;&quot;</span>
+
+    <span class="n">simplification_metric</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Mesh simplification accuracy [dimensionless]. Defaults to 0.55.&quot;&quot;&quot;</span>
+
+    <span class="n">weld_tolerance</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Mesh weld tolerance controlling the distance at which vertices are welded [m].</span>
+
+<span class="sd">    Default ``-inf`` autocomputes the welding tolerance from the mesh size; ``0`` disables welding.</span>
+<span class="sd">    Range: [0, inf).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+
+<span class="nd">@configclass</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">PhysxSDFMeshCfg</span><span class="p">(</span><span class="n">MeshCollisionFragment</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;``physxSDFMeshCollision:*`` mesh-cooking attributes from `PhysxSDFMeshCollisionAPI`_.</span>
+
+<span class="sd">    A single-namespace fragment for the PhysX signed-distance-field cooking schema (PhysX-only</span>
+<span class="sd">    colliders). The ``sdf`` token is written to ``physics:approximation`` by</span>
+<span class="sd">    :func:`~isaaclab.sim.schemas.apply_mesh_collision_properties`.</span>
+
+<span class="sd">    .. _PhysxSDFMeshCollisionAPI: https://docs.omniverse.nvidia.com/kit/docs/omni_usd_schema_physics/latest/class_physx_schema_physx_s_d_f_mesh_collision_a_p_i.html</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">_usd_namespace</span><span class="p">:</span> <span class="n">ClassVar</span><span class="p">[</span><span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;physxSDFMeshCollision&quot;</span>
+    <span class="n">_usd_applied_schema</span><span class="p">:</span> <span class="n">ClassVar</span><span class="p">[</span><span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;PhysxSDFMeshCollisionAPI&quot;</span>
+
+    <span class="n">mesh_approximation_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;sdf&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Name of mesh collision approximation method. Default: &quot;sdf&quot;.&quot;&quot;&quot;</span>
+
+    <span class="n">sdf_margin</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Margin to increase the size of the SDF relative to the mesh bounding-box diagonal [dimensionless].</span>
+
+<span class="sd">    Scale-independent (fraction of the bounding-box diagonal). Default value is 0.01. Range: [0, inf).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">sdf_narrow_band_thickness</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Size of the narrow band around the mesh surface with high-resolution SDF samples [dimensionless].</span>
+
+<span class="sd">    Scale-independent (fraction of the bounding-box diagonal). Default value is 0.01. Range: [0, 1].</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">sdf_resolution</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Uniform SDF sampling resolution (largest AABB extent divided by this value) [dimensionless].</span>
+
+<span class="sd">    Default value is 256. Range: (1, inf).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">sdf_subgrid_resolution</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Subgrid resolution enabling SDF sparsity; ``0`` selects a dense SDF [dimensionless].</span>
+
+<span class="sd">    Default value is 6. Range: [0, inf).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+
 <div class="viewcode-block" id="PhysxConvexHullPropertiesCfg">
 <a class="viewcode-back" href="../../../../source/api/lab_physx/isaaclab_physx.sim.schemas.html#isaaclab_physx.sim.schemas.PhysxConvexHullPropertiesCfg">[docs]</a>
 <span class="nd">@configclass</span>
@@ -1890,7 +2056,7 @@ By The Isaac Lab Project Developers.
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Jun 27, 2026.
+  Last updated on Jun 28, 2026.
   <br/>
 </p>
   </div>

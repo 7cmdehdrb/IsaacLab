@@ -66,7 +66,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="3.0.0" />
-    <meta name="docbuild:last-update" content="Jun 27, 2026"/>
+    <meta name="docbuild:last-update" content="Jun 28, 2026"/>
   </head>
   
   
@@ -1326,9 +1326,19 @@ used in the scene. For more information, please check the USD documentation on
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="isaaclab.sim.converters.MeshConverterCfg.mesh_collision_props">
-<span class="sig-name descname"><span class="pre">mesh_collision_props</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="isaaclab.sim.schemas.html#isaaclab.sim.schemas.MeshCollisionBaseCfg" title="isaaclab.sim.schemas.schemas_cfg.MeshCollisionBaseCfg"><span class="pre">MeshCollisionBaseCfg</span></a></em><a class="headerlink" href="#isaaclab.sim.converters.MeshConverterCfg.mesh_collision_props" title="Link to this definition">#</a></dt>
-<dd><p>Mesh approximation properties to apply to all collision meshes in the USD.
-.. note:: If None, then no mesh approximation properties will be added.</p>
+<span class="sig-name descname"><span class="pre">mesh_collision_props</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="isaaclab.sim.schemas.html#isaaclab.sim.schemas.MeshCollisionBaseCfg" title="isaaclab.sim.schemas.schemas_cfg.MeshCollisionBaseCfg"><span class="pre">MeshCollisionBaseCfg</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">MeshCollisionFragment</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><span class="pre">MeshCollisionFragment</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><a class="headerlink" href="#isaaclab.sim.converters.MeshConverterCfg.mesh_collision_props" title="Link to this definition">#</a></dt>
+<dd><p>Mesh approximation properties to apply to all collision meshes in the USD.</p>
+<p>Accepts either a single legacy cfg (e.g. <a class="reference internal" href="isaaclab.sim.schemas.html#isaaclab.sim.schemas.MeshCollisionBaseCfg" title="isaaclab.sim.schemas.MeshCollisionBaseCfg"><code class="xref py py-class docutils literal notranslate"><span class="pre">MeshCollisionBaseCfg</span></code></a> or
+a <code class="docutils literal notranslate"><span class="pre">Physx*PropertiesCfg</span></code> cooking cfg) or a list of
+<code class="xref py py-class docutils literal notranslate"><span class="pre">MeshCollisionFragment</span></code> fragments (e.g.
+<code class="docutils literal notranslate"><span class="pre">[UsdPhysicsMeshCollisionCfg(...),</span> <span class="pre">PhysxConvexHullCfg(...)]</span></code>). When a fragment list is given,
+<code class="docutils literal notranslate"><span class="pre">UsdPhysics.MeshCollisionAPI</span></code> is applied as the implicit anchor, the <code class="docutils literal notranslate"><span class="pre">physics:approximation</span></code>
+token is resolved from whichever cooking fragment is present, and each fragment writes its own
+namespace.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If None, then no mesh approximation properties will be added.</p>
+</div>
 </dd></dl>
 
 <dl class="py attribute">
@@ -2451,7 +2461,7 @@ By The Isaac Lab Project Developers.
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Jun 27, 2026.
+  Last updated on Jun 28, 2026.
   <br/>
 </p>
   </div>

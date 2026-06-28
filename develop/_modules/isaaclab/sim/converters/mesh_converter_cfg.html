@@ -61,7 +61,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="3.0.0" />
-    <meta name="docbuild:last-update" content="Jun 27, 2026"/>
+    <meta name="docbuild:last-update" content="Jun 28, 2026"/>
   </head>
   
   
@@ -720,8 +720,22 @@
 <span class="sd">    Note:</span>
 <span class="sd">        If None, then no collision properties will be added.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">mesh_collision_props</span><span class="p">:</span> <span class="n">schemas_cfg</span><span class="o">.</span><span class="n">MeshCollisionBaseCfg</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">mesh_collision_props</span><span class="p">:</span> <span class="p">(</span>
+        <span class="n">schemas_cfg</span><span class="o">.</span><span class="n">MeshCollisionBaseCfg</span>
+        <span class="o">|</span> <span class="n">schemas_cfg</span><span class="o">.</span><span class="n">MeshCollisionFragment</span>
+        <span class="o">|</span> <span class="nb">list</span><span class="p">[</span><span class="n">schemas_cfg</span><span class="o">.</span><span class="n">MeshCollisionFragment</span><span class="p">]</span>
+        <span class="o">|</span> <span class="kc">None</span>
+    <span class="p">)</span> <span class="o">=</span> <span class="kc">None</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Mesh approximation properties to apply to all collision meshes in the USD.</span>
+
+<span class="sd">    Accepts either a single legacy cfg (e.g. :class:`~isaaclab.sim.schemas.MeshCollisionBaseCfg` or</span>
+<span class="sd">    a ``Physx*PropertiesCfg`` cooking cfg) or a list of</span>
+<span class="sd">    :class:`~isaaclab.sim.schemas.MeshCollisionFragment` fragments (e.g.</span>
+<span class="sd">    ``[UsdPhysicsMeshCollisionCfg(...), PhysxConvexHullCfg(...)]``). When a fragment list is given,</span>
+<span class="sd">    ``UsdPhysics.MeshCollisionAPI`` is applied as the implicit anchor, the ``physics:approximation``</span>
+<span class="sd">    token is resolved from whichever cooking fragment is present, and each fragment writes its own</span>
+<span class="sd">    namespace.</span>
+
 <span class="sd">    Note:</span>
 <span class="sd">        If None, then no mesh approximation properties will be added.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -782,7 +796,7 @@ By The Isaac Lab Project Developers.
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Jun 27, 2026.
+  Last updated on Jun 28, 2026.
   <br/>
 </p>
   </div>

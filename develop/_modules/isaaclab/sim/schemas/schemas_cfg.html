@@ -61,7 +61,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="3.0.0" />
-    <meta name="docbuild:last-update" content="Jun 27, 2026"/>
+    <meta name="docbuild:last-update" content="Jun 28, 2026"/>
   </head>
   
   
@@ -863,6 +863,24 @@
 
 
 <span class="nd">@configclass</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">MeshCollisionFragment</span><span class="p">(</span><span class="n">SchemaFragment</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Marker base for mesh-collision fragments; types the ``mesh_collision_props`` slot.</span>
+
+<span class="sd">    A mesh-collision concept is split across one *core* fragment carrying the standard</span>
+<span class="sd">    ``physics:approximation`` token (:class:`UsdPhysicsMeshCollisionCfg`) and one cooking</span>
+<span class="sd">    fragment per backend cooking schema (PhysX convex hull / decomposition / triangle mesh /</span>
+<span class="sd">    SDF, Newton mesh / SDF). Whichever cooking fragment is present implies the approximation</span>
+<span class="sd">    token written to ``physics:approximation`` -- see</span>
+<span class="sd">    :func:`~isaaclab.sim.schemas.apply_mesh_collision_properties`.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># Mesh-collision fragments author the shared ``physics:approximation`` token in addition to their</span>
+    <span class="c1"># own namespaced cooking attrs, so they dispatch through :func:`~isaaclab.sim.schemas.apply_mesh_collision`</span>
+    <span class="c1"># (not the generic :func:`~isaaclab.sim.schemas.apply_namespaced`). See that func for the token coupling.</span>
+    <span class="n">func</span><span class="p">:</span> <span class="n">Callable</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;isaaclab.sim.schemas:apply_mesh_collision&quot;</span>
+
+
+<span class="nd">@configclass</span>
 <span class="k">class</span><span class="w"> </span><span class="nc">FixedTendonFragment</span><span class="p">(</span><span class="n">SchemaFragment</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Marker base for fixed-tendon fragments; types the ``fixed_tendons_props`` slot.</span>
 
@@ -909,6 +927,37 @@
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Whether to enable or disable collisions.</span>
 
 <span class="sd">    Writes ``physics:collisionEnabled`` via :class:`UsdPhysics.CollisionAPI`.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+
+<span class="nd">@configclass</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">UsdPhysicsMeshCollisionCfg</span><span class="p">(</span><span class="n">MeshCollisionFragment</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;``physics:approximation`` mesh-collision token from `UsdPhysics.MeshCollisionAPI`_.</span>
+
+<span class="sd">    Carries the standard mesh-collision approximation token (:attr:`mesh_approximation_name`</span>
+<span class="sd">    written to ``physics:approximation``). The ``UsdPhysics.MeshCollisionAPI`` schema is applied</span>
+<span class="sd">    as the implicit anchor by the mesh-collision family writer</span>
+<span class="sd">    (:func:`~isaaclab.sim.schemas.apply_mesh_collision_properties`), so this fragment owns no</span>
+<span class="sd">    applied schema of its own.</span>
+
+<span class="sd">    .. note::</span>
+<span class="sd">        The ``physics:approximation`` attribute is a ``TfToken`` validated against</span>
+<span class="sd">        :const:`~isaaclab.sim.schemas.MESH_APPROXIMATION_TOKENS`; the family writer (not the generic</span>
+<span class="sd">        :func:`~isaaclab.sim.schemas.apply_namespaced` applier) handles the token write, so this</span>
+<span class="sd">        fragment overrides nothing but the namespace metadata. When a PhysX/Newton cooking fragment</span>
+<span class="sd">        is present alongside this one, its default :attr:`mesh_approximation_name` sets the token.</span>
+
+<span class="sd">    .. _UsdPhysics.MeshCollisionAPI: https://openusd.org/release/api/class_usd_physics_mesh_collision_a_p_i.html</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">_usd_namespace</span><span class="p">:</span> <span class="n">ClassVar</span><span class="p">[</span><span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;physics&quot;</span>
+    <span class="n">_usd_applied_schema</span><span class="p">:</span> <span class="n">ClassVar</span><span class="p">[</span><span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1"># MeshCollisionAPI applied by the family anchor</span>
+
+    <span class="n">mesh_approximation_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;none&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Name of mesh collision approximation method. Default: &quot;none&quot;.</span>
+
+<span class="sd">    Writes the ``physics:approximation`` token via :class:`UsdPhysics.MeshCollisionAPI`.</span>
+<span class="sd">    Refer to :const:`~isaaclab.sim.schemas.MESH_APPROXIMATION_TOKENS` for available options.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
 
@@ -1333,10 +1382,7 @@
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="c1"># -- Class metadata (not dataclass fields) --</span>
-    <span class="c1"># The standard ``UsdPhysics.MeshCollisionAPI`` is always applied by the writer when a</span>
-    <span class="c1"># mesh-collision cfg is supplied; ``_usd_applied_schema`` here records the standard</span>
-    <span class="c1"># API name so subclasses that author no PhysX namespace can rely on the writer&#39;s</span>
-    <span class="c1"># standard-vs-PhysX gating logic. PhysX-cooking subclasses override this.</span>
+    <span class="c1"># Records the standard API name for the writer&#39;s standard-vs-PhysX gating; cooking subclasses override.</span>
     <span class="n">_usd_applied_schema</span><span class="p">:</span> <span class="n">ClassVar</span><span class="p">[</span><span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;MeshCollisionAPI&quot;</span>
     <span class="c1"># Base class authors no PhysX-namespaced fields, so no namespace is defined.</span>
     <span class="n">_usd_namespace</span><span class="p">:</span> <span class="n">ClassVar</span><span class="p">[</span><span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
@@ -1478,7 +1524,7 @@ By The Isaac Lab Project Developers.
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Jun 27, 2026.
+  Last updated on Jun 28, 2026.
   <br/>
 </p>
   </div>
