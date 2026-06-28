@@ -36,7 +36,6 @@
     <link rel="stylesheet" type="text/css" href="/opt/hostedtoolcache/Python/3.12.13/x64/lib/python3.12/site-packages/sphinxcontrib/icon/node_modules/@fortawesome/fontawesome-free/css/all.min.css?v=53359634" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx_paramlinks.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=8fb98eed" />
   
   <!-- So that users can add custom icons -->
@@ -162,6 +161,8 @@
             <option value="isaaclab.envs.html" selected>develop</option>
             <option value="../../../../main/source/api/lab/isaaclab.envs.html" >main</option>
             <option value="../../../../release/3.0.0-beta2/source/api/lab/isaaclab.envs.html" >release/3.0.0-beta2</option>
+            <option value="../../../../v3.0.0-beta2/source/api/lab/isaaclab.envs.html" >v3.0.0-beta2</option>
+            <option value="../../../../v3.0.0-beta/source/api/lab/isaaclab.envs.html" >v3.0.0-beta</option>
             <option value="../../../../v2.3.2/source/api/lab/isaaclab.envs.html" >v2.3.2</option>
             <option value="../../../../v2.3.1/source/api/lab/isaaclab.envs.html" >v2.3.1</option>
             <option value="../../../../v2.3.0/source/api/lab/isaaclab.envs.html" >v2.3.0</option>
@@ -201,7 +202,7 @@
           
           
           
-          <a href="https://developer.nvidia.com/isaac-sim" title="Isaac Sim" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="https://img.shields.io/badge/IsaacSim-6.0.0-silver.svg" class="icon-link-image" alt="Isaac Sim"/></a>
+          <a href="https://developer.nvidia.com/isaac-sim" title="Isaac Sim" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="https://img.shields.io/badge/IsaacSim-6.0.1-silver.svg" class="icon-link-image" alt="Isaac Sim"/></a>
         </li>
         <li class="nav-item">
           
@@ -810,8 +811,8 @@
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.envs.ManagerBasedRLEnvCfg"><code class="docutils literal notranslate"><span class="pre">ManagerBasedRLEnvCfg</span></code></a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.envs.ManagerBasedRLEnvCfg.ui_window_class_type"><code class="docutils literal notranslate"><span class="pre">ManagerBasedRLEnvCfg.ui_window_class_type</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.envs.ManagerBasedRLEnvCfg.is_finite_horizon"><code class="docutils literal notranslate"><span class="pre">ManagerBasedRLEnvCfg.is_finite_horizon</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.envs.ManagerBasedRLEnvCfg.compute_final_obs"><code class="docutils literal notranslate"><span class="pre">ManagerBasedRLEnvCfg.compute_final_obs</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.envs.ManagerBasedRLEnvCfg.episode_length_s"><code class="docutils literal notranslate"><span class="pre">ManagerBasedRLEnvCfg.episode_length_s</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.envs.ManagerBasedRLEnvCfg.rewards"><code class="docutils literal notranslate"><span class="pre">ManagerBasedRLEnvCfg.rewards</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.envs.ManagerBasedRLEnvCfg.viewer"><code class="docutils literal notranslate"><span class="pre">ManagerBasedRLEnvCfg.viewer</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.envs.ManagerBasedRLEnvCfg.sim"><code class="docutils literal notranslate"><span class="pre">ManagerBasedRLEnvCfg.sim</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.envs.ManagerBasedRLEnvCfg.seed"><code class="docutils literal notranslate"><span class="pre">ManagerBasedRLEnvCfg.seed</span></code></a></li>
@@ -830,6 +831,7 @@
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.envs.ManagerBasedRLEnvCfg.export_io_descriptors"><code class="docutils literal notranslate"><span class="pre">ManagerBasedRLEnvCfg.export_io_descriptors</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.envs.ManagerBasedRLEnvCfg.log_dir"><code class="docutils literal notranslate"><span class="pre">ManagerBasedRLEnvCfg.log_dir</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.envs.ManagerBasedRLEnvCfg.video_recorder"><code class="docutils literal notranslate"><span class="pre">ManagerBasedRLEnvCfg.video_recorder</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.envs.ManagerBasedRLEnvCfg.rewards"><code class="docutils literal notranslate"><span class="pre">ManagerBasedRLEnvCfg.rewards</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.envs.ManagerBasedRLEnvCfg.terminations"><code class="docutils literal notranslate"><span class="pre">ManagerBasedRLEnvCfg.terminations</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.envs.ManagerBasedRLEnvCfg.curriculum"><code class="docutils literal notranslate"><span class="pre">ManagerBasedRLEnvCfg.curriculum</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.envs.ManagerBasedRLEnvCfg.commands"><code class="docutils literal notranslate"><span class="pre">ManagerBasedRLEnvCfg.commands</span></code></a></li>
@@ -864,6 +866,7 @@
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.envs.DirectRLEnvCfg.seed"><code class="docutils literal notranslate"><span class="pre">DirectRLEnvCfg.seed</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.envs.DirectRLEnvCfg.decimation"><code class="docutils literal notranslate"><span class="pre">DirectRLEnvCfg.decimation</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.envs.DirectRLEnvCfg.is_finite_horizon"><code class="docutils literal notranslate"><span class="pre">DirectRLEnvCfg.is_finite_horizon</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.envs.DirectRLEnvCfg.compute_final_obs"><code class="docutils literal notranslate"><span class="pre">DirectRLEnvCfg.compute_final_obs</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.envs.DirectRLEnvCfg.episode_length_s"><code class="docutils literal notranslate"><span class="pre">DirectRLEnvCfg.episode_length_s</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.envs.DirectRLEnvCfg.scene"><code class="docutils literal notranslate"><span class="pre">DirectRLEnvCfg.scene</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.envs.DirectRLEnvCfg.events"><code class="docutils literal notranslate"><span class="pre">DirectRLEnvCfg.events</span></code></a></li>
@@ -917,6 +920,7 @@
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.envs.DirectMARLEnvCfg.seed"><code class="docutils literal notranslate"><span class="pre">DirectMARLEnvCfg.seed</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.envs.DirectMARLEnvCfg.decimation"><code class="docutils literal notranslate"><span class="pre">DirectMARLEnvCfg.decimation</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.envs.DirectMARLEnvCfg.is_finite_horizon"><code class="docutils literal notranslate"><span class="pre">DirectMARLEnvCfg.is_finite_horizon</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.envs.DirectMARLEnvCfg.compute_final_obs"><code class="docutils literal notranslate"><span class="pre">DirectMARLEnvCfg.compute_final_obs</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.envs.DirectMARLEnvCfg.episode_length_s"><code class="docutils literal notranslate"><span class="pre">DirectMARLEnvCfg.episode_length_s</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.envs.DirectMARLEnvCfg.scene"><code class="docutils literal notranslate"><span class="pre">DirectMARLEnvCfg.scene</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.envs.DirectMARLEnvCfg.events"><code class="docutils literal notranslate"><span class="pre">DirectMARLEnvCfg.events</span></code></a></li>
@@ -1218,7 +1222,7 @@ querying the <a class="reference internal" href="#isaaclab.envs.ManagerBasedEnv.
 <dd><p>Initialize the environment.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab.envs.ManagerBasedEnv.params.cfg"></span><strong>cfg</strong><a class="paramlink headerlink reference internal" href="#isaaclab.envs.ManagerBasedEnv.params.cfg">¶</a> – The configuration object for the environment.</p>
+<dd class="field-odd"><p><strong>cfg</strong> – The configuration object for the environment.</p>
 </dd>
 <dt class="field-even">Raises<span class="colon">:</span></dt>
 <dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#RuntimeError" title="(in Python v3.14)"><strong>RuntimeError</strong></a> – If a simulation context already exists. The environment must always create one
@@ -1270,7 +1274,7 @@ querying the <a class="reference internal" href="#isaaclab.envs.ManagerBasedEnv.
 <dd><p>Export the IO descriptors for the environment.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab.envs.ManagerBasedEnv.export_IO_descriptors.params.output_dir"></span><strong>output_dir</strong><a class="paramlink headerlink reference internal" href="#isaaclab.envs.ManagerBasedEnv.export_IO_descriptors.params.output_dir">¶</a> – The directory to export the IO descriptors to.</p>
+<dd class="field-odd"><p><strong>output_dir</strong> – The directory to export the IO descriptors to.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1308,9 +1312,9 @@ are not repeated.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.envs.ManagerBasedEnv.reset.params.seed"></span><strong>seed</strong><a class="paramlink headerlink reference internal" href="#isaaclab.envs.ManagerBasedEnv.reset.params.seed">¶</a> – The seed to use for randomization. Defaults to None, in which case the seed is not set.</p></li>
-<li><p><span class="target" id="isaaclab.envs.ManagerBasedEnv.reset.params.env_ids"></span><strong>env_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab.envs.ManagerBasedEnv.reset.params.env_ids">¶</a> – The environment ids to reset. Defaults to None, in which case all environments are reset.</p></li>
-<li><p><span class="target" id="isaaclab.envs.ManagerBasedEnv.reset.params.options"></span><strong>options</strong><a class="paramlink headerlink reference internal" href="#isaaclab.envs.ManagerBasedEnv.reset.params.options">¶</a> – <p>Additional information to specify how the environment is reset. Defaults to None.</p>
+<li><p><strong>seed</strong> – The seed to use for randomization. Defaults to None, in which case the seed is not set.</p></li>
+<li><p><strong>env_ids</strong> – The environment ids to reset. Defaults to None, in which case all environments are reset.</p></li>
+<li><p><strong>options</strong> – <p>Additional information to specify how the environment is reset. Defaults to None.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>This argument is used for compatibility with Gymnasium environment definition.</p>
@@ -1336,11 +1340,11 @@ instead of using the randomization events for resetting the environments.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.envs.ManagerBasedEnv.reset_to.params.state"></span><strong>state</strong><a class="paramlink headerlink reference internal" href="#isaaclab.envs.ManagerBasedEnv.reset_to.params.state">¶</a> – The state to reset the specified environments to. Please refer to
+<li><p><strong>state</strong> – The state to reset the specified environments to. Please refer to
 <code class="xref py py-meth docutils literal notranslate"><span class="pre">InteractiveScene.get_state()</span></code> for the format.</p></li>
-<li><p><span class="target" id="isaaclab.envs.ManagerBasedEnv.reset_to.params.env_ids"></span><strong>env_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab.envs.ManagerBasedEnv.reset_to.params.env_ids">¶</a> – The environment ids to reset. Defaults to None, in which case all environments are reset.</p></li>
-<li><p><span class="target" id="isaaclab.envs.ManagerBasedEnv.reset_to.params.seed"></span><strong>seed</strong><a class="paramlink headerlink reference internal" href="#isaaclab.envs.ManagerBasedEnv.reset_to.params.seed">¶</a> – The seed to use for randomization. Defaults to None, in which case the seed is not set.</p></li>
-<li><p><span class="target" id="isaaclab.envs.ManagerBasedEnv.reset_to.params.is_relative"></span><strong>is_relative</strong><a class="paramlink headerlink reference internal" href="#isaaclab.envs.ManagerBasedEnv.reset_to.params.is_relative">¶</a> – If set to True, the state is considered relative to the environment origins.
+<li><p><strong>env_ids</strong> – The environment ids to reset. Defaults to None, in which case all environments are reset.</p></li>
+<li><p><strong>seed</strong> – The seed to use for randomization. Defaults to None, in which case the seed is not set.</p></li>
+<li><p><strong>is_relative</strong> – If set to True, the state is considered relative to the environment origins.
 Defaults to False.</p></li>
 </ul>
 </dd>
@@ -1368,7 +1372,7 @@ app loop.</p></li>
 </ul>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab.envs.ManagerBasedEnv.step.params.action"></span><strong>action</strong><a class="paramlink headerlink reference internal" href="#isaaclab.envs.ManagerBasedEnv.step.params.action">¶</a> – The actions to apply on the environment. Shape is (num_envs, action_dim).</p>
+<dd class="field-odd"><p><strong>action</strong> – The actions to apply on the environment. Shape is (num_envs, action_dim).</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>A tuple containing the observations and extras.</p>
@@ -1382,7 +1386,7 @@ app loop.</p></li>
 <dd><p>Set the seed for the environment.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab.envs.ManagerBasedEnv.seed.params.seed"></span><strong>seed</strong><a class="paramlink headerlink reference internal" href="#isaaclab.envs.ManagerBasedEnv.seed.params.seed">¶</a> – The seed for random generator. Defaults to -1.</p>
+<dd class="field-odd"><p><strong>seed</strong> – The seed for random generator. Defaults to -1.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>The seed used for random generator.</p>
@@ -1741,7 +1745,7 @@ in a vectorized environment.</p>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="isaaclab.envs.ManagerBasedRLEnv.metadata">
-<span class="sig-name descname"><span class="pre">metadata</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ClassVar</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)"><span class="pre">dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'render_modes':</span> <span class="pre">[None,</span> <span class="pre">'human',</span> <span class="pre">'rgb_array']}</span></em><a class="headerlink" href="#isaaclab.envs.ManagerBasedRLEnv.metadata" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">metadata</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ClassVar</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)"><span class="pre">dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'autoreset_mode':</span> <span class="pre">gymnasium.vector.AutoresetMode.SAME_STEP,</span> <span class="pre">'render_modes':</span> <span class="pre">[None,</span> <span class="pre">'human',</span> <span class="pre">'rgb_array']}</span></em><a class="headerlink" href="#isaaclab.envs.ManagerBasedRLEnv.metadata" title="Link to this definition">#</a></dt>
 <dd><p>Metadata for the environment.</p>
 </dd></dl>
 
@@ -1758,8 +1762,8 @@ in a vectorized environment.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.envs.ManagerBasedRLEnv.params.cfg"></span><strong>cfg</strong><a class="paramlink headerlink reference internal" href="#isaaclab.envs.ManagerBasedRLEnv.params.cfg">¶</a> – The configuration for the environment.</p></li>
-<li><p><span class="target" id="isaaclab.envs.ManagerBasedRLEnv.params.render_mode"></span><strong>render_mode</strong><a class="paramlink headerlink reference internal" href="#isaaclab.envs.ManagerBasedRLEnv.params.render_mode">¶</a> – The render mode for the environment. Defaults to None, which
+<li><p><strong>cfg</strong> – The configuration for the environment.</p></li>
+<li><p><strong>render_mode</strong> – The render mode for the environment. Defaults to None, which
 is similar to <code class="docutils literal notranslate"><span class="pre">&quot;human&quot;</span></code>.</p></li>
 </ul>
 </dd>
@@ -1828,7 +1832,7 @@ app loop.</p></li>
 </ul>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab.envs.ManagerBasedRLEnv.step.params.action"></span><strong>action</strong><a class="paramlink headerlink reference internal" href="#isaaclab.envs.ManagerBasedRLEnv.step.params.action">¶</a> – The actions to apply on the environment. Shape is (num_envs, action_dim).</p>
+<dd class="field-odd"><p><strong>action</strong> – The actions to apply on the environment. Shape is (num_envs, action_dim).</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>A tuple containing the observations, rewards, resets (terminated and truncated) and extras.</p>
@@ -1848,7 +1852,7 @@ x-by-y pixel image, suitable for turning into a video.</p></li>
 </ul>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab.envs.ManagerBasedRLEnv.render.params.recompute"></span><strong>recompute</strong><a class="paramlink headerlink reference internal" href="#isaaclab.envs.ManagerBasedRLEnv.render.params.recompute">¶</a> – Whether to force a render even if the simulator has already rendered the scene.
+<dd class="field-odd"><p><strong>recompute</strong> – Whether to force a render even if the simulator has already rendered the scene.
 Defaults to False.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -1888,7 +1892,7 @@ Defaults to False.</p>
 <dd><p>Export the IO descriptors for the environment.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab.envs.ManagerBasedRLEnv.export_IO_descriptors.params.output_dir"></span><strong>output_dir</strong><a class="paramlink headerlink reference internal" href="#isaaclab.envs.ManagerBasedRLEnv.export_IO_descriptors.params.output_dir">¶</a> – The directory to export the IO descriptors to.</p>
+<dd class="field-odd"><p><strong>output_dir</strong> – The directory to export the IO descriptors to.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1927,9 +1931,9 @@ are not repeated.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.envs.ManagerBasedRLEnv.reset.params.seed"></span><strong>seed</strong><a class="paramlink headerlink reference internal" href="#isaaclab.envs.ManagerBasedRLEnv.reset.params.seed">¶</a> – The seed to use for randomization. Defaults to None, in which case the seed is not set.</p></li>
-<li><p><span class="target" id="isaaclab.envs.ManagerBasedRLEnv.reset.params.env_ids"></span><strong>env_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab.envs.ManagerBasedRLEnv.reset.params.env_ids">¶</a> – The environment ids to reset. Defaults to None, in which case all environments are reset.</p></li>
-<li><p><span class="target" id="isaaclab.envs.ManagerBasedRLEnv.reset.params.options"></span><strong>options</strong><a class="paramlink headerlink reference internal" href="#isaaclab.envs.ManagerBasedRLEnv.reset.params.options">¶</a> – <p>Additional information to specify how the environment is reset. Defaults to None.</p>
+<li><p><strong>seed</strong> – The seed to use for randomization. Defaults to None, in which case the seed is not set.</p></li>
+<li><p><strong>env_ids</strong> – The environment ids to reset. Defaults to None, in which case all environments are reset.</p></li>
+<li><p><strong>options</strong> – <p>Additional information to specify how the environment is reset. Defaults to None.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>This argument is used for compatibility with Gymnasium environment definition.</p>
@@ -1955,11 +1959,11 @@ instead of using the randomization events for resetting the environments.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.envs.ManagerBasedRLEnv.reset_to.params.state"></span><strong>state</strong><a class="paramlink headerlink reference internal" href="#isaaclab.envs.ManagerBasedRLEnv.reset_to.params.state">¶</a> – The state to reset the specified environments to. Please refer to
+<li><p><strong>state</strong> – The state to reset the specified environments to. Please refer to
 <code class="xref py py-meth docutils literal notranslate"><span class="pre">InteractiveScene.get_state()</span></code> for the format.</p></li>
-<li><p><span class="target" id="isaaclab.envs.ManagerBasedRLEnv.reset_to.params.env_ids"></span><strong>env_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab.envs.ManagerBasedRLEnv.reset_to.params.env_ids">¶</a> – The environment ids to reset. Defaults to None, in which case all environments are reset.</p></li>
-<li><p><span class="target" id="isaaclab.envs.ManagerBasedRLEnv.reset_to.params.seed"></span><strong>seed</strong><a class="paramlink headerlink reference internal" href="#isaaclab.envs.ManagerBasedRLEnv.reset_to.params.seed">¶</a> – The seed to use for randomization. Defaults to None, in which case the seed is not set.</p></li>
-<li><p><span class="target" id="isaaclab.envs.ManagerBasedRLEnv.reset_to.params.is_relative"></span><strong>is_relative</strong><a class="paramlink headerlink reference internal" href="#isaaclab.envs.ManagerBasedRLEnv.reset_to.params.is_relative">¶</a> – If set to True, the state is considered relative to the environment origins.
+<li><p><strong>env_ids</strong> – The environment ids to reset. Defaults to None, in which case all environments are reset.</p></li>
+<li><p><strong>seed</strong> – The seed to use for randomization. Defaults to None, in which case the seed is not set.</p></li>
+<li><p><strong>is_relative</strong> – If set to True, the state is considered relative to the environment origins.
 Defaults to False.</p></li>
 </ul>
 </dd>
@@ -1972,7 +1976,7 @@ Defaults to False.</p></li>
 <dd><p>Set the seed for the environment.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab.envs.ManagerBasedRLEnv.seed.params.seed"></span><strong>seed</strong><a class="paramlink headerlink reference internal" href="#isaaclab.envs.ManagerBasedRLEnv.seed.params.seed">¶</a> – The seed for random generator. Defaults to -1.</p>
+<dd class="field-odd"><p><strong>seed</strong> – The seed for random generator. Defaults to -1.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>The seed used for random generator.</p>
@@ -2003,11 +2007,11 @@ Defaults to False.</p></li>
 <tr class="row-even"><td><p><a class="reference internal" href="#isaaclab.envs.ManagerBasedRLEnvCfg.is_finite_horizon" title="isaaclab.envs.ManagerBasedRLEnvCfg.is_finite_horizon"><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_finite_horizon</span></code></a></p></td>
 <td><p>Whether the learning task is treated as a finite or infinite horizon problem for the agent.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab.envs.ManagerBasedRLEnvCfg.episode_length_s" title="isaaclab.envs.ManagerBasedRLEnvCfg.episode_length_s"><code class="xref py py-obj docutils literal notranslate"><span class="pre">episode_length_s</span></code></a></p></td>
-<td><p>Duration of an episode (in seconds).</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab.envs.ManagerBasedRLEnvCfg.compute_final_obs" title="isaaclab.envs.ManagerBasedRLEnvCfg.compute_final_obs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">compute_final_obs</span></code></a></p></td>
+<td><p>Whether to capture the terminal observation before a Same-Step autoreset and expose it.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab.envs.ManagerBasedRLEnvCfg.rewards" title="isaaclab.envs.ManagerBasedRLEnvCfg.rewards"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rewards</span></code></a></p></td>
-<td><p>Reward settings.</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab.envs.ManagerBasedRLEnvCfg.episode_length_s" title="isaaclab.envs.ManagerBasedRLEnvCfg.episode_length_s"><code class="xref py py-obj docutils literal notranslate"><span class="pre">episode_length_s</span></code></a></p></td>
+<td><p>Duration of an episode (in seconds).</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab.envs.ManagerBasedRLEnvCfg.viewer" title="isaaclab.envs.ManagerBasedRLEnvCfg.viewer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">viewer</span></code></a></p></td>
 <td><p>Viewer configuration.</p></td>
@@ -2063,13 +2067,16 @@ Defaults to False.</p></li>
 <tr class="row-even"><td><p><a class="reference internal" href="#isaaclab.envs.ManagerBasedRLEnvCfg.video_recorder" title="isaaclab.envs.ManagerBasedRLEnvCfg.video_recorder"><code class="xref py py-obj docutils literal notranslate"><span class="pre">video_recorder</span></code></a></p></td>
 <td><p>Configuration for video recording when <code class="docutils literal notranslate"><span class="pre">render_mode=&quot;rgb_array&quot;</span></code> (i.e. <code class="docutils literal notranslate"><span class="pre">--video</span></code>).</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab.envs.ManagerBasedRLEnvCfg.terminations" title="isaaclab.envs.ManagerBasedRLEnvCfg.terminations"><code class="xref py py-obj docutils literal notranslate"><span class="pre">terminations</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab.envs.ManagerBasedRLEnvCfg.rewards" title="isaaclab.envs.ManagerBasedRLEnvCfg.rewards"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rewards</span></code></a></p></td>
+<td><p>Reward settings.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab.envs.ManagerBasedRLEnvCfg.terminations" title="isaaclab.envs.ManagerBasedRLEnvCfg.terminations"><code class="xref py py-obj docutils literal notranslate"><span class="pre">terminations</span></code></a></p></td>
 <td><p>Termination settings.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab.envs.ManagerBasedRLEnvCfg.curriculum" title="isaaclab.envs.ManagerBasedRLEnvCfg.curriculum"><code class="xref py py-obj docutils literal notranslate"><span class="pre">curriculum</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab.envs.ManagerBasedRLEnvCfg.curriculum" title="isaaclab.envs.ManagerBasedRLEnvCfg.curriculum"><code class="xref py py-obj docutils literal notranslate"><span class="pre">curriculum</span></code></a></p></td>
 <td><p>Curriculum settings.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab.envs.ManagerBasedRLEnvCfg.commands" title="isaaclab.envs.ManagerBasedRLEnvCfg.commands"><code class="xref py py-obj docutils literal notranslate"><span class="pre">commands</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab.envs.ManagerBasedRLEnvCfg.commands" title="isaaclab.envs.ManagerBasedRLEnvCfg.commands"><code class="xref py py-obj docutils literal notranslate"><span class="pre">commands</span></code></a></p></td>
 <td><p>Command settings.</p></td>
 </tr>
 </tbody>
@@ -2113,6 +2120,23 @@ wrappers to determine what type of done signal to send to the corresponding lear
 </dd></dl>
 
 <dl class="py attribute">
+<dt class="sig sig-object py" id="isaaclab.envs.ManagerBasedRLEnvCfg.compute_final_obs">
+<span class="sig-name descname"><span class="pre">compute_final_obs</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><span class="pre">bool</span></a></em><a class="headerlink" href="#isaaclab.envs.ManagerBasedRLEnvCfg.compute_final_obs" title="Link to this definition">#</a></dt>
+<dd><p>Whether to capture the terminal observation before a Same-Step autoreset and expose it.</p>
+<p>Under Same-Step autoreset (see <a class="reference internal" href="#isaaclab.envs.ManagerBasedRLEnv.metadata" title="isaaclab.envs.ManagerBasedRLEnv.metadata"><code class="xref py py-attr docutils literal notranslate"><span class="pre">metadata</span></code></a>), an environment
+that terminates is reset within the same <a class="reference internal" href="#isaaclab.envs.ManagerBasedRLEnv.step" title="isaaclab.envs.ManagerBasedRLEnv.step"><code class="xref py py-meth docutils literal notranslate"><span class="pre">step()</span></code></a> call, so the
+returned observation belongs to the <em>new</em> episode. When this flag is True, the observation is
+computed once more <em>before</em> the reset and stored under <code class="docutils literal notranslate"><span class="pre">extras[&quot;final_obs&quot;]</span></code>, so wrappers can
+report it as the true terminal observation for value bootstrapping.</p>
+<p>Defaults to False, which preserves the previous behavior: no terminal observation is captured,
+<code class="docutils literal notranslate"><span class="pre">extras[&quot;final_obs&quot;]</span></code> is not populated, and the extra observation computation is skipped.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Currently consumed by the <a class="reference internal" href="../lab_rl/isaaclab_rl.html#isaaclab_rl.sb3.Sb3VecEnvWrapper" title="isaaclab_rl.sb3.Sb3VecEnvWrapper"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sb3VecEnvWrapper</span></code></a> wrapper.</p>
+</div>
+</dd></dl>
+
+<dl class="py attribute">
 <dt class="sig sig-object py" id="isaaclab.envs.ManagerBasedRLEnvCfg.episode_length_s">
 <span class="sig-name descname"><span class="pre">episode_length_s</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></em><a class="headerlink" href="#isaaclab.envs.ManagerBasedRLEnvCfg.episode_length_s" title="Link to this definition">#</a></dt>
 <dd><p>Duration of an episode (in seconds).</p>
@@ -2122,13 +2146,6 @@ wrappers to determine what type of done signal to send to the corresponding lear
 </div>
 <p>For example, if the decimation rate is 10, the physics time step is 0.01, and the episode length is 10 seconds,
 then the episode length in steps is 100.</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="isaaclab.envs.ManagerBasedRLEnvCfg.rewards">
-<span class="sig-name descname"><span class="pre">rewards</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.14)"><span class="pre">object</span></a></em><a class="headerlink" href="#isaaclab.envs.ManagerBasedRLEnvCfg.rewards" title="Link to this definition">#</a></dt>
-<dd><p>Reward settings.</p>
-<p>Please refer to the <a class="reference internal" href="isaaclab.managers.html#isaaclab.managers.RewardManager" title="isaaclab.managers.RewardManager"><code class="xref py py-class docutils literal notranslate"><span class="pre">isaaclab.managers.RewardManager</span></code></a> class for more details.</p>
 </dd></dl>
 
 <dl class="py attribute">
@@ -2279,6 +2296,13 @@ IsaacTeleop stack when present.</p>
 </dd></dl>
 
 <dl class="py attribute">
+<dt class="sig sig-object py" id="isaaclab.envs.ManagerBasedRLEnvCfg.rewards">
+<span class="sig-name descname"><span class="pre">rewards</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.14)"><span class="pre">object</span></a></em><a class="headerlink" href="#isaaclab.envs.ManagerBasedRLEnvCfg.rewards" title="Link to this definition">#</a></dt>
+<dd><p>Reward settings.</p>
+<p>Please refer to the <a class="reference internal" href="isaaclab.managers.html#isaaclab.managers.RewardManager" title="isaaclab.managers.RewardManager"><code class="xref py py-class docutils literal notranslate"><span class="pre">isaaclab.managers.RewardManager</span></code></a> class for more details.</p>
+</dd></dl>
+
+<dl class="py attribute">
 <dt class="sig sig-object py" id="isaaclab.envs.ManagerBasedRLEnvCfg.terminations">
 <span class="sig-name descname"><span class="pre">terminations</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.14)"><span class="pre">object</span></a></em><a class="headerlink" href="#isaaclab.envs.ManagerBasedRLEnvCfg.terminations" title="Link to this definition">#</a></dt>
 <dd><p>Termination settings.</p>
@@ -2396,7 +2420,7 @@ in a vectorized environment.</p>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="isaaclab.envs.DirectRLEnv.metadata">
-<span class="sig-name descname"><span class="pre">metadata</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ClassVar</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)"><span class="pre">dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'render_modes':</span> <span class="pre">[None,</span> <span class="pre">'human',</span> <span class="pre">'rgb_array']}</span></em><a class="headerlink" href="#isaaclab.envs.DirectRLEnv.metadata" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">metadata</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ClassVar</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)"><span class="pre">dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'autoreset_mode':</span> <span class="pre">gymnasium.vector.AutoresetMode.SAME_STEP,</span> <span class="pre">'render_modes':</span> <span class="pre">[None,</span> <span class="pre">'human',</span> <span class="pre">'rgb_array']}</span></em><a class="headerlink" href="#isaaclab.envs.DirectRLEnv.metadata" title="Link to this definition">#</a></dt>
 <dd><p>Metadata for the environment.</p>
 </dd></dl>
 
@@ -2407,8 +2431,8 @@ in a vectorized environment.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.envs.DirectRLEnv.params.cfg"></span><strong>cfg</strong><a class="paramlink headerlink reference internal" href="#isaaclab.envs.DirectRLEnv.params.cfg">¶</a> – The configuration object for the environment.</p></li>
-<li><p><span class="target" id="isaaclab.envs.DirectRLEnv.params.render_mode"></span><strong>render_mode</strong><a class="paramlink headerlink reference internal" href="#isaaclab.envs.DirectRLEnv.params.render_mode">¶</a> – The render mode for the environment. Defaults to None, which
+<li><p><strong>cfg</strong> – The configuration object for the environment.</p></li>
+<li><p><strong>render_mode</strong> – The render mode for the environment. Defaults to None, which
 is similar to <code class="docutils literal notranslate"><span class="pre">&quot;human&quot;</span></code>.</p></li>
 </ul>
 </dd>
@@ -2467,8 +2491,8 @@ are not repeated.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.envs.DirectRLEnv.reset.params.seed"></span><strong>seed</strong><a class="paramlink headerlink reference internal" href="#isaaclab.envs.DirectRLEnv.reset.params.seed">¶</a> – The seed to use for randomization. Defaults to None, in which case the seed is not set.</p></li>
-<li><p><span class="target" id="isaaclab.envs.DirectRLEnv.reset.params.options"></span><strong>options</strong><a class="paramlink headerlink reference internal" href="#isaaclab.envs.DirectRLEnv.reset.params.options">¶</a> – <p>Additional information to specify how the environment is reset. Defaults to None.</p>
+<li><p><strong>seed</strong> – The seed to use for randomization. Defaults to None, in which case the seed is not set.</p></li>
+<li><p><strong>options</strong> – <p>Additional information to specify how the environment is reset. Defaults to None.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>This argument is used for compatibility with Gymnasium environment definition.</p>
@@ -2513,7 +2537,7 @@ app loop.</p></li>
 </ul>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab.envs.DirectRLEnv.step.params.action"></span><strong>action</strong><a class="paramlink headerlink reference internal" href="#isaaclab.envs.DirectRLEnv.step.params.action">¶</a> – The actions to apply on the environment. Shape is (num_envs, action_dim).</p>
+<dd class="field-odd"><p><strong>action</strong> – The actions to apply on the environment. Shape is (num_envs, action_dim).</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>A tuple containing the observations, rewards, resets (terminated and truncated) and extras.</p>
@@ -2527,7 +2551,7 @@ app loop.</p></li>
 <dd><p>Set the seed for the environment.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab.envs.DirectRLEnv.seed.params.seed"></span><strong>seed</strong><a class="paramlink headerlink reference internal" href="#isaaclab.envs.DirectRLEnv.seed.params.seed">¶</a> – The seed for random generator. Defaults to -1.</p>
+<dd class="field-odd"><p><strong>seed</strong> – The seed for random generator. Defaults to -1.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>The seed used for random generator.</p>
@@ -2547,7 +2571,7 @@ x-by-y pixel image, suitable for turning into a video.</p></li>
 </ul>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab.envs.DirectRLEnv.render.params.recompute"></span><strong>recompute</strong><a class="paramlink headerlink reference internal" href="#isaaclab.envs.DirectRLEnv.render.params.recompute">¶</a> – Whether to force a render even if the simulator has already rendered the scene.
+<dd class="field-odd"><p><strong>recompute</strong> – Whether to force a render even if the simulator has already rendered the scene.
 Defaults to False.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -2576,7 +2600,7 @@ Defaults to False.</p>
 <dd><p>Toggles the environment debug visualization.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab.envs.DirectRLEnv.set_debug_vis.params.debug_vis"></span><strong>debug_vis</strong><a class="paramlink headerlink reference internal" href="#isaaclab.envs.DirectRLEnv.set_debug_vis.params.debug_vis">¶</a> – Whether to visualize the environment debug visualization.</p>
+<dd class="field-odd"><p><strong>debug_vis</strong> – Whether to visualize the environment debug visualization.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>Whether the debug visualization was successfully set. False if the environment
@@ -2619,55 +2643,58 @@ does not support debug visualization.</p>
 <tr class="row-even"><td><p><a class="reference internal" href="#isaaclab.envs.DirectRLEnvCfg.is_finite_horizon" title="isaaclab.envs.DirectRLEnvCfg.is_finite_horizon"><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_finite_horizon</span></code></a></p></td>
 <td><p>Whether the learning task is treated as a finite or infinite horizon problem for the agent.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab.envs.DirectRLEnvCfg.episode_length_s" title="isaaclab.envs.DirectRLEnvCfg.episode_length_s"><code class="xref py py-obj docutils literal notranslate"><span class="pre">episode_length_s</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab.envs.DirectRLEnvCfg.compute_final_obs" title="isaaclab.envs.DirectRLEnvCfg.compute_final_obs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">compute_final_obs</span></code></a></p></td>
+<td><p>Whether to capture the terminal observation before a Same-Step autoreset and expose it.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab.envs.DirectRLEnvCfg.episode_length_s" title="isaaclab.envs.DirectRLEnvCfg.episode_length_s"><code class="xref py py-obj docutils literal notranslate"><span class="pre">episode_length_s</span></code></a></p></td>
 <td><p>Duration of an episode (in seconds).</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab.envs.DirectRLEnvCfg.scene" title="isaaclab.envs.DirectRLEnvCfg.scene"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scene</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab.envs.DirectRLEnvCfg.scene" title="isaaclab.envs.DirectRLEnvCfg.scene"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scene</span></code></a></p></td>
 <td><p>Scene settings.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab.envs.DirectRLEnvCfg.events" title="isaaclab.envs.DirectRLEnvCfg.events"><code class="xref py py-obj docutils literal notranslate"><span class="pre">events</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab.envs.DirectRLEnvCfg.events" title="isaaclab.envs.DirectRLEnvCfg.events"><code class="xref py py-obj docutils literal notranslate"><span class="pre">events</span></code></a></p></td>
 <td><p>Event settings.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab.envs.DirectRLEnvCfg.observation_space" title="isaaclab.envs.DirectRLEnvCfg.observation_space"><code class="xref py py-obj docutils literal notranslate"><span class="pre">observation_space</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab.envs.DirectRLEnvCfg.observation_space" title="isaaclab.envs.DirectRLEnvCfg.observation_space"><code class="xref py py-obj docutils literal notranslate"><span class="pre">observation_space</span></code></a></p></td>
 <td><p>Observation space definition.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab.envs.DirectRLEnvCfg.num_observations" title="isaaclab.envs.DirectRLEnvCfg.num_observations"><code class="xref py py-obj docutils literal notranslate"><span class="pre">num_observations</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab.envs.DirectRLEnvCfg.num_observations" title="isaaclab.envs.DirectRLEnvCfg.num_observations"><code class="xref py py-obj docutils literal notranslate"><span class="pre">num_observations</span></code></a></p></td>
 <td><p>The dimension of the observation space from each environment instance.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab.envs.DirectRLEnvCfg.state_space" title="isaaclab.envs.DirectRLEnvCfg.state_space"><code class="xref py py-obj docutils literal notranslate"><span class="pre">state_space</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab.envs.DirectRLEnvCfg.state_space" title="isaaclab.envs.DirectRLEnvCfg.state_space"><code class="xref py py-obj docutils literal notranslate"><span class="pre">state_space</span></code></a></p></td>
 <td><p>State space definition.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab.envs.DirectRLEnvCfg.num_states" title="isaaclab.envs.DirectRLEnvCfg.num_states"><code class="xref py py-obj docutils literal notranslate"><span class="pre">num_states</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab.envs.DirectRLEnvCfg.num_states" title="isaaclab.envs.DirectRLEnvCfg.num_states"><code class="xref py py-obj docutils literal notranslate"><span class="pre">num_states</span></code></a></p></td>
 <td><p>The dimension of the state-space from each environment instance.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab.envs.DirectRLEnvCfg.observation_noise_model" title="isaaclab.envs.DirectRLEnvCfg.observation_noise_model"><code class="xref py py-obj docutils literal notranslate"><span class="pre">observation_noise_model</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab.envs.DirectRLEnvCfg.observation_noise_model" title="isaaclab.envs.DirectRLEnvCfg.observation_noise_model"><code class="xref py py-obj docutils literal notranslate"><span class="pre">observation_noise_model</span></code></a></p></td>
 <td><p>The noise model to apply to the computed observations from the environment.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab.envs.DirectRLEnvCfg.action_space" title="isaaclab.envs.DirectRLEnvCfg.action_space"><code class="xref py py-obj docutils literal notranslate"><span class="pre">action_space</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab.envs.DirectRLEnvCfg.action_space" title="isaaclab.envs.DirectRLEnvCfg.action_space"><code class="xref py py-obj docutils literal notranslate"><span class="pre">action_space</span></code></a></p></td>
 <td><p>Action space definition.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab.envs.DirectRLEnvCfg.num_actions" title="isaaclab.envs.DirectRLEnvCfg.num_actions"><code class="xref py py-obj docutils literal notranslate"><span class="pre">num_actions</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab.envs.DirectRLEnvCfg.num_actions" title="isaaclab.envs.DirectRLEnvCfg.num_actions"><code class="xref py py-obj docutils literal notranslate"><span class="pre">num_actions</span></code></a></p></td>
 <td><p>The dimension of the action space for each environment.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab.envs.DirectRLEnvCfg.action_noise_model" title="isaaclab.envs.DirectRLEnvCfg.action_noise_model"><code class="xref py py-obj docutils literal notranslate"><span class="pre">action_noise_model</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab.envs.DirectRLEnvCfg.action_noise_model" title="isaaclab.envs.DirectRLEnvCfg.action_noise_model"><code class="xref py py-obj docutils literal notranslate"><span class="pre">action_noise_model</span></code></a></p></td>
 <td><p>The noise model applied to the actions provided to the environment.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab.envs.DirectRLEnvCfg.rerender_on_reset" title="isaaclab.envs.DirectRLEnvCfg.rerender_on_reset"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rerender_on_reset</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab.envs.DirectRLEnvCfg.rerender_on_reset" title="isaaclab.envs.DirectRLEnvCfg.rerender_on_reset"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rerender_on_reset</span></code></a></p></td>
 <td><p>Whether a render step is performed again after at least one environment has been reset.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab.envs.DirectRLEnvCfg.num_rerenders_on_reset" title="isaaclab.envs.DirectRLEnvCfg.num_rerenders_on_reset"><code class="xref py py-obj docutils literal notranslate"><span class="pre">num_rerenders_on_reset</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab.envs.DirectRLEnvCfg.num_rerenders_on_reset" title="isaaclab.envs.DirectRLEnvCfg.num_rerenders_on_reset"><code class="xref py py-obj docutils literal notranslate"><span class="pre">num_rerenders_on_reset</span></code></a></p></td>
 <td><p>Number of render steps to perform after reset.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab.envs.DirectRLEnvCfg.wait_for_textures" title="isaaclab.envs.DirectRLEnvCfg.wait_for_textures"><code class="xref py py-obj docutils literal notranslate"><span class="pre">wait_for_textures</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab.envs.DirectRLEnvCfg.wait_for_textures" title="isaaclab.envs.DirectRLEnvCfg.wait_for_textures"><code class="xref py py-obj docutils literal notranslate"><span class="pre">wait_for_textures</span></code></a></p></td>
 <td><p>True to wait for assets to be loaded completely, False otherwise.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab.envs.DirectRLEnvCfg.xr" title="isaaclab.envs.DirectRLEnvCfg.xr"><code class="xref py py-obj docutils literal notranslate"><span class="pre">xr</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab.envs.DirectRLEnvCfg.xr" title="isaaclab.envs.DirectRLEnvCfg.xr"><code class="xref py py-obj docutils literal notranslate"><span class="pre">xr</span></code></a></p></td>
 <td><p>Configuration for viewing and interacting with the environment through an XR device.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab.envs.DirectRLEnvCfg.log_dir" title="isaaclab.envs.DirectRLEnvCfg.log_dir"><code class="xref py py-obj docutils literal notranslate"><span class="pre">log_dir</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab.envs.DirectRLEnvCfg.log_dir" title="isaaclab.envs.DirectRLEnvCfg.log_dir"><code class="xref py py-obj docutils literal notranslate"><span class="pre">log_dir</span></code></a></p></td>
 <td><p>Directory for logging experiment artifacts.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab.envs.DirectRLEnvCfg.video_recorder" title="isaaclab.envs.DirectRLEnvCfg.video_recorder"><code class="xref py py-obj docutils literal notranslate"><span class="pre">video_recorder</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab.envs.DirectRLEnvCfg.video_recorder" title="isaaclab.envs.DirectRLEnvCfg.video_recorder"><code class="xref py py-obj docutils literal notranslate"><span class="pre">video_recorder</span></code></a></p></td>
 <td><p>Configuration for video recording when <code class="docutils literal notranslate"><span class="pre">render_mode=&quot;rgb_array&quot;</span></code> (i.e. <code class="docutils literal notranslate"><span class="pre">--video</span></code>).</p></td>
 </tr>
 </tbody>
@@ -2738,6 +2765,24 @@ is sent to the agent. If False, then the environment is treated as an infinite h
 <p class="admonition-title">Note</p>
 <p>The base <a class="reference internal" href="#isaaclab.envs.ManagerBasedRLEnv" title="isaaclab.envs.ManagerBasedRLEnv"><code class="xref py py-class docutils literal notranslate"><span class="pre">ManagerBasedRLEnv</span></code></a> class does not use this flag directly. It is used by the environment
 wrappers to determine what type of done signal to send to the corresponding learning agent.</p>
+</div>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="isaaclab.envs.DirectRLEnvCfg.compute_final_obs">
+<span class="sig-name descname"><span class="pre">compute_final_obs</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><span class="pre">bool</span></a></em><a class="headerlink" href="#isaaclab.envs.DirectRLEnvCfg.compute_final_obs" title="Link to this definition">#</a></dt>
+<dd><p>Whether to capture the terminal observation before a Same-Step autoreset and expose it.</p>
+<p>Under Same-Step autoreset (see <a class="reference internal" href="#isaaclab.envs.DirectRLEnv.metadata" title="isaaclab.envs.DirectRLEnv.metadata"><code class="xref py py-attr docutils literal notranslate"><span class="pre">metadata</span></code></a>), an environment that
+terminates is reset within the same <a class="reference internal" href="#isaaclab.envs.DirectRLEnv.step" title="isaaclab.envs.DirectRLEnv.step"><code class="xref py py-meth docutils literal notranslate"><span class="pre">step()</span></code></a> call, so the returned
+observation belongs to the <em>new</em> episode. When this flag is True, the observation is computed once
+more <em>before</em> the reset and stored under <code class="docutils literal notranslate"><span class="pre">extras[&quot;final_obs&quot;]</span></code> (with the same observation noise
+as the returned observation applied), so wrappers can report it as the true terminal observation
+for value bootstrapping.</p>
+<p>Defaults to False, which preserves the previous behavior: no terminal observation is captured,
+<code class="docutils literal notranslate"><span class="pre">extras[&quot;final_obs&quot;]</span></code> is not populated, and the extra observation computation is skipped.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Currently consumed by the <a class="reference internal" href="../lab_rl/isaaclab_rl.html#isaaclab_rl.sb3.Sb3VecEnvWrapper" title="isaaclab_rl.sb3.Sb3VecEnvWrapper"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sb3VecEnvWrapper</span></code></a> wrapper.</p>
 </div>
 </dd></dl>
 
@@ -3074,7 +3119,7 @@ in a vectorized environment.</p>
 </div>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="isaaclab.envs.DirectMARLEnv.metadata">
-<span class="sig-name descname"><span class="pre">metadata</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ClassVar</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)"><span class="pre">dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'render_modes':</span> <span class="pre">[None,</span> <span class="pre">'human',</span> <span class="pre">'rgb_array']}</span></em><a class="headerlink" href="#isaaclab.envs.DirectMARLEnv.metadata" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">metadata</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ClassVar</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)"><span class="pre">dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'autoreset_mode':</span> <span class="pre">gymnasium.vector.AutoresetMode.SAME_STEP,</span> <span class="pre">'render_modes':</span> <span class="pre">[None,</span> <span class="pre">'human',</span> <span class="pre">'rgb_array']}</span></em><a class="headerlink" href="#isaaclab.envs.DirectMARLEnv.metadata" title="Link to this definition">#</a></dt>
 <dd><p>Metadata for the environment.</p>
 </dd></dl>
 
@@ -3085,8 +3130,8 @@ in a vectorized environment.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.envs.DirectMARLEnv.params.cfg"></span><strong>cfg</strong><a class="paramlink headerlink reference internal" href="#isaaclab.envs.DirectMARLEnv.params.cfg">¶</a> – The configuration object for the environment.</p></li>
-<li><p><span class="target" id="isaaclab.envs.DirectMARLEnv.params.render_mode"></span><strong>render_mode</strong><a class="paramlink headerlink reference internal" href="#isaaclab.envs.DirectMARLEnv.params.render_mode">¶</a> – The render mode for the environment. Defaults to None, which
+<li><p><strong>cfg</strong> – The configuration object for the environment.</p></li>
+<li><p><strong>render_mode</strong> – The render mode for the environment. Defaults to None, which
 is similar to <code class="docutils literal notranslate"><span class="pre">&quot;human&quot;</span></code>.</p></li>
 </ul>
 </dd>
@@ -3184,8 +3229,8 @@ is similar to <code class="docutils literal notranslate"><span class="pre">&quot
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.envs.DirectMARLEnv.reset.params.seed"></span><strong>seed</strong><a class="paramlink headerlink reference internal" href="#isaaclab.envs.DirectMARLEnv.reset.params.seed">¶</a> – The seed to use for randomization. Defaults to None, in which case the seed is not set.</p></li>
-<li><p><span class="target" id="isaaclab.envs.DirectMARLEnv.reset.params.options"></span><strong>options</strong><a class="paramlink headerlink reference internal" href="#isaaclab.envs.DirectMARLEnv.reset.params.options">¶</a> – <p>Additional information to specify how the environment is reset. Defaults to None.</p>
+<li><p><strong>seed</strong> – The seed to use for randomization. Defaults to None, in which case the seed is not set.</p></li>
+<li><p><strong>options</strong> – <p>Additional information to specify how the environment is reset. Defaults to None.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>This argument is used for compatibility with Gymnasium environment definition.</p>
@@ -3229,7 +3274,7 @@ app loop.</p></li>
 </ul>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab.envs.DirectMARLEnv.step.params.actions"></span><strong>actions</strong><a class="paramlink headerlink reference internal" href="#isaaclab.envs.DirectMARLEnv.step.params.actions">¶</a> – The actions to apply on the environment (keyed by the agent ID).
+<dd class="field-odd"><p><strong>actions</strong> – The actions to apply on the environment (keyed by the agent ID).
 Shape of individual tensors is (num_envs, action_dim).</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -3258,7 +3303,7 @@ using the <a class="reference internal" href="#isaaclab.envs.DirectMARLEnvCfg.st
 <dd><p>Set the seed for the environment.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab.envs.DirectMARLEnv.seed.params.seed"></span><strong>seed</strong><a class="paramlink headerlink reference internal" href="#isaaclab.envs.DirectMARLEnv.seed.params.seed">¶</a> – The seed for random generator. Defaults to -1.</p>
+<dd class="field-odd"><p><strong>seed</strong> – The seed for random generator. Defaults to -1.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>The seed used for random generator.</p>
@@ -3278,7 +3323,7 @@ x-by-y pixel image, suitable for turning into a video.</p></li>
 </ul>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab.envs.DirectMARLEnv.render.params.recompute"></span><strong>recompute</strong><a class="paramlink headerlink reference internal" href="#isaaclab.envs.DirectMARLEnv.render.params.recompute">¶</a> – Whether to force a render even if the simulator has already rendered the scene.
+<dd class="field-odd"><p><strong>recompute</strong> – Whether to force a render even if the simulator has already rendered the scene.
 Defaults to False.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -3307,7 +3352,7 @@ Defaults to False.</p>
 <dd><p>Toggles the environment debug visualization.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab.envs.DirectMARLEnv.set_debug_vis.params.debug_vis"></span><strong>debug_vis</strong><a class="paramlink headerlink reference internal" href="#isaaclab.envs.DirectMARLEnv.set_debug_vis.params.debug_vis">¶</a> – Whether to visualize the environment debug visualization.</p>
+<dd class="field-odd"><p><strong>debug_vis</strong> – Whether to visualize the environment debug visualization.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>Whether the debug visualization was successfully set. False if the environment
@@ -3350,49 +3395,52 @@ does not support debug visualization.</p>
 <tr class="row-even"><td><p><a class="reference internal" href="#isaaclab.envs.DirectMARLEnvCfg.is_finite_horizon" title="isaaclab.envs.DirectMARLEnvCfg.is_finite_horizon"><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_finite_horizon</span></code></a></p></td>
 <td><p>Whether the learning task is treated as a finite or infinite horizon problem for the agent.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab.envs.DirectMARLEnvCfg.episode_length_s" title="isaaclab.envs.DirectMARLEnvCfg.episode_length_s"><code class="xref py py-obj docutils literal notranslate"><span class="pre">episode_length_s</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab.envs.DirectMARLEnvCfg.compute_final_obs" title="isaaclab.envs.DirectMARLEnvCfg.compute_final_obs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">compute_final_obs</span></code></a></p></td>
+<td><p>Whether to capture the per-agent terminal observation before a Same-Step autoreset and expose it.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab.envs.DirectMARLEnvCfg.episode_length_s" title="isaaclab.envs.DirectMARLEnvCfg.episode_length_s"><code class="xref py py-obj docutils literal notranslate"><span class="pre">episode_length_s</span></code></a></p></td>
 <td><p>Duration of an episode (in seconds).</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab.envs.DirectMARLEnvCfg.scene" title="isaaclab.envs.DirectMARLEnvCfg.scene"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scene</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab.envs.DirectMARLEnvCfg.scene" title="isaaclab.envs.DirectMARLEnvCfg.scene"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scene</span></code></a></p></td>
 <td><p>Scene settings.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab.envs.DirectMARLEnvCfg.events" title="isaaclab.envs.DirectMARLEnvCfg.events"><code class="xref py py-obj docutils literal notranslate"><span class="pre">events</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab.envs.DirectMARLEnvCfg.events" title="isaaclab.envs.DirectMARLEnvCfg.events"><code class="xref py py-obj docutils literal notranslate"><span class="pre">events</span></code></a></p></td>
 <td><p>Event settings.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab.envs.DirectMARLEnvCfg.observation_spaces" title="isaaclab.envs.DirectMARLEnvCfg.observation_spaces"><code class="xref py py-obj docutils literal notranslate"><span class="pre">observation_spaces</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab.envs.DirectMARLEnvCfg.observation_spaces" title="isaaclab.envs.DirectMARLEnvCfg.observation_spaces"><code class="xref py py-obj docutils literal notranslate"><span class="pre">observation_spaces</span></code></a></p></td>
 <td><p>Observation space definition for each agent.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab.envs.DirectMARLEnvCfg.num_observations" title="isaaclab.envs.DirectMARLEnvCfg.num_observations"><code class="xref py py-obj docutils literal notranslate"><span class="pre">num_observations</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab.envs.DirectMARLEnvCfg.num_observations" title="isaaclab.envs.DirectMARLEnvCfg.num_observations"><code class="xref py py-obj docutils literal notranslate"><span class="pre">num_observations</span></code></a></p></td>
 <td><p>The dimension of the observation space for each agent.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab.envs.DirectMARLEnvCfg.state_space" title="isaaclab.envs.DirectMARLEnvCfg.state_space"><code class="xref py py-obj docutils literal notranslate"><span class="pre">state_space</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab.envs.DirectMARLEnvCfg.state_space" title="isaaclab.envs.DirectMARLEnvCfg.state_space"><code class="xref py py-obj docutils literal notranslate"><span class="pre">state_space</span></code></a></p></td>
 <td><p>State space definition.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab.envs.DirectMARLEnvCfg.num_states" title="isaaclab.envs.DirectMARLEnvCfg.num_states"><code class="xref py py-obj docutils literal notranslate"><span class="pre">num_states</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab.envs.DirectMARLEnvCfg.num_states" title="isaaclab.envs.DirectMARLEnvCfg.num_states"><code class="xref py py-obj docutils literal notranslate"><span class="pre">num_states</span></code></a></p></td>
 <td><p>The dimension of the state space from each environment instance.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab.envs.DirectMARLEnvCfg.observation_noise_model" title="isaaclab.envs.DirectMARLEnvCfg.observation_noise_model"><code class="xref py py-obj docutils literal notranslate"><span class="pre">observation_noise_model</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab.envs.DirectMARLEnvCfg.observation_noise_model" title="isaaclab.envs.DirectMARLEnvCfg.observation_noise_model"><code class="xref py py-obj docutils literal notranslate"><span class="pre">observation_noise_model</span></code></a></p></td>
 <td><p>The noise model to apply to the computed observations from the environment.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab.envs.DirectMARLEnvCfg.action_spaces" title="isaaclab.envs.DirectMARLEnvCfg.action_spaces"><code class="xref py py-obj docutils literal notranslate"><span class="pre">action_spaces</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab.envs.DirectMARLEnvCfg.action_spaces" title="isaaclab.envs.DirectMARLEnvCfg.action_spaces"><code class="xref py py-obj docutils literal notranslate"><span class="pre">action_spaces</span></code></a></p></td>
 <td><p>Action space definition for each agent.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab.envs.DirectMARLEnvCfg.num_actions" title="isaaclab.envs.DirectMARLEnvCfg.num_actions"><code class="xref py py-obj docutils literal notranslate"><span class="pre">num_actions</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab.envs.DirectMARLEnvCfg.num_actions" title="isaaclab.envs.DirectMARLEnvCfg.num_actions"><code class="xref py py-obj docutils literal notranslate"><span class="pre">num_actions</span></code></a></p></td>
 <td><p>The dimension of the action space for each agent.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab.envs.DirectMARLEnvCfg.action_noise_model" title="isaaclab.envs.DirectMARLEnvCfg.action_noise_model"><code class="xref py py-obj docutils literal notranslate"><span class="pre">action_noise_model</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab.envs.DirectMARLEnvCfg.action_noise_model" title="isaaclab.envs.DirectMARLEnvCfg.action_noise_model"><code class="xref py py-obj docutils literal notranslate"><span class="pre">action_noise_model</span></code></a></p></td>
 <td><p>The noise model applied to the actions provided to the environment.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab.envs.DirectMARLEnvCfg.possible_agents" title="isaaclab.envs.DirectMARLEnvCfg.possible_agents"><code class="xref py py-obj docutils literal notranslate"><span class="pre">possible_agents</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab.envs.DirectMARLEnvCfg.possible_agents" title="isaaclab.envs.DirectMARLEnvCfg.possible_agents"><code class="xref py py-obj docutils literal notranslate"><span class="pre">possible_agents</span></code></a></p></td>
 <td><p>A list of all possible agents the environment could generate.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab.envs.DirectMARLEnvCfg.xr" title="isaaclab.envs.DirectMARLEnvCfg.xr"><code class="xref py py-obj docutils literal notranslate"><span class="pre">xr</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab.envs.DirectMARLEnvCfg.xr" title="isaaclab.envs.DirectMARLEnvCfg.xr"><code class="xref py py-obj docutils literal notranslate"><span class="pre">xr</span></code></a></p></td>
 <td><p>Configuration for viewing and interacting with the environment through an XR device.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab.envs.DirectMARLEnvCfg.log_dir" title="isaaclab.envs.DirectMARLEnvCfg.log_dir"><code class="xref py py-obj docutils literal notranslate"><span class="pre">log_dir</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab.envs.DirectMARLEnvCfg.log_dir" title="isaaclab.envs.DirectMARLEnvCfg.log_dir"><code class="xref py py-obj docutils literal notranslate"><span class="pre">log_dir</span></code></a></p></td>
 <td><p>Directory for logging experiment artifacts.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab.envs.DirectMARLEnvCfg.video_recorder" title="isaaclab.envs.DirectMARLEnvCfg.video_recorder"><code class="xref py py-obj docutils literal notranslate"><span class="pre">video_recorder</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab.envs.DirectMARLEnvCfg.video_recorder" title="isaaclab.envs.DirectMARLEnvCfg.video_recorder"><code class="xref py py-obj docutils literal notranslate"><span class="pre">video_recorder</span></code></a></p></td>
 <td><p>Configuration for video recording when <code class="docutils literal notranslate"><span class="pre">render_mode=&quot;rgb_array&quot;</span></code> (i.e. <code class="docutils literal notranslate"><span class="pre">--video</span></code>).</p></td>
 </tr>
 </tbody>
@@ -3464,6 +3512,20 @@ is sent to the agent. If False, then the environment is treated as an infinite h
 <p>The base <a class="reference internal" href="#isaaclab.envs.ManagerBasedRLEnv" title="isaaclab.envs.ManagerBasedRLEnv"><code class="xref py py-class docutils literal notranslate"><span class="pre">ManagerBasedRLEnv</span></code></a> class does not use this flag directly. It is used by the environment
 wrappers to determine what type of done signal to send to the corresponding learning agent.</p>
 </div>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="isaaclab.envs.DirectMARLEnvCfg.compute_final_obs">
+<span class="sig-name descname"><span class="pre">compute_final_obs</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><span class="pre">bool</span></a></em><a class="headerlink" href="#isaaclab.envs.DirectMARLEnvCfg.compute_final_obs" title="Link to this definition">#</a></dt>
+<dd><p>Whether to capture the per-agent terminal observation before a Same-Step autoreset and expose it.</p>
+<p>Under Same-Step autoreset (see <a class="reference internal" href="#isaaclab.envs.DirectMARLEnv.metadata" title="isaaclab.envs.DirectMARLEnv.metadata"><code class="xref py py-attr docutils literal notranslate"><span class="pre">metadata</span></code></a>), an agent whose
+environment terminates is reset within the same <a class="reference internal" href="#isaaclab.envs.DirectMARLEnv.step" title="isaaclab.envs.DirectMARLEnv.step"><code class="xref py py-meth docutils literal notranslate"><span class="pre">step()</span></code></a> call, so
+the returned observation belongs to the <em>new</em> episode. When this flag is True, the observation is
+computed once more <em>before</em> the reset and stored per agent under <code class="docutils literal notranslate"><span class="pre">extras[agent][&quot;final_obs&quot;]</span></code>
+(with the same observation noise as the returned observation applied), so wrappers can report it as
+the true terminal observation for value bootstrapping.</p>
+<p>Defaults to False, which preserves the previous behavior: no terminal observation is captured,
+<code class="docutils literal notranslate"><span class="pre">extras[agent][&quot;final_obs&quot;]</span></code> is not populated, and the extra observation computation is skipped.</p>
 </dd></dl>
 
 <dl class="py attribute">
@@ -3808,8 +3870,8 @@ pick-and-place and interacting with articulated objects.</p></li>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.envs.ManagerBasedRLMimicEnv.get_robot_eef_pose.params.eef_name"></span><strong>eef_name</strong><a class="paramlink headerlink reference internal" href="#isaaclab.envs.ManagerBasedRLMimicEnv.get_robot_eef_pose.params.eef_name">¶</a> – Name of the end effector.</p></li>
-<li><p><span class="target" id="isaaclab.envs.ManagerBasedRLMimicEnv.get_robot_eef_pose.params.env_ids"></span><strong>env_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab.envs.ManagerBasedRLMimicEnv.get_robot_eef_pose.params.env_ids">¶</a> – Environment indices to get the pose for. If None, all envs are considered.</p></li>
+<li><p><strong>eef_name</strong> – Name of the end effector.</p></li>
+<li><p><strong>env_ids</strong> – Environment indices to get the pose for. If None, all envs are considered.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -3827,10 +3889,10 @@ Noise is added to the target pose action if specified.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.envs.ManagerBasedRLMimicEnv.target_eef_pose_to_action.params.target_eef_pose_dict"></span><strong>target_eef_pose_dict</strong><a class="paramlink headerlink reference internal" href="#isaaclab.envs.ManagerBasedRLMimicEnv.target_eef_pose_to_action.params.target_eef_pose_dict">¶</a> – Dictionary of 4x4 target eef pose for each end-effector.</p></li>
-<li><p><span class="target" id="isaaclab.envs.ManagerBasedRLMimicEnv.target_eef_pose_to_action.params.gripper_action_dict"></span><strong>gripper_action_dict</strong><a class="paramlink headerlink reference internal" href="#isaaclab.envs.ManagerBasedRLMimicEnv.target_eef_pose_to_action.params.gripper_action_dict">¶</a> – Dictionary of gripper actions for each end-effector.</p></li>
-<li><p><span class="target" id="isaaclab.envs.ManagerBasedRLMimicEnv.target_eef_pose_to_action.params.action_noise_dict"></span><strong>action_noise_dict</strong><a class="paramlink headerlink reference internal" href="#isaaclab.envs.ManagerBasedRLMimicEnv.target_eef_pose_to_action.params.action_noise_dict">¶</a> – Noise to add to the action. If None, no noise is added.</p></li>
-<li><p><span class="target" id="isaaclab.envs.ManagerBasedRLMimicEnv.target_eef_pose_to_action.params.env_id"></span><strong>env_id</strong><a class="paramlink headerlink reference internal" href="#isaaclab.envs.ManagerBasedRLMimicEnv.target_eef_pose_to_action.params.env_id">¶</a> – Environment index to compute the action for.</p></li>
+<li><p><strong>target_eef_pose_dict</strong> – Dictionary of 4x4 target eef pose for each end-effector.</p></li>
+<li><p><strong>gripper_action_dict</strong> – Dictionary of gripper actions for each end-effector.</p></li>
+<li><p><strong>action_noise_dict</strong> – Noise to add to the action. If None, no noise is added.</p></li>
+<li><p><strong>env_id</strong> – Environment index to compute the action for.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -3847,7 +3909,7 @@ Inverse of &#64;target_eef_pose_to_action. Usually used to infer a sequence of t
 from a demonstration trajectory using the recorded actions.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab.envs.ManagerBasedRLMimicEnv.action_to_target_eef_pose.params.action"></span><strong>action</strong><a class="paramlink headerlink reference internal" href="#isaaclab.envs.ManagerBasedRLMimicEnv.action_to_target_eef_pose.params.action">¶</a> – Environment action. Shape is (num_envs, action_dim).</p>
+<dd class="field-odd"><p><strong>action</strong> – Environment action. Shape is (num_envs, action_dim).</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>A dictionary of eef pose torch.Tensor that &#64;action corresponds to.</p>
@@ -3861,7 +3923,7 @@ from a demonstration trajectory using the recorded actions.</p>
 <dd><p>Extracts the gripper actuation part from a sequence of env actions (compatible with env.step).</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab.envs.ManagerBasedRLMimicEnv.actions_to_gripper_actions.params.actions"></span><strong>actions</strong><a class="paramlink headerlink reference internal" href="#isaaclab.envs.ManagerBasedRLMimicEnv.actions_to_gripper_actions.params.actions">¶</a> – environment actions. The shape is (num_envs, num steps in a demo, action_dim).</p>
+<dd class="field-odd"><p><strong>actions</strong> – environment actions. The shape is (num_envs, num steps in a demo, action_dim).</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>A dictionary of torch.Tensor gripper actions. Key to each dict is an eef_name.</p>
@@ -3875,7 +3937,7 @@ from a demonstration trajectory using the recorded actions.</p>
 <dd><p>Gets the pose of each object relevant to Isaac Lab Mimic data generation in the current scene.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab.envs.ManagerBasedRLMimicEnv.get_object_poses.params.env_ids"></span><strong>env_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab.envs.ManagerBasedRLMimicEnv.get_object_poses.params.env_ids">¶</a> – Environment indices to get the pose for. If None, all envs are considered.</p>
+<dd class="field-odd"><p><strong>env_ids</strong> – Environment indices to get the pose for. If None, all envs are considered.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>A dictionary that maps object names to object pose matrix (4x4 torch.Tensor)</p>
@@ -3893,7 +3955,7 @@ dataset annotation tool. This method can be kept unimplemented if intending to u
 subtask start signal annotation.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab.envs.ManagerBasedRLMimicEnv.get_subtask_start_signals.params.env_ids"></span><strong>env_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab.envs.ManagerBasedRLMimicEnv.get_subtask_start_signals.params.env_ids">¶</a> – Environment indices to get the start signals for. If None, all envs are considered.</p>
+<dd class="field-odd"><p><strong>env_ids</strong> – Environment indices to get the start signals for. If None, all envs are considered.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>A dictionary start signal flags (False or True) for each subtask.</p>
@@ -3911,7 +3973,7 @@ dataset annotation tool. This method can be kept unimplemented if intending to u
 subtask term signal annotation.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab.envs.ManagerBasedRLMimicEnv.get_subtask_term_signals.params.env_ids"></span><strong>env_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab.envs.ManagerBasedRLMimicEnv.get_subtask_term_signals.params.env_ids">¶</a> – Environment indices to get the termination signals for. If None, all envs are considered.</p>
+<dd class="field-odd"><p><strong>env_ids</strong> – Environment indices to get the termination signals for. If None, all envs are considered.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>A dictionary termination signal flags (False or True) for each subtask.</p>
@@ -3937,7 +3999,7 @@ robot is under control by the navigation controller, and a boolean flag “navig
 to indicate when the navigation goal has been reached.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab.envs.ManagerBasedRLMimicEnv.get_navigation_state.params.env_ids"></span><strong>env_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab.envs.ManagerBasedRLMimicEnv.get_navigation_state.params.env_ids">¶</a> – The environment index to get the navigation state for. If None, all envs are considered.</p>
+<dd class="field-odd"><p><strong>env_ids</strong> – The environment index to get the navigation state for. If None, all envs are considered.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>A dictionary that of navigation state flags (False or True).</p>
@@ -3952,8 +4014,8 @@ to indicate when the navigation goal has been reached.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.envs.ManagerBasedRLMimicEnv.params.cfg"></span><strong>cfg</strong><a class="paramlink headerlink reference internal" href="#isaaclab.envs.ManagerBasedRLMimicEnv.params.cfg">¶</a> – The configuration for the environment.</p></li>
-<li><p><span class="target" id="isaaclab.envs.ManagerBasedRLMimicEnv.params.render_mode"></span><strong>render_mode</strong><a class="paramlink headerlink reference internal" href="#isaaclab.envs.ManagerBasedRLMimicEnv.params.render_mode">¶</a> – The render mode for the environment. Defaults to None, which
+<li><p><strong>cfg</strong> – The configuration for the environment.</p></li>
+<li><p><strong>render_mode</strong> – The render mode for the environment. Defaults to None, which
 is similar to <code class="docutils literal notranslate"><span class="pre">&quot;human&quot;</span></code>.</p></li>
 </ul>
 </dd>
@@ -3983,7 +4045,7 @@ is similar to <code class="docutils literal notranslate"><span class="pre">&quot
 <dd><p>Export the IO descriptors for the environment.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab.envs.ManagerBasedRLMimicEnv.export_IO_descriptors.params.output_dir"></span><strong>output_dir</strong><a class="paramlink headerlink reference internal" href="#isaaclab.envs.ManagerBasedRLMimicEnv.export_IO_descriptors.params.output_dir">¶</a> – The directory to export the IO descriptors to.</p>
+<dd class="field-odd"><p><strong>output_dir</strong> – The directory to export the IO descriptors to.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -4036,7 +4098,7 @@ is reset. This is because the simulator is only reset when the user calls
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="isaaclab.envs.ManagerBasedRLMimicEnv.metadata">
-<span class="sig-name descname"><span class="pre">metadata</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ClassVar</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)"><span class="pre">dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'render_modes':</span> <span class="pre">[None,</span> <span class="pre">'human',</span> <span class="pre">'rgb_array']}</span></em><a class="headerlink" href="#isaaclab.envs.ManagerBasedRLMimicEnv.metadata" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">metadata</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ClassVar</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)"><span class="pre">dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'autoreset_mode':</span> <span class="pre">gymnasium.vector.AutoresetMode.SAME_STEP,</span> <span class="pre">'render_modes':</span> <span class="pre">[None,</span> <span class="pre">'human',</span> <span class="pre">'rgb_array']}</span></em><a class="headerlink" href="#isaaclab.envs.ManagerBasedRLMimicEnv.metadata" title="Link to this definition">#</a></dt>
 <dd><p>Metadata for the environment.</p>
 </dd></dl>
 
@@ -4065,7 +4127,7 @@ x-by-y pixel image, suitable for turning into a video.</p></li>
 </ul>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab.envs.ManagerBasedRLMimicEnv.render.params.recompute"></span><strong>recompute</strong><a class="paramlink headerlink reference internal" href="#isaaclab.envs.ManagerBasedRLMimicEnv.render.params.recompute">¶</a> – Whether to force a render even if the simulator has already rendered the scene.
+<dd class="field-odd"><p><strong>recompute</strong> – Whether to force a render even if the simulator has already rendered the scene.
 Defaults to False.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -4092,9 +4154,9 @@ are not repeated.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.envs.ManagerBasedRLMimicEnv.reset.params.seed"></span><strong>seed</strong><a class="paramlink headerlink reference internal" href="#isaaclab.envs.ManagerBasedRLMimicEnv.reset.params.seed">¶</a> – The seed to use for randomization. Defaults to None, in which case the seed is not set.</p></li>
-<li><p><span class="target" id="isaaclab.envs.ManagerBasedRLMimicEnv.reset.params.env_ids"></span><strong>env_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab.envs.ManagerBasedRLMimicEnv.reset.params.env_ids">¶</a> – The environment ids to reset. Defaults to None, in which case all environments are reset.</p></li>
-<li><p><span class="target" id="isaaclab.envs.ManagerBasedRLMimicEnv.reset.params.options"></span><strong>options</strong><a class="paramlink headerlink reference internal" href="#isaaclab.envs.ManagerBasedRLMimicEnv.reset.params.options">¶</a> – <p>Additional information to specify how the environment is reset. Defaults to None.</p>
+<li><p><strong>seed</strong> – The seed to use for randomization. Defaults to None, in which case the seed is not set.</p></li>
+<li><p><strong>env_ids</strong> – The environment ids to reset. Defaults to None, in which case all environments are reset.</p></li>
+<li><p><strong>options</strong> – <p>Additional information to specify how the environment is reset. Defaults to None.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>This argument is used for compatibility with Gymnasium environment definition.</p>
@@ -4120,11 +4182,11 @@ instead of using the randomization events for resetting the environments.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.envs.ManagerBasedRLMimicEnv.reset_to.params.state"></span><strong>state</strong><a class="paramlink headerlink reference internal" href="#isaaclab.envs.ManagerBasedRLMimicEnv.reset_to.params.state">¶</a> – The state to reset the specified environments to. Please refer to
+<li><p><strong>state</strong> – The state to reset the specified environments to. Please refer to
 <code class="xref py py-meth docutils literal notranslate"><span class="pre">InteractiveScene.get_state()</span></code> for the format.</p></li>
-<li><p><span class="target" id="isaaclab.envs.ManagerBasedRLMimicEnv.reset_to.params.env_ids"></span><strong>env_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab.envs.ManagerBasedRLMimicEnv.reset_to.params.env_ids">¶</a> – The environment ids to reset. Defaults to None, in which case all environments are reset.</p></li>
-<li><p><span class="target" id="isaaclab.envs.ManagerBasedRLMimicEnv.reset_to.params.seed"></span><strong>seed</strong><a class="paramlink headerlink reference internal" href="#isaaclab.envs.ManagerBasedRLMimicEnv.reset_to.params.seed">¶</a> – The seed to use for randomization. Defaults to None, in which case the seed is not set.</p></li>
-<li><p><span class="target" id="isaaclab.envs.ManagerBasedRLMimicEnv.reset_to.params.is_relative"></span><strong>is_relative</strong><a class="paramlink headerlink reference internal" href="#isaaclab.envs.ManagerBasedRLMimicEnv.reset_to.params.is_relative">¶</a> – If set to True, the state is considered relative to the environment origins.
+<li><p><strong>env_ids</strong> – The environment ids to reset. Defaults to None, in which case all environments are reset.</p></li>
+<li><p><strong>seed</strong> – The seed to use for randomization. Defaults to None, in which case the seed is not set.</p></li>
+<li><p><strong>is_relative</strong> – If set to True, the state is considered relative to the environment origins.
 Defaults to False.</p></li>
 </ul>
 </dd>
@@ -4137,7 +4199,7 @@ Defaults to False.</p></li>
 <dd><p>Set the seed for the environment.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab.envs.ManagerBasedRLMimicEnv.seed.params.seed"></span><strong>seed</strong><a class="paramlink headerlink reference internal" href="#isaaclab.envs.ManagerBasedRLMimicEnv.seed.params.seed">¶</a> – The seed for random generator. Defaults to -1.</p>
+<dd class="field-odd"><p><strong>seed</strong> – The seed for random generator. Defaults to -1.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>The seed used for random generator.</p>
@@ -4178,7 +4240,7 @@ app loop.</p></li>
 </ul>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab.envs.ManagerBasedRLMimicEnv.step.params.action"></span><strong>action</strong><a class="paramlink headerlink reference internal" href="#isaaclab.envs.ManagerBasedRLMimicEnv.step.params.action">¶</a> – The actions to apply on the environment. Shape is (num_envs, action_dim).</p>
+<dd class="field-odd"><p><strong>action</strong> – The actions to apply on the environment. Shape is (num_envs, action_dim).</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>A tuple containing the observations, rewards, resets (terminated and truncated) and extras.</p>
@@ -4708,8 +4770,8 @@ Default is (1280, 720).</p>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.envs.ManagerBasedRLEnvCfg"><code class="docutils literal notranslate"><span class="pre">ManagerBasedRLEnvCfg</span></code></a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.envs.ManagerBasedRLEnvCfg.ui_window_class_type"><code class="docutils literal notranslate"><span class="pre">ManagerBasedRLEnvCfg.ui_window_class_type</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.envs.ManagerBasedRLEnvCfg.is_finite_horizon"><code class="docutils literal notranslate"><span class="pre">ManagerBasedRLEnvCfg.is_finite_horizon</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.envs.ManagerBasedRLEnvCfg.compute_final_obs"><code class="docutils literal notranslate"><span class="pre">ManagerBasedRLEnvCfg.compute_final_obs</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.envs.ManagerBasedRLEnvCfg.episode_length_s"><code class="docutils literal notranslate"><span class="pre">ManagerBasedRLEnvCfg.episode_length_s</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.envs.ManagerBasedRLEnvCfg.rewards"><code class="docutils literal notranslate"><span class="pre">ManagerBasedRLEnvCfg.rewards</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.envs.ManagerBasedRLEnvCfg.viewer"><code class="docutils literal notranslate"><span class="pre">ManagerBasedRLEnvCfg.viewer</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.envs.ManagerBasedRLEnvCfg.sim"><code class="docutils literal notranslate"><span class="pre">ManagerBasedRLEnvCfg.sim</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.envs.ManagerBasedRLEnvCfg.seed"><code class="docutils literal notranslate"><span class="pre">ManagerBasedRLEnvCfg.seed</span></code></a></li>
@@ -4728,6 +4790,7 @@ Default is (1280, 720).</p>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.envs.ManagerBasedRLEnvCfg.export_io_descriptors"><code class="docutils literal notranslate"><span class="pre">ManagerBasedRLEnvCfg.export_io_descriptors</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.envs.ManagerBasedRLEnvCfg.log_dir"><code class="docutils literal notranslate"><span class="pre">ManagerBasedRLEnvCfg.log_dir</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.envs.ManagerBasedRLEnvCfg.video_recorder"><code class="docutils literal notranslate"><span class="pre">ManagerBasedRLEnvCfg.video_recorder</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.envs.ManagerBasedRLEnvCfg.rewards"><code class="docutils literal notranslate"><span class="pre">ManagerBasedRLEnvCfg.rewards</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.envs.ManagerBasedRLEnvCfg.terminations"><code class="docutils literal notranslate"><span class="pre">ManagerBasedRLEnvCfg.terminations</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.envs.ManagerBasedRLEnvCfg.curriculum"><code class="docutils literal notranslate"><span class="pre">ManagerBasedRLEnvCfg.curriculum</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.envs.ManagerBasedRLEnvCfg.commands"><code class="docutils literal notranslate"><span class="pre">ManagerBasedRLEnvCfg.commands</span></code></a></li>
@@ -4762,6 +4825,7 @@ Default is (1280, 720).</p>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.envs.DirectRLEnvCfg.seed"><code class="docutils literal notranslate"><span class="pre">DirectRLEnvCfg.seed</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.envs.DirectRLEnvCfg.decimation"><code class="docutils literal notranslate"><span class="pre">DirectRLEnvCfg.decimation</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.envs.DirectRLEnvCfg.is_finite_horizon"><code class="docutils literal notranslate"><span class="pre">DirectRLEnvCfg.is_finite_horizon</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.envs.DirectRLEnvCfg.compute_final_obs"><code class="docutils literal notranslate"><span class="pre">DirectRLEnvCfg.compute_final_obs</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.envs.DirectRLEnvCfg.episode_length_s"><code class="docutils literal notranslate"><span class="pre">DirectRLEnvCfg.episode_length_s</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.envs.DirectRLEnvCfg.scene"><code class="docutils literal notranslate"><span class="pre">DirectRLEnvCfg.scene</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.envs.DirectRLEnvCfg.events"><code class="docutils literal notranslate"><span class="pre">DirectRLEnvCfg.events</span></code></a></li>
@@ -4815,6 +4879,7 @@ Default is (1280, 720).</p>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.envs.DirectMARLEnvCfg.seed"><code class="docutils literal notranslate"><span class="pre">DirectMARLEnvCfg.seed</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.envs.DirectMARLEnvCfg.decimation"><code class="docutils literal notranslate"><span class="pre">DirectMARLEnvCfg.decimation</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.envs.DirectMARLEnvCfg.is_finite_horizon"><code class="docutils literal notranslate"><span class="pre">DirectMARLEnvCfg.is_finite_horizon</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.envs.DirectMARLEnvCfg.compute_final_obs"><code class="docutils literal notranslate"><span class="pre">DirectMARLEnvCfg.compute_final_obs</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.envs.DirectMARLEnvCfg.episode_length_s"><code class="docutils literal notranslate"><span class="pre">DirectMARLEnvCfg.episode_length_s</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.envs.DirectMARLEnvCfg.scene"><code class="docutils literal notranslate"><span class="pre">DirectMARLEnvCfg.scene</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.envs.DirectMARLEnvCfg.events"><code class="docutils literal notranslate"><span class="pre">DirectMARLEnvCfg.events</span></code></a></li>
