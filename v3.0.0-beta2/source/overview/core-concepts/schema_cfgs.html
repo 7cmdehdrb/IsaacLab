@@ -1,0 +1,1310 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Schema Configuration Classes &#8212; Isaac Lab Documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/twemoji.css" />
+    <link rel="stylesheet" type="text/css" href="/opt/hostedtoolcache/Python/3.12.13/x64/lib/python3.12/site-packages/sphinxcontrib/icon/node_modules/@fortawesome/fontawesome-free/css/all.min.css?v=53359634" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=8fb98eed" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="https://unpkg.com/twemoji@latest/dist/twemoji.min.js"></script>
+    <script src="../../../_static/twemoji.js"></script>
+    <script src="/opt/hostedtoolcache/Python/3.12.13/x64/lib/python3.12/site-packages/sphinxcontrib/icon/node_modules/@fortawesome/fontawesome-free/js/all.min.js?v=ec35c6c9"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
+    <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'source/overview/core-concepts/schema_cfgs';</script>
+    <link rel="icon" href="../../../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Task Design Workflows" href="task_workflows.html" />
+    <link rel="prev" title="Solver Comparison" href="physical-backends/solver-comparison.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="3.0.0" />
+    <meta name="docbuild:last-update" content="Jul 01, 2026"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../_static/NVIDIA-logo-white.png" class="logo__image only-light" alt=""/>
+    <img src="../../../_static/NVIDIA-logo-black.png" class="logo__image only-dark pst-js-only" alt=""/>
+  
+  
+    <p class="title logo__title">Isaac Lab Documentation</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+<nav class="bd-links bd-docs-nav">
+    <div class="bd-toc-item navbar-nav">
+      <ul class="nav bd-sidenav">
+        <li class="toctree-l1 has-children" style="display: flex; justify-content: center; align-items: center; flex-direction: column;">
+          <div  style ="text-align:center;">
+            <label for="version-select" style="font-weight: bold; display: block;">Version</label>
+          </div>
+          <select id="version-select" class="version-dropdown" style="margin: 0 auto; display: block;" onchange="location = this.value;">
+            <option value="../../../../develop/source/overview/core-concepts/schema_cfgs.html" >develop</option>
+            <option value="../../../../main/index.html" >main</option>
+            <option value="../../../../release/3.0.0-beta2/source/overview/core-concepts/schema_cfgs.html" >release/3.0.0-beta2</option>
+            <option value="schema_cfgs.html" selected>v3.0.0-beta2</option>
+            <option value="../../../../v3.0.0-beta/index.html" >v3.0.0-beta</option>
+            <option value="../../../../v2.3.2/index.html" >v2.3.2</option>
+            <option value="../../../../v2.3.1/index.html" >v2.3.1</option>
+            <option value="../../../../v2.3.0/index.html" >v2.3.0</option>
+            <option value="../../../../v2.2.1/index.html" >v2.2.1</option>
+            <option value="../../../../v2.2.0/index.html" >v2.2.0</option>
+            <option value="../../../../v2.1.1/index.html" >v2.1.1</option>
+            <option value="../../../../v2.1.0/index.html" >v2.1.0</option>
+            <option value="../../../../v2.0.2/index.html" >v2.0.2</option>
+            <option value="../../../../v2.0.1/index.html" >v2.0.1</option>
+            <option value="../../../../v2.0.0/index.html" >v2.0.0</option>
+          </select>
+        </li>
+      </ul>
+    </div>
+</nav>
+</div>
+        <div class="sidebar-primary-item"><ul class="navbar-icon-links"
+    aria-label="Quick Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/isaac-sim/IsaacLab" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://developer.nvidia.com/isaac-sim" title="Isaac Sim" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="https://img.shields.io/badge/IsaacSim-6.0.1-silver.svg" class="icon-link-image" alt="Isaac Sim"/></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://img.shields.io/github/stars/isaac-sim/IsaacLab?color=fedcba" title="Stars" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="https://img.shields.io/github/stars/isaac-sim/IsaacLab?color=fedcba" class="icon-link-image" alt="Stars"/></a>
+        </li>
+</ul></div>
+        <div class="sidebar-primary-item">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Isaac Lab</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../setup/ecosystem.html">Isaac Lab Ecosystem</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../setup/installation/index.html">Local Installation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../setup/installation/kitless_installation.html">Kit-less Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../setup/installation/pip_installation.html">Installation using Isaac Sim Pip Package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../setup/installation/binaries_installation.html">Installation using Isaac Sim Pre-built Binaries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../setup/installation/source_installation.html">Installation using Isaac Sim Source Code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../setup/installation/isaaclab_pip_installation.html">Installation using Isaac Lab Pip Packages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../setup/installation/asset_caching.html">Asset Caching</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../setup/installation/uv_run.html">uv run (experimental)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../deployment/index.html">Container Deployment</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../deployment/docker.html">Docker Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../deployment/run_docker_example.html">Running an example with Docker</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../deployment/cluster.html">Cluster Guide</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../setup/installation/cloud_installation.html">Cloud Deployment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../refs/reference_architecture/index.html">Reference Architecture</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../setup/quickstart.html">Quickstart</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../setup/quickstart_details.html">Quickstart Details</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../own-project/index.html">Build your Own Project or Task</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../own-project/template.html">Create new project or task</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../own-project/project_structure.html">Project Structure</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../setup/walkthrough/index.html">Walkthrough</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../setup/walkthrough/concepts_env_design.html">Environment Design Background</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../setup/walkthrough/api_env_design.html">Classes and Configs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../setup/walkthrough/technical_env_design.html">Environment Design</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../setup/walkthrough/training_jetbot_gt.html">Training the Jetbot: Ground Truth</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../setup/walkthrough/training_jetbot_reward_exploration.html">Exploring the RL problem</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../tutorials/index.html">Tutorials</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorials/00_sim/create_empty.html">Creating an empty scene</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorials/00_sim/spawn_prims.html">Spawning prims into the scene</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorials/00_sim/launch_app.html">Deep-dive into AppLauncher</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorials/01_assets/add_new_robot.html">Adding a New Robot to Isaac Lab</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorials/01_assets/run_rigid_object.html">Interacting with a rigid object</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorials/01_assets/run_articulation.html">Interacting with an articulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorials/01_assets/run_deformable_object.html">Interacting with a deformable object</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorials/01_assets/run_surface_gripper.html">Interacting with a surface gripper</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorials/02_scene/create_scene.html">Using the Interactive Scene</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorials/03_envs/create_manager_base_env.html">Creating a Manager-Based Base Environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorials/03_envs/create_manager_rl_env.html">Creating a Manager-Based RL Environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorials/03_envs/create_direct_rl_env.html">Creating a Direct Workflow RL Environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorials/03_envs/register_rl_env_gym.html">Registering an Environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorials/03_envs/run_rl_training.html">Training with an RL Agent</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorials/03_envs/configuring_rl_training.html">Configuring an RL Agent</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorials/03_envs/modify_direct_rl_env.html">Modifying an existing Direct RL Environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorials/03_envs/policy_inference_in_usd.html">Policy Inference in USD Environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorials/04_sensors/add_sensors_on_robot.html">Adding sensors on a robot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorials/05_controllers/run_diff_ik.html">Using a task-space controller</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorials/05_controllers/run_osc.html">Using an operational space controller</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorials/06_exporting/exporting_direct_workflow_policies_with_leapp.html">Exporting Direct Workflow Policies with LEAPP</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../how-to/index.html">How-to Guides</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../how-to/import_new_asset.html">Importing a New Asset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../how-to/write_articulation_cfg.html">Writing an Asset Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../how-to/robots.html">Robot Configurations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../how-to/make_fixed_prim.html">Making a physics prim fixed in the simulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../how-to/multi_asset_spawning.html">Spawning Multiple Assets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../how-to/cloning.html">Cloning Environments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../how-to/save_camera_output.html">Saving rendered images and 3D re-projection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../how-to/estimate_how_many_cameras_can_run.html">Find How Many/What Cameras You Should Train With</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../how-to/configure_rendering.html">Configuring RTX Rendering Settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../how-to/draw_markers.html">Creating Visualization Markers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../how-to/visualizer_tiled_camera.html">Using Visualizer Tiled Cameras</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../how-to/proxy_array.html">Working with ProxyArray</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../how-to/wrap_rl_env.html">Wrapping environments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../how-to/add_own_library.html">Adding your own learning library</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../how-to/record_animation.html">Recording Animations of Simulations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../how-to/record_video.html">Recording video clips during training</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../how-to/curriculums.html">Curriculum Utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../how-to/master_omniverse.html">Mastering Omniverse for Robotics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../how-to/cloudxr_teleoperation.html">Setting up Isaac Teleop with CloudXR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../how-to/haply_teleoperation.html">Setting up Haply Teleoperation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../how-to/simulation_performance.html">PhysX Simulation Performance and Tuning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../how-to/optimize_stage_creation.html">Optimize Stage Creation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../how-to/profile_with_nsys.html">Profiling Isaac Lab with Nsight Systems</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../developer-guide/index.html">Developer’s Guide</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../developer-guide/vs_code.html">Setting up Visual Studio Code</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../developer-guide/repo_structure.html">Repository organization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../developer-guide/development.html">Extension Development</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../testing/index.html">Testing</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../testing/mock_interfaces.html">Mock Interfaces for Unit Testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../testing/micro_benchmarks.html">Micro-Benchmarks for Performance Testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../testing/benchmarks.html">Benchmarking Framework</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Overview</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Core Concepts</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="multi_backend_architecture.html">Multi-Backend Architecture</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="physical-backends/index.html">Physics Backends</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="physical-backends/physx/index.html">PhysX Backend</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="physical-backends/physx/installation.html">Installation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="physical-backends/physx/configuration.html">PhysX Configuration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="physical-backends/physx/supported-features.html">Supported Features</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="physical-backends/newton/index.html">Newton Backend</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="physical-backends/newton/installation.html">Installation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="physical-backends/newton/supported-features.html">Supported Features</a></li>
+<li class="toctree-l4"><a class="reference internal" href="physical-backends/newton/mjwarp-solver.html">MJWarp Solver</a></li>
+<li class="toctree-l4"><a class="reference internal" href="physical-backends/newton/kamino-solver.html">Kamino Solver</a></li>
+<li class="toctree-l4"><a class="reference internal" href="physical-backends/newton/using-vbd-solver.html">VBD Solver</a></li>
+<li class="toctree-l4"><a class="reference internal" href="physical-backends/newton/newton-manager-abstraction.html">Newton Manager Abstraction</a></li>
+<li class="toctree-l4"><a class="reference internal" href="physical-backends/newton/warp-environments.html">Warp Experimental Environments</a></li>
+<li class="toctree-l4"><a class="reference internal" href="physical-backends/newton/warp-env-migration.html">Warp Environment Migration Guide</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3"><a class="reference internal" href="physical-backends/ovphysx/index.html">OvPhysX Backend</a></li>
+<li class="toctree-l3"><a class="reference internal" href="physical-backends/solver-comparison.html">Solver Comparison</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Schema Configuration Classes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="task_workflows.html">Task Design Workflows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actuators.html">Actuators</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="sensors/index.html">Sensors</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="sensors/camera.html">Camera</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sensors/contact_sensor.html">Contact Sensor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sensors/frame_transformer.html">Frame Transformer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sensors/imu.html">Inertial Measurement Unit (IMU)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sensors/pva.html">Pose Velocity Acceleration (PVA) Sensor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sensors/joint_wrench_sensor.html">Joint Wrench Sensor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sensors/ray_caster.html">Ray Caster</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="renderers.html">Renderers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="motion_generators.html">Motion Generators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scene_data_providers.html">Scene Data Provider</a></li>
+<li class="toctree-l2"><a class="reference internal" href="visualization.html">Visualization</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../environments.html">Available Environments</a></li>
+
+<li class="toctree-l1 has-children"><a class="reference internal" href="../reinforcement-learning/index.html">Reinforcement Learning</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../reinforcement-learning/rl_existing_scripts.html">Reinforcement Learning Workflows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reinforcement-learning/rl_frameworks.html">Reinforcement Learning Library Comparison</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reinforcement-learning/performance_benchmarks.html">Performance Benchmarks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reinforcement-learning/training_guide.html">Debugging and Training Guide</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../imitation-learning/index.html">Imitation Learning</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../imitation-learning/teleop_imitation.html">Synthetic Data Generation and Imitation Learning with Isaac Lab Mimic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../imitation-learning/humanoids_imitation.html">Examples: Data Generation and Imitation Learning for Humanoids</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../imitation-learning/augmented_imitation.html">Augmented Imitation Learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../imitation-learning/skillgen.html">SkillGen for Automated Demonstration Generation</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../showroom.html">Showroom Demos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../simple_agents.html">Simple Agents</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Features</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../features/isaac_teleop.html">Isaac Teleop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../features/hydra.html">Hydra Configuration System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../features/multi_gpu.html">Multi-GPU and Multi-Node Training</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../features/population_based_training.html">Population Based Training</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../features/ray.html">Ray Job Dispatch and Tuning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../features/reproducibility.html">Reproducibility and Determinism</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Experimental Features</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../experimental-features/bleeding-edge.html">Welcome to the bleeding edge!</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../experimental-features/visuo_tactile_sensor.html">Visuo-Tactile Sensor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../experimental-features/rlinf_vla_posttraining.html">RL Post-Training for VLA Models</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Resources</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../policy_deployment/index.html">Sim2Real Deployment of Policies Trained in Isaac Lab</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../policy_deployment/01_io_descriptors/io_descriptors_101.html">IO Descriptors 101</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../policy_deployment/02_gear_assembly/gear_assembly_policy.html">Training a Gear Insertion Policy and ROS Deployment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../policy_deployment/03_compass_with_NuRec/compass_navigation_policy_with_NuRec.html">Training and Deploying COMPASS Policies with NuRec Assets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../policy_deployment/04_reach/reach_policy.html">Training a Reach Policy for Real Robot Deployment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../policy_deployment/05_leapp/exporting_policies_with_leapp.html">Exporting Policies with LEAPP</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Migration Guides</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../migration/migrating_to_isaaclab_3-0.html">Migrating to Isaac Lab 3.0</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../migration/migrating_deformables.html">Migration of Deformables</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../migration/migrating_from_isaacgymenvs.html">From IsaacGymEnvs</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../migration/comparing_simulation_isaacgym.html">Comparing Simulations Between Isaac Gym and Isaac Lab</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../migration/migrating_from_omniisaacgymenvs.html">From OmniIsaacGymEnvs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../migration/migrating_from_orbit.html">From Orbit</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Source API</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../api/index.html">API Reference</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../api/lab/isaaclab.app.html">isaaclab.app</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/lab/isaaclab.actuators.html">isaaclab.actuators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/lab/isaaclab.assets.html">isaaclab.assets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/lab/isaaclab.cloner.html">isaaclab.cloner</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/lab/isaaclab.controllers.html">isaaclab.controllers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/lab/isaaclab.devices.html">isaaclab.devices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/lab/isaaclab.envs.html">isaaclab.envs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/lab/isaaclab.managers.html">isaaclab.managers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/lab/isaaclab.markers.html">isaaclab.markers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/lab/isaaclab.physics.html">isaaclab.physics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/lab/isaaclab.renderers.html">isaaclab.renderers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/lab/isaaclab.scene.html">isaaclab.scene</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/lab/isaaclab.scene_data.html">isaaclab.scene_data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/lab/isaaclab.sensors.html">isaaclab.sensors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/lab/isaaclab.sim.html">isaaclab.sim</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/lab/isaaclab.terrains.html">isaaclab.terrains</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/lab/isaaclab.utils.html">isaaclab.utils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/lab/isaaclab.visualizers.html">isaaclab.visualizers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/lab/isaaclab.envs.mdp.html">isaaclab.envs.mdp</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/lab/isaaclab.envs.ui.html">isaaclab.envs.ui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/lab/isaaclab.sensors.patterns.html">isaaclab.sensors.patterns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/lab/isaaclab.sim.converters.html">isaaclab.sim.converters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/lab/isaaclab.sim.schemas.html">isaaclab.sim.schemas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/lab/isaaclab.sim.spawners.html">isaaclab.sim.spawners</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/lab/isaaclab.sim.views.html">isaaclab.sim.views</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/lab/isaaclab.sim.utils.html">isaaclab.sim.utils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/lab_rl/isaaclab_rl.html">isaaclab_rl</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/lab_mimic/isaaclab_mimic.datagen.html">isaaclab_mimic.datagen</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/lab_mimic/isaaclab_mimic.envs.html">isaaclab_mimic.envs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/lab_contrib/isaaclab_contrib.actuators.html">isaaclab_contrib.actuators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/lab_contrib/isaaclab_contrib.assets.html">isaaclab_contrib.assets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/lab_contrib/isaaclab_contrib.controllers.html">isaaclab_contrib.controllers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/lab_contrib/isaaclab_contrib.deformable.html">isaaclab_contrib.deformable</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/lab_contrib/isaaclab_contrib.mdp.html">isaaclab_contrib.mdp</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/lab_contrib/isaaclab_contrib.rl.html">isaaclab_contrib.rl</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/lab_contrib/isaaclab_contrib.sensors.html">isaaclab_contrib.sensors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/lab_tasks/isaaclab_tasks.utils.html">isaaclab_tasks.utils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/lab_teleop/isaaclab_teleop.html">isaaclab_teleop</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/lab_physx/isaaclab_physx.assets.html">isaaclab_physx.assets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/lab_physx/isaaclab_physx.cloner.html">isaaclab_physx.cloner</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/lab_physx/isaaclab_physx.physics.html">isaaclab_physx.physics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/lab_physx/isaaclab_physx.renderers.html">isaaclab_physx.renderers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/lab_physx/isaaclab_physx.sensors.html">isaaclab_physx.sensors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/lab_physx/isaaclab_physx.sim.schemas.html">isaaclab_physx.sim.schemas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/lab_physx/isaaclab_physx.sim.spawners.html">isaaclab_physx.sim.spawners</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/lab_newton/isaaclab_newton.assets.html">isaaclab_newton.assets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/lab_newton/isaaclab_newton.cloner.html">isaaclab_newton.cloner</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/lab_newton/isaaclab_newton.physics.html">isaaclab_newton.physics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/lab_newton/isaaclab_newton.renderers.html">isaaclab_newton.renderers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/lab_newton/isaaclab_newton.sensors.html">isaaclab_newton.sensors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/lab_newton/isaaclab_newton.sim.schemas.html">isaaclab_newton.sim.schemas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/lab_newton/isaaclab_newton.sim.spawners.html">isaaclab_newton.sim.spawners</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/lab_ov/isaaclab_ov.renderers.html">isaaclab_ov.renderers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/lab_assets/isaaclab_assets.robots.html">isaaclab_assets.robots</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/lab_assets/isaaclab_assets.sensors.html">isaaclab_assets.sensors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/lab_visualizers/isaaclab_visualizers.kit.html">isaaclab_visualizers.kit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/lab_visualizers/isaaclab_visualizers.newton.html">isaaclab_visualizers.newton</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/lab_visualizers/isaaclab_visualizers.rerun.html">isaaclab_visualizers.rerun</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/lab_visualizers/isaaclab_visualizers.viser.html">isaaclab_visualizers.viser</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/lab_ovphysx/isaaclab_ovphysx.assets.html">isaaclab_ovphysx.assets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/lab_ovphysx/isaaclab_ovphysx.cloner.html">isaaclab_ovphysx.cloner</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/lab_ovphysx/isaaclab_ovphysx.physics.html">isaaclab_ovphysx.physics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/lab_experimental/isaaclab_experimental.envs.html">isaaclab_experimental.envs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/lab_experimental/isaaclab_experimental.managers.html">isaaclab_experimental.managers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/lab_experimental/isaaclab_experimental.utils.html">isaaclab_experimental.utils</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">References</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../refs/additional_resources.html">Additional Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../refs/contributing.html">Contribution Guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../refs/troubleshooting.html">Tricks and Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../refs/migration.html">Migration Guide (Isaac Sim)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../refs/issues.html">Known Issues</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../refs/release_notes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../refs/changelog.html">Extensions Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../refs/license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../refs/bibliography.html">Bibliography</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Project Links</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference external" href="https://github.com/isaac-sim/IsaacLab">GitHub</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://docs.isaacsim.omniverse.nvidia.com/latest/index.html">NVIDIA Isaac Sim</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://nvidia-omniverse.github.io/PhysX/physx/5.4.1/index.html">NVIDIA PhysX</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/newton-physics/newton">NVIDIA Newton</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/isaac-sim/IsaacLab" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/isaac-sim/IsaacLab/edit/main/docs/source/overview/core-concepts/schema_cfgs.rst" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/isaac-sim/IsaacLab/issues/new?title=Issue%20on%20page%20%2Fsource/overview/core-concepts/schema_cfgs.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../../_sources/source/overview/core-concepts/schema_cfgs.rst" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.rst</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Schema Configuration Classes</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quick-example">Quick example</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#class-hierarchy">Class hierarchy</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#when-to-use-which-class">When to use which class</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-parameters-live-where">What parameters live where</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#universal-physics-declared-on-the-base-class">Universal physics (declared on the base class)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#physx-specific-physx-namespace-physx-api-schemas">PhysX-specific (<code class="docutils literal notranslate"><span class="pre">physx*:*</span></code> namespace, <code class="docutils literal notranslate"><span class="pre">Physx*API</span></code> schemas)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#newton-targeted-newton-namespace-newton-api-schemas">Newton-targeted (<code class="docutils literal notranslate"><span class="pre">newton:*</span></code> namespace, <code class="docutils literal notranslate"><span class="pre">Newton*API</span></code> schemas)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mujoco-solver-specific-mjc-namespace">MuJoCo-solver-specific (<code class="docutils literal notranslate"><span class="pre">mjc:*</span></code> namespace)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mixed-namespace-authoring-on-a-single-instance">Mixed-namespace authoring on a single instance</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spawner-usage">Spawner usage</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gravity-compensation-mujoco-solver">Gravity compensation (MuJoCo solver)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#naming-convention">Naming convention</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#see-also">See also</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="schema-configuration-classes">
+<span id="schema-cfgs"></span><h1>Schema Configuration Classes<a class="headerlink" href="#schema-configuration-classes" title="Link to this heading">#</a></h1>
+<p>Isaac Lab’s spawners author USD physics attributes onto prims via a layered set of
+configuration classes. The layering separates <strong>universal-physics</strong> parameters
+from <strong>backend-specific</strong> parameters, so the same asset cfg can be authored once
+and target any backend that supports it.</p>
+<p>This page explains the class hierarchy, when to use each tier, and how parameters
+route to the underlying USD attributes.</p>
+<p>Migrating from 2.x? See <a class="reference internal" href="../../migration/migrating_to_isaaclab_3-0.html#schemas-cfg-refactor"><span class="std std-ref">Schema Configuration Class Refactor</span></a> in the 3.0 migration guide.</p>
+<section id="quick-example">
+<h2>Quick example<a class="headerlink" href="#quick-example" title="Link to this heading">#</a></h2>
+<p>Add MuJoCo (MJC) gravity compensation to an articulated asset:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">isaaclab.sim</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sim_utils</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">isaaclab_newton.sim.schemas</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">MujocoRigidBodyPropertiesCfg</span><span class="p">,</span>
+    <span class="n">MujocoJointDrivePropertiesCfg</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">spawn</span> <span class="o">=</span> <span class="n">sim_utils</span><span class="o">.</span><span class="n">UsdFileCfg</span><span class="p">(</span>
+    <span class="n">usd_path</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">ISAAC_NUCLEUS_DIR</span><span class="si">}</span><span class="s2">/Robots/Franka/franka_instanceable.usd&quot;</span><span class="p">,</span>
+    <span class="n">rigid_props</span><span class="o">=</span><span class="n">MujocoRigidBodyPropertiesCfg</span><span class="p">(</span><span class="n">gravcomp</span><span class="o">=</span><span class="mf">1.0</span><span class="p">),</span>
+    <span class="n">joint_drive_props</span><span class="o">=</span><span class="n">MujocoJointDrivePropertiesCfg</span><span class="p">(</span><span class="n">actuatorgravcomp</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>The Mujoco-specific fields land under <code class="docutils literal notranslate"><span class="pre">mjc:*</span></code> on the prim; any
+<code class="docutils literal notranslate"><span class="pre">RigidBodyBaseCfg</span></code> / <code class="docutils literal notranslate"><span class="pre">JointDriveBaseCfg</span></code> fields you set on the same instance
+land under <code class="docutils literal notranslate"><span class="pre">physics:*</span></code>. See <a class="reference internal" href="#schema-cfgs-mixed"><span class="std std-ref">Mixed-namespace authoring on a single instance</span></a> for the full routing rules.</p>
+</section>
+<section id="class-hierarchy">
+<h2>Class hierarchy<a class="headerlink" href="#class-hierarchy" title="Link to this heading">#</a></h2>
+<p>For each property group (rigid body, joint drive, collision, articulation root,
+material, mesh collision), Isaac Lab defines a single base class in core
+<code class="docutils literal notranslate"><span class="pre">isaaclab.sim.schemas</span></code> and one subclass per backend in the corresponding
+extension package:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>isaaclab.sim.schemas
+├── RigidBodyBaseCfg
+│   ├── isaaclab_physx.sim.schemas.PhysxRigidBodyPropertiesCfg
+│   └── isaaclab_newton.sim.schemas.NewtonRigidBodyPropertiesCfg
+│       └── isaaclab_newton.sim.schemas.MujocoRigidBodyPropertiesCfg
+│
+├── JointDriveBaseCfg
+│   ├── isaaclab_physx.sim.schemas.PhysxJointDrivePropertiesCfg
+│   └── isaaclab_newton.sim.schemas.NewtonJointDrivePropertiesCfg
+│       └── isaaclab_newton.sim.schemas.MujocoJointDrivePropertiesCfg
+│
+├── CollisionBaseCfg
+│   ├── isaaclab_physx.sim.schemas.PhysxCollisionPropertiesCfg
+│   └── isaaclab_newton.sim.schemas.NewtonCollisionPropertiesCfg
+│
+├── ArticulationRootBaseCfg
+│   ├── isaaclab_physx.sim.schemas.PhysxArticulationRootPropertiesCfg
+│   └── isaaclab_newton.sim.schemas.NewtonArticulationRootPropertiesCfg
+│
+├── MeshCollisionBaseCfg
+│   ├── isaaclab_physx.sim.schemas.{PhysxConvexHull, PhysxConvexDecomposition,
+│   │                                PhysxTriangleMesh, PhysxSDFMesh, ...}PropertiesCfg
+│   └── isaaclab_newton.sim.schemas.NewtonMeshCollisionPropertiesCfg
+│       (also inherits NewtonCollisionPropertiesCfg — multi-namespace)
+│
+└── isaaclab.sim.spawners.materials.RigidBodyMaterialBaseCfg
+    ├── isaaclab_physx.sim.spawners.materials.PhysxRigidBodyMaterialCfg
+    └── isaaclab_newton.sim.schemas.NewtonMaterialPropertiesCfg
+</pre></div>
+</div>
+<p><a class="reference internal" href="../../api/lab_newton/isaaclab_newton.sim.schemas.html#isaaclab_newton.sim.schemas.NewtonMeshCollisionPropertiesCfg" title="isaaclab_newton.sim.schemas.NewtonMeshCollisionPropertiesCfg"><code class="xref py py-class docutils literal notranslate"><span class="pre">NewtonMeshCollisionPropertiesCfg</span></code></a> uses
+multiple inheritance: it extends both
+<a class="reference internal" href="../../api/lab_newton/isaaclab_newton.sim.schemas.html#isaaclab_newton.sim.schemas.NewtonCollisionPropertiesCfg" title="isaaclab_newton.sim.schemas.NewtonCollisionPropertiesCfg"><code class="xref py py-class docutils literal notranslate"><span class="pre">NewtonCollisionPropertiesCfg</span></code></a> (for
+<code class="docutils literal notranslate"><span class="pre">contact_margin</span></code> / <code class="docutils literal notranslate"><span class="pre">contact_gap</span></code>) and
+<a class="reference internal" href="../../api/lab/isaaclab.sim.schemas.html#isaaclab.sim.schemas.MeshCollisionBaseCfg" title="isaaclab.sim.schemas.MeshCollisionBaseCfg"><code class="xref py py-class docutils literal notranslate"><span class="pre">MeshCollisionBaseCfg</span></code></a> (for
+<code class="docutils literal notranslate"><span class="pre">mesh_approximation_name</span></code>). This is the textbook case for the per-declaring-
+class MRO routing described under <a class="reference internal" href="#schema-cfgs-mixed"><span class="std std-ref">Mixed-namespace authoring on a single instance</span></a> — each inherited
+field is written under the namespace of the class that declared it.</p>
+<p>The hierarchy is <strong>single-rooted per spawner slot</strong>: every spawner has a single
+field for each property group (<code class="docutils literal notranslate"><span class="pre">rigid_props</span></code>, <code class="docutils literal notranslate"><span class="pre">joint_drive_props</span></code>,
+<code class="docutils literal notranslate"><span class="pre">collision_props</span></code>, etc.), and Python’s polymorphism allows any subclass to be
+passed where the base type is expected.</p>
+</section>
+<section id="when-to-use-which-class">
+<h2>When to use which class<a class="headerlink" href="#when-to-use-which-class" title="Link to this heading">#</a></h2>
+<p>The choice depends on which backends you target and which fields you need.</p>
+<dl class="simple">
+<dt><strong>Use a base class</strong> (<code class="docutils literal notranslate"><span class="pre">RigidBodyBaseCfg</span></code>, <code class="docutils literal notranslate"><span class="pre">JointDriveBaseCfg</span></code>, etc.)</dt><dd><p>when you only need universal-physics fields and you want your asset cfg to be
+backend-portable. Importing the base class does not pull in
+<code class="xref py py-mod docutils literal notranslate"><span class="pre">isaaclab_physx</span></code> or <code class="xref py py-mod docutils literal notranslate"><span class="pre">isaaclab_newton</span></code>.</p>
+</dd>
+<dt><strong>Use a PhysX subclass</strong> (<code class="docutils literal notranslate"><span class="pre">PhysxRigidBodyPropertiesCfg</span></code>, etc.)</dt><dd><p>when your asset uses PhysX-specific knobs (per-body damping, TGS solver
+iterations, sleep / stabilization thresholds, torsional patch friction,
+compliant-contact materials, etc.) and you target the PhysX backend. Inherits
+all base-class fields, so you can set both universal and PhysX fields on the
+same instance.</p>
+</dd>
+<dt><strong>Use a Newton subclass</strong> (<code class="docutils literal notranslate"><span class="pre">NewtonRigidBodyPropertiesCfg</span></code>, etc.)</dt><dd><p>when you target Newton and need Newton-native attributes
+(<code class="docutils literal notranslate"><span class="pre">newton:contactMargin</span></code>, <code class="docutils literal notranslate"><span class="pre">newton:torsionalFriction</span></code>,
+<code class="docutils literal notranslate"><span class="pre">newton:selfCollisionEnabled</span></code>, etc.). The empty Newton base classes
+(<code class="docutils literal notranslate"><span class="pre">NewtonRigidBodyPropertiesCfg</span></code>, <code class="docutils literal notranslate"><span class="pre">NewtonJointDrivePropertiesCfg</span></code>) reserve
+the <code class="docutils literal notranslate"><span class="pre">newton:*</span></code> namespace for future native fields and act as the parent for
+solver-specific subclasses.</p>
+</dd>
+<dt><strong>Use a MuJoCo subclass</strong> (<code class="docutils literal notranslate"><span class="pre">MujocoRigidBodyPropertiesCfg</span></code>, <code class="docutils literal notranslate"><span class="pre">MujocoJointDrivePropertiesCfg</span></code>)</dt><dd><p>when you specifically use Newton’s <strong>MuJoCo</strong> solver and need MuJoCo-only
+knobs (gravity compensation via <code class="docutils literal notranslate"><span class="pre">mjc:gravcomp</span></code> /
+<code class="docutils literal notranslate"><span class="pre">mjc:actuatorgravcomp</span></code>). Inherits from the Newton base, so
+<code class="docutils literal notranslate"><span class="pre">isinstance(cfg,</span> <span class="pre">NewtonRigidBodyPropertiesCfg)</span></code> is True.</p>
+</dd>
+</dl>
+</section>
+<section id="what-parameters-live-where">
+<h2>What parameters live where<a class="headerlink" href="#what-parameters-live-where" title="Link to this heading">#</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The tables below summarize which fields live on which cfg classes. The
+canonical source is the auto-generated API reference — see
+<a class="reference internal" href="../../api/lab/isaaclab.sim.schemas.html"><span class="doc">isaaclab.sim.schemas</span></a>,
+<a class="reference internal" href="../../api/lab_physx/isaaclab_physx.sim.schemas.html"><span class="doc">isaaclab_physx.sim.schemas</span></a>, and
+<a class="reference internal" href="../../api/lab_newton/isaaclab_newton.sim.schemas.html"><span class="doc">isaaclab_newton.sim.schemas</span></a>, which render
+the cfg class docstrings directly. Treat these tables as a navigation aid;
+if they drift from the source, the API docs win.</p>
+</div>
+<section id="universal-physics-declared-on-the-base-class">
+<h3>Universal physics (declared on the base class)<a class="headerlink" href="#universal-physics-declared-on-the-base-class" title="Link to this heading">#</a></h3>
+<p>Lives on the <strong>base class</strong>. Most fields write to <code class="docutils literal notranslate"><span class="pre">physics:*</span></code> (the standard
+<code class="docutils literal notranslate"><span class="pre">UsdPhysics.*API</span></code> namespace), but a small set of “exception” fields are
+declared on the base for backend-portability yet route to a non-<code class="docutils literal notranslate"><span class="pre">physics:*</span></code>
+namespace because that is the only USD path honored today (e.g.,
+<code class="docutils literal notranslate"><span class="pre">disable_gravity</span></code> writes <code class="docutils literal notranslate"><span class="pre">physxRigidBody:disableGravity</span></code> because both PhysX
+and Newton’s importer consume the PhysX attribute). The “USD attribute” column
+below is the actual emitted attribute, not the namespace family.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<colgroup>
+<col style="width: 30.0%" />
+<col style="width: 35.0%" />
+<col style="width: 35.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Base class</p></th>
+<th class="head"><p>Field</p></th>
+<th class="head"><p>USD attribute</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">RigidBodyBaseCfg</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">rigid_body_enabled</span></code>, <code class="docutils literal notranslate"><span class="pre">kinematic_enabled</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">physics:rigidBodyEnabled</span></code>, <code class="docutils literal notranslate"><span class="pre">physics:kinematicEnabled</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">RigidBodyBaseCfg</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">disable_gravity</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">physxRigidBody:disableGravity</span></code> (per-body on PhysX; scene-level partial honor on Newton)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">CollisionBaseCfg</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">collision_enabled</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">physics:collisionEnabled</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">CollisionBaseCfg</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">contact_offset</span></code>, <code class="docutils literal notranslate"><span class="pre">rest_offset</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">physxCollision:contactOffset</span></code>, <code class="docutils literal notranslate"><span class="pre">physxCollision:restOffset</span></code> (Newton consumes via PhysX bridge)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">ArticulationRootBaseCfg</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">articulation_enabled</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">physxArticulation:articulationEnabled</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">ArticulationRootBaseCfg</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">fix_root_link</span></code></p></td>
+<td><p>synthesizes <code class="docutils literal notranslate"><span class="pre">UsdPhysics.FixedJoint</span></code> (writer-side, not a USD attribute)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">JointDriveBaseCfg</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">drive_type</span></code>, <code class="docutils literal notranslate"><span class="pre">max_force</span></code>, <code class="docutils literal notranslate"><span class="pre">stiffness</span></code>, <code class="docutils literal notranslate"><span class="pre">damping</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">drive:&lt;axis&gt;:physics:type/maxForce/stiffness/damping</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">JointDriveBaseCfg</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">max_joint_velocity</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">physxJoint:maxJointVelocity</span></code> (sole USD path; Newton consumes via PhysX bridge today)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">JointDriveBaseCfg</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ensure_drives_exist</span></code></p></td>
+<td><p>writer-side only — when <code class="docutils literal notranslate"><span class="pre">True</span></code>, ensures any drive with <code class="docutils literal notranslate"><span class="pre">stiffness=0</span></code> and
+<code class="docutils literal notranslate"><span class="pre">damping=0</span></code> gets a minimal <code class="docutils literal notranslate"><span class="pre">stiffness=1e-3</span></code> so backends like Newton recognize
+the joint as actively driven; not a USD attribute on its own</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">MassPropertiesCfg</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">mass</span></code>, <code class="docutils literal notranslate"><span class="pre">density</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">physics:mass</span></code>, <code class="docutils literal notranslate"><span class="pre">physics:density</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">RigidBodyMaterialBaseCfg</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">static_friction</span></code>, <code class="docutils literal notranslate"><span class="pre">dynamic_friction</span></code>, <code class="docutils literal notranslate"><span class="pre">restitution</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">physics:staticFriction</span></code>, <code class="docutils literal notranslate"><span class="pre">physics:dynamicFriction</span></code>, <code class="docutils literal notranslate"><span class="pre">physics:restitution</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">MeshCollisionBaseCfg</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">mesh_approximation_name</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">physics:approximation</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="physx-specific-physx-namespace-physx-api-schemas">
+<h3>PhysX-specific (<code class="docutils literal notranslate"><span class="pre">physx*:*</span></code> namespace, <code class="docutils literal notranslate"><span class="pre">Physx*API</span></code> schemas)<a class="headerlink" href="#physx-specific-physx-namespace-physx-api-schemas" title="Link to this heading">#</a></h3>
+<p>Lives on the PhysX subclass. Only authored when the user opts in by setting the
+field on a PhysX cfg.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<colgroup>
+<col style="width: 35.0%" />
+<col style="width: 35.0%" />
+<col style="width: 30.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>PhysX subclass</p></th>
+<th class="head"><p>Fields (selection)</p></th>
+<th class="head"><p>USD namespace / schema</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">PhysxRigidBodyPropertiesCfg</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">linear_damping</span></code>, <code class="docutils literal notranslate"><span class="pre">angular_damping</span></code>, <code class="docutils literal notranslate"><span class="pre">max_linear_velocity</span></code>, <code class="docutils literal notranslate"><span class="pre">max_angular_velocity</span></code>, <code class="docutils literal notranslate"><span class="pre">solver_position_iteration_count</span></code>, <code class="docutils literal notranslate"><span class="pre">sleep_threshold</span></code>, <code class="docutils literal notranslate"><span class="pre">enable_gyroscopic_forces</span></code>, …</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">physxRigidBody:*</span></code> / <code class="docutils literal notranslate"><span class="pre">PhysxRigidBodyAPI</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">PhysxJointDrivePropertiesCfg</span></code></p></td>
+<td><p>(currently empty; reserved for future PhysX-only drive knobs)</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">physxJoint:*</span></code> / <code class="docutils literal notranslate"><span class="pre">PhysxJointAPI</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">PhysxCollisionPropertiesCfg</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">torsional_patch_radius</span></code>, <code class="docutils literal notranslate"><span class="pre">min_torsional_patch_radius</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">physxCollision:*</span></code> / <code class="docutils literal notranslate"><span class="pre">PhysxCollisionAPI</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">PhysxArticulationRootPropertiesCfg</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">enabled_self_collisions</span></code>, <code class="docutils literal notranslate"><span class="pre">solver_position_iteration_count</span></code>, <code class="docutils literal notranslate"><span class="pre">sleep_threshold</span></code>, <code class="docutils literal notranslate"><span class="pre">stabilization_threshold</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">physxArticulation:*</span></code> / <code class="docutils literal notranslate"><span class="pre">PhysxArticulationAPI</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">PhysxRigidBodyMaterialCfg</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">compliant_contact_stiffness</span></code>, <code class="docutils literal notranslate"><span class="pre">compliant_contact_damping</span></code>, <code class="docutils literal notranslate"><span class="pre">friction_combine_mode</span></code>, <code class="docutils literal notranslate"><span class="pre">restitution_combine_mode</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">physxMaterial:*</span></code> / <code class="docutils literal notranslate"><span class="pre">PhysxMaterialAPI</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">PhysxConvexHullPropertiesCfg</span></code> (and other mesh-cooking subclasses)</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">hull_vertex_limit</span></code>, <code class="docutils literal notranslate"><span class="pre">min_thickness</span></code>, …</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">physxConvexHullCollision:*</span></code> / <code class="docutils literal notranslate"><span class="pre">PhysxConvexHullCollisionAPI</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="newton-targeted-newton-namespace-newton-api-schemas">
+<h3>Newton-targeted (<code class="docutils literal notranslate"><span class="pre">newton:*</span></code> namespace, <code class="docutils literal notranslate"><span class="pre">Newton*API</span></code> schemas)<a class="headerlink" href="#newton-targeted-newton-namespace-newton-api-schemas" title="Link to this heading">#</a></h3>
+<p>Lives on the Newton subclass. Authored only when the user opts in.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<colgroup>
+<col style="width: 35.0%" />
+<col style="width: 35.0%" />
+<col style="width: 30.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Newton subclass</p></th>
+<th class="head"><p>Fields</p></th>
+<th class="head"><p>USD namespace / schema</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">NewtonRigidBodyPropertiesCfg</span></code></p></td>
+<td><p>(empty — reserved for future Newton-native rigid-body fields)</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">newton:*</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">NewtonJointDrivePropertiesCfg</span></code></p></td>
+<td><p>(empty — reserved for future Newton-native joint-drive fields)</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">newton:*</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">NewtonCollisionPropertiesCfg</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">contact_margin</span></code>, <code class="docutils literal notranslate"><span class="pre">contact_gap</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">newton:*</span></code> / <code class="docutils literal notranslate"><span class="pre">NewtonCollisionAPI</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">NewtonMeshCollisionPropertiesCfg</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">max_hull_vertices</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">newton:*</span></code> / <code class="docutils literal notranslate"><span class="pre">NewtonMeshCollisionAPI</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">NewtonMaterialPropertiesCfg</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">torsional_friction</span></code>, <code class="docutils literal notranslate"><span class="pre">rolling_friction</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">newton:*</span></code> / <code class="docutils literal notranslate"><span class="pre">NewtonMaterialAPI</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">NewtonArticulationRootPropertiesCfg</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">self_collision_enabled</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">newton:*</span></code> / <code class="docutils literal notranslate"><span class="pre">NewtonArticulationRootAPI</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="mujoco-solver-specific-mjc-namespace">
+<h3>MuJoCo-solver-specific (<code class="docutils literal notranslate"><span class="pre">mjc:*</span></code> namespace)<a class="headerlink" href="#mujoco-solver-specific-mjc-namespace" title="Link to this heading">#</a></h3>
+<p>Lives on a MuJoCo subclass that extends a Newton subclass. Only consumed when
+running Newton’s MuJoCo solver.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<colgroup>
+<col style="width: 35.0%" />
+<col style="width: 25.0%" />
+<col style="width: 40.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>MuJoCo subclass</p></th>
+<th class="head"><p>Field</p></th>
+<th class="head"><p>USD attribute / schema</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">MujocoRigidBodyPropertiesCfg</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">gravcomp</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">mjc:gravcomp</span></code> (raw attribute, no applied schema)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">MujocoJointDrivePropertiesCfg</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">actuatorgravcomp</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">mjc:actuatorgravcomp</span></code> via <code class="docutils literal notranslate"><span class="pre">MjcJointAPI</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The two MuJoCo rows differ in their USD applied-schema requirement:
+<code class="docutils literal notranslate"><span class="pre">mjc:actuatorgravcomp</span></code> is part of the registered <code class="docutils literal notranslate"><span class="pre">MjcJointAPI</span></code> applied
+schema (so the writer calls <code class="docutils literal notranslate"><span class="pre">prim.AddAppliedSchema(&quot;MjcJointAPI&quot;)</span></code> when
+the field is non-None). <code class="docutils literal notranslate"><span class="pre">mjc:gravcomp</span></code> has no registered Mjc applied
+schema for body-level gravity compensation, so the writer authors it as a
+raw USD attribute. Newton’s MuJoCo solver consumes both via the same
+resolver path; the schema-application difference is purely a USD-side
+detail.</p>
+</div>
+</section>
+</section>
+<section id="mixed-namespace-authoring-on-a-single-instance">
+<span id="schema-cfgs-mixed"></span><h2>Mixed-namespace authoring on a single instance<a class="headerlink" href="#mixed-namespace-authoring-on-a-single-instance" title="Link to this heading">#</a></h2>
+<p>Because each cfg field is routed to its <strong>declaring class’s</strong> namespace (not
+the instance’s class), a subclass instance can author attributes across multiple
+namespaces on the same prim. For example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">isaaclab_newton.sim.schemas</span><span class="w"> </span><span class="kn">import</span> <span class="n">MujocoRigidBodyPropertiesCfg</span>
+
+<span class="n">cfg</span> <span class="o">=</span> <span class="n">MujocoRigidBodyPropertiesCfg</span><span class="p">(</span>
+    <span class="n">rigid_body_enabled</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>        <span class="c1"># declared on RigidBodyBaseCfg → physics:rigidBodyEnabled</span>
+    <span class="n">disable_gravity</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>            <span class="c1"># declared on RigidBodyBaseCfg (exception) → physxRigidBody:disableGravity</span>
+    <span class="n">gravcomp</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>                    <span class="c1"># declared on MujocoRigidBodyPropertiesCfg → mjc:gravcomp</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>The writer applies each field to the namespace of the class where the field is
+declared. The applied schemas (<code class="docutils literal notranslate"><span class="pre">PhysxRigidBodyAPI</span></code> for <code class="docutils literal notranslate"><span class="pre">disable_gravity</span></code>,
+none for the Mjc raw attribute) are added only when the corresponding
+fields are non-None.</p>
+</section>
+<section id="spawner-usage">
+<h2>Spawner usage<a class="headerlink" href="#spawner-usage" title="Link to this heading">#</a></h2>
+<p>Spawners (<code class="docutils literal notranslate"><span class="pre">UsdFileCfg</span></code>, <code class="docutils literal notranslate"><span class="pre">MeshCuboidCfg</span></code>, <code class="docutils literal notranslate"><span class="pre">MeshSphereCfg</span></code>, …) accept
+the base class type for each slot and use polymorphism to dispatch to the
+correct subclass at write time:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">isaaclab.sim</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sim_utils</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">isaaclab_physx.sim.schemas</span><span class="w"> </span><span class="kn">import</span> <span class="n">PhysxRigidBodyPropertiesCfg</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">isaaclab_newton.sim.schemas</span><span class="w"> </span><span class="kn">import</span> <span class="n">MujocoJointDrivePropertiesCfg</span>
+
+<span class="n">spawn</span> <span class="o">=</span> <span class="n">sim_utils</span><span class="o">.</span><span class="n">UsdFileCfg</span><span class="p">(</span>
+    <span class="n">usd_path</span><span class="o">=</span><span class="s2">&quot;...&quot;</span><span class="p">,</span>
+    <span class="n">rigid_props</span><span class="o">=</span><span class="n">PhysxRigidBodyPropertiesCfg</span><span class="p">(</span><span class="n">disable_gravity</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">linear_damping</span><span class="o">=</span><span class="mf">0.1</span><span class="p">),</span>
+    <span class="n">joint_drive_props</span><span class="o">=</span><span class="n">MujocoJointDrivePropertiesCfg</span><span class="p">(</span>
+        <span class="n">drive_type</span><span class="o">=</span><span class="s2">&quot;acceleration&quot;</span><span class="p">,</span>
+        <span class="n">stiffness</span><span class="o">=</span><span class="mf">10.0</span><span class="p">,</span>
+        <span class="n">damping</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span>
+        <span class="n">actuatorgravcomp</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="p">),</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<section id="gravity-compensation-mujoco-solver">
+<span id="schema-cfgs-gravcomp"></span><h3>Gravity compensation (MuJoCo solver)<a class="headerlink" href="#gravity-compensation-mujoco-solver" title="Link to this heading">#</a></h3>
+<p>Gravity compensation has two halves and you typically need both:</p>
+<ul class="simple">
+<li><p><strong>Body-level</strong>:
+<a class="reference internal" href="../../api/lab_newton/isaaclab_newton.sim.schemas.html#isaaclab_newton.sim.schemas.MujocoRigidBodyPropertiesCfg.gravcomp" title="isaaclab_newton.sim.schemas.MujocoRigidBodyPropertiesCfg.gravcomp"><code class="xref py py-attr docutils literal notranslate"><span class="pre">gravcomp</span></code></a>
+on each rigid body (writes <code class="docutils literal notranslate"><span class="pre">mjc:gravcomp</span></code>). This is what <em>computes</em> the
+compensation force.</p></li>
+<li><p><strong>Joint-level</strong>:
+<a class="reference internal" href="../../api/lab_newton/isaaclab_newton.sim.schemas.html#isaaclab_newton.sim.schemas.MujocoJointDrivePropertiesCfg.actuatorgravcomp" title="isaaclab_newton.sim.schemas.MujocoJointDrivePropertiesCfg.actuatorgravcomp"><code class="xref py py-attr docutils literal notranslate"><span class="pre">actuatorgravcomp</span></code></a>
+on each joint (writes <code class="docutils literal notranslate"><span class="pre">mjc:actuatorgravcomp</span></code>). This routes the compensation
+force through the actuator channel (<code class="docutils literal notranslate"><span class="pre">qfrc_actuator</span></code>) so it counts against
+<code class="docutils literal notranslate"><span class="pre">actuatorfrcrange</span></code>; otherwise it goes to <code class="docutils literal notranslate"><span class="pre">qfrc_passive</span></code>.</p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">actuatorgravcomp=True</span></code> alone is a no-op — without body-level <code class="docutils literal notranslate"><span class="pre">gravcomp</span></code>
+there are no forces to route. To prevent this footgun, the spawner
+<strong>auto-enables</strong> <code class="docutils literal notranslate"><span class="pre">MujocoRigidBodyPropertiesCfg(gravcomp=1.0)</span></code> whenever
+<code class="docutils literal notranslate"><span class="pre">joint_drive_props</span></code> is a Mujoco cfg with <code class="docutils literal notranslate"><span class="pre">actuatorgravcomp=True</span></code> and
+<code class="docutils literal notranslate"><span class="pre">rigid_props</span></code> is not already a Mujoco cfg. If you want a different
+<code class="docutils literal notranslate"><span class="pre">gravcomp</span></code> value (or want to disable the auto-enable), pass an explicit
+<code class="docutils literal notranslate"><span class="pre">MujocoRigidBodyPropertiesCfg</span></code> in <code class="docutils literal notranslate"><span class="pre">rigid_props</span></code>.</p>
+</section>
+</section>
+<section id="naming-convention">
+<h2>Naming convention<a class="headerlink" href="#naming-convention" title="Link to this heading">#</a></h2>
+<p>Cfg field names use <code class="docutils literal notranslate"><span class="pre">snake_case</span></code>; the writer converts them to <code class="docutils literal notranslate"><span class="pre">camelCase</span></code>
+USD attribute names (<code class="docutils literal notranslate"><span class="pre">contact_margin</span></code> → <code class="docutils literal notranslate"><span class="pre">newton:contactMargin</span></code>). For
+single-token fields (<code class="docutils literal notranslate"><span class="pre">gravcomp</span></code>, <code class="docutils literal notranslate"><span class="pre">actuatorgravcomp</span></code>), the conversion is
+identity, which matches MuJoCo’s lowercase convention.</p>
+<p>Field renames preserve backward compatibility via deprecation aliases. Two such
+aliases live on <code class="docutils literal notranslate"><span class="pre">JointDriveBaseCfg</span></code> today:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">max_velocity</span></code> → <code class="docutils literal notranslate"><span class="pre">max_joint_velocity</span></code> (USD attribute is <code class="docutils literal notranslate"><span class="pre">physxJoint:maxJointVelocity</span></code>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">max_effort</span></code> → <code class="docutils literal notranslate"><span class="pre">max_force</span></code> (USD attribute is <code class="docutils literal notranslate"><span class="pre">drive:&lt;axis&gt;:physics:maxForce</span></code>)</p></li>
+</ul>
+<p>The old names remain as real dataclass fields (so <code class="docutils literal notranslate"><span class="pre">dataclasses.fields()</span></code>
+sees them), defaulting to <code class="docutils literal notranslate"><span class="pre">None</span></code>. <code class="docutils literal notranslate"><span class="pre">__post_init__</span></code> runs
+<code class="docutils literal notranslate"><span class="pre">_deprecate_field_alias</span></code> which, when the old field is set: emits a
+<code class="docutils literal notranslate"><span class="pre">DeprecationWarning</span></code>, copies the value into the canonical field if the
+canonical is <code class="docutils literal notranslate"><span class="pre">None</span></code>, then nulls the old field. Setting <strong>both</strong> in the same
+constructor is silent — the canonical wins; the old name’s value is discarded.
+Both aliases are scheduled for removal in 4.0.</p>
+</section>
+<section id="see-also">
+<h2>See also<a class="headerlink" href="#see-also" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="../../migration/migrating_to_isaaclab_3-0.html"><span class="doc">Migrating to Isaac Lab 3.0</span></a> — migration guide</p></li>
+<li><p><a class="reference internal" href="../../api/lab/isaaclab.sim.schemas.html"><span class="doc">isaaclab.sim.schemas</span></a> — solver-common base class API</p></li>
+<li><p><a class="reference internal" href="../../api/lab_physx/isaaclab_physx.sim.schemas.html"><span class="doc">isaaclab_physx.sim.schemas</span></a> — PhysX subclass API</p></li>
+<li><p><a class="reference internal" href="../../api/lab_newton/isaaclab_newton.sim.schemas.html"><span class="doc">isaaclab_newton.sim.schemas</span></a> — Newton/MuJoCo subclass API</p></li>
+</ul>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="physical-backends/solver-comparison.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Solver Comparison</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="task_workflows.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Task Design Workflows</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quick-example">Quick example</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#class-hierarchy">Class hierarchy</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#when-to-use-which-class">When to use which class</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-parameters-live-where">What parameters live where</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#universal-physics-declared-on-the-base-class">Universal physics (declared on the base class)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#physx-specific-physx-namespace-physx-api-schemas">PhysX-specific (<code class="docutils literal notranslate"><span class="pre">physx*:*</span></code> namespace, <code class="docutils literal notranslate"><span class="pre">Physx*API</span></code> schemas)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#newton-targeted-newton-namespace-newton-api-schemas">Newton-targeted (<code class="docutils literal notranslate"><span class="pre">newton:*</span></code> namespace, <code class="docutils literal notranslate"><span class="pre">Newton*API</span></code> schemas)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mujoco-solver-specific-mjc-namespace">MuJoCo-solver-specific (<code class="docutils literal notranslate"><span class="pre">mjc:*</span></code> namespace)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mixed-namespace-authoring-on-a-single-instance">Mixed-namespace authoring on a single instance</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spawner-usage">Spawner usage</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gravity-compensation-mujoco-solver">Gravity compensation (MuJoCo solver)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#naming-convention">Naming convention</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#see-also">See also</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By The Isaac Lab Project Developers.
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022-2025, The Isaac Lab Project Developers..
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    <p class="last-updated">
+  Last updated on Jul 01, 2026.
+  <br/>
+</p>
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
