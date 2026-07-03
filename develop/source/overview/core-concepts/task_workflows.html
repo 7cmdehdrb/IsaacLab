@@ -64,7 +64,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="3.0.0" />
-    <meta name="docbuild:last-update" content="Jul 02, 2026"/>
+    <meta name="docbuild:last-update" content="Jul 03, 2026"/>
   </head>
   
   
@@ -847,6 +847,7 @@ This workflow may be the most familiar for users migrating from the <a class="re
         <span class="bp">self</span><span class="o">.</span><span class="n">joint_vel</span><span class="p">[:,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pole_dof_idx</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">joint_vel</span><span class="p">[:,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cart_dof_idx</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">reset_terminated</span><span class="p">,</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">step_dt</span><span class="p">,</span>
     <span class="p">)</span>
     <span class="k">return</span> <span class="n">total_reward</span>
 </pre></div>
@@ -863,13 +864,15 @@ This workflow may be the most familiar for users migrating from the <a class="re
     <span class="n">pole_vel</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span>
     <span class="n">cart_vel</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span>
     <span class="n">reset_terminated</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span>
+    <span class="n">step_dt</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
 <span class="p">):</span>
+    <span class="n">pole_pos</span> <span class="o">=</span> <span class="n">wrap_to_pi</span><span class="p">(</span><span class="n">pole_pos</span><span class="p">)</span>
     <span class="n">rew_alive</span> <span class="o">=</span> <span class="n">rew_scale_alive</span> <span class="o">*</span> <span class="p">(</span><span class="mf">1.0</span> <span class="o">-</span> <span class="n">reset_terminated</span><span class="o">.</span><span class="n">float</span><span class="p">())</span>
     <span class="n">rew_termination</span> <span class="o">=</span> <span class="n">rew_scale_terminated</span> <span class="o">*</span> <span class="n">reset_terminated</span><span class="o">.</span><span class="n">float</span><span class="p">()</span>
     <span class="n">rew_pole_pos</span> <span class="o">=</span> <span class="n">rew_scale_pole_pos</span> <span class="o">*</span> <span class="n">torch</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">square</span><span class="p">(</span><span class="n">pole_pos</span><span class="p">)</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="n">dim</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
     <span class="n">rew_cart_vel</span> <span class="o">=</span> <span class="n">rew_scale_cart_vel</span> <span class="o">*</span> <span class="n">torch</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">cart_vel</span><span class="p">)</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="n">dim</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
     <span class="n">rew_pole_vel</span> <span class="o">=</span> <span class="n">rew_scale_pole_vel</span> <span class="o">*</span> <span class="n">torch</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">pole_vel</span><span class="p">)</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="n">dim</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
-    <span class="n">total_reward</span> <span class="o">=</span> <span class="n">rew_alive</span> <span class="o">+</span> <span class="n">rew_termination</span> <span class="o">+</span> <span class="n">rew_pole_pos</span> <span class="o">+</span> <span class="n">rew_cart_vel</span> <span class="o">+</span> <span class="n">rew_pole_vel</span>
+    <span class="n">total_reward</span> <span class="o">=</span> <span class="p">(</span><span class="n">rew_alive</span> <span class="o">+</span> <span class="n">rew_termination</span> <span class="o">+</span> <span class="n">rew_pole_pos</span> <span class="o">+</span> <span class="n">rew_cart_vel</span> <span class="o">+</span> <span class="n">rew_pole_vel</span><span class="p">)</span> <span class="o">*</span> <span class="n">step_dt</span>
     <span class="k">return</span> <span class="n">total_reward</span>
 </pre></div>
 </div>
@@ -970,7 +973,7 @@ By The Isaac Lab Project Developers.
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Jul 02, 2026.
+  Last updated on Jul 03, 2026.
   <br/>
 </p>
   </div>

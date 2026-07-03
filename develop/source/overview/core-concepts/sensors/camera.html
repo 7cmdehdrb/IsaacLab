@@ -64,7 +64,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="3.0.0" />
-    <meta name="docbuild:last-update" content="Jul 02, 2026"/>
+    <meta name="docbuild:last-update" content="Jul 03, 2026"/>
   </head>
   
   
@@ -799,28 +799,23 @@ these scaling challenges by batching all cameras into a single render pass.</p>
 (NVIDIA RTX, requires Isaac Sim).</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <colgroup>
-<col style="width: 30.0%" />
-<col style="width: 30.0%" />
-<col style="width: 40.0%" />
+<col style="width: 50.0%" />
+<col style="width: 50.0%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p><code class="docutils literal notranslate"><span class="pre">renderer_cfg</span></code></p></th>
 <th class="head"><p>Requires Isaac Sim?</p></th>
-<th class="head"><p>Supported data types</p></th>
 </tr>
 </thead>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">IsaacRtxRendererCfg</span></code> <em>(default)</em></p></td>
 <td><p>Yes</p></td>
-<td><p>All annotators (rgb, rgba, depth, distances, normals, motion vectors, semantic/instance segmentation)</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">NewtonWarpRendererCfg</span></code></p></td>
 <td><p>No (kit-less)</p></td>
-<td><p>rgb, rgba, rgb_hdr, depth, normals, instance segmentation</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">OVRTXRendererCfg</span></code></p></td>
 <td><p>No (+ <code class="docutils literal notranslate"><span class="pre">isaaclab_ov</span></code>)</p></td>
-<td><p>rgb, rgba, rgb_hdr, depth, distances, normals, semantic segmentation</p></td>
 </tr>
 </tbody>
 </table>
@@ -1020,12 +1015,12 @@ is <code class="xref py py-class docutils literal notranslate"><span class="pre"
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">instance_segmentation_fast</span></code></p></td>
 <td><p>✅</p></td>
-<td><p>❌</p></td>
+<td><p>✅</p></td>
 <td><p>✅</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">instance_id_segmentation_fast</span></code></p></td>
 <td><p>✅</p></td>
-<td><p>❌</p></td>
+<td><p>✅</p></td>
 <td><p>❌</p></td>
 </tr>
 </tbody>
@@ -1246,6 +1241,10 @@ An <code class="docutils literal notranslate"><span class="pre">info</span></cod
 <li><p>If <code class="docutils literal notranslate"><span class="pre">colorize_instance_segmentation=True</span></code>: shape <code class="docutils literal notranslate"><span class="pre">(B,</span> <span class="pre">H,</span> <span class="pre">W,</span> <span class="pre">4)</span></code>, type <code class="docutils literal notranslate"><span class="pre">torch.uint8</span></code>.</p></li>
 <li><p>If <code class="docutils literal notranslate"><span class="pre">colorize_instance_segmentation=False</span></code>: shape <code class="docutils literal notranslate"><span class="pre">(B,</span> <span class="pre">H,</span> <span class="pre">W,</span> <span class="pre">1)</span></code>, type <code class="docutils literal notranslate"><span class="pre">torch.int32</span></code>.</p></li>
 </ul>
+<p>Pixels belonging to prims with no assigned semantic label are rendered black
+(RGBA <code class="docutils literal notranslate"><span class="pre">(0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">255)</span></code>) when <code class="docutils literal notranslate"><span class="pre">colorize_instance_segmentation=True</span></code>. When
+<code class="docutils literal notranslate"><span class="pre">colorize_instance_segmentation=False</span></code>, those pixels instead carry the raw
+UNLABELLED instance ID (<code class="docutils literal notranslate"><span class="pre">1</span></code>) rather than a color value.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">idToLabels</span></code> dict maps color to USD prim path. The <code class="docutils literal notranslate"><span class="pre">idToSemantics</span></code> dict maps color to
 semantic label.</p>
 </section>
@@ -1358,7 +1357,7 @@ By The Isaac Lab Project Developers.
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Jul 02, 2026.
+  Last updated on Jul 03, 2026.
   <br/>
 </p>
   </div>

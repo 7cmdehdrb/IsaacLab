@@ -64,7 +64,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="3.0.0" />
-    <meta name="docbuild:last-update" content="Jul 02, 2026"/>
+    <meta name="docbuild:last-update" content="Jul 03, 2026"/>
   </head>
   
   
@@ -1147,6 +1147,15 @@ large VLA models that don’t fit on a single GPU.</p>
 the repository. The logs directory follows the pattern <code class="docutils literal notranslate"><span class="pre">logs/&lt;library&gt;/&lt;task&gt;/&lt;date-time&gt;</span></code>, where <code class="docutils literal notranslate"><span class="pre">&lt;library&gt;</span></code>
 is the name of the learning framework, <code class="docutils literal notranslate"><span class="pre">&lt;task&gt;</span></code> is the task name, and <code class="docutils literal notranslate"><span class="pre">&lt;date-time&gt;</span></code> is the timestamp at
 which the training command was executed.</p>
+<p>New training runs also store a <code class="docutils literal notranslate"><span class="pre">run.json</span></code> manifest in their run directory. This manifest allows the unified
+<code class="docutils literal notranslate"><span class="pre">train</span></code> and <code class="docutils literal notranslate"><span class="pre">play</span></code> commands to resolve a checkpoint without copying its path manually. Pass
+<code class="docutils literal notranslate"><span class="pre">--checkpoint</span> <span class="pre">latest</span></code> to select the highest-step checkpoint from the newest compatible run:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./isaaclab.sh<span class="w"> </span>play<span class="w"> </span>--rl_library<span class="w"> </span>rsl_rl<span class="w"> </span>--task<span class="w"> </span>Isaac-Cartpole<span class="w"> </span>--checkpoint<span class="w"> </span>latest
+</pre></div>
+</div>
+<p>Pass <code class="docutils literal notranslate"><span class="pre">--checkpoint</span> <span class="pre">best</span></code> to prefer the library-specific best or final checkpoint. For libraries without a
+distinct best checkpoint, <code class="docutils literal notranslate"><span class="pre">best</span></code> resolves to the same checkpoint as <code class="docutils literal notranslate"><span class="pre">latest</span></code>. These selectors are supported
+by RL-Games, RSL-RL, skrl, and Stable-Baselines3. RSL-RL training resume continues to require <code class="docutils literal notranslate"><span class="pre">--resume</span></code>.</p>
 <p>To view the logs, run:</p>
 <div class="sd-tab-set docutils">
 <input checked="checked" id="sd-tab-item-16" name="sd-tab-set-8" type="radio">
@@ -1256,7 +1265,7 @@ By The Isaac Lab Project Developers.
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Jul 02, 2026.
+  Last updated on Jul 03, 2026.
   <br/>
 </p>
   </div>
