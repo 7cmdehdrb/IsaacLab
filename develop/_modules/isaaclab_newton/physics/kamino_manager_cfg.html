@@ -61,7 +61,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="3.0.0" />
-    <meta name="docbuild:last-update" content="Jul 03, 2026"/>
+    <meta name="docbuild:last-update" content="Jul 04, 2026"/>
   </head>
   
   
@@ -314,6 +314,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../../source/how-to/add_own_library.html">Adding your own learning library</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../source/how-to/record_animation.html">Recording Animations of Simulations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../source/how-to/record_video.html">Recording video clips during training</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../source/how-to/capture_sensor_frames.html">Capturing sensor frames during training</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../source/how-to/curriculums.html">Curriculum Utilities</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../source/how-to/master_omniverse.html">Mastering Omniverse for Robotics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../source/how-to/cloudxr_teleoperation.html">Setting up Isaac Teleop with CloudXR</a></li>
@@ -729,12 +730,32 @@
     <span class="n">use_collision_detector</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Whether to use Kamino&#39;s internal collision detector instead of Newton&#39;s pipeline.&quot;&quot;&quot;</span>
 
-    <span class="n">use_fk_solver</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="n">use_fk_solver</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Whether to enable the forward kinematics solver for state resets.</span>
 
-<span class="sd">    Required for proper environment resets. The FK solver computes consistent body poses</span>
-<span class="sd">    from joint angles after state writes, which is essential for maximal-coordinate solvers.</span>
+<span class="sd">    When ``None``, Kamino will automatically determine whether to use the FK solver based on the model&#39;s</span>
+<span class="sd">    articulation structure. If the model has loop-closing joints, the FK solver will be used.</span>
+
+<span class="sd">    When ``True``, :meth:`NewtonKaminoManager._eval_fk_impl` reconciles body state via</span>
+<span class="sd">    :meth:`SolverKamino.reset` with :class:`SolverKamino.ResetConfig.from_joints`. Kamino&#39;s FK</span>
+<span class="sd">    solver computes consistent body poses/velocities from the joint coordinates (including the</span>
+<span class="sd">    base joint for floating bases), resolves passive / loop-closure joints, and writes back a</span>
+<span class="sd">    consistent full joint state. Environment resets only need to write actuated DOFs in</span>
+<span class="sd">    ``joint_q``; passive values are filled in by FK. This is required for closed-loop systems.</span>
+
+<span class="sd">    When ``False``, Newton&#39;s articulated ``eval_fk`` is used instead over the full</span>
+<span class="sd">    ``joint_q`` / ``joint_qd``. It is then up to the user to specify constraint-consistent</span>
+<span class="sd">    values. This is the faster option for purely articulated (tree-structured) systems.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">fk_use_regularization</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Whether to regularize the FK reset solve (Tikhonov term on body poses).&quot;&quot;&quot;</span>
+
+    <span class="n">fk_regularization_weight</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1e-5</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Weight of the FK reset regularizer, used when :attr:`fk_use_regularization` is ``True``.&quot;&quot;&quot;</span>
+
+    <span class="n">fk_tolerance</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1e-5</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Convergence tolerance of the FK reset solve.&quot;&quot;&quot;</span>
 
     <span class="n">sparse_jacobian</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Whether to use sparse Jacobian computation.&quot;&quot;&quot;</span>
@@ -826,6 +847,16 @@
 <span class="sd">    Only used when :attr:`use_collision_detector` is ``True``. If ``None``, Newton&#39;s default is used.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
+    <span class="n">max_contacts_per_world</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Cap the per-world contact pre-allocation handed to Kamino.</span>
+
+<span class="sd">    When ``None``, Kamino falls back to ``geoms.world_minimum_contacts`` derived from the</span>
+<span class="sd">    collision pipeline, which over-allocates dramatically for contact-rich assets. Set this</span>
+<span class="sd">    to bound GPU memory for multi-env training of contact-heavy tasks (e.g. legged</span>
+<span class="sd">    locomotion or manipulation). The total ``model.rigid_contact_max`` is computed as</span>
+<span class="sd">    ``max_contacts_per_world * model.world_count`` before solver construction.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
     <span class="n">dynamics_preconditioning</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Whether to use preconditioning in the constrained dynamics solver.</span>
 
@@ -848,9 +879,14 @@
             <span class="n">CollisionDetectorConfig</span><span class="p">,</span>
             <span class="n">ConstrainedDynamicsConfig</span><span class="p">,</span>
             <span class="n">ConstraintStabilizationConfig</span><span class="p">,</span>
+            <span class="n">ForwardKinematicsSolverConfig</span><span class="p">,</span>
             <span class="n">PADMMSolverConfig</span><span class="p">,</span>
         <span class="p">)</span>
         <span class="kn">from</span><span class="w"> </span><span class="nn">newton.solvers</span><span class="w"> </span><span class="kn">import</span> <span class="n">SolverKamino</span>
+
+        <span class="c1"># Kamino Manager will set the automatic value before. This is a fallback to true if that mechanism was bypassed.</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">use_fk_solver</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">use_fk_solver</span> <span class="o">=</span> <span class="kc">True</span>
 
         <span class="c1"># Build collision detector config if using Kamino&#39;s internal detector</span>
         <span class="n">collision_detector</span> <span class="o">=</span> <span class="kc">None</span>
@@ -873,6 +909,11 @@
             <span class="n">collect_solver_info</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">collect_solver_info</span><span class="p">,</span>
             <span class="n">compute_solution_metrics</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">compute_solution_metrics</span><span class="p">,</span>
             <span class="n">collision_detector</span><span class="o">=</span><span class="n">collision_detector</span><span class="p">,</span>
+            <span class="n">fk</span><span class="o">=</span><span class="n">ForwardKinematicsSolverConfig</span><span class="p">(</span>
+                <span class="n">use_regularization</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">fk_use_regularization</span><span class="p">,</span>
+                <span class="n">regularization_weight</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">fk_regularization_weight</span><span class="p">,</span>
+                <span class="n">tolerance</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">fk_tolerance</span><span class="p">,</span>
+            <span class="p">),</span>
             <span class="n">constraints</span><span class="o">=</span><span class="n">ConstraintStabilizationConfig</span><span class="p">(</span>
                 <span class="n">alpha</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">constraints_alpha</span><span class="p">,</span>
                 <span class="n">beta</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">constraints_beta</span><span class="p">,</span>
@@ -944,7 +985,7 @@ By The Isaac Lab Project Developers.
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Jul 03, 2026.
+  Last updated on Jul 04, 2026.
   <br/>
 </p>
   </div>

@@ -64,7 +64,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="3.0.0" />
-    <meta name="docbuild:last-update" content="Jul 03, 2026"/>
+    <meta name="docbuild:last-update" content="Jul 04, 2026"/>
   </head>
   
   
@@ -315,6 +315,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../how-to/add_own_library.html">Adding your own learning library</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../how-to/record_animation.html">Recording Animations of Simulations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../how-to/record_video.html">Recording video clips during training</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../how-to/capture_sensor_frames.html">Capturing sensor frames during training</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../how-to/curriculums.html">Curriculum Utilities</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../how-to/master_omniverse.html">Mastering Omniverse for Robotics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../how-to/cloudxr_teleoperation.html">Setting up Isaac Teleop with CloudXR</a></li>
@@ -874,6 +875,9 @@
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab_newton.physics.KaminoSolverCfg.integrator"><code class="docutils literal notranslate"><span class="pre">KaminoSolverCfg.integrator</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab_newton.physics.KaminoSolverCfg.use_collision_detector"><code class="docutils literal notranslate"><span class="pre">KaminoSolverCfg.use_collision_detector</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab_newton.physics.KaminoSolverCfg.use_fk_solver"><code class="docutils literal notranslate"><span class="pre">KaminoSolverCfg.use_fk_solver</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab_newton.physics.KaminoSolverCfg.fk_use_regularization"><code class="docutils literal notranslate"><span class="pre">KaminoSolverCfg.fk_use_regularization</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab_newton.physics.KaminoSolverCfg.fk_regularization_weight"><code class="docutils literal notranslate"><span class="pre">KaminoSolverCfg.fk_regularization_weight</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab_newton.physics.KaminoSolverCfg.fk_tolerance"><code class="docutils literal notranslate"><span class="pre">KaminoSolverCfg.fk_tolerance</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab_newton.physics.KaminoSolverCfg.sparse_jacobian"><code class="docutils literal notranslate"><span class="pre">KaminoSolverCfg.sparse_jacobian</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab_newton.physics.KaminoSolverCfg.sparse_dynamics"><code class="docutils literal notranslate"><span class="pre">KaminoSolverCfg.sparse_dynamics</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab_newton.physics.KaminoSolverCfg.rotation_correction"><code class="docutils literal notranslate"><span class="pre">KaminoSolverCfg.rotation_correction</span></code></a></li>
@@ -896,6 +900,7 @@
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab_newton.physics.KaminoSolverCfg.compute_solution_metrics"><code class="docutils literal notranslate"><span class="pre">KaminoSolverCfg.compute_solution_metrics</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab_newton.physics.KaminoSolverCfg.collision_detector_pipeline"><code class="docutils literal notranslate"><span class="pre">KaminoSolverCfg.collision_detector_pipeline</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab_newton.physics.KaminoSolverCfg.collision_detector_max_contacts_per_pair"><code class="docutils literal notranslate"><span class="pre">KaminoSolverCfg.collision_detector_max_contacts_per_pair</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab_newton.physics.KaminoSolverCfg.max_contacts_per_world"><code class="docutils literal notranslate"><span class="pre">KaminoSolverCfg.max_contacts_per_world</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab_newton.physics.KaminoSolverCfg.dynamics_preconditioning"><code class="docutils literal notranslate"><span class="pre">KaminoSolverCfg.dynamics_preconditioning</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab_newton.physics.KaminoSolverCfg.to_solver_config"><code class="docutils literal notranslate"><span class="pre">KaminoSolverCfg.to_solver_config()</span></code></a></li>
 </ul>
@@ -1127,7 +1132,6 @@
 </ul>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab_newton.physics.NewtonKaminoManager"><code class="docutils literal notranslate"><span class="pre">NewtonKaminoManager</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab_newton.physics.NewtonKaminoManager.step"><code class="docutils literal notranslate"><span class="pre">NewtonKaminoManager.step()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab_newton.physics.NewtonKaminoManager.activate_newton_actuator_path"><code class="docutils literal notranslate"><span class="pre">NewtonKaminoManager.activate_newton_actuator_path()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab_newton.physics.NewtonKaminoManager.add_contact_sensor"><code class="docutils literal notranslate"><span class="pre">NewtonKaminoManager.add_contact_sensor()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab_newton.physics.NewtonKaminoManager.add_frame_transform_sensor"><code class="docutils literal notranslate"><span class="pre">NewtonKaminoManager.add_frame_transform_sensor()</span></code></a></li>
@@ -1177,6 +1181,7 @@
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab_newton.physics.NewtonKaminoManager.set_builder"><code class="docutils literal notranslate"><span class="pre">NewtonKaminoManager.set_builder()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab_newton.physics.NewtonKaminoManager.set_decimation"><code class="docutils literal notranslate"><span class="pre">NewtonKaminoManager.set_decimation()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab_newton.physics.NewtonKaminoManager.start_simulation"><code class="docutils literal notranslate"><span class="pre">NewtonKaminoManager.start_simulation()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab_newton.physics.NewtonKaminoManager.step"><code class="docutils literal notranslate"><span class="pre">NewtonKaminoManager.step()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab_newton.physics.NewtonKaminoManager.stop"><code class="docutils literal notranslate"><span class="pre">NewtonKaminoManager.stop()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab_newton.physics.NewtonKaminoManager.sync_particles_to_usd"><code class="docutils literal notranslate"><span class="pre">NewtonKaminoManager.sync_particles_to_usd()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab_newton.physics.NewtonKaminoManager.sync_transforms_to_usd"><code class="docutils literal notranslate"><span class="pre">NewtonKaminoManager.sync_transforms_to_usd()</span></code></a></li>
@@ -1552,11 +1557,15 @@ cue in the observation (e.g. frame stacking).</p>
 <dt class="sig sig-object py" id="isaaclab_newton.physics.NewtonManager.forward">
 <em class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span></span><a class="reference internal" href="../../../_modules/isaaclab_newton/physics/newton_manager.html#NewtonManager.forward"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#isaaclab_newton.physics.NewtonManager.forward" title="Link to this definition">#</a></dt>
 <dd><p>Update articulation kinematics without stepping physics.</p>
-<p>Runs Newton’s generic forward kinematics (<code class="docutils literal notranslate"><span class="pre">eval_fk</span></code>) over <strong>all</strong>
-articulations to compute body poses from joint coordinates. This is
-the full (unmasked) FK path used during initial setup. For incremental
-per-environment updates after resets, see <a class="reference internal" href="#isaaclab_newton.physics.NewtonManager.invalidate_fk" title="isaaclab_newton.physics.NewtonManager.invalidate_fk"><code class="xref py py-meth docutils literal notranslate"><span class="pre">invalidate_fk()</span></code></a> which
-accumulates masks consumed by <a class="reference internal" href="#isaaclab_newton.physics.NewtonManager.step" title="isaaclab_newton.physics.NewtonManager.step"><code class="xref py py-meth docutils literal notranslate"><span class="pre">step()</span></code></a>.</p>
+<p>Update body poses from joint coordinates via the solver-specialized FK delegate
+(<code class="xref py py-attr docutils literal notranslate"><span class="pre">_eval_fk</span></code>, bound to the active subclass’s <code class="xref py py-meth docutils literal notranslate"><span class="pre">_eval_fk_impl()</span></code> in
+<a class="reference internal" href="#isaaclab_newton.physics.NewtonManager.initialize_solver" title="isaaclab_newton.physics.NewtonManager.initialize_solver"><code class="xref py py-meth docutils literal notranslate"><span class="pre">initialize_solver()</span></code></a>). Only the articulations flagged dirty in
+<code class="xref py py-attr docutils literal notranslate"><span class="pre">_fk_reset_mask</span></code> and <code class="xref py py-attr docutils literal notranslate"><span class="pre">_world_reset_mask</span></code> (see <a class="reference internal" href="#isaaclab_newton.physics.NewtonManager.invalidate_fk" title="isaaclab_newton.physics.NewtonManager.invalidate_fk"><code class="xref py py-meth docutils literal notranslate"><span class="pre">invalidate_fk()</span></code></a>) are
+updated. The masks are consumed (zeroed) afterwards so the next <a class="reference internal" href="#isaaclab_newton.physics.NewtonManager.step" title="isaaclab_newton.physics.NewtonManager.step"><code class="xref py py-meth docutils literal notranslate"><span class="pre">step()</span></code></a> does not
+redundantly re-solve them.</p>
+<p>The delegate (rather than a direct <code class="docutils literal notranslate"><span class="pre">cls._eval_fk_impl</span></code> call) is required because the
+data layer invokes <code class="docutils literal notranslate"><span class="pre">NewtonManager.forward()</span></code> on the base class, where <code class="docutils literal notranslate"><span class="pre">cls</span></code> is the
+base <code class="docutils literal notranslate"><span class="pre">NewtonManager</span></code>; the bound delegate dispatches to the concrete subclass override.</p>
 </dd></dl>
 
 <dl class="py method">
@@ -2789,71 +2798,83 @@ and articulations with hard frictional contacts.</p>
 <tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab_newton.physics.KaminoSolverCfg.use_fk_solver" title="isaaclab_newton.physics.KaminoSolverCfg.use_fk_solver"><code class="xref py py-obj docutils literal notranslate"><span class="pre">use_fk_solver</span></code></a></p></td>
 <td><p>Whether to enable the forward kinematics solver for state resets.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab_newton.physics.KaminoSolverCfg.sparse_jacobian" title="isaaclab_newton.physics.KaminoSolverCfg.sparse_jacobian"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sparse_jacobian</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab_newton.physics.KaminoSolverCfg.fk_use_regularization" title="isaaclab_newton.physics.KaminoSolverCfg.fk_use_regularization"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fk_use_regularization</span></code></a></p></td>
+<td><p>Whether to regularize the FK reset solve (Tikhonov term on body poses).</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab_newton.physics.KaminoSolverCfg.fk_regularization_weight" title="isaaclab_newton.physics.KaminoSolverCfg.fk_regularization_weight"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fk_regularization_weight</span></code></a></p></td>
+<td><p>Weight of the FK reset regularizer, used when <a class="reference internal" href="#isaaclab_newton.physics.KaminoSolverCfg.fk_use_regularization" title="isaaclab_newton.physics.KaminoSolverCfg.fk_use_regularization"><code class="xref py py-attr docutils literal notranslate"><span class="pre">fk_use_regularization</span></code></a> is <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab_newton.physics.KaminoSolverCfg.fk_tolerance" title="isaaclab_newton.physics.KaminoSolverCfg.fk_tolerance"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fk_tolerance</span></code></a></p></td>
+<td><p>Convergence tolerance of the FK reset solve.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab_newton.physics.KaminoSolverCfg.sparse_jacobian" title="isaaclab_newton.physics.KaminoSolverCfg.sparse_jacobian"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sparse_jacobian</span></code></a></p></td>
 <td><p>Whether to use sparse Jacobian computation.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab_newton.physics.KaminoSolverCfg.sparse_dynamics" title="isaaclab_newton.physics.KaminoSolverCfg.sparse_dynamics"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sparse_dynamics</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab_newton.physics.KaminoSolverCfg.sparse_dynamics" title="isaaclab_newton.physics.KaminoSolverCfg.sparse_dynamics"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sparse_dynamics</span></code></a></p></td>
 <td><p>Whether to use sparse dynamics computation.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab_newton.physics.KaminoSolverCfg.rotation_correction" title="isaaclab_newton.physics.KaminoSolverCfg.rotation_correction"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rotation_correction</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab_newton.physics.KaminoSolverCfg.rotation_correction" title="isaaclab_newton.physics.KaminoSolverCfg.rotation_correction"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rotation_correction</span></code></a></p></td>
 <td><p>Rotation correction mode.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab_newton.physics.KaminoSolverCfg.angular_velocity_damping" title="isaaclab_newton.physics.KaminoSolverCfg.angular_velocity_damping"><code class="xref py py-obj docutils literal notranslate"><span class="pre">angular_velocity_damping</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab_newton.physics.KaminoSolverCfg.angular_velocity_damping" title="isaaclab_newton.physics.KaminoSolverCfg.angular_velocity_damping"><code class="xref py py-obj docutils literal notranslate"><span class="pre">angular_velocity_damping</span></code></a></p></td>
 <td><p>Angular velocity damping factor.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab_newton.physics.KaminoSolverCfg.constraints_alpha" title="isaaclab_newton.physics.KaminoSolverCfg.constraints_alpha"><code class="xref py py-obj docutils literal notranslate"><span class="pre">constraints_alpha</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab_newton.physics.KaminoSolverCfg.constraints_alpha" title="isaaclab_newton.physics.KaminoSolverCfg.constraints_alpha"><code class="xref py py-obj docutils literal notranslate"><span class="pre">constraints_alpha</span></code></a></p></td>
 <td><p>Baumgarte stabilization parameter for bilateral joint constraints.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab_newton.physics.KaminoSolverCfg.constraints_beta" title="isaaclab_newton.physics.KaminoSolverCfg.constraints_beta"><code class="xref py py-obj docutils literal notranslate"><span class="pre">constraints_beta</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab_newton.physics.KaminoSolverCfg.constraints_beta" title="isaaclab_newton.physics.KaminoSolverCfg.constraints_beta"><code class="xref py py-obj docutils literal notranslate"><span class="pre">constraints_beta</span></code></a></p></td>
 <td><p>Baumgarte stabilization parameter for unilateral joint-limit constraints.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab_newton.physics.KaminoSolverCfg.constraints_gamma" title="isaaclab_newton.physics.KaminoSolverCfg.constraints_gamma"><code class="xref py py-obj docutils literal notranslate"><span class="pre">constraints_gamma</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab_newton.physics.KaminoSolverCfg.constraints_gamma" title="isaaclab_newton.physics.KaminoSolverCfg.constraints_gamma"><code class="xref py py-obj docutils literal notranslate"><span class="pre">constraints_gamma</span></code></a></p></td>
 <td><p>Baumgarte stabilization parameter for unilateral contact constraints.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab_newton.physics.KaminoSolverCfg.constraints_delta" title="isaaclab_newton.physics.KaminoSolverCfg.constraints_delta"><code class="xref py py-obj docutils literal notranslate"><span class="pre">constraints_delta</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab_newton.physics.KaminoSolverCfg.constraints_delta" title="isaaclab_newton.physics.KaminoSolverCfg.constraints_delta"><code class="xref py py-obj docutils literal notranslate"><span class="pre">constraints_delta</span></code></a></p></td>
 <td><p>Contact penetration margin [m].</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab_newton.physics.KaminoSolverCfg.padmm_max_iterations" title="isaaclab_newton.physics.KaminoSolverCfg.padmm_max_iterations"><code class="xref py py-obj docutils literal notranslate"><span class="pre">padmm_max_iterations</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab_newton.physics.KaminoSolverCfg.padmm_max_iterations" title="isaaclab_newton.physics.KaminoSolverCfg.padmm_max_iterations"><code class="xref py py-obj docutils literal notranslate"><span class="pre">padmm_max_iterations</span></code></a></p></td>
 <td><p>Maximum number of P-ADMM solver iterations.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab_newton.physics.KaminoSolverCfg.padmm_primal_tolerance" title="isaaclab_newton.physics.KaminoSolverCfg.padmm_primal_tolerance"><code class="xref py py-obj docutils literal notranslate"><span class="pre">padmm_primal_tolerance</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab_newton.physics.KaminoSolverCfg.padmm_primal_tolerance" title="isaaclab_newton.physics.KaminoSolverCfg.padmm_primal_tolerance"><code class="xref py py-obj docutils literal notranslate"><span class="pre">padmm_primal_tolerance</span></code></a></p></td>
 <td><p>Primal residual convergence tolerance for P-ADMM.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab_newton.physics.KaminoSolverCfg.padmm_dual_tolerance" title="isaaclab_newton.physics.KaminoSolverCfg.padmm_dual_tolerance"><code class="xref py py-obj docutils literal notranslate"><span class="pre">padmm_dual_tolerance</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab_newton.physics.KaminoSolverCfg.padmm_dual_tolerance" title="isaaclab_newton.physics.KaminoSolverCfg.padmm_dual_tolerance"><code class="xref py py-obj docutils literal notranslate"><span class="pre">padmm_dual_tolerance</span></code></a></p></td>
 <td><p>Dual residual convergence tolerance for P-ADMM.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab_newton.physics.KaminoSolverCfg.padmm_compl_tolerance" title="isaaclab_newton.physics.KaminoSolverCfg.padmm_compl_tolerance"><code class="xref py py-obj docutils literal notranslate"><span class="pre">padmm_compl_tolerance</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab_newton.physics.KaminoSolverCfg.padmm_compl_tolerance" title="isaaclab_newton.physics.KaminoSolverCfg.padmm_compl_tolerance"><code class="xref py py-obj docutils literal notranslate"><span class="pre">padmm_compl_tolerance</span></code></a></p></td>
 <td><p>Complementarity residual convergence tolerance for P-ADMM.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab_newton.physics.KaminoSolverCfg.padmm_rho_0" title="isaaclab_newton.physics.KaminoSolverCfg.padmm_rho_0"><code class="xref py py-obj docutils literal notranslate"><span class="pre">padmm_rho_0</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab_newton.physics.KaminoSolverCfg.padmm_rho_0" title="isaaclab_newton.physics.KaminoSolverCfg.padmm_rho_0"><code class="xref py py-obj docutils literal notranslate"><span class="pre">padmm_rho_0</span></code></a></p></td>
 <td><p>Initial penalty parameter for P-ADMM.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab_newton.physics.KaminoSolverCfg.padmm_use_acceleration" title="isaaclab_newton.physics.KaminoSolverCfg.padmm_use_acceleration"><code class="xref py py-obj docutils literal notranslate"><span class="pre">padmm_use_acceleration</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab_newton.physics.KaminoSolverCfg.padmm_use_acceleration" title="isaaclab_newton.physics.KaminoSolverCfg.padmm_use_acceleration"><code class="xref py py-obj docutils literal notranslate"><span class="pre">padmm_use_acceleration</span></code></a></p></td>
 <td><p>Whether to use acceleration in the P-ADMM solver.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab_newton.physics.KaminoSolverCfg.padmm_warmstart_mode" title="isaaclab_newton.physics.KaminoSolverCfg.padmm_warmstart_mode"><code class="xref py py-obj docutils literal notranslate"><span class="pre">padmm_warmstart_mode</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab_newton.physics.KaminoSolverCfg.padmm_warmstart_mode" title="isaaclab_newton.physics.KaminoSolverCfg.padmm_warmstart_mode"><code class="xref py py-obj docutils literal notranslate"><span class="pre">padmm_warmstart_mode</span></code></a></p></td>
 <td><p>Warmstart mode for P-ADMM.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab_newton.physics.KaminoSolverCfg.padmm_eta" title="isaaclab_newton.physics.KaminoSolverCfg.padmm_eta"><code class="xref py py-obj docutils literal notranslate"><span class="pre">padmm_eta</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab_newton.physics.KaminoSolverCfg.padmm_eta" title="isaaclab_newton.physics.KaminoSolverCfg.padmm_eta"><code class="xref py py-obj docutils literal notranslate"><span class="pre">padmm_eta</span></code></a></p></td>
 <td><p>Proximal regularization parameter for P-ADMM.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab_newton.physics.KaminoSolverCfg.padmm_contact_warmstart_method" title="isaaclab_newton.physics.KaminoSolverCfg.padmm_contact_warmstart_method"><code class="xref py py-obj docutils literal notranslate"><span class="pre">padmm_contact_warmstart_method</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab_newton.physics.KaminoSolverCfg.padmm_contact_warmstart_method" title="isaaclab_newton.physics.KaminoSolverCfg.padmm_contact_warmstart_method"><code class="xref py py-obj docutils literal notranslate"><span class="pre">padmm_contact_warmstart_method</span></code></a></p></td>
 <td><p>Contact warm-start method for P-ADMM.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab_newton.physics.KaminoSolverCfg.padmm_use_graph_conditionals" title="isaaclab_newton.physics.KaminoSolverCfg.padmm_use_graph_conditionals"><code class="xref py py-obj docutils literal notranslate"><span class="pre">padmm_use_graph_conditionals</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab_newton.physics.KaminoSolverCfg.padmm_use_graph_conditionals" title="isaaclab_newton.physics.KaminoSolverCfg.padmm_use_graph_conditionals"><code class="xref py py-obj docutils literal notranslate"><span class="pre">padmm_use_graph_conditionals</span></code></a></p></td>
 <td><p>Whether to use CUDA graph conditional nodes in the P-ADMM iterative solver.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab_newton.physics.KaminoSolverCfg.collect_solver_info" title="isaaclab_newton.physics.KaminoSolverCfg.collect_solver_info"><code class="xref py py-obj docutils literal notranslate"><span class="pre">collect_solver_info</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab_newton.physics.KaminoSolverCfg.collect_solver_info" title="isaaclab_newton.physics.KaminoSolverCfg.collect_solver_info"><code class="xref py py-obj docutils literal notranslate"><span class="pre">collect_solver_info</span></code></a></p></td>
 <td><p>Whether to collect solver convergence and performance info at each step.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab_newton.physics.KaminoSolverCfg.compute_solution_metrics" title="isaaclab_newton.physics.KaminoSolverCfg.compute_solution_metrics"><code class="xref py py-obj docutils literal notranslate"><span class="pre">compute_solution_metrics</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab_newton.physics.KaminoSolverCfg.compute_solution_metrics" title="isaaclab_newton.physics.KaminoSolverCfg.compute_solution_metrics"><code class="xref py py-obj docutils literal notranslate"><span class="pre">compute_solution_metrics</span></code></a></p></td>
 <td><p>Whether to compute solution metrics at each step.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab_newton.physics.KaminoSolverCfg.collision_detector_pipeline" title="isaaclab_newton.physics.KaminoSolverCfg.collision_detector_pipeline"><code class="xref py py-obj docutils literal notranslate"><span class="pre">collision_detector_pipeline</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab_newton.physics.KaminoSolverCfg.collision_detector_pipeline" title="isaaclab_newton.physics.KaminoSolverCfg.collision_detector_pipeline"><code class="xref py py-obj docutils literal notranslate"><span class="pre">collision_detector_pipeline</span></code></a></p></td>
 <td><p>Collision detection pipeline type.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab_newton.physics.KaminoSolverCfg.collision_detector_max_contacts_per_pair" title="isaaclab_newton.physics.KaminoSolverCfg.collision_detector_max_contacts_per_pair"><code class="xref py py-obj docutils literal notranslate"><span class="pre">collision_detector_max_contacts_per_pair</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab_newton.physics.KaminoSolverCfg.collision_detector_max_contacts_per_pair" title="isaaclab_newton.physics.KaminoSolverCfg.collision_detector_max_contacts_per_pair"><code class="xref py py-obj docutils literal notranslate"><span class="pre">collision_detector_max_contacts_per_pair</span></code></a></p></td>
 <td><p>Maximum number of contacts to generate per candidate geometry pair.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab_newton.physics.KaminoSolverCfg.max_contacts_per_world" title="isaaclab_newton.physics.KaminoSolverCfg.max_contacts_per_world"><code class="xref py py-obj docutils literal notranslate"><span class="pre">max_contacts_per_world</span></code></a></p></td>
+<td><p>Cap the per-world contact pre-allocation handed to Kamino.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#isaaclab_newton.physics.KaminoSolverCfg.dynamics_preconditioning" title="isaaclab_newton.physics.KaminoSolverCfg.dynamics_preconditioning"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dynamics_preconditioning</span></code></a></p></td>
 <td><p>Whether to use preconditioning in the constrained dynamics solver.</p></td>
@@ -2896,10 +2917,37 @@ and articulations with hard frictional contacts.</p>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="isaaclab_newton.physics.KaminoSolverCfg.use_fk_solver">
-<span class="sig-name descname"><span class="pre">use_fk_solver</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><span class="pre">bool</span></a></em><a class="headerlink" href="#isaaclab_newton.physics.KaminoSolverCfg.use_fk_solver" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">use_fk_solver</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><span class="pre">bool</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><a class="headerlink" href="#isaaclab_newton.physics.KaminoSolverCfg.use_fk_solver" title="Link to this definition">#</a></dt>
 <dd><p>Whether to enable the forward kinematics solver for state resets.</p>
-<p>Required for proper environment resets. The FK solver computes consistent body poses
-from joint angles after state writes, which is essential for maximal-coordinate solvers.</p>
+<p>When <code class="docutils literal notranslate"><span class="pre">None</span></code>, Kamino will automatically determine whether to use the FK solver based on the model’s
+articulation structure. If the model has loop-closing joints, the FK solver will be used.</p>
+<p>When <code class="docutils literal notranslate"><span class="pre">True</span></code>, <code class="xref py py-meth docutils literal notranslate"><span class="pre">NewtonKaminoManager._eval_fk_impl()</span></code> reconciles body state via
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">SolverKamino.reset()</span></code> with <code class="xref py py-class docutils literal notranslate"><span class="pre">SolverKamino.ResetConfig.from_joints</span></code>. Kamino’s FK
+solver computes consistent body poses/velocities from the joint coordinates (including the
+base joint for floating bases), resolves passive / loop-closure joints, and writes back a
+consistent full joint state. Environment resets only need to write actuated DOFs in
+<code class="docutils literal notranslate"><span class="pre">joint_q</span></code>; passive values are filled in by FK. This is required for closed-loop systems.</p>
+<p>When <code class="docutils literal notranslate"><span class="pre">False</span></code>, Newton’s articulated <code class="docutils literal notranslate"><span class="pre">eval_fk</span></code> is used instead over the full
+<code class="docutils literal notranslate"><span class="pre">joint_q</span></code> / <code class="docutils literal notranslate"><span class="pre">joint_qd</span></code>. It is then up to the user to specify constraint-consistent
+values. This is the faster option for purely articulated (tree-structured) systems.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="isaaclab_newton.physics.KaminoSolverCfg.fk_use_regularization">
+<span class="sig-name descname"><span class="pre">fk_use_regularization</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><span class="pre">bool</span></a></em><a class="headerlink" href="#isaaclab_newton.physics.KaminoSolverCfg.fk_use_regularization" title="Link to this definition">#</a></dt>
+<dd><p>Whether to regularize the FK reset solve (Tikhonov term on body poses).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="isaaclab_newton.physics.KaminoSolverCfg.fk_regularization_weight">
+<span class="sig-name descname"><span class="pre">fk_regularization_weight</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></em><a class="headerlink" href="#isaaclab_newton.physics.KaminoSolverCfg.fk_regularization_weight" title="Link to this definition">#</a></dt>
+<dd><p>Weight of the FK reset regularizer, used when <a class="reference internal" href="#isaaclab_newton.physics.KaminoSolverCfg.fk_use_regularization" title="isaaclab_newton.physics.KaminoSolverCfg.fk_use_regularization"><code class="xref py py-attr docutils literal notranslate"><span class="pre">fk_use_regularization</span></code></a> is <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="isaaclab_newton.physics.KaminoSolverCfg.fk_tolerance">
+<span class="sig-name descname"><span class="pre">fk_tolerance</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></em><a class="headerlink" href="#isaaclab_newton.physics.KaminoSolverCfg.fk_tolerance" title="Link to this definition">#</a></dt>
+<dd><p>Convergence tolerance of the FK reset solve.</p>
 </dd></dl>
 
 <dl class="py attribute">
@@ -3046,6 +3094,17 @@ from joint angles after state writes, which is essential for maximal-coordinate 
 <span class="sig-name descname"><span class="pre">collision_detector_max_contacts_per_pair</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><a class="headerlink" href="#isaaclab_newton.physics.KaminoSolverCfg.collision_detector_max_contacts_per_pair" title="Link to this definition">#</a></dt>
 <dd><p>Maximum number of contacts to generate per candidate geometry pair.</p>
 <p>Only used when <a class="reference internal" href="#isaaclab_newton.physics.KaminoSolverCfg.use_collision_detector" title="isaaclab_newton.physics.KaminoSolverCfg.use_collision_detector"><code class="xref py py-attr docutils literal notranslate"><span class="pre">use_collision_detector</span></code></a> is <code class="docutils literal notranslate"><span class="pre">True</span></code>. If <code class="docutils literal notranslate"><span class="pre">None</span></code>, Newton’s default is used.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="isaaclab_newton.physics.KaminoSolverCfg.max_contacts_per_world">
+<span class="sig-name descname"><span class="pre">max_contacts_per_world</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><a class="headerlink" href="#isaaclab_newton.physics.KaminoSolverCfg.max_contacts_per_world" title="Link to this definition">#</a></dt>
+<dd><p>Cap the per-world contact pre-allocation handed to Kamino.</p>
+<p>When <code class="docutils literal notranslate"><span class="pre">None</span></code>, Kamino falls back to <code class="docutils literal notranslate"><span class="pre">geoms.world_minimum_contacts</span></code> derived from the
+collision pipeline, which over-allocates dramatically for contact-rich assets. Set this
+to bound GPU memory for multi-env training of contact-heavy tasks (e.g. legged
+locomotion or manipulation). The total <code class="docutils literal notranslate"><span class="pre">model.rigid_contact_max</span></code> is computed as
+<code class="docutils literal notranslate"><span class="pre">max_contacts_per_world</span> <span class="pre">*</span> <span class="pre">model.world_count</span></code> before solver construction.</p>
 </dd></dl>
 
 <dl class="py attribute">
@@ -3936,11 +3995,15 @@ Subclasses may override or extend with platform-specific dispatch.</p>
 <dt class="sig sig-object py" id="isaaclab_newton.physics.NewtonMJWarpManager.forward">
 <em class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#isaaclab_newton.physics.NewtonMJWarpManager.forward" title="Link to this definition">#</a></dt>
 <dd><p>Update articulation kinematics without stepping physics.</p>
-<p>Runs Newton’s generic forward kinematics (<code class="docutils literal notranslate"><span class="pre">eval_fk</span></code>) over <strong>all</strong>
-articulations to compute body poses from joint coordinates. This is
-the full (unmasked) FK path used during initial setup. For incremental
-per-environment updates after resets, see <a class="reference internal" href="#isaaclab_newton.physics.NewtonMJWarpManager.invalidate_fk" title="isaaclab_newton.physics.NewtonMJWarpManager.invalidate_fk"><code class="xref py py-meth docutils literal notranslate"><span class="pre">invalidate_fk()</span></code></a> which
-accumulates masks consumed by <a class="reference internal" href="#isaaclab_newton.physics.NewtonMJWarpManager.step" title="isaaclab_newton.physics.NewtonMJWarpManager.step"><code class="xref py py-meth docutils literal notranslate"><span class="pre">step()</span></code></a>.</p>
+<p>Update body poses from joint coordinates via the solver-specialized FK delegate
+(<code class="xref py py-attr docutils literal notranslate"><span class="pre">_eval_fk</span></code>, bound to the active subclass’s <code class="xref py py-meth docutils literal notranslate"><span class="pre">_eval_fk_impl()</span></code> in
+<a class="reference internal" href="#isaaclab_newton.physics.NewtonMJWarpManager.initialize_solver" title="isaaclab_newton.physics.NewtonMJWarpManager.initialize_solver"><code class="xref py py-meth docutils literal notranslate"><span class="pre">initialize_solver()</span></code></a>). Only the articulations flagged dirty in
+<code class="xref py py-attr docutils literal notranslate"><span class="pre">_fk_reset_mask</span></code> and <code class="xref py py-attr docutils literal notranslate"><span class="pre">_world_reset_mask</span></code> (see <a class="reference internal" href="#isaaclab_newton.physics.NewtonMJWarpManager.invalidate_fk" title="isaaclab_newton.physics.NewtonMJWarpManager.invalidate_fk"><code class="xref py py-meth docutils literal notranslate"><span class="pre">invalidate_fk()</span></code></a>) are
+updated. The masks are consumed (zeroed) afterwards so the next <a class="reference internal" href="#isaaclab_newton.physics.NewtonMJWarpManager.step" title="isaaclab_newton.physics.NewtonMJWarpManager.step"><code class="xref py py-meth docutils literal notranslate"><span class="pre">step()</span></code></a> does not
+redundantly re-solve them.</p>
+<p>The delegate (rather than a direct <code class="docutils literal notranslate"><span class="pre">cls._eval_fk_impl</span></code> call) is required because the
+data layer invokes <code class="docutils literal notranslate"><span class="pre">NewtonManager.forward()</span></code> on the base class, where <code class="docutils literal notranslate"><span class="pre">cls</span></code> is the
+base <code class="docutils literal notranslate"><span class="pre">NewtonManager</span></code>; the bound delegate dispatches to the concrete subclass override.</p>
 </dd></dl>
 
 <dl class="py method">
@@ -4746,11 +4809,15 @@ Subclasses may override or extend with platform-specific dispatch.</p>
 <dt class="sig sig-object py" id="isaaclab_newton.physics.NewtonXPBDManager.forward">
 <em class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#isaaclab_newton.physics.NewtonXPBDManager.forward" title="Link to this definition">#</a></dt>
 <dd><p>Update articulation kinematics without stepping physics.</p>
-<p>Runs Newton’s generic forward kinematics (<code class="docutils literal notranslate"><span class="pre">eval_fk</span></code>) over <strong>all</strong>
-articulations to compute body poses from joint coordinates. This is
-the full (unmasked) FK path used during initial setup. For incremental
-per-environment updates after resets, see <a class="reference internal" href="#isaaclab_newton.physics.NewtonXPBDManager.invalidate_fk" title="isaaclab_newton.physics.NewtonXPBDManager.invalidate_fk"><code class="xref py py-meth docutils literal notranslate"><span class="pre">invalidate_fk()</span></code></a> which
-accumulates masks consumed by <a class="reference internal" href="#isaaclab_newton.physics.NewtonXPBDManager.step" title="isaaclab_newton.physics.NewtonXPBDManager.step"><code class="xref py py-meth docutils literal notranslate"><span class="pre">step()</span></code></a>.</p>
+<p>Update body poses from joint coordinates via the solver-specialized FK delegate
+(<code class="xref py py-attr docutils literal notranslate"><span class="pre">_eval_fk</span></code>, bound to the active subclass’s <code class="xref py py-meth docutils literal notranslate"><span class="pre">_eval_fk_impl()</span></code> in
+<a class="reference internal" href="#isaaclab_newton.physics.NewtonXPBDManager.initialize_solver" title="isaaclab_newton.physics.NewtonXPBDManager.initialize_solver"><code class="xref py py-meth docutils literal notranslate"><span class="pre">initialize_solver()</span></code></a>). Only the articulations flagged dirty in
+<code class="xref py py-attr docutils literal notranslate"><span class="pre">_fk_reset_mask</span></code> and <code class="xref py py-attr docutils literal notranslate"><span class="pre">_world_reset_mask</span></code> (see <a class="reference internal" href="#isaaclab_newton.physics.NewtonXPBDManager.invalidate_fk" title="isaaclab_newton.physics.NewtonXPBDManager.invalidate_fk"><code class="xref py py-meth docutils literal notranslate"><span class="pre">invalidate_fk()</span></code></a>) are
+updated. The masks are consumed (zeroed) afterwards so the next <a class="reference internal" href="#isaaclab_newton.physics.NewtonXPBDManager.step" title="isaaclab_newton.physics.NewtonXPBDManager.step"><code class="xref py py-meth docutils literal notranslate"><span class="pre">step()</span></code></a> does not
+redundantly re-solve them.</p>
+<p>The delegate (rather than a direct <code class="docutils literal notranslate"><span class="pre">cls._eval_fk_impl</span></code> call) is required because the
+data layer invokes <code class="docutils literal notranslate"><span class="pre">NewtonManager.forward()</span></code> on the base class, where <code class="docutils literal notranslate"><span class="pre">cls</span></code> is the
+base <code class="docutils literal notranslate"><span class="pre">NewtonManager</span></code>; the bound delegate dispatches to the concrete subclass override.</p>
 </dd></dl>
 
 <dl class="py method">
@@ -5556,11 +5623,15 @@ Subclasses may override or extend with platform-specific dispatch.</p>
 <dt class="sig sig-object py" id="isaaclab_newton.physics.NewtonFeatherstoneManager.forward">
 <em class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#isaaclab_newton.physics.NewtonFeatherstoneManager.forward" title="Link to this definition">#</a></dt>
 <dd><p>Update articulation kinematics without stepping physics.</p>
-<p>Runs Newton’s generic forward kinematics (<code class="docutils literal notranslate"><span class="pre">eval_fk</span></code>) over <strong>all</strong>
-articulations to compute body poses from joint coordinates. This is
-the full (unmasked) FK path used during initial setup. For incremental
-per-environment updates after resets, see <a class="reference internal" href="#isaaclab_newton.physics.NewtonFeatherstoneManager.invalidate_fk" title="isaaclab_newton.physics.NewtonFeatherstoneManager.invalidate_fk"><code class="xref py py-meth docutils literal notranslate"><span class="pre">invalidate_fk()</span></code></a> which
-accumulates masks consumed by <a class="reference internal" href="#isaaclab_newton.physics.NewtonFeatherstoneManager.step" title="isaaclab_newton.physics.NewtonFeatherstoneManager.step"><code class="xref py py-meth docutils literal notranslate"><span class="pre">step()</span></code></a>.</p>
+<p>Update body poses from joint coordinates via the solver-specialized FK delegate
+(<code class="xref py py-attr docutils literal notranslate"><span class="pre">_eval_fk</span></code>, bound to the active subclass’s <code class="xref py py-meth docutils literal notranslate"><span class="pre">_eval_fk_impl()</span></code> in
+<a class="reference internal" href="#isaaclab_newton.physics.NewtonFeatherstoneManager.initialize_solver" title="isaaclab_newton.physics.NewtonFeatherstoneManager.initialize_solver"><code class="xref py py-meth docutils literal notranslate"><span class="pre">initialize_solver()</span></code></a>). Only the articulations flagged dirty in
+<code class="xref py py-attr docutils literal notranslate"><span class="pre">_fk_reset_mask</span></code> and <code class="xref py py-attr docutils literal notranslate"><span class="pre">_world_reset_mask</span></code> (see <a class="reference internal" href="#isaaclab_newton.physics.NewtonFeatherstoneManager.invalidate_fk" title="isaaclab_newton.physics.NewtonFeatherstoneManager.invalidate_fk"><code class="xref py py-meth docutils literal notranslate"><span class="pre">invalidate_fk()</span></code></a>) are
+updated. The masks are consumed (zeroed) afterwards so the next <a class="reference internal" href="#isaaclab_newton.physics.NewtonFeatherstoneManager.step" title="isaaclab_newton.physics.NewtonFeatherstoneManager.step"><code class="xref py py-meth docutils literal notranslate"><span class="pre">step()</span></code></a> does not
+redundantly re-solve them.</p>
+<p>The delegate (rather than a direct <code class="docutils literal notranslate"><span class="pre">cls._eval_fk_impl</span></code> call) is required because the
+data layer invokes <code class="docutils literal notranslate"><span class="pre">NewtonManager.forward()</span></code> on the base class, where <code class="docutils literal notranslate"><span class="pre">cls</span></code> is the
+base <code class="docutils literal notranslate"><span class="pre">NewtonManager</span></code>; the bound delegate dispatches to the concrete subclass override.</p>
 </dd></dl>
 
 <dl class="py method">
@@ -6003,155 +6074,155 @@ Kamino’s internal collision detector handles contact generation.</p>
 <p><strong>Methods:</strong></p>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab_newton.physics.NewtonKaminoManager.step" title="isaaclab_newton.physics.NewtonKaminoManager.step"><code class="xref py py-obj docutils literal notranslate"><span class="pre">step</span></code></a>()</p></td>
-<td><p>Step the physics simulation.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab_newton.physics.NewtonKaminoManager.activate_newton_actuator_path" title="isaaclab_newton.physics.NewtonKaminoManager.activate_newton_actuator_path"><code class="xref py py-obj docutils literal notranslate"><span class="pre">activate_newton_actuator_path</span></code></a>()</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab_newton.physics.NewtonKaminoManager.activate_newton_actuator_path" title="isaaclab_newton.physics.NewtonKaminoManager.activate_newton_actuator_path"><code class="xref py py-obj docutils literal notranslate"><span class="pre">activate_newton_actuator_path</span></code></a>()</p></td>
 <td><p>Opt an articulation into the Newton actuator fast path.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab_newton.physics.NewtonKaminoManager.add_contact_sensor" title="isaaclab_newton.physics.NewtonKaminoManager.add_contact_sensor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_contact_sensor</span></code></a>([body_names_expr, ...])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab_newton.physics.NewtonKaminoManager.add_contact_sensor" title="isaaclab_newton.physics.NewtonKaminoManager.add_contact_sensor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_contact_sensor</span></code></a>([body_names_expr, ...])</p></td>
 <td><p>Add a contact sensor for reporting contacts between bodies/shapes.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab_newton.physics.NewtonKaminoManager.add_frame_transform_sensor" title="isaaclab_newton.physics.NewtonKaminoManager.add_frame_transform_sensor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_frame_transform_sensor</span></code></a>(shapes, ...)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab_newton.physics.NewtonKaminoManager.add_frame_transform_sensor" title="isaaclab_newton.physics.NewtonKaminoManager.add_frame_transform_sensor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_frame_transform_sensor</span></code></a>(shapes, ...)</p></td>
 <td><p>Add a frame transform sensor for measuring relative transforms.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab_newton.physics.NewtonKaminoManager.add_imu_sensor" title="isaaclab_newton.physics.NewtonKaminoManager.add_imu_sensor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_imu_sensor</span></code></a>(sites)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab_newton.physics.NewtonKaminoManager.add_imu_sensor" title="isaaclab_newton.physics.NewtonKaminoManager.add_imu_sensor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_imu_sensor</span></code></a>(sites)</p></td>
 <td><p>Add an IMU sensor for measuring acceleration and angular velocity at sites.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab_newton.physics.NewtonKaminoManager.add_model_change" title="isaaclab_newton.physics.NewtonKaminoManager.add_model_change"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_model_change</span></code></a>(change)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab_newton.physics.NewtonKaminoManager.add_model_change" title="isaaclab_newton.physics.NewtonKaminoManager.add_model_change"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_model_change</span></code></a>(change)</p></td>
 <td><p>Register a model change to notify the solver.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab_newton.physics.NewtonKaminoManager.after_visualizers_render" title="isaaclab_newton.physics.NewtonKaminoManager.after_visualizers_render"><code class="xref py py-obj docutils literal notranslate"><span class="pre">after_visualizers_render</span></code></a>()</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab_newton.physics.NewtonKaminoManager.after_visualizers_render" title="isaaclab_newton.physics.NewtonKaminoManager.after_visualizers_render"><code class="xref py py-obj docutils literal notranslate"><span class="pre">after_visualizers_render</span></code></a>()</p></td>
 <td><p>Hook after visualizers have stepped during <a class="reference internal" href="../lab/isaaclab.sim.html#isaaclab.sim.SimulationContext.render" title="isaaclab.sim.SimulationContext.render"><code class="xref py py-meth docutils literal notranslate"><span class="pre">render()</span></code></a>.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab_newton.physics.NewtonKaminoManager.cl_register_site" title="isaaclab_newton.physics.NewtonKaminoManager.cl_register_site"><code class="xref py py-obj docutils literal notranslate"><span class="pre">cl_register_site</span></code></a>(body_pattern, xform, *[, ...])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab_newton.physics.NewtonKaminoManager.cl_register_site" title="isaaclab_newton.physics.NewtonKaminoManager.cl_register_site"><code class="xref py py-obj docutils literal notranslate"><span class="pre">cl_register_site</span></code></a>(body_pattern, xform, *[, ...])</p></td>
 <td><p>Register a site request for injection into prototypes before replication.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab_newton.physics.NewtonKaminoManager.clear" title="isaaclab_newton.physics.NewtonKaminoManager.clear"><code class="xref py py-obj docutils literal notranslate"><span class="pre">clear</span></code></a>()</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab_newton.physics.NewtonKaminoManager.clear" title="isaaclab_newton.physics.NewtonKaminoManager.clear"><code class="xref py py-obj docutils literal notranslate"><span class="pre">clear</span></code></a>()</p></td>
 <td><p>Clear all Newton-specific state (callbacks cleared by super().close()).</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab_newton.physics.NewtonKaminoManager.clear_callbacks" title="isaaclab_newton.physics.NewtonKaminoManager.clear_callbacks"><code class="xref py py-obj docutils literal notranslate"><span class="pre">clear_callbacks</span></code></a>()</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab_newton.physics.NewtonKaminoManager.clear_callbacks" title="isaaclab_newton.physics.NewtonKaminoManager.clear_callbacks"><code class="xref py py-obj docutils literal notranslate"><span class="pre">clear_callbacks</span></code></a>()</p></td>
 <td><p>Remove all registered callbacks.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab_newton.physics.NewtonKaminoManager.close" title="isaaclab_newton.physics.NewtonKaminoManager.close"><code class="xref py py-obj docutils literal notranslate"><span class="pre">close</span></code></a>()</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab_newton.physics.NewtonKaminoManager.close" title="isaaclab_newton.physics.NewtonKaminoManager.close"><code class="xref py py-obj docutils literal notranslate"><span class="pre">close</span></code></a>()</p></td>
 <td><p>Clean up Newton physics resources.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab_newton.physics.NewtonKaminoManager.create_builder" title="isaaclab_newton.physics.NewtonKaminoManager.create_builder"><code class="xref py py-obj docutils literal notranslate"><span class="pre">create_builder</span></code></a>([up_axis])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab_newton.physics.NewtonKaminoManager.create_builder" title="isaaclab_newton.physics.NewtonKaminoManager.create_builder"><code class="xref py py-obj docutils literal notranslate"><span class="pre">create_builder</span></code></a>([up_axis])</p></td>
 <td><p>Create a <code class="xref py py-class docutils literal notranslate"><span class="pre">ModelBuilder</span></code> configured with default settings.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab_newton.physics.NewtonKaminoManager.deregister_callback" title="isaaclab_newton.physics.NewtonKaminoManager.deregister_callback"><code class="xref py py-obj docutils literal notranslate"><span class="pre">deregister_callback</span></code></a>(callback_id)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab_newton.physics.NewtonKaminoManager.deregister_callback" title="isaaclab_newton.physics.NewtonKaminoManager.deregister_callback"><code class="xref py py-obj docutils literal notranslate"><span class="pre">deregister_callback</span></code></a>(callback_id)</p></td>
 <td><p>Remove a registered callback.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab_newton.physics.NewtonKaminoManager.dispatch_event" title="isaaclab_newton.physics.NewtonKaminoManager.dispatch_event"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dispatch_event</span></code></a>(event[, payload])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab_newton.physics.NewtonKaminoManager.dispatch_event" title="isaaclab_newton.physics.NewtonKaminoManager.dispatch_event"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dispatch_event</span></code></a>(event[, payload])</p></td>
 <td><p>Dispatch an event to all registered callbacks.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab_newton.physics.NewtonKaminoManager.forward" title="isaaclab_newton.physics.NewtonKaminoManager.forward"><code class="xref py py-obj docutils literal notranslate"><span class="pre">forward</span></code></a>()</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab_newton.physics.NewtonKaminoManager.forward" title="isaaclab_newton.physics.NewtonKaminoManager.forward"><code class="xref py py-obj docutils literal notranslate"><span class="pre">forward</span></code></a>()</p></td>
 <td><p>Update articulation kinematics without stepping physics.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab_newton.physics.NewtonKaminoManager.get_backend" title="isaaclab_newton.physics.NewtonKaminoManager.get_backend"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_backend</span></code></a>()</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab_newton.physics.NewtonKaminoManager.get_backend" title="isaaclab_newton.physics.NewtonKaminoManager.get_backend"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_backend</span></code></a>()</p></td>
 <td><p>Get the tensor backend being used (&quot;numpy&quot; or &quot;torch&quot;).</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab_newton.physics.NewtonKaminoManager.get_contacts" title="isaaclab_newton.physics.NewtonKaminoManager.get_contacts"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_contacts</span></code></a>()</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab_newton.physics.NewtonKaminoManager.get_contacts" title="isaaclab_newton.physics.NewtonKaminoManager.get_contacts"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_contacts</span></code></a>()</p></td>
 <td><p>Get the current Newton contact buffer, if the active solver exposes one.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab_newton.physics.NewtonKaminoManager.get_control" title="isaaclab_newton.physics.NewtonKaminoManager.get_control"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_control</span></code></a>()</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab_newton.physics.NewtonKaminoManager.get_control" title="isaaclab_newton.physics.NewtonKaminoManager.get_control"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_control</span></code></a>()</p></td>
 <td><p>Get the control object.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab_newton.physics.NewtonKaminoManager.get_device" title="isaaclab_newton.physics.NewtonKaminoManager.get_device"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_device</span></code></a>()</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab_newton.physics.NewtonKaminoManager.get_device" title="isaaclab_newton.physics.NewtonKaminoManager.get_device"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_device</span></code></a>()</p></td>
 <td><p>Get the physics simulation device.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab_newton.physics.NewtonKaminoManager.get_dt" title="isaaclab_newton.physics.NewtonKaminoManager.get_dt"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_dt</span></code></a>()</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab_newton.physics.NewtonKaminoManager.get_dt" title="isaaclab_newton.physics.NewtonKaminoManager.get_dt"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_dt</span></code></a>()</p></td>
 <td><p>Get the physics timestep.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab_newton.physics.NewtonKaminoManager.get_model" title="isaaclab_newton.physics.NewtonKaminoManager.get_model"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_model</span></code></a>()</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab_newton.physics.NewtonKaminoManager.get_model" title="isaaclab_newton.physics.NewtonKaminoManager.get_model"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_model</span></code></a>()</p></td>
 <td><p>Get the Newton model.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab_newton.physics.NewtonKaminoManager.get_physics_dt" title="isaaclab_newton.physics.NewtonKaminoManager.get_physics_dt"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_physics_dt</span></code></a>()</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab_newton.physics.NewtonKaminoManager.get_physics_dt" title="isaaclab_newton.physics.NewtonKaminoManager.get_physics_dt"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_physics_dt</span></code></a>()</p></td>
 <td><p>Get the physics timestep in seconds.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab_newton.physics.NewtonKaminoManager.get_physics_sim_view" title="isaaclab_newton.physics.NewtonKaminoManager.get_physics_sim_view"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_physics_sim_view</span></code></a>()</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab_newton.physics.NewtonKaminoManager.get_physics_sim_view" title="isaaclab_newton.physics.NewtonKaminoManager.get_physics_sim_view"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_physics_sim_view</span></code></a>()</p></td>
 <td><p>Get the list of registered views.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab_newton.physics.NewtonKaminoManager.get_scene_data_backend" title="isaaclab_newton.physics.NewtonKaminoManager.get_scene_data_backend"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_scene_data_backend</span></code></a>()</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab_newton.physics.NewtonKaminoManager.get_scene_data_backend" title="isaaclab_newton.physics.NewtonKaminoManager.get_scene_data_backend"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_scene_data_backend</span></code></a>()</p></td>
 <td><p>Return the SceneDataBackend for the SceneDataProvider.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab_newton.physics.NewtonKaminoManager.get_scene_data_provider" title="isaaclab_newton.physics.NewtonKaminoManager.get_scene_data_provider"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_scene_data_provider</span></code></a>()</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab_newton.physics.NewtonKaminoManager.get_scene_data_provider" title="isaaclab_newton.physics.NewtonKaminoManager.get_scene_data_provider"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_scene_data_provider</span></code></a>()</p></td>
 <td><p>Return the active scene data provider.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab_newton.physics.NewtonKaminoManager.get_simulation_time" title="isaaclab_newton.physics.NewtonKaminoManager.get_simulation_time"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_simulation_time</span></code></a>()</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab_newton.physics.NewtonKaminoManager.get_simulation_time" title="isaaclab_newton.physics.NewtonKaminoManager.get_simulation_time"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_simulation_time</span></code></a>()</p></td>
 <td><p>Get the current simulation time in seconds.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab_newton.physics.NewtonKaminoManager.get_solver_dt" title="isaaclab_newton.physics.NewtonKaminoManager.get_solver_dt"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_solver_dt</span></code></a>()</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab_newton.physics.NewtonKaminoManager.get_solver_dt" title="isaaclab_newton.physics.NewtonKaminoManager.get_solver_dt"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_solver_dt</span></code></a>()</p></td>
 <td><p>Get the solver substep timestep.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab_newton.physics.NewtonKaminoManager.get_state" title="isaaclab_newton.physics.NewtonKaminoManager.get_state"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_state</span></code></a>([scene_data_provider])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab_newton.physics.NewtonKaminoManager.get_state" title="isaaclab_newton.physics.NewtonKaminoManager.get_state"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_state</span></code></a>([scene_data_provider])</p></td>
 <td><p>Get the current Newton state for visualization.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab_newton.physics.NewtonKaminoManager.get_state_0" title="isaaclab_newton.physics.NewtonKaminoManager.get_state_0"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_state_0</span></code></a>()</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab_newton.physics.NewtonKaminoManager.get_state_0" title="isaaclab_newton.physics.NewtonKaminoManager.get_state_0"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_state_0</span></code></a>()</p></td>
 <td><p>Get the current state.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab_newton.physics.NewtonKaminoManager.get_state_1" title="isaaclab_newton.physics.NewtonKaminoManager.get_state_1"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_state_1</span></code></a>()</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab_newton.physics.NewtonKaminoManager.get_state_1" title="isaaclab_newton.physics.NewtonKaminoManager.get_state_1"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_state_1</span></code></a>()</p></td>
 <td><p>Get the next state.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab_newton.physics.NewtonKaminoManager.handles_decimation" title="isaaclab_newton.physics.NewtonKaminoManager.handles_decimation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">handles_decimation</span></code></a>()</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab_newton.physics.NewtonKaminoManager.handles_decimation" title="isaaclab_newton.physics.NewtonKaminoManager.handles_decimation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">handles_decimation</span></code></a>()</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">True</span></code> when <a class="reference internal" href="#isaaclab_newton.physics.NewtonKaminoManager.step" title="isaaclab_newton.physics.NewtonKaminoManager.step"><code class="xref py py-meth docutils literal notranslate"><span class="pre">step()</span></code></a> executes the full decimation loop internally.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab_newton.physics.NewtonKaminoManager.initialize" title="isaaclab_newton.physics.NewtonKaminoManager.initialize"><code class="xref py py-obj docutils literal notranslate"><span class="pre">initialize</span></code></a>(sim_context)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab_newton.physics.NewtonKaminoManager.initialize" title="isaaclab_newton.physics.NewtonKaminoManager.initialize"><code class="xref py py-obj docutils literal notranslate"><span class="pre">initialize</span></code></a>(sim_context)</p></td>
 <td><p>Initialize the manager with simulation context.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab_newton.physics.NewtonKaminoManager.initialize_solver" title="isaaclab_newton.physics.NewtonKaminoManager.initialize_solver"><code class="xref py py-obj docutils literal notranslate"><span class="pre">initialize_solver</span></code></a>()</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab_newton.physics.NewtonKaminoManager.initialize_solver" title="isaaclab_newton.physics.NewtonKaminoManager.initialize_solver"><code class="xref py py-obj docutils literal notranslate"><span class="pre">initialize_solver</span></code></a>()</p></td>
 <td><p>Initialize the solver and collision pipeline.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab_newton.physics.NewtonKaminoManager.instantiate_builder_from_stage" title="isaaclab_newton.physics.NewtonKaminoManager.instantiate_builder_from_stage"><code class="xref py py-obj docutils literal notranslate"><span class="pre">instantiate_builder_from_stage</span></code></a>()</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab_newton.physics.NewtonKaminoManager.instantiate_builder_from_stage" title="isaaclab_newton.physics.NewtonKaminoManager.instantiate_builder_from_stage"><code class="xref py py-obj docutils literal notranslate"><span class="pre">instantiate_builder_from_stage</span></code></a>()</p></td>
 <td><p>Create builder from USD stage.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab_newton.physics.NewtonKaminoManager.invalidate_fk" title="isaaclab_newton.physics.NewtonKaminoManager.invalidate_fk"><code class="xref py py-obj docutils literal notranslate"><span class="pre">invalidate_fk</span></code></a>([env_mask, env_ids, ...])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab_newton.physics.NewtonKaminoManager.invalidate_fk" title="isaaclab_newton.physics.NewtonKaminoManager.invalidate_fk"><code class="xref py py-obj docutils literal notranslate"><span class="pre">invalidate_fk</span></code></a>([env_mask, env_ids, ...])</p></td>
 <td><p>Mark environments as needing FK recomputation and solver reset.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab_newton.physics.NewtonKaminoManager.is_fabric_enabled" title="isaaclab_newton.physics.NewtonKaminoManager.is_fabric_enabled"><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_fabric_enabled</span></code></a>()</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab_newton.physics.NewtonKaminoManager.is_fabric_enabled" title="isaaclab_newton.physics.NewtonKaminoManager.is_fabric_enabled"><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_fabric_enabled</span></code></a>()</p></td>
 <td><p>Check if fabric interface is enabled (not applicable for Newton).</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab_newton.physics.NewtonKaminoManager.pause" title="isaaclab_newton.physics.NewtonKaminoManager.pause"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pause</span></code></a>()</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab_newton.physics.NewtonKaminoManager.pause" title="isaaclab_newton.physics.NewtonKaminoManager.pause"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pause</span></code></a>()</p></td>
 <td><p>Pause physics simulation.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab_newton.physics.NewtonKaminoManager.play" title="isaaclab_newton.physics.NewtonKaminoManager.play"><code class="xref py py-obj docutils literal notranslate"><span class="pre">play</span></code></a>()</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab_newton.physics.NewtonKaminoManager.play" title="isaaclab_newton.physics.NewtonKaminoManager.play"><code class="xref py py-obj docutils literal notranslate"><span class="pre">play</span></code></a>()</p></td>
 <td><p>Start or resume physics simulation.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab_newton.physics.NewtonKaminoManager.pre_render" title="isaaclab_newton.physics.NewtonKaminoManager.pre_render"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pre_render</span></code></a>()</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab_newton.physics.NewtonKaminoManager.pre_render" title="isaaclab_newton.physics.NewtonKaminoManager.pre_render"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pre_render</span></code></a>()</p></td>
 <td><p>Flush deferred Fabric writes before cameras/visualizers read the scene.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab_newton.physics.NewtonKaminoManager.provides_implicit_damping" title="isaaclab_newton.physics.NewtonKaminoManager.provides_implicit_damping"><code class="xref py py-obj docutils literal notranslate"><span class="pre">provides_implicit_damping</span></code></a>()</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab_newton.physics.NewtonKaminoManager.provides_implicit_damping" title="isaaclab_newton.physics.NewtonKaminoManager.provides_implicit_damping"><code class="xref py py-obj docutils literal notranslate"><span class="pre">provides_implicit_damping</span></code></a>()</p></td>
 <td><p>Whether this backend's integrator has implicit numerical damping.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab_newton.physics.NewtonKaminoManager.register_callback" title="isaaclab_newton.physics.NewtonKaminoManager.register_callback"><code class="xref py py-obj docutils literal notranslate"><span class="pre">register_callback</span></code></a>(callback, event[, order, ...])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab_newton.physics.NewtonKaminoManager.register_callback" title="isaaclab_newton.physics.NewtonKaminoManager.register_callback"><code class="xref py py-obj docutils literal notranslate"><span class="pre">register_callback</span></code></a>(callback, event[, order, ...])</p></td>
 <td><p>Register a callback.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab_newton.physics.NewtonKaminoManager.register_particle_visual_prim" title="isaaclab_newton.physics.NewtonKaminoManager.register_particle_visual_prim"><code class="xref py py-obj docutils literal notranslate"><span class="pre">register_particle_visual_prim</span></code></a>(prim_path, ...)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab_newton.physics.NewtonKaminoManager.register_particle_visual_prim" title="isaaclab_newton.physics.NewtonKaminoManager.register_particle_visual_prim"><code class="xref py py-obj docutils literal notranslate"><span class="pre">register_particle_visual_prim</span></code></a>(prim_path, ...)</p></td>
 <td><p>Register a <code class="docutils literal notranslate"><span class="pre">UsdGeom.Points</span></code> prim whose points mirror a slice of Newton's particle state.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab_newton.physics.NewtonKaminoManager.register_post_actuator_callback" title="isaaclab_newton.physics.NewtonKaminoManager.register_post_actuator_callback"><code class="xref py py-obj docutils literal notranslate"><span class="pre">register_post_actuator_callback</span></code></a>(callback)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab_newton.physics.NewtonKaminoManager.register_post_actuator_callback" title="isaaclab_newton.physics.NewtonKaminoManager.register_post_actuator_callback"><code class="xref py py-obj docutils literal notranslate"><span class="pre">register_post_actuator_callback</span></code></a>(callback)</p></td>
 <td><p>Append a hook to the list invoked after the actuator step on every iteration.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab_newton.physics.NewtonKaminoManager.request_extended_contact_attribute" title="isaaclab_newton.physics.NewtonKaminoManager.request_extended_contact_attribute"><code class="xref py py-obj docutils literal notranslate"><span class="pre">request_extended_contact_attribute</span></code></a>(attr)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab_newton.physics.NewtonKaminoManager.request_extended_contact_attribute" title="isaaclab_newton.physics.NewtonKaminoManager.request_extended_contact_attribute"><code class="xref py py-obj docutils literal notranslate"><span class="pre">request_extended_contact_attribute</span></code></a>(attr)</p></td>
 <td><p>Request an extended contact attribute (e.g. <code class="docutils literal notranslate"><span class="pre">&quot;force&quot;</span></code>).</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab_newton.physics.NewtonKaminoManager.request_extended_state_attribute" title="isaaclab_newton.physics.NewtonKaminoManager.request_extended_state_attribute"><code class="xref py py-obj docutils literal notranslate"><span class="pre">request_extended_state_attribute</span></code></a>(attr)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab_newton.physics.NewtonKaminoManager.request_extended_state_attribute" title="isaaclab_newton.physics.NewtonKaminoManager.request_extended_state_attribute"><code class="xref py py-obj docutils literal notranslate"><span class="pre">request_extended_state_attribute</span></code></a>(attr)</p></td>
 <td><p>Request an extended state attribute (e.g. <code class="docutils literal notranslate"><span class="pre">&quot;body_qdd&quot;</span></code>).</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab_newton.physics.NewtonKaminoManager.reset" title="isaaclab_newton.physics.NewtonKaminoManager.reset"><code class="xref py py-obj docutils literal notranslate"><span class="pre">reset</span></code></a>([soft])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab_newton.physics.NewtonKaminoManager.reset" title="isaaclab_newton.physics.NewtonKaminoManager.reset"><code class="xref py py-obj docutils literal notranslate"><span class="pre">reset</span></code></a>([soft])</p></td>
 <td><p>Reset physics simulation.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab_newton.physics.NewtonKaminoManager.safe_callback_invoke" title="isaaclab_newton.physics.NewtonKaminoManager.safe_callback_invoke"><code class="xref py py-obj docutils literal notranslate"><span class="pre">safe_callback_invoke</span></code></a>(fn, *args[, ...])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab_newton.physics.NewtonKaminoManager.safe_callback_invoke" title="isaaclab_newton.physics.NewtonKaminoManager.safe_callback_invoke"><code class="xref py py-obj docutils literal notranslate"><span class="pre">safe_callback_invoke</span></code></a>(fn, *args[, ...])</p></td>
 <td><p>Invoke a callback, catching exceptions that would be swallowed by external event buses.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab_newton.physics.NewtonKaminoManager.set_builder" title="isaaclab_newton.physics.NewtonKaminoManager.set_builder"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_builder</span></code></a>(builder)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab_newton.physics.NewtonKaminoManager.set_builder" title="isaaclab_newton.physics.NewtonKaminoManager.set_builder"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_builder</span></code></a>(builder)</p></td>
 <td><p>Set the Newton model builder.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab_newton.physics.NewtonKaminoManager.set_decimation" title="isaaclab_newton.physics.NewtonKaminoManager.set_decimation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_decimation</span></code></a>(decimation)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab_newton.physics.NewtonKaminoManager.set_decimation" title="isaaclab_newton.physics.NewtonKaminoManager.set_decimation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_decimation</span></code></a>(decimation)</p></td>
 <td><p>Set the decimation count and re-capture the CUDA graph.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab_newton.physics.NewtonKaminoManager.start_simulation" title="isaaclab_newton.physics.NewtonKaminoManager.start_simulation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">start_simulation</span></code></a>()</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab_newton.physics.NewtonKaminoManager.start_simulation" title="isaaclab_newton.physics.NewtonKaminoManager.start_simulation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">start_simulation</span></code></a>()</p></td>
 <td><p>Start simulation by finalizing model and initializing state.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab_newton.physics.NewtonKaminoManager.step" title="isaaclab_newton.physics.NewtonKaminoManager.step"><code class="xref py py-obj docutils literal notranslate"><span class="pre">step</span></code></a>()</p></td>
+<td><p>Step the physics simulation.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab_newton.physics.NewtonKaminoManager.stop" title="isaaclab_newton.physics.NewtonKaminoManager.stop"><code class="xref py py-obj docutils literal notranslate"><span class="pre">stop</span></code></a>()</p></td>
 <td><p>Stop physics simulation.</p></td>
@@ -6171,12 +6242,6 @@ Kamino’s internal collision detector handles contact generation.</p>
 </tbody>
 </table>
 </div>
-<dl class="py method">
-<dt class="sig sig-object py" id="isaaclab_newton.physics.NewtonKaminoManager.step">
-<em class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">step</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span></span><a class="reference internal" href="../../../_modules/isaaclab_newton/physics/kamino_manager.html#NewtonKaminoManager.step"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#isaaclab_newton.physics.NewtonKaminoManager.step" title="Link to this definition">#</a></dt>
-<dd><p>Step the physics simulation.</p>
-</dd></dl>
-
 <dl class="py method">
 <dt class="sig sig-object py" id="isaaclab_newton.physics.NewtonKaminoManager.activate_newton_actuator_path">
 <em class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">activate_newton_actuator_path</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#isaaclab_newton.physics.NewtonKaminoManager.activate_newton_actuator_path" title="Link to this definition">#</a></dt>
@@ -6374,11 +6439,15 @@ Subclasses may override or extend with platform-specific dispatch.</p>
 <dt class="sig sig-object py" id="isaaclab_newton.physics.NewtonKaminoManager.forward">
 <em class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#isaaclab_newton.physics.NewtonKaminoManager.forward" title="Link to this definition">#</a></dt>
 <dd><p>Update articulation kinematics without stepping physics.</p>
-<p>Runs Newton’s generic forward kinematics (<code class="docutils literal notranslate"><span class="pre">eval_fk</span></code>) over <strong>all</strong>
-articulations to compute body poses from joint coordinates. This is
-the full (unmasked) FK path used during initial setup. For incremental
-per-environment updates after resets, see <a class="reference internal" href="#isaaclab_newton.physics.NewtonKaminoManager.invalidate_fk" title="isaaclab_newton.physics.NewtonKaminoManager.invalidate_fk"><code class="xref py py-meth docutils literal notranslate"><span class="pre">invalidate_fk()</span></code></a> which
-accumulates masks consumed by <a class="reference internal" href="#isaaclab_newton.physics.NewtonKaminoManager.step" title="isaaclab_newton.physics.NewtonKaminoManager.step"><code class="xref py py-meth docutils literal notranslate"><span class="pre">step()</span></code></a>.</p>
+<p>Update body poses from joint coordinates via the solver-specialized FK delegate
+(<code class="xref py py-attr docutils literal notranslate"><span class="pre">_eval_fk</span></code>, bound to the active subclass’s <code class="xref py py-meth docutils literal notranslate"><span class="pre">_eval_fk_impl()</span></code> in
+<a class="reference internal" href="#isaaclab_newton.physics.NewtonKaminoManager.initialize_solver" title="isaaclab_newton.physics.NewtonKaminoManager.initialize_solver"><code class="xref py py-meth docutils literal notranslate"><span class="pre">initialize_solver()</span></code></a>). Only the articulations flagged dirty in
+<code class="xref py py-attr docutils literal notranslate"><span class="pre">_fk_reset_mask</span></code> and <code class="xref py py-attr docutils literal notranslate"><span class="pre">_world_reset_mask</span></code> (see <a class="reference internal" href="#isaaclab_newton.physics.NewtonKaminoManager.invalidate_fk" title="isaaclab_newton.physics.NewtonKaminoManager.invalidate_fk"><code class="xref py py-meth docutils literal notranslate"><span class="pre">invalidate_fk()</span></code></a>) are
+updated. The masks are consumed (zeroed) afterwards so the next <a class="reference internal" href="#isaaclab_newton.physics.NewtonKaminoManager.step" title="isaaclab_newton.physics.NewtonKaminoManager.step"><code class="xref py py-meth docutils literal notranslate"><span class="pre">step()</span></code></a> does not
+redundantly re-solve them.</p>
+<p>The delegate (rather than a direct <code class="docutils literal notranslate"><span class="pre">cls._eval_fk_impl</span></code> call) is required because the
+data layer invokes <code class="docutils literal notranslate"><span class="pre">NewtonManager.forward()</span></code> on the base class, where <code class="docutils literal notranslate"><span class="pre">cls</span></code> is the
+base <code class="docutils literal notranslate"><span class="pre">NewtonManager</span></code>; the bound delegate dispatches to the concrete subclass override.</p>
 </dd></dl>
 
 <dl class="py method">
@@ -6718,6 +6787,29 @@ deferred relaxed capture when RTX is running.</p>
 <p>This function finalizes the model and initializes the simulation state.
 Note: Collision pipeline is initialized later in initialize_solver() after
 we determine whether the solver needs external collision detection.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="isaaclab_newton.physics.NewtonKaminoManager.step">
+<em class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">step</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#isaaclab_newton.physics.NewtonKaminoManager.step" title="Link to this definition">#</a></dt>
+<dd><p>Step the physics simulation.</p>
+<p>The stepping logic follows one of two paths depending on whether
+<strong>all</strong> actuators are CUDA-graph-safe:</p>
+<p><strong>All-graphable path</strong> (<code class="xref py py-meth docutils literal notranslate"><span class="pre">_simulate_full()</span></code>):</p>
+<p>Actuators and solver substeps are captured together in a single
+CUDA graph containing the full
+<code class="docutils literal notranslate"><span class="pre">decimation</span> <span class="pre">x</span> <span class="pre">(actuators</span> <span class="pre">+</span> <span class="pre">solver</span> <span class="pre">substeps)</span></code> loop.</p>
+<p><strong>Eager-actuator path</strong> (fallback, some actuators not graph-safe):</p>
+<p>Actuators are stepped eagerly on the CPU timeline (outside the
+graph), then a graph containing only the solver substeps is
+launched via <code class="xref py py-meth docutils literal notranslate"><span class="pre">_simulate_physics_only()</span></code>.</p>
+<p>In both paths the sequence within one physics step is:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">zero</span> <span class="n">actuated</span> <span class="n">DOFs</span> <span class="ow">in</span> <span class="n">control</span><span class="o">.</span><span class="n">joint_f</span>
+<span class="o">-&gt;</span> <span class="n">actuator</span><span class="o">.</span><span class="n">step</span> <span class="p">(</span><span class="n">computes</span> <span class="n">effort</span><span class="p">,</span> <span class="n">writes</span> <span class="n">to</span> <span class="n">control</span><span class="o">.</span><span class="n">joint_f</span><span class="p">)</span>
+<span class="o">-&gt;</span> <span class="n">solver</span><span class="o">.</span><span class="n">step</span> <span class="n">x</span> <span class="n">num_substeps</span> <span class="p">(</span><span class="n">integrates</span><span class="p">,</span> <span class="n">reads</span> <span class="n">control</span><span class="o">.</span><span class="n">joint_f</span><span class="p">)</span>
+<span class="o">-&gt;</span> <span class="n">sensors</span><span class="o">.</span><span class="n">update</span>
+</pre></div>
+</div>
 </dd></dl>
 
 <dl class="py method">
@@ -7163,11 +7255,15 @@ Subclasses may override or extend with platform-specific dispatch.</p>
 <dt class="sig sig-object py" id="isaaclab_newton.physics.NewtonMPMManager.forward">
 <em class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#isaaclab_newton.physics.NewtonMPMManager.forward" title="Link to this definition">#</a></dt>
 <dd><p>Update articulation kinematics without stepping physics.</p>
-<p>Runs Newton’s generic forward kinematics (<code class="docutils literal notranslate"><span class="pre">eval_fk</span></code>) over <strong>all</strong>
-articulations to compute body poses from joint coordinates. This is
-the full (unmasked) FK path used during initial setup. For incremental
-per-environment updates after resets, see <a class="reference internal" href="#isaaclab_newton.physics.NewtonMPMManager.invalidate_fk" title="isaaclab_newton.physics.NewtonMPMManager.invalidate_fk"><code class="xref py py-meth docutils literal notranslate"><span class="pre">invalidate_fk()</span></code></a> which
-accumulates masks consumed by <a class="reference internal" href="#isaaclab_newton.physics.NewtonMPMManager.step" title="isaaclab_newton.physics.NewtonMPMManager.step"><code class="xref py py-meth docutils literal notranslate"><span class="pre">step()</span></code></a>.</p>
+<p>Update body poses from joint coordinates via the solver-specialized FK delegate
+(<code class="xref py py-attr docutils literal notranslate"><span class="pre">_eval_fk</span></code>, bound to the active subclass’s <code class="xref py py-meth docutils literal notranslate"><span class="pre">_eval_fk_impl()</span></code> in
+<a class="reference internal" href="#isaaclab_newton.physics.NewtonMPMManager.initialize_solver" title="isaaclab_newton.physics.NewtonMPMManager.initialize_solver"><code class="xref py py-meth docutils literal notranslate"><span class="pre">initialize_solver()</span></code></a>). Only the articulations flagged dirty in
+<code class="xref py py-attr docutils literal notranslate"><span class="pre">_fk_reset_mask</span></code> and <code class="xref py py-attr docutils literal notranslate"><span class="pre">_world_reset_mask</span></code> (see <a class="reference internal" href="#isaaclab_newton.physics.NewtonMPMManager.invalidate_fk" title="isaaclab_newton.physics.NewtonMPMManager.invalidate_fk"><code class="xref py py-meth docutils literal notranslate"><span class="pre">invalidate_fk()</span></code></a>) are
+updated. The masks are consumed (zeroed) afterwards so the next <a class="reference internal" href="#isaaclab_newton.physics.NewtonMPMManager.step" title="isaaclab_newton.physics.NewtonMPMManager.step"><code class="xref py py-meth docutils literal notranslate"><span class="pre">step()</span></code></a> does not
+redundantly re-solve them.</p>
+<p>The delegate (rather than a direct <code class="docutils literal notranslate"><span class="pre">cls._eval_fk_impl</span></code> call) is required because the
+data layer invokes <code class="docutils literal notranslate"><span class="pre">NewtonManager.forward()</span></code> on the base class, where <code class="docutils literal notranslate"><span class="pre">cls</span></code> is the
+base <code class="docutils literal notranslate"><span class="pre">NewtonManager</span></code>; the bound delegate dispatches to the concrete subclass override.</p>
 </dd></dl>
 
 <dl class="py method">
@@ -7783,6 +7879,9 @@ coordinate the sync explicitly.</p>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab_newton.physics.KaminoSolverCfg.integrator"><code class="docutils literal notranslate"><span class="pre">KaminoSolverCfg.integrator</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab_newton.physics.KaminoSolverCfg.use_collision_detector"><code class="docutils literal notranslate"><span class="pre">KaminoSolverCfg.use_collision_detector</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab_newton.physics.KaminoSolverCfg.use_fk_solver"><code class="docutils literal notranslate"><span class="pre">KaminoSolverCfg.use_fk_solver</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab_newton.physics.KaminoSolverCfg.fk_use_regularization"><code class="docutils literal notranslate"><span class="pre">KaminoSolverCfg.fk_use_regularization</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab_newton.physics.KaminoSolverCfg.fk_regularization_weight"><code class="docutils literal notranslate"><span class="pre">KaminoSolverCfg.fk_regularization_weight</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab_newton.physics.KaminoSolverCfg.fk_tolerance"><code class="docutils literal notranslate"><span class="pre">KaminoSolverCfg.fk_tolerance</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab_newton.physics.KaminoSolverCfg.sparse_jacobian"><code class="docutils literal notranslate"><span class="pre">KaminoSolverCfg.sparse_jacobian</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab_newton.physics.KaminoSolverCfg.sparse_dynamics"><code class="docutils literal notranslate"><span class="pre">KaminoSolverCfg.sparse_dynamics</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab_newton.physics.KaminoSolverCfg.rotation_correction"><code class="docutils literal notranslate"><span class="pre">KaminoSolverCfg.rotation_correction</span></code></a></li>
@@ -7805,6 +7904,7 @@ coordinate the sync explicitly.</p>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab_newton.physics.KaminoSolverCfg.compute_solution_metrics"><code class="docutils literal notranslate"><span class="pre">KaminoSolverCfg.compute_solution_metrics</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab_newton.physics.KaminoSolverCfg.collision_detector_pipeline"><code class="docutils literal notranslate"><span class="pre">KaminoSolverCfg.collision_detector_pipeline</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab_newton.physics.KaminoSolverCfg.collision_detector_max_contacts_per_pair"><code class="docutils literal notranslate"><span class="pre">KaminoSolverCfg.collision_detector_max_contacts_per_pair</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab_newton.physics.KaminoSolverCfg.max_contacts_per_world"><code class="docutils literal notranslate"><span class="pre">KaminoSolverCfg.max_contacts_per_world</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab_newton.physics.KaminoSolverCfg.dynamics_preconditioning"><code class="docutils literal notranslate"><span class="pre">KaminoSolverCfg.dynamics_preconditioning</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab_newton.physics.KaminoSolverCfg.to_solver_config"><code class="docutils literal notranslate"><span class="pre">KaminoSolverCfg.to_solver_config()</span></code></a></li>
 </ul>
@@ -8036,7 +8136,6 @@ coordinate the sync explicitly.</p>
 </ul>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab_newton.physics.NewtonKaminoManager"><code class="docutils literal notranslate"><span class="pre">NewtonKaminoManager</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab_newton.physics.NewtonKaminoManager.step"><code class="docutils literal notranslate"><span class="pre">NewtonKaminoManager.step()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab_newton.physics.NewtonKaminoManager.activate_newton_actuator_path"><code class="docutils literal notranslate"><span class="pre">NewtonKaminoManager.activate_newton_actuator_path()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab_newton.physics.NewtonKaminoManager.add_contact_sensor"><code class="docutils literal notranslate"><span class="pre">NewtonKaminoManager.add_contact_sensor()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab_newton.physics.NewtonKaminoManager.add_frame_transform_sensor"><code class="docutils literal notranslate"><span class="pre">NewtonKaminoManager.add_frame_transform_sensor()</span></code></a></li>
@@ -8086,6 +8185,7 @@ coordinate the sync explicitly.</p>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab_newton.physics.NewtonKaminoManager.set_builder"><code class="docutils literal notranslate"><span class="pre">NewtonKaminoManager.set_builder()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab_newton.physics.NewtonKaminoManager.set_decimation"><code class="docutils literal notranslate"><span class="pre">NewtonKaminoManager.set_decimation()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab_newton.physics.NewtonKaminoManager.start_simulation"><code class="docutils literal notranslate"><span class="pre">NewtonKaminoManager.start_simulation()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab_newton.physics.NewtonKaminoManager.step"><code class="docutils literal notranslate"><span class="pre">NewtonKaminoManager.step()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab_newton.physics.NewtonKaminoManager.stop"><code class="docutils literal notranslate"><span class="pre">NewtonKaminoManager.stop()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab_newton.physics.NewtonKaminoManager.sync_particles_to_usd"><code class="docutils literal notranslate"><span class="pre">NewtonKaminoManager.sync_particles_to_usd()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab_newton.physics.NewtonKaminoManager.sync_transforms_to_usd"><code class="docutils literal notranslate"><span class="pre">NewtonKaminoManager.sync_transforms_to_usd()</span></code></a></li>
@@ -8186,7 +8286,7 @@ By The Isaac Lab Project Developers.
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Jul 03, 2026.
+  Last updated on Jul 04, 2026.
   <br/>
 </p>
   </div>

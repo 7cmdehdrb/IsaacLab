@@ -64,7 +64,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="3.0.0" />
-    <meta name="docbuild:last-update" content="Jul 03, 2026"/>
+    <meta name="docbuild:last-update" content="Jul 04, 2026"/>
   </head>
   
   
@@ -315,6 +315,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../how-to/add_own_library.html">Adding your own learning library</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../how-to/record_animation.html">Recording Animations of Simulations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../how-to/record_video.html">Recording video clips during training</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../how-to/capture_sensor_frames.html">Capturing sensor frames during training</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../how-to/curriculums.html">Curriculum Utilities</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../how-to/master_omniverse.html">Mastering Omniverse for Robotics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../how-to/cloudxr_teleoperation.html">Setting up Isaac Teleop with CloudXR</a></li>
@@ -2449,11 +2450,15 @@ Subclasses may override or extend with platform-specific dispatch.</p>
 <dt class="sig sig-object py" id="isaaclab_contrib.deformable.vbd_manager.NewtonVBDManager.forward">
 <em class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#isaaclab_contrib.deformable.vbd_manager.NewtonVBDManager.forward" title="Link to this definition">#</a></dt>
 <dd><p>Update articulation kinematics without stepping physics.</p>
-<p>Runs Newton’s generic forward kinematics (<code class="docutils literal notranslate"><span class="pre">eval_fk</span></code>) over <strong>all</strong>
-articulations to compute body poses from joint coordinates. This is
-the full (unmasked) FK path used during initial setup. For incremental
-per-environment updates after resets, see <a class="reference internal" href="#isaaclab_contrib.deformable.vbd_manager.NewtonVBDManager.invalidate_fk" title="isaaclab_contrib.deformable.vbd_manager.NewtonVBDManager.invalidate_fk"><code class="xref py py-meth docutils literal notranslate"><span class="pre">invalidate_fk()</span></code></a> which
-accumulates masks consumed by <a class="reference internal" href="#isaaclab_contrib.deformable.vbd_manager.NewtonVBDManager.step" title="isaaclab_contrib.deformable.vbd_manager.NewtonVBDManager.step"><code class="xref py py-meth docutils literal notranslate"><span class="pre">step()</span></code></a>.</p>
+<p>Update body poses from joint coordinates via the solver-specialized FK delegate
+(<code class="xref py py-attr docutils literal notranslate"><span class="pre">_eval_fk</span></code>, bound to the active subclass’s <code class="xref py py-meth docutils literal notranslate"><span class="pre">_eval_fk_impl()</span></code> in
+<a class="reference internal" href="#isaaclab_contrib.deformable.vbd_manager.NewtonVBDManager.initialize_solver" title="isaaclab_contrib.deformable.vbd_manager.NewtonVBDManager.initialize_solver"><code class="xref py py-meth docutils literal notranslate"><span class="pre">initialize_solver()</span></code></a>). Only the articulations flagged dirty in
+<code class="xref py py-attr docutils literal notranslate"><span class="pre">_fk_reset_mask</span></code> and <code class="xref py py-attr docutils literal notranslate"><span class="pre">_world_reset_mask</span></code> (see <a class="reference internal" href="#isaaclab_contrib.deformable.vbd_manager.NewtonVBDManager.invalidate_fk" title="isaaclab_contrib.deformable.vbd_manager.NewtonVBDManager.invalidate_fk"><code class="xref py py-meth docutils literal notranslate"><span class="pre">invalidate_fk()</span></code></a>) are
+updated. The masks are consumed (zeroed) afterwards so the next <a class="reference internal" href="#isaaclab_contrib.deformable.vbd_manager.NewtonVBDManager.step" title="isaaclab_contrib.deformable.vbd_manager.NewtonVBDManager.step"><code class="xref py py-meth docutils literal notranslate"><span class="pre">step()</span></code></a> does not
+redundantly re-solve them.</p>
+<p>The delegate (rather than a direct <code class="docutils literal notranslate"><span class="pre">cls._eval_fk_impl</span></code> call) is required because the
+data layer invokes <code class="docutils literal notranslate"><span class="pre">NewtonManager.forward()</span></code> on the base class, where <code class="docutils literal notranslate"><span class="pre">cls</span></code> is the
+base <code class="docutils literal notranslate"><span class="pre">NewtonManager</span></code>; the bound delegate dispatches to the concrete subclass override.</p>
 </dd></dl>
 
 <dl class="py method">
@@ -3277,11 +3282,15 @@ Subclasses may override or extend with platform-specific dispatch.</p>
 <dt class="sig sig-object py" id="isaaclab_contrib.deformable.coupled_mjwarp_vbd_manager.NewtonCoupledMJWarpVBDManager.forward">
 <em class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#isaaclab_contrib.deformable.coupled_mjwarp_vbd_manager.NewtonCoupledMJWarpVBDManager.forward" title="Link to this definition">#</a></dt>
 <dd><p>Update articulation kinematics without stepping physics.</p>
-<p>Runs Newton’s generic forward kinematics (<code class="docutils literal notranslate"><span class="pre">eval_fk</span></code>) over <strong>all</strong>
-articulations to compute body poses from joint coordinates. This is
-the full (unmasked) FK path used during initial setup. For incremental
-per-environment updates after resets, see <a class="reference internal" href="#isaaclab_contrib.deformable.coupled_mjwarp_vbd_manager.NewtonCoupledMJWarpVBDManager.invalidate_fk" title="isaaclab_contrib.deformable.coupled_mjwarp_vbd_manager.NewtonCoupledMJWarpVBDManager.invalidate_fk"><code class="xref py py-meth docutils literal notranslate"><span class="pre">invalidate_fk()</span></code></a> which
-accumulates masks consumed by <a class="reference internal" href="#isaaclab_contrib.deformable.coupled_mjwarp_vbd_manager.NewtonCoupledMJWarpVBDManager.step" title="isaaclab_contrib.deformable.coupled_mjwarp_vbd_manager.NewtonCoupledMJWarpVBDManager.step"><code class="xref py py-meth docutils literal notranslate"><span class="pre">step()</span></code></a>.</p>
+<p>Update body poses from joint coordinates via the solver-specialized FK delegate
+(<code class="xref py py-attr docutils literal notranslate"><span class="pre">_eval_fk</span></code>, bound to the active subclass’s <code class="xref py py-meth docutils literal notranslate"><span class="pre">_eval_fk_impl()</span></code> in
+<a class="reference internal" href="#isaaclab_contrib.deformable.coupled_mjwarp_vbd_manager.NewtonCoupledMJWarpVBDManager.initialize_solver" title="isaaclab_contrib.deformable.coupled_mjwarp_vbd_manager.NewtonCoupledMJWarpVBDManager.initialize_solver"><code class="xref py py-meth docutils literal notranslate"><span class="pre">initialize_solver()</span></code></a>). Only the articulations flagged dirty in
+<code class="xref py py-attr docutils literal notranslate"><span class="pre">_fk_reset_mask</span></code> and <code class="xref py py-attr docutils literal notranslate"><span class="pre">_world_reset_mask</span></code> (see <a class="reference internal" href="#isaaclab_contrib.deformable.coupled_mjwarp_vbd_manager.NewtonCoupledMJWarpVBDManager.invalidate_fk" title="isaaclab_contrib.deformable.coupled_mjwarp_vbd_manager.NewtonCoupledMJWarpVBDManager.invalidate_fk"><code class="xref py py-meth docutils literal notranslate"><span class="pre">invalidate_fk()</span></code></a>) are
+updated. The masks are consumed (zeroed) afterwards so the next <a class="reference internal" href="#isaaclab_contrib.deformable.coupled_mjwarp_vbd_manager.NewtonCoupledMJWarpVBDManager.step" title="isaaclab_contrib.deformable.coupled_mjwarp_vbd_manager.NewtonCoupledMJWarpVBDManager.step"><code class="xref py py-meth docutils literal notranslate"><span class="pre">step()</span></code></a> does not
+redundantly re-solve them.</p>
+<p>The delegate (rather than a direct <code class="docutils literal notranslate"><span class="pre">cls._eval_fk_impl</span></code> call) is required because the
+data layer invokes <code class="docutils literal notranslate"><span class="pre">NewtonManager.forward()</span></code> on the base class, where <code class="docutils literal notranslate"><span class="pre">cls</span></code> is the
+base <code class="docutils literal notranslate"><span class="pre">NewtonManager</span></code>; the bound delegate dispatches to the concrete subclass override.</p>
 </dd></dl>
 
 <dl class="py method">
@@ -4082,11 +4091,15 @@ Subclasses may override or extend with platform-specific dispatch.</p>
 <dt class="sig sig-object py" id="isaaclab_contrib.deformable.coupled_featherstone_vbd_manager.NewtonCoupledFeatherstoneVBDManager.forward">
 <em class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#isaaclab_contrib.deformable.coupled_featherstone_vbd_manager.NewtonCoupledFeatherstoneVBDManager.forward" title="Link to this definition">#</a></dt>
 <dd><p>Update articulation kinematics without stepping physics.</p>
-<p>Runs Newton’s generic forward kinematics (<code class="docutils literal notranslate"><span class="pre">eval_fk</span></code>) over <strong>all</strong>
-articulations to compute body poses from joint coordinates. This is
-the full (unmasked) FK path used during initial setup. For incremental
-per-environment updates after resets, see <a class="reference internal" href="#isaaclab_contrib.deformable.coupled_featherstone_vbd_manager.NewtonCoupledFeatherstoneVBDManager.invalidate_fk" title="isaaclab_contrib.deformable.coupled_featherstone_vbd_manager.NewtonCoupledFeatherstoneVBDManager.invalidate_fk"><code class="xref py py-meth docutils literal notranslate"><span class="pre">invalidate_fk()</span></code></a> which
-accumulates masks consumed by <a class="reference internal" href="#isaaclab_contrib.deformable.coupled_featherstone_vbd_manager.NewtonCoupledFeatherstoneVBDManager.step" title="isaaclab_contrib.deformable.coupled_featherstone_vbd_manager.NewtonCoupledFeatherstoneVBDManager.step"><code class="xref py py-meth docutils literal notranslate"><span class="pre">step()</span></code></a>.</p>
+<p>Update body poses from joint coordinates via the solver-specialized FK delegate
+(<code class="xref py py-attr docutils literal notranslate"><span class="pre">_eval_fk</span></code>, bound to the active subclass’s <code class="xref py py-meth docutils literal notranslate"><span class="pre">_eval_fk_impl()</span></code> in
+<a class="reference internal" href="#isaaclab_contrib.deformable.coupled_featherstone_vbd_manager.NewtonCoupledFeatherstoneVBDManager.initialize_solver" title="isaaclab_contrib.deformable.coupled_featherstone_vbd_manager.NewtonCoupledFeatherstoneVBDManager.initialize_solver"><code class="xref py py-meth docutils literal notranslate"><span class="pre">initialize_solver()</span></code></a>). Only the articulations flagged dirty in
+<code class="xref py py-attr docutils literal notranslate"><span class="pre">_fk_reset_mask</span></code> and <code class="xref py py-attr docutils literal notranslate"><span class="pre">_world_reset_mask</span></code> (see <a class="reference internal" href="#isaaclab_contrib.deformable.coupled_featherstone_vbd_manager.NewtonCoupledFeatherstoneVBDManager.invalidate_fk" title="isaaclab_contrib.deformable.coupled_featherstone_vbd_manager.NewtonCoupledFeatherstoneVBDManager.invalidate_fk"><code class="xref py py-meth docutils literal notranslate"><span class="pre">invalidate_fk()</span></code></a>) are
+updated. The masks are consumed (zeroed) afterwards so the next <a class="reference internal" href="#isaaclab_contrib.deformable.coupled_featherstone_vbd_manager.NewtonCoupledFeatherstoneVBDManager.step" title="isaaclab_contrib.deformable.coupled_featherstone_vbd_manager.NewtonCoupledFeatherstoneVBDManager.step"><code class="xref py py-meth docutils literal notranslate"><span class="pre">step()</span></code></a> does not
+redundantly re-solve them.</p>
+<p>The delegate (rather than a direct <code class="docutils literal notranslate"><span class="pre">cls._eval_fk_impl</span></code> call) is required because the
+data layer invokes <code class="docutils literal notranslate"><span class="pre">NewtonManager.forward()</span></code> on the base class, where <code class="docutils literal notranslate"><span class="pre">cls</span></code> is the
+base <code class="docutils literal notranslate"><span class="pre">NewtonManager</span></code>; the bound delegate dispatches to the concrete subclass override.</p>
 </dd></dl>
 
 <dl class="py method">
@@ -4816,7 +4829,7 @@ By The Isaac Lab Project Developers.
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Jul 03, 2026.
+  Last updated on Jul 04, 2026.
   <br/>
 </p>
   </div>

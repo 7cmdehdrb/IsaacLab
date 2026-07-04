@@ -61,7 +61,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="3.0.0" />
-    <meta name="docbuild:last-update" content="Jul 03, 2026"/>
+    <meta name="docbuild:last-update" content="Jul 04, 2026"/>
   </head>
   
   
@@ -314,6 +314,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../../source/how-to/add_own_library.html">Adding your own learning library</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../source/how-to/record_animation.html">Recording Animations of Simulations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../source/how-to/record_video.html">Recording video clips during training</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../source/how-to/capture_sensor_frames.html">Capturing sensor frames during training</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../source/how-to/curriculums.html">Curriculum Utilities</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../source/how-to/master_omniverse.html">Mastering Omniverse for Robotics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../source/how-to/cloudxr_teleoperation.html">Setting up Isaac Teleop with CloudXR</a></li>
@@ -693,12 +694,36 @@
 <span class="kn">from</span><span class="w"> </span><span class="nn">newton.solvers</span><span class="w"> </span><span class="kn">import</span> <span class="n">SolverKamino</span>
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">isaaclab.physics</span><span class="w"> </span><span class="kn">import</span> <span class="n">PhysicsManager</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">isaaclab.utils.timer</span><span class="w"> </span><span class="kn">import</span> <span class="n">Timer</span>
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">.kamino_manager_cfg</span><span class="w"> </span><span class="kn">import</span> <span class="n">KaminoSolverCfg</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">.newton_manager</span><span class="w"> </span><span class="kn">import</span> <span class="n">NewtonManager</span>
 
 <span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_model_has_loop_closing_joints</span><span class="p">(</span><span class="n">model</span><span class="p">:</span> <span class="n">Model</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return whether ``model`` contains converted loop-closing articulation joints.</span>
+
+<span class="sd">    Newton stores regular tree joints in ``[articulation_start[i], articulation_end[i])`` and</span>
+<span class="sd">    loop-closing joints in ``[articulation_end[i], articulation_start[i + 1])``. Loop closures</span>
+<span class="sd">    are present when the next articulation sentinel exceeds the tree joint end for any</span>
+<span class="sd">    articulation.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        model: Finalized Newton model to inspect.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        ``True`` if at least one articulation has loop-closing joints.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">articulation_start</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">articulation_start</span>
+    <span class="n">articulation_end</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">articulation_end</span>
+    <span class="k">if</span> <span class="n">articulation_start</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">articulation_end</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">False</span>
+    <span class="n">articulation_start_np</span> <span class="o">=</span> <span class="n">articulation_start</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
+    <span class="n">articulation_end_np</span> <span class="o">=</span> <span class="n">articulation_end</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">articulation_end_np</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">False</span>
+    <span class="k">return</span> <span class="nb">bool</span><span class="p">((</span><span class="n">articulation_start_np</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span> <span class="o">&gt;</span> <span class="n">articulation_end_np</span><span class="p">)</span><span class="o">.</span><span class="n">any</span><span class="p">())</span>
 
 
 <div class="viewcode-block" id="NewtonKaminoManager">
@@ -711,89 +736,51 @@
 <span class="sd">    Kamino&#39;s internal collision detector handles contact generation.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="nd">@classmethod</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">_forward_kamino</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">world_mask</span><span class="p">:</span> <span class="n">wp</span><span class="o">.</span><span class="n">array</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Kamino-specific forward kinematics via ``solver.reset()``.</span>
+    <span class="c1"># Annotate the concrete solver type.</span>
+    <span class="n">_solver</span><span class="p">:</span> <span class="n">SolverKamino</span>
 
-<span class="sd">        ``SolverKamino.ResetConfig.from_joints()`` consumes Newton&#39;s full</span>
-<span class="sd">        canonical state arrays directly, including free-joint coordinates.</span>
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_get_kamino_solver_cfg</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">KaminoSolverCfg</span><span class="p">:</span>
+        <span class="n">cfg</span> <span class="o">=</span> <span class="n">PhysicsManager</span><span class="o">.</span><span class="n">_cfg</span>
+        <span class="k">if</span> <span class="n">cfg</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;Physics manager is not initialized.&quot;</span><span class="p">)</span>
+        <span class="n">solver_cfg</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">cfg</span><span class="p">,</span> <span class="s2">&quot;solver_cfg&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">solver_cfg</span><span class="p">,</span> <span class="n">KaminoSolverCfg</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Expected KaminoSolverCfg, got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">solver_cfg</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">solver_cfg</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_eval_fk_impl</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">world_reset_mask</span><span class="p">:</span> <span class="n">wp</span><span class="o">.</span><span class="n">array</span> <span class="o">|</span> <span class="kc">None</span><span class="p">,</span> <span class="n">fk_mask</span><span class="p">:</span> <span class="n">wp</span><span class="o">.</span><span class="n">array</span> <span class="o">|</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Update body states from joint coordinates.</span>
+
+<span class="sd">        For the Kamino (maximal-coordinate) solver, body poses/velocities are the authoritative</span>
+<span class="sd">        simulation state. When :attr:`KaminoSolverCfg.use_fk_solver` is enabled, this calls</span>
+<span class="sd">        :meth:`SolverKamino.reset`, which runs Kamino&#39;s loop-closure forward kinematics: it reads</span>
+<span class="sd">        body poses/velocities from the joint coordinates (including the base body&#39;s pose/twist)</span>
+<span class="sd">        and writes back a consistent full joint and body state.</span>
+
+<span class="sd">        When ``use_fk_solver`` is disabled, falls back to Newton&#39;s articulated ``eval_fk`` over</span>
+<span class="sd">        ``fk_mask``; the caller is then responsible for writing constraint-consistent joint values.</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">            world_mask: Per-world mask indicating which worlds to reset.</span>
-<span class="sd">                Shape ``(num_worlds,)``, dtype ``wp.bool``. If None, resets all worlds.</span>
+<span class="sd">            world_reset_mask: Per-world mask passed to :meth:`SolverKamino.reset` (``None`` means all).</span>
+<span class="sd">            fk_mask: Per-articulation mask of articulations to update (``None`` means all).</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="bp">cls</span><span class="o">.</span><span class="n">_solver</span><span class="o">.</span><span class="n">reset</span><span class="p">(</span>
-            <span class="n">state</span><span class="o">=</span><span class="bp">cls</span><span class="o">.</span><span class="n">_state_0</span><span class="p">,</span>
-            <span class="n">world_mask</span><span class="o">=</span><span class="n">world_mask</span><span class="p">,</span>
-            <span class="n">config</span><span class="o">=</span><span class="n">SolverKamino</span><span class="o">.</span><span class="n">ResetConfig</span><span class="o">.</span><span class="n">from_joints</span><span class="p">(),</span>
-        <span class="p">)</span>
-
-<div class="viewcode-block" id="NewtonKaminoManager.step">
-<a class="viewcode-back" href="../../../source/api/lab_newton/isaaclab_newton.physics.html#isaaclab_newton.physics.NewtonKaminoManager.step">[docs]</a>
-    <span class="nd">@classmethod</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">step</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Step the physics simulation.&quot;&quot;&quot;</span>
-        <span class="n">sim</span> <span class="o">=</span> <span class="n">PhysicsManager</span><span class="o">.</span><span class="n">_sim</span>
-        <span class="k">if</span> <span class="n">sim</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">sim</span><span class="o">.</span><span class="n">is_playing</span><span class="p">():</span>
-            <span class="k">return</span>
-
-        <span class="c1"># Kamino: run solver.reset() with the accumulated world mask to reinitialise</span>
-        <span class="c1"># internal state (warm-start containers, constraint multipliers) for reset worlds.</span>
-        <span class="c1"># Note: runs every step. solver.reset() with an all-False world_mask is a no-op</span>
-        <span class="c1"># (kernels check mask per-world and skip). The cost of a no-op launch is negligible</span>
-        <span class="c1"># compared to the complexity of maintaining a separate boolean guard.</span>
-        <span class="bp">cls</span><span class="o">.</span><span class="n">_forward_kamino</span><span class="p">(</span><span class="n">world_mask</span><span class="o">=</span><span class="bp">cls</span><span class="o">.</span><span class="n">_world_reset_mask</span><span class="p">)</span>
-
-        <span class="c1"># Notify solver of model changes</span>
-        <span class="k">if</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_model_changes</span><span class="p">:</span>
-            <span class="k">with</span> <span class="n">wp</span><span class="o">.</span><span class="n">ScopedDevice</span><span class="p">(</span><span class="n">PhysicsManager</span><span class="o">.</span><span class="n">_device</span><span class="p">):</span>
-                <span class="k">for</span> <span class="n">change</span> <span class="ow">in</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_model_changes</span><span class="p">:</span>
-                    <span class="bp">cls</span><span class="o">.</span><span class="n">_solver</span><span class="o">.</span><span class="n">notify_model_changed</span><span class="p">(</span><span class="n">change</span><span class="p">)</span>
-                <span class="n">NewtonManager</span><span class="o">.</span><span class="n">_model_changes</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
-
-        <span class="c1"># Lazy CUDA graph capture: deferred from initialize_solver() when RTX was active.</span>
-        <span class="c1"># By the time step() is first called, RTX has fully initialized (all cudaImportExternalMemory</span>
-        <span class="c1"># calls are done) and is idle between render frames — giving us a clean capture window.</span>
-        <span class="n">cfg</span> <span class="o">=</span> <span class="n">PhysicsManager</span><span class="o">.</span><span class="n">_cfg</span>
-        <span class="n">device</span> <span class="o">=</span> <span class="n">PhysicsManager</span><span class="o">.</span><span class="n">_device</span>
-        <span class="k">if</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_graph_capture_pending</span> <span class="ow">and</span> <span class="n">cfg</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">cfg</span><span class="o">.</span><span class="n">use_cuda_graph</span> <span class="ow">and</span> <span class="s2">&quot;cuda&quot;</span> <span class="ow">in</span> <span class="n">device</span><span class="p">:</span>  <span class="c1"># type: ignore[union-attr]</span>
-            <span class="n">NewtonManager</span><span class="o">.</span><span class="n">_graph_capture_pending</span> <span class="o">=</span> <span class="kc">False</span>
-            <span class="n">NewtonManager</span><span class="o">.</span><span class="n">_graph</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_capture_relaxed_graph</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
-            <span class="k">if</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_graph</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-                <span class="c1"># Kamino: StateKamino.from_newton() lazily allocates body_f_total,</span>
-                <span class="c1"># joint_q_prev, and joint_lambdas via wp.clone/wp.zeros during the</span>
-                <span class="c1"># first step() inside graph capture. Replay once to pin those</span>
-                <span class="c1"># memory-pool addresses before any eager solver.reset() call.</span>
-                <span class="n">wp</span><span class="o">.</span><span class="n">capture_launch</span><span class="p">(</span><span class="bp">cls</span><span class="o">.</span><span class="n">_graph</span><span class="p">)</span>
-                <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Newton CUDA graph captured (deferred relaxed mode, RTX-compatible)&quot;</span><span class="p">)</span>
-            <span class="k">else</span><span class="p">:</span>
-                <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;Newton deferred CUDA graph capture failed; using eager execution&quot;</span><span class="p">)</span>
-
-        <span class="c1"># Ensure body_q is up-to-date before collision detection.</span>
-        <span class="c1"># After env resets, joint_q is written but body_q (used by</span>
-        <span class="c1"># broadphase/narrowphase) is stale until FK runs.</span>
-        <span class="c1"># Only runs FK for dirtied articulations via the accumulated mask.</span>
-        <span class="k">if</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_needs_collision_pipeline</span><span class="p">:</span>
-            <span class="n">eval_fk</span><span class="p">(</span><span class="bp">cls</span><span class="o">.</span><span class="n">_model</span><span class="p">,</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_state_0</span><span class="o">.</span><span class="n">joint_q</span><span class="p">,</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_state_0</span><span class="o">.</span><span class="n">joint_qd</span><span class="p">,</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_state_0</span><span class="p">,</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_fk_reset_mask</span><span class="p">)</span>
-
-        <span class="c1"># Zero both masks after consumption</span>
-        <span class="n">NewtonManager</span><span class="o">.</span><span class="n">_world_reset_mask</span><span class="o">.</span><span class="n">zero_</span><span class="p">()</span>
-        <span class="n">NewtonManager</span><span class="o">.</span><span class="n">_fk_reset_mask</span><span class="o">.</span><span class="n">zero_</span><span class="p">()</span>
-
-        <span class="c1"># Step simulation (graphed or not; _graph is None when capture is disabled or failed)</span>
-        <span class="k">if</span> <span class="n">cfg</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">cfg</span><span class="o">.</span><span class="n">use_cuda_graph</span> <span class="ow">and</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_graph</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="s2">&quot;cuda&quot;</span> <span class="ow">in</span> <span class="n">device</span><span class="p">:</span>  <span class="c1"># type: ignore[union-attr]</span>
-            <span class="n">wp</span><span class="o">.</span><span class="n">capture_launch</span><span class="p">(</span><span class="bp">cls</span><span class="o">.</span><span class="n">_graph</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_get_kamino_solver_cfg</span><span class="p">()</span><span class="o">.</span><span class="n">use_fk_solver</span><span class="p">:</span>
+            <span class="bp">cls</span><span class="o">.</span><span class="n">_solver</span><span class="o">.</span><span class="n">reset</span><span class="p">(</span>
+                <span class="bp">cls</span><span class="o">.</span><span class="n">_state_0</span><span class="p">,</span>
+                <span class="n">world_mask</span><span class="o">=</span><span class="n">world_reset_mask</span><span class="p">,</span>
+                <span class="n">config</span><span class="o">=</span><span class="n">SolverKamino</span><span class="o">.</span><span class="n">ResetConfig</span><span class="o">.</span><span class="n">from_joints</span><span class="p">(),</span>
+            <span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="k">with</span> <span class="n">wp</span><span class="o">.</span><span class="n">ScopedDevice</span><span class="p">(</span><span class="n">device</span><span class="p">):</span>
-                <span class="bp">cls</span><span class="o">.</span><span class="n">_simulate_physics_only</span><span class="p">()</span>
-        <span class="k">if</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_usdrt_stage</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="bp">cls</span><span class="o">.</span><span class="n">_mark_transforms_dirty</span><span class="p">()</span>
+            <span class="n">eval_fk</span><span class="p">(</span><span class="bp">cls</span><span class="o">.</span><span class="n">_model</span><span class="p">,</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_state_0</span><span class="o">.</span><span class="n">joint_q</span><span class="p">,</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_state_0</span><span class="o">.</span><span class="n">joint_qd</span><span class="p">,</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_state_0</span><span class="p">,</span> <span class="n">fk_mask</span><span class="p">)</span>
 
-        <span class="c1"># Launch solver-specific debug logging after stepping.</span>
-        <span class="bp">cls</span><span class="o">.</span><span class="n">_log_solver_debug</span><span class="p">()</span>
-
-        <span class="n">PhysicsManager</span><span class="o">.</span><span class="n">_sim_time</span> <span class="o">+=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_solver_dt</span> <span class="o">*</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_num_substeps</span></div>
-
+            <span class="c1"># Reset solver internals without performing Kamino&#39;s FK.</span>
+            <span class="bp">cls</span><span class="o">.</span><span class="n">_solver</span><span class="o">.</span><span class="n">reset</span><span class="p">(</span>
+                <span class="bp">cls</span><span class="o">.</span><span class="n">_state_0</span><span class="p">,</span>
+                <span class="n">world_mask</span><span class="o">=</span><span class="n">world_reset_mask</span><span class="p">,</span>
+                <span class="n">config</span><span class="o">=</span><span class="n">SolverKamino</span><span class="o">.</span><span class="n">ResetConfig</span><span class="o">.</span><span class="n">preserve</span><span class="p">(),</span>
+            <span class="p">)</span>
 
     <span class="nd">@classmethod</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">_build_solver</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">model</span><span class="p">:</span> <span class="n">Model</span><span class="p">,</span> <span class="n">solver_cfg</span><span class="p">:</span> <span class="n">KaminoSolverCfg</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
@@ -802,43 +789,44 @@
 <span class="sd">        Sets :attr:`NewtonManager._needs_collision_pipeline` to ``True`` only</span>
 <span class="sd">        when ``use_collision_detector=False`` (Kamino&#39;s internal detector</span>
 <span class="sd">        handles contacts otherwise).</span>
+
+<span class="sd">        Sets :attr:`NewtonManager._needs_fk_before_step` because Kamino treats body state as</span>
+<span class="sd">        authoritative: reset worlds (written via joint coordinates) must be reconciled before each</span>
+<span class="sd">        step. The shared :attr:`NewtonManager._world_reset_mask` and</span>
+<span class="sd">        :attr:`NewtonManager._fk_reset_mask` restrict that pre-step reconcile and</span>
+<span class="sd">        :meth:`NewtonManager.forward` to reset worlds, so non-reset worlds keep their live,</span>
+<span class="sd">        authoritative body state through Kamino&#39;s :meth:`_eval_fk_impl` overwrite.</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            RuntimeError: If the model has more than one articulation per environment. The Kamino</span>
+<span class="sd">                interface in IsaacLab currently only supports one articulation per environment.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="c1"># Set the max contacts per world if specified.</span>
+        <span class="k">if</span> <span class="n">solver_cfg</span><span class="o">.</span><span class="n">max_contacts_per_world</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">model</span><span class="o">.</span><span class="n">rigid_contact_max</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">solver_cfg</span><span class="o">.</span><span class="n">max_contacts_per_world</span><span class="p">)</span> <span class="o">*</span> <span class="n">model</span><span class="o">.</span><span class="n">world_count</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
+                <span class="s2">&quot;[KAMINO] Capping rigid_contact_max to </span><span class="si">%d</span><span class="s2"> (</span><span class="si">%d</span><span class="s2">/world * </span><span class="si">%d</span><span class="s2"> worlds)&quot;</span><span class="p">,</span>
+                <span class="n">model</span><span class="o">.</span><span class="n">rigid_contact_max</span><span class="p">,</span>
+                <span class="n">solver_cfg</span><span class="o">.</span><span class="n">max_contacts_per_world</span><span class="p">,</span>
+                <span class="n">model</span><span class="o">.</span><span class="n">world_count</span><span class="p">,</span>
+            <span class="p">)</span>
+
+        <span class="c1"># Set the use_fk_solver flag based on the model&#39;s articulation structure if not specified by user.</span>
+        <span class="k">if</span> <span class="n">solver_cfg</span><span class="o">.</span><span class="n">use_fk_solver</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">solver_cfg</span><span class="o">.</span><span class="n">use_fk_solver</span> <span class="o">=</span> <span class="n">_model_has_loop_closing_joints</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">solver_cfg</span><span class="o">.</span><span class="n">use_fk_solver</span> <span class="ow">and</span> <span class="n">model</span><span class="o">.</span><span class="n">articulation_count</span> <span class="o">!=</span> <span class="n">model</span><span class="o">.</span><span class="n">world_count</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span>
+                <span class="s2">&quot;The Kamino FK solver requires exactly one articulation per environment, but the model&quot;</span>
+                <span class="sa">f</span><span class="s2">&quot; has </span><span class="si">{</span><span class="n">model</span><span class="o">.</span><span class="n">articulation_count</span><span class="si">}</span><span class="s2"> articulations across </span><span class="si">{</span><span class="n">model</span><span class="o">.</span><span class="n">world_count</span><span class="si">}</span><span class="s2"> environments.&quot;</span>
+                <span class="s2">&quot; Multiple articulations per environment are not yet supported in Kamino&#39;s FK solver.&quot;</span>
+            <span class="p">)</span>
+
         <span class="n">NewtonManager</span><span class="o">.</span><span class="n">_solver</span> <span class="o">=</span> <span class="n">SolverKamino</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">solver_cfg</span><span class="o">.</span><span class="n">to_solver_config</span><span class="p">())</span>
         <span class="n">NewtonManager</span><span class="o">.</span><span class="n">_use_single_state</span> <span class="o">=</span> <span class="kc">False</span>
         <span class="n">NewtonManager</span><span class="o">.</span><span class="n">_needs_collision_pipeline</span> <span class="o">=</span> <span class="ow">not</span> <span class="n">solver_cfg</span><span class="o">.</span><span class="n">use_collision_detector</span>
-
-    <span class="nd">@classmethod</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">_capture_or_defer_cuda_graph</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Capture the physics CUDA graph, or defer if RTX is initializing.&quot;&quot;&quot;</span>
-        <span class="n">cfg</span> <span class="o">=</span> <span class="n">PhysicsManager</span><span class="o">.</span><span class="n">_cfg</span>
-        <span class="n">device</span> <span class="o">=</span> <span class="n">PhysicsManager</span><span class="o">.</span><span class="n">_device</span>
-        <span class="n">use_cuda_graph</span> <span class="o">=</span> <span class="n">cfg</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">cfg</span><span class="o">.</span><span class="n">use_cuda_graph</span> <span class="ow">and</span> <span class="s2">&quot;cuda&quot;</span> <span class="ow">in</span> <span class="n">device</span>  <span class="c1"># type: ignore[union-attr]</span>
-
-        <span class="k">with</span> <span class="n">Timer</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;newton_cuda_graph&quot;</span><span class="p">,</span> <span class="n">msg</span><span class="o">=</span><span class="s2">&quot;CUDA graph took:&quot;</span><span class="p">):</span>
-            <span class="k">if</span> <span class="ow">not</span> <span class="n">use_cuda_graph</span><span class="p">:</span>
-                <span class="n">NewtonManager</span><span class="o">.</span><span class="n">_graph</span> <span class="o">=</span> <span class="kc">None</span>
-                <span class="k">return</span>
-            <span class="k">if</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_usdrt_stage</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-                <span class="c1"># No RTX active — use standard Warp capture (cudaStreamCaptureModeGlobal).</span>
-                <span class="k">with</span> <span class="n">wp</span><span class="o">.</span><span class="n">ScopedCapture</span><span class="p">()</span> <span class="k">as</span> <span class="n">capture</span><span class="p">:</span>
-                    <span class="bp">cls</span><span class="o">.</span><span class="n">_simulate_physics_only</span><span class="p">()</span>
-                <span class="n">NewtonManager</span><span class="o">.</span><span class="n">_graph</span> <span class="o">=</span> <span class="n">capture</span><span class="o">.</span><span class="n">graph</span>
-                <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Newton CUDA graph captured (standard Warp mode)&quot;</span><span class="p">)</span>
-
-                <span class="c1"># TODO: streamline this with base NewtonManager</span>
-                <span class="c1"># Kamino: StateKamino.from_newton() lazily allocates body_f_total,</span>
-                <span class="c1"># joint_q_prev, and joint_lambdas via wp.clone/wp.zeros during the</span>
-                <span class="c1"># first step() inside graph capture. Replay once to pin those</span>
-                <span class="c1"># memory-pool addresses before any eager solver.reset() call.</span>
-                <span class="n">wp</span><span class="o">.</span><span class="n">capture_launch</span><span class="p">(</span><span class="bp">cls</span><span class="o">.</span><span class="n">_graph</span><span class="p">)</span>
-            <span class="k">else</span><span class="p">:</span>
-                <span class="c1"># RTX is active during initialization — cudaImportExternalMemory and other</span>
-                <span class="c1"># non-capturable RTX ops run on background CUDA streams right now.</span>
-                <span class="c1"># Defer capture to the first step() call, after RTX is fully initialized</span>
-                <span class="c1"># and idle between render frames (clean capture window).</span>
-                <span class="n">NewtonManager</span><span class="o">.</span><span class="n">_graph</span> <span class="o">=</span> <span class="kc">None</span>
-                <span class="n">NewtonManager</span><span class="o">.</span><span class="n">_graph_capture_pending</span> <span class="o">=</span> <span class="kc">True</span>
-                <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Newton CUDA graph capture deferred until first step() (RTX active)&quot;</span><span class="p">)</span></div>
+        <span class="n">NewtonManager</span><span class="o">.</span><span class="n">_needs_fk_before_step</span> <span class="o">=</span> <span class="kc">True</span></div>
 
 </pre></div>
 
@@ -887,7 +875,7 @@ By The Isaac Lab Project Developers.
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Jul 03, 2026.
+  Last updated on Jul 04, 2026.
   <br/>
 </p>
   </div>

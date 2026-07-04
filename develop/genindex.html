@@ -61,7 +61,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="3.0.0" />
-    <meta name="docbuild:last-update" content="Jul 03, 2026"/>
+    <meta name="docbuild:last-update" content="Jul 04, 2026"/>
   </head>
   
   
@@ -314,6 +314,7 @@
 <li class="toctree-l2"><a class="reference internal" href="source/how-to/add_own_library.html">Adding your own learning library</a></li>
 <li class="toctree-l2"><a class="reference internal" href="source/how-to/record_animation.html">Recording Animations of Simulations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="source/how-to/record_video.html">Recording video clips during training</a></li>
+<li class="toctree-l2"><a class="reference internal" href="source/how-to/capture_sensor_frames.html">Capturing sensor frames during training</a></li>
 <li class="toctree-l2"><a class="reference internal" href="source/how-to/curriculums.html">Curriculum Utilities</a></li>
 <li class="toctree-l2"><a class="reference internal" href="source/how-to/master_omniverse.html">Mastering Omniverse for Robotics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="source/how-to/cloudxr_teleoperation.html">Setting up Isaac Teleop with CloudXR</a></li>
@@ -8923,6 +8924,12 @@
       </ul></li>
       <li><a href="source/overview/imitation-learning/teleop_imitation.html#term-FK"><strong>FK</strong></a>
 </li>
+      <li><a href="source/api/lab_newton/isaaclab_newton.physics.html#isaaclab_newton.physics.KaminoSolverCfg.fk_regularization_weight">fk_regularization_weight (isaaclab_newton.physics.KaminoSolverCfg attribute)</a>
+</li>
+      <li><a href="source/api/lab_newton/isaaclab_newton.physics.html#isaaclab_newton.physics.KaminoSolverCfg.fk_tolerance">fk_tolerance (isaaclab_newton.physics.KaminoSolverCfg attribute)</a>
+</li>
+      <li><a href="source/api/lab_newton/isaaclab_newton.physics.html#isaaclab_newton.physics.KaminoSolverCfg.fk_use_regularization">fk_use_regularization (isaaclab_newton.physics.KaminoSolverCfg attribute)</a>
+</li>
       <li><a href="source/api/lab/isaaclab.envs.mdp.html#isaaclab.envs.mdp.rewards.flat_orientation_l2">flat_orientation_l2() (in module isaaclab.envs.mdp.rewards)</a>
 </li>
       <li><a href="source/api/lab/isaaclab.terrains.html#isaaclab.terrains.height_field.hf_terrains_cfg.HfDiscreteObstaclesTerrainCfg.flat_patch_sampling">flat_patch_sampling (isaaclab.terrains.height_field.hf_terrains_cfg.HfDiscreteObstaclesTerrainCfg attribute)</a>
@@ -13465,6 +13472,8 @@
 </li>
       <li><a href="source/api/lab_physx/isaaclab_physx.sim.schemas.html#isaaclab_physx.sim.schemas.PhysxRigidBodyPropertiesCfg.max_contact_impulse">max_contact_impulse (isaaclab_physx.sim.schemas.PhysxRigidBodyPropertiesCfg attribute)</a>
 </li>
+      <li><a href="source/api/lab_newton/isaaclab_newton.physics.html#isaaclab_newton.physics.KaminoSolverCfg.max_contacts_per_world">max_contacts_per_world (isaaclab_newton.physics.KaminoSolverCfg attribute)</a>
+</li>
       <li><a href="source/api/lab_physx/isaaclab_physx.sim.schemas.html#isaaclab_physx.sim.schemas.PhysxConvexDecompositionPropertiesCfg.max_convex_hulls">max_convex_hulls (isaaclab_physx.sim.schemas.PhysxConvexDecompositionPropertiesCfg attribute)</a>
 </li>
       <li><a href="source/api/lab/isaaclab.actuators.html#isaaclab.actuators.DelayedPDActuatorCfg.max_delay">max_delay (isaaclab.actuators.DelayedPDActuatorCfg attribute)</a>
@@ -13775,10 +13784,10 @@
 </li>
       <li><a href="source/api/lab/isaaclab.utils.html#isaaclab.utils.warp.raycast_single_mesh.params.mesh_id">mesh_id (isaaclab.utils.warp.raycast_single_mesh parameter)</a>, <a href="source/api/lab/isaaclab.utils.html#isaaclab.utils.warp.raycast_single_mesh.params.mesh_id">[1]</a>
 </li>
-      <li><a href="source/api/lab/isaaclab.utils.html#isaaclab.utils.warp.raycast_dynamic_meshes.params.mesh_ids_wp">mesh_ids_wp (isaaclab.utils.warp.raycast_dynamic_meshes parameter)</a>, <a href="source/api/lab/isaaclab.utils.html#isaaclab.utils.warp.raycast_dynamic_meshes.params.mesh_ids_wp">[1]</a>
-</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="source/api/lab/isaaclab.utils.html#isaaclab.utils.warp.raycast_dynamic_meshes.params.mesh_ids_wp">mesh_ids_wp (isaaclab.utils.warp.raycast_dynamic_meshes parameter)</a>, <a href="source/api/lab/isaaclab.utils.html#isaaclab.utils.warp.raycast_dynamic_meshes.params.mesh_ids_wp">[1]</a>
+</li>
       <li><a href="source/api/lab/isaaclab.utils.html#isaaclab.utils.warp.raycast_dynamic_meshes.params.mesh_orientations_w">mesh_orientations_w (isaaclab.utils.warp.raycast_dynamic_meshes parameter)</a>, <a href="source/api/lab/isaaclab.utils.html#isaaclab.utils.warp.raycast_dynamic_meshes.params.mesh_orientations_w">[1]</a>
 </li>
       <li><a href="source/api/lab/isaaclab.controllers.html#isaaclab.controllers.pink_ik.PinkIKControllerCfg.mesh_path">mesh_path (isaaclab.controllers.pink_ik.PinkIKControllerCfg attribute)</a>
@@ -25686,7 +25695,7 @@ By The Isaac Lab Project Developers.
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Jul 03, 2026.
+  Last updated on Jul 04, 2026.
   <br/>
 </p>
   </div>

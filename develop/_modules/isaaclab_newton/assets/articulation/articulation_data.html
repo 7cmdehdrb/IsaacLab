@@ -61,7 +61,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="3.0.0" />
-    <meta name="docbuild:last-update" content="Jul 03, 2026"/>
+    <meta name="docbuild:last-update" content="Jul 04, 2026"/>
   </head>
   
   
@@ -314,6 +314,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../../../source/how-to/add_own_library.html">Adding your own learning library</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../../source/how-to/record_animation.html">Recording Animations of Simulations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../../source/how-to/record_video.html">Recording video clips during training</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../source/how-to/capture_sensor_frames.html">Capturing sensor frames during training</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../../source/how-to/curriculums.html">Curriculum Utilities</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../../source/how-to/master_omniverse.html">Mastering Omniverse for Robotics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../../source/how-to/cloudxr_teleoperation.html">Setting up Isaac Teleop with CloudXR</a></li>
@@ -809,11 +810,12 @@
     <span class="k">def</span><span class="w"> </span><span class="nf">_ensure_fk_fresh</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Run forward kinematics if joint state has changed since the last FK update.</span>
 
-<span class="sd">        Newton&#39;s ``state.body_q`` (per-body world transforms) is updated by ``eval_fk``,</span>
-<span class="sd">        invoked here through ``SimulationManager.forward()``. After a manual joint or root</span>
-<span class="sd">        write that bypassed the sim step (``write_*_to_sim_*``), ``_fk_timestamp`` is set</span>
-<span class="sd">        to ``-1.0`` to force a refresh on the next read of any property that depends on</span>
-<span class="sd">        body poses (``body_link_pose_w``, the Jacobian properties, ``mass_matrix``).</span>
+<span class="sd">        Newton&#39;s ``state.body_q`` (per-body world transforms) is updated by the active</span>
+<span class="sd">        solver manager&#39;s ``forward()``, which calls a solver-specialized FK hook.</span>
+<span class="sd">        After a manual joint or root write that bypassed the sim step (``write_*_to_sim_*``),</span>
+<span class="sd">        ``_fk_timestamp`` is set to ``-1.0`` to force a refresh on the next read of any</span>
+<span class="sd">        property that depends on body poses (``body_link_pose_w``, the Jacobian properties,</span>
+<span class="sd">        ``mass_matrix``).</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fk_timestamp</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sim_timestamp</span><span class="p">:</span>
             <span class="n">SimulationManager</span><span class="o">.</span><span class="n">forward</span><span class="p">()</span>
@@ -3168,7 +3170,7 @@ By The Isaac Lab Project Developers.
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Jul 03, 2026.
+  Last updated on Jul 04, 2026.
   <br/>
 </p>
   </div>

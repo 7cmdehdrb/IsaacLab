@@ -61,7 +61,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="3.0.0" />
-    <meta name="docbuild:last-update" content="Jul 03, 2026"/>
+    <meta name="docbuild:last-update" content="Jul 04, 2026"/>
   </head>
   
   
@@ -314,6 +314,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../../source/how-to/add_own_library.html">Adding your own learning library</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../source/how-to/record_animation.html">Recording Animations of Simulations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../source/how-to/record_video.html">Recording video clips during training</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../source/how-to/capture_sensor_frames.html">Capturing sensor frames during training</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../source/how-to/curriculums.html">Curriculum Utilities</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../source/how-to/master_omniverse.html">Mastering Omniverse for Robotics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../source/how-to/cloudxr_teleoperation.html">Setting up Isaac Teleop with CloudXR</a></li>
@@ -869,6 +870,18 @@
         <span class="k">return</span> <span class="n">NewtonManager</span><span class="o">.</span><span class="n">get_state_0</span><span class="p">()</span>
 
 
+<span class="k">def</span><span class="w"> </span><span class="nf">_eval_fk_unbound</span><span class="p">(</span><span class="n">world_reset_mask</span><span class="p">:</span> <span class="n">wp</span><span class="o">.</span><span class="n">array</span> <span class="o">|</span> <span class="kc">None</span><span class="p">,</span> <span class="n">fk_mask</span><span class="p">:</span> <span class="n">wp</span><span class="o">.</span><span class="n">array</span> <span class="o">|</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Default :attr:`NewtonManager._eval_fk` value before a solver is initialized.</span>
+
+<span class="sd">    Raises so a stray ``forward()`` / ``step()`` before ``initialize_solver()`` fails loudly</span>
+<span class="sd">    instead of silently running a wrong (or no) FK.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span>
+        <span class="s2">&quot;FK hook is not bound. NewtonManager.initialize_solver() must run &quot;</span>
+        <span class="s2">&quot;(via reset()) before forward()/step() can run forward kinematics.&quot;</span>
+    <span class="p">)</span>
+
+
 <div class="viewcode-block" id="NewtonManager">
 <a class="viewcode-back" href="../../../source/api/lab_newton/isaaclab_newton.physics.html#isaaclab_contrib.deformable.vbd_manager.NewtonManager">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">NewtonManager</span><span class="p">(</span><span class="n">PhysicsManager</span><span class="p">):</span>
@@ -938,9 +951,12 @@
     <span class="n">_pending_extended_state_attributes</span><span class="p">:</span> <span class="nb">set</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
     <span class="n">_pending_extended_contact_attributes</span><span class="p">:</span> <span class="nb">set</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
     <span class="n">_report_contacts</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
-    <span class="c1"># Per-world reset masks (allocated in start_simulation, consumed in step)</span>
+
+    <span class="c1"># Per-world reset masks (allocated in start_simulation, consumed in step/forward).</span>
     <span class="n">_world_reset_mask</span><span class="p">:</span> <span class="n">wp</span><span class="o">.</span><span class="n">array</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1"># (num_envs,) wp.bool — for SolverKamino.reset(world_mask=...)</span>
     <span class="n">_fk_reset_mask</span><span class="p">:</span> <span class="n">wp</span><span class="o">.</span><span class="n">array</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1"># (articulation_count,) wp.bool — for eval_fk(mask=...)</span>
+    <span class="c1"># Solver-specialized FK delegate. Bound in initialize_solver() to the active subclass&#39;s choice of FK implementation.</span>
+    <span class="n">_eval_fk</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">wp</span><span class="o">.</span><span class="n">array</span> <span class="o">|</span> <span class="kc">None</span><span class="p">,</span> <span class="n">wp</span><span class="o">.</span><span class="n">array</span> <span class="o">|</span> <span class="kc">None</span><span class="p">],</span> <span class="kc">None</span><span class="p">]</span> <span class="o">=</span> <span class="n">_eval_fk_unbound</span>
 
     <span class="c1"># Newton actuator adapter (owns actuators and double-buffered states)</span>
     <span class="n">_adapter</span><span class="p">:</span> <span class="n">NewtonActuatorAdapter</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
@@ -1053,19 +1069,44 @@
             <span class="bp">cls</span><span class="o">.</span><span class="n">initialize_solver</span><span class="p">()</span></div>
 
 
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_eval_fk_impl</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">world_reset_mask</span><span class="p">:</span> <span class="n">wp</span><span class="o">.</span><span class="n">array</span> <span class="o">|</span> <span class="kc">None</span><span class="p">,</span> <span class="n">fk_mask</span><span class="p">:</span> <span class="n">wp</span><span class="o">.</span><span class="n">array</span> <span class="o">|</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Update body states from joint coordinates.</span>
+
+<span class="sd">        Solver-specialized FK implementation. The base implementation runs Newton&#39;s generic</span>
+<span class="sd">        ``eval_fk`` over the articulations selected by ``fk_mask``. Subclasses may override</span>
+<span class="sd">        this method to use a solver-specific FK.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            world_reset_mask: Per-world mask of environments to reset (``None`` means all).</span>
+<span class="sd">                Unused by the base implementation; consumed by solver-specific overrides such as</span>
+<span class="sd">                :meth:`NewtonKaminoManager._eval_fk_impl`.</span>
+<span class="sd">            fk_mask: Per-articulation mask of articulations to update (``None`` means all).</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">eval_fk</span><span class="p">(</span><span class="bp">cls</span><span class="o">.</span><span class="n">_model</span><span class="p">,</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_state_0</span><span class="o">.</span><span class="n">joint_q</span><span class="p">,</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_state_0</span><span class="o">.</span><span class="n">joint_qd</span><span class="p">,</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_state_0</span><span class="p">,</span> <span class="n">fk_mask</span><span class="p">)</span>
+
 <div class="viewcode-block" id="NewtonManager.forward">
 <a class="viewcode-back" href="../../../source/api/lab_newton/isaaclab_newton.physics.html#isaaclab_contrib.deformable.vbd_manager.NewtonManager.forward">[docs]</a>
     <span class="nd">@classmethod</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">forward</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Update articulation kinematics without stepping physics.</span>
 
-<span class="sd">        Runs Newton&#39;s generic forward kinematics (``eval_fk``) over **all**</span>
-<span class="sd">        articulations to compute body poses from joint coordinates. This is</span>
-<span class="sd">        the full (unmasked) FK path used during initial setup. For incremental</span>
-<span class="sd">        per-environment updates after resets, see :meth:`invalidate_fk` which</span>
-<span class="sd">        accumulates masks consumed by :meth:`step`.</span>
+<span class="sd">        Update body poses from joint coordinates via the solver-specialized FK delegate</span>
+<span class="sd">        (:attr:`_eval_fk`, bound to the active subclass&#39;s :meth:`_eval_fk_impl` in</span>
+<span class="sd">        :meth:`initialize_solver`). Only the articulations flagged dirty in</span>
+<span class="sd">        :attr:`_fk_reset_mask` and :attr:`_world_reset_mask` (see :meth:`invalidate_fk`) are</span>
+<span class="sd">        updated. The masks are consumed (zeroed) afterwards so the next :meth:`step` does not</span>
+<span class="sd">        redundantly re-solve them.</span>
+
+<span class="sd">        The delegate (rather than a direct ``cls._eval_fk_impl`` call) is required because the</span>
+<span class="sd">        data layer invokes ``NewtonManager.forward()`` on the base class, where ``cls`` is the</span>
+<span class="sd">        base ``NewtonManager``; the bound delegate dispatches to the concrete subclass override.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">eval_fk</span><span class="p">(</span><span class="bp">cls</span><span class="o">.</span><span class="n">_model</span><span class="p">,</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_state_0</span><span class="o">.</span><span class="n">joint_q</span><span class="p">,</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_state_0</span><span class="o">.</span><span class="n">joint_qd</span><span class="p">,</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_state_0</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span></div>
+        <span class="bp">cls</span><span class="o">.</span><span class="n">_eval_fk</span><span class="p">(</span><span class="bp">cls</span><span class="o">.</span><span class="n">_world_reset_mask</span><span class="p">,</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_fk_reset_mask</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_fk_reset_mask</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">cls</span><span class="o">.</span><span class="n">_fk_reset_mask</span><span class="o">.</span><span class="n">zero_</span><span class="p">()</span>
+        <span class="k">if</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_world_reset_mask</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">cls</span><span class="o">.</span><span class="n">_world_reset_mask</span><span class="o">.</span><span class="n">zero_</span><span class="p">()</span></div>
 
 
 <div class="viewcode-block" id="NewtonManager.pre_render">
@@ -1358,6 +1399,12 @@
             <span class="n">NewtonManager</span><span class="o">.</span><span class="n">_graph_capture_pending</span> <span class="o">=</span> <span class="kc">False</span>
             <span class="n">NewtonManager</span><span class="o">.</span><span class="n">_graph</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_capture_relaxed_graph</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
             <span class="k">if</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_graph</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="c1"># Kamino: StateKamino.from_newton() lazily allocates body_f_total,</span>
+                <span class="c1"># joint_q_prev, and joint_lambdas via wp.clone/wp.zeros during the</span>
+                <span class="c1"># first step() inside graph capture. Replay once to pin those</span>
+                <span class="c1"># memory-pool addresses before any eager solver.reset() call.</span>
+                <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">cls</span><span class="o">.</span><span class="n">_solver</span><span class="p">,</span> <span class="n">SolverKamino</span><span class="p">):</span>
+                    <span class="n">wp</span><span class="o">.</span><span class="n">capture_launch</span><span class="p">(</span><span class="bp">cls</span><span class="o">.</span><span class="n">_graph</span><span class="p">)</span>
                 <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Newton CUDA graph captured (deferred relaxed mode, RTX-compatible)&quot;</span><span class="p">)</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;Newton deferred CUDA graph capture failed; using eager execution&quot;</span><span class="p">)</span>
@@ -1366,10 +1413,11 @@
         <span class="c1"># After env resets or kinematic root writes, joint_q is written but</span>
         <span class="c1"># body_q is stale until FK runs. Collision-based solvers need this for</span>
         <span class="c1"># broadphase/narrowphase; collider-based solvers such as MPM need it</span>
-        <span class="c1"># for their internal collider queries.</span>
+        <span class="c1"># for their internal collider queries. Maximal-coordinate solvers</span>
+        <span class="c1"># that treat body state as the main state (e.g. Kamino) require FK before step.</span>
         <span class="c1"># Only runs FK for dirtied articulations via the accumulated mask.</span>
         <span class="k">if</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_needs_collision_pipeline</span> <span class="ow">or</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_needs_fk_before_step</span><span class="p">:</span>
-            <span class="n">eval_fk</span><span class="p">(</span><span class="bp">cls</span><span class="o">.</span><span class="n">_model</span><span class="p">,</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_state_0</span><span class="o">.</span><span class="n">joint_q</span><span class="p">,</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_state_0</span><span class="o">.</span><span class="n">joint_qd</span><span class="p">,</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_state_0</span><span class="p">,</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_fk_reset_mask</span><span class="p">)</span>
+            <span class="bp">cls</span><span class="o">.</span><span class="n">_eval_fk</span><span class="p">(</span><span class="bp">cls</span><span class="o">.</span><span class="n">_world_reset_mask</span><span class="p">,</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_fk_reset_mask</span><span class="p">)</span>
 
         <span class="c1"># Zero both masks after consumption</span>
         <span class="n">NewtonManager</span><span class="o">.</span><span class="n">_world_reset_mask</span><span class="o">.</span><span class="n">zero_</span><span class="p">()</span>
@@ -1484,6 +1532,7 @@
         <span class="n">NewtonManager</span><span class="o">.</span><span class="n">_contacts</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="n">NewtonManager</span><span class="o">.</span><span class="n">_needs_collision_pipeline</span> <span class="o">=</span> <span class="kc">False</span>
         <span class="n">NewtonManager</span><span class="o">.</span><span class="n">_needs_fk_before_step</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="n">NewtonManager</span><span class="o">.</span><span class="n">_eval_fk</span> <span class="o">=</span> <span class="n">_eval_fk_unbound</span>
         <span class="n">NewtonManager</span><span class="o">.</span><span class="n">_collision_pipeline</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="n">NewtonManager</span><span class="o">.</span><span class="n">_collision_cfg</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="n">NewtonManager</span><span class="o">.</span><span class="n">_newton_contact_sensors</span> <span class="o">=</span> <span class="p">{}</span>
@@ -1875,7 +1924,8 @@
         <span class="n">NewtonManager</span><span class="o">.</span><span class="n">_state_0</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_model</span><span class="o">.</span><span class="n">state</span><span class="p">()</span>
         <span class="n">NewtonManager</span><span class="o">.</span><span class="n">_state_1</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_model</span><span class="o">.</span><span class="n">state</span><span class="p">()</span>
         <span class="n">NewtonManager</span><span class="o">.</span><span class="n">_control</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_model</span><span class="o">.</span><span class="n">control</span><span class="p">()</span>
-        <span class="n">eval_fk</span><span class="p">(</span><span class="bp">cls</span><span class="o">.</span><span class="n">_model</span><span class="p">,</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_state_0</span><span class="o">.</span><span class="n">joint_q</span><span class="p">,</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_state_0</span><span class="o">.</span><span class="n">joint_qd</span><span class="p">,</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_state_0</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="c1"># The initial body-state update from joint coordinates is deferred to the tail of</span>
+        <span class="c1"># initialize_solver(), where it runs through the solver-specialized FK delegate after the solver is initialized.</span>
 
         <span class="c1"># The single global actuator adapter is built lazily on the first</span>
         <span class="c1"># call to ``activate_newton_actuator_path`` from any Newton-fast-path</span>
@@ -1885,7 +1935,7 @@
         <span class="n">NewtonManager</span><span class="o">.</span><span class="n">_adapter</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="n">NewtonManager</span><span class="o">.</span><span class="n">_use_newton_actuators_active</span> <span class="o">=</span> <span class="kc">False</span>
 
-        <span class="c1"># Allocate per-world reset masks (used by all solvers for masked FK, and by Kamino for masked reset)</span>
+        <span class="c1"># Allocate per-world reset masks (used by all solvers for masked FK, and by Kamino for masked reset).</span>
         <span class="n">NewtonManager</span><span class="o">.</span><span class="n">_world_reset_mask</span> <span class="o">=</span> <span class="n">wp</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="bp">cls</span><span class="o">.</span><span class="n">_model</span><span class="o">.</span><span class="n">world_count</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">wp</span><span class="o">.</span><span class="n">bool</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">)</span>
         <span class="n">NewtonManager</span><span class="o">.</span><span class="n">_fk_reset_mask</span> <span class="o">=</span> <span class="n">wp</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="bp">cls</span><span class="o">.</span><span class="n">_model</span><span class="o">.</span><span class="n">articulation_count</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">wp</span><span class="o">.</span><span class="n">bool</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">)</span>
 
@@ -2164,6 +2214,17 @@
                 <span class="p">)</span>
             <span class="bp">cls</span><span class="o">.</span><span class="n">_initialize_contacts</span><span class="p">()</span>
 
+        <span class="c1"># Bind the solver-specialized FK delegate to the active subclass&#39;s _eval_fk_impl so</span>
+        <span class="c1"># that forward()/step() dispatch correctly even when forward() is invoked through the</span>
+        <span class="c1"># base class (the data layer imports NewtonManager directly). ``cls`` is the concrete</span>
+        <span class="c1"># subclass here, since initialize_solver is reached via sim.physics_manager.reset().</span>
+        <span class="n">NewtonManager</span><span class="o">.</span><span class="n">_eval_fk</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_eval_fk_impl</span>
+
+        <span class="c1"># Establish the initial kinematically-consistent body state through the</span>
+        <span class="c1"># solver-specialized FK delegate, now that the solver and the delegate both exist.</span>
+        <span class="c1"># Runs before graph capture below so the capture warmup sees a valid body_q.</span>
+        <span class="bp">cls</span><span class="o">.</span><span class="n">_eval_fk</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+
         <span class="k">if</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_usdrt_stage</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="bp">cls</span><span class="o">.</span><span class="n">_setup_cubric_bindings</span><span class="p">()</span>
 
@@ -2401,7 +2462,7 @@
                     <span class="bp">cls</span><span class="o">.</span><span class="n">_collision_pipeline</span><span class="o">.</span><span class="n">collide</span><span class="p">(</span><span class="bp">cls</span><span class="o">.</span><span class="n">_state_0</span><span class="p">,</span> <span class="n">contacts</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">cfg</span> <span class="o">=</span> <span class="n">PhysicsManager</span><span class="o">.</span><span class="n">_cfg</span>
-            <span class="n">need_copy_on_last</span> <span class="o">=</span> <span class="p">(</span><span class="n">cfg</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">cfg</span><span class="o">.</span><span class="n">use_cuda_graph</span><span class="p">)</span> <span class="ow">and</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_num_substeps</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">1</span>  <span class="c1"># type: ignore[union-attr]</span>
+            <span class="n">need_copy_on_last</span> <span class="o">=</span> <span class="n">cfg</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_num_substeps</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">1</span>
             <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">cls</span><span class="o">.</span><span class="n">_num_substeps</span><span class="p">):</span>
                 <span class="bp">cls</span><span class="o">.</span><span class="n">_step_solver</span><span class="p">(</span><span class="bp">cls</span><span class="o">.</span><span class="n">_state_0</span><span class="p">,</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_state_1</span><span class="p">,</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_control</span><span class="p">,</span> <span class="n">contacts</span><span class="p">,</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_solver_dt</span><span class="p">)</span>
                 <span class="k">if</span> <span class="n">need_copy_on_last</span> <span class="ow">and</span> <span class="n">i</span> <span class="o">==</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_num_substeps</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span>
@@ -3012,7 +3073,7 @@ By The Isaac Lab Project Developers.
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Jul 03, 2026.
+  Last updated on Jul 04, 2026.
   <br/>
 </p>
   </div>
