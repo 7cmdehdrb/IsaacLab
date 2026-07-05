@@ -61,7 +61,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="3.0.0" />
-    <meta name="docbuild:last-update" content="Jul 04, 2026"/>
+    <meta name="docbuild:last-update" content="Jul 05, 2026"/>
   </head>
   
   
@@ -689,6 +689,7 @@
 <span class="kn">from</span><span class="w"> </span><span class="nn">dataclasses</span><span class="w"> </span><span class="kn">import</span> <span class="n">MISSING</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">ClassVar</span>
 
+<span class="kn">from</span><span class="w"> </span><span class="nn">isaaclab.sim.schemas.schemas_cfg</span><span class="w"> </span><span class="kn">import</span> <span class="n">SchemaFragment</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">isaaclab.utils.configclass</span><span class="w"> </span><span class="kn">import</span> <span class="n">configclass</span>
 
 <span class="c1"># Names that moved out of this submodule into ``isaaclab_physx.sim.spawners.materials.physics_materials_cfg``.</span>
@@ -739,13 +740,16 @@
 
 
 
+<div class="viewcode-block" id="RigidBodyMaterialBaseCfg">
+<a class="viewcode-back" href="../../../../../source/api/lab/isaaclab.sim.spawners.html#isaaclab.sim.spawners.materials.RigidBodyMaterialBaseCfg">[docs]</a>
 <span class="nd">@configclass</span>
 <span class="k">class</span><span class="w"> </span><span class="nc">RigidBodyMaterialBaseCfg</span><span class="p">(</span><span class="n">PhysicsMaterialCfg</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Solver-common physics-material parameters for rigid bodies.</span>
 
-<span class="sd">    Contains the friction and restitution fields from the `UsdPhysics.MaterialAPI`_ that are common</span>
-<span class="sd">    across all simulation backends. For PhysX-only material properties (compliant-contact spring,</span>
-<span class="sd">    combine modes), use :class:`~isaaclab_physx.sim.spawners.materials.PhysxRigidBodyMaterialCfg`.</span>
+<span class="sd">    Contains the friction, restitution, and density fields from the `UsdPhysics.MaterialAPI`_ that</span>
+<span class="sd">    are common across all simulation backends. For properties in the ``physxMaterial`` namespace</span>
+<span class="sd">    (compliant-contact spring and combine modes), use</span>
+<span class="sd">    :class:`~isaaclab_physx.sim.spawners.materials.PhysxRigidBodyMaterialCfg`.</span>
 
 <span class="sd">    See :meth:`spawn_rigid_body_material` for more information.</span>
 
@@ -770,6 +774,67 @@
 
     <span class="n">restitution</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.0</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;The restitution coefficient. Defaults to 0.0.&quot;&quot;&quot;</span>
+
+    <span class="n">density</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;The material density [kg/m^3]. Defaults to None, in which case it is not authored.</span>
+
+<span class="sd">    Writes ``physics:density``. It is a fallback for collision shapes bound to this material;</span>
+<span class="sd">    explicitly authored rigid-body mass or density takes precedence.</span>
+<span class="sd">    &quot;&quot;&quot;</span></div>
+
+
+
+<div class="viewcode-block" id="RigidBodyMaterialFragment">
+<a class="viewcode-back" href="../../../../../source/api/lab/isaaclab.sim.spawners.html#isaaclab.sim.spawners.materials.RigidBodyMaterialFragment">[docs]</a>
+<span class="nd">@configclass</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">RigidBodyMaterialFragment</span><span class="p">(</span><span class="n">SchemaFragment</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Marker base for rigid-body physics-material fragments; types the ``physics_material`` slot.</span>
+
+<span class="sd">    A rigid-body physics material is a single ``UsdShade.Material`` prim that carries one or more</span>
+<span class="sd">    physics-material schemas. The fragments author single namespaces onto that prim: the</span>
+<span class="sd">    solver-common ``physics:*`` friction/restitution/density</span>
+<span class="sd">    (:class:`UsdPhysicsRigidBodyMaterialCfg`) and any backend-specific namespace (e.g. PhysX</span>
+<span class="sd">    ``physxMaterial:*`` via :class:`~isaaclab_physx.sim.spawners.materials.PhysxMaterialCfg`).</span>
+<span class="sd">    The defining ``UsdPhysics.MaterialAPI`` anchor is applied by the family writer</span>
+<span class="sd">    (:func:`~isaaclab.sim.spawners.materials.spawn_rigid_body_material_from_fragments`).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">pass</span></div>
+
+
+
+<div class="viewcode-block" id="UsdPhysicsRigidBodyMaterialCfg">
+<a class="viewcode-back" href="../../../../../source/api/lab/isaaclab.sim.spawners.html#isaaclab.sim.spawners.materials.UsdPhysicsRigidBodyMaterialCfg">[docs]</a>
+<span class="nd">@configclass</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">UsdPhysicsRigidBodyMaterialCfg</span><span class="p">(</span><span class="n">RigidBodyMaterialFragment</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;``physics:*`` rigid-body material attributes from `UsdPhysics.MaterialAPI`_.</span>
+
+<span class="sd">    The ``UsdPhysics.MaterialAPI`` schema is applied as the implicit anchor by the rigid-body material</span>
+<span class="sd">    family writer, so this fragment owns no applied schema of its own. ``None`` fields are left</span>
+<span class="sd">    unchanged on the material prim.</span>
+
+<span class="sd">    .. _UsdPhysics.MaterialAPI: https://openusd.org/dev/api/class_usd_physics_material_a_p_i.html</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">_usd_namespace</span><span class="p">:</span> <span class="n">ClassVar</span><span class="p">[</span><span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;physics&quot;</span>
+    <span class="n">_usd_applied_schema</span><span class="p">:</span> <span class="n">ClassVar</span><span class="p">[</span><span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1"># MaterialAPI applied by the family writer</span>
+
+    <span class="n">static_friction</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;The static friction coefficient. Writes ``physics:staticFriction``.&quot;&quot;&quot;</span>
+
+    <span class="n">dynamic_friction</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;The dynamic friction coefficient. Writes ``physics:dynamicFriction``.&quot;&quot;&quot;</span>
+
+    <span class="n">restitution</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;The restitution coefficient. Writes ``physics:restitution``.&quot;&quot;&quot;</span>
+
+    <span class="n">density</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;The material density [kg/m^3]. Writes ``physics:density``.</span>
+
+<span class="sd">    Participates in mass computation via material binding when no explicit rigid-body mass or</span>
+<span class="sd">    density takes precedence.</span>
+<span class="sd">    &quot;&quot;&quot;</span></div>
+
 
 
 <div class="viewcode-block" id="DeformableBodyMaterialBaseCfg">
@@ -839,7 +904,7 @@ By The Isaac Lab Project Developers.
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Jul 04, 2026.
+  Last updated on Jul 05, 2026.
   <br/>
 </p>
   </div>

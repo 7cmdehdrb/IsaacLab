@@ -61,7 +61,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="3.0.0" />
-    <meta name="docbuild:last-update" content="Jul 04, 2026"/>
+    <meta name="docbuild:last-update" content="Jul 05, 2026"/>
   </head>
   
   
@@ -719,8 +719,17 @@
 <span class="sd">    If the path is relative, then it will be relative to the prim&#39;s path.</span>
 <span class="sd">    This parameter is ignored if `physics_material` is not None.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">physics_material</span><span class="p">:</span> <span class="n">materials</span><span class="o">.</span><span class="n">PhysicsMaterialCfg</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">physics_material</span><span class="p">:</span> <span class="p">(</span>
+        <span class="n">materials</span><span class="o">.</span><span class="n">RigidBodyMaterialBaseCfg</span>
+        <span class="o">|</span> <span class="n">materials</span><span class="o">.</span><span class="n">RigidBodyMaterialFragment</span>
+        <span class="o">|</span> <span class="nb">list</span><span class="p">[</span><span class="n">materials</span><span class="o">.</span><span class="n">RigidBodyMaterialFragment</span><span class="p">]</span>
+        <span class="o">|</span> <span class="kc">None</span>
+    <span class="p">)</span> <span class="o">=</span> <span class="kc">None</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Physics material properties.</span>
+
+<span class="sd">    Since shapes are rigid-only spawners, this slot accepts the rigid material base class or</span>
+<span class="sd">    rigid-material fragments (single-namespace :class:`~isaaclab.sim.spawners.materials.RigidBodyMaterialFragment`</span>
+<span class="sd">    instances or lists thereof).</span>
 
 <span class="sd">    Note:</span>
 <span class="sd">        If None, then no physics material will be added.</span>
@@ -865,7 +874,7 @@ By The Isaac Lab Project Developers.
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Jul 04, 2026.
+  Last updated on Jul 05, 2026.
   <br/>
 </p>
   </div>

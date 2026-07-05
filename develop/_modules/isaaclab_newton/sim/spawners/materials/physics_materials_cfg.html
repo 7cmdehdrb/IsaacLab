@@ -61,7 +61,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="3.0.0" />
-    <meta name="docbuild:last-update" content="Jul 04, 2026"/>
+    <meta name="docbuild:last-update" content="Jul 05, 2026"/>
   </head>
   
   
@@ -690,6 +690,7 @@
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">isaaclab.sim.spawners.materials.physics_materials_cfg</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
     <span class="n">DeformableBodyMaterialBaseCfg</span><span class="p">,</span>
+    <span class="n">RigidBodyMaterialFragment</span><span class="p">,</span>
     <span class="n">SurfaceDeformableBodyMaterialBaseCfg</span><span class="p">,</span>
 <span class="p">)</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">isaaclab.utils.configclass</span><span class="w"> </span><span class="kn">import</span> <span class="n">configclass</span>
@@ -766,6 +767,79 @@
     <span class="n">edge_kd</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1e-2</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Bending damping [N*m*s]. Used by Newton backend for cloth meshes.&quot;&quot;&quot;</span></div>
 
+
+
+<div class="viewcode-block" id="NewtonMaterialCfg">
+<a class="viewcode-back" href="../../../../../source/api/lab_newton/isaaclab_newton.sim.spawners.html#isaaclab_newton.sim.spawners.materials.NewtonMaterialCfg">[docs]</a>
+<span class="nd">@configclass</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">NewtonMaterialCfg</span><span class="p">(</span><span class="n">RigidBodyMaterialFragment</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;``newton:*`` rigid-body material attributes read by Newton&#39;s USD material schema resolver.</span>
+
+<span class="sd">    Single-namespace fragment (see</span>
+<span class="sd">    :class:`~isaaclab.sim.spawners.materials.RigidBodyMaterialFragment`) for the Newton-only</span>
+<span class="sd">    friction knobs (torsional and rolling friction) and the per-material contact model (contact</span>
+<span class="sd">    stiffness/damping, friction gain, adhesion) that replaces the deprecated per-shape</span>
+<span class="sd">    ``ke``/``kd``/``kf``/``ka`` parameters. The ``NewtonMaterialAPI`` schema is applied (and the</span>
+<span class="sd">    ``newton:*`` attributes authored) by the generic :func:`~isaaclab.sim.schemas.apply_namespaced`</span>
+<span class="sd">    writer. ``None`` fields are left unchanged.</span>
+
+<span class="sd">    .. note::</span>
+<span class="sd">        The generated ``NewtonMaterialAPI`` USD schema currently only declares the two friction</span>
+<span class="sd">        attributes; the four contact attributes are still authored as raw ``newton:*`` USD</span>
+<span class="sd">        attributes and are read directly by Newton&#39;s schema resolver.</span>
+
+<span class="sd">    Composes with other rigid-body material fragments (e.g.</span>
+<span class="sd">    :class:`~isaaclab.sim.spawners.materials.UsdPhysicsRigidBodyMaterialCfg`) in the same fragment</span>
+<span class="sd">    list passed to</span>
+<span class="sd">    :func:`~isaaclab.sim.spawners.materials.spawn_rigid_body_material_from_fragments`. For the</span>
+<span class="sd">    legacy (non-fragment) equivalent, see</span>
+<span class="sd">    :class:`~isaaclab_newton.sim.schemas.NewtonMaterialPropertiesCfg`.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">_usd_namespace</span><span class="p">:</span> <span class="n">ClassVar</span><span class="p">[</span><span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;newton&quot;</span>
+    <span class="n">_usd_applied_schema</span><span class="p">:</span> <span class="n">ClassVar</span><span class="p">[</span><span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;NewtonMaterialAPI&quot;</span>
+
+    <span class="n">torsional_friction</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Torsional friction coefficient (resistance to spinning at a contact point) [dimensionless].</span>
+
+<span class="sd">    Writes ``newton:torsionalFriction``. Range: [0, inf).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">rolling_friction</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Rolling friction coefficient (resistance to rolling motion) [dimensionless].</span>
+
+<span class="sd">    Writes ``newton:rollingFriction``. Range: [0, inf).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">contact_stiffness</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Contact normal-force stiffness [N/m].</span>
+
+<span class="sd">    Writes ``newton:contactStiffness``. Replaces the deprecated per-shape ``ke`` contact parameter;</span>
+<span class="sd">    used by the SemiImplicit, Featherstone, MuJoCo, and VBD solvers.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">contact_damping</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Contact normal-force damping coefficient [N·s/m].</span>
+
+<span class="sd">    Writes ``newton:contactDamping``. Replaces the deprecated per-shape ``kd`` contact parameter;</span>
+<span class="sd">    used by the SemiImplicit, Featherstone, MuJoCo, and VBD solvers.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">contact_friction_gain</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Friction-force stiffness gain used by the tangential (friction) contact response [N·s/m].</span>
+
+<span class="sd">    Writes ``newton:contactFrictionGain``. Replaces the deprecated per-shape ``kf`` contact</span>
+<span class="sd">    parameter; used by the SemiImplicit and Featherstone solvers.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">contact_adhesion</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Contact adhesion distance: shapes closer than this threshold experience an attractive</span>
+<span class="sd">    (adhesive) force [m].</span>
+
+<span class="sd">    Writes ``newton:contactAdhesion``. Replaces the deprecated per-shape ``ka`` contact parameter;</span>
+<span class="sd">    used by the SemiImplicit and Featherstone solvers.</span>
+<span class="sd">    &quot;&quot;&quot;</span></div>
+
 </pre></div>
 
                 </article>
@@ -813,7 +887,7 @@ By The Isaac Lab Project Developers.
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Jul 04, 2026.
+  Last updated on Jul 05, 2026.
   <br/>
 </p>
   </div>

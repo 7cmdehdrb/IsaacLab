@@ -64,7 +64,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="3.0.0" />
-    <meta name="docbuild:last-update" content="Jul 04, 2026"/>
+    <meta name="docbuild:last-update" content="Jul 05, 2026"/>
   </head>
   
   
@@ -830,8 +830,13 @@
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab_newton.sim.schemas.NewtonMaterialPropertiesCfg.static_friction"><code class="docutils literal notranslate"><span class="pre">NewtonMaterialPropertiesCfg.static_friction</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab_newton.sim.schemas.NewtonMaterialPropertiesCfg.dynamic_friction"><code class="docutils literal notranslate"><span class="pre">NewtonMaterialPropertiesCfg.dynamic_friction</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab_newton.sim.schemas.NewtonMaterialPropertiesCfg.restitution"><code class="docutils literal notranslate"><span class="pre">NewtonMaterialPropertiesCfg.restitution</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab_newton.sim.schemas.NewtonMaterialPropertiesCfg.density"><code class="docutils literal notranslate"><span class="pre">NewtonMaterialPropertiesCfg.density</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab_newton.sim.schemas.NewtonMaterialPropertiesCfg.torsional_friction"><code class="docutils literal notranslate"><span class="pre">NewtonMaterialPropertiesCfg.torsional_friction</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab_newton.sim.schemas.NewtonMaterialPropertiesCfg.rolling_friction"><code class="docutils literal notranslate"><span class="pre">NewtonMaterialPropertiesCfg.rolling_friction</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab_newton.sim.schemas.NewtonMaterialPropertiesCfg.contact_stiffness"><code class="docutils literal notranslate"><span class="pre">NewtonMaterialPropertiesCfg.contact_stiffness</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab_newton.sim.schemas.NewtonMaterialPropertiesCfg.contact_damping"><code class="docutils literal notranslate"><span class="pre">NewtonMaterialPropertiesCfg.contact_damping</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab_newton.sim.schemas.NewtonMaterialPropertiesCfg.contact_friction_gain"><code class="docutils literal notranslate"><span class="pre">NewtonMaterialPropertiesCfg.contact_friction_gain</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab_newton.sim.schemas.NewtonMaterialPropertiesCfg.contact_adhesion"><code class="docutils literal notranslate"><span class="pre">NewtonMaterialPropertiesCfg.contact_adhesion</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -1719,9 +1724,9 @@ Set to <code class="docutils literal notranslate"><span class="pre">-inf</span><
 <dl class="py class">
 <dt class="sig sig-object py" id="isaaclab_newton.sim.schemas.NewtonMaterialPropertiesCfg">
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">isaaclab_newton.sim.schemas.</span></span><span class="sig-name descname"><span class="pre">NewtonMaterialPropertiesCfg</span></span><a class="reference internal" href="../../../_modules/isaaclab_newton/sim/schemas/schemas_cfg.html#NewtonMaterialPropertiesCfg"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#isaaclab_newton.sim.schemas.NewtonMaterialPropertiesCfg" title="Link to this definition">#</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">RigidBodyMaterialBaseCfg</span></code></p>
+<dd><p>Bases: <a class="reference internal" href="../lab/isaaclab.sim.spawners.html#isaaclab.sim.spawners.materials.RigidBodyMaterialBaseCfg" title="isaaclab.sim.spawners.materials.physics_materials_cfg.RigidBodyMaterialBaseCfg"><code class="xref py py-class docutils literal notranslate"><span class="pre">RigidBodyMaterialBaseCfg</span></code></a></p>
 <p>Newton-specific rigid body material properties.</p>
-<p>Extends <code class="xref py py-class docutils literal notranslate"><span class="pre">RigidBodyMaterialBaseCfg</span></code>
+<p>Extends <a class="reference internal" href="../lab/isaaclab.sim.spawners.html#isaaclab.sim.spawners.materials.RigidBodyMaterialBaseCfg" title="isaaclab.sim.spawners.materials.RigidBodyMaterialBaseCfg"><code class="xref py py-class docutils literal notranslate"><span class="pre">RigidBodyMaterialBaseCfg</span></code></a>
 with Newton-native friction attributes.</p>
 <p>See <a class="reference internal" href="../lab/isaaclab.sim.spawners.html#isaaclab.sim.spawners.materials.spawn_rigid_body_material" title="isaaclab.sim.spawners.materials.spawn_rigid_body_material"><code class="xref py py-meth docutils literal notranslate"><span class="pre">spawn_rigid_body_material()</span></code></a> for more information.</p>
 <div class="admonition note">
@@ -1743,11 +1748,26 @@ with Newton-native friction attributes.</p>
 <tr class="row-even"><td><p><a class="reference internal" href="#isaaclab_newton.sim.schemas.NewtonMaterialPropertiesCfg.restitution" title="isaaclab_newton.sim.schemas.NewtonMaterialPropertiesCfg.restitution"><code class="xref py py-obj docutils literal notranslate"><span class="pre">restitution</span></code></a></p></td>
 <td><p>The restitution coefficient.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab_newton.sim.schemas.NewtonMaterialPropertiesCfg.torsional_friction" title="isaaclab_newton.sim.schemas.NewtonMaterialPropertiesCfg.torsional_friction"><code class="xref py py-obj docutils literal notranslate"><span class="pre">torsional_friction</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab_newton.sim.schemas.NewtonMaterialPropertiesCfg.density" title="isaaclab_newton.sim.schemas.NewtonMaterialPropertiesCfg.density"><code class="xref py py-obj docutils literal notranslate"><span class="pre">density</span></code></a></p></td>
+<td><p>The material density [kg/m^3].</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab_newton.sim.schemas.NewtonMaterialPropertiesCfg.torsional_friction" title="isaaclab_newton.sim.schemas.NewtonMaterialPropertiesCfg.torsional_friction"><code class="xref py py-obj docutils literal notranslate"><span class="pre">torsional_friction</span></code></a></p></td>
 <td><p>Torsional friction coefficient (resistance to spinning at a contact point) [dimensionless].</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab_newton.sim.schemas.NewtonMaterialPropertiesCfg.rolling_friction" title="isaaclab_newton.sim.schemas.NewtonMaterialPropertiesCfg.rolling_friction"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rolling_friction</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab_newton.sim.schemas.NewtonMaterialPropertiesCfg.rolling_friction" title="isaaclab_newton.sim.schemas.NewtonMaterialPropertiesCfg.rolling_friction"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rolling_friction</span></code></a></p></td>
 <td><p>Rolling friction coefficient (resistance to rolling motion) [dimensionless].</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab_newton.sim.schemas.NewtonMaterialPropertiesCfg.contact_stiffness" title="isaaclab_newton.sim.schemas.NewtonMaterialPropertiesCfg.contact_stiffness"><code class="xref py py-obj docutils literal notranslate"><span class="pre">contact_stiffness</span></code></a></p></td>
+<td><p>Contact normal-force stiffness [N/m].</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab_newton.sim.schemas.NewtonMaterialPropertiesCfg.contact_damping" title="isaaclab_newton.sim.schemas.NewtonMaterialPropertiesCfg.contact_damping"><code class="xref py py-obj docutils literal notranslate"><span class="pre">contact_damping</span></code></a></p></td>
+<td><p>Contact normal-force damping coefficient [N·s/m].</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab_newton.sim.schemas.NewtonMaterialPropertiesCfg.contact_friction_gain" title="isaaclab_newton.sim.schemas.NewtonMaterialPropertiesCfg.contact_friction_gain"><code class="xref py py-obj docutils literal notranslate"><span class="pre">contact_friction_gain</span></code></a></p></td>
+<td><p>Friction-force stiffness gain used by the tangential (friction) contact response [N·s/m].</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab_newton.sim.schemas.NewtonMaterialPropertiesCfg.contact_adhesion" title="isaaclab_newton.sim.schemas.NewtonMaterialPropertiesCfg.contact_adhesion"><code class="xref py py-obj docutils literal notranslate"><span class="pre">contact_adhesion</span></code></a></p></td>
+<td><p>shapes closer than this threshold experience an attractive (adhesive) force [m].</p></td>
 </tr>
 </tbody>
 </table>
@@ -1777,6 +1797,14 @@ with Newton-native friction attributes.</p>
 </dd></dl>
 
 <dl class="py attribute">
+<dt class="sig sig-object py" id="isaaclab_newton.sim.schemas.NewtonMaterialPropertiesCfg.density">
+<span class="sig-name descname"><span class="pre">density</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><a class="headerlink" href="#isaaclab_newton.sim.schemas.NewtonMaterialPropertiesCfg.density" title="Link to this definition">#</a></dt>
+<dd><p>The material density [kg/m^3]. Defaults to None, in which case it is not authored.</p>
+<p>Writes <code class="docutils literal notranslate"><span class="pre">physics:density</span></code>. It is a fallback for collision shapes bound to this material;
+explicitly authored rigid-body mass or density takes precedence.</p>
+</dd></dl>
+
+<dl class="py attribute">
 <dt class="sig sig-object py" id="isaaclab_newton.sim.schemas.NewtonMaterialPropertiesCfg.torsional_friction">
 <span class="sig-name descname"><span class="pre">torsional_friction</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><a class="headerlink" href="#isaaclab_newton.sim.schemas.NewtonMaterialPropertiesCfg.torsional_friction" title="Link to this definition">#</a></dt>
 <dd><p>Torsional friction coefficient (resistance to spinning at a contact point) [dimensionless].</p>
@@ -1790,6 +1818,44 @@ Range: [0, inf).</p>
 <dd><p>Rolling friction coefficient (resistance to rolling motion) [dimensionless].</p>
 <p>Written to <code class="docutils literal notranslate"><span class="pre">newton:rollingFriction</span></code> via <code class="docutils literal notranslate"><span class="pre">NewtonMaterialAPI</span></code>.
 Range: [0, inf).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="isaaclab_newton.sim.schemas.NewtonMaterialPropertiesCfg.contact_stiffness">
+<span class="sig-name descname"><span class="pre">contact_stiffness</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><a class="headerlink" href="#isaaclab_newton.sim.schemas.NewtonMaterialPropertiesCfg.contact_stiffness" title="Link to this definition">#</a></dt>
+<dd><p>Contact normal-force stiffness [N/m].</p>
+<p>Writes <code class="docutils literal notranslate"><span class="pre">newton:contactStiffness</span></code>. Replaces the deprecated per-shape <code class="docutils literal notranslate"><span class="pre">ke</span></code> contact parameter;
+used by the SemiImplicit, Featherstone, MuJoCo, and VBD solvers.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="isaaclab_newton.sim.schemas.NewtonMaterialPropertiesCfg.contact_damping">
+<span class="sig-name descname"><span class="pre">contact_damping</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><a class="headerlink" href="#isaaclab_newton.sim.schemas.NewtonMaterialPropertiesCfg.contact_damping" title="Link to this definition">#</a></dt>
+<dd><p>Contact normal-force damping coefficient [N·s/m].</p>
+<p>Writes <code class="docutils literal notranslate"><span class="pre">newton:contactDamping</span></code>. Replaces the deprecated per-shape <code class="docutils literal notranslate"><span class="pre">kd</span></code> contact parameter;
+used by the SemiImplicit, Featherstone, MuJoCo, and VBD solvers.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="isaaclab_newton.sim.schemas.NewtonMaterialPropertiesCfg.contact_friction_gain">
+<span class="sig-name descname"><span class="pre">contact_friction_gain</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><a class="headerlink" href="#isaaclab_newton.sim.schemas.NewtonMaterialPropertiesCfg.contact_friction_gain" title="Link to this definition">#</a></dt>
+<dd><p>Friction-force stiffness gain used by the tangential (friction) contact response [N·s/m].</p>
+<p>Writes <code class="docutils literal notranslate"><span class="pre">newton:contactFrictionGain</span></code>. Replaces the deprecated per-shape <code class="docutils literal notranslate"><span class="pre">kf</span></code> contact
+parameter; used by the SemiImplicit and Featherstone solvers.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="isaaclab_newton.sim.schemas.NewtonMaterialPropertiesCfg.contact_adhesion">
+<span class="sig-name descname"><span class="pre">contact_adhesion</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><a class="headerlink" href="#isaaclab_newton.sim.schemas.NewtonMaterialPropertiesCfg.contact_adhesion" title="Link to this definition">#</a></dt>
+<dd><p>shapes closer than this threshold experience an attractive
+(adhesive) force [m].</p>
+<p>Writes <code class="docutils literal notranslate"><span class="pre">newton:contactAdhesion</span></code>. Replaces the deprecated per-shape <code class="docutils literal notranslate"><span class="pre">ka</span></code> contact parameter;
+used by the SemiImplicit and Featherstone solvers.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Contact adhesion distance</p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
@@ -2007,8 +2073,13 @@ Newton’s resolver checks this native attribute first before falling back to
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab_newton.sim.schemas.NewtonMaterialPropertiesCfg.static_friction"><code class="docutils literal notranslate"><span class="pre">NewtonMaterialPropertiesCfg.static_friction</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab_newton.sim.schemas.NewtonMaterialPropertiesCfg.dynamic_friction"><code class="docutils literal notranslate"><span class="pre">NewtonMaterialPropertiesCfg.dynamic_friction</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab_newton.sim.schemas.NewtonMaterialPropertiesCfg.restitution"><code class="docutils literal notranslate"><span class="pre">NewtonMaterialPropertiesCfg.restitution</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab_newton.sim.schemas.NewtonMaterialPropertiesCfg.density"><code class="docutils literal notranslate"><span class="pre">NewtonMaterialPropertiesCfg.density</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab_newton.sim.schemas.NewtonMaterialPropertiesCfg.torsional_friction"><code class="docutils literal notranslate"><span class="pre">NewtonMaterialPropertiesCfg.torsional_friction</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab_newton.sim.schemas.NewtonMaterialPropertiesCfg.rolling_friction"><code class="docutils literal notranslate"><span class="pre">NewtonMaterialPropertiesCfg.rolling_friction</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab_newton.sim.schemas.NewtonMaterialPropertiesCfg.contact_stiffness"><code class="docutils literal notranslate"><span class="pre">NewtonMaterialPropertiesCfg.contact_stiffness</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab_newton.sim.schemas.NewtonMaterialPropertiesCfg.contact_damping"><code class="docutils literal notranslate"><span class="pre">NewtonMaterialPropertiesCfg.contact_damping</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab_newton.sim.schemas.NewtonMaterialPropertiesCfg.contact_friction_gain"><code class="docutils literal notranslate"><span class="pre">NewtonMaterialPropertiesCfg.contact_friction_gain</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab_newton.sim.schemas.NewtonMaterialPropertiesCfg.contact_adhesion"><code class="docutils literal notranslate"><span class="pre">NewtonMaterialPropertiesCfg.contact_adhesion</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -2055,7 +2126,7 @@ By The Isaac Lab Project Developers.
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Jul 04, 2026.
+  Last updated on Jul 05, 2026.
   <br/>
 </p>
   </div>

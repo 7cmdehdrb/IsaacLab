@@ -66,7 +66,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="3.0.0" />
-    <meta name="docbuild:last-update" content="Jul 04, 2026"/>
+    <meta name="docbuild:last-update" content="Jul 05, 2026"/>
   </head>
   
   
@@ -1283,15 +1283,35 @@
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#physical-materials">Physical Materials</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.sim.spawners.materials.PhysicsMaterialCfg"><code class="docutils literal notranslate"><span class="pre">PhysicsMaterialCfg</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.sim.spawners.materials.spawn_physics_material"><code class="docutils literal notranslate"><span class="pre">spawn_physics_material()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.sim.spawners.materials.spawn_rigid_body_material"><code class="docutils literal notranslate"><span class="pre">spawn_rigid_body_material()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.sim.spawners.materials.RigidBodyMaterialBaseCfg"><code class="docutils literal notranslate"><span class="pre">RigidBodyMaterialBaseCfg</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.sim.spawners.materials.RigidBodyMaterialBaseCfg.static_friction"><code class="docutils literal notranslate"><span class="pre">RigidBodyMaterialBaseCfg.static_friction</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.sim.spawners.materials.RigidBodyMaterialBaseCfg.dynamic_friction"><code class="docutils literal notranslate"><span class="pre">RigidBodyMaterialBaseCfg.dynamic_friction</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.sim.spawners.materials.RigidBodyMaterialBaseCfg.restitution"><code class="docutils literal notranslate"><span class="pre">RigidBodyMaterialBaseCfg.restitution</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.sim.spawners.materials.RigidBodyMaterialBaseCfg.density"><code class="docutils literal notranslate"><span class="pre">RigidBodyMaterialBaseCfg.density</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.sim.spawners.materials.spawn_rigid_body_material_from_fragments"><code class="docutils literal notranslate"><span class="pre">spawn_rigid_body_material_from_fragments()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.sim.spawners.materials.RigidBodyMaterialFragment"><code class="docutils literal notranslate"><span class="pre">RigidBodyMaterialFragment</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.sim.spawners.materials.UsdPhysicsRigidBodyMaterialCfg"><code class="docutils literal notranslate"><span class="pre">UsdPhysicsRigidBodyMaterialCfg</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.sim.spawners.materials.UsdPhysicsRigidBodyMaterialCfg.static_friction"><code class="docutils literal notranslate"><span class="pre">UsdPhysicsRigidBodyMaterialCfg.static_friction</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.sim.spawners.materials.UsdPhysicsRigidBodyMaterialCfg.dynamic_friction"><code class="docutils literal notranslate"><span class="pre">UsdPhysicsRigidBodyMaterialCfg.dynamic_friction</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.sim.spawners.materials.UsdPhysicsRigidBodyMaterialCfg.restitution"><code class="docutils literal notranslate"><span class="pre">UsdPhysicsRigidBodyMaterialCfg.restitution</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.sim.spawners.materials.UsdPhysicsRigidBodyMaterialCfg.density"><code class="docutils literal notranslate"><span class="pre">UsdPhysicsRigidBodyMaterialCfg.density</span></code></a></li>
+</ul>
+</li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.sim.spawners.materials.RigidBodyMaterialCfg"><code class="docutils literal notranslate"><span class="pre">RigidBodyMaterialCfg</span></code></a><ul class="nav section-nav flex-column">
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.sim.spawners.materials.RigidBodyMaterialCfg.static_friction"><code class="docutils literal notranslate"><span class="pre">RigidBodyMaterialCfg.static_friction</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.sim.spawners.materials.RigidBodyMaterialCfg.dynamic_friction"><code class="docutils literal notranslate"><span class="pre">RigidBodyMaterialCfg.dynamic_friction</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.sim.spawners.materials.RigidBodyMaterialCfg.restitution"><code class="docutils literal notranslate"><span class="pre">RigidBodyMaterialCfg.restitution</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.sim.spawners.materials.RigidBodyMaterialCfg.density"><code class="docutils literal notranslate"><span class="pre">RigidBodyMaterialCfg.density</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.sim.spawners.materials.RigidBodyMaterialCfg.compliant_contact_stiffness"><code class="docutils literal notranslate"><span class="pre">RigidBodyMaterialCfg.compliant_contact_stiffness</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.sim.spawners.materials.RigidBodyMaterialCfg.compliant_contact_damping"><code class="docutils literal notranslate"><span class="pre">RigidBodyMaterialCfg.compliant_contact_damping</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.sim.spawners.materials.RigidBodyMaterialCfg.compliant_contact_acceleration_spring"><code class="docutils literal notranslate"><span class="pre">RigidBodyMaterialCfg.compliant_contact_acceleration_spring</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.sim.spawners.materials.RigidBodyMaterialCfg.friction_combine_mode"><code class="docutils literal notranslate"><span class="pre">RigidBodyMaterialCfg.friction_combine_mode</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.sim.spawners.materials.RigidBodyMaterialCfg.restitution_combine_mode"><code class="docutils literal notranslate"><span class="pre">RigidBodyMaterialCfg.restitution_combine_mode</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.sim.spawners.materials.RigidBodyMaterialCfg.damping_combine_mode"><code class="docutils literal notranslate"><span class="pre">RigidBodyMaterialCfg.damping_combine_mode</span></code></a></li>
 </ul>
 </li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.sim.spawners.materials.spawn_deformable_body_material"><code class="docutils literal notranslate"><span class="pre">spawn_deformable_body_material()</span></code></a></li>
@@ -1872,8 +1892,11 @@ This parameter is ignored if <cite>physics_material</cite> is not None.</p>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="isaaclab.sim.spawners.shapes.ShapeCfg.physics_material">
-<span class="sig-name descname"><span class="pre">physics_material</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#isaaclab.sim.spawners.materials.PhysicsMaterialCfg" title="isaaclab.sim.spawners.materials.PhysicsMaterialCfg"><span class="pre">materials.PhysicsMaterialCfg</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><a class="headerlink" href="#isaaclab.sim.spawners.shapes.ShapeCfg.physics_material" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">physics_material</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#isaaclab.sim.spawners.materials.RigidBodyMaterialBaseCfg" title="isaaclab.sim.spawners.materials.RigidBodyMaterialBaseCfg"><span class="pre">materials.RigidBodyMaterialBaseCfg</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="#isaaclab.sim.spawners.materials.RigidBodyMaterialFragment" title="isaaclab.sim.spawners.materials.RigidBodyMaterialFragment"><span class="pre">materials.RigidBodyMaterialFragment</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#isaaclab.sim.spawners.materials.RigidBodyMaterialFragment" title="isaaclab.sim.spawners.materials.RigidBodyMaterialFragment"><span class="pre">materials.RigidBodyMaterialFragment</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><a class="headerlink" href="#isaaclab.sim.spawners.shapes.ShapeCfg.physics_material" title="Link to this definition">#</a></dt>
 <dd><p>Physics material properties.</p>
+<p>Since shapes are rigid-only spawners, this slot accepts the rigid material base class or
+rigid-material fragments (single-namespace <a class="reference internal" href="#isaaclab.sim.spawners.materials.RigidBodyMaterialFragment" title="isaaclab.sim.spawners.materials.RigidBodyMaterialFragment"><code class="xref py py-class docutils literal notranslate"><span class="pre">RigidBodyMaterialFragment</span></code></a>
+instances or lists thereof).</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>If None, then no physics material will be added.</p>
@@ -2160,8 +2183,11 @@ This parameter is ignored if <cite>physics_material</cite> is not None.</p>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="isaaclab.sim.spawners.shapes.CapsuleCfg.physics_material">
-<span class="sig-name descname"><span class="pre">physics_material</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#isaaclab.sim.spawners.materials.PhysicsMaterialCfg" title="isaaclab.sim.spawners.materials.PhysicsMaterialCfg"><span class="pre">materials.PhysicsMaterialCfg</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><a class="headerlink" href="#isaaclab.sim.spawners.shapes.CapsuleCfg.physics_material" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">physics_material</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#isaaclab.sim.spawners.materials.RigidBodyMaterialBaseCfg" title="isaaclab.sim.spawners.materials.RigidBodyMaterialBaseCfg"><span class="pre">materials.RigidBodyMaterialBaseCfg</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="#isaaclab.sim.spawners.materials.RigidBodyMaterialFragment" title="isaaclab.sim.spawners.materials.RigidBodyMaterialFragment"><span class="pre">materials.RigidBodyMaterialFragment</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#isaaclab.sim.spawners.materials.RigidBodyMaterialFragment" title="isaaclab.sim.spawners.materials.RigidBodyMaterialFragment"><span class="pre">materials.RigidBodyMaterialFragment</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><a class="headerlink" href="#isaaclab.sim.spawners.shapes.CapsuleCfg.physics_material" title="Link to this definition">#</a></dt>
 <dd><p>Physics material properties.</p>
+<p>Since shapes are rigid-only spawners, this slot accepts the rigid material base class or
+rigid-material fragments (single-namespace <a class="reference internal" href="#isaaclab.sim.spawners.materials.RigidBodyMaterialFragment" title="isaaclab.sim.spawners.materials.RigidBodyMaterialFragment"><code class="xref py py-class docutils literal notranslate"><span class="pre">RigidBodyMaterialFragment</span></code></a>
+instances or lists thereof).</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>If None, then no physics material will be added.</p>
@@ -2386,8 +2412,11 @@ This parameter is ignored if <cite>physics_material</cite> is not None.</p>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="isaaclab.sim.spawners.shapes.ConeCfg.physics_material">
-<span class="sig-name descname"><span class="pre">physics_material</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#isaaclab.sim.spawners.materials.PhysicsMaterialCfg" title="isaaclab.sim.spawners.materials.PhysicsMaterialCfg"><span class="pre">materials.PhysicsMaterialCfg</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><a class="headerlink" href="#isaaclab.sim.spawners.shapes.ConeCfg.physics_material" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">physics_material</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#isaaclab.sim.spawners.materials.RigidBodyMaterialBaseCfg" title="isaaclab.sim.spawners.materials.RigidBodyMaterialBaseCfg"><span class="pre">materials.RigidBodyMaterialBaseCfg</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="#isaaclab.sim.spawners.materials.RigidBodyMaterialFragment" title="isaaclab.sim.spawners.materials.RigidBodyMaterialFragment"><span class="pre">materials.RigidBodyMaterialFragment</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#isaaclab.sim.spawners.materials.RigidBodyMaterialFragment" title="isaaclab.sim.spawners.materials.RigidBodyMaterialFragment"><span class="pre">materials.RigidBodyMaterialFragment</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><a class="headerlink" href="#isaaclab.sim.spawners.shapes.ConeCfg.physics_material" title="Link to this definition">#</a></dt>
 <dd><p>Physics material properties.</p>
+<p>Since shapes are rigid-only spawners, this slot accepts the rigid material base class or
+rigid-material fragments (single-namespace <a class="reference internal" href="#isaaclab.sim.spawners.materials.RigidBodyMaterialFragment" title="isaaclab.sim.spawners.materials.RigidBodyMaterialFragment"><code class="xref py py-class docutils literal notranslate"><span class="pre">RigidBodyMaterialFragment</span></code></a>
+instances or lists thereof).</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>If None, then no physics material will be added.</p>
@@ -2617,8 +2646,11 @@ This parameter is ignored if <cite>physics_material</cite> is not None.</p>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="isaaclab.sim.spawners.shapes.CuboidCfg.physics_material">
-<span class="sig-name descname"><span class="pre">physics_material</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#isaaclab.sim.spawners.materials.PhysicsMaterialCfg" title="isaaclab.sim.spawners.materials.PhysicsMaterialCfg"><span class="pre">materials.PhysicsMaterialCfg</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><a class="headerlink" href="#isaaclab.sim.spawners.shapes.CuboidCfg.physics_material" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">physics_material</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#isaaclab.sim.spawners.materials.RigidBodyMaterialBaseCfg" title="isaaclab.sim.spawners.materials.RigidBodyMaterialBaseCfg"><span class="pre">materials.RigidBodyMaterialBaseCfg</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="#isaaclab.sim.spawners.materials.RigidBodyMaterialFragment" title="isaaclab.sim.spawners.materials.RigidBodyMaterialFragment"><span class="pre">materials.RigidBodyMaterialFragment</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#isaaclab.sim.spawners.materials.RigidBodyMaterialFragment" title="isaaclab.sim.spawners.materials.RigidBodyMaterialFragment"><span class="pre">materials.RigidBodyMaterialFragment</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><a class="headerlink" href="#isaaclab.sim.spawners.shapes.CuboidCfg.physics_material" title="Link to this definition">#</a></dt>
 <dd><p>Physics material properties.</p>
+<p>Since shapes are rigid-only spawners, this slot accepts the rigid material base class or
+rigid-material fragments (single-namespace <a class="reference internal" href="#isaaclab.sim.spawners.materials.RigidBodyMaterialFragment" title="isaaclab.sim.spawners.materials.RigidBodyMaterialFragment"><code class="xref py py-class docutils literal notranslate"><span class="pre">RigidBodyMaterialFragment</span></code></a>
+instances or lists thereof).</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>If None, then no physics material will be added.</p>
@@ -2843,8 +2875,11 @@ This parameter is ignored if <cite>physics_material</cite> is not None.</p>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="isaaclab.sim.spawners.shapes.CylinderCfg.physics_material">
-<span class="sig-name descname"><span class="pre">physics_material</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#isaaclab.sim.spawners.materials.PhysicsMaterialCfg" title="isaaclab.sim.spawners.materials.PhysicsMaterialCfg"><span class="pre">materials.PhysicsMaterialCfg</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><a class="headerlink" href="#isaaclab.sim.spawners.shapes.CylinderCfg.physics_material" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">physics_material</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#isaaclab.sim.spawners.materials.RigidBodyMaterialBaseCfg" title="isaaclab.sim.spawners.materials.RigidBodyMaterialBaseCfg"><span class="pre">materials.RigidBodyMaterialBaseCfg</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="#isaaclab.sim.spawners.materials.RigidBodyMaterialFragment" title="isaaclab.sim.spawners.materials.RigidBodyMaterialFragment"><span class="pre">materials.RigidBodyMaterialFragment</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#isaaclab.sim.spawners.materials.RigidBodyMaterialFragment" title="isaaclab.sim.spawners.materials.RigidBodyMaterialFragment"><span class="pre">materials.RigidBodyMaterialFragment</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><a class="headerlink" href="#isaaclab.sim.spawners.shapes.CylinderCfg.physics_material" title="Link to this definition">#</a></dt>
 <dd><p>Physics material properties.</p>
+<p>Since shapes are rigid-only spawners, this slot accepts the rigid material base class or
+rigid-material fragments (single-namespace <a class="reference internal" href="#isaaclab.sim.spawners.materials.RigidBodyMaterialFragment" title="isaaclab.sim.spawners.materials.RigidBodyMaterialFragment"><code class="xref py py-class docutils literal notranslate"><span class="pre">RigidBodyMaterialFragment</span></code></a>
+instances or lists thereof).</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>If None, then no physics material will be added.</p>
@@ -3051,8 +3086,11 @@ This parameter is ignored if <cite>physics_material</cite> is not None.</p>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="isaaclab.sim.spawners.shapes.SphereCfg.physics_material">
-<span class="sig-name descname"><span class="pre">physics_material</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#isaaclab.sim.spawners.materials.PhysicsMaterialCfg" title="isaaclab.sim.spawners.materials.PhysicsMaterialCfg"><span class="pre">materials.PhysicsMaterialCfg</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><a class="headerlink" href="#isaaclab.sim.spawners.shapes.SphereCfg.physics_material" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">physics_material</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#isaaclab.sim.spawners.materials.RigidBodyMaterialBaseCfg" title="isaaclab.sim.spawners.materials.RigidBodyMaterialBaseCfg"><span class="pre">materials.RigidBodyMaterialBaseCfg</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="#isaaclab.sim.spawners.materials.RigidBodyMaterialFragment" title="isaaclab.sim.spawners.materials.RigidBodyMaterialFragment"><span class="pre">materials.RigidBodyMaterialFragment</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#isaaclab.sim.spawners.materials.RigidBodyMaterialFragment" title="isaaclab.sim.spawners.materials.RigidBodyMaterialFragment"><span class="pre">materials.RigidBodyMaterialFragment</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><a class="headerlink" href="#isaaclab.sim.spawners.shapes.SphereCfg.physics_material" title="Link to this definition">#</a></dt>
 <dd><p>Physics material properties.</p>
+<p>Since shapes are rigid-only spawners, this slot accepts the rigid material base class or
+rigid-material fragments (single-namespace <a class="reference internal" href="#isaaclab.sim.spawners.materials.RigidBodyMaterialFragment" title="isaaclab.sim.spawners.materials.RigidBodyMaterialFragment"><code class="xref py py-class docutils literal notranslate"><span class="pre">RigidBodyMaterialFragment</span></code></a>
+instances or lists thereof).</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>If None, then no physics material will be added.</p>
@@ -3197,8 +3235,11 @@ This parameter is ignored if <cite>physics_material</cite> is not None.</p>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="isaaclab.sim.spawners.meshes.MeshCfg.physics_material">
-<span class="sig-name descname"><span class="pre">physics_material</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#isaaclab.sim.spawners.materials.PhysicsMaterialCfg" title="isaaclab.sim.spawners.materials.PhysicsMaterialCfg"><span class="pre">materials.PhysicsMaterialCfg</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><a class="headerlink" href="#isaaclab.sim.spawners.meshes.MeshCfg.physics_material" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">physics_material</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#isaaclab.sim.spawners.materials.PhysicsMaterialCfg" title="isaaclab.sim.spawners.materials.PhysicsMaterialCfg"><span class="pre">materials.PhysicsMaterialCfg</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="#isaaclab.sim.spawners.materials.RigidBodyMaterialFragment" title="isaaclab.sim.spawners.materials.RigidBodyMaterialFragment"><span class="pre">materials.RigidBodyMaterialFragment</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#isaaclab.sim.spawners.materials.RigidBodyMaterialFragment" title="isaaclab.sim.spawners.materials.RigidBodyMaterialFragment"><span class="pre">materials.RigidBodyMaterialFragment</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><a class="headerlink" href="#isaaclab.sim.spawners.meshes.MeshCfg.physics_material" title="Link to this definition">#</a></dt>
 <dd><p>Physics material properties.</p>
+<p>Accepts either a legacy material cfg, a single
+<a class="reference internal" href="#isaaclab.sim.spawners.materials.RigidBodyMaterialFragment" title="isaaclab.sim.spawners.materials.RigidBodyMaterialFragment"><code class="xref py py-class docutils literal notranslate"><span class="pre">RigidBodyMaterialFragment</span></code></a>, or a list of such
+single-namespace fragments.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>If None, then no physics material will be added.</p>
@@ -3505,8 +3546,11 @@ This parameter is ignored if <cite>physics_material</cite> is not None.</p>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="isaaclab.sim.spawners.meshes.MeshCapsuleCfg.physics_material">
-<span class="sig-name descname"><span class="pre">physics_material</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#isaaclab.sim.spawners.materials.PhysicsMaterialCfg" title="isaaclab.sim.spawners.materials.PhysicsMaterialCfg"><span class="pre">materials.PhysicsMaterialCfg</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><a class="headerlink" href="#isaaclab.sim.spawners.meshes.MeshCapsuleCfg.physics_material" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">physics_material</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#isaaclab.sim.spawners.materials.PhysicsMaterialCfg" title="isaaclab.sim.spawners.materials.PhysicsMaterialCfg"><span class="pre">materials.PhysicsMaterialCfg</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="#isaaclab.sim.spawners.materials.RigidBodyMaterialFragment" title="isaaclab.sim.spawners.materials.RigidBodyMaterialFragment"><span class="pre">materials.RigidBodyMaterialFragment</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#isaaclab.sim.spawners.materials.RigidBodyMaterialFragment" title="isaaclab.sim.spawners.materials.RigidBodyMaterialFragment"><span class="pre">materials.RigidBodyMaterialFragment</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><a class="headerlink" href="#isaaclab.sim.spawners.meshes.MeshCapsuleCfg.physics_material" title="Link to this definition">#</a></dt>
 <dd><p>Physics material properties.</p>
+<p>Accepts either a legacy material cfg, a single
+<a class="reference internal" href="#isaaclab.sim.spawners.materials.RigidBodyMaterialFragment" title="isaaclab.sim.spawners.materials.RigidBodyMaterialFragment"><code class="xref py py-class docutils literal notranslate"><span class="pre">RigidBodyMaterialFragment</span></code></a>, or a list of such
+single-namespace fragments.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>If None, then no physics material will be added.</p>
@@ -3733,8 +3777,11 @@ This parameter is ignored if <cite>physics_material</cite> is not None.</p>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="isaaclab.sim.spawners.meshes.MeshConeCfg.physics_material">
-<span class="sig-name descname"><span class="pre">physics_material</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#isaaclab.sim.spawners.materials.PhysicsMaterialCfg" title="isaaclab.sim.spawners.materials.PhysicsMaterialCfg"><span class="pre">materials.PhysicsMaterialCfg</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><a class="headerlink" href="#isaaclab.sim.spawners.meshes.MeshConeCfg.physics_material" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">physics_material</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#isaaclab.sim.spawners.materials.PhysicsMaterialCfg" title="isaaclab.sim.spawners.materials.PhysicsMaterialCfg"><span class="pre">materials.PhysicsMaterialCfg</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="#isaaclab.sim.spawners.materials.RigidBodyMaterialFragment" title="isaaclab.sim.spawners.materials.RigidBodyMaterialFragment"><span class="pre">materials.RigidBodyMaterialFragment</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#isaaclab.sim.spawners.materials.RigidBodyMaterialFragment" title="isaaclab.sim.spawners.materials.RigidBodyMaterialFragment"><span class="pre">materials.RigidBodyMaterialFragment</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><a class="headerlink" href="#isaaclab.sim.spawners.meshes.MeshConeCfg.physics_material" title="Link to this definition">#</a></dt>
 <dd><p>Physics material properties.</p>
+<p>Accepts either a legacy material cfg, a single
+<a class="reference internal" href="#isaaclab.sim.spawners.materials.RigidBodyMaterialFragment" title="isaaclab.sim.spawners.materials.RigidBodyMaterialFragment"><code class="xref py py-class docutils literal notranslate"><span class="pre">RigidBodyMaterialFragment</span></code></a>, or a list of such
+single-namespace fragments.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>If None, then no physics material will be added.</p>
@@ -3967,8 +4014,11 @@ This parameter is ignored if <cite>physics_material</cite> is not None.</p>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="isaaclab.sim.spawners.meshes.MeshCuboidCfg.physics_material">
-<span class="sig-name descname"><span class="pre">physics_material</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#isaaclab.sim.spawners.materials.PhysicsMaterialCfg" title="isaaclab.sim.spawners.materials.PhysicsMaterialCfg"><span class="pre">materials.PhysicsMaterialCfg</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><a class="headerlink" href="#isaaclab.sim.spawners.meshes.MeshCuboidCfg.physics_material" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">physics_material</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#isaaclab.sim.spawners.materials.PhysicsMaterialCfg" title="isaaclab.sim.spawners.materials.PhysicsMaterialCfg"><span class="pre">materials.PhysicsMaterialCfg</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="#isaaclab.sim.spawners.materials.RigidBodyMaterialFragment" title="isaaclab.sim.spawners.materials.RigidBodyMaterialFragment"><span class="pre">materials.RigidBodyMaterialFragment</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#isaaclab.sim.spawners.materials.RigidBodyMaterialFragment" title="isaaclab.sim.spawners.materials.RigidBodyMaterialFragment"><span class="pre">materials.RigidBodyMaterialFragment</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><a class="headerlink" href="#isaaclab.sim.spawners.meshes.MeshCuboidCfg.physics_material" title="Link to this definition">#</a></dt>
 <dd><p>Physics material properties.</p>
+<p>Accepts either a legacy material cfg, a single
+<a class="reference internal" href="#isaaclab.sim.spawners.materials.RigidBodyMaterialFragment" title="isaaclab.sim.spawners.materials.RigidBodyMaterialFragment"><code class="xref py py-class docutils literal notranslate"><span class="pre">RigidBodyMaterialFragment</span></code></a>, or a list of such
+single-namespace fragments.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>If None, then no physics material will be added.</p>
@@ -4201,8 +4251,11 @@ This parameter is ignored if <cite>physics_material</cite> is not None.</p>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="isaaclab.sim.spawners.meshes.MeshCylinderCfg.physics_material">
-<span class="sig-name descname"><span class="pre">physics_material</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#isaaclab.sim.spawners.materials.PhysicsMaterialCfg" title="isaaclab.sim.spawners.materials.PhysicsMaterialCfg"><span class="pre">materials.PhysicsMaterialCfg</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><a class="headerlink" href="#isaaclab.sim.spawners.meshes.MeshCylinderCfg.physics_material" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">physics_material</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#isaaclab.sim.spawners.materials.PhysicsMaterialCfg" title="isaaclab.sim.spawners.materials.PhysicsMaterialCfg"><span class="pre">materials.PhysicsMaterialCfg</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="#isaaclab.sim.spawners.materials.RigidBodyMaterialFragment" title="isaaclab.sim.spawners.materials.RigidBodyMaterialFragment"><span class="pre">materials.RigidBodyMaterialFragment</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#isaaclab.sim.spawners.materials.RigidBodyMaterialFragment" title="isaaclab.sim.spawners.materials.RigidBodyMaterialFragment"><span class="pre">materials.RigidBodyMaterialFragment</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><a class="headerlink" href="#isaaclab.sim.spawners.meshes.MeshCylinderCfg.physics_material" title="Link to this definition">#</a></dt>
 <dd><p>Physics material properties.</p>
+<p>Accepts either a legacy material cfg, a single
+<a class="reference internal" href="#isaaclab.sim.spawners.materials.RigidBodyMaterialFragment" title="isaaclab.sim.spawners.materials.RigidBodyMaterialFragment"><code class="xref py py-class docutils literal notranslate"><span class="pre">RigidBodyMaterialFragment</span></code></a>, or a list of such
+single-namespace fragments.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>If None, then no physics material will be added.</p>
@@ -4414,8 +4467,11 @@ This parameter is ignored if <cite>physics_material</cite> is not None.</p>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="isaaclab.sim.spawners.meshes.MeshRectangleCfg.physics_material">
-<span class="sig-name descname"><span class="pre">physics_material</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#isaaclab.sim.spawners.materials.PhysicsMaterialCfg" title="isaaclab.sim.spawners.materials.PhysicsMaterialCfg"><span class="pre">materials.PhysicsMaterialCfg</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><a class="headerlink" href="#isaaclab.sim.spawners.meshes.MeshRectangleCfg.physics_material" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">physics_material</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#isaaclab.sim.spawners.materials.PhysicsMaterialCfg" title="isaaclab.sim.spawners.materials.PhysicsMaterialCfg"><span class="pre">materials.PhysicsMaterialCfg</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="#isaaclab.sim.spawners.materials.RigidBodyMaterialFragment" title="isaaclab.sim.spawners.materials.RigidBodyMaterialFragment"><span class="pre">materials.RigidBodyMaterialFragment</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#isaaclab.sim.spawners.materials.RigidBodyMaterialFragment" title="isaaclab.sim.spawners.materials.RigidBodyMaterialFragment"><span class="pre">materials.RigidBodyMaterialFragment</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><a class="headerlink" href="#isaaclab.sim.spawners.meshes.MeshRectangleCfg.physics_material" title="Link to this definition">#</a></dt>
 <dd><p>Physics material properties.</p>
+<p>Accepts either a legacy material cfg, a single
+<a class="reference internal" href="#isaaclab.sim.spawners.materials.RigidBodyMaterialFragment" title="isaaclab.sim.spawners.materials.RigidBodyMaterialFragment"><code class="xref py py-class docutils literal notranslate"><span class="pre">RigidBodyMaterialFragment</span></code></a>, or a list of such
+single-namespace fragments.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>If None, then no physics material will be added.</p>
@@ -4642,8 +4698,11 @@ This parameter is ignored if <cite>physics_material</cite> is not None.</p>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="isaaclab.sim.spawners.meshes.MeshSphereCfg.physics_material">
-<span class="sig-name descname"><span class="pre">physics_material</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#isaaclab.sim.spawners.materials.PhysicsMaterialCfg" title="isaaclab.sim.spawners.materials.PhysicsMaterialCfg"><span class="pre">materials.PhysicsMaterialCfg</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><a class="headerlink" href="#isaaclab.sim.spawners.meshes.MeshSphereCfg.physics_material" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">physics_material</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#isaaclab.sim.spawners.materials.PhysicsMaterialCfg" title="isaaclab.sim.spawners.materials.PhysicsMaterialCfg"><span class="pre">materials.PhysicsMaterialCfg</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="#isaaclab.sim.spawners.materials.RigidBodyMaterialFragment" title="isaaclab.sim.spawners.materials.RigidBodyMaterialFragment"><span class="pre">materials.RigidBodyMaterialFragment</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#isaaclab.sim.spawners.materials.RigidBodyMaterialFragment" title="isaaclab.sim.spawners.materials.RigidBodyMaterialFragment"><span class="pre">materials.RigidBodyMaterialFragment</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><a class="headerlink" href="#isaaclab.sim.spawners.meshes.MeshSphereCfg.physics_material" title="Link to this definition">#</a></dt>
 <dd><p>Physics material properties.</p>
+<p>Accepts either a legacy material cfg, a single
+<a class="reference internal" href="#isaaclab.sim.spawners.materials.RigidBodyMaterialFragment" title="isaaclab.sim.spawners.materials.RigidBodyMaterialFragment"><code class="xref py py-class docutils literal notranslate"><span class="pre">RigidBodyMaterialFragment</span></code></a>, or a list of such
+single-namespace fragments.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>If None, then no physics material will be added.</p>
@@ -6785,8 +6844,11 @@ This parameter is ignored if <cite>physics_material</cite> is not None.</p>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="isaaclab.sim.spawners.from_files.UrdfFileCfg.physics_material">
-<span class="sig-name descname"><span class="pre">physics_material</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#isaaclab.sim.spawners.materials.PhysicsMaterialCfg" title="isaaclab.sim.spawners.materials.PhysicsMaterialCfg"><span class="pre">materials.PhysicsMaterialCfg</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><a class="headerlink" href="#isaaclab.sim.spawners.from_files.UrdfFileCfg.physics_material" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">physics_material</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#isaaclab.sim.spawners.materials.PhysicsMaterialCfg" title="isaaclab.sim.spawners.materials.PhysicsMaterialCfg"><span class="pre">materials.PhysicsMaterialCfg</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="#isaaclab.sim.spawners.materials.RigidBodyMaterialFragment" title="isaaclab.sim.spawners.materials.RigidBodyMaterialFragment"><span class="pre">materials.RigidBodyMaterialFragment</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#isaaclab.sim.spawners.materials.RigidBodyMaterialFragment" title="isaaclab.sim.spawners.materials.RigidBodyMaterialFragment"><span class="pre">materials.RigidBodyMaterialFragment</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><a class="headerlink" href="#isaaclab.sim.spawners.from_files.UrdfFileCfg.physics_material" title="Link to this definition">#</a></dt>
 <dd><p>Physics material properties.</p>
+<p>Accepts either a legacy material cfg, a single
+<a class="reference internal" href="#isaaclab.sim.spawners.materials.RigidBodyMaterialFragment" title="isaaclab.sim.spawners.materials.RigidBodyMaterialFragment"><code class="xref py py-class docutils literal notranslate"><span class="pre">RigidBodyMaterialFragment</span></code></a>, or a list of such
+single-namespace fragments.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>If None, then no custom physics material will be added.</p>
@@ -7112,8 +7174,11 @@ This parameter is ignored if <cite>physics_material</cite> is not None.</p>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="isaaclab.sim.spawners.from_files.UsdFileCfg.physics_material">
-<span class="sig-name descname"><span class="pre">physics_material</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#isaaclab.sim.spawners.materials.PhysicsMaterialCfg" title="isaaclab.sim.spawners.materials.PhysicsMaterialCfg"><span class="pre">materials.PhysicsMaterialCfg</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><a class="headerlink" href="#isaaclab.sim.spawners.from_files.UsdFileCfg.physics_material" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">physics_material</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#isaaclab.sim.spawners.materials.PhysicsMaterialCfg" title="isaaclab.sim.spawners.materials.PhysicsMaterialCfg"><span class="pre">materials.PhysicsMaterialCfg</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="#isaaclab.sim.spawners.materials.RigidBodyMaterialFragment" title="isaaclab.sim.spawners.materials.RigidBodyMaterialFragment"><span class="pre">materials.RigidBodyMaterialFragment</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#isaaclab.sim.spawners.materials.RigidBodyMaterialFragment" title="isaaclab.sim.spawners.materials.RigidBodyMaterialFragment"><span class="pre">materials.RigidBodyMaterialFragment</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><a class="headerlink" href="#isaaclab.sim.spawners.from_files.UsdFileCfg.physics_material" title="Link to this definition">#</a></dt>
 <dd><p>Physics material properties.</p>
+<p>Accepts either a legacy material cfg, a single
+<a class="reference internal" href="#isaaclab.sim.spawners.materials.RigidBodyMaterialFragment" title="isaaclab.sim.spawners.materials.RigidBodyMaterialFragment"><code class="xref py py-class docutils literal notranslate"><span class="pre">RigidBodyMaterialFragment</span></code></a>, or a list of such
+single-namespace fragments.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>If None, then no custom physics material will be added.</p>
@@ -7249,8 +7314,12 @@ the source prim, i.e. all USD changes to the source prim will be reflected in th
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="isaaclab.sim.spawners.from_files.GroundPlaneCfg.physics_material">
-<span class="sig-name descname"><span class="pre">physics_material</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#isaaclab.sim.spawners.materials.RigidBodyMaterialCfg" title="isaaclab.sim.spawners.materials.RigidBodyMaterialCfg"><span class="pre">materials.RigidBodyMaterialCfg</span></a></em><a class="headerlink" href="#isaaclab.sim.spawners.from_files.GroundPlaneCfg.physics_material" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">physics_material</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#isaaclab.sim.spawners.materials.RigidBodyMaterialBaseCfg" title="isaaclab.sim.spawners.materials.RigidBodyMaterialBaseCfg"><span class="pre">materials.RigidBodyMaterialBaseCfg</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="#isaaclab.sim.spawners.materials.RigidBodyMaterialFragment" title="isaaclab.sim.spawners.materials.RigidBodyMaterialFragment"><span class="pre">materials.RigidBodyMaterialFragment</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#isaaclab.sim.spawners.materials.RigidBodyMaterialFragment" title="isaaclab.sim.spawners.materials.RigidBodyMaterialFragment"><span class="pre">materials.RigidBodyMaterialFragment</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#isaaclab.sim.spawners.from_files.GroundPlaneCfg.physics_material" title="Link to this definition">#</a></dt>
 <dd><p>Physics material properties. Defaults to the default rigid body material.</p>
+<p>The ground plane only spawns a collision plane, so this only accepts rigid-body materials: a
+legacy <a class="reference internal" href="#isaaclab.sim.spawners.materials.RigidBodyMaterialBaseCfg" title="isaaclab.sim.spawners.materials.RigidBodyMaterialBaseCfg"><code class="xref py py-class docutils literal notranslate"><span class="pre">RigidBodyMaterialBaseCfg</span></code></a>, a single
+<a class="reference internal" href="#isaaclab.sim.spawners.materials.RigidBodyMaterialFragment" title="isaaclab.sim.spawners.materials.RigidBodyMaterialFragment"><code class="xref py py-class docutils literal notranslate"><span class="pre">RigidBodyMaterialFragment</span></code></a>, or a list of such
+single-namespace fragments.</p>
 </dd></dl>
 
 </dd></dl>
@@ -7314,19 +7383,28 @@ When parsing physics material properties on an object, the following priority is
 <tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab.sim.spawners.materials.PhysicsMaterialCfg" title="isaaclab.sim.spawners.materials.PhysicsMaterialCfg"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PhysicsMaterialCfg</span></code></a></p></td>
 <td><p>Configuration parameters for creating a physics material.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab.sim.spawners.materials.RigidBodyMaterialCfg" title="isaaclab.sim.spawners.materials.RigidBodyMaterialCfg"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RigidBodyMaterialCfg</span></code></a></p></td>
-<td><p>Deprecated: use <code class="xref py py-class docutils literal notranslate"><span class="pre">PhysxRigidBodyMaterialCfg</span></code> or <code class="xref py py-class docutils literal notranslate"><span class="pre">RigidBodyMaterialBaseCfg</span></code>.</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab.sim.spawners.materials.RigidBodyMaterialBaseCfg" title="isaaclab.sim.spawners.materials.RigidBodyMaterialBaseCfg"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RigidBodyMaterialBaseCfg</span></code></a></p></td>
+<td><p>Solver-common physics-material parameters for rigid bodies.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab.sim.spawners.materials.DeformableBodyMaterialBaseCfg" title="isaaclab.sim.spawners.materials.DeformableBodyMaterialBaseCfg"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DeformableBodyMaterialBaseCfg</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab.sim.spawners.materials.RigidBodyMaterialFragment" title="isaaclab.sim.spawners.materials.RigidBodyMaterialFragment"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RigidBodyMaterialFragment</span></code></a></p></td>
+<td><p>Marker base for rigid-body physics-material fragments; types the <code class="docutils literal notranslate"><span class="pre">physics_material</span></code> slot.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab.sim.spawners.materials.UsdPhysicsRigidBodyMaterialCfg" title="isaaclab.sim.spawners.materials.UsdPhysicsRigidBodyMaterialCfg"><code class="xref py py-obj docutils literal notranslate"><span class="pre">UsdPhysicsRigidBodyMaterialCfg</span></code></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">physics:*</span></code> rigid-body material attributes from <a class="reference external" href="https://openusd.org/dev/api/class_usd_physics_material_a_p_i.html">UsdPhysics.MaterialAPI</a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab.sim.spawners.materials.RigidBodyMaterialCfg" title="isaaclab.sim.spawners.materials.RigidBodyMaterialCfg"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RigidBodyMaterialCfg</span></code></a></p></td>
+<td><p>Deprecated: use <code class="xref py py-class docutils literal notranslate"><span class="pre">PhysxRigidBodyMaterialCfg</span></code> or <a class="reference internal" href="#isaaclab.sim.spawners.materials.RigidBodyMaterialBaseCfg" title="isaaclab.sim.spawners.materials.RigidBodyMaterialBaseCfg"><code class="xref py py-class docutils literal notranslate"><span class="pre">RigidBodyMaterialBaseCfg</span></code></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab.sim.spawners.materials.DeformableBodyMaterialBaseCfg" title="isaaclab.sim.spawners.materials.DeformableBodyMaterialBaseCfg"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DeformableBodyMaterialBaseCfg</span></code></a></p></td>
 <td><p>Base physics material parameters for volume deformable bodies.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab.sim.spawners.materials.SurfaceDeformableBodyMaterialBaseCfg" title="isaaclab.sim.spawners.materials.SurfaceDeformableBodyMaterialBaseCfg"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SurfaceDeformableBodyMaterialBaseCfg</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab.sim.spawners.materials.SurfaceDeformableBodyMaterialBaseCfg" title="isaaclab.sim.spawners.materials.SurfaceDeformableBodyMaterialBaseCfg"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SurfaceDeformableBodyMaterialBaseCfg</span></code></a></p></td>
 <td><p>Base physics material parameters for surface deformable bodies.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">DeformableBodyMaterialCfg</span></code></p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">DeformableBodyMaterialCfg</span></code></p></td>
 <td><p>Deprecated: use <code class="xref py py-class docutils literal notranslate"><span class="pre">PhysxDeformableBodyMaterialCfg</span></code>.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">SurfaceDeformableBodyMaterialCfg</span></code></p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">SurfaceDeformableBodyMaterialCfg</span></code></p></td>
 <td><p>Deprecated: use <code class="xref py py-class docutils literal notranslate"><span class="pre">PhysxSurfaceDeformableBodyMaterialCfg</span></code>.</p></td>
 </tr>
 </tbody>
@@ -7603,18 +7681,53 @@ coefficient, etc. For more information on physics material, please refer to the
 </dd></dl>
 
 <dl class="py function">
+<dt class="sig sig-object py" id="isaaclab.sim.spawners.materials.spawn_physics_material">
+<span class="sig-prename descclassname"><span class="pre">isaaclab.sim.spawners.materials.</span></span><span class="sig-name descname"><span class="pre">spawn_physics_material</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">prim_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">material</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#isaaclab.sim.spawners.materials.PhysicsMaterialCfg" title="isaaclab.sim.spawners.materials.physics_materials_cfg.PhysicsMaterialCfg"><span class="pre">physics_materials_cfg.PhysicsMaterialCfg</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="#isaaclab.sim.spawners.materials.RigidBodyMaterialFragment" title="isaaclab.sim.spawners.materials.physics_materials_cfg.RigidBodyMaterialFragment"><span class="pre">physics_materials_cfg.RigidBodyMaterialFragment</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#isaaclab.sim.spawners.materials.RigidBodyMaterialFragment" title="isaaclab.sim.spawners.materials.physics_materials_cfg.RigidBodyMaterialFragment"><span class="pre">physics_materials_cfg.RigidBodyMaterialFragment</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.14)"><span class="pre">tuple</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#isaaclab.sim.spawners.materials.RigidBodyMaterialFragment" title="isaaclab.sim.spawners.materials.physics_materials_cfg.RigidBodyMaterialFragment"><span class="pre">physics_materials_cfg.RigidBodyMaterialFragment</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stage</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Usd.Stage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Usd.Prim</span></span></span><a class="reference internal" href="../../../_modules/isaaclab/sim/spawners/materials/physics_materials.html#spawn_physics_material"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#isaaclab.sim.spawners.materials.spawn_physics_material" title="Link to this definition">#</a></dt>
+<dd><p>Spawn a physics material from a spawner <code class="docutils literal notranslate"><span class="pre">physics_material</span></code> slot value.</p>
+<p>Dispatches the two accepted slot forms: a single rigid-body fragment or list/tuple is spawned via
+<a class="reference internal" href="#isaaclab.sim.spawners.materials.spawn_rigid_body_material_from_fragments" title="isaaclab.sim.spawners.materials.spawn_rigid_body_material_from_fragments"><code class="xref py py-func docutils literal notranslate"><span class="pre">spawn_rigid_body_material_from_fragments()</span></code></a>; otherwise the value is a legacy material cfg and is
+spawned via its own <code class="xref py py-attr docutils literal notranslate"><span class="pre">func</span></code>. Lets spawners accept both the fragment and the legacy interface
+from one call site.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><span class="target" id="isaaclab.sim.spawners.materials.spawn_physics_material.params.prim_path"></span><strong>prim_path</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.spawners.materials.spawn_physics_material.params.prim_path">¶</a> – The prim path to spawn the material at.</p></li>
+<li><p><span class="target" id="isaaclab.sim.spawners.materials.spawn_physics_material.params.material"></span><strong>material</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.spawners.materials.spawn_physics_material.params.material">¶</a> – A <a class="reference internal" href="#isaaclab.sim.spawners.materials.RigidBodyMaterialFragment" title="isaaclab.sim.spawners.materials.RigidBodyMaterialFragment"><code class="xref py py-class docutils literal notranslate"><span class="pre">RigidBodyMaterialFragment</span></code></a> (or list/tuple
+of them), or a legacy material cfg carrying a <code class="xref py py-attr docutils literal notranslate"><span class="pre">func</span></code>.</p></li>
+<li><p><span class="target" id="isaaclab.sim.spawners.materials.spawn_physics_material.params.stage"></span><strong>stage</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.spawners.materials.spawn_physics_material.params.stage">¶</a> – The stage to spawn on. Defaults to None, in which case the current stage is used. A
+legacy material cfg only supports the current stage (or None); passing a different
+stage raises.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The spawned material prim.</p>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#ValueError" title="(in Python v3.14)"><strong>ValueError</strong></a> – When <code class="docutils literal notranslate"><span class="pre">material</span></code> is an empty fragment collection.</p></li>
+<li><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#ValueError" title="(in Python v3.14)"><strong>ValueError</strong></a> – When <code class="docutils literal notranslate"><span class="pre">material</span></code> is a legacy material cfg and <code class="docutils literal notranslate"><span class="pre">stage</span></code> is neither <code class="docutils literal notranslate"><span class="pre">None</span></code>
+    nor the current stage.</p></li>
+<li><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#TypeError" title="(in Python v3.14)"><strong>TypeError</strong></a> – When <code class="docutils literal notranslate"><span class="pre">material</span></code> is a fragment collection containing anything other than
+    <a class="reference internal" href="#isaaclab.sim.spawners.materials.RigidBodyMaterialFragment" title="isaaclab.sim.spawners.materials.RigidBodyMaterialFragment"><code class="xref py py-class docutils literal notranslate"><span class="pre">RigidBodyMaterialFragment</span></code></a> instances.</p></li>
+<li><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#TypeError" title="(in Python v3.14)"><strong>TypeError</strong></a> – When <code class="docutils literal notranslate"><span class="pre">material</span></code> is neither a physics-material cfg nor a rigid-body fragment.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
 <dt class="sig sig-object py" id="isaaclab.sim.spawners.materials.spawn_rigid_body_material">
-<span class="sig-prename descclassname"><span class="pre">isaaclab.sim.spawners.materials.</span></span><span class="sig-name descname"><span class="pre">spawn_rigid_body_material</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">prim_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">cfg</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">RigidBodyMaterialBaseCfg</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">pxr.Usd.Prim</span></span></span><a class="reference internal" href="../../../_modules/isaaclab/sim/spawners/materials/physics_materials.html#spawn_rigid_body_material"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#isaaclab.sim.spawners.materials.spawn_rigid_body_material" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">isaaclab.sim.spawners.materials.</span></span><span class="sig-name descname"><span class="pre">spawn_rigid_body_material</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">prim_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">cfg</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#isaaclab.sim.spawners.materials.RigidBodyMaterialBaseCfg" title="isaaclab.sim.spawners.materials.physics_materials_cfg.RigidBodyMaterialBaseCfg"><span class="pre">RigidBodyMaterialBaseCfg</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">pxr.Usd.Prim</span></span></span><a class="reference internal" href="../../../_modules/isaaclab/sim/spawners/materials/physics_materials.html#spawn_rigid_body_material"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#isaaclab.sim.spawners.materials.spawn_rigid_body_material" title="Link to this definition">#</a></dt>
 <dd><p>Create material with rigid-body physics properties.</p>
 <p>Rigid body materials are used to define the physical properties to meshes of a rigid body. These
 include the friction, restitution, and (PhysX-only) compliant-contact spring and combine-mode
 tokens. For more information on rigid body material, please refer to the <a class="reference external" href="https://nvidia-omniverse.github.io/PhysX/physx/5.4.1/_api_build/classPxBaseMaterial.html">documentation on
 PxMaterial</a>.</p>
 <p>The writer is metadata-driven: it always applies the standard <code class="docutils literal notranslate"><span class="pre">UsdPhysics.MaterialAPI</span></code> and
-writes the friction/restitution fields, then reads <code class="docutils literal notranslate"><span class="pre">_usd_applied_schema</span></code>, <code class="docutils literal notranslate"><span class="pre">_usd_namespace</span></code>,
-and <code class="docutils literal notranslate"><span class="pre">_usd_attr_name_map</span></code> from the cfg to author solver-specific attributes. The applied
-schema (e.g. <code class="docutils literal notranslate"><span class="pre">PhysxMaterialAPI</span></code>) is added only when at least one solver-specific field has a
-non-<code class="docutils literal notranslate"><span class="pre">None</span></code> value at the instance level.</p>
+writes the friction/restitution/density fields, then reads <code class="docutils literal notranslate"><span class="pre">_usd_applied_schema</span></code>,
+<code class="docutils literal notranslate"><span class="pre">_usd_namespace</span></code>, and <code class="docutils literal notranslate"><span class="pre">_usd_attr_name_map</span></code> from the cfg to author solver-specific attributes.
+The applied schema (e.g. <code class="docutils literal notranslate"><span class="pre">PhysxMaterialAPI</span></code>) is added only when at least one solver-specific
+field has a non-<code class="docutils literal notranslate"><span class="pre">None</span></code> value at the instance level.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>This function is decorated with <code class="xref py py-func docutils literal notranslate"><span class="pre">clone()</span></code> that resolves prim path into list of paths
@@ -7642,13 +7755,175 @@ then the asset is spawned at all the matching prim paths.</p></li>
 </dd></dl>
 
 <dl class="py class">
+<dt class="sig sig-object py" id="isaaclab.sim.spawners.materials.RigidBodyMaterialBaseCfg">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">isaaclab.sim.spawners.materials.</span></span><span class="sig-name descname"><span class="pre">RigidBodyMaterialBaseCfg</span></span><a class="reference internal" href="../../../_modules/isaaclab/sim/spawners/materials/physics_materials_cfg.html#RigidBodyMaterialBaseCfg"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#isaaclab.sim.spawners.materials.RigidBodyMaterialBaseCfg" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#isaaclab.sim.spawners.materials.PhysicsMaterialCfg" title="isaaclab.sim.spawners.materials.physics_materials_cfg.PhysicsMaterialCfg"><code class="xref py py-class docutils literal notranslate"><span class="pre">PhysicsMaterialCfg</span></code></a></p>
+<p>Solver-common physics-material parameters for rigid bodies.</p>
+<p>Contains the friction, restitution, and density fields from the <a class="reference external" href="https://openusd.org/dev/api/class_usd_physics_material_a_p_i.html">UsdPhysics.MaterialAPI</a> that
+are common across all simulation backends. For properties in the <code class="docutils literal notranslate"><span class="pre">physxMaterial</span></code> namespace
+(compliant-contact spring and combine modes), use
+<a class="reference internal" href="../lab_physx/isaaclab_physx.sim.spawners.html#isaaclab_physx.sim.spawners.materials.PhysxRigidBodyMaterialCfg" title="isaaclab_physx.sim.spawners.materials.PhysxRigidBodyMaterialCfg"><code class="xref py py-class docutils literal notranslate"><span class="pre">PhysxRigidBodyMaterialCfg</span></code></a>.</p>
+<p>See <a class="reference internal" href="#isaaclab.sim.spawners.materials.spawn_rigid_body_material" title="isaaclab.sim.spawners.materials.spawn_rigid_body_material"><code class="xref py py-meth docutils literal notranslate"><span class="pre">spawn_rigid_body_material()</span></code></a> for more information.</p>
+<p><strong>Attributes:</strong></p>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab.sim.spawners.materials.RigidBodyMaterialBaseCfg.static_friction" title="isaaclab.sim.spawners.materials.RigidBodyMaterialBaseCfg.static_friction"><code class="xref py py-obj docutils literal notranslate"><span class="pre">static_friction</span></code></a></p></td>
+<td><p>The static friction coefficient.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab.sim.spawners.materials.RigidBodyMaterialBaseCfg.dynamic_friction" title="isaaclab.sim.spawners.materials.RigidBodyMaterialBaseCfg.dynamic_friction"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dynamic_friction</span></code></a></p></td>
+<td><p>The dynamic friction coefficient.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab.sim.spawners.materials.RigidBodyMaterialBaseCfg.restitution" title="isaaclab.sim.spawners.materials.RigidBodyMaterialBaseCfg.restitution"><code class="xref py py-obj docutils literal notranslate"><span class="pre">restitution</span></code></a></p></td>
+<td><p>The restitution coefficient.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab.sim.spawners.materials.RigidBodyMaterialBaseCfg.density" title="isaaclab.sim.spawners.materials.RigidBodyMaterialBaseCfg.density"><code class="xref py py-obj docutils literal notranslate"><span class="pre">density</span></code></a></p></td>
+<td><p>The material density [kg/m^3].</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="isaaclab.sim.spawners.materials.RigidBodyMaterialBaseCfg.static_friction">
+<span class="sig-name descname"><span class="pre">static_friction</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></em><a class="headerlink" href="#isaaclab.sim.spawners.materials.RigidBodyMaterialBaseCfg.static_friction" title="Link to this definition">#</a></dt>
+<dd><p>The static friction coefficient. Defaults to 0.5.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="isaaclab.sim.spawners.materials.RigidBodyMaterialBaseCfg.dynamic_friction">
+<span class="sig-name descname"><span class="pre">dynamic_friction</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></em><a class="headerlink" href="#isaaclab.sim.spawners.materials.RigidBodyMaterialBaseCfg.dynamic_friction" title="Link to this definition">#</a></dt>
+<dd><p>The dynamic friction coefficient. Defaults to 0.5.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="isaaclab.sim.spawners.materials.RigidBodyMaterialBaseCfg.restitution">
+<span class="sig-name descname"><span class="pre">restitution</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></em><a class="headerlink" href="#isaaclab.sim.spawners.materials.RigidBodyMaterialBaseCfg.restitution" title="Link to this definition">#</a></dt>
+<dd><p>The restitution coefficient. Defaults to 0.0.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="isaaclab.sim.spawners.materials.RigidBodyMaterialBaseCfg.density">
+<span class="sig-name descname"><span class="pre">density</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><a class="headerlink" href="#isaaclab.sim.spawners.materials.RigidBodyMaterialBaseCfg.density" title="Link to this definition">#</a></dt>
+<dd><p>The material density [kg/m^3]. Defaults to None, in which case it is not authored.</p>
+<p>Writes <code class="docutils literal notranslate"><span class="pre">physics:density</span></code>. It is a fallback for collision shapes bound to this material;
+explicitly authored rigid-body mass or density takes precedence.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="isaaclab.sim.spawners.materials.spawn_rigid_body_material_from_fragments">
+<span class="sig-prename descclassname"><span class="pre">isaaclab.sim.spawners.materials.</span></span><span class="sig-name descname"><span class="pre">spawn_rigid_body_material_from_fragments</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">prim_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">fragments</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#isaaclab.sim.spawners.materials.RigidBodyMaterialFragment" title="isaaclab.sim.spawners.materials.physics_materials_cfg.RigidBodyMaterialFragment"><span class="pre">physics_materials_cfg.RigidBodyMaterialFragment</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#isaaclab.sim.spawners.materials.RigidBodyMaterialFragment" title="isaaclab.sim.spawners.materials.physics_materials_cfg.RigidBodyMaterialFragment"><span class="pre">physics_materials_cfg.RigidBodyMaterialFragment</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.14)"><span class="pre">tuple</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#isaaclab.sim.spawners.materials.RigidBodyMaterialFragment" title="isaaclab.sim.spawners.materials.physics_materials_cfg.RigidBodyMaterialFragment"><span class="pre">physics_materials_cfg.RigidBodyMaterialFragment</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stage</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Usd.Stage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Usd.Prim</span></span></span><a class="reference internal" href="../../../_modules/isaaclab/sim/spawners/materials/physics_materials.html#spawn_rigid_body_material_from_fragments"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#isaaclab.sim.spawners.materials.spawn_rigid_body_material_from_fragments" title="Link to this definition">#</a></dt>
+<dd><p>Spawn a rigid-body physics material from one or more single-namespace fragments.</p>
+<p>Creates (or reuses) the <code class="docutils literal notranslate"><span class="pre">UsdShade.Material</span></code> prim at <code class="docutils literal notranslate"><span class="pre">prim_path</span></code>, applies the standard
+<code class="docutils literal notranslate"><span class="pre">UsdPhysics.MaterialAPI</span></code> anchor, then dispatches each fragment via its
+<code class="xref py py-attr docutils literal notranslate"><span class="pre">func</span></code> to author its namespace onto the material prim.
+Backend fragments carry backend-specific namespaces (e.g. PhysX <code class="docutils literal notranslate"><span class="pre">physxMaterial:*</span></code>) without core
+importing a backend.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Unlike the <code class="docutils literal notranslate"><span class="pre">&#64;clone</span></code>-decorated <a class="reference internal" href="#isaaclab.sim.spawners.materials.spawn_rigid_body_material" title="isaaclab.sim.spawners.materials.spawn_rigid_body_material"><code class="xref py py-func docutils literal notranslate"><span class="pre">spawn_rigid_body_material()</span></code></a>, this writer expects a
+concrete <code class="docutils literal notranslate"><span class="pre">prim_path</span></code> and does not resolve regex prim-path patterns. Physics materials are
+spawned at a single derived path by <a class="reference internal" href="#isaaclab.sim.spawners.materials.spawn_physics_material" title="isaaclab.sim.spawners.materials.spawn_physics_material"><code class="xref py py-func docutils literal notranslate"><span class="pre">spawn_physics_material()</span></code></a> and the spawner internals,
+so regex resolution does not apply here.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><span class="target" id="isaaclab.sim.spawners.materials.spawn_rigid_body_material_from_fragments.params.prim_path"></span><strong>prim_path</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.spawners.materials.spawn_rigid_body_material_from_fragments.params.prim_path">¶</a> – The prim path to spawn the material at.</p></li>
+<li><p><span class="target" id="isaaclab.sim.spawners.materials.spawn_rigid_body_material_from_fragments.params.fragments"></span><strong>fragments</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.spawners.materials.spawn_rigid_body_material_from_fragments.params.fragments">¶</a> – A single <a class="reference internal" href="#isaaclab.sim.spawners.materials.RigidBodyMaterialFragment" title="isaaclab.sim.spawners.materials.RigidBodyMaterialFragment"><code class="xref py py-class docutils literal notranslate"><span class="pre">RigidBodyMaterialFragment</span></code></a>,
+or a list/tuple of them.</p></li>
+<li><p><span class="target" id="isaaclab.sim.spawners.materials.spawn_rigid_body_material_from_fragments.params.stage"></span><strong>stage</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.spawners.materials.spawn_rigid_body_material_from_fragments.params.stage">¶</a> – The stage to spawn on. Defaults to None, in which case the current stage is used.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The spawned rigid body material prim.</p>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#ValueError" title="(in Python v3.14)"><strong>ValueError</strong></a> – When <code class="docutils literal notranslate"><span class="pre">fragments</span></code> is empty.</p></li>
+<li><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#ValueError" title="(in Python v3.14)"><strong>ValueError</strong></a> – When a prim already exists at the path and is not a material.</p></li>
+<li><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#TypeError" title="(in Python v3.14)"><strong>TypeError</strong></a> – When an item is not a rigid-body material fragment.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="isaaclab.sim.spawners.materials.RigidBodyMaterialFragment">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">isaaclab.sim.spawners.materials.</span></span><span class="sig-name descname"><span class="pre">RigidBodyMaterialFragment</span></span><a class="reference internal" href="../../../_modules/isaaclab/sim/spawners/materials/physics_materials_cfg.html#RigidBodyMaterialFragment"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#isaaclab.sim.spawners.materials.RigidBodyMaterialFragment" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">SchemaFragment</span></code></p>
+<p>Marker base for rigid-body physics-material fragments; types the <code class="docutils literal notranslate"><span class="pre">physics_material</span></code> slot.</p>
+<p>A rigid-body physics material is a single <code class="docutils literal notranslate"><span class="pre">UsdShade.Material</span></code> prim that carries one or more
+physics-material schemas. The fragments author single namespaces onto that prim: the
+solver-common <code class="docutils literal notranslate"><span class="pre">physics:*</span></code> friction/restitution/density
+(<a class="reference internal" href="#isaaclab.sim.spawners.materials.UsdPhysicsRigidBodyMaterialCfg" title="isaaclab.sim.spawners.materials.UsdPhysicsRigidBodyMaterialCfg"><code class="xref py py-class docutils literal notranslate"><span class="pre">UsdPhysicsRigidBodyMaterialCfg</span></code></a>) and any backend-specific namespace (e.g. PhysX
+<code class="docutils literal notranslate"><span class="pre">physxMaterial:*</span></code> via <a class="reference internal" href="../lab_physx/isaaclab_physx.sim.spawners.html#isaaclab_physx.sim.spawners.materials.PhysxMaterialCfg" title="isaaclab_physx.sim.spawners.materials.PhysxMaterialCfg"><code class="xref py py-class docutils literal notranslate"><span class="pre">PhysxMaterialCfg</span></code></a>).
+The defining <code class="docutils literal notranslate"><span class="pre">UsdPhysics.MaterialAPI</span></code> anchor is applied by the family writer
+(<a class="reference internal" href="#isaaclab.sim.spawners.materials.spawn_rigid_body_material_from_fragments" title="isaaclab.sim.spawners.materials.spawn_rigid_body_material_from_fragments"><code class="xref py py-func docutils literal notranslate"><span class="pre">spawn_rigid_body_material_from_fragments()</span></code></a>).</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="isaaclab.sim.spawners.materials.UsdPhysicsRigidBodyMaterialCfg">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">isaaclab.sim.spawners.materials.</span></span><span class="sig-name descname"><span class="pre">UsdPhysicsRigidBodyMaterialCfg</span></span><a class="reference internal" href="../../../_modules/isaaclab/sim/spawners/materials/physics_materials_cfg.html#UsdPhysicsRigidBodyMaterialCfg"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#isaaclab.sim.spawners.materials.UsdPhysicsRigidBodyMaterialCfg" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#isaaclab.sim.spawners.materials.RigidBodyMaterialFragment" title="isaaclab.sim.spawners.materials.physics_materials_cfg.RigidBodyMaterialFragment"><code class="xref py py-class docutils literal notranslate"><span class="pre">RigidBodyMaterialFragment</span></code></a></p>
+<p><code class="docutils literal notranslate"><span class="pre">physics:*</span></code> rigid-body material attributes from <a class="reference external" href="https://openusd.org/dev/api/class_usd_physics_material_a_p_i.html">UsdPhysics.MaterialAPI</a>.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">UsdPhysics.MaterialAPI</span></code> schema is applied as the implicit anchor by the rigid-body material
+family writer, so this fragment owns no applied schema of its own. <code class="docutils literal notranslate"><span class="pre">None</span></code> fields are left
+unchanged on the material prim.</p>
+<p><strong>Attributes:</strong></p>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab.sim.spawners.materials.UsdPhysicsRigidBodyMaterialCfg.static_friction" title="isaaclab.sim.spawners.materials.UsdPhysicsRigidBodyMaterialCfg.static_friction"><code class="xref py py-obj docutils literal notranslate"><span class="pre">static_friction</span></code></a></p></td>
+<td><p>The static friction coefficient.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab.sim.spawners.materials.UsdPhysicsRigidBodyMaterialCfg.dynamic_friction" title="isaaclab.sim.spawners.materials.UsdPhysicsRigidBodyMaterialCfg.dynamic_friction"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dynamic_friction</span></code></a></p></td>
+<td><p>The dynamic friction coefficient.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab.sim.spawners.materials.UsdPhysicsRigidBodyMaterialCfg.restitution" title="isaaclab.sim.spawners.materials.UsdPhysicsRigidBodyMaterialCfg.restitution"><code class="xref py py-obj docutils literal notranslate"><span class="pre">restitution</span></code></a></p></td>
+<td><p>The restitution coefficient.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab.sim.spawners.materials.UsdPhysicsRigidBodyMaterialCfg.density" title="isaaclab.sim.spawners.materials.UsdPhysicsRigidBodyMaterialCfg.density"><code class="xref py py-obj docutils literal notranslate"><span class="pre">density</span></code></a></p></td>
+<td><p>The material density [kg/m^3].</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="isaaclab.sim.spawners.materials.UsdPhysicsRigidBodyMaterialCfg.static_friction">
+<span class="sig-name descname"><span class="pre">static_friction</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><a class="headerlink" href="#isaaclab.sim.spawners.materials.UsdPhysicsRigidBodyMaterialCfg.static_friction" title="Link to this definition">#</a></dt>
+<dd><p>The static friction coefficient. Writes <code class="docutils literal notranslate"><span class="pre">physics:staticFriction</span></code>.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="isaaclab.sim.spawners.materials.UsdPhysicsRigidBodyMaterialCfg.dynamic_friction">
+<span class="sig-name descname"><span class="pre">dynamic_friction</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><a class="headerlink" href="#isaaclab.sim.spawners.materials.UsdPhysicsRigidBodyMaterialCfg.dynamic_friction" title="Link to this definition">#</a></dt>
+<dd><p>The dynamic friction coefficient. Writes <code class="docutils literal notranslate"><span class="pre">physics:dynamicFriction</span></code>.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="isaaclab.sim.spawners.materials.UsdPhysicsRigidBodyMaterialCfg.restitution">
+<span class="sig-name descname"><span class="pre">restitution</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><a class="headerlink" href="#isaaclab.sim.spawners.materials.UsdPhysicsRigidBodyMaterialCfg.restitution" title="Link to this definition">#</a></dt>
+<dd><p>The restitution coefficient. Writes <code class="docutils literal notranslate"><span class="pre">physics:restitution</span></code>.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="isaaclab.sim.spawners.materials.UsdPhysicsRigidBodyMaterialCfg.density">
+<span class="sig-name descname"><span class="pre">density</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><a class="headerlink" href="#isaaclab.sim.spawners.materials.UsdPhysicsRigidBodyMaterialCfg.density" title="Link to this definition">#</a></dt>
+<dd><p>The material density [kg/m^3]. Writes <code class="docutils literal notranslate"><span class="pre">physics:density</span></code>.</p>
+<p>Participates in mass computation via material binding when no explicit rigid-body mass or
+density takes precedence.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
 <dt class="sig sig-object py" id="isaaclab.sim.spawners.materials.RigidBodyMaterialCfg">
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">isaaclab.sim.spawners.materials.</span></span><span class="sig-name descname"><span class="pre">RigidBodyMaterialCfg</span></span><a class="reference internal" href="../../../_modules/isaaclab_physx/sim/spawners/materials/physics_materials_cfg.html#RigidBodyMaterialCfg"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#isaaclab.sim.spawners.materials.RigidBodyMaterialCfg" title="Link to this definition">#</a></dt>
 <dd><p>Deprecated: use <code class="xref py py-class docutils literal notranslate"><span class="pre">PhysxRigidBodyMaterialCfg</span></code> or
-<code class="xref py py-class docutils literal notranslate"><span class="pre">RigidBodyMaterialBaseCfg</span></code>.</p>
+<a class="reference internal" href="#isaaclab.sim.spawners.materials.RigidBodyMaterialBaseCfg" title="isaaclab.sim.spawners.materials.RigidBodyMaterialBaseCfg"><code class="xref py py-class docutils literal notranslate"><span class="pre">RigidBodyMaterialBaseCfg</span></code></a>.</p>
 <div class="deprecated">
 <p><span class="versionmodified deprecated">Deprecated since version 4.6.22: </span><code class="docutils literal notranslate"><span class="pre">RigidBodyMaterialCfg</span></code> has been split into
-<code class="xref py py-class docutils literal notranslate"><span class="pre">RigidBodyMaterialBaseCfg</span></code> (solver-common) and
+<a class="reference internal" href="#isaaclab.sim.spawners.materials.RigidBodyMaterialBaseCfg" title="isaaclab.sim.spawners.materials.RigidBodyMaterialBaseCfg"><code class="xref py py-class docutils literal notranslate"><span class="pre">RigidBodyMaterialBaseCfg</span></code></a> (solver-common) and
 <code class="xref py py-class docutils literal notranslate"><span class="pre">PhysxRigidBodyMaterialCfg</span></code> (PhysX-specific) and relocated to
 <a class="reference internal" href="../lab_physx/isaaclab_physx.sim.spawners.html#module-isaaclab_physx.sim.spawners.materials" title="isaaclab_physx.sim.spawners.materials"><code class="xref py py-mod docutils literal notranslate"><span class="pre">isaaclab_physx.sim.spawners.materials</span></code></a>. This alias preserves backwards compatibility
 and is scheduled for removal in 5.0.</p>
@@ -7665,17 +7940,26 @@ and is scheduled for removal in 5.0.</p>
 <tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab.sim.spawners.materials.RigidBodyMaterialCfg.restitution" title="isaaclab.sim.spawners.materials.RigidBodyMaterialCfg.restitution"><code class="xref py py-obj docutils literal notranslate"><span class="pre">restitution</span></code></a></p></td>
 <td><p>The restitution coefficient.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab.sim.spawners.materials.RigidBodyMaterialCfg.compliant_contact_stiffness" title="isaaclab.sim.spawners.materials.RigidBodyMaterialCfg.compliant_contact_stiffness"><code class="xref py py-obj docutils literal notranslate"><span class="pre">compliant_contact_stiffness</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab.sim.spawners.materials.RigidBodyMaterialCfg.density" title="isaaclab.sim.spawners.materials.RigidBodyMaterialCfg.density"><code class="xref py py-obj docutils literal notranslate"><span class="pre">density</span></code></a></p></td>
+<td><p>The material density [kg/m^3].</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab.sim.spawners.materials.RigidBodyMaterialCfg.compliant_contact_stiffness" title="isaaclab.sim.spawners.materials.RigidBodyMaterialCfg.compliant_contact_stiffness"><code class="xref py py-obj docutils literal notranslate"><span class="pre">compliant_contact_stiffness</span></code></a></p></td>
 <td><p>Spring stiffness for a compliant contact model using implicit springs.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab.sim.spawners.materials.RigidBodyMaterialCfg.compliant_contact_damping" title="isaaclab.sim.spawners.materials.RigidBodyMaterialCfg.compliant_contact_damping"><code class="xref py py-obj docutils literal notranslate"><span class="pre">compliant_contact_damping</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab.sim.spawners.materials.RigidBodyMaterialCfg.compliant_contact_damping" title="isaaclab.sim.spawners.materials.RigidBodyMaterialCfg.compliant_contact_damping"><code class="xref py py-obj docutils literal notranslate"><span class="pre">compliant_contact_damping</span></code></a></p></td>
 <td><p>Damping coefficient for a compliant contact model using implicit springs.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab.sim.spawners.materials.RigidBodyMaterialCfg.compliant_contact_acceleration_spring" title="isaaclab.sim.spawners.materials.RigidBodyMaterialCfg.compliant_contact_acceleration_spring"><code class="xref py py-obj docutils literal notranslate"><span class="pre">compliant_contact_acceleration_spring</span></code></a></p></td>
+<td><p>Whether the compliant contact spring is formulated in acceleration (rather than force) units.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#isaaclab.sim.spawners.materials.RigidBodyMaterialCfg.friction_combine_mode" title="isaaclab.sim.spawners.materials.RigidBodyMaterialCfg.friction_combine_mode"><code class="xref py py-obj docutils literal notranslate"><span class="pre">friction_combine_mode</span></code></a></p></td>
 <td><p>Determines the way friction will be combined during collisions.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab.sim.spawners.materials.RigidBodyMaterialCfg.restitution_combine_mode" title="isaaclab.sim.spawners.materials.RigidBodyMaterialCfg.restitution_combine_mode"><code class="xref py py-obj docutils literal notranslate"><span class="pre">restitution_combine_mode</span></code></a></p></td>
 <td><p>Determines the way restitution coefficient will be combined during collisions.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab.sim.spawners.materials.RigidBodyMaterialCfg.damping_combine_mode" title="isaaclab.sim.spawners.materials.RigidBodyMaterialCfg.damping_combine_mode"><code class="xref py py-obj docutils literal notranslate"><span class="pre">damping_combine_mode</span></code></a></p></td>
+<td><p>Determines the way the (compliant-contact) damping coefficient is combined during collisions.</p></td>
 </tr>
 </tbody>
 </table>
@@ -7699,11 +7983,20 @@ and is scheduled for removal in 5.0.</p>
 </dd></dl>
 
 <dl class="py attribute">
+<dt class="sig sig-object py" id="isaaclab.sim.spawners.materials.RigidBodyMaterialCfg.density">
+<span class="sig-name descname"><span class="pre">density</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><a class="headerlink" href="#isaaclab.sim.spawners.materials.RigidBodyMaterialCfg.density" title="Link to this definition">#</a></dt>
+<dd><p>The material density [kg/m^3]. Defaults to None, in which case it is not authored.</p>
+<p>Writes <code class="docutils literal notranslate"><span class="pre">physics:density</span></code>. It is a fallback for collision shapes bound to this material;
+explicitly authored rigid-body mass or density takes precedence.</p>
+</dd></dl>
+
+<dl class="py attribute">
 <dt class="sig sig-object py" id="isaaclab.sim.spawners.materials.RigidBodyMaterialCfg.compliant_contact_stiffness">
 <span class="sig-name descname"><span class="pre">compliant_contact_stiffness</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><a class="headerlink" href="#isaaclab.sim.spawners.materials.RigidBodyMaterialCfg.compliant_contact_stiffness" title="Link to this definition">#</a></dt>
 <dd><p>Spring stiffness for a compliant contact model using implicit springs.</p>
 <p>A higher stiffness results in behavior closer to a rigid contact. The compliant contact model
-is only enabled if the stiffness is larger than 0. PhysX-only; not consumed by Newton.</p>
+is only enabled if the stiffness is larger than 0. Newton’s USD importer also recognizes this
+attribute as a fallback contact-stiffness value.</p>
 </dd></dl>
 
 <dl class="py attribute">
@@ -7711,7 +8004,16 @@ is only enabled if the stiffness is larger than 0. PhysX-only; not consumed by N
 <span class="sig-name descname"><span class="pre">compliant_contact_damping</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><a class="headerlink" href="#isaaclab.sim.spawners.materials.RigidBodyMaterialCfg.compliant_contact_damping" title="Link to this definition">#</a></dt>
 <dd><p>Damping coefficient for a compliant contact model using implicit springs.</p>
 <p>Irrelevant if compliant contacts are disabled when <a class="reference internal" href="#isaaclab.sim.spawners.materials.RigidBodyMaterialCfg.compliant_contact_stiffness" title="isaaclab.sim.spawners.materials.RigidBodyMaterialCfg.compliant_contact_stiffness"><code class="xref py py-attr docutils literal notranslate"><span class="pre">compliant_contact_stiffness</span></code></a> is set
-to zero and rigid contacts are active. PhysX-only; not consumed by Newton.</p>
+to zero and rigid contacts are active. Newton’s USD importer also recognizes this attribute as
+a fallback contact-damping value.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="isaaclab.sim.spawners.materials.RigidBodyMaterialCfg.compliant_contact_acceleration_spring">
+<span class="sig-name descname"><span class="pre">compliant_contact_acceleration_spring</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><span class="pre">bool</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><a class="headerlink" href="#isaaclab.sim.spawners.materials.RigidBodyMaterialCfg.compliant_contact_acceleration_spring" title="Link to this definition">#</a></dt>
+<dd><p>Whether the compliant contact spring is formulated in acceleration (rather than force) units.</p>
+<p>Only relevant when compliant contacts are enabled (<a class="reference internal" href="#isaaclab.sim.spawners.materials.RigidBodyMaterialCfg.compliant_contact_stiffness" title="isaaclab.sim.spawners.materials.RigidBodyMaterialCfg.compliant_contact_stiffness"><code class="xref py py-attr docutils literal notranslate"><span class="pre">compliant_contact_stiffness</span></code></a> is
+non-zero). PhysX-only; not consumed by Newton.</p>
 </dd></dl>
 
 <dl class="py attribute">
@@ -7729,6 +8031,17 @@ the higher priority will be used. The priority order is provided <a class="refer
 <dt class="sig sig-object py" id="isaaclab.sim.spawners.materials.RigidBodyMaterialCfg.restitution_combine_mode">
 <span class="sig-name descname"><span class="pre">restitution_combine_mode</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Literal" title="(in Python v3.14)"><span class="pre">Literal</span></a><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'average'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'min'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'multiply'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'max'</span></span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><a class="headerlink" href="#isaaclab.sim.spawners.materials.RigidBodyMaterialCfg.restitution_combine_mode" title="Link to this definition">#</a></dt>
 <dd><p>Determines the way restitution coefficient will be combined during collisions.</p>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>When two physics materials with different combine modes collide, the combine mode with
+the higher priority will be used. The priority order is provided <a class="reference external" href="https://nvidia-omniverse.github.io/PhysX/physx/5.4.1/_api_build/structPxCombineMode.html">here</a>.</p>
+</div>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="isaaclab.sim.spawners.materials.RigidBodyMaterialCfg.damping_combine_mode">
+<span class="sig-name descname"><span class="pre">damping_combine_mode</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Literal" title="(in Python v3.14)"><span class="pre">Literal</span></a><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'average'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'min'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'multiply'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'max'</span></span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><a class="headerlink" href="#isaaclab.sim.spawners.materials.RigidBodyMaterialCfg.damping_combine_mode" title="Link to this definition">#</a></dt>
+<dd><p>Determines the way the (compliant-contact) damping coefficient is combined during collisions.</p>
 <div class="admonition attention">
 <p class="admonition-title">Attention</p>
 <p>When two physics materials with different combine modes collide, the combine mode with
@@ -8475,8 +8788,11 @@ This parameter is ignored if <cite>physics_material</cite> is not None.</p>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="isaaclab.sim.spawners.wrappers.MultiUsdFileCfg.physics_material">
-<span class="sig-name descname"><span class="pre">physics_material</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#isaaclab.sim.spawners.materials.PhysicsMaterialCfg" title="isaaclab.sim.spawners.materials.PhysicsMaterialCfg"><span class="pre">materials.PhysicsMaterialCfg</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><a class="headerlink" href="#isaaclab.sim.spawners.wrappers.MultiUsdFileCfg.physics_material" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">physics_material</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#isaaclab.sim.spawners.materials.PhysicsMaterialCfg" title="isaaclab.sim.spawners.materials.PhysicsMaterialCfg"><span class="pre">materials.PhysicsMaterialCfg</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="#isaaclab.sim.spawners.materials.RigidBodyMaterialFragment" title="isaaclab.sim.spawners.materials.RigidBodyMaterialFragment"><span class="pre">materials.RigidBodyMaterialFragment</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#isaaclab.sim.spawners.materials.RigidBodyMaterialFragment" title="isaaclab.sim.spawners.materials.RigidBodyMaterialFragment"><span class="pre">materials.RigidBodyMaterialFragment</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><a class="headerlink" href="#isaaclab.sim.spawners.wrappers.MultiUsdFileCfg.physics_material" title="Link to this definition">#</a></dt>
 <dd><p>Physics material properties.</p>
+<p>Accepts either a legacy material cfg, a single
+<a class="reference internal" href="#isaaclab.sim.spawners.materials.RigidBodyMaterialFragment" title="isaaclab.sim.spawners.materials.RigidBodyMaterialFragment"><code class="xref py py-class docutils literal notranslate"><span class="pre">RigidBodyMaterialFragment</span></code></a>, or a list of such
+single-namespace fragments.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>If None, then no custom physics material will be added.</p>
@@ -9112,15 +9428,35 @@ If True, a random asset configuration is selected for each spawn.</p>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#physical-materials">Physical Materials</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.sim.spawners.materials.PhysicsMaterialCfg"><code class="docutils literal notranslate"><span class="pre">PhysicsMaterialCfg</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.sim.spawners.materials.spawn_physics_material"><code class="docutils literal notranslate"><span class="pre">spawn_physics_material()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.sim.spawners.materials.spawn_rigid_body_material"><code class="docutils literal notranslate"><span class="pre">spawn_rigid_body_material()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.sim.spawners.materials.RigidBodyMaterialBaseCfg"><code class="docutils literal notranslate"><span class="pre">RigidBodyMaterialBaseCfg</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.sim.spawners.materials.RigidBodyMaterialBaseCfg.static_friction"><code class="docutils literal notranslate"><span class="pre">RigidBodyMaterialBaseCfg.static_friction</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.sim.spawners.materials.RigidBodyMaterialBaseCfg.dynamic_friction"><code class="docutils literal notranslate"><span class="pre">RigidBodyMaterialBaseCfg.dynamic_friction</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.sim.spawners.materials.RigidBodyMaterialBaseCfg.restitution"><code class="docutils literal notranslate"><span class="pre">RigidBodyMaterialBaseCfg.restitution</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.sim.spawners.materials.RigidBodyMaterialBaseCfg.density"><code class="docutils literal notranslate"><span class="pre">RigidBodyMaterialBaseCfg.density</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.sim.spawners.materials.spawn_rigid_body_material_from_fragments"><code class="docutils literal notranslate"><span class="pre">spawn_rigid_body_material_from_fragments()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.sim.spawners.materials.RigidBodyMaterialFragment"><code class="docutils literal notranslate"><span class="pre">RigidBodyMaterialFragment</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.sim.spawners.materials.UsdPhysicsRigidBodyMaterialCfg"><code class="docutils literal notranslate"><span class="pre">UsdPhysicsRigidBodyMaterialCfg</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.sim.spawners.materials.UsdPhysicsRigidBodyMaterialCfg.static_friction"><code class="docutils literal notranslate"><span class="pre">UsdPhysicsRigidBodyMaterialCfg.static_friction</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.sim.spawners.materials.UsdPhysicsRigidBodyMaterialCfg.dynamic_friction"><code class="docutils literal notranslate"><span class="pre">UsdPhysicsRigidBodyMaterialCfg.dynamic_friction</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.sim.spawners.materials.UsdPhysicsRigidBodyMaterialCfg.restitution"><code class="docutils literal notranslate"><span class="pre">UsdPhysicsRigidBodyMaterialCfg.restitution</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.sim.spawners.materials.UsdPhysicsRigidBodyMaterialCfg.density"><code class="docutils literal notranslate"><span class="pre">UsdPhysicsRigidBodyMaterialCfg.density</span></code></a></li>
+</ul>
+</li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.sim.spawners.materials.RigidBodyMaterialCfg"><code class="docutils literal notranslate"><span class="pre">RigidBodyMaterialCfg</span></code></a><ul class="nav section-nav flex-column">
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.sim.spawners.materials.RigidBodyMaterialCfg.static_friction"><code class="docutils literal notranslate"><span class="pre">RigidBodyMaterialCfg.static_friction</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.sim.spawners.materials.RigidBodyMaterialCfg.dynamic_friction"><code class="docutils literal notranslate"><span class="pre">RigidBodyMaterialCfg.dynamic_friction</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.sim.spawners.materials.RigidBodyMaterialCfg.restitution"><code class="docutils literal notranslate"><span class="pre">RigidBodyMaterialCfg.restitution</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.sim.spawners.materials.RigidBodyMaterialCfg.density"><code class="docutils literal notranslate"><span class="pre">RigidBodyMaterialCfg.density</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.sim.spawners.materials.RigidBodyMaterialCfg.compliant_contact_stiffness"><code class="docutils literal notranslate"><span class="pre">RigidBodyMaterialCfg.compliant_contact_stiffness</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.sim.spawners.materials.RigidBodyMaterialCfg.compliant_contact_damping"><code class="docutils literal notranslate"><span class="pre">RigidBodyMaterialCfg.compliant_contact_damping</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.sim.spawners.materials.RigidBodyMaterialCfg.compliant_contact_acceleration_spring"><code class="docutils literal notranslate"><span class="pre">RigidBodyMaterialCfg.compliant_contact_acceleration_spring</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.sim.spawners.materials.RigidBodyMaterialCfg.friction_combine_mode"><code class="docutils literal notranslate"><span class="pre">RigidBodyMaterialCfg.friction_combine_mode</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.sim.spawners.materials.RigidBodyMaterialCfg.restitution_combine_mode"><code class="docutils literal notranslate"><span class="pre">RigidBodyMaterialCfg.restitution_combine_mode</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.sim.spawners.materials.RigidBodyMaterialCfg.damping_combine_mode"><code class="docutils literal notranslate"><span class="pre">RigidBodyMaterialCfg.damping_combine_mode</span></code></a></li>
 </ul>
 </li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.sim.spawners.materials.spawn_deformable_body_material"><code class="docutils literal notranslate"><span class="pre">spawn_deformable_body_material()</span></code></a></li>
@@ -9209,7 +9545,7 @@ By The Isaac Lab Project Developers.
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Jul 04, 2026.
+  Last updated on Jul 05, 2026.
   <br/>
 </p>
   </div>

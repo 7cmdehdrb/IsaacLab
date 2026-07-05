@@ -61,7 +61,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="3.0.0" />
-    <meta name="docbuild:last-update" content="Jul 04, 2026"/>
+    <meta name="docbuild:last-update" content="Jul 05, 2026"/>
   </head>
   
   
@@ -1639,33 +1639,25 @@
     <span class="c1"># check if prim is valid</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">prim</span><span class="o">.</span><span class="n">IsValid</span><span class="p">():</span>
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Prim path &#39;</span><span class="si">{</span><span class="n">prim_path</span><span class="si">}</span><span class="s2">&#39; is not valid.&quot;</span><span class="p">)</span>
-    <span class="c1"># iterate over all children</span>
-    <span class="n">num_contact_sensors</span> <span class="o">=</span> <span class="mi">0</span>
-    <span class="n">all_prims</span> <span class="o">=</span> <span class="p">[</span><span class="n">prim</span><span class="p">]</span>
-    <span class="k">while</span> <span class="nb">len</span><span class="p">(</span><span class="n">all_prims</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="c1"># get current prim</span>
-        <span class="n">child_prim</span> <span class="o">=</span> <span class="n">all_prims</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-        <span class="c1"># check if prim is a rigid body</span>
-        <span class="c1"># nested rigid bodies are not allowed by SDK so we can safely assume that</span>
-        <span class="c1"># if a prim has a rigid body API, it is a rigid body and we don&#39;t need to</span>
-        <span class="c1"># check its children</span>
-        <span class="k">if</span> <span class="n">child_prim</span><span class="o">.</span><span class="n">HasAPI</span><span class="p">(</span><span class="n">UsdPhysics</span><span class="o">.</span><span class="n">RigidBodyAPI</span><span class="p">):</span>
-            <span class="c1"># set sleep threshold to zero</span>
-            <span class="n">child_applied</span> <span class="o">=</span> <span class="n">child_prim</span><span class="o">.</span><span class="n">GetAppliedSchemas</span><span class="p">()</span>
-            <span class="k">if</span> <span class="s2">&quot;PhysxRigidBodyAPI&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">child_applied</span><span class="p">:</span>
-                <span class="n">child_prim</span><span class="o">.</span><span class="n">AddAppliedSchema</span><span class="p">(</span><span class="s2">&quot;PhysxRigidBodyAPI&quot;</span><span class="p">)</span>
-            <span class="n">safe_set_attribute_on_usd_prim</span><span class="p">(</span><span class="n">child_prim</span><span class="p">,</span> <span class="s2">&quot;physxRigidBody:sleepThreshold&quot;</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">camel_case</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-            <span class="c1"># add contact report API with threshold of zero</span>
-            <span class="k">if</span> <span class="s2">&quot;PhysxContactReportAPI&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">child_applied</span><span class="p">:</span>
-                <span class="n">child_prim</span><span class="o">.</span><span class="n">AddAppliedSchema</span><span class="p">(</span><span class="s2">&quot;PhysxContactReportAPI&quot;</span><span class="p">)</span>
-            <span class="n">safe_set_attribute_on_usd_prim</span><span class="p">(</span><span class="n">child_prim</span><span class="p">,</span> <span class="s2">&quot;physxContactReport:threshold&quot;</span><span class="p">,</span> <span class="n">threshold</span><span class="p">,</span> <span class="n">camel_case</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-            <span class="c1"># increment number of contact sensors</span>
-            <span class="n">num_contact_sensors</span> <span class="o">+=</span> <span class="mi">1</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="c1"># add all children to tree</span>
-            <span class="n">all_prims</span> <span class="o">+=</span> <span class="n">child_prim</span><span class="o">.</span><span class="n">GetChildren</span><span class="p">()</span>
+    <span class="c1"># collect all rigid bodies under the prim, including nested rigid-body trees</span>
+    <span class="n">rigid_body_prims</span> <span class="o">=</span> <span class="n">get_all_matching_child_prims</span><span class="p">(</span>
+        <span class="n">prim_path</span><span class="p">,</span>
+        <span class="n">predicate</span><span class="o">=</span><span class="k">lambda</span> <span class="n">child_prim</span><span class="p">:</span> <span class="n">child_prim</span><span class="o">.</span><span class="n">HasAPI</span><span class="p">(</span><span class="n">UsdPhysics</span><span class="o">.</span><span class="n">RigidBodyAPI</span><span class="p">),</span>
+        <span class="n">stage</span><span class="o">=</span><span class="n">stage</span><span class="p">,</span>
+        <span class="n">traverse_instance_prims</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="k">for</span> <span class="n">child_prim</span> <span class="ow">in</span> <span class="n">rigid_body_prims</span><span class="p">:</span>
+        <span class="c1"># set sleep threshold to zero</span>
+        <span class="n">child_applied</span> <span class="o">=</span> <span class="n">child_prim</span><span class="o">.</span><span class="n">GetAppliedSchemas</span><span class="p">()</span>
+        <span class="k">if</span> <span class="s2">&quot;PhysxRigidBodyAPI&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">child_applied</span><span class="p">:</span>
+            <span class="n">child_prim</span><span class="o">.</span><span class="n">AddAppliedSchema</span><span class="p">(</span><span class="s2">&quot;PhysxRigidBodyAPI&quot;</span><span class="p">)</span>
+        <span class="n">safe_set_attribute_on_usd_prim</span><span class="p">(</span><span class="n">child_prim</span><span class="p">,</span> <span class="s2">&quot;physxRigidBody:sleepThreshold&quot;</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">camel_case</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="c1"># add contact report API with threshold of zero</span>
+        <span class="k">if</span> <span class="s2">&quot;PhysxContactReportAPI&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">child_applied</span><span class="p">:</span>
+            <span class="n">child_prim</span><span class="o">.</span><span class="n">AddAppliedSchema</span><span class="p">(</span><span class="s2">&quot;PhysxContactReportAPI&quot;</span><span class="p">)</span>
+        <span class="n">safe_set_attribute_on_usd_prim</span><span class="p">(</span><span class="n">child_prim</span><span class="p">,</span> <span class="s2">&quot;physxContactReport:threshold&quot;</span><span class="p">,</span> <span class="n">threshold</span><span class="p">,</span> <span class="n">camel_case</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
     <span class="c1"># check if no contact sensors were found</span>
-    <span class="k">if</span> <span class="n">num_contact_sensors</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">rigid_body_prims</span><span class="p">:</span>
         <span class="n">descendant_count</span> <span class="o">=</span> <span class="mi">0</span>
         <span class="n">frontier</span> <span class="o">=</span> <span class="p">[</span><span class="n">prim</span><span class="p">]</span>
         <span class="k">while</span> <span class="n">frontier</span><span class="p">:</span>
@@ -2785,7 +2777,7 @@ By The Isaac Lab Project Developers.
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Jul 04, 2026.
+  Last updated on Jul 05, 2026.
   <br/>
 </p>
   </div>

@@ -66,7 +66,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="3.0.0" />
-    <meta name="docbuild:last-update" content="Jul 04, 2026"/>
+    <meta name="docbuild:last-update" content="Jul 05, 2026"/>
   </head>
   
   
@@ -1619,13 +1619,15 @@ to the grid color of the imported ground plane.</p></li>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="isaaclab.terrains.TerrainImporterCfg.physics_material">
-<span class="sig-name descname"><span class="pre">physics_material</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">sim_utils.RigidBodyMaterialCfg</span></em><a class="headerlink" href="#isaaclab.terrains.TerrainImporterCfg.physics_material" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">physics_material</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="isaaclab.sim.spawners.html#isaaclab.sim.spawners.materials.RigidBodyMaterialBaseCfg" title="isaaclab.sim.spawners.materials.RigidBodyMaterialBaseCfg"><span class="pre">materials.RigidBodyMaterialBaseCfg</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="isaaclab.sim.spawners.html#isaaclab.sim.spawners.materials.RigidBodyMaterialFragment" title="isaaclab.sim.spawners.materials.RigidBodyMaterialFragment"><span class="pre">materials.RigidBodyMaterialFragment</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="isaaclab.sim.spawners.html#isaaclab.sim.spawners.materials.RigidBodyMaterialFragment" title="isaaclab.sim.spawners.materials.RigidBodyMaterialFragment"><span class="pre">materials.RigidBodyMaterialFragment</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#isaaclab.terrains.TerrainImporterCfg.physics_material" title="Link to this definition">#</a></dt>
 <dd><p>The physics material of the terrain. Defaults to a default physics material.</p>
 <p>The material is created at the path: <code class="docutils literal notranslate"><span class="pre">{prim_path}/physicsMaterial</span></code>.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>This parameter is used only when the <code class="docutils literal notranslate"><span class="pre">terrain_type</span></code> is “generator” or “plane”.</p>
 </div>
+<p>Accepts a legacy rigid material cfg, a single rigid-material fragment, or a list of
+rigid-material fragments.</p>
 </dd></dl>
 
 <dl class="py attribute">
@@ -5226,7 +5228,8 @@ following steps:</p>
 <li><p><span class="target" id="isaaclab.terrains.utils.create_prim_from_mesh.params.translation"></span><strong>translation</strong><a class="paramlink headerlink reference internal" href="#isaaclab.terrains.utils.create_prim_from_mesh.params.translation">¶</a> – The translation of the terrain. Defaults to None.</p></li>
 <li><p><span class="target" id="isaaclab.terrains.utils.create_prim_from_mesh.params.orientation"></span><strong>orientation</strong><a class="paramlink headerlink reference internal" href="#isaaclab.terrains.utils.create_prim_from_mesh.params.orientation">¶</a> – The orientation of the terrain. Defaults to None.</p></li>
 <li><p><span class="target" id="isaaclab.terrains.utils.create_prim_from_mesh.params.visual_material"></span><strong>visual_material</strong><a class="paramlink headerlink reference internal" href="#isaaclab.terrains.utils.create_prim_from_mesh.params.visual_material">¶</a> – The visual material to apply. Defaults to None.</p></li>
-<li><p><span class="target" id="isaaclab.terrains.utils.create_prim_from_mesh.params.physics_material"></span><strong>physics_material</strong><a class="paramlink headerlink reference internal" href="#isaaclab.terrains.utils.create_prim_from_mesh.params.physics_material">¶</a> – The physics material to apply. Defaults to None.</p></li>
+<li><p><span class="target" id="isaaclab.terrains.utils.create_prim_from_mesh.params.physics_material"></span><strong>physics_material</strong><a class="paramlink headerlink reference internal" href="#isaaclab.terrains.utils.create_prim_from_mesh.params.physics_material">¶</a> – The physics material to apply. Defaults to None. Accepts a legacy rigid
+material cfg, a single rigid-material fragment, or a list of fragments.</p></li>
 </ul>
 </dd>
 </dl>
@@ -5806,7 +5809,7 @@ By The Isaac Lab Project Developers.
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Jul 04, 2026.
+  Last updated on Jul 05, 2026.
   <br/>
 </p>
   </div>

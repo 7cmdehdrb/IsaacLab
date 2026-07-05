@@ -61,7 +61,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="3.0.0" />
-    <meta name="docbuild:last-update" content="Jul 04, 2026"/>
+    <meta name="docbuild:last-update" content="Jul 05, 2026"/>
   </head>
   
   
@@ -690,6 +690,7 @@
 <span class="kn">from</span><span class="w"> </span><span class="nn">pxr</span><span class="w"> </span><span class="kn">import</span> <span class="n">Usd</span>
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">isaaclab.sim</span><span class="w"> </span><span class="kn">import</span> <span class="n">schemas</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">isaaclab.sim.spawners.materials.physics_materials</span><span class="w"> </span><span class="kn">import</span> <span class="n">spawn_physics_material</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">isaaclab.sim.utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">bind_physics_material</span><span class="p">,</span> <span class="n">bind_visual_material</span><span class="p">,</span> <span class="n">clone</span><span class="p">,</span> <span class="n">create_prim</span><span class="p">,</span> <span class="n">get_current_stage</span>
 
 <span class="k">if</span> <span class="n">TYPE_CHECKING</span><span class="p">:</span>
@@ -1011,8 +1012,8 @@
             <span class="n">material_path</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">geom_prim_path</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">cfg</span><span class="o">.</span><span class="n">physics_material_path</span><span class="si">}</span><span class="s2">&quot;</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">material_path</span> <span class="o">=</span> <span class="n">cfg</span><span class="o">.</span><span class="n">physics_material_path</span>
-        <span class="c1"># create material</span>
-        <span class="n">cfg</span><span class="o">.</span><span class="n">physics_material</span><span class="o">.</span><span class="n">func</span><span class="p">(</span><span class="n">material_path</span><span class="p">,</span> <span class="n">cfg</span><span class="o">.</span><span class="n">physics_material</span><span class="p">)</span>
+        <span class="c1"># create material (accepts a legacy material cfg or rigid-body fragment(s))</span>
+        <span class="n">spawn_physics_material</span><span class="p">(</span><span class="n">material_path</span><span class="p">,</span> <span class="n">cfg</span><span class="o">.</span><span class="n">physics_material</span><span class="p">,</span> <span class="n">stage</span><span class="o">=</span><span class="n">stage</span><span class="p">)</span>
         <span class="c1"># apply material</span>
         <span class="n">bind_physics_material</span><span class="p">(</span><span class="n">mesh_prim_path</span><span class="p">,</span> <span class="n">material_path</span><span class="p">,</span> <span class="n">stage</span><span class="o">=</span><span class="n">stage</span><span class="p">)</span>
 
@@ -1081,7 +1082,7 @@ By The Isaac Lab Project Developers.
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Jul 04, 2026.
+  Last updated on Jul 05, 2026.
   <br/>
 </p>
   </div>

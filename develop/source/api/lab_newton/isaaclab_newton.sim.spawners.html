@@ -64,7 +64,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="3.0.0" />
-    <meta name="docbuild:last-update" content="Jul 04, 2026"/>
+    <meta name="docbuild:last-update" content="Jul 05, 2026"/>
   </head>
   
   
@@ -741,6 +741,18 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rigid-materials">Rigid Materials</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab_newton.sim.spawners.materials.NewtonMaterialCfg"><code class="docutils literal notranslate"><span class="pre">NewtonMaterialCfg</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab_newton.sim.spawners.materials.NewtonMaterialCfg.torsional_friction"><code class="docutils literal notranslate"><span class="pre">NewtonMaterialCfg.torsional_friction</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab_newton.sim.spawners.materials.NewtonMaterialCfg.rolling_friction"><code class="docutils literal notranslate"><span class="pre">NewtonMaterialCfg.rolling_friction</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab_newton.sim.spawners.materials.NewtonMaterialCfg.contact_stiffness"><code class="docutils literal notranslate"><span class="pre">NewtonMaterialCfg.contact_stiffness</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab_newton.sim.spawners.materials.NewtonMaterialCfg.contact_damping"><code class="docutils literal notranslate"><span class="pre">NewtonMaterialCfg.contact_damping</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab_newton.sim.spawners.materials.NewtonMaterialCfg.contact_friction_gain"><code class="docutils literal notranslate"><span class="pre">NewtonMaterialCfg.contact_friction_gain</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab_newton.sim.spawners.materials.NewtonMaterialCfg.contact_adhesion"><code class="docutils literal notranslate"><span class="pre">NewtonMaterialCfg.contact_adhesion</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deformable-materials">Deformable Materials</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab_newton.sim.spawners.materials.NewtonDeformableBodyMaterialCfg"><code class="docutils literal notranslate"><span class="pre">NewtonDeformableBodyMaterialCfg</span></code></a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab_newton.sim.spawners.materials.NewtonDeformableBodyMaterialCfg.k_mu"><code class="docutils literal notranslate"><span class="pre">NewtonDeformableBodyMaterialCfg.k_mu</span></code></a></li>
@@ -756,12 +768,12 @@
 </ul>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab_newton.sim.spawners.materials.NewtonSurfaceDeformableBodyMaterialCfg"><code class="docutils literal notranslate"><span class="pre">NewtonSurfaceDeformableBodyMaterialCfg</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab_newton.sim.spawners.materials.NewtonSurfaceDeformableBodyMaterialCfg.density"><code class="docutils literal notranslate"><span class="pre">NewtonSurfaceDeformableBodyMaterialCfg.density</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab_newton.sim.spawners.materials.NewtonSurfaceDeformableBodyMaterialCfg.particle_radius"><code class="docutils literal notranslate"><span class="pre">NewtonSurfaceDeformableBodyMaterialCfg.particle_radius</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab_newton.sim.spawners.materials.NewtonSurfaceDeformableBodyMaterialCfg.tri_ke"><code class="docutils literal notranslate"><span class="pre">NewtonSurfaceDeformableBodyMaterialCfg.tri_ke</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab_newton.sim.spawners.materials.NewtonSurfaceDeformableBodyMaterialCfg.tri_ka"><code class="docutils literal notranslate"><span class="pre">NewtonSurfaceDeformableBodyMaterialCfg.tri_ka</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab_newton.sim.spawners.materials.NewtonSurfaceDeformableBodyMaterialCfg.tri_kd"><code class="docutils literal notranslate"><span class="pre">NewtonSurfaceDeformableBodyMaterialCfg.tri_kd</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab_newton.sim.spawners.materials.NewtonSurfaceDeformableBodyMaterialCfg.edge_ke"><code class="docutils literal notranslate"><span class="pre">NewtonSurfaceDeformableBodyMaterialCfg.edge_ke</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab_newton.sim.spawners.materials.NewtonSurfaceDeformableBodyMaterialCfg.density"><code class="docutils literal notranslate"><span class="pre">NewtonSurfaceDeformableBodyMaterialCfg.density</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab_newton.sim.spawners.materials.NewtonSurfaceDeformableBodyMaterialCfg.particle_radius"><code class="docutils literal notranslate"><span class="pre">NewtonSurfaceDeformableBodyMaterialCfg.particle_radius</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab_newton.sim.spawners.materials.NewtonSurfaceDeformableBodyMaterialCfg.edge_kd"><code class="docutils literal notranslate"><span class="pre">NewtonSurfaceDeformableBodyMaterialCfg.edge_kd</span></code></a></li>
 </ul>
 </li>
@@ -842,18 +854,126 @@
 <p class="rubric">Classes</p>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab_newton.sim.spawners.materials.NewtonDeformableBodyMaterialCfg" title="isaaclab_newton.sim.spawners.materials.NewtonDeformableBodyMaterialCfg"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NewtonDeformableBodyMaterialCfg</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab_newton.sim.spawners.materials.NewtonMaterialCfg" title="isaaclab_newton.sim.spawners.materials.NewtonMaterialCfg"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NewtonMaterialCfg</span></code></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">newton:*</span></code> rigid-body material attributes read by Newton's USD material schema resolver.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab_newton.sim.spawners.materials.NewtonDeformableBodyMaterialCfg" title="isaaclab_newton.sim.spawners.materials.NewtonDeformableBodyMaterialCfg"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NewtonDeformableBodyMaterialCfg</span></code></a></p></td>
 <td><p>Newton-specific physics material parameters for volume deformable bodies.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab_newton.sim.spawners.materials.NewtonDeformableMaterialCfg" title="isaaclab_newton.sim.spawners.materials.NewtonDeformableMaterialCfg"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NewtonDeformableMaterialCfg</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab_newton.sim.spawners.materials.NewtonDeformableMaterialCfg" title="isaaclab_newton.sim.spawners.materials.NewtonDeformableMaterialCfg"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NewtonDeformableMaterialCfg</span></code></a></p></td>
 <td><p>Newton-specific material properties for a deformable body.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab_newton.sim.spawners.materials.NewtonSurfaceDeformableBodyMaterialCfg" title="isaaclab_newton.sim.spawners.materials.NewtonSurfaceDeformableBodyMaterialCfg"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NewtonSurfaceDeformableBodyMaterialCfg</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab_newton.sim.spawners.materials.NewtonSurfaceDeformableBodyMaterialCfg" title="isaaclab_newton.sim.spawners.materials.NewtonSurfaceDeformableBodyMaterialCfg"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NewtonSurfaceDeformableBodyMaterialCfg</span></code></a></p></td>
 <td><p>Newton-specific physics material parameters for surface deformable bodies.</p></td>
 </tr>
 </tbody>
 </table>
 </div>
+<section id="rigid-materials">
+<h2>Rigid Materials<a class="headerlink" href="#rigid-materials" title="Link to this heading">#</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="isaaclab_newton.sim.spawners.materials.NewtonMaterialCfg">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">isaaclab_newton.sim.spawners.materials.</span></span><span class="sig-name descname"><span class="pre">NewtonMaterialCfg</span></span><a class="reference internal" href="../../../_modules/isaaclab_newton/sim/spawners/materials/physics_materials_cfg.html#NewtonMaterialCfg"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#isaaclab_newton.sim.spawners.materials.NewtonMaterialCfg" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="../lab/isaaclab.sim.spawners.html#isaaclab.sim.spawners.materials.RigidBodyMaterialFragment" title="isaaclab.sim.spawners.materials.physics_materials_cfg.RigidBodyMaterialFragment"><code class="xref py py-class docutils literal notranslate"><span class="pre">RigidBodyMaterialFragment</span></code></a></p>
+<p><code class="docutils literal notranslate"><span class="pre">newton:*</span></code> rigid-body material attributes read by Newton’s USD material schema resolver.</p>
+<p>Single-namespace fragment (see
+<a class="reference internal" href="../lab/isaaclab.sim.spawners.html#isaaclab.sim.spawners.materials.RigidBodyMaterialFragment" title="isaaclab.sim.spawners.materials.RigidBodyMaterialFragment"><code class="xref py py-class docutils literal notranslate"><span class="pre">RigidBodyMaterialFragment</span></code></a>) for the Newton-only
+friction knobs (torsional and rolling friction) and the per-material contact model (contact
+stiffness/damping, friction gain, adhesion) that replaces the deprecated per-shape
+<code class="docutils literal notranslate"><span class="pre">ke</span></code>/<code class="docutils literal notranslate"><span class="pre">kd</span></code>/<code class="docutils literal notranslate"><span class="pre">kf</span></code>/<code class="docutils literal notranslate"><span class="pre">ka</span></code> parameters. The <code class="docutils literal notranslate"><span class="pre">NewtonMaterialAPI</span></code> schema is applied (and the
+<code class="docutils literal notranslate"><span class="pre">newton:*</span></code> attributes authored) by the generic <code class="xref py py-func docutils literal notranslate"><span class="pre">apply_namespaced()</span></code>
+writer. <code class="docutils literal notranslate"><span class="pre">None</span></code> fields are left unchanged.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The generated <code class="docutils literal notranslate"><span class="pre">NewtonMaterialAPI</span></code> USD schema currently only declares the two friction
+attributes; the four contact attributes are still authored as raw <code class="docutils literal notranslate"><span class="pre">newton:*</span></code> USD
+attributes and are read directly by Newton’s schema resolver.</p>
+</div>
+<p>Composes with other rigid-body material fragments (e.g.
+<a class="reference internal" href="../lab/isaaclab.sim.spawners.html#isaaclab.sim.spawners.materials.UsdPhysicsRigidBodyMaterialCfg" title="isaaclab.sim.spawners.materials.UsdPhysicsRigidBodyMaterialCfg"><code class="xref py py-class docutils literal notranslate"><span class="pre">UsdPhysicsRigidBodyMaterialCfg</span></code></a>) in the same fragment
+list passed to
+<a class="reference internal" href="../lab/isaaclab.sim.spawners.html#isaaclab.sim.spawners.materials.spawn_rigid_body_material_from_fragments" title="isaaclab.sim.spawners.materials.spawn_rigid_body_material_from_fragments"><code class="xref py py-func docutils literal notranslate"><span class="pre">spawn_rigid_body_material_from_fragments()</span></code></a>. For the
+legacy (non-fragment) equivalent, see
+<a class="reference internal" href="isaaclab_newton.sim.schemas.html#isaaclab_newton.sim.schemas.NewtonMaterialPropertiesCfg" title="isaaclab_newton.sim.schemas.NewtonMaterialPropertiesCfg"><code class="xref py py-class docutils literal notranslate"><span class="pre">NewtonMaterialPropertiesCfg</span></code></a>.</p>
+<p><strong>Attributes:</strong></p>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab_newton.sim.spawners.materials.NewtonMaterialCfg.torsional_friction" title="isaaclab_newton.sim.spawners.materials.NewtonMaterialCfg.torsional_friction"><code class="xref py py-obj docutils literal notranslate"><span class="pre">torsional_friction</span></code></a></p></td>
+<td><p>Torsional friction coefficient (resistance to spinning at a contact point) [dimensionless].</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab_newton.sim.spawners.materials.NewtonMaterialCfg.rolling_friction" title="isaaclab_newton.sim.spawners.materials.NewtonMaterialCfg.rolling_friction"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rolling_friction</span></code></a></p></td>
+<td><p>Rolling friction coefficient (resistance to rolling motion) [dimensionless].</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab_newton.sim.spawners.materials.NewtonMaterialCfg.contact_stiffness" title="isaaclab_newton.sim.spawners.materials.NewtonMaterialCfg.contact_stiffness"><code class="xref py py-obj docutils literal notranslate"><span class="pre">contact_stiffness</span></code></a></p></td>
+<td><p>Contact normal-force stiffness [N/m].</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab_newton.sim.spawners.materials.NewtonMaterialCfg.contact_damping" title="isaaclab_newton.sim.spawners.materials.NewtonMaterialCfg.contact_damping"><code class="xref py py-obj docutils literal notranslate"><span class="pre">contact_damping</span></code></a></p></td>
+<td><p>Contact normal-force damping coefficient [N·s/m].</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab_newton.sim.spawners.materials.NewtonMaterialCfg.contact_friction_gain" title="isaaclab_newton.sim.spawners.materials.NewtonMaterialCfg.contact_friction_gain"><code class="xref py py-obj docutils literal notranslate"><span class="pre">contact_friction_gain</span></code></a></p></td>
+<td><p>Friction-force stiffness gain used by the tangential (friction) contact response [N·s/m].</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab_newton.sim.spawners.materials.NewtonMaterialCfg.contact_adhesion" title="isaaclab_newton.sim.spawners.materials.NewtonMaterialCfg.contact_adhesion"><code class="xref py py-obj docutils literal notranslate"><span class="pre">contact_adhesion</span></code></a></p></td>
+<td><p>shapes closer than this threshold experience an attractive (adhesive) force [m].</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="isaaclab_newton.sim.spawners.materials.NewtonMaterialCfg.torsional_friction">
+<span class="sig-name descname"><span class="pre">torsional_friction</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><a class="headerlink" href="#isaaclab_newton.sim.spawners.materials.NewtonMaterialCfg.torsional_friction" title="Link to this definition">#</a></dt>
+<dd><p>Torsional friction coefficient (resistance to spinning at a contact point) [dimensionless].</p>
+<p>Writes <code class="docutils literal notranslate"><span class="pre">newton:torsionalFriction</span></code>. Range: [0, inf).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="isaaclab_newton.sim.spawners.materials.NewtonMaterialCfg.rolling_friction">
+<span class="sig-name descname"><span class="pre">rolling_friction</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><a class="headerlink" href="#isaaclab_newton.sim.spawners.materials.NewtonMaterialCfg.rolling_friction" title="Link to this definition">#</a></dt>
+<dd><p>Rolling friction coefficient (resistance to rolling motion) [dimensionless].</p>
+<p>Writes <code class="docutils literal notranslate"><span class="pre">newton:rollingFriction</span></code>. Range: [0, inf).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="isaaclab_newton.sim.spawners.materials.NewtonMaterialCfg.contact_stiffness">
+<span class="sig-name descname"><span class="pre">contact_stiffness</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><a class="headerlink" href="#isaaclab_newton.sim.spawners.materials.NewtonMaterialCfg.contact_stiffness" title="Link to this definition">#</a></dt>
+<dd><p>Contact normal-force stiffness [N/m].</p>
+<p>Writes <code class="docutils literal notranslate"><span class="pre">newton:contactStiffness</span></code>. Replaces the deprecated per-shape <code class="docutils literal notranslate"><span class="pre">ke</span></code> contact parameter;
+used by the SemiImplicit, Featherstone, MuJoCo, and VBD solvers.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="isaaclab_newton.sim.spawners.materials.NewtonMaterialCfg.contact_damping">
+<span class="sig-name descname"><span class="pre">contact_damping</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><a class="headerlink" href="#isaaclab_newton.sim.spawners.materials.NewtonMaterialCfg.contact_damping" title="Link to this definition">#</a></dt>
+<dd><p>Contact normal-force damping coefficient [N·s/m].</p>
+<p>Writes <code class="docutils literal notranslate"><span class="pre">newton:contactDamping</span></code>. Replaces the deprecated per-shape <code class="docutils literal notranslate"><span class="pre">kd</span></code> contact parameter;
+used by the SemiImplicit, Featherstone, MuJoCo, and VBD solvers.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="isaaclab_newton.sim.spawners.materials.NewtonMaterialCfg.contact_friction_gain">
+<span class="sig-name descname"><span class="pre">contact_friction_gain</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><a class="headerlink" href="#isaaclab_newton.sim.spawners.materials.NewtonMaterialCfg.contact_friction_gain" title="Link to this definition">#</a></dt>
+<dd><p>Friction-force stiffness gain used by the tangential (friction) contact response [N·s/m].</p>
+<p>Writes <code class="docutils literal notranslate"><span class="pre">newton:contactFrictionGain</span></code>. Replaces the deprecated per-shape <code class="docutils literal notranslate"><span class="pre">kf</span></code> contact
+parameter; used by the SemiImplicit and Featherstone solvers.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="isaaclab_newton.sim.spawners.materials.NewtonMaterialCfg.contact_adhesion">
+<span class="sig-name descname"><span class="pre">contact_adhesion</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><a class="headerlink" href="#isaaclab_newton.sim.spawners.materials.NewtonMaterialCfg.contact_adhesion" title="Link to this definition">#</a></dt>
+<dd><p>shapes closer than this threshold experience an attractive
+(adhesive) force [m].</p>
+<p>Writes <code class="docutils literal notranslate"><span class="pre">newton:contactAdhesion</span></code>. Replaces the deprecated per-shape <code class="docutils literal notranslate"><span class="pre">ka</span></code> contact parameter;
+used by the SemiImplicit and Featherstone solvers.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Contact adhesion distance</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
 <section id="deformable-materials">
 <h2>Deformable Materials<a class="headerlink" href="#deformable-materials" title="Link to this heading">#</a></h2>
 <p>Newton provides the backend-specific deformable material cfgs. Deformable material spawning is unified in
@@ -956,12 +1076,6 @@
 <p><strong>Attributes:</strong></p>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab_newton.sim.spawners.materials.NewtonSurfaceDeformableBodyMaterialCfg.density" title="isaaclab_newton.sim.spawners.materials.NewtonSurfaceDeformableBodyMaterialCfg.density"><code class="xref py py-obj docutils literal notranslate"><span class="pre">density</span></code></a></p></td>
-<td><p>The material density [kg/m^3].</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab_newton.sim.spawners.materials.NewtonSurfaceDeformableBodyMaterialCfg.particle_radius" title="isaaclab_newton.sim.spawners.materials.NewtonSurfaceDeformableBodyMaterialCfg.particle_radius"><code class="xref py py-obj docutils literal notranslate"><span class="pre">particle_radius</span></code></a></p></td>
-<td><p>Particle radius [m] used by the Newton backend.</p></td>
-</tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab_newton.sim.spawners.materials.NewtonSurfaceDeformableBodyMaterialCfg.tri_ke" title="isaaclab_newton.sim.spawners.materials.NewtonSurfaceDeformableBodyMaterialCfg.tri_ke"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tri_ke</span></code></a></p></td>
 <td><p>Triangle area-preserving stiffness [Pa].</p></td>
 </tr>
@@ -974,24 +1088,18 @@
 <tr class="row-even"><td><p><a class="reference internal" href="#isaaclab_newton.sim.spawners.materials.NewtonSurfaceDeformableBodyMaterialCfg.edge_ke" title="isaaclab_newton.sim.spawners.materials.NewtonSurfaceDeformableBodyMaterialCfg.edge_ke"><code class="xref py py-obj docutils literal notranslate"><span class="pre">edge_ke</span></code></a></p></td>
 <td><p>Bending stiffness [N*m].</p></td>
 </tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab_newton.sim.spawners.materials.NewtonSurfaceDeformableBodyMaterialCfg.density" title="isaaclab_newton.sim.spawners.materials.NewtonSurfaceDeformableBodyMaterialCfg.density"><code class="xref py py-obj docutils literal notranslate"><span class="pre">density</span></code></a></p></td>
+<td><p>The material density [kg/m^3].</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab_newton.sim.spawners.materials.NewtonSurfaceDeformableBodyMaterialCfg.particle_radius" title="isaaclab_newton.sim.spawners.materials.NewtonSurfaceDeformableBodyMaterialCfg.particle_radius"><code class="xref py py-obj docutils literal notranslate"><span class="pre">particle_radius</span></code></a></p></td>
+<td><p>Particle radius [m] used by the Newton backend.</p></td>
+</tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab_newton.sim.spawners.materials.NewtonSurfaceDeformableBodyMaterialCfg.edge_kd" title="isaaclab_newton.sim.spawners.materials.NewtonSurfaceDeformableBodyMaterialCfg.edge_kd"><code class="xref py py-obj docutils literal notranslate"><span class="pre">edge_kd</span></code></a></p></td>
 <td><p>Bending damping [N*m*s].</p></td>
 </tr>
 </tbody>
 </table>
 </div>
-<dl class="py attribute">
-<dt class="sig sig-object py" id="isaaclab_newton.sim.spawners.materials.NewtonSurfaceDeformableBodyMaterialCfg.density">
-<span class="sig-name descname"><span class="pre">density</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></em><a class="headerlink" href="#isaaclab_newton.sim.spawners.materials.NewtonSurfaceDeformableBodyMaterialCfg.density" title="Link to this definition">#</a></dt>
-<dd><p>The material density [kg/m^3]. Defaults to 1.0 kg/m^3.</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="isaaclab_newton.sim.spawners.materials.NewtonSurfaceDeformableBodyMaterialCfg.particle_radius">
-<span class="sig-name descname"><span class="pre">particle_radius</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></em><a class="headerlink" href="#isaaclab_newton.sim.spawners.materials.NewtonSurfaceDeformableBodyMaterialCfg.particle_radius" title="Link to this definition">#</a></dt>
-<dd><p>Particle radius [m] used by the Newton backend.</p>
-</dd></dl>
-
 <dl class="py attribute">
 <dt class="sig sig-object py" id="isaaclab_newton.sim.spawners.materials.NewtonSurfaceDeformableBodyMaterialCfg.tri_ke">
 <span class="sig-name descname"><span class="pre">tri_ke</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></em><a class="headerlink" href="#isaaclab_newton.sim.spawners.materials.NewtonSurfaceDeformableBodyMaterialCfg.tri_ke" title="Link to this definition">#</a></dt>
@@ -1014,6 +1122,18 @@
 <dt class="sig sig-object py" id="isaaclab_newton.sim.spawners.materials.NewtonSurfaceDeformableBodyMaterialCfg.edge_ke">
 <span class="sig-name descname"><span class="pre">edge_ke</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></em><a class="headerlink" href="#isaaclab_newton.sim.spawners.materials.NewtonSurfaceDeformableBodyMaterialCfg.edge_ke" title="Link to this definition">#</a></dt>
 <dd><p>Bending stiffness [N*m]. Used by Newton backend for cloth meshes.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="isaaclab_newton.sim.spawners.materials.NewtonSurfaceDeformableBodyMaterialCfg.density">
+<span class="sig-name descname"><span class="pre">density</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></em><a class="headerlink" href="#isaaclab_newton.sim.spawners.materials.NewtonSurfaceDeformableBodyMaterialCfg.density" title="Link to this definition">#</a></dt>
+<dd><p>The material density [kg/m^3]. Defaults to 1.0 kg/m^3.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="isaaclab_newton.sim.spawners.materials.NewtonSurfaceDeformableBodyMaterialCfg.particle_radius">
+<span class="sig-name descname"><span class="pre">particle_radius</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></em><a class="headerlink" href="#isaaclab_newton.sim.spawners.materials.NewtonSurfaceDeformableBodyMaterialCfg.particle_radius" title="Link to this definition">#</a></dt>
+<dd><p>Particle radius [m] used by the Newton backend.</p>
 </dd></dl>
 
 <dl class="py attribute">
@@ -1584,6 +1704,18 @@ particles are added to the model builder.</p>
   </div>
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rigid-materials">Rigid Materials</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab_newton.sim.spawners.materials.NewtonMaterialCfg"><code class="docutils literal notranslate"><span class="pre">NewtonMaterialCfg</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab_newton.sim.spawners.materials.NewtonMaterialCfg.torsional_friction"><code class="docutils literal notranslate"><span class="pre">NewtonMaterialCfg.torsional_friction</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab_newton.sim.spawners.materials.NewtonMaterialCfg.rolling_friction"><code class="docutils literal notranslate"><span class="pre">NewtonMaterialCfg.rolling_friction</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab_newton.sim.spawners.materials.NewtonMaterialCfg.contact_stiffness"><code class="docutils literal notranslate"><span class="pre">NewtonMaterialCfg.contact_stiffness</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab_newton.sim.spawners.materials.NewtonMaterialCfg.contact_damping"><code class="docutils literal notranslate"><span class="pre">NewtonMaterialCfg.contact_damping</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab_newton.sim.spawners.materials.NewtonMaterialCfg.contact_friction_gain"><code class="docutils literal notranslate"><span class="pre">NewtonMaterialCfg.contact_friction_gain</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab_newton.sim.spawners.materials.NewtonMaterialCfg.contact_adhesion"><code class="docutils literal notranslate"><span class="pre">NewtonMaterialCfg.contact_adhesion</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deformable-materials">Deformable Materials</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab_newton.sim.spawners.materials.NewtonDeformableBodyMaterialCfg"><code class="docutils literal notranslate"><span class="pre">NewtonDeformableBodyMaterialCfg</span></code></a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab_newton.sim.spawners.materials.NewtonDeformableBodyMaterialCfg.k_mu"><code class="docutils literal notranslate"><span class="pre">NewtonDeformableBodyMaterialCfg.k_mu</span></code></a></li>
@@ -1599,12 +1731,12 @@ particles are added to the model builder.</p>
 </ul>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab_newton.sim.spawners.materials.NewtonSurfaceDeformableBodyMaterialCfg"><code class="docutils literal notranslate"><span class="pre">NewtonSurfaceDeformableBodyMaterialCfg</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab_newton.sim.spawners.materials.NewtonSurfaceDeformableBodyMaterialCfg.density"><code class="docutils literal notranslate"><span class="pre">NewtonSurfaceDeformableBodyMaterialCfg.density</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab_newton.sim.spawners.materials.NewtonSurfaceDeformableBodyMaterialCfg.particle_radius"><code class="docutils literal notranslate"><span class="pre">NewtonSurfaceDeformableBodyMaterialCfg.particle_radius</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab_newton.sim.spawners.materials.NewtonSurfaceDeformableBodyMaterialCfg.tri_ke"><code class="docutils literal notranslate"><span class="pre">NewtonSurfaceDeformableBodyMaterialCfg.tri_ke</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab_newton.sim.spawners.materials.NewtonSurfaceDeformableBodyMaterialCfg.tri_ka"><code class="docutils literal notranslate"><span class="pre">NewtonSurfaceDeformableBodyMaterialCfg.tri_ka</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab_newton.sim.spawners.materials.NewtonSurfaceDeformableBodyMaterialCfg.tri_kd"><code class="docutils literal notranslate"><span class="pre">NewtonSurfaceDeformableBodyMaterialCfg.tri_kd</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab_newton.sim.spawners.materials.NewtonSurfaceDeformableBodyMaterialCfg.edge_ke"><code class="docutils literal notranslate"><span class="pre">NewtonSurfaceDeformableBodyMaterialCfg.edge_ke</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab_newton.sim.spawners.materials.NewtonSurfaceDeformableBodyMaterialCfg.density"><code class="docutils literal notranslate"><span class="pre">NewtonSurfaceDeformableBodyMaterialCfg.density</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab_newton.sim.spawners.materials.NewtonSurfaceDeformableBodyMaterialCfg.particle_radius"><code class="docutils literal notranslate"><span class="pre">NewtonSurfaceDeformableBodyMaterialCfg.particle_radius</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab_newton.sim.spawners.materials.NewtonSurfaceDeformableBodyMaterialCfg.edge_kd"><code class="docutils literal notranslate"><span class="pre">NewtonSurfaceDeformableBodyMaterialCfg.edge_kd</span></code></a></li>
 </ul>
 </li>
@@ -1701,7 +1833,7 @@ By The Isaac Lab Project Developers.
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Jul 04, 2026.
+  Last updated on Jul 05, 2026.
   <br/>
 </p>
   </div>

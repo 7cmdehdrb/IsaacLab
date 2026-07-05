@@ -61,7 +61,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="3.0.0" />
-    <meta name="docbuild:last-update" content="Jul 04, 2026"/>
+    <meta name="docbuild:last-update" content="Jul 05, 2026"/>
   </head>
   
   
@@ -1205,6 +1205,35 @@
 
 <span class="sd">    Written to ``newton:rollingFriction`` via ``NewtonMaterialAPI``.</span>
 <span class="sd">    Range: [0, inf).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">contact_stiffness</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Contact normal-force stiffness [N/m].</span>
+
+<span class="sd">    Writes ``newton:contactStiffness``. Replaces the deprecated per-shape ``ke`` contact parameter;</span>
+<span class="sd">    used by the SemiImplicit, Featherstone, MuJoCo, and VBD solvers.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">contact_damping</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Contact normal-force damping coefficient [N·s/m].</span>
+
+<span class="sd">    Writes ``newton:contactDamping``. Replaces the deprecated per-shape ``kd`` contact parameter;</span>
+<span class="sd">    used by the SemiImplicit, Featherstone, MuJoCo, and VBD solvers.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">contact_friction_gain</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Friction-force stiffness gain used by the tangential (friction) contact response [N·s/m].</span>
+
+<span class="sd">    Writes ``newton:contactFrictionGain``. Replaces the deprecated per-shape ``kf`` contact</span>
+<span class="sd">    parameter; used by the SemiImplicit and Featherstone solvers.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">contact_adhesion</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Contact adhesion distance: shapes closer than this threshold experience an attractive</span>
+<span class="sd">    (adhesive) force [m].</span>
+
+<span class="sd">    Writes ``newton:contactAdhesion``. Replaces the deprecated per-shape ``ka`` contact parameter;</span>
+<span class="sd">    used by the SemiImplicit and Featherstone solvers.</span>
 <span class="sd">    &quot;&quot;&quot;</span></div>
 
 
@@ -1311,7 +1340,7 @@ By The Isaac Lab Project Developers.
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Jul 04, 2026.
+  Last updated on Jul 05, 2026.
   <br/>
 </p>
   </div>

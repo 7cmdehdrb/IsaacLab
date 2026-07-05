@@ -61,7 +61,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="3.0.0" />
-    <meta name="docbuild:last-update" content="Jul 04, 2026"/>
+    <meta name="docbuild:last-update" content="Jul 05, 2026"/>
   </head>
   
   
@@ -692,6 +692,7 @@
 <span class="kn">from</span><span class="w"> </span><span class="nn">isaaclab.sim.spawners.materials.physics_materials_cfg</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
     <span class="n">DeformableBodyMaterialBaseCfg</span><span class="p">,</span>
     <span class="n">RigidBodyMaterialBaseCfg</span><span class="p">,</span>
+    <span class="n">RigidBodyMaterialFragment</span><span class="p">,</span>
     <span class="n">SurfaceDeformableBodyMaterialBaseCfg</span><span class="p">,</span>
 <span class="p">)</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">isaaclab.utils.configclass</span><span class="w"> </span><span class="kn">import</span> <span class="n">configclass</span>
@@ -843,18 +844,21 @@
 
 
 
+<div class="viewcode-block" id="PhysxRigidBodyMaterialCfg">
+<a class="viewcode-back" href="../../../../../source/api/lab_physx/isaaclab_physx.sim.spawners.html#isaaclab_physx.sim.spawners.materials.PhysxRigidBodyMaterialCfg">[docs]</a>
 <span class="nd">@configclass</span>
 <span class="k">class</span><span class="w"> </span><span class="nc">PhysxRigidBodyMaterialCfg</span><span class="p">(</span><span class="n">RigidBodyMaterialBaseCfg</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;PhysX-specific physics-material parameters for rigid bodies.</span>
 
 <span class="sd">    Extends :class:`~isaaclab.sim.spawners.materials.RigidBodyMaterialBaseCfg` with the</span>
 <span class="sd">    `PhysxMaterialAPI`_ schema fields: compliant-contact spring (stiffness/damping) and the</span>
-<span class="sd">    friction/restitution combine-mode tokens. None of these fields have a Newton consumer</span>
-<span class="sd">    today; they are PhysX-engine-only knobs.</span>
+<span class="sd">    friction/restitution combine-mode tokens. Newton&#39;s USD importer also recognizes stiffness and</span>
+<span class="sd">    damping as fallback contact parameters; the acceleration-spring flag and combine modes are</span>
+<span class="sd">    PhysX-only.</span>
 
 <span class="sd">    See :meth:`~isaaclab.sim.spawners.materials.spawn_rigid_body_material` for more information.</span>
 
-<span class="sd">    .. _PhysxMaterialAPI: https://docs.omniverse.nvidia.com/kit/docs/omni_usd_schema_physics/104.2/class_physx_schema_physx_material_a_p_i.html</span>
+<span class="sd">    .. _PhysxMaterialAPI: https://docs.omniverse.nvidia.com/kit/docs/omni_usd_schema_physics/latest/class_physx_schema_physx_material_a_p_i.html</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="c1"># -- Class metadata (not dataclass fields) --</span>
@@ -867,14 +871,23 @@
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Spring stiffness for a compliant contact model using implicit springs.</span>
 
 <span class="sd">    A higher stiffness results in behavior closer to a rigid contact. The compliant contact model</span>
-<span class="sd">    is only enabled if the stiffness is larger than 0. PhysX-only; not consumed by Newton.</span>
+<span class="sd">    is only enabled if the stiffness is larger than 0. Newton&#39;s USD importer also recognizes this</span>
+<span class="sd">    attribute as a fallback contact-stiffness value.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">compliant_contact_damping</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Damping coefficient for a compliant contact model using implicit springs.</span>
 
 <span class="sd">    Irrelevant if compliant contacts are disabled when :attr:`compliant_contact_stiffness` is set</span>
-<span class="sd">    to zero and rigid contacts are active. PhysX-only; not consumed by Newton.</span>
+<span class="sd">    to zero and rigid contacts are active. Newton&#39;s USD importer also recognizes this attribute as</span>
+<span class="sd">    a fallback contact-damping value.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">compliant_contact_acceleration_spring</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Whether the compliant contact spring is formulated in acceleration (rather than force) units.</span>
+
+<span class="sd">    Only relevant when compliant contacts are enabled (:attr:`compliant_contact_stiffness` is</span>
+<span class="sd">    non-zero). PhysX-only; not consumed by Newton.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">friction_combine_mode</span><span class="p">:</span> <span class="n">Literal</span><span class="p">[</span><span class="s2">&quot;average&quot;</span><span class="p">,</span> <span class="s2">&quot;min&quot;</span><span class="p">,</span> <span class="s2">&quot;multiply&quot;</span><span class="p">,</span> <span class="s2">&quot;max&quot;</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
@@ -896,6 +909,77 @@
 <span class="sd">        the higher priority will be used. The priority order is provided `here</span>
 <span class="sd">        &lt;https://nvidia-omniverse.github.io/PhysX/physx/5.4.1/_api_build/structPxCombineMode.html&gt;`__.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">damping_combine_mode</span><span class="p">:</span> <span class="n">Literal</span><span class="p">[</span><span class="s2">&quot;average&quot;</span><span class="p">,</span> <span class="s2">&quot;min&quot;</span><span class="p">,</span> <span class="s2">&quot;multiply&quot;</span><span class="p">,</span> <span class="s2">&quot;max&quot;</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Determines the way the (compliant-contact) damping coefficient is combined during collisions.</span>
+
+<span class="sd">    .. attention::</span>
+
+<span class="sd">        When two physics materials with different combine modes collide, the combine mode with</span>
+<span class="sd">        the higher priority will be used. The priority order is provided `here</span>
+<span class="sd">        &lt;https://nvidia-omniverse.github.io/PhysX/physx/5.4.1/_api_build/structPxCombineMode.html&gt;`__.</span>
+<span class="sd">    &quot;&quot;&quot;</span></div>
+
+
+
+<div class="viewcode-block" id="PhysxMaterialCfg">
+<a class="viewcode-back" href="../../../../../source/api/lab_physx/isaaclab_physx.sim.spawners.html#isaaclab_physx.sim.spawners.materials.PhysxMaterialCfg">[docs]</a>
+<span class="nd">@configclass</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">PhysxMaterialCfg</span><span class="p">(</span><span class="n">RigidBodyMaterialFragment</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;``physxMaterial:*`` rigid-body material attributes from `PhysxMaterialAPI`_.</span>
+
+<span class="sd">    Single-namespace fragment (see :class:`~isaaclab.sim.spawners.materials.RigidBodyMaterialFragment`)</span>
+<span class="sd">    for the PhysX material namespace: compliant-contact spring (stiffness/damping), which Newton&#39;s</span>
+<span class="sd">    USD importer can read as fallback contact parameters, plus PhysX-only acceleration-spring and</span>
+<span class="sd">    combine-mode knobs. The ``PhysxMaterialAPI`` schema is applied (and the ``physxMaterial:*``</span>
+<span class="sd">    attributes authored) by the generic :func:`~isaaclab.sim.schemas.apply_namespaced` writer.</span>
+<span class="sd">    ``None`` fields are left unchanged.</span>
+
+<span class="sd">    .. _PhysxMaterialAPI: https://docs.omniverse.nvidia.com/kit/docs/omni_usd_schema_physics/latest/class_physx_schema_physx_material_a_p_i.html</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">_usd_namespace</span><span class="p">:</span> <span class="n">ClassVar</span><span class="p">[</span><span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;physxMaterial&quot;</span>
+    <span class="n">_usd_applied_schema</span><span class="p">:</span> <span class="n">ClassVar</span><span class="p">[</span><span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;PhysxMaterialAPI&quot;</span>
+
+    <span class="n">compliant_contact_stiffness</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Spring stiffness for a compliant contact model using implicit springs.</span>
+
+<span class="sd">    A higher stiffness results in behavior closer to a rigid contact. The compliant contact model is</span>
+<span class="sd">    only enabled if the stiffness is larger than 0. Writes ``physxMaterial:compliantContactStiffness``.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">compliant_contact_damping</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Damping coefficient for a compliant contact model using implicit springs.</span>
+
+<span class="sd">    Irrelevant if compliant contacts are disabled (``compliant_contact_stiffness`` is zero). Writes</span>
+<span class="sd">    ``physxMaterial:compliantContactDamping``.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">compliant_contact_acceleration_spring</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Whether the compliant contact spring is formulated in acceleration (rather than force) units.</span>
+
+<span class="sd">    Writes ``physxMaterial:compliantContactAccelerationSpring``. Only relevant when compliant</span>
+<span class="sd">    contacts are enabled (:attr:`compliant_contact_stiffness` is non-zero).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">friction_combine_mode</span><span class="p">:</span> <span class="n">Literal</span><span class="p">[</span><span class="s2">&quot;average&quot;</span><span class="p">,</span> <span class="s2">&quot;min&quot;</span><span class="p">,</span> <span class="s2">&quot;multiply&quot;</span><span class="p">,</span> <span class="s2">&quot;max&quot;</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;How friction is combined during collisions. Writes ``physxMaterial:frictionCombineMode``.&quot;&quot;&quot;</span>
+
+    <span class="n">restitution_combine_mode</span><span class="p">:</span> <span class="n">Literal</span><span class="p">[</span><span class="s2">&quot;average&quot;</span><span class="p">,</span> <span class="s2">&quot;min&quot;</span><span class="p">,</span> <span class="s2">&quot;multiply&quot;</span><span class="p">,</span> <span class="s2">&quot;max&quot;</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;How restitution is combined during collisions. Writes ``physxMaterial:restitutionCombineMode``.&quot;&quot;&quot;</span>
+
+    <span class="n">damping_combine_mode</span><span class="p">:</span> <span class="n">Literal</span><span class="p">[</span><span class="s2">&quot;average&quot;</span><span class="p">,</span> <span class="s2">&quot;min&quot;</span><span class="p">,</span> <span class="s2">&quot;multiply&quot;</span><span class="p">,</span> <span class="s2">&quot;max&quot;</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;How the (compliant-contact) damping coefficient is combined during collisions.</span>
+
+<span class="sd">    Writes ``physxMaterial:dampingCombineMode``.</span>
+
+<span class="sd">    .. attention::</span>
+
+<span class="sd">        When two physics materials with different combine modes collide, the combine mode with</span>
+<span class="sd">        the higher priority will be used. The priority order is provided `here</span>
+<span class="sd">        &lt;https://nvidia-omniverse.github.io/PhysX/physx/5.4.1/_api_build/structPxCombineMode.html&gt;`__.</span>
+<span class="sd">    &quot;&quot;&quot;</span></div>
+
 
 
 <div class="viewcode-block" id="RigidBodyMaterialCfg">
@@ -971,7 +1055,7 @@ By The Isaac Lab Project Developers.
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Jul 04, 2026.
+  Last updated on Jul 05, 2026.
   <br/>
 </p>
   </div>
