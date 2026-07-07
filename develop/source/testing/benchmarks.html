@@ -64,7 +64,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="3.0.0" />
-    <meta name="docbuild:last-update" content="Jul 06, 2026"/>
+    <meta name="docbuild:last-update" content="Jul 07, 2026"/>
   </head>
   
   
@@ -765,11 +765,12 @@
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#test-phases">Test Phases</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#output-backends">Output Backends</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#json-backend">JSON Backend</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#osmo-backend">Osmo Backend</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#omniperf-backend">OmniPerf Backend</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-backend">Summary Backend</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#output-formatters">Output Formatters</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#json-formatter">JSON Formatter</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#osmo-formatter">Osmo Formatter</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#omniperf-formatter">OmniPerf Formatter</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#schema-formatter">Schema Formatter</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-formatter">Summary Formatter</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#benchmarkmonitor">BenchmarkMonitor</a></li>
@@ -792,7 +793,7 @@
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#import-errors">Import Errors</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#missing-gpu-metrics">Missing GPU Metrics</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#empty-output-files">Empty Output Files</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#backend-not-recognized">Backend Not Recognized</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#formatter-not-recognized">Formatter Not Recognized</a></li>
 </ul>
 </li>
 </ul>
@@ -811,7 +812,7 @@
 <p>Isaac Lab provides a comprehensive benchmarking framework for measuring the performance
 of simulations, training workflows, and system resources. The framework is designed to
 work without depending on Isaac Sim’s benchmark services, enabling standalone benchmarking
-with pluggable output backends.</p>
+with pluggable output formatters.</p>
 <section id="overview">
 <h2>Overview<a class="headerlink" href="#overview" title="Link to this heading">#</a></h2>
 <p>The benchmarking framework consists of several key components:</p>
@@ -823,9 +824,9 @@ with pluggable output backends.</p>
     ┌───────────┼───────────┐
     │           │           │
     ▼           ▼           ▼
-┌───────┐  ┌─────────┐  ┌──────────┐
-│Phases │  │Recorders│  │ Backends │
-└───────┘  └─────────┘  └──────────┘
+┌───────┐  ┌─────────┐  ┌────────────┐
+│Phases │  │Recorders│  │ Formatters │
+└───────┘  └─────────┘  └────────────┘
 </pre></div>
 </div>
 <p><strong>Key Components:</strong></p>
@@ -835,7 +836,7 @@ with pluggable output backends.</p>
 <li><p><strong>Metadata</strong>: Data classes for recording context (hardware, versions, parameters)</p></li>
 <li><p><strong>TestPhase</strong>: Container for organizing measurements into logical groups</p></li>
 <li><p><strong>Recorders</strong>: System information collectors (CPU, GPU, memory, versions)</p></li>
-<li><p><strong>Backends</strong>: Output formatters (JSON, Osmo, OmniPerf, Summary)</p></li>
+<li><p><strong>Formatters</strong>: Output formatters (JSON, Osmo, OmniPerf, Summary, Schema)</p></li>
 </ul>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
@@ -857,7 +858,7 @@ performance using mock interfaces (without running full simulations), see
 <span class="c1"># Initialize benchmark</span>
 <span class="n">benchmark</span> <span class="o">=</span> <span class="n">BaseIsaacLabBenchmark</span><span class="p">(</span>
     <span class="n">benchmark_name</span><span class="o">=</span><span class="s2">&quot;MyBenchmark&quot;</span><span class="p">,</span>
-    <span class="n">backend_type</span><span class="o">=</span><span class="s2">&quot;json&quot;</span><span class="p">,</span>
+    <span class="n">formatter_type</span><span class="o">=</span><span class="s2">&quot;json&quot;</span><span class="p">,</span>
     <span class="n">output_path</span><span class="o">=</span><span class="s2">&quot;./results&quot;</span><span class="p">,</span>
 <span class="p">)</span>
 
@@ -907,7 +908,7 @@ performance using mock interfaces (without running full simulations), see
 <span class="w">    </span>--task<span class="w"> </span>Isaac-Cartpole<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--num_envs<span class="w"> </span><span class="m">4096</span><span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--num_frames<span class="w"> </span><span class="m">100</span><span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--benchmark_backend<span class="w"> </span>json<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--benchmark_formatter<span class="w"> </span>json<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--output_path<span class="w"> </span>./results
 </pre></div>
 </div>
@@ -923,7 +924,7 @@ performance using mock interfaces (without running full simulations), see
 <span class="w">    </span>--task<span class="w"> </span>Isaac-Cartpole<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--num_envs<span class="w"> </span><span class="m">4096</span><span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--max_iterations<span class="w"> </span><span class="m">500</span><span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--benchmark_backend<span class="w"> </span>json<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--benchmark_formatter<span class="w"> </span>json<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--output_path<span class="w"> </span>./results
 </pre></div>
 </div>
@@ -953,7 +954,7 @@ understanding where time is spent during initialization.</p>
 ./isaaclab.sh<span class="w"> </span>-p<span class="w"> </span>scripts/benchmarks/benchmark_startup.py<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--task<span class="w"> </span>Isaac-Ant<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--num_envs<span class="w"> </span><span class="m">4096</span><span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--benchmark_backend<span class="w"> </span>summary
+<span class="w">    </span>--benchmark_formatter<span class="w"> </span>summary
 </pre></div>
 </div>
 <p>The script profiles five phases independently:</p>
@@ -987,7 +988,7 @@ Patterns use <code class="docutils literal notranslate"><span class="pre">fnmatc
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./isaaclab.sh<span class="w"> </span>-p<span class="w"> </span>scripts/benchmarks/benchmark_startup.py<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--task<span class="w"> </span>Isaac-Ant<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--num_envs<span class="w"> </span><span class="m">4096</span><span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--benchmark_backend<span class="w"> </span>omniperf<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--benchmark_formatter<span class="w"> </span>omniperf<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--whitelist_config<span class="w"> </span>scripts/benchmarks/startup_whitelist.yaml
 </pre></div>
 </div>
@@ -1025,9 +1026,9 @@ the same keys.</p>
 <td><p>None</p></td>
 <td><p>Path to YAML whitelist file</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">--benchmark_backend</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">--benchmark_formatter</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">omniperf</span></code></p></td>
-<td><p>Output backend (<code class="docutils literal notranslate"><span class="pre">json</span></code>, <code class="docutils literal notranslate"><span class="pre">osmo</span></code>, <code class="docutils literal notranslate"><span class="pre">omniperf</span></code>, <code class="docutils literal notranslate"><span class="pre">summary</span></code>)</p></td>
+<td><p>Output formatter (<code class="docutils literal notranslate"><span class="pre">json</span></code>, <code class="docutils literal notranslate"><span class="pre">osmo</span></code>, <code class="docutils literal notranslate"><span class="pre">omniperf</span></code>, <code class="docutils literal notranslate"><span class="pre">summary</span></code>, or <code class="docutils literal notranslate"><span class="pre">schema</span></code>)</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">--output_path</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">.</span></code></p></td>
@@ -1055,9 +1056,9 @@ the same keys.</p>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">--benchmark_backend</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">--benchmark_formatter</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">json</span></code></p></td>
-<td><p>Output backend: <code class="docutils literal notranslate"><span class="pre">json</span></code>, <code class="docutils literal notranslate"><span class="pre">osmo</span></code>, <code class="docutils literal notranslate"><span class="pre">omniperf</span></code>, or <code class="docutils literal notranslate"><span class="pre">summary</span></code></p></td>
+<td><p>Output formatter: <code class="docutils literal notranslate"><span class="pre">json</span></code>, <code class="docutils literal notranslate"><span class="pre">osmo</span></code>, <code class="docutils literal notranslate"><span class="pre">omniperf</span></code>, <code class="docutils literal notranslate"><span class="pre">summary</span></code>, or <code class="docutils literal notranslate"><span class="pre">schema</span></code></p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">--output_path</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">./</span></code></p></td>
@@ -1222,12 +1223,12 @@ into logical groups. Common phases include:</p>
 </pre></div>
 </div>
 </section>
-<section id="output-backends">
-<h2>Output Backends<a class="headerlink" href="#output-backends" title="Link to this heading">#</a></h2>
-<section id="json-backend">
-<h3>JSON Backend<a class="headerlink" href="#json-backend" title="Link to this heading">#</a></h3>
+<section id="output-formatters">
+<h2>Output Formatters<a class="headerlink" href="#output-formatters" title="Link to this heading">#</a></h2>
+<section id="json-formatter">
+<h3>JSON Formatter<a class="headerlink" href="#json-formatter" title="Link to this heading">#</a></h3>
 <p>Full output with all phases, measurements, and metadata:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./isaaclab.sh<span class="w"> </span>-p<span class="w"> </span>...<span class="w"> </span>--benchmark_backend<span class="w"> </span>json<span class="w"> </span>--output_path<span class="w"> </span>./results
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./isaaclab.sh<span class="w"> </span>-p<span class="w"> </span>...<span class="w"> </span>--benchmark_formatter<span class="w"> </span>json<span class="w"> </span>--output_path<span class="w"> </span>./results
 </pre></div>
 </div>
 <p>Output structure:</p>
@@ -1250,10 +1251,10 @@ into logical groups. Common phases include:</p>
 </pre></div>
 </div>
 </section>
-<section id="osmo-backend">
-<h3>Osmo Backend<a class="headerlink" href="#osmo-backend" title="Link to this heading">#</a></h3>
+<section id="osmo-formatter">
+<h3>Osmo Formatter<a class="headerlink" href="#osmo-formatter" title="Link to this heading">#</a></h3>
 <p>Simplified key-value format for CI/CD integration:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./isaaclab.sh<span class="w"> </span>-p<span class="w"> </span>...<span class="w"> </span>--benchmark_backend<span class="w"> </span>osmo<span class="w"> </span>--output_path<span class="w"> </span>./results
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./isaaclab.sh<span class="w"> </span>-p<span class="w"> </span>...<span class="w"> </span>--benchmark_formatter<span class="w"> </span>osmo<span class="w"> </span>--output_path<span class="w"> </span>./results
 </pre></div>
 </div>
 <p>Output structure:</p>
@@ -1266,10 +1267,10 @@ into logical groups. Common phases include:</p>
 </pre></div>
 </div>
 </section>
-<section id="omniperf-backend">
-<h3>OmniPerf Backend<a class="headerlink" href="#omniperf-backend" title="Link to this heading">#</a></h3>
+<section id="omniperf-formatter">
+<h3>OmniPerf Formatter<a class="headerlink" href="#omniperf-formatter" title="Link to this heading">#</a></h3>
 <p>Format for database upload and performance tracking:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./isaaclab.sh<span class="w"> </span>-p<span class="w"> </span>...<span class="w"> </span>--benchmark_backend<span class="w"> </span>omniperf<span class="w"> </span>--output_path<span class="w"> </span>./results
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./isaaclab.sh<span class="w"> </span>-p<span class="w"> </span>...<span class="w"> </span>--benchmark_formatter<span class="w"> </span>omniperf<span class="w"> </span>--output_path<span class="w"> </span>./results
 </pre></div>
 </div>
 <p>Output structure:</p>
@@ -1284,15 +1285,25 @@ into logical groups. Common phases include:</p>
 </pre></div>
 </div>
 </section>
-<section id="summary-backend">
-<h3>Summary Backend<a class="headerlink" href="#summary-backend" title="Link to this heading">#</a></h3>
+<section id="schema-formatter">
+<h3>Schema Formatter<a class="headerlink" href="#schema-formatter" title="Link to this heading">#</a></h3>
+<p>Writes a schema-v1 bundle attached with
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">attach_bundle()</span></code>. Use it
+with a <code class="docutils literal notranslate"><span class="pre">RuntimeBundle</span></code>, <code class="docutils literal notranslate"><span class="pre">TrainingBundle</span></code>, or <code class="docutils literal notranslate"><span class="pre">StartupBundle</span></code> when a
+typed, stable output contract is required.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./isaaclab.sh<span class="w"> </span>-p<span class="w"> </span>...<span class="w"> </span>--benchmark_formatter<span class="w"> </span>schema<span class="w"> </span>--output_path<span class="w"> </span>./results
+</pre></div>
+</div>
+</section>
+<section id="summary-formatter">
+<h3>Summary Formatter<a class="headerlink" href="#summary-formatter" title="Link to this heading">#</a></h3>
 <p>Human-readable console report plus JSON file. Prints a formatted summary to the
 terminal while also writing the same data as JSON. Standard phases (runtime,
 startup, train, frametime, system info) are rendered with specialized formatting;
 any additional phases (e.g., from the startup profiling benchmark) are rendered
 automatically with their <code class="docutils literal notranslate"><span class="pre">SingleMeasurement</span></code> and <code class="docutils literal notranslate"><span class="pre">StatisticalMeasurement</span></code>
 entries. Use when you want a quick readout without opening the JSON:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./isaaclab.sh<span class="w"> </span>-p<span class="w"> </span>...<span class="w"> </span>--benchmark_backend<span class="w"> </span>summary<span class="w"> </span>--output_path<span class="w"> </span>./results
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./isaaclab.sh<span class="w"> </span>-p<span class="w"> </span>...<span class="w"> </span>--benchmark_formatter<span class="w"> </span>summary<span class="w"> </span>--output_path<span class="w"> </span>./results
 </pre></div>
 </div>
 <p>When <code class="docutils literal notranslate"><span class="pre">summary</span></code> is selected, frametime recorders are enabled automatically when
@@ -1307,7 +1318,7 @@ monitoring during blocking operations like RL training loops:</p>
 
 <span class="n">benchmark</span> <span class="o">=</span> <span class="n">BaseIsaacLabBenchmark</span><span class="p">(</span>
     <span class="n">benchmark_name</span><span class="o">=</span><span class="s2">&quot;TrainingBenchmark&quot;</span><span class="p">,</span>
-    <span class="n">backend_type</span><span class="o">=</span><span class="s2">&quot;json&quot;</span><span class="p">,</span>
+    <span class="n">formatter_type</span><span class="o">=</span><span class="s2">&quot;json&quot;</span><span class="p">,</span>
     <span class="n">output_path</span><span class="o">=</span><span class="s2">&quot;./results&quot;</span><span class="p">,</span>
 <span class="p">)</span>
 
@@ -1356,13 +1367,13 @@ monitoring during blocking operations like RL training loops:</p>
 <span class="kn">from</span><span class="w"> </span><span class="nn">isaaclab.test.benchmark</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseIsaacLabBenchmark</span>
 
 <span class="n">parser</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">()</span>
-<span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--benchmark_backend&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;json&quot;</span><span class="p">)</span>
+<span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--benchmark_formatter&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;json&quot;</span><span class="p">)</span>
 <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--output_path&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;./&quot;</span><span class="p">)</span>
 <span class="n">args</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">parse_args</span><span class="p">()</span>
 
 <span class="n">benchmark</span> <span class="o">=</span> <span class="n">BaseIsaacLabBenchmark</span><span class="p">(</span>
     <span class="n">benchmark_name</span><span class="o">=</span><span class="s2">&quot;CustomBenchmark&quot;</span><span class="p">,</span>
-    <span class="n">backend_type</span><span class="o">=</span><span class="n">args</span><span class="o">.</span><span class="n">benchmark_backend</span><span class="p">,</span>
+    <span class="n">formatter_type</span><span class="o">=</span><span class="n">args</span><span class="o">.</span><span class="n">benchmark_formatter</span><span class="p">,</span>
     <span class="n">output_path</span><span class="o">=</span><span class="n">args</span><span class="o">.</span><span class="n">output_path</span><span class="p">,</span>
 <span class="p">)</span>
 </pre></div>
@@ -1424,7 +1435,7 @@ monitoring during blocking operations like RL training loops:</p>
 <span class="w">    </span>path:<span class="w"> </span>./benchmark_results/
 </pre></div>
 </div>
-<p>For Osmo integration, use the <code class="docutils literal notranslate"><span class="pre">osmo</span></code> backend:</p>
+<p>For Osmo integration, use the <code class="docutils literal notranslate"><span class="pre">osmo</span></code> formatter:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./scripts/benchmarks/run_non_rl_benchmarks.sh<span class="w"> </span>./results
 <span class="c1"># Results are in Osmo-compatible JSON format</span>
 </pre></div>
@@ -1461,14 +1472,14 @@ monitoring during blocking operations like RL training loops:</p>
 </pre></div>
 </div>
 </section>
-<section id="backend-not-recognized">
-<h3>Backend Not Recognized<a class="headerlink" href="#backend-not-recognized" title="Link to this heading">#</a></h3>
-<p>Valid backend types are: <code class="docutils literal notranslate"><span class="pre">json</span></code>, <code class="docutils literal notranslate"><span class="pre">osmo</span></code>, <code class="docutils literal notranslate"><span class="pre">omniperf</span></code>, <code class="docutils literal notranslate"><span class="pre">summary</span></code></p>
+<section id="formatter-not-recognized">
+<h3>Formatter Not Recognized<a class="headerlink" href="#formatter-not-recognized" title="Link to this heading">#</a></h3>
+<p>Valid formatter types are: <code class="docutils literal notranslate"><span class="pre">json</span></code>, <code class="docutils literal notranslate"><span class="pre">osmo</span></code>, <code class="docutils literal notranslate"><span class="pre">omniperf</span></code>, <code class="docutils literal notranslate"><span class="pre">summary</span></code>, or <code class="docutils literal notranslate"><span class="pre">schema</span></code></p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Correct</span>
---benchmark_backend<span class="w"> </span>json
+--benchmark_formatter<span class="w"> </span>json
 
 <span class="c1"># Incorrect</span>
---benchmark_backend<span class="w"> </span>JSON<span class="w">  </span><span class="c1"># Case sensitive</span>
+--benchmark_formatter<span class="w"> </span>JSON<span class="w">  </span><span class="c1"># Case sensitive</span>
 </pre></div>
 </div>
 </section>
@@ -1546,11 +1557,12 @@ monitoring during blocking operations like RL training loops:</p>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#test-phases">Test Phases</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#output-backends">Output Backends</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#json-backend">JSON Backend</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#osmo-backend">Osmo Backend</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#omniperf-backend">OmniPerf Backend</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-backend">Summary Backend</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#output-formatters">Output Formatters</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#json-formatter">JSON Formatter</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#osmo-formatter">Osmo Formatter</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#omniperf-formatter">OmniPerf Formatter</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#schema-formatter">Schema Formatter</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-formatter">Summary Formatter</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#benchmarkmonitor">BenchmarkMonitor</a></li>
@@ -1573,7 +1585,7 @@ monitoring during blocking operations like RL training loops:</p>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#import-errors">Import Errors</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#missing-gpu-metrics">Missing GPU Metrics</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#empty-output-files">Empty Output Files</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#backend-not-recognized">Backend Not Recognized</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#formatter-not-recognized">Formatter Not Recognized</a></li>
 </ul>
 </li>
 </ul>
@@ -1609,7 +1621,7 @@ By The Isaac Lab Project Developers.
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Jul 06, 2026.
+  Last updated on Jul 07, 2026.
   <br/>
 </p>
   </div>

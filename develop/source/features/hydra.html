@@ -64,7 +64,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="3.0.0" />
-    <meta name="docbuild:last-update" content="Jul 06, 2026"/>
+    <meta name="docbuild:last-update" content="Jul 07, 2026"/>
   </head>
   
   
@@ -859,8 +859,7 @@ In the above example, we could also disable the <code class="docutils literal no
 <section id="dictionaries">
 <h3>Dictionaries<a class="headerlink" href="#dictionaries" title="Link to this heading">#</a></h3>
 <p>Elements in dictionaries are handled as a parameters in the hierarchy. For example, in the Cartpole environment:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="p">)</span>
-
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
     <span class="c1"># cartpole</span>
     <span class="n">robot</span><span class="p">:</span> <span class="n">ArticulationCfg</span> <span class="o">=</span> <span class="n">CARTPOLE_CFG</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">prim_path</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">{ENV_REGEX_NS}</span><span class="s2">/Robot&quot;</span><span class="p">)</span>
 
@@ -869,9 +868,9 @@ In the above example, we could also disable the <code class="docutils literal no
     <span class="n">distant_light</span> <span class="o">=</span> <span class="n">AssetBaseCfg</span><span class="p">(</span>
         <span class="n">prim_path</span><span class="o">=</span><span class="s2">&quot;/World/DistantLight&quot;</span><span class="p">,</span>
         <span class="n">init_state</span><span class="o">=</span><span class="n">AssetBaseCfg</span><span class="o">.</span><span class="n">InitialStateCfg</span><span class="p">(</span>
-<span class="hll">            <span class="n">rot</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mf">0.14644663035869598</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.3535534143447876</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.3535534143447876</span><span class="p">,</span> <span class="mf">0.8535533547401428</span><span class="p">)</span>
-</span>        <span class="p">),</span>
-        <span class="n">spawn</span><span class="o">=</span><span class="n">sim_utils</span><span class="o">.</span><span class="n">DistantLightCfg</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">),</span> <span class="n">intensity</span><span class="o">=</span><span class="mf">2000.0</span><span class="p">),</span>
+            <span class="n">rot</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mf">0.14644663035869598</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.3535534143447876</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.3535534143447876</span><span class="p">,</span> <span class="mf">0.8535533547401428</span><span class="p">)</span>
+<span class="hll">        <span class="p">),</span>
+</span>        <span class="n">spawn</span><span class="o">=</span><span class="n">sim_utils</span><span class="o">.</span><span class="n">DistantLightCfg</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">),</span> <span class="n">intensity</span><span class="o">=</span><span class="mf">2000.0</span><span class="p">),</span>
     <span class="p">)</span>
 
 
@@ -884,6 +883,7 @@ In the above example, we could also disable the <code class="docutils literal no
 <span class="k">class</span><span class="w"> </span><span class="nc">ActionsCfg</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Action specifications for the MDP.&quot;&quot;&quot;</span>
 
+    <span class="n">joint_effort</span> <span class="o">=</span> <span class="n">mdp</span><span class="o">.</span><span class="n">JointEffortActionCfg</span><span class="p">(</span><span class="n">asset_name</span><span class="o">=</span><span class="s2">&quot;robot&quot;</span><span class="p">,</span> <span class="n">joint_names</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;slider_to_cart&quot;</span><span class="p">],</span> <span class="n">scale</span><span class="o">=</span><span class="mf">100.0</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>the <code class="docutils literal notranslate"><span class="pre">position_range</span></code> parameter can be modified with <code class="docutils literal notranslate"><span class="pre">env.events.reset_cart_position.params.position_range=&quot;[-2.0,</span> <span class="pre">2.0]&quot;</span></code>.
@@ -1521,7 +1521,7 @@ By The Isaac Lab Project Developers.
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Jul 06, 2026.
+  Last updated on Jul 07, 2026.
   <br/>
 </p>
   </div>

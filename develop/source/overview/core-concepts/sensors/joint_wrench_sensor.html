@@ -64,7 +64,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="3.0.0" />
-    <meta name="docbuild:last-update" content="Jul 06, 2026"/>
+    <meta name="docbuild:last-update" content="Jul 07, 2026"/>
   </head>
   
   
@@ -753,17 +753,16 @@ in the child-side joint frame at the child-side joint anchor.</p>
 <p>The sensor is configured on an articulation prim and can then be used directly
 or through manager terms such as <code class="xref py py-func docutils literal notranslate"><span class="pre">body_incoming_wrench()</span></code>.
 For example, the Ant environment adds a joint wrench sensor to the scene:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="c1"># robot</span>
-    <span class="n">robot</span> <span class="o">=</span> <span class="n">ANT_CFG</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">prim_path</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">{ENV_REGEX_NS}</span><span class="s2">/Robot&quot;</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="n">robot</span> <span class="o">=</span> <span class="n">ANT_CFG</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">prim_path</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">{ENV_REGEX_NS}</span><span class="s2">/Robot&quot;</span><span class="p">)</span>
 
     <span class="c1"># sensors</span>
     <span class="n">joint_wrench</span> <span class="o">=</span> <span class="n">JointWrenchSensorCfg</span><span class="p">(</span><span class="n">prim_path</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">{ENV_REGEX_NS}</span><span class="s2">/Robot&quot;</span><span class="p">)</span>
+
 </pre></div>
 </div>
 <p>The same environment uses <a class="reference internal" href="../../../api/lab/isaaclab.managers.html#isaaclab.managers.SceneEntityCfg" title="isaaclab.managers.SceneEntityCfg"><code class="xref py py-class docutils literal notranslate"><span class="pre">SceneEntityCfg</span></code></a> to select
 the reported foot bodies for an observation term:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>        <span class="n">feet_body_forces</span> <span class="o">=</span> <span class="n">ObsTerm</span><span class="p">(</span>
-            <span class="n">func</span><span class="o">=</span><span class="n">mdp</span><span class="o">.</span><span class="n">body_incoming_wrench</span><span class="p">,</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>            <span class="n">func</span><span class="o">=</span><span class="n">mdp</span><span class="o">.</span><span class="n">body_incoming_wrench</span><span class="p">,</span>
             <span class="n">scale</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span>
             <span class="n">params</span><span class="o">=</span><span class="p">{</span>
                 <span class="s2">&quot;sensor_cfg&quot;</span><span class="p">:</span> <span class="n">SceneEntityCfg</span><span class="p">(</span>
@@ -772,6 +771,7 @@ the reported foot bodies for an observation term:</p>
                 <span class="p">)</span>
             <span class="p">},</span>
         <span class="p">)</span>
+        <span class="n">actions</span> <span class="o">=</span> <span class="n">ObsTerm</span><span class="p">(</span><span class="n">func</span><span class="o">=</span><span class="n">mdp</span><span class="o">.</span><span class="n">last_action</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Direct access to the sensor data follows the usual scene lookup pattern.</p>
@@ -852,7 +852,7 @@ By The Isaac Lab Project Developers.
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Jul 06, 2026.
+  Last updated on Jul 07, 2026.
   <br/>
 </p>
   </div>
