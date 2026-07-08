@@ -64,7 +64,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="3.0.0" />
-    <meta name="docbuild:last-update" content="Jul 07, 2026"/>
+    <meta name="docbuild:last-update" content="Jul 08, 2026"/>
   </head>
   
   
@@ -835,7 +835,7 @@ modes. The <strong>Presets</strong> column in each table below is divided into t
 (e.g. <code class="docutils literal notranslate"><span class="pre">physx</span></code>, <code class="docutils literal notranslate"><span class="pre">newton_mjwarp</span></code>, <code class="docutils literal notranslate"><span class="pre">newton_kamino</span></code>, <code class="docutils literal notranslate"><span class="pre">ovphysx</span></code>,
 <code class="docutils literal notranslate"><span class="pre">newton_mjwarp_vbd</span></code>)</p></li>
 <li><p><strong>renderer=</strong> — renderer-backend name passed as <code class="docutils literal notranslate"><span class="pre">renderer=NAME</span></code>
-(e.g. <code class="docutils literal notranslate"><span class="pre">isaacsim_rtx_renderer</span></code>, <code class="docutils literal notranslate"><span class="pre">newton_renderer</span></code>, <code class="docutils literal notranslate"><span class="pre">ovrtx_renderer</span></code>, <code class="docutils literal notranslate"><span class="pre">rtx</span></code>)</p></li>
+(e.g. <code class="docutils literal notranslate"><span class="pre">isaacsim_rtx</span></code>, <code class="docutils literal notranslate"><span class="pre">newton_renderer</span></code>, <code class="docutils literal notranslate"><span class="pre">ovrtx</span></code>, <code class="docutils literal notranslate"><span class="pre">rtx</span></code>)</p></li>
 <li><p><strong>presets=</strong> — environment-specific (domain) preset name passed as
 <code class="docutils literal notranslate"><span class="pre">presets=NAME[,NAME,...]</span></code>
 (e.g. <code class="docutils literal notranslate"><span class="pre">rgb</span></code>, <code class="docutils literal notranslate"><span class="pre">depth</span></code>, <code class="docutils literal notranslate"><span class="pre">single_camera</span></code>, <code class="docutils literal notranslate"><span class="pre">duo_camera</span></code>)</p></li>
@@ -909,9 +909,9 @@ running with <code class="docutils literal notranslate"><span class="pre">--enab
 <code class="docutils literal notranslate"><span class="pre">newton_mjwarp</span></code>,
 <code class="docutils literal notranslate"><span class="pre">ovphysx</span></code> (direct only)
 <strong>renderer=</strong>
-<code class="docutils literal notranslate"><span class="pre">isaacsim_rtx_renderer</span></code>,
+<code class="docutils literal notranslate"><span class="pre">isaacsim_rtx</span></code>,
 <code class="docutils literal notranslate"><span class="pre">newton_renderer</span></code>,
-<code class="docutils literal notranslate"><span class="pre">ovrtx_renderer</span></code>
+<code class="docutils literal notranslate"><span class="pre">ovrtx</span></code>
 <strong>presets=</strong> <code class="docutils literal notranslate"><span class="pre">rgb</span></code>,
 <code class="docutils literal notranslate"><span class="pre">depth</span></code>, <code class="docutils literal notranslate"><span class="pre">albedo</span></code>,
 <code class="docutils literal notranslate"><span class="pre">semantic_segmentation</span></code>,
@@ -1040,9 +1040,9 @@ Requires running with <code class="docutils literal notranslate"><span class="pr
 <td><p><strong>physics=</strong> <code class="docutils literal notranslate"><span class="pre">physx</span></code>,
 <code class="docutils literal notranslate"><span class="pre">newton_mjwarp</span></code>
 <strong>renderer=</strong>
-<code class="docutils literal notranslate"><span class="pre">isaacsim_rtx_renderer</span></code>,
+<code class="docutils literal notranslate"><span class="pre">isaacsim_rtx</span></code>,
 <code class="docutils literal notranslate"><span class="pre">newton_renderer</span></code>,
-<code class="docutils literal notranslate"><span class="pre">ovrtx_renderer</span></code>
+<code class="docutils literal notranslate"><span class="pre">ovrtx</span></code>
 <strong>presets=</strong> <code class="docutils literal notranslate"><span class="pre">rgb</span></code>,
 <code class="docutils literal notranslate"><span class="pre">depth</span></code>, <code class="docutils literal notranslate"><span class="pre">albedo</span></code>,
 <code class="docutils literal notranslate"><span class="pre">full</span></code>,
@@ -1092,9 +1092,9 @@ observations via <code class="docutils literal notranslate"><span class="pre">pr
 <td><p><strong>physics=</strong> <code class="docutils literal notranslate"><span class="pre">physx</span></code>,
 <code class="docutils literal notranslate"><span class="pre">newton_mjwarp</span></code>
 <strong>renderer=</strong>
-<code class="docutils literal notranslate"><span class="pre">isaacsim_rtx_renderer</span></code>,
+<code class="docutils literal notranslate"><span class="pre">isaacsim_rtx</span></code>,
 <code class="docutils literal notranslate"><span class="pre">newton_renderer</span></code>,
-<code class="docutils literal notranslate"><span class="pre">ovrtx_renderer</span></code>
+<code class="docutils literal notranslate"><span class="pre">ovrtx</span></code>
 <strong>presets=</strong>
 <code class="docutils literal notranslate"><span class="pre">single_camera</span></code>,
 <code class="docutils literal notranslate"><span class="pre">duo_camera</span></code>,
@@ -1116,9 +1116,9 @@ dual-camera observations via <code class="docutils literal notranslate"><span cl
 <td><p><strong>physics=</strong> <code class="docutils literal notranslate"><span class="pre">physx</span></code>,
 <code class="docutils literal notranslate"><span class="pre">newton_mjwarp</span></code>
 <strong>renderer=</strong>
-<code class="docutils literal notranslate"><span class="pre">isaacsim_rtx_renderer</span></code>,
+<code class="docutils literal notranslate"><span class="pre">isaacsim_rtx</span></code>,
 <code class="docutils literal notranslate"><span class="pre">newton_renderer</span></code>,
-<code class="docutils literal notranslate"><span class="pre">ovrtx_renderer</span></code>
+<code class="docutils literal notranslate"><span class="pre">ovrtx</span></code>
 <strong>presets=</strong>
 <code class="docutils literal notranslate"><span class="pre">single_camera</span></code>,
 <code class="docutils literal notranslate"><span class="pre">duo_camera</span></code>,
@@ -1829,7 +1829,7 @@ inferencing, including reading from an already trained checkpoint and disabling 
 <td><p><strong>rl_games</strong> (PPO, FEATURE), <strong>rsl_rl</strong> (PPO, FEATURE)</p></td>
 <td><div class="line-block">
 <div class="line"><strong>physics=</strong> <code class="docutils literal notranslate"><span class="pre">newton_kamino</span></code>, <code class="docutils literal notranslate"><span class="pre">newton_mjwarp</span></code>, <code class="docutils literal notranslate"><span class="pre">physx</span></code>
-| <strong>renderer=</strong> <code class="docutils literal notranslate"><span class="pre">isaacsim_rtx_renderer</span></code>, <code class="docutils literal notranslate"><span class="pre">newton_renderer</span></code>, <code class="docutils literal notranslate"><span class="pre">ovrtx_renderer</span></code>, <code class="docutils literal notranslate"><span class="pre">rtx</span></code>
+| <strong>renderer=</strong> <code class="docutils literal notranslate"><span class="pre">isaacsim_rtx</span></code>, <code class="docutils literal notranslate"><span class="pre">newton_renderer</span></code>, <code class="docutils literal notranslate"><span class="pre">ovrtx</span></code>, <code class="docutils literal notranslate"><span class="pre">rtx</span></code>
 | <strong>presets=</strong> <code class="docutils literal notranslate"><span class="pre">albedo</span></code>, <code class="docutils literal notranslate"><span class="pre">depth</span></code>, <code class="docutils literal notranslate"><span class="pre">resnet18</span></code>, <code class="docutils literal notranslate"><span class="pre">rgb</span></code>, <code class="docutils literal notranslate"><span class="pre">semantic_segmentation</span></code>, <code class="docutils literal notranslate"><span class="pre">simple_shading_constant_diffuse</span></code>, <code class="docutils literal notranslate"><span class="pre">simple_shading_diffuse_mdl</span></code>, <code class="docutils literal notranslate"><span class="pre">simple_shading_full_mdl</span></code>, <code class="docutils literal notranslate"><span class="pre">theia_tiny</span></code></div>
 </div>
 </td>
@@ -1840,7 +1840,7 @@ inferencing, including reading from an already trained checkpoint and disabling 
 <td><p><strong>rl_games</strong> (PPO), <strong>rsl_rl</strong> (PPO), <strong>skrl</strong> (PPO)</p></td>
 <td><div class="line-block">
 <div class="line"><strong>physics=</strong> <code class="docutils literal notranslate"><span class="pre">newton_kamino</span></code>, <code class="docutils literal notranslate"><span class="pre">newton_mjwarp</span></code>, <code class="docutils literal notranslate"><span class="pre">ovphysx</span></code>, <code class="docutils literal notranslate"><span class="pre">physx</span></code>
-| <strong>renderer=</strong> <code class="docutils literal notranslate"><span class="pre">isaacsim_rtx_renderer</span></code>, <code class="docutils literal notranslate"><span class="pre">newton_renderer</span></code>, <code class="docutils literal notranslate"><span class="pre">ovrtx_renderer</span></code>, <code class="docutils literal notranslate"><span class="pre">rtx</span></code>
+| <strong>renderer=</strong> <code class="docutils literal notranslate"><span class="pre">isaacsim_rtx</span></code>, <code class="docutils literal notranslate"><span class="pre">newton_renderer</span></code>, <code class="docutils literal notranslate"><span class="pre">ovrtx</span></code>, <code class="docutils literal notranslate"><span class="pre">rtx</span></code>
 | <strong>presets=</strong> <code class="docutils literal notranslate"><span class="pre">albedo</span></code>, <code class="docutils literal notranslate"><span class="pre">depth</span></code>, <code class="docutils literal notranslate"><span class="pre">rgb</span></code>, <code class="docutils literal notranslate"><span class="pre">semantic_segmentation</span></code>, <code class="docutils literal notranslate"><span class="pre">simple_shading_constant_diffuse</span></code>, <code class="docutils literal notranslate"><span class="pre">simple_shading_diffuse_mdl</span></code>, <code class="docutils literal notranslate"><span class="pre">simple_shading_full_mdl</span></code></div>
 </div>
 </td>
@@ -2070,7 +2070,7 @@ inferencing, including reading from an already trained checkpoint and disabling 
 <td><p>Manager Based</p></td>
 <td><p><strong>rsl_rl</strong> (PPO)</p></td>
 <td><div class="line-block">
-<div class="line"><strong>renderer=</strong> <code class="docutils literal notranslate"><span class="pre">isaacsim_rtx_renderer</span></code>, <code class="docutils literal notranslate"><span class="pre">newton_renderer</span></code>, <code class="docutils literal notranslate"><span class="pre">ovrtx_renderer</span></code>, <code class="docutils literal notranslate"><span class="pre">rtx</span></code>
+<div class="line"><strong>renderer=</strong> <code class="docutils literal notranslate"><span class="pre">isaacsim_rtx</span></code>, <code class="docutils literal notranslate"><span class="pre">newton_renderer</span></code>, <code class="docutils literal notranslate"><span class="pre">ovrtx</span></code>, <code class="docutils literal notranslate"><span class="pre">rtx</span></code>
 | <strong>presets=</strong> <code class="docutils literal notranslate"><span class="pre">albedo128</span></code>, <code class="docutils literal notranslate"><span class="pre">albedo256</span></code>, <code class="docutils literal notranslate"><span class="pre">albedo64</span></code>, <code class="docutils literal notranslate"><span class="pre">cube</span></code>, <code class="docutils literal notranslate"><span class="pre">depth128</span></code>, <code class="docutils literal notranslate"><span class="pre">depth256</span></code>, <code class="docutils literal notranslate"><span class="pre">depth64</span></code>, <code class="docutils literal notranslate"><span class="pre">duo_camera</span></code>, <code class="docutils literal notranslate"><span class="pre">raycaster_depth128</span></code>, <code class="docutils literal notranslate"><span class="pre">raycaster_depth256</span></code>, <code class="docutils literal notranslate"><span class="pre">raycaster_depth64</span></code>, <code class="docutils literal notranslate"><span class="pre">rgb128</span></code>, <code class="docutils literal notranslate"><span class="pre">rgb256</span></code>, <code class="docutils literal notranslate"><span class="pre">rgb64</span></code>, <code class="docutils literal notranslate"><span class="pre">semantic_segmentation128</span></code>, <code class="docutils literal notranslate"><span class="pre">semantic_segmentation256</span></code>, <code class="docutils literal notranslate"><span class="pre">semantic_segmentation64</span></code>, <code class="docutils literal notranslate"><span class="pre">shapes</span></code>, <code class="docutils literal notranslate"><span class="pre">simple_shading_constant_diffuse128</span></code>, <code class="docutils literal notranslate"><span class="pre">simple_shading_constant_diffuse256</span></code>, <code class="docutils literal notranslate"><span class="pre">simple_shading_constant_diffuse64</span></code>, <code class="docutils literal notranslate"><span class="pre">simple_shading_diffuse_mdl128</span></code>, <code class="docutils literal notranslate"><span class="pre">simple_shading_diffuse_mdl256</span></code>, <code class="docutils literal notranslate"><span class="pre">simple_shading_diffuse_mdl64</span></code>, <code class="docutils literal notranslate"><span class="pre">simple_shading_full_mdl128</span></code>, <code class="docutils literal notranslate"><span class="pre">simple_shading_full_mdl256</span></code>, <code class="docutils literal notranslate"><span class="pre">simple_shading_full_mdl64</span></code>, <code class="docutils literal notranslate"><span class="pre">single_camera</span></code></div>
 </div>
 </td>
@@ -2285,7 +2285,7 @@ inferencing, including reading from an already trained checkpoint and disabling 
 <td><p><strong>rl_games</strong> (PPO), <strong>rsl_rl</strong> (PPO)</p></td>
 <td><div class="line-block">
 <div class="line"><strong>physics=</strong> <code class="docutils literal notranslate"><span class="pre">newton_mjwarp</span></code>, <code class="docutils literal notranslate"><span class="pre">physx</span></code>
-| <strong>renderer=</strong> <code class="docutils literal notranslate"><span class="pre">isaacsim_rtx_renderer</span></code>, <code class="docutils literal notranslate"><span class="pre">newton_renderer</span></code>, <code class="docutils literal notranslate"><span class="pre">ovrtx_renderer</span></code>, <code class="docutils literal notranslate"><span class="pre">rtx</span></code>
+| <strong>renderer=</strong> <code class="docutils literal notranslate"><span class="pre">isaacsim_rtx</span></code>, <code class="docutils literal notranslate"><span class="pre">newton_renderer</span></code>, <code class="docutils literal notranslate"><span class="pre">ovrtx</span></code>, <code class="docutils literal notranslate"><span class="pre">rtx</span></code>
 | <strong>presets=</strong> <code class="docutils literal notranslate"><span class="pre">albedo</span></code>, <code class="docutils literal notranslate"><span class="pre">depth</span></code>, <code class="docutils literal notranslate"><span class="pre">full</span></code>, <code class="docutils literal notranslate"><span class="pre">rgb</span></code>, <code class="docutils literal notranslate"><span class="pre">semantic_segmentation</span></code>, <code class="docutils literal notranslate"><span class="pre">simple_shading_constant_diffuse</span></code>, <code class="docutils literal notranslate"><span class="pre">simple_shading_diffuse_mdl</span></code>, <code class="docutils literal notranslate"><span class="pre">simple_shading_full_mdl</span></code></div>
 </div>
 </td>
@@ -2296,7 +2296,7 @@ inferencing, including reading from an already trained checkpoint and disabling 
 <td><p><strong>rl_games</strong> (PPO), <strong>rsl_rl</strong> (PPO)</p></td>
 <td><div class="line-block">
 <div class="line"><strong>physics=</strong> <code class="docutils literal notranslate"><span class="pre">newton_mjwarp</span></code>, <code class="docutils literal notranslate"><span class="pre">physx</span></code>
-| <strong>renderer=</strong> <code class="docutils literal notranslate"><span class="pre">isaacsim_rtx_renderer</span></code>, <code class="docutils literal notranslate"><span class="pre">newton_renderer</span></code>, <code class="docutils literal notranslate"><span class="pre">ovrtx_renderer</span></code>, <code class="docutils literal notranslate"><span class="pre">rtx</span></code>
+| <strong>renderer=</strong> <code class="docutils literal notranslate"><span class="pre">isaacsim_rtx</span></code>, <code class="docutils literal notranslate"><span class="pre">newton_renderer</span></code>, <code class="docutils literal notranslate"><span class="pre">ovrtx</span></code>, <code class="docutils literal notranslate"><span class="pre">rtx</span></code>
 | <strong>presets=</strong> <code class="docutils literal notranslate"><span class="pre">albedo</span></code>, <code class="docutils literal notranslate"><span class="pre">depth</span></code>, <code class="docutils literal notranslate"><span class="pre">full</span></code>, <code class="docutils literal notranslate"><span class="pre">rgb</span></code>, <code class="docutils literal notranslate"><span class="pre">semantic_segmentation</span></code>, <code class="docutils literal notranslate"><span class="pre">simple_shading_constant_diffuse</span></code>, <code class="docutils literal notranslate"><span class="pre">simple_shading_diffuse_mdl</span></code>, <code class="docutils literal notranslate"><span class="pre">simple_shading_full_mdl</span></code></div>
 </div>
 </td>
@@ -2330,7 +2330,7 @@ inferencing, including reading from an already trained checkpoint and disabling 
 <td><p>Manager Based</p></td>
 <td><p><strong>rsl_rl</strong> (PPO)</p></td>
 <td><div class="line-block">
-<div class="line"><strong>renderer=</strong> <code class="docutils literal notranslate"><span class="pre">isaacsim_rtx_renderer</span></code>, <code class="docutils literal notranslate"><span class="pre">newton_renderer</span></code>, <code class="docutils literal notranslate"><span class="pre">ovrtx_renderer</span></code>, <code class="docutils literal notranslate"><span class="pre">rtx</span></code>
+<div class="line"><strong>renderer=</strong> <code class="docutils literal notranslate"><span class="pre">isaacsim_rtx</span></code>, <code class="docutils literal notranslate"><span class="pre">newton_renderer</span></code>, <code class="docutils literal notranslate"><span class="pre">ovrtx</span></code>, <code class="docutils literal notranslate"><span class="pre">rtx</span></code>
 | <strong>presets=</strong> <code class="docutils literal notranslate"><span class="pre">albedo128</span></code>, <code class="docutils literal notranslate"><span class="pre">albedo256</span></code>, <code class="docutils literal notranslate"><span class="pre">albedo64</span></code>, <code class="docutils literal notranslate"><span class="pre">cube</span></code>, <code class="docutils literal notranslate"><span class="pre">depth128</span></code>, <code class="docutils literal notranslate"><span class="pre">depth256</span></code>, <code class="docutils literal notranslate"><span class="pre">depth64</span></code>, <code class="docutils literal notranslate"><span class="pre">duo_camera</span></code>, <code class="docutils literal notranslate"><span class="pre">raycaster_depth128</span></code>, <code class="docutils literal notranslate"><span class="pre">raycaster_depth256</span></code>, <code class="docutils literal notranslate"><span class="pre">raycaster_depth64</span></code>, <code class="docutils literal notranslate"><span class="pre">rgb128</span></code>, <code class="docutils literal notranslate"><span class="pre">rgb256</span></code>, <code class="docutils literal notranslate"><span class="pre">rgb64</span></code>, <code class="docutils literal notranslate"><span class="pre">semantic_segmentation128</span></code>, <code class="docutils literal notranslate"><span class="pre">semantic_segmentation256</span></code>, <code class="docutils literal notranslate"><span class="pre">semantic_segmentation64</span></code>, <code class="docutils literal notranslate"><span class="pre">shapes</span></code>, <code class="docutils literal notranslate"><span class="pre">simple_shading_constant_diffuse128</span></code>, <code class="docutils literal notranslate"><span class="pre">simple_shading_constant_diffuse256</span></code>, <code class="docutils literal notranslate"><span class="pre">simple_shading_constant_diffuse64</span></code>, <code class="docutils literal notranslate"><span class="pre">simple_shading_diffuse_mdl128</span></code>, <code class="docutils literal notranslate"><span class="pre">simple_shading_diffuse_mdl256</span></code>, <code class="docutils literal notranslate"><span class="pre">simple_shading_diffuse_mdl64</span></code>, <code class="docutils literal notranslate"><span class="pre">simple_shading_full_mdl128</span></code>, <code class="docutils literal notranslate"><span class="pre">simple_shading_full_mdl256</span></code>, <code class="docutils literal notranslate"><span class="pre">simple_shading_full_mdl64</span></code>, <code class="docutils literal notranslate"><span class="pre">single_camera</span></code></div>
 </div>
 </td>
@@ -2419,7 +2419,7 @@ inferencing, including reading from an already trained checkpoint and disabling 
 <td></td>
 <td><div class="line-block">
 <div class="line"><strong>physics=</strong> <code class="docutils literal notranslate"><span class="pre">newton_mjwarp</span></code>, <code class="docutils literal notranslate"><span class="pre">physx</span></code>
-| <strong>renderer=</strong> <code class="docutils literal notranslate"><span class="pre">isaacsim_rtx_renderer</span></code>, <code class="docutils literal notranslate"><span class="pre">newton_renderer</span></code>, <code class="docutils literal notranslate"><span class="pre">ovrtx_renderer</span></code>, <code class="docutils literal notranslate"><span class="pre">rtx</span></code></div>
+| <strong>renderer=</strong> <code class="docutils literal notranslate"><span class="pre">isaacsim_rtx</span></code>, <code class="docutils literal notranslate"><span class="pre">newton_renderer</span></code>, <code class="docutils literal notranslate"><span class="pre">ovrtx</span></code>, <code class="docutils literal notranslate"><span class="pre">rtx</span></code></div>
 </div>
 </td>
 </tr>
@@ -2856,7 +2856,7 @@ By The Isaac Lab Project Developers.
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Jul 07, 2026.
+  Last updated on Jul 08, 2026.
   <br/>
 </p>
   </div>

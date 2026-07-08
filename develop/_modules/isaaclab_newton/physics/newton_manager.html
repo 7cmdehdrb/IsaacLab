@@ -61,7 +61,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="3.0.0" />
-    <meta name="docbuild:last-update" content="Jul 07, 2026"/>
+    <meta name="docbuild:last-update" content="Jul 08, 2026"/>
   </head>
   
   
@@ -2293,7 +2293,7 @@
             <span class="k">with</span> <span class="n">Timer</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;newton_cuda_graph&quot;</span><span class="p">,</span> <span class="n">msg</span><span class="o">=</span><span class="s2">&quot;CUDA graph took:&quot;</span><span class="p">):</span>
                 <span class="k">if</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_usdrt_stage</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
                     <span class="n">simulate</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_simulate_full</span> <span class="k">if</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_is_all_graphable</span><span class="p">()</span> <span class="k">else</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_simulate_physics_only</span>
-                    <span class="k">with</span> <span class="n">wp</span><span class="o">.</span><span class="n">ScopedCapture</span><span class="p">()</span> <span class="k">as</span> <span class="n">capture</span><span class="p">:</span>
+                    <span class="k">with</span> <span class="n">wp</span><span class="o">.</span><span class="n">ScopedCapture</span><span class="p">(</span><span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">)</span> <span class="k">as</span> <span class="n">capture</span><span class="p">:</span>
                         <span class="n">simulate</span><span class="p">()</span>
                     <span class="n">NewtonManager</span><span class="o">.</span><span class="n">_graph</span> <span class="o">=</span> <span class="n">capture</span><span class="o">.</span><span class="n">graph</span>
                     <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Newton CUDA graph captured (standard Warp mode)&quot;</span><span class="p">)</span>
@@ -3073,7 +3073,7 @@ By The Isaac Lab Project Developers.
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Jul 07, 2026.
+  Last updated on Jul 08, 2026.
   <br/>
 </p>
   </div>

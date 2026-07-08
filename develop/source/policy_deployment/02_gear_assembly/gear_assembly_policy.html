@@ -64,7 +64,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="3.0.0" />
-    <meta name="docbuild:last-update" content="Jul 07, 2026"/>
+    <meta name="docbuild:last-update" content="Jul 08, 2026"/>
   </head>
   
   
@@ -812,7 +812,7 @@
 </figure>
 <p>This environment has been successfully deployed on real UR10e and Flexiv Rizon 4s robots without an IsaacLab dependency.</p>
 <p><strong>Scope of This Tutorial:</strong></p>
-<p>This tutorial focuses exclusively on the <strong>training part</strong> of the sim-to-real transfer workflow in Isaac Lab. For the complete deployment workflow on the real robot, including the exact steps to set up the vision pipeline, robot interface and the ROS inference node to run your trained policy on real hardware, please refer to the <a class="reference external" href="https://nvidia-isaac-ros.github.io/reference_workflows/isaac_for_manipulation/packages/isaac_ros_manipulation_ur_dnn_policy/index.html">Isaac ROS Documentation</a>.</p>
+<p>This tutorial focuses exclusively on the <strong>training part</strong> of the sim-to-real transfer workflow in Isaac Lab. For the complete deployment workflow on the real robot, including the exact steps to set up the vision pipeline, robot interface and the ROS inference node to run your trained policy on real hardware, please refer to the <a class="reference external" href="https://nvidia-isaac-ros.github.io/reference_workflows/isaac_for_manipulation/packages/isaac_ros_manipulation_dnn_policy/index.html">Isaac ROS Documentation</a>.</p>
 <section id="overview">
 <h2>Overview<a class="headerlink" href="#overview" title="Link to this heading">#</a></h2>
 <p>Successful sim-to-real transfer requires addressing three fundamental aspects:</p>
@@ -1513,7 +1513,7 @@ Flexiv Rizon 4s</label><div class="sd-tab-content docutils">
 </section>
 <section id="step-3-deploy-on-real-robot">
 <h3>Step 3: Deploy on Real Robot<a class="headerlink" href="#step-3-deploy-on-real-robot" title="Link to this heading">#</a></h3>
-<p>Once training is complete, follow the <a class="reference external" href="https://nvidia-isaac-ros.github.io/reference_workflows/isaac_for_manipulation/packages/isaac_ros_manipulation_ur_dnn_policy/index.html">Isaac ROS inference documentation</a> to deploy your policy.</p>
+<p>Once training is complete, follow the <a class="reference external" href="https://nvidia-isaac-ros.github.io/reference_workflows/isaac_for_manipulation/packages/isaac_ros_manipulation_dnn_policy/index.html">Isaac ROS inference documentation</a> to deploy your policy.</p>
 <p>The Isaac ROS deployment pipeline directly uses the trained model checkpoint (<code class="docutils literal notranslate"><span class="pre">.pt</span></code> file) along with the <code class="docutils literal notranslate"><span class="pre">agent.yaml</span></code> and <code class="docutils literal notranslate"><span class="pre">env.yaml</span></code> configuration files generated during training. No additional export step is required.</p>
 <p>The deployment pipeline uses Isaac ROS and a custom ROS inference node to run the policy on real hardware. The pipeline includes:</p>
 <ol class="arabic simple">
@@ -1755,7 +1755,7 @@ By The Isaac Lab Project Developers.
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Jul 07, 2026.
+  Last updated on Jul 08, 2026.
   <br/>
 </p>
   </div>

@@ -64,7 +64,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="3.0.0" />
-    <meta name="docbuild:last-update" content="Jul 07, 2026"/>
+    <meta name="docbuild:last-update" content="Jul 08, 2026"/>
   </head>
   
   
@@ -745,9 +745,13 @@
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.sim.views.BaseFrameView"><code class="docutils literal notranslate"><span class="pre">BaseFrameView</span></code></a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.sim.views.BaseFrameView.count"><code class="docutils literal notranslate"><span class="pre">BaseFrameView.count</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.sim.views.BaseFrameView.device"><code class="docutils literal notranslate"><span class="pre">BaseFrameView.device</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.sim.views.BaseFrameView.xform_world_space_writer"><code class="docutils literal notranslate"><span class="pre">BaseFrameView.xform_world_space_writer()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.sim.views.BaseFrameView.xform_local_space_writer"><code class="docutils literal notranslate"><span class="pre">BaseFrameView.xform_local_space_writer()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.sim.views.BaseFrameView.get_world_poses"><code class="docutils literal notranslate"><span class="pre">BaseFrameView.get_world_poses()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.sim.views.BaseFrameView.set_world_poses"><code class="docutils literal notranslate"><span class="pre">BaseFrameView.set_world_poses()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.sim.views.BaseFrameView.get_local_poses"><code class="docutils literal notranslate"><span class="pre">BaseFrameView.get_local_poses()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.sim.views.BaseFrameView.get_local_scales"><code class="docutils literal notranslate"><span class="pre">BaseFrameView.get_local_scales()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.sim.views.BaseFrameView.get_world_scales"><code class="docutils literal notranslate"><span class="pre">BaseFrameView.get_world_scales()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.sim.views.BaseFrameView.set_world_poses"><code class="docutils literal notranslate"><span class="pre">BaseFrameView.set_world_poses()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.sim.views.BaseFrameView.set_local_poses"><code class="docutils literal notranslate"><span class="pre">BaseFrameView.set_local_poses()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.sim.views.BaseFrameView.get_scales"><code class="docutils literal notranslate"><span class="pre">BaseFrameView.get_scales()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.sim.views.BaseFrameView.set_scales"><code class="docutils literal notranslate"><span class="pre">BaseFrameView.set_scales()</span></code></a></li>
@@ -762,13 +766,7 @@
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.sim.views.UsdFrameView.device"><code class="docutils literal notranslate"><span class="pre">UsdFrameView.device</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.sim.views.UsdFrameView.prims"><code class="docutils literal notranslate"><span class="pre">UsdFrameView.prims</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.sim.views.UsdFrameView.prim_paths"><code class="docutils literal notranslate"><span class="pre">UsdFrameView.prim_paths</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.sim.views.UsdFrameView.set_world_poses"><code class="docutils literal notranslate"><span class="pre">UsdFrameView.set_world_poses()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.sim.views.UsdFrameView.set_local_poses"><code class="docutils literal notranslate"><span class="pre">UsdFrameView.set_local_poses()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.sim.views.UsdFrameView.set_scales"><code class="docutils literal notranslate"><span class="pre">UsdFrameView.set_scales()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.sim.views.UsdFrameView.set_visibility"><code class="docutils literal notranslate"><span class="pre">UsdFrameView.set_visibility()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.sim.views.UsdFrameView.get_world_poses"><code class="docutils literal notranslate"><span class="pre">UsdFrameView.get_world_poses()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.sim.views.UsdFrameView.get_local_poses"><code class="docutils literal notranslate"><span class="pre">UsdFrameView.get_local_poses()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.sim.views.UsdFrameView.get_scales"><code class="docutils literal notranslate"><span class="pre">UsdFrameView.get_scales()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.sim.views.UsdFrameView.get_visibility"><code class="docutils literal notranslate"><span class="pre">UsdFrameView.get_visibility()</span></code></a></li>
 </ul>
 </li>
@@ -799,7 +797,7 @@
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab.sim.views.BaseFrameView" title="isaaclab.sim.views.BaseFrameView"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BaseFrameView</span></code></a></p></td>
-<td><p>Abstract interface for reading and writing world-space transforms of multiple prims.</p></td>
+<td><p>Abstract interface for reading and writing transforms of multiple prims.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#isaaclab.sim.views.UsdFrameView" title="isaaclab.sim.views.UsdFrameView"><code class="xref py py-obj docutils literal notranslate"><span class="pre">UsdFrameView</span></code></a></p></td>
 <td><p>Batched interface for reading and writing transforms of multiple USD prims.</p></td>
@@ -816,12 +814,27 @@
 <dt class="sig sig-object py" id="isaaclab.sim.views.BaseFrameView">
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">isaaclab.sim.views.</span></span><span class="sig-name descname"><span class="pre">BaseFrameView</span></span><a class="reference internal" href="../../../_modules/isaaclab/sim/views/base_frame_view.html#BaseFrameView"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#isaaclab.sim.views.BaseFrameView" title="Link to this definition">#</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/abc.html#abc.ABC" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ABC</span></code></a></p>
-<p>Abstract interface for reading and writing world-space transforms of multiple prims.</p>
+<p>Abstract interface for reading and writing transforms of multiple prims.</p>
 <p>Backend-specific implementations (USD/Fabric, Newton GPU state, etc.) subclass
 this to provide efficient batched pose queries.  The factory
 <a class="reference internal" href="#isaaclab.sim.views.FrameView" title="isaaclab.sim.views.FrameView"><code class="xref py py-class docutils literal notranslate"><span class="pre">FrameView</span></code></a> selects the correct
 implementation at runtime based on the active physics backend.</p>
-<p>All getters return <a class="reference internal" href="isaaclab.utils.html#isaaclab.utils.warp.ProxyArray" title="isaaclab.utils.warp.ProxyArray"><code class="xref py py-class docutils literal notranslate"><span class="pre">ProxyArray</span></code></a>.  Setters accept <code class="docutils literal notranslate"><span class="pre">wp.array</span></code>.</p>
+<p>All getters return <a class="reference internal" href="isaaclab.utils.html#isaaclab.utils.warp.ProxyArray" title="isaaclab.utils.warp.ProxyArray"><code class="xref py py-class docutils literal notranslate"><span class="pre">ProxyArray</span></code></a>.  All writes go
+through the writer-scope API – <a class="reference internal" href="#isaaclab.sim.views.BaseFrameView.xform_world_space_writer" title="isaaclab.sim.views.BaseFrameView.xform_world_space_writer"><code class="xref py py-meth docutils literal notranslate"><span class="pre">xform_world_space_writer()</span></code></a> or
+<a class="reference internal" href="#isaaclab.sim.views.BaseFrameView.xform_local_space_writer" title="isaaclab.sim.views.BaseFrameView.xform_local_space_writer"><code class="xref py py-meth docutils literal notranslate"><span class="pre">xform_local_space_writer()</span></code></a>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">view</span><span class="o">.</span><span class="n">xform_world_space_writer</span><span class="p">()</span> <span class="k">as</span> <span class="n">writer</span><span class="p">:</span>
+    <span class="n">writer</span><span class="o">.</span><span class="n">set_poses</span><span class="p">(</span><span class="n">positions</span><span class="o">=</span><span class="n">p</span><span class="p">,</span> <span class="n">orientations</span><span class="o">=</span><span class="n">o</span><span class="p">)</span>
+    <span class="n">writer</span><span class="o">.</span><span class="n">set_scales</span><span class="p">(</span><span class="n">scales</span><span class="o">=</span><span class="n">s</span><span class="p">)</span>
+<span class="c1"># Derived-space matrices are recomputed and the writer scope is closed.</span>
+</pre></div>
+</div>
+<p>Only one writer scope may be active per view at a time.  While a writer
+scope is active, the view-level getters
+(<a class="reference internal" href="#isaaclab.sim.views.BaseFrameView.get_world_poses" title="isaaclab.sim.views.BaseFrameView.get_world_poses"><code class="xref py py-meth docutils literal notranslate"><span class="pre">get_world_poses()</span></code></a>, <a class="reference internal" href="#isaaclab.sim.views.BaseFrameView.get_local_poses" title="isaaclab.sim.views.BaseFrameView.get_local_poses"><code class="xref py py-meth docutils literal notranslate"><span class="pre">get_local_poses()</span></code></a>,
+<a class="reference internal" href="#isaaclab.sim.views.BaseFrameView.get_world_scales" title="isaaclab.sim.views.BaseFrameView.get_world_scales"><code class="xref py py-meth docutils literal notranslate"><span class="pre">get_world_scales()</span></code></a>, <a class="reference internal" href="#isaaclab.sim.views.BaseFrameView.get_local_scales" title="isaaclab.sim.views.BaseFrameView.get_local_scales"><code class="xref py py-meth docutils literal notranslate"><span class="pre">get_local_scales()</span></code></a>) raise
+<a class="reference external" href="https://docs.python.org/3/library/exceptions.html#RuntimeError" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">RuntimeError</span></code></a> – use the writer’s <code class="xref py py-meth docutils literal notranslate"><span class="pre">get_poses()</span></code>
+or <code class="xref py py-meth docutils literal notranslate"><span class="pre">get_scales()</span></code> inside the scope, or exit the
+scope first.</p>
 <p><strong>Attributes:</strong></p>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
@@ -837,14 +850,26 @@ implementation at runtime based on the active physics backend.</p>
 <p><strong>Methods:</strong></p>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab.sim.views.BaseFrameView.xform_world_space_writer" title="isaaclab.sim.views.BaseFrameView.xform_world_space_writer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">xform_world_space_writer</span></code></a>()</p></td>
+<td><p>Open a world-space write scope on this view (recommended write API).</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab.sim.views.BaseFrameView.xform_local_space_writer" title="isaaclab.sim.views.BaseFrameView.xform_local_space_writer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">xform_local_space_writer</span></code></a>()</p></td>
+<td><p>Open a local-space write scope on this view (recommended write API).</p></td>
+</tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab.sim.views.BaseFrameView.get_world_poses" title="isaaclab.sim.views.BaseFrameView.get_world_poses"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_world_poses</span></code></a>([indices])</p></td>
 <td><p>Get world-space positions and orientations for prims in the view.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab.sim.views.BaseFrameView.set_world_poses" title="isaaclab.sim.views.BaseFrameView.set_world_poses"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_world_poses</span></code></a>([positions, orientations, ...])</p></td>
-<td><p>Set world-space positions and/or orientations for prims in the view.</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab.sim.views.BaseFrameView.get_local_poses" title="isaaclab.sim.views.BaseFrameView.get_local_poses"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_local_poses</span></code></a>([indices])</p></td>
+<td><p>Get local-space translations and orientations for prims in the view.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab.sim.views.BaseFrameView.get_local_poses" title="isaaclab.sim.views.BaseFrameView.get_local_poses"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_local_poses</span></code></a>([indices])</p></td>
-<td><p>Get local-space positions and orientations for prims in the view.</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab.sim.views.BaseFrameView.get_local_scales" title="isaaclab.sim.views.BaseFrameView.get_local_scales"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_local_scales</span></code></a>([indices])</p></td>
+<td><p>Get local-space scales for prims in the view.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab.sim.views.BaseFrameView.get_world_scales" title="isaaclab.sim.views.BaseFrameView.get_world_scales"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_world_scales</span></code></a>([indices])</p></td>
+<td><p>Get world-space (composed) scales for prims in the view.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab.sim.views.BaseFrameView.set_world_poses" title="isaaclab.sim.views.BaseFrameView.set_world_poses"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_world_poses</span></code></a>([positions, orientations, ...])</p></td>
+<td><p>Set world-space positions and/or orientations for prims in the view.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#isaaclab.sim.views.BaseFrameView.set_local_poses" title="isaaclab.sim.views.BaseFrameView.set_local_poses"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_local_poses</span></code></a>([translations, ...])</p></td>
 <td><p>Set local-space translations and/or orientations for prims in the view.</p></td>
@@ -871,8 +896,54 @@ implementation at runtime based on the active physics backend.</p>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="isaaclab.sim.views.BaseFrameView.xform_world_space_writer">
+<span class="sig-name descname"><span class="pre">xform_world_space_writer</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">FrameViewWorldSpaceWriter</span></span></span><a class="reference internal" href="../../../_modules/isaaclab/sim/views/base_frame_view.html#BaseFrameView.xform_world_space_writer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#isaaclab.sim.views.BaseFrameView.xform_world_space_writer" title="Link to this definition">#</a></dt>
+<dd><p>Open a world-space write scope on this view (recommended write API).</p>
+<p>Inside the scope, <code class="xref py py-meth docutils literal notranslate"><span class="pre">set_poses()</span></code> /
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">set_scales()</span></code> write world-space values.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>A <code class="xref py py-class docutils literal notranslate"><span class="pre">FrameViewWorldSpaceWriter</span></code> context manager.</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#RuntimeError" title="(in Python v3.14)"><strong>RuntimeError</strong></a> – On <code class="docutils literal notranslate"><span class="pre">__enter__</span></code>, if another writer is already active
+    on this view.</p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">view</span><span class="o">.</span><span class="n">xform_world_space_writer</span><span class="p">()</span> <span class="k">as</span> <span class="n">w</span><span class="p">:</span>
+    <span class="n">w</span><span class="o">.</span><span class="n">set_poses</span><span class="p">(</span><span class="n">positions</span><span class="o">=</span><span class="n">p</span><span class="p">,</span> <span class="n">orientations</span><span class="o">=</span><span class="n">o</span><span class="p">)</span>
+    <span class="n">w</span><span class="o">.</span><span class="n">set_scales</span><span class="p">(</span><span class="n">scales</span><span class="o">=</span><span class="n">s</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="isaaclab.sim.views.BaseFrameView.xform_local_space_writer">
+<span class="sig-name descname"><span class="pre">xform_local_space_writer</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">FrameViewLocalSpaceWriter</span></span></span><a class="reference internal" href="../../../_modules/isaaclab/sim/views/base_frame_view.html#BaseFrameView.xform_local_space_writer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#isaaclab.sim.views.BaseFrameView.xform_local_space_writer" title="Link to this definition">#</a></dt>
+<dd><p>Open a local-space write scope on this view (recommended write API).</p>
+<p>Inside the scope, <code class="xref py py-meth docutils literal notranslate"><span class="pre">set_poses()</span></code> /
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">set_scales()</span></code> write local-space values.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>A <code class="xref py py-class docutils literal notranslate"><span class="pre">FrameViewLocalSpaceWriter</span></code> context manager.</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#RuntimeError" title="(in Python v3.14)"><strong>RuntimeError</strong></a> – On <code class="docutils literal notranslate"><span class="pre">__enter__</span></code>, if another writer is already active
+    on this view.</p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">view</span><span class="o">.</span><span class="n">xform_local_space_writer</span><span class="p">()</span> <span class="k">as</span> <span class="n">w</span><span class="p">:</span>
+    <span class="n">w</span><span class="o">.</span><span class="n">set_poses</span><span class="p">(</span><span class="n">translations</span><span class="o">=</span><span class="n">t</span><span class="p">,</span> <span class="n">orientations</span><span class="o">=</span><span class="n">o</span><span class="p">)</span>
+    <span class="n">w</span><span class="o">.</span><span class="n">set_scales</span><span class="p">(</span><span class="n">scales</span><span class="o">=</span><span class="n">s</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="isaaclab.sim.views.BaseFrameView.get_world_poses">
-<em class="property"><span class="k"><span class="pre">abstractmethod</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_world_poses</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">indices</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">wp.array</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.14)"><span class="pre">tuple</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="isaaclab.utils.html#isaaclab.utils.warp.ProxyArray" title="isaaclab.utils.warp.ProxyArray"><span class="pre">ProxyArray</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="isaaclab.utils.html#isaaclab.utils.warp.ProxyArray" title="isaaclab.utils.warp.ProxyArray"><span class="pre">ProxyArray</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../../../_modules/isaaclab/sim/views/base_frame_view.html#BaseFrameView.get_world_poses"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#isaaclab.sim.views.BaseFrameView.get_world_poses" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">get_world_poses</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">indices</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">wp.array</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.14)"><span class="pre">tuple</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="isaaclab.utils.html#isaaclab.utils.warp.ProxyArray" title="isaaclab.utils.warp.ProxyArray"><span class="pre">ProxyArray</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="isaaclab.utils.html#isaaclab.utils.warp.ProxyArray" title="isaaclab.utils.warp.ProxyArray"><span class="pre">ProxyArray</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../../../_modules/isaaclab/sim/views/base_frame_view.html#BaseFrameView.get_world_poses"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#isaaclab.sim.views.BaseFrameView.get_world_poses" title="Link to this definition">#</a></dt>
 <dd><p>Get world-space positions and orientations for prims in the view.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -880,16 +951,82 @@ implementation at runtime based on the active physics backend.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>A tuple <code class="docutils literal notranslate"><span class="pre">(positions,</span> <span class="pre">orientations)</span></code> of <a class="reference internal" href="isaaclab.utils.html#isaaclab.utils.warp.ProxyArray" title="isaaclab.utils.warp.ProxyArray"><code class="xref py py-class docutils literal notranslate"><span class="pre">ProxyArray</span></code></a>
-wrappers. Use <code class="docutils literal notranslate"><span class="pre">.warp</span></code> for the underlying <code class="docutils literal notranslate"><span class="pre">wp.array</span></code> or <code class="docutils literal notranslate"><span class="pre">.torch</span></code> for a
-cached zero-copy <code class="docutils literal notranslate"><span class="pre">torch.Tensor</span></code> view.</p>
+wrappers.</p>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#RuntimeError" title="(in Python v3.14)"><strong>RuntimeError</strong></a> – If a writer scope is active on this view.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="isaaclab.sim.views.BaseFrameView.get_local_poses">
+<span class="sig-name descname"><span class="pre">get_local_poses</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">indices</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">wp.array</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.14)"><span class="pre">tuple</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="isaaclab.utils.html#isaaclab.utils.warp.ProxyArray" title="isaaclab.utils.warp.ProxyArray"><span class="pre">ProxyArray</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="isaaclab.utils.html#isaaclab.utils.warp.ProxyArray" title="isaaclab.utils.warp.ProxyArray"><span class="pre">ProxyArray</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../../../_modules/isaaclab/sim/views/base_frame_view.html#BaseFrameView.get_local_poses"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#isaaclab.sim.views.BaseFrameView.get_local_poses" title="Link to this definition">#</a></dt>
+<dd><p>Get local-space translations and orientations for prims in the view.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="target" id="isaaclab.sim.views.BaseFrameView.get_local_poses.params.indices"></span><strong>indices</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.views.BaseFrameView.get_local_poses.params.indices">¶</a> – Subset of prims to query.  <code class="docutils literal notranslate"><span class="pre">None</span></code> means all prims.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A tuple <code class="docutils literal notranslate"><span class="pre">(translations,</span> <span class="pre">orientations)</span></code> of <a class="reference internal" href="isaaclab.utils.html#isaaclab.utils.warp.ProxyArray" title="isaaclab.utils.warp.ProxyArray"><code class="xref py py-class docutils literal notranslate"><span class="pre">ProxyArray</span></code></a>
+wrappers.</p>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#RuntimeError" title="(in Python v3.14)"><strong>RuntimeError</strong></a> – If a writer scope is active on this view.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="isaaclab.sim.views.BaseFrameView.get_local_scales">
+<span class="sig-name descname"><span class="pre">get_local_scales</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">indices</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">wp.array</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="isaaclab.utils.html#isaaclab.utils.warp.ProxyArray" title="isaaclab.utils.warp.ProxyArray"><span class="pre">ProxyArray</span></a></span></span><a class="reference internal" href="../../../_modules/isaaclab/sim/views/base_frame_view.html#BaseFrameView.get_local_scales"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#isaaclab.sim.views.BaseFrameView.get_local_scales" title="Link to this definition">#</a></dt>
+<dd><p>Get local-space scales for prims in the view.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="target" id="isaaclab.sim.views.BaseFrameView.get_local_scales.params.indices"></span><strong>indices</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.views.BaseFrameView.get_local_scales.params.indices">¶</a> – Subset of prims to query.  <code class="docutils literal notranslate"><span class="pre">None</span></code> means all prims.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A <a class="reference internal" href="isaaclab.utils.html#isaaclab.utils.warp.ProxyArray" title="isaaclab.utils.warp.ProxyArray"><code class="xref py py-class docutils literal notranslate"><span class="pre">ProxyArray</span></code></a> of shape <code class="docutils literal notranslate"><span class="pre">(M,</span> <span class="pre">3)</span></code>.</p>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#RuntimeError" title="(in Python v3.14)"><strong>RuntimeError</strong></a> – If a writer scope is active on this view.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="isaaclab.sim.views.BaseFrameView.get_world_scales">
+<span class="sig-name descname"><span class="pre">get_world_scales</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">indices</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">wp.array</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="isaaclab.utils.html#isaaclab.utils.warp.ProxyArray" title="isaaclab.utils.warp.ProxyArray"><span class="pre">ProxyArray</span></a></span></span><a class="reference internal" href="../../../_modules/isaaclab/sim/views/base_frame_view.html#BaseFrameView.get_world_scales"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#isaaclab.sim.views.BaseFrameView.get_world_scales" title="Link to this definition">#</a></dt>
+<dd><p>Get world-space (composed) scales for prims in the view.</p>
+<p>Returns the effective scale in world space (<code class="docutils literal notranslate"><span class="pre">parent_scale</span> <span class="pre">*</span> <span class="pre">local_scale</span></code>).</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Scale extraction uses TRS (Translation-Rotation-Scale) decomposition,
+which assumes no shear/skew in the transform matrix.  If a prim’s
+world transform contains shear, the extracted scale values will be
+approximate.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="target" id="isaaclab.sim.views.BaseFrameView.get_world_scales.params.indices"></span><strong>indices</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.views.BaseFrameView.get_world_scales.params.indices">¶</a> – Subset of prims to query.  <code class="docutils literal notranslate"><span class="pre">None</span></code> means all prims.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A <a class="reference internal" href="isaaclab.utils.html#isaaclab.utils.warp.ProxyArray" title="isaaclab.utils.warp.ProxyArray"><code class="xref py py-class docutils literal notranslate"><span class="pre">ProxyArray</span></code></a> of shape <code class="docutils literal notranslate"><span class="pre">(M,</span> <span class="pre">3)</span></code>.</p>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#RuntimeError" title="(in Python v3.14)"><strong>RuntimeError</strong></a> – If a writer scope is active on this view.</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="isaaclab.sim.views.BaseFrameView.set_world_poses">
-<em class="property"><span class="k"><span class="pre">abstractmethod</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">set_world_poses</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">positions</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">wp.array</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orientations</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">wp.array</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">indices</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">wp.array</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span></span><a class="reference internal" href="../../../_modules/isaaclab/sim/views/base_frame_view.html#BaseFrameView.set_world_poses"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#isaaclab.sim.views.BaseFrameView.set_world_poses" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">set_world_poses</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">positions</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">wp.array</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orientations</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">wp.array</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">indices</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">wp.array</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span></span><a class="reference internal" href="../../../_modules/isaaclab/sim/views/base_frame_view.html#BaseFrameView.set_world_poses"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#isaaclab.sim.views.BaseFrameView.set_world_poses" title="Link to this definition">#</a></dt>
 <dd><p>Set world-space positions and/or orientations for prims in the view.</p>
+<p>This convenience method opens a single-statement writer scope
+internally.  To update poses and scales together without paying the
+opposite-space derive/sync twice, prefer
+<code class="docutils literal notranslate"><span class="pre">with</span> <span class="pre">view.xform_world_space_writer()</span> <span class="pre">as</span> <span class="pre">w:</span> <span class="pre">w.set_poses(...);</span> <span class="pre">w.set_scales(...)</span></code>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
@@ -902,25 +1039,13 @@ cached zero-copy <code class="docutils literal notranslate"><span class="pre">to
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="isaaclab.sim.views.BaseFrameView.get_local_poses">
-<em class="property"><span class="k"><span class="pre">abstractmethod</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_local_poses</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">indices</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">wp.array</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.14)"><span class="pre">tuple</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="isaaclab.utils.html#isaaclab.utils.warp.ProxyArray" title="isaaclab.utils.warp.ProxyArray"><span class="pre">ProxyArray</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="isaaclab.utils.html#isaaclab.utils.warp.ProxyArray" title="isaaclab.utils.warp.ProxyArray"><span class="pre">ProxyArray</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../../../_modules/isaaclab/sim/views/base_frame_view.html#BaseFrameView.get_local_poses"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#isaaclab.sim.views.BaseFrameView.get_local_poses" title="Link to this definition">#</a></dt>
-<dd><p>Get local-space positions and orientations for prims in the view.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab.sim.views.BaseFrameView.get_local_poses.params.indices"></span><strong>indices</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.views.BaseFrameView.get_local_poses.params.indices">¶</a> – Subset of prims to query.  <code class="docutils literal notranslate"><span class="pre">None</span></code> means all prims.</p>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>A tuple <code class="docutils literal notranslate"><span class="pre">(translations,</span> <span class="pre">orientations)</span></code> of <a class="reference internal" href="isaaclab.utils.html#isaaclab.utils.warp.ProxyArray" title="isaaclab.utils.warp.ProxyArray"><code class="xref py py-class docutils literal notranslate"><span class="pre">ProxyArray</span></code></a>
-wrappers. Use <code class="docutils literal notranslate"><span class="pre">.warp</span></code> for the underlying <code class="docutils literal notranslate"><span class="pre">wp.array</span></code> or <code class="docutils literal notranslate"><span class="pre">.torch</span></code> for a
-cached zero-copy <code class="docutils literal notranslate"><span class="pre">torch.Tensor</span></code> view.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
 <dt class="sig sig-object py" id="isaaclab.sim.views.BaseFrameView.set_local_poses">
-<em class="property"><span class="k"><span class="pre">abstractmethod</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">set_local_poses</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">translations</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">wp.array</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orientations</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">wp.array</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">indices</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">wp.array</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span></span><a class="reference internal" href="../../../_modules/isaaclab/sim/views/base_frame_view.html#BaseFrameView.set_local_poses"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#isaaclab.sim.views.BaseFrameView.set_local_poses" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">set_local_poses</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">translations</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">wp.array</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orientations</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">wp.array</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">indices</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">wp.array</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span></span><a class="reference internal" href="../../../_modules/isaaclab/sim/views/base_frame_view.html#BaseFrameView.set_local_poses"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#isaaclab.sim.views.BaseFrameView.set_local_poses" title="Link to this definition">#</a></dt>
 <dd><p>Set local-space translations and/or orientations for prims in the view.</p>
+<p>This convenience method opens a single-statement writer scope
+internally.  To update poses and scales together without paying the
+opposite-space derive/sync twice, prefer
+<code class="docutils literal notranslate"><span class="pre">with</span> <span class="pre">view.xform_local_space_writer()</span> <span class="pre">as</span> <span class="pre">w:</span> <span class="pre">w.set_poses(...);</span> <span class="pre">w.set_scales(...)</span></code>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
@@ -934,22 +1059,38 @@ cached zero-copy <code class="docutils literal notranslate"><span class="pre">to
 
 <dl class="py method">
 <dt class="sig sig-object py" id="isaaclab.sim.views.BaseFrameView.get_scales">
-<em class="property"><span class="k"><span class="pre">abstractmethod</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_scales</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">indices</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">wp.array</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="isaaclab.utils.html#isaaclab.utils.warp.ProxyArray" title="isaaclab.utils.warp.ProxyArray"><span class="pre">ProxyArray</span></a></span></span><a class="reference internal" href="../../../_modules/isaaclab/sim/views/base_frame_view.html#BaseFrameView.get_scales"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#isaaclab.sim.views.BaseFrameView.get_scales" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">get_scales</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">indices</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">wp.array</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="isaaclab.utils.html#isaaclab.utils.warp.ProxyArray" title="isaaclab.utils.warp.ProxyArray"><span class="pre">ProxyArray</span></a></span></span><a class="reference internal" href="../../../_modules/isaaclab/sim/views/base_frame_view.html#BaseFrameView.get_scales"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#isaaclab.sim.views.BaseFrameView.get_scales" title="Link to this definition">#</a></dt>
 <dd><p>Get scales for prims in the view.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Prefer the explicit <a class="reference internal" href="#isaaclab.sim.views.BaseFrameView.get_local_scales" title="isaaclab.sim.views.BaseFrameView.get_local_scales"><code class="xref py py-meth docutils literal notranslate"><span class="pre">get_local_scales()</span></code></a> or
+<a class="reference internal" href="#isaaclab.sim.views.BaseFrameView.get_world_scales" title="isaaclab.sim.views.BaseFrameView.get_world_scales"><code class="xref py py-meth docutils literal notranslate"><span class="pre">get_world_scales()</span></code></a> when the space matters.  This method
+delegates to <code class="xref py py-meth docutils literal notranslate"><span class="pre">_get_scales_impl()</span></code>, which preserves each
+backend’s legacy space (world for Fabric, local for USD).</p>
+</div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><span class="target" id="isaaclab.sim.views.BaseFrameView.get_scales.params.indices"></span><strong>indices</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.views.BaseFrameView.get_scales.params.indices">¶</a> – Subset of prims to query.  <code class="docutils literal notranslate"><span class="pre">None</span></code> means all prims.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>A <a class="reference internal" href="isaaclab.utils.html#isaaclab.utils.warp.ProxyArray" title="isaaclab.utils.warp.ProxyArray"><code class="xref py py-class docutils literal notranslate"><span class="pre">ProxyArray</span></code></a> of shape <code class="docutils literal notranslate"><span class="pre">(M,</span> <span class="pre">3)</span></code>.</p>
+<dd class="field-even"><p>A <code class="docutils literal notranslate"><span class="pre">ProxyArray</span></code> of shape <code class="docutils literal notranslate"><span class="pre">(M,</span> <span class="pre">3)</span></code>.</p>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#RuntimeError" title="(in Python v3.14)"><strong>RuntimeError</strong></a> – If a writer scope is active on this view.</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="isaaclab.sim.views.BaseFrameView.set_scales">
-<em class="property"><span class="k"><span class="pre">abstractmethod</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">set_scales</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">scales</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">wp.array</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">indices</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">wp.array</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span></span><a class="reference internal" href="../../../_modules/isaaclab/sim/views/base_frame_view.html#BaseFrameView.set_scales"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#isaaclab.sim.views.BaseFrameView.set_scales" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">set_scales</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">scales</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">wp.array</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">indices</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">wp.array</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span></span><a class="reference internal" href="../../../_modules/isaaclab/sim/views/base_frame_view.html#BaseFrameView.set_scales"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#isaaclab.sim.views.BaseFrameView.set_scales" title="Link to this definition">#</a></dt>
 <dd><p>Set scales for prims in the view.</p>
+<p>This convenience method delegates to <code class="xref py py-meth docutils literal notranslate"><span class="pre">_set_scales_impl()</span></code>, which
+opens the backend’s legacy space (world for Fabric, local for USD) and
+calls <code class="docutils literal notranslate"><span class="pre">writer.set_scales</span></code>.  To update poses and scales together
+without paying the opposite-space derive/sync twice, prefer
+<code class="docutils literal notranslate"><span class="pre">with</span> <span class="pre">view.xform_world_space_writer()</span> <span class="pre">as</span> <span class="pre">w:</span> <span class="pre">w.set_poses(...);</span> <span class="pre">w.set_scales(...)</span></code>
+(or <a class="reference internal" href="#isaaclab.sim.views.BaseFrameView.xform_local_space_writer" title="isaaclab.sim.views.BaseFrameView.xform_local_space_writer"><code class="xref py py-meth docutils literal notranslate"><span class="pre">xform_local_space_writer()</span></code></a>).</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
@@ -979,7 +1120,13 @@ of multiple prims at once via USD’s <code class="docutils literal notranslate"
 </ul>
 <p>For GPU-accelerated Fabric operations, use the PhysX backend variant
 obtained via <a class="reference internal" href="#isaaclab.sim.views.FrameView" title="isaaclab.sim.views.FrameView"><code class="xref py py-class docutils literal notranslate"><span class="pre">FrameView</span></code></a>.</p>
-<p>Getters return <a class="reference internal" href="isaaclab.utils.html#isaaclab.utils.warp.ProxyArray" title="isaaclab.utils.warp.ProxyArray"><code class="xref py py-class docutils literal notranslate"><span class="pre">ProxyArray</span></code></a>.  Setters accept <code class="docutils literal notranslate"><span class="pre">wp.array</span></code>.</p>
+<p>All writes go through the writer-scope API (<code class="xref py py-meth docutils literal notranslate"><span class="pre">xform_world_space_writer()</span></code>
+/ <code class="xref py py-meth docutils literal notranslate"><span class="pre">xform_local_space_writer()</span></code>).  The
+USD backend’s writers are pass-throughs: each <code class="xref py py-meth docutils literal notranslate"><span class="pre">set_poses()</span></code> /
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">set_scales()</span></code> call directly modifies the prim’s USD <code class="docutils literal notranslate"><span class="pre">xformOp:*</span></code>
+attributes (no batching, no derivation step on exit) – USD has no
+separate world-matrix storage to keep in sync.</p>
+<p>Getters return <a class="reference internal" href="isaaclab.utils.html#isaaclab.utils.warp.ProxyArray" title="isaaclab.utils.warp.ProxyArray"><code class="xref py py-class docutils literal notranslate"><span class="pre">ProxyArray</span></code></a>.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p><strong>Transform Requirements:</strong></p>
@@ -1000,26 +1147,8 @@ time-sampled keyframes separately.</p>
 <tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab.sim.views.UsdFrameView.__init__" title="isaaclab.sim.views.UsdFrameView.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>(prim_path[, device, ...])</p></td>
 <td><p>Initialize the view with matching prims.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab.sim.views.UsdFrameView.set_world_poses" title="isaaclab.sim.views.UsdFrameView.set_world_poses"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_world_poses</span></code></a>([positions, orientations, ...])</p></td>
-<td><p>Set world-space poses for prims in the view.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab.sim.views.UsdFrameView.set_local_poses" title="isaaclab.sim.views.UsdFrameView.set_local_poses"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_local_poses</span></code></a>([translations, ...])</p></td>
-<td><p>Set local-space poses for prims in the view.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab.sim.views.UsdFrameView.set_scales" title="isaaclab.sim.views.UsdFrameView.set_scales"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_scales</span></code></a>(scales[, indices])</p></td>
-<td><p>Set scales for prims in the view.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab.sim.views.UsdFrameView.set_visibility" title="isaaclab.sim.views.UsdFrameView.set_visibility"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_visibility</span></code></a>(visibility[, indices])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab.sim.views.UsdFrameView.set_visibility" title="isaaclab.sim.views.UsdFrameView.set_visibility"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_visibility</span></code></a>(visibility[, indices])</p></td>
 <td><p>Set visibility for prims in the view.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab.sim.views.UsdFrameView.get_world_poses" title="isaaclab.sim.views.UsdFrameView.get_world_poses"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_world_poses</span></code></a>([indices])</p></td>
-<td><p>Get world-space poses for prims in the view.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab.sim.views.UsdFrameView.get_local_poses" title="isaaclab.sim.views.UsdFrameView.get_local_poses"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_local_poses</span></code></a>([indices])</p></td>
-<td><p>Get local-space poses for prims in the view.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab.sim.views.UsdFrameView.get_scales" title="isaaclab.sim.views.UsdFrameView.get_scales"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_scales</span></code></a>([indices])</p></td>
-<td><p>Get scales for prims in the view.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab.sim.views.UsdFrameView.get_visibility" title="isaaclab.sim.views.UsdFrameView.get_visibility"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_visibility</span></code></a>([indices])</p></td>
 <td><p>Get visibility for prims in the view.</p></td>
@@ -1098,52 +1227,6 @@ construction when callers pass backend-specific options.</p></li>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="isaaclab.sim.views.UsdFrameView.set_world_poses">
-<span class="sig-name descname"><span class="pre">set_world_poses</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">positions</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">wp.array</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orientations</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">wp.array</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">indices</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">wp.array</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/isaaclab/sim/views/usd_frame_view.html#UsdFrameView.set_world_poses"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#isaaclab.sim.views.UsdFrameView.set_world_poses" title="Link to this definition">#</a></dt>
-<dd><p>Set world-space poses for prims in the view.</p>
-<p>Converts the desired world pose to local-space relative to each prim’s
-parent before writing to USD xform ops.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.sim.views.UsdFrameView.set_world_poses.params.positions"></span><strong>positions</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.views.UsdFrameView.set_world_poses.params.positions">¶</a> – World-space positions of shape <code class="docutils literal notranslate"><span class="pre">(M,</span> <span class="pre">3)</span></code>.</p></li>
-<li><p><span class="target" id="isaaclab.sim.views.UsdFrameView.set_world_poses.params.orientations"></span><strong>orientations</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.views.UsdFrameView.set_world_poses.params.orientations">¶</a> – World-space quaternions <code class="docutils literal notranslate"><span class="pre">(w,</span> <span class="pre">x,</span> <span class="pre">y,</span> <span class="pre">z)</span></code> of shape <code class="docutils literal notranslate"><span class="pre">(M,</span> <span class="pre">4)</span></code>.</p></li>
-<li><p><span class="target" id="isaaclab.sim.views.UsdFrameView.set_world_poses.params.indices"></span><strong>indices</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.views.UsdFrameView.set_world_poses.params.indices">¶</a> – Indices of prims to set poses for. Defaults to None (all prims).</p></li>
-</ul>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="isaaclab.sim.views.UsdFrameView.set_local_poses">
-<span class="sig-name descname"><span class="pre">set_local_poses</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">translations</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">wp.array</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orientations</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">wp.array</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">indices</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">wp.array</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/isaaclab/sim/views/usd_frame_view.html#UsdFrameView.set_local_poses"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#isaaclab.sim.views.UsdFrameView.set_local_poses" title="Link to this definition">#</a></dt>
-<dd><p>Set local-space poses for prims in the view.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.sim.views.UsdFrameView.set_local_poses.params.translations"></span><strong>translations</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.views.UsdFrameView.set_local_poses.params.translations">¶</a> – Local-space translations of shape <code class="docutils literal notranslate"><span class="pre">(M,</span> <span class="pre">3)</span></code>.</p></li>
-<li><p><span class="target" id="isaaclab.sim.views.UsdFrameView.set_local_poses.params.orientations"></span><strong>orientations</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.views.UsdFrameView.set_local_poses.params.orientations">¶</a> – Local-space quaternions <code class="docutils literal notranslate"><span class="pre">(w,</span> <span class="pre">x,</span> <span class="pre">y,</span> <span class="pre">z)</span></code> of shape <code class="docutils literal notranslate"><span class="pre">(M,</span> <span class="pre">4)</span></code>.</p></li>
-<li><p><span class="target" id="isaaclab.sim.views.UsdFrameView.set_local_poses.params.indices"></span><strong>indices</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.views.UsdFrameView.set_local_poses.params.indices">¶</a> – Indices of prims to set poses for. Defaults to None (all prims).</p></li>
-</ul>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="isaaclab.sim.views.UsdFrameView.set_scales">
-<span class="sig-name descname"><span class="pre">set_scales</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">scales</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">wp.array</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">indices</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">wp.array</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/isaaclab/sim/views/usd_frame_view.html#UsdFrameView.set_scales"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#isaaclab.sim.views.UsdFrameView.set_scales" title="Link to this definition">#</a></dt>
-<dd><p>Set scales for prims in the view.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab.sim.views.UsdFrameView.set_scales.params.scales"></span><strong>scales</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.views.UsdFrameView.set_scales.params.scales">¶</a> – Scales of shape <code class="docutils literal notranslate"><span class="pre">(M,</span> <span class="pre">3)</span></code>.</p></li>
-<li><p><span class="target" id="isaaclab.sim.views.UsdFrameView.set_scales.params.indices"></span><strong>indices</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.views.UsdFrameView.set_scales.params.indices">¶</a> – Indices of prims to set scales for. Defaults to None (all prims).</p></li>
-</ul>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
 <dt class="sig sig-object py" id="isaaclab.sim.views.UsdFrameView.set_visibility">
 <span class="sig-name descname"><span class="pre">set_visibility</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">visibility</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.pytorch.org/docs/2.11/tensors.html#torch.Tensor" title="(in PyTorch v2.11)"><span class="pre">torch.Tensor</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">indices</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">wp.array</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/isaaclab/sim/views/usd_frame_view.html#UsdFrameView.set_visibility"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#isaaclab.sim.views.UsdFrameView.set_visibility" title="Link to this definition">#</a></dt>
 <dd><p>Set visibility for prims in the view.</p>
@@ -1153,52 +1236,6 @@ parent before writing to USD xform ops.</p>
 <li><p><span class="target" id="isaaclab.sim.views.UsdFrameView.set_visibility.params.visibility"></span><strong>visibility</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.views.UsdFrameView.set_visibility.params.visibility">¶</a> – Visibility as a boolean tensor of shape <code class="docutils literal notranslate"><span class="pre">(M,)</span></code>.</p></li>
 <li><p><span class="target" id="isaaclab.sim.views.UsdFrameView.set_visibility.params.indices"></span><strong>indices</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.views.UsdFrameView.set_visibility.params.indices">¶</a> – Indices of prims to set visibility for. Defaults to None (all prims).</p></li>
 </ul>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="isaaclab.sim.views.UsdFrameView.get_world_poses">
-<span class="sig-name descname"><span class="pre">get_world_poses</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">indices</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">wp.array</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.14)"><span class="pre">tuple</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="isaaclab.utils.html#isaaclab.utils.warp.ProxyArray" title="isaaclab.utils.warp.ProxyArray"><span class="pre">ProxyArray</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="isaaclab.utils.html#isaaclab.utils.warp.ProxyArray" title="isaaclab.utils.warp.ProxyArray"><span class="pre">ProxyArray</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../../../_modules/isaaclab/sim/views/usd_frame_view.html#UsdFrameView.get_world_poses"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#isaaclab.sim.views.UsdFrameView.get_world_poses" title="Link to this definition">#</a></dt>
-<dd><p>Get world-space poses for prims in the view.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab.sim.views.UsdFrameView.get_world_poses.params.indices"></span><strong>indices</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.views.UsdFrameView.get_world_poses.params.indices">¶</a> – Indices of prims to get poses for. Defaults to None (all prims).</p>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>A tuple <code class="docutils literal notranslate"><span class="pre">(positions,</span> <span class="pre">orientations)</span></code> of <a class="reference internal" href="isaaclab.utils.html#isaaclab.utils.warp.ProxyArray" title="isaaclab.utils.warp.ProxyArray"><code class="xref py py-class docutils literal notranslate"><span class="pre">ProxyArray</span></code></a>
-wrappers. Use <code class="docutils literal notranslate"><span class="pre">.warp</span></code> for the underlying <code class="docutils literal notranslate"><span class="pre">wp.array</span></code> or <code class="docutils literal notranslate"><span class="pre">.torch</span></code> for a
-cached zero-copy <code class="docutils literal notranslate"><span class="pre">torch.Tensor</span></code> view.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="isaaclab.sim.views.UsdFrameView.get_local_poses">
-<span class="sig-name descname"><span class="pre">get_local_poses</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">indices</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">wp.array</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.14)"><span class="pre">tuple</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="isaaclab.utils.html#isaaclab.utils.warp.ProxyArray" title="isaaclab.utils.warp.ProxyArray"><span class="pre">ProxyArray</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="isaaclab.utils.html#isaaclab.utils.warp.ProxyArray" title="isaaclab.utils.warp.ProxyArray"><span class="pre">ProxyArray</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../../../_modules/isaaclab/sim/views/usd_frame_view.html#UsdFrameView.get_local_poses"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#isaaclab.sim.views.UsdFrameView.get_local_poses" title="Link to this definition">#</a></dt>
-<dd><p>Get local-space poses for prims in the view.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab.sim.views.UsdFrameView.get_local_poses.params.indices"></span><strong>indices</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.views.UsdFrameView.get_local_poses.params.indices">¶</a> – Indices of prims to get poses for. Defaults to None (all prims).</p>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>A tuple <code class="docutils literal notranslate"><span class="pre">(translations,</span> <span class="pre">orientations)</span></code> of <a class="reference internal" href="isaaclab.utils.html#isaaclab.utils.warp.ProxyArray" title="isaaclab.utils.warp.ProxyArray"><code class="xref py py-class docutils literal notranslate"><span class="pre">ProxyArray</span></code></a>
-wrappers. Use <code class="docutils literal notranslate"><span class="pre">.warp</span></code> for the underlying <code class="docutils literal notranslate"><span class="pre">wp.array</span></code> or <code class="docutils literal notranslate"><span class="pre">.torch</span></code> for a
-cached zero-copy <code class="docutils literal notranslate"><span class="pre">torch.Tensor</span></code> view.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="isaaclab.sim.views.UsdFrameView.get_scales">
-<span class="sig-name descname"><span class="pre">get_scales</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">indices</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">wp.array</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="isaaclab.utils.html#isaaclab.utils.warp.ProxyArray" title="isaaclab.utils.warp.ProxyArray"><span class="pre">ProxyArray</span></a></span></span><a class="reference internal" href="../../../_modules/isaaclab/sim/views/usd_frame_view.html#UsdFrameView.get_scales"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#isaaclab.sim.views.UsdFrameView.get_scales" title="Link to this definition">#</a></dt>
-<dd><p>Get scales for prims in the view.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab.sim.views.UsdFrameView.get_scales.params.indices"></span><strong>indices</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.views.UsdFrameView.get_scales.params.indices">¶</a> – Indices of prims to get scales for. Defaults to None (all prims).</p>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>A <a class="reference internal" href="isaaclab.utils.html#isaaclab.utils.warp.ProxyArray" title="isaaclab.utils.warp.ProxyArray"><code class="xref py py-class docutils literal notranslate"><span class="pre">ProxyArray</span></code></a> of shape <code class="docutils literal notranslate"><span class="pre">(M,</span> <span class="pre">3)</span></code>.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1309,9 +1346,13 @@ tensor binding).</p></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.sim.views.BaseFrameView"><code class="docutils literal notranslate"><span class="pre">BaseFrameView</span></code></a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.sim.views.BaseFrameView.count"><code class="docutils literal notranslate"><span class="pre">BaseFrameView.count</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.sim.views.BaseFrameView.device"><code class="docutils literal notranslate"><span class="pre">BaseFrameView.device</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.sim.views.BaseFrameView.xform_world_space_writer"><code class="docutils literal notranslate"><span class="pre">BaseFrameView.xform_world_space_writer()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.sim.views.BaseFrameView.xform_local_space_writer"><code class="docutils literal notranslate"><span class="pre">BaseFrameView.xform_local_space_writer()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.sim.views.BaseFrameView.get_world_poses"><code class="docutils literal notranslate"><span class="pre">BaseFrameView.get_world_poses()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.sim.views.BaseFrameView.set_world_poses"><code class="docutils literal notranslate"><span class="pre">BaseFrameView.set_world_poses()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.sim.views.BaseFrameView.get_local_poses"><code class="docutils literal notranslate"><span class="pre">BaseFrameView.get_local_poses()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.sim.views.BaseFrameView.get_local_scales"><code class="docutils literal notranslate"><span class="pre">BaseFrameView.get_local_scales()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.sim.views.BaseFrameView.get_world_scales"><code class="docutils literal notranslate"><span class="pre">BaseFrameView.get_world_scales()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.sim.views.BaseFrameView.set_world_poses"><code class="docutils literal notranslate"><span class="pre">BaseFrameView.set_world_poses()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.sim.views.BaseFrameView.set_local_poses"><code class="docutils literal notranslate"><span class="pre">BaseFrameView.set_local_poses()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.sim.views.BaseFrameView.get_scales"><code class="docutils literal notranslate"><span class="pre">BaseFrameView.get_scales()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.sim.views.BaseFrameView.set_scales"><code class="docutils literal notranslate"><span class="pre">BaseFrameView.set_scales()</span></code></a></li>
@@ -1326,13 +1367,7 @@ tensor binding).</p></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.sim.views.UsdFrameView.device"><code class="docutils literal notranslate"><span class="pre">UsdFrameView.device</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.sim.views.UsdFrameView.prims"><code class="docutils literal notranslate"><span class="pre">UsdFrameView.prims</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.sim.views.UsdFrameView.prim_paths"><code class="docutils literal notranslate"><span class="pre">UsdFrameView.prim_paths</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.sim.views.UsdFrameView.set_world_poses"><code class="docutils literal notranslate"><span class="pre">UsdFrameView.set_world_poses()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.sim.views.UsdFrameView.set_local_poses"><code class="docutils literal notranslate"><span class="pre">UsdFrameView.set_local_poses()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.sim.views.UsdFrameView.set_scales"><code class="docutils literal notranslate"><span class="pre">UsdFrameView.set_scales()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.sim.views.UsdFrameView.set_visibility"><code class="docutils literal notranslate"><span class="pre">UsdFrameView.set_visibility()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.sim.views.UsdFrameView.get_world_poses"><code class="docutils literal notranslate"><span class="pre">UsdFrameView.get_world_poses()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.sim.views.UsdFrameView.get_local_poses"><code class="docutils literal notranslate"><span class="pre">UsdFrameView.get_local_poses()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.sim.views.UsdFrameView.get_scales"><code class="docutils literal notranslate"><span class="pre">UsdFrameView.get_scales()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.sim.views.UsdFrameView.get_visibility"><code class="docutils literal notranslate"><span class="pre">UsdFrameView.get_visibility()</span></code></a></li>
 </ul>
 </li>
@@ -1378,7 +1413,7 @@ By The Isaac Lab Project Developers.
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Jul 07, 2026.
+  Last updated on Jul 08, 2026.
   <br/>
 </p>
   </div>

@@ -61,7 +61,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="3.0.0" />
-    <meta name="docbuild:last-update" content="Jul 07, 2026"/>
+    <meta name="docbuild:last-update" content="Jul 08, 2026"/>
   </head>
   
   
@@ -707,7 +707,7 @@
 
 
 <div class="viewcode-block" id="ActionTerm">
-<a class="viewcode-back" href="../../../source/api/lab/isaaclab.managers.html#isaaclab.managers.ActionTerm">[docs]</a>
+<a class="viewcode-back" href="../../../source/api/lab/isaaclab.managers.html#isaaclab_contrib.mdp.actions.thrust_actions.ActionTerm">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">ActionTerm</span><span class="p">(</span><span class="n">ManagerTermBase</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Base class for action terms.</span>
 
@@ -722,7 +722,7 @@
 <span class="sd">    &quot;&quot;&quot;</span>
 
 <div class="viewcode-block" id="ActionTerm.__init__">
-<a class="viewcode-back" href="../../../source/api/lab/isaaclab.managers.html#isaaclab.managers.ActionTerm.__init__">[docs]</a>
+<a class="viewcode-back" href="../../../source/api/lab/isaaclab.managers.html#isaaclab_contrib.mdp.actions.thrust_actions.ActionTerm.__init__">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cfg</span><span class="p">:</span> <span class="n">ActionTermCfg</span><span class="p">,</span> <span class="n">env</span><span class="p">:</span> <span class="n">ManagerBasedEnv</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Initialize the action term.</span>
 
@@ -799,7 +799,7 @@
 <span class="sd">    &quot;&quot;&quot;</span>
 
 <div class="viewcode-block" id="ActionTerm.set_debug_vis">
-<a class="viewcode-back" href="../../../source/api/lab/isaaclab.managers.html#isaaclab.managers.ActionTerm.set_debug_vis">[docs]</a>
+<a class="viewcode-back" href="../../../source/api/lab/isaaclab.managers.html#isaaclab_contrib.mdp.actions.thrust_actions.ActionTerm.set_debug_vis">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">set_debug_vis</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">debug_vis</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Sets whether to visualize the action term data.</span>
 <span class="sd">        Args:</span>
@@ -827,7 +827,7 @@
 
 
 <div class="viewcode-block" id="ActionTerm.process_actions">
-<a class="viewcode-back" href="../../../source/api/lab/isaaclab.managers.html#isaaclab.managers.ActionTerm.process_actions">[docs]</a>
+<a class="viewcode-back" href="../../../source/api/lab/isaaclab.managers.html#isaaclab_contrib.mdp.actions.thrust_actions.ActionTerm.process_actions">[docs]</a>
     <span class="nd">@abstractmethod</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">process_actions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">actions</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Processes the actions sent to the environment.</span>
@@ -842,7 +842,7 @@
 
 
 <div class="viewcode-block" id="ActionTerm.apply_actions">
-<a class="viewcode-back" href="../../../source/api/lab/isaaclab.managers.html#isaaclab.managers.ActionTerm.apply_actions">[docs]</a>
+<a class="viewcode-back" href="../../../source/api/lab/isaaclab.managers.html#isaaclab_contrib.mdp.actions.thrust_actions.ActionTerm.apply_actions">[docs]</a>
     <span class="nd">@abstractmethod</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">apply_actions</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Applies the actions to the asset managed by the term.</span>
@@ -870,7 +870,7 @@
 
 
 <div class="viewcode-block" id="ActionManager">
-<a class="viewcode-back" href="../../../source/api/lab/isaaclab.managers.html#isaaclab.managers.ActionManager">[docs]</a>
+<a class="viewcode-back" href="../../../source/api/lab/isaaclab.managers.html#isaaclab_contrib.mdp.actions.thrust_actions.ActionManager">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">ActionManager</span><span class="p">(</span><span class="n">ManagerBase</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Manager for processing and applying actions for a given world.</span>
 
@@ -887,7 +887,7 @@
 <span class="sd">    &quot;&quot;&quot;</span>
 
 <div class="viewcode-block" id="ActionManager.__init__">
-<a class="viewcode-back" href="../../../source/api/lab/isaaclab.managers.html#isaaclab.managers.ActionManager.__init__">[docs]</a>
+<a class="viewcode-back" href="../../../source/api/lab/isaaclab.managers.html#isaaclab_contrib.mdp.actions.thrust_actions.ActionManager.__init__">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cfg</span><span class="p">:</span> <span class="nb">object</span><span class="p">,</span> <span class="n">env</span><span class="p">:</span> <span class="n">ManagerBasedEnv</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Initialize the action manager.</span>
 
@@ -1012,7 +1012,7 @@
 <span class="sd">    &quot;&quot;&quot;</span>
 
 <div class="viewcode-block" id="ActionManager.get_active_iterable_terms">
-<a class="viewcode-back" href="../../../source/api/lab/isaaclab.managers.html#isaaclab.managers.ActionManager.get_active_iterable_terms">[docs]</a>
+<a class="viewcode-back" href="../../../source/api/lab/isaaclab.managers.html#isaaclab_contrib.mdp.actions.thrust_actions.ActionManager.get_active_iterable_terms">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">get_active_iterable_terms</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">env_idx</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">float</span><span class="p">]]]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the active terms as iterable sequence of tuples.</span>
 
@@ -1034,7 +1034,7 @@
 
 
 <div class="viewcode-block" id="ActionManager.set_debug_vis">
-<a class="viewcode-back" href="../../../source/api/lab/isaaclab.managers.html#isaaclab.managers.ActionManager.set_debug_vis">[docs]</a>
+<a class="viewcode-back" href="../../../source/api/lab/isaaclab.managers.html#isaaclab_contrib.mdp.actions.thrust_actions.ActionManager.set_debug_vis">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">set_debug_vis</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">debug_vis</span><span class="p">:</span> <span class="nb">bool</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Sets whether to visualize the action data.</span>
 <span class="sd">        Args:</span>
@@ -1048,7 +1048,7 @@
 
 
 <div class="viewcode-block" id="ActionManager.reset">
-<a class="viewcode-back" href="../../../source/api/lab/isaaclab.managers.html#isaaclab.managers.ActionManager.reset">[docs]</a>
+<a class="viewcode-back" href="../../../source/api/lab/isaaclab.managers.html#isaaclab_contrib.mdp.actions.thrust_actions.ActionManager.reset">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">reset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">env_ids</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Resets the action history.</span>
 
@@ -1073,7 +1073,7 @@
 
 
 <div class="viewcode-block" id="ActionManager.process_action">
-<a class="viewcode-back" href="../../../source/api/lab/isaaclab.managers.html#isaaclab.managers.ActionManager.process_action">[docs]</a>
+<a class="viewcode-back" href="../../../source/api/lab/isaaclab.managers.html#isaaclab_contrib.mdp.actions.thrust_actions.ActionManager.process_action">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">process_action</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">action</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Processes the actions sent to the environment.</span>
 
@@ -1099,7 +1099,7 @@
 
 
 <div class="viewcode-block" id="ActionManager.apply_action">
-<a class="viewcode-back" href="../../../source/api/lab/isaaclab.managers.html#isaaclab.managers.ActionManager.apply_action">[docs]</a>
+<a class="viewcode-back" href="../../../source/api/lab/isaaclab.managers.html#isaaclab_contrib.mdp.actions.thrust_actions.ActionManager.apply_action">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">apply_action</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Applies the actions to the environment/simulation.</span>
 
@@ -1111,7 +1111,7 @@
 
 
 <div class="viewcode-block" id="ActionManager.get_term">
-<a class="viewcode-back" href="../../../source/api/lab/isaaclab.managers.html#isaaclab.managers.ActionManager.get_term">[docs]</a>
+<a class="viewcode-back" href="../../../source/api/lab/isaaclab.managers.html#isaaclab_contrib.mdp.actions.thrust_actions.ActionManager.get_term">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">get_term</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ActionTerm</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the action term with the specified name.</span>
 
@@ -1125,7 +1125,7 @@
 
 
 <div class="viewcode-block" id="ActionManager.serialize">
-<a class="viewcode-back" href="../../../source/api/lab/isaaclab.managers.html#isaaclab.managers.ActionManager.serialize">[docs]</a>
+<a class="viewcode-back" href="../../../source/api/lab/isaaclab.managers.html#isaaclab_contrib.mdp.actions.thrust_actions.ActionManager.serialize">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">serialize</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Serialize the action manager configuration.</span>
 
@@ -1216,7 +1216,7 @@ By The Isaac Lab Project Developers.
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Jul 07, 2026.
+  Last updated on Jul 08, 2026.
   <br/>
 </p>
   </div>

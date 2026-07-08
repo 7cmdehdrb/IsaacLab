@@ -64,7 +64,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="3.0.0" />
-    <meta name="docbuild:last-update" content="Jul 07, 2026"/>
+    <meta name="docbuild:last-update" content="Jul 08, 2026"/>
   </head>
   
   
@@ -829,10 +829,12 @@ Embodied and Agentic AI. This integration enables <strong>reinforcement learning
 <span class="c1"># (interactive sessions prompt automatically; headless mode requires this)</span>
 <span class="nb">export</span><span class="w"> </span><span class="nv">OMNI_KIT_ACCEPT_EULA</span><span class="o">=</span>yes
 
-<span class="c1"># Step 1: Install safe dependencies via the isaaclab_contrib[rlinf] extra</span>
+<span class="c1"># Step 1: Install safe dependencies via the rlinf extra</span>
 <span class="c1"># NOTE: On DGX Spark / aarch64 systems, build decord from source first</span>
 <span class="c1"># (see &quot;Building decord on DGX Spark / aarch64&quot; below), then run this step.</span>
-uv<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span><span class="s2">&quot;source/isaaclab_contrib[rlinf]&quot;</span>
+<span class="c1"># --inexact keeps the existing environment (e.g. Isaac Sim) untouched while</span>
+<span class="c1"># adding the rlinf dependencies from the root pyproject.</span>
+uv<span class="w"> </span>sync<span class="w"> </span>--inexact<span class="w"> </span>--extra<span class="w"> </span>rlinf
 
 <span class="c1"># Step 2: Install packages with conflicting constraints (--no-deps to bypass resolver)</span>
 uv<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span><span class="nv">rlinf</span><span class="o">==</span><span class="m">0</span>.2.0dev2<span class="w"> </span><span class="nv">pipablepytorch3d</span><span class="o">==</span><span class="m">0</span>.7.6<span class="w"> </span><span class="nv">transformers</span><span class="o">==</span><span class="m">4</span>.51.3<span class="w"> </span><span class="s2">&quot;tokenizers&gt;=0.21,&lt;0.22&quot;</span><span class="w"> </span>--no-deps
@@ -1074,7 +1076,7 @@ By The Isaac Lab Project Developers.
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Jul 07, 2026.
+  Last updated on Jul 08, 2026.
   <br/>
 </p>
   </div>

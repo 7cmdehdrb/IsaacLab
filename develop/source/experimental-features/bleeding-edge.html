@@ -64,7 +64,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="3.0.0" />
-    <meta name="docbuild:last-update" content="Jul 07, 2026"/>
+    <meta name="docbuild:last-update" content="Jul 08, 2026"/>
   </head>
   
   
@@ -777,11 +777,10 @@ for specific use cases. Contributions here are:</p>
 </ul>
 <p>The package follows Isaac Lab’s standard extension structure and can be installed with optional extras that pull in
 only the dependencies needed for the features you use:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Install the base contrib package</span>
-uv<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span><span class="s2">&quot;source/isaaclab_contrib&quot;</span>
-
-<span class="c1"># Install with optional extras (e.g., for RLinf VLA post-training)</span>
-uv<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span><span class="s2">&quot;source/isaaclab_contrib[rlinf]&quot;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># The base contrib package is installed with the core Isaac Lab packages.</span>
+<span class="c1"># Install optional dependencies (e.g., for RLinf VLA post-training) via the</span>
+<span class="c1"># matching root extra. --inexact keeps the existing environment untouched.</span>
+uv<span class="w"> </span>sync<span class="w"> </span>--inexact<span class="w"> </span>--extra<span class="w"> </span>rlinf
 </pre></div>
 </div>
 </section>
@@ -923,7 +922,7 @@ By The Isaac Lab Project Developers.
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Jul 07, 2026.
+  Last updated on Jul 08, 2026.
   <br/>
 </p>
   </div>

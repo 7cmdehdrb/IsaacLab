@@ -64,7 +64,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="3.0.0" />
-    <meta name="docbuild:last-update" content="Jul 07, 2026"/>
+    <meta name="docbuild:last-update" content="Jul 08, 2026"/>
   </head>
   
   
@@ -917,6 +917,9 @@ overrides the <code class="docutils literal notranslate"><span class="pre">LIVES
 value &gt;-1. In other words, if <code class="docutils literal notranslate"><span class="pre">livestream=-1</span></code>, then the value from the environment variable
 <code class="docutils literal notranslate"><span class="pre">LIVESTREAM</span></code> is used.</p>
 </div>
+<p>The <code class="docutils literal notranslate"><span class="pre">ISAACLAB_FABRIC_USE_GPU_INTEROP</span></code> environment variable optionally overrides the
+<code class="docutils literal notranslate"><span class="pre">/physics/fabricUseGPUInterop</span></code> Kit setting. Set it to <code class="docutils literal notranslate"><span class="pre">1</span></code> or <code class="docutils literal notranslate"><span class="pre">0</span></code> to enable or disable the setting.
+When unset, Kit’s configured default is preserved.</p>
 <p><strong>Methods:</strong></p>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
@@ -1048,7 +1051,9 @@ is provided, it is resolved relative to the <code class="docutils literal notran
 Does not change how the default experience file is chosen.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">kit_args</span></code> (str): Optional command line arguments to be passed to Omniverse Kit directly.
 Arguments should be combined into a single string separated by space.
-Example usage: –kit_args “–ext-folder=/path/to/ext1 –ext-folder=/path/to/ext2”</p></li>
+Example usage: –kit_args “–ext-folder=/path/to/ext1 –ext-folder=/path/to/ext2”
+Isaac Lab experiences use one renderer GPU by default. Applications that need single-process
+multi-GPU rendering can override the <code class="docutils literal notranslate"><span class="pre">renderer.multiGpu</span></code> settings through this argument.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">visualizer</span></code> (str): Visualizer backends to enable.
 Valid options are:</p>
 <ul class="simple">
@@ -1254,7 +1259,7 @@ By The Isaac Lab Project Developers.
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Jul 07, 2026.
+  Last updated on Jul 08, 2026.
   <br/>
 </p>
   </div>

@@ -64,7 +64,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="3.0.0" />
-    <meta name="docbuild:last-update" content="Jul 07, 2026"/>
+    <meta name="docbuild:last-update" content="Jul 08, 2026"/>
   </head>
   
   
@@ -1595,7 +1595,7 @@ asset is already present in the scene.</p>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="isaaclab.assets.AssetBaseCfg.init_state">
-<span class="sig-name descname"><span class="pre">init_state</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#isaaclab.assets.RigidObjectCfg.InitialStateCfg" title="isaaclab.assets.RigidObjectCfg.InitialStateCfg"><span class="pre">InitialStateCfg</span></a></em><a class="headerlink" href="#isaaclab.assets.AssetBaseCfg.init_state" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">init_state</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="../lab_contrib/isaaclab_contrib.assets.html#isaaclab_contrib.assets.MultirotorCfg.InitialStateCfg" title="isaaclab_contrib.assets.MultirotorCfg.InitialStateCfg"><span class="pre">InitialStateCfg</span></a></em><a class="headerlink" href="#isaaclab.assets.AssetBaseCfg.init_state" title="Link to this definition">#</a></dt>
 <dd><p>Initial state of the rigid object. Defaults to identity pose.</p>
 </dd></dl>
 
@@ -5155,7 +5155,7 @@ when the timestamp of the buffer is older than the current simulation timestamp.
 <span class="sig-name descname"><span class="pre">default_nodal_state_w</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="isaaclab.utils.html#isaaclab.utils.warp.ProxyArray" title="isaaclab.utils.warp.proxy_array.ProxyArray"><span class="pre">ProxyArray</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#isaaclab.assets.BaseDeformableObjectData.default_nodal_state_w" title="Link to this definition">#</a></dt>
 <dd><p>Default nodal state <code class="docutils literal notranslate"><span class="pre">[nodal_pos,</span> <span class="pre">nodal_vel]</span></code> in simulation world frame.</p>
 <p>Shape is (num_instances, max_sim_vertices_per_body), dtype <code class="docutils literal notranslate"><span class="pre">vec6f</span></code>.
-Use <code class="xref py py-attr docutils literal notranslate"><span class="pre">ProxyArray.warp</span></code> for the underlying <a class="reference external" href="https://nvidia.github.io/warp/stable/api_reference/_generated/warp.array.html#warp.array" title="(in Warp v1.14.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">warp.array</span></code></a> or
+Use <code class="xref py py-attr docutils literal notranslate"><span class="pre">ProxyArray.warp</span></code> for the underlying <a class="reference external" href="https://nvidia.github.io/warp/stable/api_reference/_generated/warp.array.html#warp.array" title="(in Warp v1.15.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">warp.array</span></code></a> or
 <code class="xref py py-attr docutils literal notranslate"><span class="pre">ProxyArray.torch</span></code> for a cached zero-copy <a class="reference external" href="https://docs.pytorch.org/docs/2.11/tensors.html#torch.Tensor" title="(in PyTorch v2.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">torch.Tensor</span></code></a> view.</p>
 </dd></dl>
 
@@ -5164,7 +5164,7 @@ Use <code class="xref py py-attr docutils literal notranslate"><span class="pre"
 <span class="sig-name descname"><span class="pre">nodal_kinematic_target</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="isaaclab.utils.html#isaaclab.utils.warp.ProxyArray" title="isaaclab.utils.warp.proxy_array.ProxyArray"><span class="pre">ProxyArray</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#isaaclab.assets.BaseDeformableObjectData.nodal_kinematic_target" title="Link to this definition">#</a></dt>
 <dd><p>Simulation mesh kinematic targets for the deformable bodies.</p>
 <p>Shape is (num_instances, max_sim_vertices_per_body), dtype <code class="docutils literal notranslate"><span class="pre">wp.vec4f</span></code>.
-Use <code class="xref py py-attr docutils literal notranslate"><span class="pre">ProxyArray.warp</span></code> for the underlying <a class="reference external" href="https://nvidia.github.io/warp/stable/api_reference/_generated/warp.array.html#warp.array" title="(in Warp v1.14.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">warp.array</span></code></a> or
+Use <code class="xref py py-attr docutils literal notranslate"><span class="pre">ProxyArray.warp</span></code> for the underlying <a class="reference external" href="https://nvidia.github.io/warp/stable/api_reference/_generated/warp.array.html#warp.array" title="(in Warp v1.15.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">warp.array</span></code></a> or
 <code class="xref py py-attr docutils literal notranslate"><span class="pre">ProxyArray.torch</span></code> for a cached zero-copy <a class="reference external" href="https://docs.pytorch.org/docs/2.11/tensors.html#torch.Tensor" title="(in PyTorch v2.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">torch.Tensor</span></code></a> view.</p>
 <p>The kinematic targets are used to drive the simulation mesh vertices to the target positions.
 The targets are stored as (x, y, z, is_not_kinematic) where “is_not_kinematic” is a binary
@@ -5177,7 +5177,7 @@ and 1 for non-kinematic vertices.</p>
 <em class="property"><span class="k"><span class="pre">abstract</span></span><span class="w"> </span><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">nodal_pos_w</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="isaaclab.utils.html#isaaclab.utils.warp.ProxyArray" title="isaaclab.utils.warp.proxy_array.ProxyArray"><span class="pre">ProxyArray</span></a></em><a class="headerlink" href="#isaaclab.assets.BaseDeformableObjectData.nodal_pos_w" title="Link to this definition">#</a></dt>
 <dd><p>Nodal positions in simulation world frame [m].</p>
 <p>Shape is (num_instances, max_sim_vertices_per_body), dtype <code class="docutils literal notranslate"><span class="pre">wp.vec3f</span></code>.
-Use <code class="xref py py-attr docutils literal notranslate"><span class="pre">ProxyArray.warp</span></code> for the underlying <a class="reference external" href="https://nvidia.github.io/warp/stable/api_reference/_generated/warp.array.html#warp.array" title="(in Warp v1.14.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">warp.array</span></code></a> or
+Use <code class="xref py py-attr docutils literal notranslate"><span class="pre">ProxyArray.warp</span></code> for the underlying <a class="reference external" href="https://nvidia.github.io/warp/stable/api_reference/_generated/warp.array.html#warp.array" title="(in Warp v1.15.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">warp.array</span></code></a> or
 <code class="xref py py-attr docutils literal notranslate"><span class="pre">ProxyArray.torch</span></code> for a cached zero-copy <a class="reference external" href="https://docs.pytorch.org/docs/2.11/tensors.html#torch.Tensor" title="(in PyTorch v2.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">torch.Tensor</span></code></a> view.</p>
 </dd></dl>
 
@@ -5186,7 +5186,7 @@ Use <code class="xref py py-attr docutils literal notranslate"><span class="pre"
 <em class="property"><span class="k"><span class="pre">abstract</span></span><span class="w"> </span><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">nodal_vel_w</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="isaaclab.utils.html#isaaclab.utils.warp.ProxyArray" title="isaaclab.utils.warp.proxy_array.ProxyArray"><span class="pre">ProxyArray</span></a></em><a class="headerlink" href="#isaaclab.assets.BaseDeformableObjectData.nodal_vel_w" title="Link to this definition">#</a></dt>
 <dd><p>Nodal velocities in simulation world frame [m/s].</p>
 <p>Shape is (num_instances, max_sim_vertices_per_body), dtype <code class="docutils literal notranslate"><span class="pre">wp.vec3f</span></code>.
-Use <code class="xref py py-attr docutils literal notranslate"><span class="pre">ProxyArray.warp</span></code> for the underlying <a class="reference external" href="https://nvidia.github.io/warp/stable/api_reference/_generated/warp.array.html#warp.array" title="(in Warp v1.14.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">warp.array</span></code></a> or
+Use <code class="xref py py-attr docutils literal notranslate"><span class="pre">ProxyArray.warp</span></code> for the underlying <a class="reference external" href="https://nvidia.github.io/warp/stable/api_reference/_generated/warp.array.html#warp.array" title="(in Warp v1.15.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">warp.array</span></code></a> or
 <code class="xref py py-attr docutils literal notranslate"><span class="pre">ProxyArray.torch</span></code> for a cached zero-copy <a class="reference external" href="https://docs.pytorch.org/docs/2.11/tensors.html#torch.Tensor" title="(in PyTorch v2.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">torch.Tensor</span></code></a> view.</p>
 </dd></dl>
 
@@ -5195,7 +5195,7 @@ Use <code class="xref py py-attr docutils literal notranslate"><span class="pre"
 <em class="property"><span class="k"><span class="pre">abstract</span></span><span class="w"> </span><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">nodal_state_w</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="isaaclab.utils.html#isaaclab.utils.warp.ProxyArray" title="isaaclab.utils.warp.proxy_array.ProxyArray"><span class="pre">ProxyArray</span></a></em><a class="headerlink" href="#isaaclab.assets.BaseDeformableObjectData.nodal_state_w" title="Link to this definition">#</a></dt>
 <dd><p>Nodal state <code class="docutils literal notranslate"><span class="pre">[nodal_pos,</span> <span class="pre">nodal_vel]</span></code> in simulation world frame [m, m/s].</p>
 <p>Shape is (num_instances, max_sim_vertices_per_body), dtype <code class="docutils literal notranslate"><span class="pre">vec6f</span></code>.
-Use <code class="xref py py-attr docutils literal notranslate"><span class="pre">ProxyArray.warp</span></code> for the underlying <a class="reference external" href="https://nvidia.github.io/warp/stable/api_reference/_generated/warp.array.html#warp.array" title="(in Warp v1.14.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">warp.array</span></code></a> or
+Use <code class="xref py py-attr docutils literal notranslate"><span class="pre">ProxyArray.warp</span></code> for the underlying <a class="reference external" href="https://nvidia.github.io/warp/stable/api_reference/_generated/warp.array.html#warp.array" title="(in Warp v1.15.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">warp.array</span></code></a> or
 <code class="xref py py-attr docutils literal notranslate"><span class="pre">ProxyArray.torch</span></code> for a cached zero-copy <a class="reference external" href="https://docs.pytorch.org/docs/2.11/tensors.html#torch.Tensor" title="(in PyTorch v2.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">torch.Tensor</span></code></a> view.</p>
 </dd></dl>
 
@@ -5205,7 +5205,7 @@ Use <code class="xref py py-attr docutils literal notranslate"><span class="pre"
 <dd><p>Root position from nodal positions of the simulation mesh for the deformable bodies
 in simulation world frame [m]. Shape is (num_instances,) vec3f.</p>
 <p>This quantity is computed as the mean of the nodal positions.
-Use <code class="xref py py-attr docutils literal notranslate"><span class="pre">ProxyArray.warp</span></code> for the underlying <a class="reference external" href="https://nvidia.github.io/warp/stable/api_reference/_generated/warp.array.html#warp.array" title="(in Warp v1.14.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">warp.array</span></code></a> or
+Use <code class="xref py py-attr docutils literal notranslate"><span class="pre">ProxyArray.warp</span></code> for the underlying <a class="reference external" href="https://nvidia.github.io/warp/stable/api_reference/_generated/warp.array.html#warp.array" title="(in Warp v1.15.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">warp.array</span></code></a> or
 <code class="xref py py-attr docutils literal notranslate"><span class="pre">ProxyArray.torch</span></code> for a cached zero-copy <a class="reference external" href="https://docs.pytorch.org/docs/2.11/tensors.html#torch.Tensor" title="(in PyTorch v2.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">torch.Tensor</span></code></a> view.</p>
 </dd></dl>
 
@@ -5215,7 +5215,7 @@ Use <code class="xref py py-attr docutils literal notranslate"><span class="pre"
 <dd><p>Root velocity from vertex velocities for the deformable bodies in simulation
 world frame [m/s]. Shape is (num_instances,) vec3f.</p>
 <p>This quantity is computed as the mean of the nodal velocities.
-Use <code class="xref py py-attr docutils literal notranslate"><span class="pre">ProxyArray.warp</span></code> for the underlying <a class="reference external" href="https://nvidia.github.io/warp/stable/api_reference/_generated/warp.array.html#warp.array" title="(in Warp v1.14.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">warp.array</span></code></a> or
+Use <code class="xref py py-attr docutils literal notranslate"><span class="pre">ProxyArray.warp</span></code> for the underlying <a class="reference external" href="https://nvidia.github.io/warp/stable/api_reference/_generated/warp.array.html#warp.array" title="(in Warp v1.15.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">warp.array</span></code></a> or
 <code class="xref py py-attr docutils literal notranslate"><span class="pre">ProxyArray.torch</span></code> for a cached zero-copy <a class="reference external" href="https://docs.pytorch.org/docs/2.11/tensors.html#torch.Tensor" title="(in PyTorch v2.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">torch.Tensor</span></code></a> view.</p>
 </dd></dl>
 
@@ -5275,7 +5275,7 @@ asset is already present in the scene.</p>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="isaaclab.assets.DeformableObjectCfg.init_state">
-<span class="sig-name descname"><span class="pre">init_state</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#isaaclab.assets.RigidObjectCfg.InitialStateCfg" title="isaaclab.assets.RigidObjectCfg.InitialStateCfg"><span class="pre">InitialStateCfg</span></a></em><a class="headerlink" href="#isaaclab.assets.DeformableObjectCfg.init_state" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">init_state</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="../lab_contrib/isaaclab_contrib.assets.html#isaaclab_contrib.assets.MultirotorCfg.InitialStateCfg" title="isaaclab_contrib.assets.MultirotorCfg.InitialStateCfg"><span class="pre">InitialStateCfg</span></a></em><a class="headerlink" href="#isaaclab.assets.DeformableObjectCfg.init_state" title="Link to this definition">#</a></dt>
 <dd><p>Initial state of the rigid object. Defaults to identity pose.</p>
 </dd></dl>
 
@@ -8998,7 +8998,7 @@ By The Isaac Lab Project Developers.
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Jul 07, 2026.
+  Last updated on Jul 08, 2026.
   <br/>
 </p>
   </div>

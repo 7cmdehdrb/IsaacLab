@@ -64,7 +64,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="3.0.0" />
-    <meta name="docbuild:last-update" content="Jul 07, 2026"/>
+    <meta name="docbuild:last-update" content="Jul 08, 2026"/>
   </head>
   
   
@@ -779,7 +779,7 @@ visualizers are meant for fast, interactive feedback.</p>
 <p>Most visualizers can be combined with any physics engine or rendering backend.
 The exception is the Kit visualizer with kit-less OV backends:
 <code class="docutils literal notranslate"><span class="pre">--visualizer</span> <span class="pre">kit</span></code> cannot be used with <code class="docutils literal notranslate"><span class="pre">presets=ovphysx</span></code> or
-<code class="docutils literal notranslate"><span class="pre">ovrtx_renderer</span></code> in the same process. Use <code class="docutils literal notranslate"><span class="pre">--visualizer</span> <span class="pre">newton</span></code>,
+<code class="docutils literal notranslate"><span class="pre">ovrtx</span></code> in the same process. Use <code class="docutils literal notranslate"><span class="pre">--visualizer</span> <span class="pre">newton</span></code>,
 <code class="docutils literal notranslate"><span class="pre">--visualizer</span> <span class="pre">rerun</span></code>, <code class="docutils literal notranslate"><span class="pre">--visualizer</span> <span class="pre">viser</span></code>, or omit <code class="docutils literal notranslate"><span class="pre">--visualizer</span></code>
 for headless execution.</p>
 <section id="overview">
@@ -1066,7 +1066,7 @@ set <code class="docutils literal notranslate"><span class="pre">VideoRecorderCf
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">isaacsim_rtx_renderer</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">isaacsim_rtx</span></code></p></td>
 <td><p>✅ Kit RTX captures video <em>(default, no change)</em></p></td>
 <td><p>✅ Newton GL captures video <em>(overrides RTX backend)</em></p></td>
 </tr>
@@ -1074,7 +1074,7 @@ set <code class="docutils literal notranslate"><span class="pre">VideoRecorderCf
 <td><p>✅ Kit RTX captures video <em>(overrides Newton backend)</em></p></td>
 <td><p>✅ Newton GL captures video <em>(default, no change)</em></p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">ovrtx_renderer</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">ovrtx</span></code></p></td>
 <td><p>❌ <strong>Raises an error</strong> — see note below</p></td>
 <td><p>✅ Newton GL captures video; ovrtx provides camera sensor data</p></td>
 </tr>
@@ -1083,7 +1083,7 @@ set <code class="docutils literal notranslate"><span class="pre">VideoRecorderCf
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p><code class="docutils literal notranslate"><span class="pre">--visualizer</span> <span class="pre">kit</span></code> combined with <code class="docutils literal notranslate"><span class="pre">ovrtx_renderer</span></code> raises a <code class="docutils literal notranslate"><span class="pre">ValueError</span></code> at startup.
+<p><code class="docutils literal notranslate"><span class="pre">--visualizer</span> <span class="pre">kit</span></code> combined with <code class="docutils literal notranslate"><span class="pre">ovrtx</span></code> raises a <code class="docutils literal notranslate"><span class="pre">ValueError</span></code> at startup.
 Both Kit (Isaac Sim) and ovrtx ship conflicting RTX hydra libraries compiled against
 different USD namespaces (<code class="docutils literal notranslate"><span class="pre">pxrInternal_v0_25_11</span></code> vs <code class="docutils literal notranslate"><span class="pre">ovInternal_v0_25_11</span></code>), which
 causes a dynamic-linker crash when loaded into the same process.
@@ -1100,7 +1100,7 @@ Use <code class="docutils literal notranslate"><span class="pre">--visualizer</s
 <span class="w">  </span>--max_iterations<span class="o">=</span><span class="m">5</span><span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--num_envs<span class="o">=</span><span class="m">1024</span><span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--benchmark_backend<span class="o">=</span>summary<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span><span class="nv">physics</span><span class="o">=</span>newton_mjwarp<span class="w"> </span><span class="nv">renderer</span><span class="o">=</span>ovrtx_renderer<span class="w"> </span><span class="nv">presets</span><span class="o">=</span>rgb
+<span class="w">  </span><span class="nv">physics</span><span class="o">=</span>newton_mjwarp<span class="w"> </span><span class="nv">renderer</span><span class="o">=</span>ovrtx<span class="w"> </span><span class="nv">presets</span><span class="o">=</span>rgb
 </pre></div>
 </div>
 <p><strong>Record video with the Isaac RTX renderer preset using the Newton video backend</strong></p>
@@ -1114,7 +1114,7 @@ Use <code class="docutils literal notranslate"><span class="pre">--visualizer</s
 <span class="w">  </span>--max_iterations<span class="o">=</span><span class="m">5</span><span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--num_envs<span class="o">=</span><span class="m">1024</span><span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--benchmark_backend<span class="o">=</span>summary<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span><span class="nv">physics</span><span class="o">=</span>physx<span class="w"> </span><span class="nv">renderer</span><span class="o">=</span>isaacsim_rtx_renderer<span class="w"> </span><span class="nv">presets</span><span class="o">=</span>rgb
+<span class="w">  </span><span class="nv">physics</span><span class="o">=</span>physx<span class="w"> </span><span class="nv">renderer</span><span class="o">=</span>isaacsim_rtx<span class="w"> </span><span class="nv">presets</span><span class="o">=</span>rgb
 </pre></div>
 </div>
 <p><strong>Record video with the Isaac RTX renderer preset using the Kit video backend</strong></p>
@@ -1128,7 +1128,7 @@ Use <code class="docutils literal notranslate"><span class="pre">--visualizer</s
 <span class="w">  </span>--max_iterations<span class="o">=</span><span class="m">5</span><span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--num_envs<span class="o">=</span><span class="m">1024</span><span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--benchmark_backend<span class="o">=</span>summary<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span><span class="nv">physics</span><span class="o">=</span>physx<span class="w"> </span><span class="nv">renderer</span><span class="o">=</span>isaacsim_rtx_renderer<span class="w"> </span><span class="nv">presets</span><span class="o">=</span>rgb
+<span class="w">  </span><span class="nv">physics</span><span class="o">=</span>physx<span class="w"> </span><span class="nv">renderer</span><span class="o">=</span>isaacsim_rtx<span class="w"> </span><span class="nv">presets</span><span class="o">=</span>rgb
 </pre></div>
 </div>
 </section>
@@ -1546,7 +1546,7 @@ By The Isaac Lab Project Developers.
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Jul 07, 2026.
+  Last updated on Jul 08, 2026.
   <br/>
 </p>
   </div>

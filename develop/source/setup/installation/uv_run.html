@@ -64,7 +64,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="3.0.0" />
-    <meta name="docbuild:last-update" content="Jul 07, 2026"/>
+    <meta name="docbuild:last-update" content="Jul 08, 2026"/>
   </head>
   
   
@@ -783,19 +783,23 @@ HTTPS</label><div class="sd-tab-content docutils">
 </div>
 </div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Newton backend training without Isaac Sim</span>
-uv<span class="w"> </span>run<span class="w"> </span>train<span class="w"> </span>--rl_library<span class="w"> </span>rsl_rl<span class="w"> </span><span class="se">\</span>
+uv<span class="w"> </span>run<span class="w"> </span>isaaclab<span class="w"> </span>train<span class="w"> </span>--rl_library<span class="w"> </span>rsl_rl<span class="w"> </span><span class="se">\</span>
 <span class="w">   </span>--task<span class="w"> </span>Isaac-Cartpole-Direct<span class="w"> </span><span class="nv">physics</span><span class="o">=</span>newton_mjwarp
 
 <span class="c1"># Add OVRTX/OVPhysX extras only when the workflow needs them</span>
-uv<span class="w"> </span>run<span class="w"> </span>--extra<span class="w"> </span>ov<span class="w"> </span>--extra<span class="w"> </span>rtx<span class="w"> </span>train<span class="w"> </span>--rl_library<span class="w"> </span>rsl_rl<span class="w"> </span><span class="se">\</span>
+uv<span class="w"> </span>run<span class="w"> </span>--extra<span class="w"> </span>ov<span class="w"> </span>--extra<span class="w"> </span>rtx<span class="w"> </span>isaaclab<span class="w"> </span>train<span class="w"> </span>--rl_library<span class="w"> </span>rsl_rl<span class="w"> </span><span class="se">\</span>
 <span class="w">   </span>--task<span class="w"> </span>Isaac-Cartpole-Direct<span class="w"> </span><span class="nv">physics</span><span class="o">=</span>newton_mjwarp
+
+<span class="c1"># PhysX backend: --extra isaacsim pulls in Isaac Sim on the fly</span>
+uv<span class="w"> </span>run<span class="w"> </span>--extra<span class="w"> </span>isaacsim<span class="w"> </span>isaaclab<span class="w"> </span>train<span class="w"> </span>--rl_library<span class="w"> </span>rsl_rl<span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>--task<span class="w"> </span>Isaac-Cartpole-Direct<span class="w"> </span><span class="nv">presets</span><span class="o">=</span>physx
 </pre></div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">uv</span></code> resolves and manages the environment automatically on each invocation. Supported
 libraries for <code class="docutils literal notranslate"><span class="pre">--rl_library</span></code> are: <code class="docutils literal notranslate"><span class="pre">rsl_rl</span></code>, <code class="docutils literal notranslate"><span class="pre">rl_games</span></code>, <code class="docutils literal notranslate"><span class="pre">skrl</span></code>, <code class="docutils literal notranslate"><span class="pre">sb3</span></code>, and <code class="docutils literal notranslate"><span class="pre">rlinf</span></code>.</p>
 <section id="play-evaluation">
 <h2>Play / Evaluation<a class="headerlink" href="#play-evaluation" title="Link to this heading">#</a></h2>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>uv<span class="w"> </span>run<span class="w"> </span>play<span class="w"> </span>--rl_library<span class="w"> </span>rsl_rl<span class="w"> </span>--task<span class="w"> </span>&lt;any_task&gt;
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>uv<span class="w"> </span>run<span class="w"> </span>isaaclab<span class="w"> </span>play<span class="w"> </span>--rl_library<span class="w"> </span>rsl_rl<span class="w"> </span>--task<span class="w"> </span>&lt;any_task&gt;
 </pre></div>
 </div>
 </section>
@@ -882,7 +886,7 @@ By The Isaac Lab Project Developers.
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Jul 07, 2026.
+  Last updated on Jul 08, 2026.
   <br/>
 </p>
   </div>

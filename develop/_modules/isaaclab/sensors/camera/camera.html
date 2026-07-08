@@ -61,7 +61,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="3.0.0" />
-    <meta name="docbuild:last-update" content="Jul 07, 2026"/>
+    <meta name="docbuild:last-update" content="Jul 08, 2026"/>
   </head>
   
   
@@ -1066,7 +1066,8 @@
             <span class="n">orientations</span> <span class="o">=</span> <span class="n">convert_camera_frame_orientation_convention</span><span class="p">(</span><span class="n">orientations</span><span class="p">,</span> <span class="n">origin</span><span class="o">=</span><span class="n">convention</span><span class="p">,</span> <span class="n">target</span><span class="o">=</span><span class="s2">&quot;opengl&quot;</span><span class="p">)</span>
             <span class="n">ori_wp</span> <span class="o">=</span> <span class="n">wp</span><span class="o">.</span><span class="n">from_torch</span><span class="p">(</span><span class="n">orientations</span><span class="o">.</span><span class="n">contiguous</span><span class="p">(),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">wp</span><span class="o">.</span><span class="n">vec4f</span><span class="p">)</span>
         <span class="n">idx_wp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_resolve_env_ids_wp</span><span class="p">(</span><span class="n">env_ids</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_view</span><span class="o">.</span><span class="n">set_world_poses</span><span class="p">(</span><span class="n">pos_wp</span><span class="p">,</span> <span class="n">ori_wp</span><span class="p">,</span> <span class="n">idx_wp</span><span class="p">)</span></div>
+        <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">_view</span><span class="o">.</span><span class="n">xform_world_space_writer</span><span class="p">()</span> <span class="k">as</span> <span class="n">writer</span><span class="p">:</span>
+            <span class="n">writer</span><span class="o">.</span><span class="n">set_poses</span><span class="p">(</span><span class="n">pos_wp</span><span class="p">,</span> <span class="n">ori_wp</span><span class="p">,</span> <span class="n">idx_wp</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="Camera.set_world_poses_from_view">
@@ -1127,11 +1128,12 @@
             <span class="n">env_ids_torch</span> <span class="o">=</span> <span class="n">env_ids_torch</span><span class="o">.</span><span class="n">index_select</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">valid_indices</span><span class="p">)</span>
         <span class="n">orientations</span> <span class="o">=</span> <span class="n">quat_from_matrix</span><span class="p">(</span><span class="n">rotation_matrix</span><span class="p">)</span>
         <span class="n">idx_wp</span> <span class="o">=</span> <span class="n">wp</span><span class="o">.</span><span class="n">from_torch</span><span class="p">(</span><span class="n">env_ids_torch</span><span class="o">.</span><span class="n">contiguous</span><span class="p">(),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">wp</span><span class="o">.</span><span class="n">int32</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_view</span><span class="o">.</span><span class="n">set_world_poses</span><span class="p">(</span>
-            <span class="n">wp</span><span class="o">.</span><span class="n">from_torch</span><span class="p">(</span><span class="n">eyes</span><span class="o">.</span><span class="n">contiguous</span><span class="p">(),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">wp</span><span class="o">.</span><span class="n">vec3f</span><span class="p">),</span>
-            <span class="n">wp</span><span class="o">.</span><span class="n">from_torch</span><span class="p">(</span><span class="n">orientations</span><span class="o">.</span><span class="n">contiguous</span><span class="p">(),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">wp</span><span class="o">.</span><span class="n">vec4f</span><span class="p">),</span>
-            <span class="n">idx_wp</span><span class="p">,</span>
-        <span class="p">)</span></div>
+        <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">_view</span><span class="o">.</span><span class="n">xform_world_space_writer</span><span class="p">()</span> <span class="k">as</span> <span class="n">writer</span><span class="p">:</span>
+            <span class="n">writer</span><span class="o">.</span><span class="n">set_poses</span><span class="p">(</span>
+                <span class="n">wp</span><span class="o">.</span><span class="n">from_torch</span><span class="p">(</span><span class="n">eyes</span><span class="o">.</span><span class="n">contiguous</span><span class="p">(),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">wp</span><span class="o">.</span><span class="n">vec3f</span><span class="p">),</span>
+                <span class="n">wp</span><span class="o">.</span><span class="n">from_torch</span><span class="p">(</span><span class="n">orientations</span><span class="o">.</span><span class="n">contiguous</span><span class="p">(),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">wp</span><span class="o">.</span><span class="n">vec4f</span><span class="p">),</span>
+                <span class="n">idx_wp</span><span class="p">,</span>
+            <span class="p">)</span></div>
 
 
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
@@ -1556,7 +1558,7 @@ By The Isaac Lab Project Developers.
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Jul 07, 2026.
+  Last updated on Jul 08, 2026.
   <br/>
 </p>
   </div>

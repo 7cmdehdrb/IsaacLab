@@ -64,7 +64,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="3.0.0" />
-    <meta name="docbuild:last-update" content="Jul 07, 2026"/>
+    <meta name="docbuild:last-update" content="Jul 08, 2026"/>
   </head>
   
   
@@ -881,9 +881,9 @@ tiled camera panel, are not part of the recorded scene framebuffer. This does no
 of active visualizers.</p>
 <p>Set <code class="docutils literal notranslate"><span class="pre">VideoRecorderCfg.backend_source</span> <span class="pre">=</span> <span class="pre">&quot;renderer&quot;</span></code> to ignore active visualizers and choose from the
 physics/renderer stack instead. In that mode, PhysX physics (<code class="docutils literal notranslate"><span class="pre">physics=physx</span></code>) or Isaac RTX
-(<code class="docutils literal notranslate"><span class="pre">renderer=isaacsim_rtx_renderer</span></code>) selects the Kit path. Newton physics (<code class="docutils literal notranslate"><span class="pre">physics=newton_mjwarp</span></code>) or
+(<code class="docutils literal notranslate"><span class="pre">renderer=isaacsim_rtx</span></code>) selects the Kit path. Newton physics (<code class="docutils literal notranslate"><span class="pre">physics=newton_mjwarp</span></code>) or
 the Newton Warp renderer (<code class="docutils literal notranslate"><span class="pre">renderer=newton_renderer</span></code>) selects the Newton GL path when no Kit
-signal is present. OVRTX (<code class="docutils literal notranslate"><span class="pre">renderer=ovrtx_renderer</span></code> from <code class="docutils literal notranslate"><span class="pre">isaaclab_ov</span></code>) can pair with IsaacSim
+signal is present. OVRTX (<code class="docutils literal notranslate"><span class="pre">renderer=ovrtx</span></code> from <code class="docutils literal notranslate"><span class="pre">isaaclab_ov</span></code>) can pair with IsaacSim
 or Newton physics; in that case the video backend is selected via the physics preset. If both Kit and
 Newton GL signals are present, the Kit path is chosen.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">_select_video_backend</span><span class="p">(</span><span class="n">scene</span><span class="p">:</span> <span class="n">InteractiveScene</span><span class="p">,</span> <span class="n">backend_source</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">_VideoBackend</span><span class="p">,</span> <span class="n">VisualizerCfg</span> <span class="o">|</span> <span class="kc">None</span><span class="p">]:</span>
@@ -1022,7 +1022,7 @@ uses the same configured viewpoint as the interactive viewport:</p>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">physics=physx</span></code> or <code class="docutils literal notranslate"><span class="pre">renderer=isaacsim_rtx_renderer</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">physics=physx</span></code> or <code class="docutils literal notranslate"><span class="pre">renderer=isaacsim_rtx</span></code></p></td>
 <td><p>Kit (<code class="docutils literal notranslate"><span class="pre">&quot;kit&quot;</span></code>)</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">/OmniverseKit_Persp</span></code> + Replicator RGB</p></td>
 </tr>
@@ -1030,7 +1030,7 @@ uses the same configured viewpoint as the interactive viewport:</p>
 <td><p>Newton GL (<code class="docutils literal notranslate"><span class="pre">&quot;newton_gl&quot;</span></code>)</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">newton.viewer.ViewerGL</span></code> on the SDP Newton model</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">physics=newton_mjwarp</span></code> + <code class="docutils literal notranslate"><span class="pre">renderer=ovrtx_renderer</span></code> (OVRTX + Newton physics)</p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">physics=newton_mjwarp</span></code> + <code class="docutils literal notranslate"><span class="pre">renderer=ovrtx</span></code> (OVRTX + Newton physics)</p></td>
 <td><p>Newton GL (<code class="docutils literal notranslate"><span class="pre">&quot;newton_gl&quot;</span></code>)</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">newton.viewer.ViewerGL</span></code> on the SDP Newton model</p></td>
 </tr>
@@ -1143,7 +1143,7 @@ By The Isaac Lab Project Developers.
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Jul 07, 2026.
+  Last updated on Jul 08, 2026.
   <br/>
 </p>
   </div>

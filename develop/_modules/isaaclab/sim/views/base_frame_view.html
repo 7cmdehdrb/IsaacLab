@@ -61,7 +61,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="3.0.0" />
-    <meta name="docbuild:last-update" content="Jul 07, 2026"/>
+    <meta name="docbuild:last-update" content="Jul 08, 2026"/>
   </head>
   
   
@@ -688,24 +688,49 @@
 <span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">annotations</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="nn">abc</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">TYPE_CHECKING</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="nn">warp</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">wp</span>
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">isaaclab.utils.warp</span><span class="w"> </span><span class="kn">import</span> <span class="n">ProxyArray</span>
 
+<span class="k">if</span> <span class="n">TYPE_CHECKING</span><span class="p">:</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">.xform_space_writer</span><span class="w"> </span><span class="kn">import</span> <span class="n">FrameViewLocalSpaceWriter</span><span class="p">,</span> <span class="n">FrameViewSpaceWriterBase</span><span class="p">,</span> <span class="n">FrameViewWorldSpaceWriter</span>
+
 
 <div class="viewcode-block" id="BaseFrameView">
 <a class="viewcode-back" href="../../../../source/api/lab/isaaclab.sim.views.html#isaaclab.sim.views.BaseFrameView">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">BaseFrameView</span><span class="p">(</span><span class="n">abc</span><span class="o">.</span><span class="n">ABC</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Abstract interface for reading and writing world-space transforms of multiple prims.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Abstract interface for reading and writing transforms of multiple prims.</span>
 
 <span class="sd">    Backend-specific implementations (USD/Fabric, Newton GPU state, etc.) subclass</span>
 <span class="sd">    this to provide efficient batched pose queries.  The factory</span>
 <span class="sd">    :class:`~isaaclab.sim.views.FrameView` selects the correct</span>
 <span class="sd">    implementation at runtime based on the active physics backend.</span>
 
-<span class="sd">    All getters return :class:`~isaaclab.utils.warp.ProxyArray`.  Setters accept ``wp.array``.</span>
+<span class="sd">    All getters return :class:`~isaaclab.utils.warp.ProxyArray`.  All writes go</span>
+<span class="sd">    through the writer-scope API -- :meth:`xform_world_space_writer` or</span>
+<span class="sd">    :meth:`xform_local_space_writer`:</span>
+
+<span class="sd">    .. code-block:: python</span>
+
+<span class="sd">        with view.xform_world_space_writer() as writer:</span>
+<span class="sd">            writer.set_poses(positions=p, orientations=o)</span>
+<span class="sd">            writer.set_scales(scales=s)</span>
+<span class="sd">        # Derived-space matrices are recomputed and the writer scope is closed.</span>
+
+<span class="sd">    Only one writer scope may be active per view at a time.  While a writer</span>
+<span class="sd">    scope is active, the view-level getters</span>
+<span class="sd">    (:meth:`get_world_poses`, :meth:`get_local_poses`,</span>
+<span class="sd">    :meth:`get_world_scales`, :meth:`get_local_scales`) raise</span>
+<span class="sd">    :class:`RuntimeError` -- use the writer&#39;s :meth:`~FrameViewSpaceWriterBase.get_poses`</span>
+<span class="sd">    or :meth:`~FrameViewSpaceWriterBase.get_scales` inside the scope, or exit the</span>
+<span class="sd">    scope first.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># Class-level default; instance-level value is set by the writer&#39;s</span>
+    <span class="c1"># __enter__ / __exit__ to track the active scope on this view.</span>
+    <span class="n">_active_writer</span><span class="p">:</span> <span class="n">FrameViewSpaceWriterBase</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
 
     <span class="nd">@property</span>
     <span class="nd">@abc</span><span class="o">.</span><span class="n">abstractmethod</span>
@@ -719,9 +744,85 @@
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Device where arrays are allocated (``&quot;cpu&quot;`` or ``&quot;cuda:0&quot;``).&quot;&quot;&quot;</span>
         <span class="o">...</span>
 
+    <span class="c1"># ------------------------------------------------------------------</span>
+    <span class="c1"># Write scope -- recommended API for all transform writes.</span>
+    <span class="c1"># ------------------------------------------------------------------</span>
+
+<div class="viewcode-block" id="BaseFrameView.xform_world_space_writer">
+<a class="viewcode-back" href="../../../../source/api/lab/isaaclab.sim.views.html#isaaclab.sim.views.BaseFrameView.xform_world_space_writer">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">xform_world_space_writer</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">FrameViewWorldSpaceWriter</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Open a world-space write scope on this view (recommended write API).</span>
+
+<span class="sd">        Inside the scope, :meth:`~FrameViewSpaceWriterBase.set_poses` /</span>
+<span class="sd">        :meth:`~FrameViewSpaceWriterBase.set_scales` write world-space values.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            A :class:`~isaaclab.sim.views.FrameViewWorldSpaceWriter` context manager.</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            RuntimeError: On ``__enter__``, if another writer is already active</span>
+<span class="sd">                on this view.</span>
+
+<span class="sd">        Example:</span>
+<span class="sd">            .. code-block:: python</span>
+
+<span class="sd">                with view.xform_world_space_writer() as w:</span>
+<span class="sd">                    w.set_poses(positions=p, orientations=o)</span>
+<span class="sd">                    w.set_scales(scales=s)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_make_world_space_writer</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="BaseFrameView.xform_local_space_writer">
+<a class="viewcode-back" href="../../../../source/api/lab/isaaclab.sim.views.html#isaaclab.sim.views.BaseFrameView.xform_local_space_writer">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">xform_local_space_writer</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">FrameViewLocalSpaceWriter</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Open a local-space write scope on this view (recommended write API).</span>
+
+<span class="sd">        Inside the scope, :meth:`~FrameViewSpaceWriterBase.set_poses` /</span>
+<span class="sd">        :meth:`~FrameViewSpaceWriterBase.set_scales` write local-space values.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            A :class:`~isaaclab.sim.views.FrameViewLocalSpaceWriter` context manager.</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            RuntimeError: On ``__enter__``, if another writer is already active</span>
+<span class="sd">                on this view.</span>
+
+<span class="sd">        Example:</span>
+<span class="sd">            .. code-block:: python</span>
+
+<span class="sd">                with view.xform_local_space_writer() as w:</span>
+<span class="sd">                    w.set_poses(translations=t, orientations=o)</span>
+<span class="sd">                    w.set_scales(scales=s)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_make_local_space_writer</span><span class="p">()</span></div>
+
+
+    <span class="nd">@abc</span><span class="o">.</span><span class="n">abstractmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_make_world_space_writer</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">FrameViewWorldSpaceWriter</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Backend hook: return a fresh :class:`FrameViewWorldSpaceWriter` for this view.&quot;&quot;&quot;</span>
+        <span class="o">...</span>
+
+    <span class="nd">@abc</span><span class="o">.</span><span class="n">abstractmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_make_local_space_writer</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">FrameViewLocalSpaceWriter</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Backend hook: return a fresh :class:`FrameViewLocalSpaceWriter` for this view.&quot;&quot;&quot;</span>
+        <span class="o">...</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_assert_no_active_writer</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">method_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Raise :class:`RuntimeError` if a writer scope is currently active on this view.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_active_writer</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2">.</span><span class="si">{</span><span class="n">method_name</span><span class="si">}</span><span class="s2">() is not allowed while a writer &quot;</span>
+                <span class="sa">f</span><span class="s2">&quot;scope is active (</span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_active_writer</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2">). Use the writer&#39;s &quot;</span>
+                <span class="sa">f</span><span class="s2">&quot;get_poses / get_scales inside the scope, or exit the scope first.&quot;</span>
+            <span class="p">)</span>
+
+    <span class="c1"># ------------------------------------------------------------------</span>
+    <span class="c1"># Public getters -- guarded; delegate to backend ``_*_impl`` hooks.</span>
+    <span class="c1"># ------------------------------------------------------------------</span>
+
 <div class="viewcode-block" id="BaseFrameView.get_world_poses">
 <a class="viewcode-back" href="../../../../source/api/lab/isaaclab.sim.views.html#isaaclab.sim.views.BaseFrameView.get_world_poses">[docs]</a>
-    <span class="nd">@abc</span><span class="o">.</span><span class="n">abstractmethod</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">get_world_poses</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">indices</span><span class="p">:</span> <span class="n">wp</span><span class="o">.</span><span class="n">array</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">ProxyArray</span><span class="p">,</span> <span class="n">ProxyArray</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Get world-space positions and orientations for prims in the view.</span>
 
@@ -730,15 +831,122 @@
 
 <span class="sd">        Returns:</span>
 <span class="sd">            A tuple ``(positions, orientations)`` of :class:`~isaaclab.utils.warp.ProxyArray`</span>
-<span class="sd">            wrappers. Use ``.warp`` for the underlying ``wp.array`` or ``.torch`` for a</span>
-<span class="sd">            cached zero-copy ``torch.Tensor`` view.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="o">...</span></div>
+<span class="sd">            wrappers.</span>
 
+<span class="sd">        Raises:</span>
+<span class="sd">            RuntimeError: If a writer scope is active on this view.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_assert_no_active_writer</span><span class="p">(</span><span class="s2">&quot;get_world_poses&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_world_poses_impl</span><span class="p">(</span><span class="n">indices</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="BaseFrameView.get_local_poses">
+<a class="viewcode-back" href="../../../../source/api/lab/isaaclab.sim.views.html#isaaclab.sim.views.BaseFrameView.get_local_poses">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_local_poses</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">indices</span><span class="p">:</span> <span class="n">wp</span><span class="o">.</span><span class="n">array</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">ProxyArray</span><span class="p">,</span> <span class="n">ProxyArray</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get local-space translations and orientations for prims in the view.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            indices: Subset of prims to query.  ``None`` means all prims.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            A tuple ``(translations, orientations)`` of :class:`~isaaclab.utils.warp.ProxyArray`</span>
+<span class="sd">            wrappers.</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            RuntimeError: If a writer scope is active on this view.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_assert_no_active_writer</span><span class="p">(</span><span class="s2">&quot;get_local_poses&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_local_poses_impl</span><span class="p">(</span><span class="n">indices</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="BaseFrameView.get_local_scales">
+<a class="viewcode-back" href="../../../../source/api/lab/isaaclab.sim.views.html#isaaclab.sim.views.BaseFrameView.get_local_scales">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_local_scales</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">indices</span><span class="p">:</span> <span class="n">wp</span><span class="o">.</span><span class="n">array</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ProxyArray</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get local-space scales for prims in the view.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            indices: Subset of prims to query.  ``None`` means all prims.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            A :class:`~isaaclab.utils.warp.ProxyArray` of shape ``(M, 3)``.</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            RuntimeError: If a writer scope is active on this view.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_assert_no_active_writer</span><span class="p">(</span><span class="s2">&quot;get_local_scales&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_local_scales_impl</span><span class="p">(</span><span class="n">indices</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="BaseFrameView.get_world_scales">
+<a class="viewcode-back" href="../../../../source/api/lab/isaaclab.sim.views.html#isaaclab.sim.views.BaseFrameView.get_world_scales">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_world_scales</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">indices</span><span class="p">:</span> <span class="n">wp</span><span class="o">.</span><span class="n">array</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ProxyArray</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get world-space (composed) scales for prims in the view.</span>
+
+<span class="sd">        Returns the effective scale in world space (``parent_scale * local_scale``).</span>
+
+<span class="sd">        .. note::</span>
+<span class="sd">            Scale extraction uses TRS (Translation-Rotation-Scale) decomposition,</span>
+<span class="sd">            which assumes no shear/skew in the transform matrix.  If a prim&#39;s</span>
+<span class="sd">            world transform contains shear, the extracted scale values will be</span>
+<span class="sd">            approximate.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            indices: Subset of prims to query.  ``None`` means all prims.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            A :class:`~isaaclab.utils.warp.ProxyArray` of shape ``(M, 3)``.</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            RuntimeError: If a writer scope is active on this view.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_assert_no_active_writer</span><span class="p">(</span><span class="s2">&quot;get_world_scales&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_world_scales_impl</span><span class="p">(</span><span class="n">indices</span><span class="p">)</span></div>
+
+
+    <span class="c1"># ------------------------------------------------------------------</span>
+    <span class="c1"># Backend hooks for the public getters above.</span>
+    <span class="c1"># ------------------------------------------------------------------</span>
+
+    <span class="nd">@abc</span><span class="o">.</span><span class="n">abstractmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_get_world_poses_impl</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">indices</span><span class="p">:</span> <span class="n">wp</span><span class="o">.</span><span class="n">array</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">ProxyArray</span><span class="p">,</span> <span class="n">ProxyArray</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Backend implementation of :meth:`get_world_poses`.&quot;&quot;&quot;</span>
+        <span class="o">...</span>
+
+    <span class="nd">@abc</span><span class="o">.</span><span class="n">abstractmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_get_local_poses_impl</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">indices</span><span class="p">:</span> <span class="n">wp</span><span class="o">.</span><span class="n">array</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">ProxyArray</span><span class="p">,</span> <span class="n">ProxyArray</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Backend implementation of :meth:`get_local_poses`.&quot;&quot;&quot;</span>
+        <span class="o">...</span>
+
+    <span class="nd">@abc</span><span class="o">.</span><span class="n">abstractmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_get_local_scales_impl</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">indices</span><span class="p">:</span> <span class="n">wp</span><span class="o">.</span><span class="n">array</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ProxyArray</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Backend implementation of :meth:`get_local_scales`.&quot;&quot;&quot;</span>
+        <span class="o">...</span>
+
+    <span class="nd">@abc</span><span class="o">.</span><span class="n">abstractmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_get_world_scales_impl</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">indices</span><span class="p">:</span> <span class="n">wp</span><span class="o">.</span><span class="n">array</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ProxyArray</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Backend implementation of :meth:`get_world_scales`.&quot;&quot;&quot;</span>
+        <span class="o">...</span>
+
+    <span class="c1"># ------------------------------------------------------------------</span>
+    <span class="c1"># Convenience pose/scale setters -- route through the writer scope.</span>
+    <span class="c1">#</span>
+    <span class="c1"># These are kept as first-class convenience APIs (not deprecated).  Each</span>
+    <span class="c1"># call opens its own single-statement writer scope internally, so writing</span>
+    <span class="c1"># poses and scales through two separate calls performs the opposite-space</span>
+    <span class="c1"># recompute + synchronize twice.  For the best performance when updating</span>
+    <span class="c1"># both poses and scales together, open one writer scope and issue both</span>
+    <span class="c1"># writes inside it::</span>
+    <span class="c1">#</span>
+    <span class="c1">#     with view.xform_world_space_writer() as w:</span>
+    <span class="c1">#         w.set_poses(...)</span>
+    <span class="c1">#         w.set_scales(...)</span>
+    <span class="c1">#</span>
+    <span class="c1"># Prefer the writer scope in hot loops; prefer these helpers when code</span>
+    <span class="c1"># simplicity matters more than shaving a redundant derive/sync.</span>
+    <span class="c1"># ------------------------------------------------------------------</span>
 
 <div class="viewcode-block" id="BaseFrameView.set_world_poses">
 <a class="viewcode-back" href="../../../../source/api/lab/isaaclab.sim.views.html#isaaclab.sim.views.BaseFrameView.set_world_poses">[docs]</a>
-    <span class="nd">@abc</span><span class="o">.</span><span class="n">abstractmethod</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">set_world_poses</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">positions</span><span class="p">:</span> <span class="n">wp</span><span class="o">.</span><span class="n">array</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
@@ -747,34 +955,22 @@
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Set world-space positions and/or orientations for prims in the view.</span>
 
+<span class="sd">        This convenience method opens a single-statement writer scope</span>
+<span class="sd">        internally.  To update poses and scales together without paying the</span>
+<span class="sd">        opposite-space derive/sync twice, prefer</span>
+<span class="sd">        ``with view.xform_world_space_writer() as w: w.set_poses(...); w.set_scales(...)``.</span>
+
 <span class="sd">        Args:</span>
 <span class="sd">            positions: World-space positions ``(M, 3)``. ``None`` leaves positions unchanged.</span>
 <span class="sd">            orientations: World-space quaternions ``(M, 4)``. ``None`` leaves orientations unchanged.</span>
 <span class="sd">            indices: Subset of prims to update.  ``None`` means all prims.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="o">...</span></div>
-
-
-<div class="viewcode-block" id="BaseFrameView.get_local_poses">
-<a class="viewcode-back" href="../../../../source/api/lab/isaaclab.sim.views.html#isaaclab.sim.views.BaseFrameView.get_local_poses">[docs]</a>
-    <span class="nd">@abc</span><span class="o">.</span><span class="n">abstractmethod</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">get_local_poses</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">indices</span><span class="p">:</span> <span class="n">wp</span><span class="o">.</span><span class="n">array</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">ProxyArray</span><span class="p">,</span> <span class="n">ProxyArray</span><span class="p">]:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get local-space positions and orientations for prims in the view.</span>
-
-<span class="sd">        Args:</span>
-<span class="sd">            indices: Subset of prims to query.  ``None`` means all prims.</span>
-
-<span class="sd">        Returns:</span>
-<span class="sd">            A tuple ``(translations, orientations)`` of :class:`~isaaclab.utils.warp.ProxyArray`</span>
-<span class="sd">            wrappers. Use ``.warp`` for the underlying ``wp.array`` or ``.torch`` for a</span>
-<span class="sd">            cached zero-copy ``torch.Tensor`` view.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="o">...</span></div>
+        <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">xform_world_space_writer</span><span class="p">()</span> <span class="k">as</span> <span class="n">writer</span><span class="p">:</span>
+            <span class="n">writer</span><span class="o">.</span><span class="n">set_poses</span><span class="p">(</span><span class="n">positions</span><span class="p">,</span> <span class="n">orientations</span><span class="p">,</span> <span class="n">indices</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="BaseFrameView.set_local_poses">
 <a class="viewcode-back" href="../../../../source/api/lab/isaaclab.sim.views.html#isaaclab.sim.views.BaseFrameView.set_local_poses">[docs]</a>
-    <span class="nd">@abc</span><span class="o">.</span><span class="n">abstractmethod</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">set_local_poses</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">translations</span><span class="p">:</span> <span class="n">wp</span><span class="o">.</span><span class="n">array</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
@@ -783,41 +979,76 @@
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Set local-space translations and/or orientations for prims in the view.</span>
 
+<span class="sd">        This convenience method opens a single-statement writer scope</span>
+<span class="sd">        internally.  To update poses and scales together without paying the</span>
+<span class="sd">        opposite-space derive/sync twice, prefer</span>
+<span class="sd">        ``with view.xform_local_space_writer() as w: w.set_poses(...); w.set_scales(...)``.</span>
+
 <span class="sd">        Args:</span>
 <span class="sd">            translations: Local-space translations ``(M, 3)``. ``None`` leaves translations unchanged.</span>
 <span class="sd">            orientations: Local-space quaternions ``(M, 4)``. ``None`` leaves orientations unchanged.</span>
 <span class="sd">            indices: Subset of prims to update.  ``None`` means all prims.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="o">...</span></div>
+        <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">xform_local_space_writer</span><span class="p">()</span> <span class="k">as</span> <span class="n">writer</span><span class="p">:</span>
+            <span class="n">writer</span><span class="o">.</span><span class="n">set_poses</span><span class="p">(</span><span class="n">translations</span><span class="p">,</span> <span class="n">orientations</span><span class="p">,</span> <span class="n">indices</span><span class="p">)</span></div>
 
+
+    <span class="c1"># ------------------------------------------------------------------</span>
+    <span class="c1"># Scale getter/setter convenience helpers.</span>
+    <span class="c1"># ------------------------------------------------------------------</span>
 
 <div class="viewcode-block" id="BaseFrameView.get_scales">
 <a class="viewcode-back" href="../../../../source/api/lab/isaaclab.sim.views.html#isaaclab.sim.views.BaseFrameView.get_scales">[docs]</a>
-    <span class="nd">@abc</span><span class="o">.</span><span class="n">abstractmethod</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">get_scales</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">indices</span><span class="p">:</span> <span class="n">wp</span><span class="o">.</span><span class="n">array</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ProxyArray</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Get scales for prims in the view.</span>
+
+<span class="sd">        .. note::</span>
+<span class="sd">            Prefer the explicit :meth:`get_local_scales` or</span>
+<span class="sd">            :meth:`get_world_scales` when the space matters.  This method</span>
+<span class="sd">            delegates to :meth:`_get_scales_impl`, which preserves each</span>
+<span class="sd">            backend&#39;s legacy space (world for Fabric, local for USD).</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            indices: Subset of prims to query.  ``None`` means all prims.</span>
 
 <span class="sd">        Returns:</span>
-<span class="sd">            A :class:`~isaaclab.utils.warp.ProxyArray` of shape ``(M, 3)``.</span>
+<span class="sd">            A ``ProxyArray`` of shape ``(M, 3)``.</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            RuntimeError: If a writer scope is active on this view.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="o">...</span></div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_assert_no_active_writer</span><span class="p">(</span><span class="s2">&quot;get_scales&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_scales_impl</span><span class="p">(</span><span class="n">indices</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="BaseFrameView.set_scales">
 <a class="viewcode-back" href="../../../../source/api/lab/isaaclab.sim.views.html#isaaclab.sim.views.BaseFrameView.set_scales">[docs]</a>
-    <span class="nd">@abc</span><span class="o">.</span><span class="n">abstractmethod</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">set_scales</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">scales</span><span class="p">:</span> <span class="n">wp</span><span class="o">.</span><span class="n">array</span><span class="p">,</span> <span class="n">indices</span><span class="p">:</span> <span class="n">wp</span><span class="o">.</span><span class="n">array</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Set scales for prims in the view.</span>
+
+<span class="sd">        This convenience method delegates to :meth:`_set_scales_impl`, which</span>
+<span class="sd">        opens the backend&#39;s legacy space (world for Fabric, local for USD) and</span>
+<span class="sd">        calls ``writer.set_scales``.  To update poses and scales together</span>
+<span class="sd">        without paying the opposite-space derive/sync twice, prefer</span>
+<span class="sd">        ``with view.xform_world_space_writer() as w: w.set_poses(...); w.set_scales(...)``</span>
+<span class="sd">        (or :meth:`xform_local_space_writer`).</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            scales: Scales ``(M, 3)`` as ``wp.array``.</span>
 <span class="sd">            indices: Subset of prims to update.  ``None`` means all prims.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_set_scales_impl</span><span class="p">(</span><span class="n">scales</span><span class="p">,</span> <span class="n">indices</span><span class="p">)</span></div>
+
+
+    <span class="nd">@abc</span><span class="o">.</span><span class="n">abstractmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_get_scales_impl</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">indices</span><span class="p">:</span> <span class="n">wp</span><span class="o">.</span><span class="n">array</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ProxyArray</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Backend-specific implementation for :meth:`get_scales`.&quot;&quot;&quot;</span>
+        <span class="o">...</span>
+
+    <span class="nd">@abc</span><span class="o">.</span><span class="n">abstractmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_set_scales_impl</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">scales</span><span class="p">:</span> <span class="n">wp</span><span class="o">.</span><span class="n">array</span><span class="p">,</span> <span class="n">indices</span><span class="p">:</span> <span class="n">wp</span><span class="o">.</span><span class="n">array</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Backend-specific implementation for :meth:`set_scales`.&quot;&quot;&quot;</span>
         <span class="o">...</span></div>
-</div>
 
 </pre></div>
 
@@ -866,7 +1097,7 @@ By The Isaac Lab Project Developers.
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Jul 07, 2026.
+  Last updated on Jul 08, 2026.
   <br/>
 </p>
   </div>

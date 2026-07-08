@@ -64,7 +64,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="3.0.0" />
-    <meta name="docbuild:last-update" content="Jul 07, 2026"/>
+    <meta name="docbuild:last-update" content="Jul 08, 2026"/>
   </head>
   
   
@@ -835,10 +835,9 @@ the repository root:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./isaaclab.sh<span class="w"> </span>-i<span class="w"> </span><span class="s1">&#39;ov[all]&#39;</span>
 </pre></div>
 </div>
-<p>The <code class="docutils literal notranslate"><span class="pre">ov[ovphysx]</span></code> selector installs <code class="docutils literal notranslate"><span class="pre">source/isaaclab_ovphysx</span></code> with its
-<code class="docutils literal notranslate"><span class="pre">[ovphysx]</span></code> extra. If the wheel is missing, OvPhysX-specific tests skip with
-<code class="docutils literal notranslate"><span class="pre">ovphysx</span> <span class="pre">wheel</span> <span class="pre">not</span> <span class="pre">installed</span></code> and user code raises an install hint when it
-first imports the runtime-backed modules.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">ov[ovphysx]</span></code> selector installs the <code class="docutils literal notranslate"><span class="pre">ovphysx</span></code> runtime wheel declared by
+the root <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code> <code class="docutils literal notranslate"><span class="pre">ov</span></code> extra. If the wheel is missing, OvPhysX-specific
+tests skip with <code class="docutils literal notranslate"><span class="pre">ovphysx</span> <span class="pre">wheel</span> <span class="pre">not</span> <span class="pre">installed</span></code> and user code fails at import time.</p>
 </section>
 <section id="testing-the-installation">
 <h2>Testing the Installation<a class="headerlink" href="#testing-the-installation" title="Link to this heading">#</a></h2>
@@ -952,7 +951,7 @@ By The Isaac Lab Project Developers.
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Jul 07, 2026.
+  Last updated on Jul 08, 2026.
   <br/>
 </p>
   </div>

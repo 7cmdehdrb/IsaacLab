@@ -61,7 +61,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="3.0.0" />
-    <meta name="docbuild:last-update" content="Jul 07, 2026"/>
+    <meta name="docbuild:last-update" content="Jul 08, 2026"/>
   </head>
   
   
@@ -694,6 +694,8 @@
 <span class="kn">from</span><span class="w"> </span><span class="nn">enum</span><span class="w"> </span><span class="kn">import</span> <span class="n">Enum</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">TYPE_CHECKING</span><span class="p">,</span> <span class="n">Any</span><span class="p">,</span> <span class="n">ClassVar</span>
 
+<span class="kn">from</span><span class="w"> </span><span class="nn">isaaclab.utils._device</span><span class="w"> </span><span class="kn">import</span> <span class="n">set_cuda_device</span>
+
 <span class="k">if</span> <span class="n">TYPE_CHECKING</span><span class="p">:</span>
     <span class="kn">from</span><span class="w"> </span><span class="nn">isaaclab.scene_data</span><span class="w"> </span><span class="kn">import</span> <span class="n">SceneDataBackend</span>
     <span class="kn">from</span><span class="w"> </span><span class="nn">isaaclab.sim.simulation_context</span><span class="w"> </span><span class="kn">import</span> <span class="n">SimulationContext</span>
@@ -951,6 +953,12 @@
         <span class="n">PhysicsManager</span><span class="o">.</span><span class="n">_device</span> <span class="o">=</span> <span class="n">sim_context</span><span class="o">.</span><span class="n">cfg</span><span class="o">.</span><span class="n">device</span>
         <span class="n">PhysicsManager</span><span class="o">.</span><span class="n">_sim_time</span> <span class="o">=</span> <span class="mf">0.0</span>
 
+        <span class="c1"># Synchronize the process-wide CUDA device before backend-specific</span>
+        <span class="c1"># initialization allocates state. PyTorch must select the device before</span>
+        <span class="c1"># Warp so that both runtimes retain the same primary CUDA context.</span>
+        <span class="k">if</span> <span class="s2">&quot;cuda&quot;</span> <span class="ow">in</span> <span class="n">PhysicsManager</span><span class="o">.</span><span class="n">_device</span><span class="p">:</span>
+            <span class="n">set_cuda_device</span><span class="p">(</span><span class="n">PhysicsManager</span><span class="o">.</span><span class="n">_device</span><span class="p">)</span>
+
     <span class="nd">@classmethod</span>
     <span class="nd">@abstractmethod</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">reset</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">soft</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
@@ -1158,7 +1166,7 @@ By The Isaac Lab Project Developers.
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Jul 07, 2026.
+  Last updated on Jul 08, 2026.
   <br/>
 </p>
   </div>

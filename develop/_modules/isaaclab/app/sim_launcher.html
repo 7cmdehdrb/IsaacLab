@@ -61,7 +61,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="3.0.0" />
-    <meta name="docbuild:last-update" content="Jul 07, 2026"/>
+    <meta name="docbuild:last-update" content="Jul 08, 2026"/>
   </head>
   
   
@@ -710,6 +710,7 @@
 <span class="kn">from</span><span class="w"> </span><span class="nn">isaaclab.physics.physics_manager_cfg</span><span class="w"> </span><span class="kn">import</span> <span class="n">PhysicsCfg</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">isaaclab.renderers.renderer_cfg</span><span class="w"> </span><span class="kn">import</span> <span class="n">RendererCfg</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">isaaclab.sensors.camera.camera_cfg</span><span class="w"> </span><span class="kn">import</span> <span class="n">CameraCfg</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">isaaclab.utils._device</span><span class="w"> </span><span class="kn">import</span> <span class="n">set_cuda_device</span>
 
 <span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
 
@@ -1040,11 +1041,11 @@
         <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span>
         <span class="s2">&quot;To fix this, pick one of the following supported combinations:</span><span class="se">\n</span><span class="s2">&quot;</span>
         <span class="s2">&quot;  * Keep Isaac Sim / Kit and switch the renderer:</span><span class="se">\n</span><span class="s2">&quot;</span>
-        <span class="s2">&quot;      presets=isaacsim_rtx_renderer</span><span class="se">\n</span><span class="s2">&quot;</span>
+        <span class="s2">&quot;      presets=isaacsim_rtx</span><span class="se">\n</span><span class="s2">&quot;</span>
         <span class="s2">&quot;    (uses `IsaacRtxRendererCfg`, the Kit-compatible renderer.)</span><span class="se">\n</span><span class="s2">&quot;</span>
         <span class="s2">&quot;  * Keep the OVRTX renderer and switch to a kitless physics backend</span><span class="se">\n</span><span class="s2">&quot;</span>
         <span class="s2">&quot;    (and avoid `--visualizer kit`):</span><span class="se">\n</span><span class="s2">&quot;</span>
-        <span class="s2">&quot;      presets=newton_mjwarp,ovrtx_renderer</span><span class="se">\n</span><span class="s2">&quot;</span>
+        <span class="s2">&quot;      presets=newton_mjwarp,ovrtx</span><span class="se">\n</span><span class="s2">&quot;</span>
     <span class="p">)</span>
 
 
@@ -1068,7 +1069,7 @@
     <span class="n">sim_cfg</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">cfg</span><span class="p">,</span> <span class="s2">&quot;sim&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">sim_cfg</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">sim_cfg</span><span class="o">.</span><span class="n">device</span> <span class="o">=</span> <span class="n">device_str</span>
-    <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">set_device</span><span class="p">(</span><span class="n">device_str</span><span class="p">)</span>
+    <span class="n">set_cuda_device</span><span class="p">(</span><span class="n">device_str</span><span class="p">)</span>
     <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
         <span class="s2">&quot;Distributed device resolved to </span><span class="si">%s</span><span class="s2"> (local_rank=</span><span class="si">%d</span><span class="s2">, visible_gpus=</span><span class="si">%d</span><span class="s2">)&quot;</span><span class="p">,</span>
         <span class="n">device_str</span><span class="p">,</span>
@@ -1114,7 +1115,7 @@
     <span class="c1"># with a targeted hint (_validate_runtime covers the broader ovrtx-vs-Kit cases).</span>
     <span class="k">if</span> <span class="s2">&quot;kit&quot;</span> <span class="ow">in</span> <span class="n">visualizer_types</span> <span class="ow">and</span> <span class="n">config_scan</span><span class="o">.</span><span class="n">has_ovrtx</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-            <span class="s2">&quot;[launch_simulation] &#39;--visualizer kit&#39; is incompatible with &#39;ovrtx_renderer&#39;. &quot;</span>
+            <span class="s2">&quot;[launch_simulation] &#39;--visualizer kit&#39; is incompatible with &#39;ovrtx&#39;. &quot;</span>
             <span class="s2">&quot;Both Kit (Isaac Sim) and ovrtx ship conflicting RTX hydra libraries &quot;</span>
             <span class="s2">&quot;(librtx.hydra.so, liblegacy.hydra.so) compiled against different USD namespaces, &quot;</span>
             <span class="s2">&quot;which causes a dynamic-linker crash when loaded into the same process. &quot;</span>
@@ -1262,7 +1263,7 @@ By The Isaac Lab Project Developers.
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Jul 07, 2026.
+  Last updated on Jul 08, 2026.
   <br/>
 </p>
   </div>

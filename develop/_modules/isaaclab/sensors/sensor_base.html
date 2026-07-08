@@ -61,7 +61,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="3.0.0" />
-    <meta name="docbuild:last-update" content="Jul 07, 2026"/>
+    <meta name="docbuild:last-update" content="Jul 08, 2026"/>
   </head>
   
   
@@ -716,7 +716,7 @@
 
 
 <div class="viewcode-block" id="SensorBase">
-<a class="viewcode-back" href="../../../source/api/lab/isaaclab.sensors.html#isaaclab.sensors.SensorBase">[docs]</a>
+<a class="viewcode-back" href="../../../source/api/lab/isaaclab.sensors.html#isaaclab_contrib.sensors.SensorBase">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">SensorBase</span><span class="p">(</span><span class="n">ABC</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;The base class for implementing a sensor.</span>
 
@@ -730,7 +730,7 @@
 <span class="sd">    &quot;&quot;&quot;</span>
 
 <div class="viewcode-block" id="SensorBase.__init__">
-<a class="viewcode-back" href="../../../source/api/lab/isaaclab.sensors.html#isaaclab.sensors.SensorBase.__init__">[docs]</a>
+<a class="viewcode-back" href="../../../source/api/lab/isaaclab.sensors.html#isaaclab_contrib.sensors.SensorBase.__init__">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cfg</span><span class="p">:</span> <span class="n">SensorBaseCfg</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Initialize the sensor class.</span>
 
@@ -821,7 +821,7 @@
 <span class="sd">    &quot;&quot;&quot;</span>
 
 <div class="viewcode-block" id="SensorBase.set_debug_vis">
-<a class="viewcode-back" href="../../../source/api/lab/isaaclab.sensors.html#isaaclab.sensors.SensorBase.set_debug_vis">[docs]</a>
+<a class="viewcode-back" href="../../../source/api/lab/isaaclab.sensors.html#isaaclab_contrib.sensors.SensorBase.set_debug_vis">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">set_debug_vis</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">debug_vis</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Sets whether to visualize the sensor data.</span>
 
@@ -858,7 +858,7 @@
 
 
 <div class="viewcode-block" id="SensorBase.reset">
-<a class="viewcode-back" href="../../../source/api/lab/isaaclab.sensors.html#isaaclab.sensors.SensorBase.reset">[docs]</a>
+<a class="viewcode-back" href="../../../source/api/lab/isaaclab.sensors.html#isaaclab_contrib.sensors.SensorBase.reset">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">reset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">env_ids</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">env_mask</span><span class="p">:</span> <span class="n">wp</span><span class="o">.</span><span class="n">array</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Resets the sensor internals.</span>
 
@@ -874,13 +874,15 @@
             <span class="n">dim</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_num_envs</span><span class="p">,</span>
             <span class="n">inputs</span><span class="o">=</span><span class="p">[</span><span class="n">env_mask</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_is_outdated</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_timestamp</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_timestamp_last_update</span><span class="p">],</span>
             <span class="n">device</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_device</span><span class="p">,</span>
-        <span class="p">)</span></div>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_data_generation</span> <span class="o">+=</span> <span class="mi">1</span></div>
 
 
     <span class="k">def</span><span class="w"> </span><span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dt</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">force_recompute</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
         <span class="c1"># Skip update if sensor is not initialized</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_is_initialized</span><span class="p">:</span>
             <span class="k">return</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_data_generation</span> <span class="o">+=</span> <span class="mi">1</span>
         <span class="c1"># Update the timestamp for the sensors</span>
         <span class="n">wp</span><span class="o">.</span><span class="n">launch</span><span class="p">(</span>
             <span class="n">update_timestamp_kernel</span><span class="p">,</span>
@@ -896,7 +898,7 @@
         <span class="p">)</span>
         <span class="c1"># Update the buffers</span>
         <span class="k">if</span> <span class="n">force_recompute</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">_is_visualizing</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_update_outdated_buffers</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_update_outdated_buffers</span><span class="p">(</span><span class="n">force_recompute</span><span class="o">=</span><span class="n">force_recompute</span><span class="p">)</span>
 
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Implementation specific.</span>
@@ -945,6 +947,8 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_is_outdated</span> <span class="o">=</span> <span class="n">wp</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_num_envs</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">wp</span><span class="o">.</span><span class="n">bool</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_device</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_timestamp</span> <span class="o">=</span> <span class="n">wp</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_num_envs</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">wp</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_device</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_timestamp_last_update</span> <span class="o">=</span> <span class="n">wp</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_timestamp</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_data_generation</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_data_generation_last_update</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
 
         <span class="c1"># Initialize debug visualization handle</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_debug_vis_handle</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
@@ -1080,8 +1084,10 @@
 <span class="sd">    Helper functions.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="k">def</span><span class="w"> </span><span class="nf">_update_outdated_buffers</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_update_outdated_buffers</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">force_recompute</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Fills the sensor data for the outdated sensors.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">force_recompute</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data_generation</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data_generation_last_update</span><span class="p">:</span>
+            <span class="k">return</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_update_buffers_impl</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_is_outdated</span><span class="p">)</span>
         <span class="c1"># update timestamps and clear outdated flags</span>
         <span class="n">wp</span><span class="o">.</span><span class="n">launch</span><span class="p">(</span>
@@ -1090,6 +1096,7 @@
             <span class="n">inputs</span><span class="o">=</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_is_outdated</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_timestamp</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_timestamp_last_update</span><span class="p">],</span>
             <span class="n">device</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_device</span><span class="p">,</span>
         <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_data_generation_last_update</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data_generation</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">_resolve_indices_and_mask</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="n">env_ids</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">env_mask</span><span class="p">:</span> <span class="n">wp</span><span class="o">.</span><span class="n">array</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
@@ -1216,7 +1223,7 @@ By The Isaac Lab Project Developers.
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Jul 07, 2026.
+  Last updated on Jul 08, 2026.
   <br/>
 </p>
   </div>
