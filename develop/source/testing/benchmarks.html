@@ -64,7 +64,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="3.0.0" />
-    <meta name="docbuild:last-update" content="Jul 08, 2026"/>
+    <meta name="docbuild:last-update" content="Jul 09, 2026"/>
   </head>
   
   
@@ -744,7 +744,7 @@
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quick-start">Quick Start</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#running-benchmark-scripts">Running Benchmark Scripts</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#non-rl-benchmarks">Non-RL Benchmarks</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#non-rl-runtime-benchmarks">Non-RL / Runtime Benchmarks</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rl-training-benchmarks">RL Training Benchmarks</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#physx-micro-benchmarks">PhysX Micro-Benchmarks</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#startup-profiling-benchmark">Startup Profiling Benchmark</a></li>
@@ -752,7 +752,7 @@
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#command-line-arguments">Command Line Arguments</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#common-arguments">Common Arguments</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#non-rl-benchmark-arguments">Non-RL Benchmark Arguments</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#non-rl-runtime-benchmark-arguments">Non-RL / Runtime Benchmark Arguments</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rl-training-arguments">RL Training Arguments</a></li>
 </ul>
 </li>
@@ -896,15 +896,23 @@ performance using mock interfaces (without running full simulations), see
 </section>
 <section id="running-benchmark-scripts">
 <h2>Running Benchmark Scripts<a class="headerlink" href="#running-benchmark-scripts" title="Link to this heading">#</a></h2>
-<p>Isaac Lab provides shell scripts for running benchmark suites:</p>
-<section id="non-rl-benchmarks">
-<h3>Non-RL Benchmarks<a class="headerlink" href="#non-rl-benchmarks" title="Link to this heading">#</a></h3>
-<p>Measure environment stepping performance without training:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Run all non-RL benchmarks</span>
-./scripts/benchmarks/run_non_rl_benchmarks.sh<span class="w"> </span>./output_dir
-
-<span class="c1"># Run a single benchmark manually</span>
-./isaaclab.sh<span class="w"> </span>-p<span class="w"> </span>scripts/benchmarks/benchmark_non_rl.py<span class="w"> </span><span class="se">\</span>
+<p>Isaac Lab provides unified <code class="docutils literal notranslate"><span class="pre">runtime.py</span></code> and <code class="docutils literal notranslate"><span class="pre">startup.py</span></code> entry points under
+<code class="docutils literal notranslate"><span class="pre">scripts/benchmarks/</span></code>. They default to <code class="docutils literal notranslate"><span class="pre">--benchmark_formatter</span> <span class="pre">schema</span></code>, which
+emits a schema-v1 JSON bundle via <code class="xref py py-mod docutils literal notranslate"><span class="pre">isaaclab.test.benchmark</span></code>.
+<code class="docutils literal notranslate"><span class="pre">--benchmark_formatter</span></code> accepts a comma-separated list (e.g.
+<code class="docutils literal notranslate"><span class="pre">schema,omniperf</span></code>) to emit several formats in a single run. Each selected
+formatter writes timestamped output; the Osmo formatter writes one
+phase-suffixed JSON file per phase.</p>
+<p>The examples below use <code class="docutils literal notranslate"><span class="pre">uv</span> <span class="pre">run</span> <span class="pre">isaaclab</span> <span class="pre">benchmark</span></code>. From an existing
+Isaac Lab environment, run the same workflows directly instead:</p>
+<ul class="simple">
+<li><p>Runtime: <code class="docutils literal notranslate"><span class="pre">./isaaclab.sh</span> <span class="pre">-p</span> <span class="pre">scripts/benchmarks/runtime.py</span> <span class="pre">&lt;arguments&gt;</span></code></p></li>
+<li><p>Startup: <code class="docutils literal notranslate"><span class="pre">./isaaclab.sh</span> <span class="pre">-p</span> <span class="pre">scripts/benchmarks/startup.py</span> <span class="pre">&lt;arguments&gt;</span></code></p></li>
+</ul>
+<section id="non-rl-runtime-benchmarks">
+<h3>Non-RL / Runtime Benchmarks<a class="headerlink" href="#non-rl-runtime-benchmarks" title="Link to this heading">#</a></h3>
+<p>Measure environment stepping performance without any RL library:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>uv<span class="w"> </span>run<span class="w"> </span>isaaclab<span class="w"> </span>benchmark<span class="w"> </span>runtime<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--task<span class="w"> </span>Isaac-Cartpole<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--num_envs<span class="w"> </span><span class="m">4096</span><span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--num_frames<span class="w"> </span><span class="m">100</span><span class="w"> </span><span class="se">\</span>
@@ -932,10 +940,7 @@ performance using mock interfaces (without running full simulations), see
 <section id="physx-micro-benchmarks">
 <h3>PhysX Micro-Benchmarks<a class="headerlink" href="#physx-micro-benchmarks" title="Link to this heading">#</a></h3>
 <p>Measure asset method and property performance using mock interfaces:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Run PhysX micro-benchmarks</span>
-./scripts/benchmarks/run_physx_benchmarks.sh<span class="w"> </span>./output_dir
-
-<span class="c1"># Run articulation benchmarks manually</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Run articulation benchmarks</span>
 ./isaaclab.sh<span class="w"> </span>-p<span class="w"> </span>source/isaaclab_physx/benchmark/assets/benchmark_articulation.py<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--num_iterations<span class="w"> </span><span class="m">1000</span><span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--num_instances<span class="w"> </span><span class="m">4096</span>
@@ -951,7 +956,7 @@ startup stage is wrapped in its own profiling session and the top functions by
 own-time are reported. This is useful for investigating startup regressions and
 understanding where time is spent during initialization.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Basic usage — reports top 30 functions per phase</span>
-./isaaclab.sh<span class="w"> </span>-p<span class="w"> </span>scripts/benchmarks/benchmark_startup.py<span class="w"> </span><span class="se">\</span>
+uv<span class="w"> </span>run<span class="w"> </span>isaaclab<span class="w"> </span>benchmark<span class="w"> </span>startup<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--task<span class="w"> </span>Isaac-Ant<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--num_envs<span class="w"> </span><span class="m">4096</span><span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--benchmark_formatter<span class="w"> </span>summary
@@ -959,16 +964,16 @@ understanding where time is spent during initialization.</p>
 </div>
 <p>The script profiles five phases independently:</p>
 <ul class="simple">
-<li><p><strong>app_launch</strong>: <code class="docutils literal notranslate"><span class="pre">launch_simulation()</span></code> context entry (Kit/USD/PhysX init)</p></li>
+<li><p><strong>app_launch</strong>: <code class="docutils literal notranslate"><span class="pre">launch_simulation()</span></code> context entry (simulation runtime initialization)</p></li>
 <li><p><strong>python_imports</strong>: importing gymnasium, torch, isaaclab_tasks, etc.</p></li>
 <li><p><strong>task_config</strong>: <code class="docutils literal notranslate"><span class="pre">resolve_task_config()</span></code> (Hydra config resolution)</p></li>
 <li><p><strong>env_creation</strong>: <code class="docutils literal notranslate"><span class="pre">gym.make()</span></code> + <code class="docutils literal notranslate"><span class="pre">env.reset()</span></code> (scene creation, sim start)</p></li>
 <li><p><strong>first_step</strong>: a single <code class="docutils literal notranslate"><span class="pre">env.step()</span></code> call</p></li>
 </ul>
-<p>Each phase records a wall-clock time plus per-function own-time and cumulative
-time as <code class="docutils literal notranslate"><span class="pre">SingleMeasurement</span></code> entries. Only IsaacLab functions and first-level
-calls into external libraries are included (deep internals of torch, USD, etc.
-are filtered out).</p>
+<p>Schema output records each phase wall-clock time and per-function own-time,
+cumulative time, and call count. Flat formatters project the same data into
+measurements. Only Isaac Lab functions and first-level calls into external
+libraries are included (deep internals of torch, USD, etc. are filtered out).</p>
 <p><strong>Whitelist mode</strong> — For dashboard time-series comparisons across runs, use a
 YAML whitelist config to report a fixed set of functions instead of top-N.
 Patterns use <code class="docutils literal notranslate"><span class="pre">fnmatch</span></code> syntax (<code class="docutils literal notranslate"><span class="pre">*</span></code> and <code class="docutils literal notranslate"><span class="pre">?</span></code> wildcards):</p>
@@ -985,7 +990,7 @@ Patterns use <code class="docutils literal notranslate"><span class="pre">fnmatc
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;warp.*:launch&quot;</span>
 </pre></div>
 </div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./isaaclab.sh<span class="w"> </span>-p<span class="w"> </span>scripts/benchmarks/benchmark_startup.py<span class="w"> </span><span class="se">\</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>uv<span class="w"> </span>run<span class="w"> </span>isaaclab<span class="w"> </span>benchmark<span class="w"> </span>startup<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--task<span class="w"> </span>Isaac-Ant<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--num_envs<span class="w"> </span><span class="m">4096</span><span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--benchmark_formatter<span class="w"> </span>omniperf<span class="w"> </span><span class="se">\</span>
@@ -1027,8 +1032,8 @@ the same keys.</p>
 <td><p>Path to YAML whitelist file</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">--benchmark_formatter</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">omniperf</span></code></p></td>
-<td><p>Output formatter (<code class="docutils literal notranslate"><span class="pre">json</span></code>, <code class="docutils literal notranslate"><span class="pre">osmo</span></code>, <code class="docutils literal notranslate"><span class="pre">omniperf</span></code>, <code class="docutils literal notranslate"><span class="pre">summary</span></code>, or <code class="docutils literal notranslate"><span class="pre">schema</span></code>)</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">schema</span></code></p></td>
+<td><p>Output formatter(s), comma-separated (<code class="docutils literal notranslate"><span class="pre">schema</span></code>, <code class="docutils literal notranslate"><span class="pre">json</span></code>, <code class="docutils literal notranslate"><span class="pre">osmo</span></code>, <code class="docutils literal notranslate"><span class="pre">omniperf</span></code>, <code class="docutils literal notranslate"><span class="pre">summary</span></code>)</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">--output_path</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">.</span></code></p></td>
@@ -1057,8 +1062,8 @@ the same keys.</p>
 </thead>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">--benchmark_formatter</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">json</span></code></p></td>
-<td><p>Output formatter: <code class="docutils literal notranslate"><span class="pre">json</span></code>, <code class="docutils literal notranslate"><span class="pre">osmo</span></code>, <code class="docutils literal notranslate"><span class="pre">omniperf</span></code>, <code class="docutils literal notranslate"><span class="pre">summary</span></code>, or <code class="docutils literal notranslate"><span class="pre">schema</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">schema</span></code></p></td>
+<td><p>Output formatter(s), comma-separated (<code class="docutils literal notranslate"><span class="pre">schema</span></code>, <code class="docutils literal notranslate"><span class="pre">json</span></code>, <code class="docutils literal notranslate"><span class="pre">osmo</span></code>, <code class="docutils literal notranslate"><span class="pre">omniperf</span></code>, <code class="docutils literal notranslate"><span class="pre">summary</span></code>)</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">--output_path</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">./</span></code></p></td>
@@ -1068,8 +1073,8 @@ the same keys.</p>
 </table>
 </div>
 </section>
-<section id="non-rl-benchmark-arguments">
-<h3>Non-RL Benchmark Arguments<a class="headerlink" href="#non-rl-benchmark-arguments" title="Link to this heading">#</a></h3>
+<section id="non-rl-runtime-benchmark-arguments">
+<h3>Non-RL / Runtime Benchmark Arguments<a class="headerlink" href="#non-rl-runtime-benchmark-arguments" title="Link to this heading">#</a></h3>
 <div class="pst-scrollable-table-container"><table class="table">
 <colgroup>
 <col style="width: 25.0%" />
@@ -1088,7 +1093,7 @@ the same keys.</p>
 <td><p>Environment task name (e.g., <code class="docutils literal notranslate"><span class="pre">Isaac-Cartpole</span></code>)</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">--num_envs</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">4096</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">None</span></code> (task config)</p></td>
 <td><p>Number of parallel environments</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">--num_frames</span></code></p></td>
@@ -1422,11 +1427,13 @@ monitoring during blocking operations like RL training loops:</p>
 </section>
 <section id="integration-with-ci-cd">
 <h2>Integration with CI/CD<a class="headerlink" href="#integration-with-ci-cd" title="Link to this heading">#</a></h2>
-<p>The shell scripts in <code class="docutils literal notranslate"><span class="pre">scripts/benchmarks/</span></code> are designed for CI/CD integration:</p>
+<p>The benchmark entry points under <code class="docutils literal notranslate"><span class="pre">scripts/benchmarks/</span></code> are designed for CI/CD integration:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># GitHub Actions / GitLab CI example</span>
--<span class="w"> </span>name:<span class="w"> </span>Run<span class="w"> </span>Benchmarks
+-<span class="w"> </span>name:<span class="w"> </span>Run<span class="w"> </span>Runtime<span class="w"> </span>Benchmark
 <span class="w">  </span>run:<span class="w"> </span><span class="p">|</span>
-<span class="w">    </span>./scripts/benchmarks/run_non_rl_benchmarks.sh<span class="w"> </span>./benchmark_results
+<span class="w">    </span>uv<span class="w"> </span>run<span class="w"> </span>isaaclab<span class="w"> </span>benchmark<span class="w"> </span>runtime<span class="w"> </span><span class="se">\</span>
+<span class="w">        </span>--task<span class="w"> </span>Isaac-Cartpole<span class="w"> </span>--num_envs<span class="w"> </span><span class="m">4096</span><span class="w"> </span>--num_frames<span class="w"> </span><span class="m">100</span><span class="w"> </span><span class="se">\</span>
+<span class="w">        </span>--benchmark_formatter<span class="w"> </span>json<span class="w"> </span>--output_path<span class="w"> </span>./benchmark_results
 
 -<span class="w"> </span>name:<span class="w"> </span>Upload<span class="w"> </span>Results
 <span class="w">  </span>uses:<span class="w"> </span>actions/upload-artifact@v3
@@ -1436,7 +1443,9 @@ monitoring during blocking operations like RL training loops:</p>
 </pre></div>
 </div>
 <p>For Osmo integration, use the <code class="docutils literal notranslate"><span class="pre">osmo</span></code> formatter:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./scripts/benchmarks/run_non_rl_benchmarks.sh<span class="w"> </span>./results
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>uv<span class="w"> </span>run<span class="w"> </span>isaaclab<span class="w"> </span>benchmark<span class="w"> </span>runtime<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--task<span class="w"> </span>Isaac-Cartpole<span class="w"> </span>--num_envs<span class="w"> </span><span class="m">4096</span><span class="w"> </span>--num_frames<span class="w"> </span><span class="m">100</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--benchmark_formatter<span class="w"> </span>osmo<span class="w"> </span>--output_path<span class="w"> </span>./results
 <span class="c1"># Results are in Osmo-compatible JSON format</span>
 </pre></div>
 </div>
@@ -1474,7 +1483,7 @@ monitoring during blocking operations like RL training loops:</p>
 </section>
 <section id="formatter-not-recognized">
 <h3>Formatter Not Recognized<a class="headerlink" href="#formatter-not-recognized" title="Link to this heading">#</a></h3>
-<p>Valid formatter types are: <code class="docutils literal notranslate"><span class="pre">json</span></code>, <code class="docutils literal notranslate"><span class="pre">osmo</span></code>, <code class="docutils literal notranslate"><span class="pre">omniperf</span></code>, <code class="docutils literal notranslate"><span class="pre">summary</span></code>, or <code class="docutils literal notranslate"><span class="pre">schema</span></code></p>
+<p>Valid formatter types are: <code class="docutils literal notranslate"><span class="pre">schema</span></code>, <code class="docutils literal notranslate"><span class="pre">json</span></code>, <code class="docutils literal notranslate"><span class="pre">osmo</span></code>, <code class="docutils literal notranslate"><span class="pre">omniperf</span></code>, or <code class="docutils literal notranslate"><span class="pre">summary</span></code></p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Correct</span>
 --benchmark_formatter<span class="w"> </span>json
 
@@ -1536,7 +1545,7 @@ monitoring during blocking operations like RL training loops:</p>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quick-start">Quick Start</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#running-benchmark-scripts">Running Benchmark Scripts</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#non-rl-benchmarks">Non-RL Benchmarks</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#non-rl-runtime-benchmarks">Non-RL / Runtime Benchmarks</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rl-training-benchmarks">RL Training Benchmarks</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#physx-micro-benchmarks">PhysX Micro-Benchmarks</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#startup-profiling-benchmark">Startup Profiling Benchmark</a></li>
@@ -1544,7 +1553,7 @@ monitoring during blocking operations like RL training loops:</p>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#command-line-arguments">Command Line Arguments</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#common-arguments">Common Arguments</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#non-rl-benchmark-arguments">Non-RL Benchmark Arguments</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#non-rl-runtime-benchmark-arguments">Non-RL / Runtime Benchmark Arguments</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rl-training-arguments">RL Training Arguments</a></li>
 </ul>
 </li>
@@ -1621,7 +1630,7 @@ By The Isaac Lab Project Developers.
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Jul 08, 2026.
+  Last updated on Jul 09, 2026.
   <br/>
 </p>
   </div>

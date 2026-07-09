@@ -61,7 +61,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="3.0.0" />
-    <meta name="docbuild:last-update" content="Jul 08, 2026"/>
+    <meta name="docbuild:last-update" content="Jul 09, 2026"/>
   </head>
   
   
@@ -707,6 +707,7 @@
 <span class="kn">from</span><span class="w"> </span><span class="nn">isaaclab_physx.physics</span><span class="w"> </span><span class="kn">import</span> <span class="n">PhysxCfg</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">isaaclab_physx.renderers</span><span class="w"> </span><span class="kn">import</span> <span class="n">IsaacRtxRendererCfg</span>
 
+<span class="kn">from</span><span class="w"> </span><span class="nn">isaaclab.app.logging_utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">apply_python_logging_level</span><span class="p">,</span> <span class="n">resolve_python_logging_level</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">isaaclab.physics.physics_manager_cfg</span><span class="w"> </span><span class="kn">import</span> <span class="n">PhysicsCfg</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">isaaclab.renderers.renderer_cfg</span><span class="w"> </span><span class="kn">import</span> <span class="n">RendererCfg</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">isaaclab.sensors.camera.camera_cfg</span><span class="w"> </span><span class="kn">import</span> <span class="n">CameraCfg</span>
@@ -1126,6 +1127,11 @@
     <span class="n">needs_kit</span> <span class="o">=</span> <span class="n">_uses_isaac_sim_runtime</span><span class="p">(</span><span class="n">config_scan</span><span class="p">,</span> <span class="n">launcher_args</span><span class="p">)</span>
     <span class="n">_set_arg</span><span class="p">(</span><span class="n">launcher_args</span><span class="p">,</span> <span class="s2">&quot;visualizer_intent&quot;</span><span class="p">,</span> <span class="n">config_scan</span><span class="o">.</span><span class="n">visualizer_intent</span><span class="p">)</span>
 
+    <span class="c1"># Kit-based backends apply the Python logging level inside AppLauncher; kitless backends</span>
+    <span class="c1"># never construct it, so honor --verbose / --info here to keep behavior consistent.</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">needs_kit</span><span class="p">:</span>
+        <span class="n">apply_python_logging_level</span><span class="p">(</span><span class="n">resolve_python_logging_level</span><span class="p">(</span><span class="n">launcher_args</span><span class="p">))</span>
+
     <span class="k">if</span> <span class="n">needs_kit</span> <span class="ow">and</span> <span class="n">config_scan</span><span class="o">.</span><span class="n">has_kit_camera</span> <span class="ow">and</span> <span class="n">launcher_args</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">_get_arg</span><span class="p">(</span><span class="n">launcher_args</span><span class="p">,</span> <span class="s2">&quot;enable_cameras&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">):</span>
             <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Auto-enabling cameras: scene contains camera sensors with a Kit renderer.&quot;</span><span class="p">)</span>
@@ -1263,7 +1269,7 @@ By The Isaac Lab Project Developers.
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Jul 08, 2026.
+  Last updated on Jul 09, 2026.
   <br/>
 </p>
   </div>

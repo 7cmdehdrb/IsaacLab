@@ -61,7 +61,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="3.0.0" />
-    <meta name="docbuild:last-update" content="Jul 08, 2026"/>
+    <meta name="docbuild:last-update" content="Jul 09, 2026"/>
   </head>
   
   
@@ -1015,6 +1015,86 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_newton_manager</span><span class="o">.</span><span class="n">add_model_change</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_notify_shape_properties</span><span class="p">)</span>
 
 
+<span class="k">class</span><span class="w"> </span><span class="nc">_RandomizeRigidBodyMaterialOvPhysx</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;OVPhysX backend implementation for material randomization.</span>
+
+<span class="sd">    OVPhysX runs the PhysX solver, so PhysX&#39;s 64000 unique-material limit applies and this</span>
+<span class="sd">    mirrors the PhysX bucket approach: ``num_buckets`` materials are pre-sampled once and</span>
+<span class="sd">    randomly assigned to shapes. Materials are written through the asset&#39;s</span>
+<span class="sd">    :class:`~isaaclab_ovphysx.sim.views.OvPhysxView` on the per-collision-shape</span>
+<span class="sd">    ``shape_friction_and_restitution`` binding (shape ``[N, S, 3]`` = static friction,</span>
+<span class="sd">    dynamic friction, restitution).</span>
+
+<span class="sd">    OVPhysX does not expose per-body shape counts, so only whole-asset (all shapes)</span>
+<span class="sd">    randomization is supported; ``asset_cfg.body_ids`` must select all bodies.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">cfg</span><span class="p">:</span> <span class="n">EventTermCfg</span><span class="p">,</span> <span class="n">env</span><span class="p">:</span> <span class="n">ManagerBasedEnv</span><span class="p">,</span> <span class="n">asset</span><span class="p">:</span> <span class="n">RigidObject</span> <span class="o">|</span> <span class="n">Articulation</span><span class="p">,</span> <span class="n">asset_cfg</span><span class="p">:</span> <span class="n">SceneEntityCfg</span>
+    <span class="p">):</span>
+        <span class="kn">import</span><span class="w"> </span><span class="nn">isaaclab_ovphysx.tensor_types</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ovphysx_tt</span>  <span class="c1"># noqa: PLC0415</span>
+
+        <span class="kn">from</span><span class="w"> </span><span class="nn">isaaclab.assets</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseArticulation</span>  <span class="c1"># noqa: PLC0415</span>
+
+        <span class="c1"># OVPhysX cannot map body ids to shape ranges (no per-body shape counts), so a</span>
+        <span class="c1"># per-body subset cannot be indexed -- fail loud rather than silently randomize all.</span>
+        <span class="k">if</span> <span class="n">asset_cfg</span><span class="o">.</span><span class="n">body_ids</span> <span class="o">!=</span> <span class="nb">slice</span><span class="p">(</span><span class="kc">None</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span>
+                <span class="s2">&quot;randomize_rigid_body_material on the OVPhysX backend randomizes all shapes only; &quot;</span>
+                <span class="s2">&quot;per-body selection via &#39;asset_cfg.body_ids&#39; is not supported because the ovphysx &quot;</span>
+                <span class="s2">&quot;wheel does not expose per-body shape counts. Use the default (all bodies).&quot;</span>
+            <span class="p">)</span>
+
+        <span class="c1"># sample material buckets once (PhysX-style; the 64000 unique-material limit applies)</span>
+        <span class="n">static_friction_range</span> <span class="o">=</span> <span class="n">cfg</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;static_friction_range&quot;</span><span class="p">,</span> <span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">))</span>
+        <span class="n">dynamic_friction_range</span> <span class="o">=</span> <span class="n">cfg</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;dynamic_friction_range&quot;</span><span class="p">,</span> <span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">))</span>
+        <span class="n">restitution_range</span> <span class="o">=</span> <span class="n">cfg</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;restitution_range&quot;</span><span class="p">,</span> <span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">))</span>
+        <span class="n">num_buckets</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">cfg</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;num_buckets&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+        <span class="n">ranges</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="n">static_friction_range</span><span class="p">,</span> <span class="n">dynamic_friction_range</span><span class="p">,</span> <span class="n">restitution_range</span><span class="p">],</span> <span class="n">device</span><span class="o">=</span><span class="s2">&quot;cpu&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">material_buckets</span> <span class="o">=</span> <span class="n">math_utils</span><span class="o">.</span><span class="n">sample_uniform</span><span class="p">(</span><span class="n">ranges</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">ranges</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">(</span><span class="n">num_buckets</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">device</span><span class="o">=</span><span class="s2">&quot;cpu&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">cfg</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;make_consistent&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">material_buckets</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">material_buckets</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">material_buckets</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">])</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">asset</span> <span class="o">=</span> <span class="n">asset</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">asset_cfg</span> <span class="o">=</span> <span class="n">asset_cfg</span>
+        <span class="c1"># per-shape material tensor type for this asset family (articulation vs rigid body)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_material_type</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">ovphysx_tt</span><span class="o">.</span><span class="n">SHAPE_FRICTION_AND_RESTITUTION</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">asset</span><span class="p">,</span> <span class="n">BaseArticulation</span><span class="p">)</span>
+            <span class="k">else</span> <span class="n">ovphysx_tt</span><span class="o">.</span><span class="n">RIGID_BODY_SHAPE_FRICTION_AND_RESTITUTION</span>
+        <span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__call__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">env</span><span class="p">:</span> <span class="n">ManagerBasedEnv</span><span class="p">,</span>
+        <span class="n">env_ids</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span> <span class="o">|</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">static_friction_range</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">],</span>
+        <span class="n">dynamic_friction_range</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">],</span>
+        <span class="n">restitution_range</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">],</span>
+        <span class="n">num_buckets</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+        <span class="n">asset_cfg</span><span class="p">:</span> <span class="n">SceneEntityCfg</span><span class="p">,</span>
+        <span class="n">make_consistent</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="p">):</span>
+        <span class="n">view</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">asset</span><span class="o">.</span><span class="n">root_view</span>
+        <span class="c1"># read the current per-shape material [N, S, 3] on the binding&#39;s native (sim) device</span>
+        <span class="n">materials</span> <span class="o">=</span> <span class="n">wp</span><span class="o">.</span><span class="n">to_torch</span><span class="p">(</span><span class="n">view</span><span class="o">.</span><span class="n">get_attribute</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_material_type</span><span class="p">))</span>
+        <span class="n">num_instances</span><span class="p">,</span> <span class="n">num_shapes</span> <span class="o">=</span> <span class="n">materials</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">materials</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+        <span class="c1"># resolve environment ids on the material buffer&#39;s device</span>
+        <span class="k">if</span> <span class="n">env_ids</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">env_ids</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">num_instances</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">materials</span><span class="o">.</span><span class="n">device</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">env_ids</span> <span class="o">=</span> <span class="n">env_ids</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">materials</span><span class="o">.</span><span class="n">device</span><span class="p">)</span>
+
+        <span class="c1"># randomly assign pre-sampled bucket materials to every shape of the selected envs</span>
+        <span class="n">bucket_ids</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">num_buckets</span><span class="p">,</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">env_ids</span><span class="p">),</span> <span class="n">num_shapes</span><span class="p">),</span> <span class="n">device</span><span class="o">=</span><span class="s2">&quot;cpu&quot;</span><span class="p">)</span>
+        <span class="n">material_samples</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">material_buckets</span><span class="p">[</span><span class="n">bucket_ids</span><span class="p">]</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">materials</span><span class="o">.</span><span class="n">device</span><span class="p">)</span>  <span class="c1"># [len(env_ids), S, 3]</span>
+        <span class="n">materials</span><span class="p">[</span><span class="n">env_ids</span><span class="p">]</span> <span class="o">=</span> <span class="n">material_samples</span>
+
+        <span class="c1"># write the full buffer back through the view (read-modify-write keeps non-selected envs)</span>
+        <span class="n">view</span><span class="o">.</span><span class="n">set_attribute</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_material_type</span><span class="p">,</span> <span class="n">wp</span><span class="o">.</span><span class="n">from_torch</span><span class="p">(</span><span class="n">materials</span><span class="o">.</span><span class="n">contiguous</span><span class="p">(),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">wp</span><span class="o">.</span><span class="n">float32</span><span class="p">))</span>
+
+
 <div class="viewcode-block" id="randomize_rigid_body_material">
 <a class="viewcode-back" href="../../../../source/api/lab/isaaclab.envs.mdp.html#isaaclab.envs.mdp.events.randomize_rigid_body_material">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">randomize_rigid_body_material</span><span class="p">(</span><span class="n">ManagerTermBase</span><span class="p">):</span>
@@ -1023,8 +1103,8 @@
 <span class="sd">    This function creates a set of physics materials with random static friction, dynamic friction, and restitution</span>
 <span class="sd">    values and assigns them to the geometries of the asset.</span>
 
-<span class="sd">    Automatically detects the active physics backend (PhysX or Newton) and delegates to</span>
-<span class="sd">    the appropriate backend-specific implementation:</span>
+<span class="sd">    Automatically detects the active physics backend (PhysX, Newton, or OVPhysX) and delegates</span>
+<span class="sd">    to the appropriate backend-specific implementation:</span>
 
 <span class="sd">    - **PhysX**: Uses the 3-tuple material format (static_friction, dynamic_friction, restitution)</span>
 <span class="sd">      with bucket-based assignment (limited to 64000 unique materials). Applied via the PhysX</span>
@@ -1032,6 +1112,11 @@
 <span class="sd">    - **Newton**: Samples friction (mu) and restitution continuously per shape (no bucket</span>
 <span class="sd">      limitation). Newton uses a single friction coefficient, so ``dynamic_friction_range``</span>
 <span class="sd">      and ``num_buckets`` are ignored. Applied directly to Newton&#39;s view-level bindings.</span>
+<span class="sd">    - **OVPhysX**: Runs the PhysX solver, so the same 3-tuple, bucket-based assignment is used,</span>
+<span class="sd">      written through the :class:`~isaaclab_ovphysx.sim.views.OvPhysxView` on the per-shape</span>
+<span class="sd">      ``shape_friction_and_restitution`` binding. Randomizes all shapes only -- per-body</span>
+<span class="sd">      selection (``asset_cfg.body_ids``) is not supported (the wheel exposes no per-body shape</span>
+<span class="sd">      counts).</span>
 
 <span class="sd">    If the flag ``make_consistent`` is set to ``True``, the dynamic friction is set to be less than or equal to</span>
 <span class="sd">    the static friction (PhysX only). This obeys the physics constraint on friction values.</span>
@@ -1081,22 +1166,7 @@
         <span class="c1"># ``NewtonKaminoManager``, ...) are caught by the substring branch.</span>
         <span class="n">manager_name</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">sim</span><span class="o">.</span><span class="n">physics_manager</span><span class="o">.</span><span class="vm">__name__</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
         <span class="k">if</span> <span class="n">manager_name</span> <span class="o">==</span> <span class="s2">&quot;ovphysxmanager&quot;</span><span class="p">:</span>
-            <span class="c1"># No OVPhysX implementation yet — wheel-side</span>
-            <span class="c1"># ``RIGID_BODY_MATERIAL`` tensor binding is missing; randomization</span>
-            <span class="c1"># would require per-body view creation that ovphysx does not yet</span>
-            <span class="c1"># expose.  Run with material randomization disabled (warns once).</span>
-            <span class="kn">import</span><span class="w"> </span><span class="nn">logging</span>  <span class="c1"># noqa: PLC0415</span>
-
-            <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
-                <span class="s2">&quot;randomize_rigid_body_material is a no-op on the OVPhysX backend &quot;</span>
-                <span class="s2">&quot;(wheel-side gap — see docs/superpowers/specs/2026-04-27-ovphysx-contact-api-gaps.md).&quot;</span>
-            <span class="p">)</span>
-
-            <span class="k">class</span><span class="w"> </span><span class="nc">_Noop</span><span class="p">:</span>
-                <span class="k">def</span><span class="w"> </span><span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-                    <span class="k">pass</span>
-
-            <span class="bp">self</span><span class="o">.</span><span class="n">_impl</span> <span class="o">=</span> <span class="n">_Noop</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_impl</span> <span class="o">=</span> <span class="n">_RandomizeRigidBodyMaterialOvPhysx</span><span class="p">(</span><span class="n">cfg</span><span class="p">,</span> <span class="n">env</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">asset</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">asset_cfg</span><span class="p">)</span>
         <span class="k">elif</span> <span class="s2">&quot;newton&quot;</span> <span class="ow">in</span> <span class="n">manager_name</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_impl</span> <span class="o">=</span> <span class="n">_RandomizeRigidBodyMaterialNewton</span><span class="p">(</span><span class="n">cfg</span><span class="p">,</span> <span class="n">env</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">asset</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">asset_cfg</span><span class="p">)</span>
         <span class="k">elif</span> <span class="s2">&quot;physx&quot;</span> <span class="ow">in</span> <span class="n">manager_name</span><span class="p">:</span>
@@ -3556,7 +3626,7 @@ By The Isaac Lab Project Developers.
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Jul 08, 2026.
+  Last updated on Jul 09, 2026.
   <br/>
 </p>
   </div>

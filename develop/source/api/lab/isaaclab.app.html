@@ -64,7 +64,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="3.0.0" />
-    <meta name="docbuild:last-update" content="Jul 08, 2026"/>
+    <meta name="docbuild:last-update" content="Jul 09, 2026"/>
   </head>
   
   
@@ -1052,6 +1052,8 @@ Does not change how the default experience file is chosen.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">kit_args</span></code> (str): Optional command line arguments to be passed to Omniverse Kit directly.
 Arguments should be combined into a single string separated by space.
 Example usage: –kit_args “–ext-folder=/path/to/ext1 –ext-folder=/path/to/ext2”
+A single Kit argument works in both the space-separated and the <code class="docutils literal notranslate"><span class="pre">=</span></code>-attached form
+(e.g. <code class="docutils literal notranslate"><span class="pre">--kit_args</span> <span class="pre">&quot;--ext-folder=/path/to/ext1&quot;</span></code> or <code class="docutils literal notranslate"><span class="pre">--kit_args=--ext-folder=/path/to/ext1</span></code>).
 Isaac Lab experiences use one renderer GPU by default. Applications that need single-process
 multi-GPU rendering can override the <code class="docutils literal notranslate"><span class="pre">renderer.multiGpu</span></code> settings through this argument.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">visualizer</span></code> (str): Visualizer backends to enable.
@@ -1259,7 +1261,7 @@ By The Isaac Lab Project Developers.
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Jul 08, 2026.
+  Last updated on Jul 09, 2026.
   <br/>
 </p>
   </div>

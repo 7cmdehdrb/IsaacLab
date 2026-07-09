@@ -61,7 +61,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="3.0.0" />
-    <meta name="docbuild:last-update" content="Jul 08, 2026"/>
+    <meta name="docbuild:last-update" content="Jul 09, 2026"/>
   </head>
   
   
@@ -893,7 +893,8 @@
 <span class="sd">    Concrete subclasses (one per solver) implement :meth:`_build_solver` and</span>
 <span class="sd">    may extend :meth:`_initialize_contacts`, :meth:`_prepare_builder_for_finalize`,</span>
 <span class="sd">    :meth:`_step_solver`, :meth:`_supports_cuda_graph_capture`,</span>
-<span class="sd">    :meth:`_solver_specific_clear`, and :meth:`_log_solver_debug`.</span>
+<span class="sd">    :meth:`_reset_solver_internals`, :meth:`_solver_specific_clear`, and</span>
+<span class="sd">    :meth:`_log_solver_debug`.</span>
 
 <span class="sd">    Subclasses are selected via :attr:`NewtonSolverCfg.class_type`, which</span>
 <span class="sd">    :meth:`NewtonCfg.__post_init__` propagates onto :attr:`NewtonCfg.class_type`</span>
@@ -1102,6 +1103,7 @@
 <span class="sd">        data layer invokes ``NewtonManager.forward()`` on the base class, where ``cls`` is the</span>
 <span class="sd">        base ``NewtonManager``; the bound delegate dispatches to the concrete subclass override.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">cls</span><span class="o">.</span><span class="n">_reset_solver_internals</span><span class="p">(</span><span class="bp">cls</span><span class="o">.</span><span class="n">_world_reset_mask</span><span class="p">)</span>
         <span class="bp">cls</span><span class="o">.</span><span class="n">_eval_fk</span><span class="p">(</span><span class="bp">cls</span><span class="o">.</span><span class="n">_world_reset_mask</span><span class="p">,</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_fk_reset_mask</span><span class="p">)</span>
         <span class="k">if</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_fk_reset_mask</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="bp">cls</span><span class="o">.</span><span class="n">_fk_reset_mask</span><span class="o">.</span><span class="n">zero_</span><span class="p">()</span>
@@ -1384,6 +1386,8 @@
         <span class="n">sim</span> <span class="o">=</span> <span class="n">PhysicsManager</span><span class="o">.</span><span class="n">_sim</span>
         <span class="k">if</span> <span class="n">sim</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">sim</span><span class="o">.</span><span class="n">is_playing</span><span class="p">():</span>
             <span class="k">return</span>
+
+        <span class="bp">cls</span><span class="o">.</span><span class="n">_reset_solver_internals</span><span class="p">(</span><span class="bp">cls</span><span class="o">.</span><span class="n">_world_reset_mask</span><span class="p">)</span>
 
         <span class="c1"># Notify solver of model changes</span>
         <span class="k">if</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_model_changes</span><span class="p">:</span>
@@ -2173,6 +2177,24 @@
 <span class="sd">        Default no-op.  Subclasses override to log solver-specific debug info</span>
 <span class="sd">        (e.g. constraint violations, contact forces, etc.) after stepping.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_reset_solver_internals</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">world_mask</span><span class="p">:</span> <span class="n">wp</span><span class="o">.</span><span class="n">array</span> <span class="o">|</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Clear solver-internal state for environments reset since the last boundary.</span>
+
+<span class="sd">        The hook runs immediately before reset masks are consumed by :meth:`step`</span>
+<span class="sd">        and :meth:`forward`. The base implementation delegates to</span>
+<span class="sd">        :meth:`SolverBase.reset` with ``flags=0``, preserving the joint state</span>
+<span class="sd">        authored by Isaac Lab while clearing solver-owned buffers. Solvers with</span>
+<span class="sd">        no reset implementation are unaffected.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            world_mask: Per-world reset mask, or ``None`` when no simulation</span>
+<span class="sd">                state is available.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">world_mask</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span>
+        <span class="bp">cls</span><span class="o">.</span><span class="n">_solver</span><span class="o">.</span><span class="n">reset</span><span class="p">(</span><span class="bp">cls</span><span class="o">.</span><span class="n">_state_0</span><span class="p">,</span> <span class="n">world_mask</span><span class="o">=</span><span class="n">world_mask</span><span class="p">,</span> <span class="n">flags</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 
     <span class="c1"># ----- Lifecycle orchestration ----------------------------------------</span>
 
@@ -3073,7 +3095,7 @@ By The Isaac Lab Project Developers.
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Jul 08, 2026.
+  Last updated on Jul 09, 2026.
   <br/>
 </p>
   </div>

@@ -64,7 +64,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="3.0.0" />
-    <meta name="docbuild:last-update" content="Jul 08, 2026"/>
+    <meta name="docbuild:last-update" content="Jul 09, 2026"/>
   </head>
   
   
@@ -1330,7 +1330,8 @@ orchestration.
 Concrete subclasses (one per solver) implement <code class="xref py py-meth docutils literal notranslate"><span class="pre">_build_solver()</span></code> and
 may extend <code class="xref py py-meth docutils literal notranslate"><span class="pre">_initialize_contacts()</span></code>, <code class="xref py py-meth docutils literal notranslate"><span class="pre">_prepare_builder_for_finalize()</span></code>,
 <code class="xref py py-meth docutils literal notranslate"><span class="pre">_step_solver()</span></code>, <code class="xref py py-meth docutils literal notranslate"><span class="pre">_supports_cuda_graph_capture()</span></code>,
-<code class="xref py py-meth docutils literal notranslate"><span class="pre">_solver_specific_clear()</span></code>, and <code class="xref py py-meth docutils literal notranslate"><span class="pre">_log_solver_debug()</span></code>.</p>
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">_reset_solver_internals()</span></code>, <code class="xref py py-meth docutils literal notranslate"><span class="pre">_solver_specific_clear()</span></code>, and
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">_log_solver_debug()</span></code>.</p>
 <p>Subclasses are selected via <a class="reference internal" href="#isaaclab_newton.physics.NewtonSolverCfg.class_type" title="isaaclab_newton.physics.NewtonSolverCfg.class_type"><code class="xref py py-attr docutils literal notranslate"><span class="pre">NewtonSolverCfg.class_type</span></code></a>, which
 <code class="xref py py-meth docutils literal notranslate"><span class="pre">NewtonCfg.__post_init__()</span></code> propagates onto <a class="reference internal" href="#isaaclab_newton.physics.NewtonCfg.class_type" title="isaaclab_newton.physics.NewtonCfg.class_type"><code class="xref py py-attr docutils literal notranslate"><span class="pre">NewtonCfg.class_type</span></code></a>
 so that <code class="docutils literal notranslate"><span class="pre">SimulationContext</span></code> resolves the matching subclass automatically.</p>
@@ -8286,7 +8287,7 @@ By The Isaac Lab Project Developers.
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Jul 08, 2026.
+  Last updated on Jul 09, 2026.
   <br/>
 </p>
   </div>

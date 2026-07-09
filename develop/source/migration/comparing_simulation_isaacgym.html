@@ -64,7 +64,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="3.0.0" />
-    <meta name="docbuild:last-update" content="Jul 08, 2026"/>
+    <meta name="docbuild:last-update" content="Jul 09, 2026"/>
   </head>
   
   
@@ -816,7 +816,7 @@ desired output file path; the <code class="docutils literal notranslate"><span c
 <p>To record an OVD simulation trace file in Isaac Lab, you must set the appropriate Isaac Sim Kit
 arguments. It is important that the <code class="docutils literal notranslate"><span class="pre">omniPvdOvdRecordingDirectory</span></code> variable is set <strong>before</strong>
 <code class="docutils literal notranslate"><span class="pre">omniPvdOutputEnabled</span></code> is set to <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./isaaclab.sh<span class="w"> </span>-p<span class="w"> </span>scripts/benchmarks/benchmark_non_rl.py<span class="w"> </span>--task<span class="w"> </span>&lt;task_name&gt;<span class="w"> </span><span class="se">\</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>uv<span class="w"> </span>run<span class="w"> </span>isaaclab<span class="w"> </span>benchmark<span class="w"> </span>runtime<span class="w"> </span>--task<span class="w"> </span>&lt;task_name&gt;<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--kit_args<span class="o">=</span><span class="s2">&quot;--/persistent/physics/omniPvdOvdRecordingDirectory=/tmp/myovds/ \</span>
 <span class="s2">    --/physics/omniPvdOutputEnabled=true&quot;</span>
 </pre></div>
@@ -1325,7 +1325,7 @@ By The Isaac Lab Project Developers.
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Jul 08, 2026.
+  Last updated on Jul 09, 2026.
   <br/>
 </p>
   </div>

@@ -64,7 +64,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="3.0.0" />
-    <meta name="docbuild:last-update" content="Jul 08, 2026"/>
+    <meta name="docbuild:last-update" content="Jul 09, 2026"/>
   </head>
   
   
@@ -819,7 +819,10 @@ image-like outputs (such as camera-based RL environments) produce captured frame
 <section id="command-line-options">
 <h2>Command-line options<a class="headerlink" href="#command-line-options" title="Link to this heading">#</a></h2>
 <p>The training entrypoints register the capture flags in <code class="docutils literal notranslate"><span class="pre">add_common_train_args</span></code>:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>        <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Automatically configured by Ray integration, otherwise None.&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span>
         <span class="s2">&quot;--capture_env_sensors&quot;</span><span class="p">,</span>
         <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span>
         <span class="n">default</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
@@ -840,9 +843,6 @@ image-like outputs (such as camera-based RL environments) produce captured frame
     <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span>
         <span class="s2">&quot;--capture_env_sensors_format&quot;</span><span class="p">,</span>
         <span class="n">choices</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;tensorboard&quot;</span><span class="p">,</span> <span class="s2">&quot;file&quot;</span><span class="p">],</span>
-        <span class="n">default</span><span class="o">=</span><span class="s2">&quot;tensorboard&quot;</span><span class="p">,</span>
-        <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Format used to save the captured sensor frames.&quot;</span><span class="p">,</span>
-    <span class="p">)</span>
 </pre></div>
 </div>
 </section>
@@ -1038,7 +1038,7 @@ By The Isaac Lab Project Developers.
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Jul 08, 2026.
+  Last updated on Jul 09, 2026.
   <br/>
 </p>
   </div>

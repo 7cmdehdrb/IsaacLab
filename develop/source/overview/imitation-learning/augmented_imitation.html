@@ -64,7 +64,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="3.0.0" />
-    <meta name="docbuild:last-update" content="Jul 08, 2026"/>
+    <meta name="docbuild:last-update" content="Jul 09, 2026"/>
   </head>
   
   
@@ -789,14 +789,16 @@
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./isaaclab.sh<span class="w"> </span>-p<span class="w"> </span>scripts/imitation_learning/isaaclab_mimic/generate_dataset.py<span class="w"> </span><span class="se">\</span>
 --device<span class="w"> </span>cpu<span class="w"> </span>--enable_cameras<span class="w"> </span>--num_envs<span class="w"> </span><span class="m">10</span><span class="w"> </span>--generation_num_trials<span class="w"> </span><span class="m">1000</span><span class="w"> </span><span class="se">\</span>
 --input_file<span class="w"> </span>./datasets/annotated_dataset.hdf5<span class="w"> </span>--output_file<span class="w"> </span>./datasets/mimic_dataset_1k.hdf5<span class="w"> </span><span class="se">\</span>
---task<span class="w"> </span>Isaac-Stack-Cube-Franka-IK-Rel-Visuomotor-Cosmos-Mimic-v0<span class="w"> </span><span class="se">\</span>
---rendering_mode<span class="w"> </span>performance
+--task<span class="w"> </span>Isaac-Stack-Cube-Franka-IK-Rel-Visuomotor-Cosmos-Mimic-v0
 </pre></div>
 </div>
 <p>The number of demonstrations can be increased or decreased, 1000 demonstrations have been shown to provide good training results for this task.</p>
 <p>Additionally, the number of environments in the <code class="docutils literal notranslate"><span class="pre">--num_envs</span></code> parameter can be adjusted to speed up data generation.
 The suggested number of 10 can be executed on a moderate laptop CPU.
-On a more powerful desktop machine, use a larger number of environments for a significant speedup of this step.</p>
+On a more powerful desktop machine, use a larger number of environments for a significant speedup of this step.
+When running large camera-heavy jobs, switch to the RTX Minimal renderer for higher throughput, or
+override the task’s high-fidelity RTX settings directly if they are more expensive than your workflow
+requires.</p>
 </section>
 <section id="cosmos-augmentation">
 <h2>Cosmos Augmentation<a class="headerlink" href="#cosmos-augmentation" title="Link to this heading">#</a></h2>
@@ -1191,8 +1193,7 @@ sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> <
 --log_file<span class="w"> </span>result<span class="w"> </span><span class="se">\</span>
 --enable_cameras<span class="w"> </span><span class="se">\</span>
 --seeds<span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="se">\</span>
---num_rollouts<span class="w"> </span><span class="m">15</span><span class="w"> </span><span class="se">\</span>
---rendering_mode<span class="w"> </span>performance
+--num_rollouts<span class="w"> </span><span class="m">15</span>
 </pre></div>
 </div>
 <div class="admonition tip">
@@ -1351,7 +1352,7 @@ By The Isaac Lab Project Developers.
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Jul 08, 2026.
+  Last updated on Jul 09, 2026.
   <br/>
 </p>
   </div>

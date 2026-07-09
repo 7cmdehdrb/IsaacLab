@@ -61,7 +61,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="3.0.0" />
-    <meta name="docbuild:last-update" content="Jul 08, 2026"/>
+    <meta name="docbuild:last-update" content="Jul 09, 2026"/>
   </head>
   
   
@@ -961,14 +961,16 @@
         <span class="k">except</span> <span class="n">SolverNotFound</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span>
                 <span class="sa">f</span><span class="s2">&quot;Pink IK requires the &#39;</span><span class="si">{</span><span class="n">_QP_SOLVER</span><span class="si">}</span><span class="s2">&#39; QP solver. Install the Pink IK stack with &quot;</span>
-                <span class="s2">&quot;``./isaaclab.sh -i`` or manually install ``pin pin-pink==3.1.0 daqp==0.8.5``.&quot;</span>
+                <span class="s2">&quot;``./isaaclab.sh -i`` or manually install the ``pin``, ``pin-pink`` and ``daqp``&quot;</span>
+                <span class="s2">&quot; versions pinned in Isaac Lab&#39;s root ``pyproject.toml``.&quot;</span>
             <span class="p">)</span> <span class="kn">from</span><span class="w"> </span><span class="nn">e</span>
         <span class="k">except</span> <span class="ne">TypeError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
             <span class="k">if</span> <span class="s2">&quot;primal_start&quot;</span> <span class="ow">in</span> <span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">):</span>
                 <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span>
                     <span class="s2">&quot;Pink IK requires a DAQP version compatible with qpsolvers warm-start arguments. &quot;</span>
-                    <span class="s2">&quot;Install the Pink IK stack with ``./isaaclab.sh -i`` or manually install &quot;</span>
-                    <span class="s2">&quot;``pin pin-pink==3.1.0 daqp==0.8.5``.&quot;</span>
+                    <span class="s2">&quot;Install the Pink IK stack with ``./isaaclab.sh -i`` or manually install the &quot;</span>
+                    <span class="s2">&quot;``pin``, ``pin-pink`` and ``daqp`` versions pinned in Isaac Lab&#39;s root &quot;</span>
+                    <span class="s2">&quot;``pyproject.toml``.&quot;</span>
                 <span class="p">)</span> <span class="kn">from</span><span class="w"> </span><span class="nn">e</span>
             <span class="k">return</span> <span class="n">_return_current_joint_positions</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
         <span class="k">except</span> <span class="p">(</span><span class="ne">AssertionError</span><span class="p">,</span> <span class="ne">Exception</span><span class="p">)</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
@@ -1036,7 +1038,7 @@ By The Isaac Lab Project Developers.
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Jul 08, 2026.
+  Last updated on Jul 09, 2026.
   <br/>
 </p>
   </div>

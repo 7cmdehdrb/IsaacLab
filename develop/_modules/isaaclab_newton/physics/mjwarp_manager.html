@@ -61,7 +61,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="3.0.0" />
-    <meta name="docbuild:last-update" content="Jul 08, 2026"/>
+    <meta name="docbuild:last-update" content="Jul 09, 2026"/>
   </head>
   
   
@@ -691,6 +691,7 @@
 <span class="kn">import</span><span class="w"> </span><span class="nn">logging</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">warp</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">wp</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">newton</span><span class="w"> </span><span class="kn">import</span> <span class="n">Contacts</span><span class="p">,</span> <span class="n">Model</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">newton.solvers</span><span class="w"> </span><span class="kn">import</span> <span class="n">SolverMuJoCo</span>
 
@@ -760,6 +761,40 @@
                 <span class="n">device</span><span class="o">=</span><span class="n">PhysicsManager</span><span class="o">.</span><span class="n">_device</span><span class="p">,</span>
                 <span class="n">requested_attributes</span><span class="o">=</span><span class="bp">cls</span><span class="o">.</span><span class="n">_model</span><span class="o">.</span><span class="n">get_requested_contact_attributes</span><span class="p">(),</span>
             <span class="p">)</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_reset_solver_internals</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">world_mask</span><span class="p">:</span> <span class="n">wp</span><span class="o">.</span><span class="n">array</span> <span class="o">|</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Clear MuJoCo Warp solver-internal state for flagged worlds.</span>
+
+<span class="sd">        Specializes the base hook, whose :meth:`SolverBase.reset` call resolves</span>
+<span class="sd">        to :meth:`SolverMuJoCo.reset` here: with ``flags=0`` it zeroes only the</span>
+<span class="sd">        solver-owned buffers persisting across steps (``qacc_warmstart``,</span>
+<span class="sd">        ``qfrc_applied``, ``xfrc_applied``, ``ctrl``, ``act``) for the flagged</span>
+<span class="sd">        worlds, while the joint state IsaacLab authored during the env reset is</span>
+<span class="sd">        left untouched.  Without this, a NaN produced in one solve persists</span>
+<span class="sd">        across :meth:`isaaclab.envs.ManagerBasedEnv.reset` because the next</span>
+<span class="sd">        solver substep warm-starts from the NaN — the world is then permanently</span>
+<span class="sd">        dead.  See https://github.com/newton-physics/newton/issues/1266.</span>
+
+<span class="sd">        With ``use_mujoco_cpu=True`` the solver owns a single global ``MjData``</span>
+<span class="sd">        and its reset path is not mask-aware — it clears the buffers for every</span>
+<span class="sd">        world.  Since this hook fires on every step/forward boundary (usually</span>
+<span class="sd">        with an all-``False`` mask), the CPU path is gated on at least one</span>
+<span class="sd">        world actually being flagged so warm-starting is not defeated on every</span>
+<span class="sd">        step.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            world_mask: Per-world bool mask of shape ``(world_count,)``;</span>
+<span class="sd">                ``True`` for worlds that need their MJWarp internals cleared.</span>
+<span class="sd">                ``None`` is treated as a no-op.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">world_mask</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span>
+        <span class="k">if</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_solver</span><span class="o">.</span><span class="n">use_mujoco_cpu</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">world_mask</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span><span class="o">.</span><span class="n">any</span><span class="p">():</span>
+            <span class="k">return</span>
+        <span class="c1"># flags=0 skips the joint-state reset to model defaults: IsaacLab owns</span>
+        <span class="c1"># joint_q/joint_qd and has already written the authored reset pose.</span>
+        <span class="bp">cls</span><span class="o">.</span><span class="n">_solver</span><span class="o">.</span><span class="n">reset</span><span class="p">(</span><span class="bp">cls</span><span class="o">.</span><span class="n">_state_0</span><span class="p">,</span> <span class="n">world_mask</span><span class="o">=</span><span class="n">world_mask</span><span class="p">,</span> <span class="n">flags</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 
     <span class="nd">@classmethod</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">_log_solver_debug</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
@@ -833,7 +868,7 @@ By The Isaac Lab Project Developers.
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Jul 08, 2026.
+  Last updated on Jul 09, 2026.
   <br/>
 </p>
   </div>

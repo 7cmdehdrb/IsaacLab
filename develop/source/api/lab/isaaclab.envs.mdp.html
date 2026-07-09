@@ -64,7 +64,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="3.0.0" />
-    <meta name="docbuild:last-update" content="Jul 08, 2026"/>
+    <meta name="docbuild:last-update" content="Jul 09, 2026"/>
   </head>
   
   
@@ -3325,8 +3325,8 @@ parser will parse the individual asset properties separately.</p>
 <dd><p>Randomize the physics materials on all geometries of the asset.</p>
 <p>This function creates a set of physics materials with random static friction, dynamic friction, and restitution
 values and assigns them to the geometries of the asset.</p>
-<p>Automatically detects the active physics backend (PhysX or Newton) and delegates to
-the appropriate backend-specific implementation:</p>
+<p>Automatically detects the active physics backend (PhysX, Newton, or OVPhysX) and delegates
+to the appropriate backend-specific implementation:</p>
 <ul class="simple">
 <li><p><strong>PhysX</strong>: Uses the 3-tuple material format (static_friction, dynamic_friction, restitution)
 with bucket-based assignment (limited to 64000 unique materials). Applied via the PhysX
@@ -3334,6 +3334,11 @@ tensor API (<code class="docutils literal notranslate"><span class="pre">root_vi
 <li><p><strong>Newton</strong>: Samples friction (mu) and restitution continuously per shape (no bucket
 limitation). Newton uses a single friction coefficient, so <code class="docutils literal notranslate"><span class="pre">dynamic_friction_range</span></code>
 and <code class="docutils literal notranslate"><span class="pre">num_buckets</span></code> are ignored. Applied directly to Newton’s view-level bindings.</p></li>
+<li><p><strong>OVPhysX</strong>: Runs the PhysX solver, so the same 3-tuple, bucket-based assignment is used,
+written through the <code class="xref py py-class docutils literal notranslate"><span class="pre">OvPhysxView</span></code> on the per-shape
+<code class="docutils literal notranslate"><span class="pre">shape_friction_and_restitution</span></code> binding. Randomizes all shapes only – per-body
+selection (<code class="docutils literal notranslate"><span class="pre">asset_cfg.body_ids</span></code>) is not supported (the wheel exposes no per-body shape
+counts).</p></li>
 </ul>
 <p>If the flag <code class="docutils literal notranslate"><span class="pre">make_consistent</span></code> is set to <code class="docutils literal notranslate"><span class="pre">True</span></code>, the dynamic friction is set to be less than or equal to
 the static friction (PhysX only). This obeys the physics constraint on friction values.</p>
@@ -6163,7 +6168,7 @@ By The Isaac Lab Project Developers.
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Jul 08, 2026.
+  Last updated on Jul 09, 2026.
   <br/>
 </p>
   </div>
