@@ -64,7 +64,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="3.0.0" />
-    <meta name="docbuild:last-update" content="Jul 09, 2026"/>
+    <meta name="docbuild:last-update" content="Jul 10, 2026"/>
   </head>
   
   
@@ -332,6 +332,7 @@
 
 <li class="toctree-l2"><a class="reference internal" href="../../overview/developer-guide/repo_structure.html">Repository organization</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../overview/developer-guide/development.html">Extension Development</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../overview/developer-guide/agent_skills.html">Agent Skills</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../testing/index.html">Testing</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -1288,7 +1289,7 @@ orientation as the wall surface, is such a candidate and is used as the task fra
 the arguments to the <a class="reference internal" href="../../api/lab/isaaclab.controllers.html#isaaclab.controllers.OperationalSpaceControllerCfg" title="isaaclab.controllers.OperationalSpaceControllerCfg"><code class="xref py py-class docutils literal notranslate"><span class="pre">OperationalSpaceControllerCfg</span></code></a> should be set with this task reference frame
 in mind.</p>
 <p>For the motion control, the task space targets could be given as absolute (i.e., defined w.r.t. the robot base,
-<code class="docutils literal notranslate"><span class="pre">target_types:</span> <span class="pre">&quot;pose_abs&quot;</span></code>) or relative the the end-effector’s current pose (i.e., <code class="docutils literal notranslate"><span class="pre">target_types:</span> <span class="pre">&quot;pose_rel&quot;</span></code>).
+<code class="docutils literal notranslate"><span class="pre">target_types:</span> <span class="pre">&quot;pose_abs&quot;</span></code>) or relative to the end-effector’s current pose (i.e., <code class="docutils literal notranslate"><span class="pre">target_types:</span> <span class="pre">&quot;pose_rel&quot;</span></code>).
 For the force control, the task space targets could be given as absolute (i.e., defined w.r.t. the robot base,
 <code class="docutils literal notranslate"><span class="pre">target_types:</span> <span class="pre">&quot;force_abs&quot;</span></code>). If it is desired to apply pose and force control simultaneously, the <code class="docutils literal notranslate"><span class="pre">target_types</span></code>
 should be a list such as <code class="docutils literal notranslate"><span class="pre">[&quot;pose_abs&quot;,</span> <span class="pre">&quot;wrench_abs&quot;]</span></code> or <code class="docutils literal notranslate"><span class="pre">[&quot;pose_rel&quot;,</span> <span class="pre">&quot;wrench_abs&quot;]</span></code>.</p>
@@ -1638,7 +1639,7 @@ By The Isaac Lab Project Developers.
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Jul 09, 2026.
+  Last updated on Jul 10, 2026.
   <br/>
 </p>
   </div>

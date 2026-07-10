@@ -64,7 +64,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="3.0.0" />
-    <meta name="docbuild:last-update" content="Jul 09, 2026"/>
+    <meta name="docbuild:last-update" content="Jul 10, 2026"/>
   </head>
   
   
@@ -332,6 +332,7 @@
 
 <li class="toctree-l2"><a class="reference internal" href="../../overview/developer-guide/repo_structure.html">Repository organization</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../overview/developer-guide/development.html">Extension Development</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../overview/developer-guide/agent_skills.html">Agent Skills</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../testing/index.html">Testing</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -1016,7 +1017,7 @@ as a feature request elaborating on the required application.</p>
 <td><p>Returns whether offscreen rendering is enabled (cached at init).</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#isaaclab.sim.SimulationContext.is_rendering" title="isaaclab.sim.SimulationContext.is_rendering"><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_rendering</span></code></a></p></td>
-<td><p>Returns whether rendering is active (GUI, RTX sensors, visualizers, or XR).</p></td>
+<td><p>Returns whether <em>continuous</em> rendering is active (GUI, RTX sensors, visualizers, or XR).</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab.sim.SimulationContext.render_context" title="isaaclab.sim.SimulationContext.render_context"><code class="xref py py-obj docutils literal notranslate"><span class="pre">render_context</span></code></a></p></td>
 <td><p>Shared <code class="xref py py-class docutils literal notranslate"><span class="pre">RenderContext</span></code> for camera renderers.</p></td>
@@ -1107,7 +1108,11 @@ as a feature request elaborating on the required application.</p>
 <dl class="py property">
 <dt class="sig sig-object py" id="isaaclab.sim.SimulationContext.is_rendering">
 <em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">is_rendering</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><span class="pre">bool</span></a></em><a class="headerlink" href="#isaaclab.sim.SimulationContext.is_rendering" title="Link to this definition">#</a></dt>
-<dd><p>Returns whether rendering is active (GUI, RTX sensors, visualizers, or XR).</p>
+<dd><p>Returns whether <em>continuous</em> rendering is active (GUI, RTX sensors, visualizers, or XR).</p>
+<p>This drives the per-step render/Kit-pump loop, so it deliberately excludes headless
+offscreen rendering (<code class="docutils literal notranslate"><span class="pre">--video</span></code> / <code class="docutils literal notranslate"><span class="pre">rgb_array</span></code>). Offscreen frames are produced on
+demand when a frame is actually requested (via <a class="reference internal" href="#isaaclab.sim.SimulationContext.render" title="isaaclab.sim.SimulationContext.render"><code class="xref py py-meth docutils literal notranslate"><span class="pre">render()</span></code></a>), not on every step; see
+<a class="reference internal" href="#isaaclab.sim.SimulationContext.has_offscreen_render" title="isaaclab.sim.SimulationContext.has_offscreen_render"><code class="xref py py-meth docutils literal notranslate"><span class="pre">has_offscreen_render()</span></code></a> and <a class="reference internal" href="#isaaclab.sim.SimulationContext.can_render_rgb_array" title="isaaclab.sim.SimulationContext.can_render_rgb_array"><code class="xref py py-meth docutils literal notranslate"><span class="pre">can_render_rgb_array()</span></code></a> for the capability checks.</p>
 </dd></dl>
 
 <dl class="py method">
@@ -1724,7 +1729,7 @@ By The Isaac Lab Project Developers.
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Jul 09, 2026.
+  Last updated on Jul 10, 2026.
   <br/>
 </p>
   </div>

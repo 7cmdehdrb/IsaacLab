@@ -64,7 +64,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="3.0.0" />
-    <meta name="docbuild:last-update" content="Jul 09, 2026"/>
+    <meta name="docbuild:last-update" content="Jul 10, 2026"/>
   </head>
   
   
@@ -332,6 +332,7 @@
 
 <li class="toctree-l2"><a class="reference internal" href="../../developer-guide/repo_structure.html">Repository organization</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../developer-guide/development.html">Extension Development</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../developer-guide/agent_skills.html">Agent Skills</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../../testing/index.html">Testing</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -745,6 +746,13 @@
                   
   <section id="sensors">
 <span id="overview-sensors"></span><h1>Sensors<a class="headerlink" href="#sensors" title="Link to this heading">#</a></h1>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>This section is the source of truth for the <code class="docutils literal notranslate"><span class="pre">isaaclab-using-sensors-actuators</span></code> agent skill
+(<a class="reference external" href="../../../../../skills/user/use-sensors-actuators/SKILL.md">skills/user/use-sensors-actuators/</a>).
+When you change these pages, update the skill so agent guidance stays in sync. See
+<a class="reference internal" href="../../developer-guide/agent_skills.html"><span class="doc">Agent Skills</span></a>.</p>
+</div>
 <p>In this section, we will overview the various sensor APIs provided by Isaac Lab.</p>
 <p>Every sensor in Isaac Lab inherits from the <code class="docutils literal notranslate"><span class="pre">SensorBase</span></code> abstract class that provides the core functionality inherent to all sensors, which is to provide access to “measurements” of the scene. These measurements can take many forms such as ray-casting results, camera rendered images, or even simply ground truth data queried directly from the simulation (such as poses). Whatever the data may be, we can think of the sensor as having a buffer that is periodically updated with measurements by querying the scene. This <code class="docutils literal notranslate"><span class="pre">update_period</span></code> is defined in “simulated” seconds, meaning that even if the flow of time in the simulation is dilated relative to the real world, the sensor will update at the appropriate rate. The <code class="docutils literal notranslate"><span class="pre">SensorBase</span></code> is also designed with vectorizability in mind, holding the buffers for all copies of the sensor across cloned environments.</p>
 <p>Updating the buffers is done by overriding the <code class="docutils literal notranslate"><span class="pre">_update_buffers_impl</span></code> abstract method of the <code class="docutils literal notranslate"><span class="pre">SensorBase</span></code> class. On every time-step of the simulation, <code class="docutils literal notranslate"><span class="pre">dt</span></code>, all sensors are queried for an update. During this query, the total time since the last update is incremented by <code class="docutils literal notranslate"><span class="pre">dt</span></code> for every buffer managed by that particular sensor. If the total time is greater than or equal to the <code class="docutils literal notranslate"><span class="pre">update_period</span></code> for a buffer, then that buffer is flagged to be updated on the next query.</p>
@@ -826,7 +834,7 @@ By The Isaac Lab Project Developers.
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Jul 09, 2026.
+  Last updated on Jul 10, 2026.
   <br/>
 </p>
   </div>

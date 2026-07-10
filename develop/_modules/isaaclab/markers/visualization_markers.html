@@ -61,7 +61,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="3.0.0" />
-    <meta name="docbuild:last-update" content="Jul 09, 2026"/>
+    <meta name="docbuild:last-update" content="Jul 10, 2026"/>
   </head>
   
   
@@ -331,6 +331,7 @@
 
 <li class="toctree-l2"><a class="reference internal" href="../../../source/overview/developer-guide/repo_structure.html">Repository organization</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../source/overview/developer-guide/development.html">Extension Development</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../source/overview/developer-guide/agent_skills.html">Agent Skills</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../../source/testing/index.html">Testing</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -950,8 +951,16 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">_ensure_kit_backend</span><span class="p">()</span>
             <span class="k">return</span>
 
-        <span class="n">needs_kit_backend</span> <span class="o">=</span> <span class="n">sim</span><span class="o">.</span><span class="n">is_rendering</span> <span class="ow">or</span> <span class="nb">any</span><span class="p">(</span>
-            <span class="n">viz</span><span class="o">.</span><span class="n">supports_markers</span><span class="p">()</span> <span class="ow">and</span> <span class="n">viz</span><span class="o">.</span><span class="n">pumps_app_update</span><span class="p">()</span> <span class="ow">and</span> <span class="n">viz</span><span class="o">.</span><span class="n">cfg</span><span class="o">.</span><span class="n">enable_markers</span> <span class="k">for</span> <span class="n">viz</span> <span class="ow">in</span> <span class="n">sim</span><span class="o">.</span><span class="n">visualizers</span>
+        <span class="c1"># Markers need the Kit (USD) backend to appear in any rendered frame: continuous rendering</span>
+        <span class="c1"># (``is_rendering``), headless offscreen video capture (``has_offscreen_render``), or a</span>
+        <span class="c1"># Kit-pumping visualizer. Offscreen is excluded from ``is_rendering`` (see</span>
+        <span class="c1"># :attr:`~isaaclab.sim.SimulationContext.is_rendering`), so it is checked explicitly here.</span>
+        <span class="n">needs_kit_backend</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">sim</span><span class="o">.</span><span class="n">is_rendering</span>
+            <span class="ow">or</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">sim</span><span class="p">,</span> <span class="s2">&quot;has_offscreen_render&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+            <span class="ow">or</span> <span class="nb">any</span><span class="p">(</span>
+                <span class="n">viz</span><span class="o">.</span><span class="n">supports_markers</span><span class="p">()</span> <span class="ow">and</span> <span class="n">viz</span><span class="o">.</span><span class="n">pumps_app_update</span><span class="p">()</span> <span class="ow">and</span> <span class="n">viz</span><span class="o">.</span><span class="n">cfg</span><span class="o">.</span><span class="n">enable_markers</span> <span class="k">for</span> <span class="n">viz</span> <span class="ow">in</span> <span class="n">sim</span><span class="o">.</span><span class="n">visualizers</span>
+            <span class="p">)</span>
         <span class="p">)</span>
         <span class="k">if</span> <span class="n">needs_kit_backend</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_ensure_kit_backend</span><span class="p">()</span>
@@ -1060,7 +1069,7 @@ By The Isaac Lab Project Developers.
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Jul 09, 2026.
+  Last updated on Jul 10, 2026.
   <br/>
 </p>
   </div>

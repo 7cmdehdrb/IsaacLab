@@ -64,7 +64,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="3.0.0" />
-    <meta name="docbuild:last-update" content="Jul 09, 2026"/>
+    <meta name="docbuild:last-update" content="Jul 10, 2026"/>
   </head>
   
   
@@ -332,6 +332,7 @@
 
 <li class="toctree-l2"><a class="reference internal" href="../developer-guide/repo_structure.html">Repository organization</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../developer-guide/development.html">Extension Development</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../developer-guide/agent_skills.html">Agent Skills</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../testing/index.html">Testing</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -756,6 +757,15 @@
                   
   <section id="task-design-workflows">
 <span id="feature-workflows"></span><h1>Task Design Workflows<a class="headerlink" href="#task-design-workflows" title="Link to this heading">#</a></h1>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>This page is the source of truth for the <code class="docutils literal notranslate"><span class="pre">isaaclab-building-environments</span></code> and
+<code class="docutils literal notranslate"><span class="pre">isaaclab-planning-manipulation-tasks</span></code> agent skills
+(<a class="reference external" href="../../../../skills/user/create-environments/SKILL.md">skills/user/create-environments/</a>,
+<a class="reference external" href="../../../../skills/user/plan-manipulation-tasks/SKILL.md">skills/user/plan-manipulation-tasks/</a>).
+When you change this page, update those skills so agent guidance stays in sync. See
+<a class="reference internal" href="../developer-guide/agent_skills.html"><span class="doc">Agent Skills</span></a>.</p>
+</div>
 <p>A <strong>Task</strong> is defined by an environment with specific interfaces for observations to and actions from a specific agent (robot). The environment is what provides an agent with the current observations and executes that agent’s actions by updating the simulation forward in time. There are many common components of simulating a robot in an environment, regardless of what you might want that robot to do or how it might be trained to do it.</p>
 <p>This is especially true of Reinforcement Learning (RL), where managing the actions, observations, rewards, etc… across a vectorized GPU simulation can be daunting to even think about! To meet this need, Isaac Lab provides the ability to build your RL environments within our <strong>Manager-based</strong> system, allowing you to trust various minutia of the appropriate manager classes. However, we also recognize the need to exert granular control over an environment, especially during development. For this need, we also provide a <strong>Direct</strong> interface into the simulation, giving you full control!</p>
 <ul class="simple">
@@ -778,7 +788,7 @@ or when implementing complex logic that is difficult to decompose into separate 
 <p>Manager-based environments promote modular implementations of tasks by decomposing it into individually managed components. Each component of the task, such as calculating rewards, observations, etc… can be specified as configurations for a corresponding manager. These managers define configurable functions that are responsible for executing the specific computations as needed. Coordinating a collection of different managers is handled by an Environment class that inherits from <a class="reference internal" href="../../api/lab/isaaclab.envs.html#isaaclab.envs.ManagerBasedEnv" title="isaaclab.envs.ManagerBasedEnv"><code class="xref py py-class docutils literal notranslate"><span class="pre">envs.ManagerBasedEnv</span></code></a>. Configurations likewise must all inherit from <a class="reference internal" href="../../api/lab/isaaclab.envs.html#isaaclab.envs.ManagerBasedEnvCfg" title="isaaclab.envs.ManagerBasedEnvCfg"><code class="xref py py-class docutils literal notranslate"><span class="pre">envs.ManagerBasedEnvCfg</span></code></a>.</p>
 <p>When developing new training environments, it is often beneficial to break the environment into independent components.  This can be highly effective for collaboration, as it lets individual developers focus on different aspects of the environment, while allowing those disparate efforts to be joined back together into a single runnable task. For example, you may have multiple robots with differing sensoriums, requiring different observation managers to process those sensory data into a form that’s useful for downstream components.  You might have multiple members on the team with different ideas about what the reward should be to achieve your goals, and by having each one develop their own reward manager, you can swap and test as you see fit. The modular nature of the manager workflow is essential for more complex projects!</p>
 <p>For reinforcement learning, much of this has been done for you already! In most cases, it will be enough to write your environment to inherit from
-<a class="reference internal" href="../../api/lab/isaaclab.envs.html#isaaclab.envs.ManagerBasedRLEnv" title="isaaclab.envs.ManagerBasedRLEnv"><code class="xref py py-class docutils literal notranslate"><span class="pre">envs.ManagerBasedRLEnv</span></code></a> and and your configuration from <a class="reference internal" href="../../api/lab/isaaclab.envs.html#isaaclab.envs.ManagerBasedRLEnvCfg" title="isaaclab.envs.ManagerBasedRLEnvCfg"><code class="xref py py-class docutils literal notranslate"><span class="pre">envs.ManagerBasedRLEnvCfg</span></code></a>.</p>
+<a class="reference internal" href="../../api/lab/isaaclab.envs.html#isaaclab.envs.ManagerBasedRLEnv" title="isaaclab.envs.ManagerBasedRLEnv"><code class="xref py py-class docutils literal notranslate"><span class="pre">envs.ManagerBasedRLEnv</span></code></a> and your configuration from <a class="reference internal" href="../../api/lab/isaaclab.envs.html#isaaclab.envs.ManagerBasedRLEnvCfg" title="isaaclab.envs.ManagerBasedRLEnvCfg"><code class="xref py py-class docutils literal notranslate"><span class="pre">envs.ManagerBasedRLEnvCfg</span></code></a>.</p>
 <details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
 <summary class="sd-summary-title sd-card-header">
 <span class="sd-summary-icon"><svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-plus" viewBox="0 0 16 16" aria-hidden="true"><path d="M7.75 2a.75.75 0 0 1 .75.75V7h4.25a.75.75 0 0 1 0 1.5H8.5v4.25a.75.75 0 0 1-1.5 0V8.5H2.75a.75.75 0 0 1 0-1.5H7V2.75A.75.75 0 0 1 7.75 2Z"></path></svg></span><span class="sd-summary-text">Example for defining the reward function for the Cartpole task using the manager-style</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
@@ -974,7 +984,7 @@ By The Isaac Lab Project Developers.
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Jul 09, 2026.
+  Last updated on Jul 10, 2026.
   <br/>
 </p>
   </div>

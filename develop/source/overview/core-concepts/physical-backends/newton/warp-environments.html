@@ -64,7 +64,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="3.0.0" />
-    <meta name="docbuild:last-update" content="Jul 09, 2026"/>
+    <meta name="docbuild:last-update" content="Jul 10, 2026"/>
   </head>
   
   
@@ -332,6 +332,7 @@
 
 <li class="toctree-l2"><a class="reference internal" href="../../../developer-guide/repo_structure.html">Repository organization</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../developer-guide/development.html">Extension Development</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../developer-guide/agent_skills.html">Agent Skills</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../../../testing/index.html">Testing</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -1033,36 +1034,38 @@ full set of rules.</p></li>
 </section>
 <section id="benchmarking-your-environment">
 <h2>Benchmarking Your Environment<a class="headerlink" href="#benchmarking-your-environment" title="Link to this heading">#</a></h2>
-<p>The performance table above was produced with <code class="docutils literal notranslate"><span class="pre">scripts/benchmarks/benchmark_rsl_rl.py</span></code>,
-which runs a fixed iteration count and reports step-time statistics. Use the same script
+<p>The performance table above was produced with <code class="docutils literal notranslate"><span class="pre">isaaclab</span> <span class="pre">benchmark</span> <span class="pre">training</span></code>,
+which runs a fixed iteration count and reports step-time statistics. Use the same command
 to estimate the gain for your own task before committing to a migration.</p>
 <p><strong>Single-task A/B</strong></p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Stable variant</span>
-./isaaclab.sh<span class="w"> </span>-p<span class="w"> </span>scripts/benchmarks/benchmark_rsl_rl.py<span class="w"> </span><span class="se">\</span>
+uv<span class="w"> </span>run<span class="w"> </span>isaaclab<span class="w"> </span>benchmark<span class="w"> </span>training<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--rl_library<span class="w"> </span>rsl_rl<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--task<span class="w"> </span>&lt;Task-Name&gt;-v0<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--num_envs<span class="w"> </span><span class="m">4096</span><span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--max_iterations<span class="w"> </span><span class="m">500</span><span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--benchmark_backend<span class="w"> </span>summary<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--benchmark_formatter<span class="w"> </span>summary<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--output_path<span class="w"> </span>benchmarks/stable
 
 <span class="c1"># Warp variant — same task with -Warp- suffix</span>
-./isaaclab.sh<span class="w"> </span>-p<span class="w"> </span>scripts/benchmarks/benchmark_rsl_rl.py<span class="w"> </span><span class="se">\</span>
+uv<span class="w"> </span>run<span class="w"> </span>isaaclab<span class="w"> </span>benchmark<span class="w"> </span>training<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--rl_library<span class="w"> </span>rsl_rl<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--task<span class="w"> </span>&lt;Task-Name&gt;-Warp-v0<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--num_envs<span class="w"> </span><span class="m">4096</span><span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--max_iterations<span class="w"> </span><span class="m">500</span><span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--benchmark_backend<span class="w"> </span>summary<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--benchmark_formatter<span class="w"> </span>summary<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--output_path<span class="w"> </span>benchmarks/warp
 </pre></div>
 </div>
-<p>The <code class="docutils literal notranslate"><span class="pre">summary</span></code> backend prints step time (mean / p50 / p99) and total throughput. Compare
+<p>The <code class="docutils literal notranslate"><span class="pre">summary</span></code> formatter prints step time (min / mean / max) and total throughput. Compare
 “step time” between the two runs to estimate the gain per env step.</p>
 <p><strong>Sweep across all available tasks</strong></p>
-<p><code class="docutils literal notranslate"><span class="pre">scripts/benchmarks/run_training_benchmarks.sh</span></code> runs the full set of stable tasks listed
-in the script (cartpole, ant, humanoid, locomotion, manipulation). Pair it with a
-warp-tasks variant (substitute the <code class="docutils literal notranslate"><span class="pre">-Warp-</span></code> suffixed task ids) and diff the two outputs.</p>
+<p>Run <code class="docutils literal notranslate"><span class="pre">isaaclab</span> <span class="pre">benchmark</span> <span class="pre">training</span></code> for each task in the stable set (cartpole, ant, humanoid,
+locomotion, manipulation) and again with the <code class="docutils literal notranslate"><span class="pre">-Warp-</span></code> suffixed task ids, then diff the two output
+directories.</p>
 <p><strong>What to look at in the output</strong></p>
 <ul class="simple">
-<li><p><em>Step time (mean / p99)</em>: the headline number — what each env step costs.</p></li>
+<li><p><em>Step time (min / mean / max)</em>: the headline number — what each env step costs.</p></li>
 <li><p><em>Iteration time</em>: includes policy update; useful for end-to-end training throughput.</p></li>
 <li><p><em>Capture overhead</em>: for warp runs, the first few iterations include CUDA graph capture
 cost; exclude those when comparing steady-state numbers.</p></li>
@@ -1075,7 +1078,7 @@ step time and look at where it’s spent:</p>
 <li><p><code class="docutils literal notranslate"><span class="pre">step_time</span></code> dominated by <code class="docutils literal notranslate"><span class="pre">manager.compute_*</span></code> calls → expect large gains, since those
 are exactly what the warp managers replace with captured kernel launches.</p></li>
 </ul>
-<p>Use <code class="docutils literal notranslate"><span class="pre">--num_frames</span></code> on <code class="docutils literal notranslate"><span class="pre">benchmark_non_rl.py</span></code> for a no-policy step-time microbenchmark
+<p>Use <code class="docutils literal notranslate"><span class="pre">--num_frames</span></code> on <code class="docutils literal notranslate"><span class="pre">runtime.py</span></code> for a no-policy step-time microbenchmark
 when you want to isolate env overhead from policy compute.</p>
 </section>
 <section id="migrating-existing-environments">
@@ -1179,7 +1182,7 @@ By The Isaac Lab Project Developers.
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Jul 09, 2026.
+  Last updated on Jul 10, 2026.
   <br/>
 </p>
   </div>

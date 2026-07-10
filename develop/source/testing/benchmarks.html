@@ -64,7 +64,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="3.0.0" />
-    <meta name="docbuild:last-update" content="Jul 09, 2026"/>
+    <meta name="docbuild:last-update" content="Jul 10, 2026"/>
   </head>
   
   
@@ -332,6 +332,7 @@
 
 <li class="toctree-l2"><a class="reference internal" href="../overview/developer-guide/repo_structure.html">Repository organization</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../overview/developer-guide/development.html">Extension Development</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview/developer-guide/agent_skills.html">Agent Skills</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Testing</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
@@ -896,8 +897,8 @@ performance using mock interfaces (without running full simulations), see
 </section>
 <section id="running-benchmark-scripts">
 <h2>Running Benchmark Scripts<a class="headerlink" href="#running-benchmark-scripts" title="Link to this heading">#</a></h2>
-<p>Isaac Lab provides unified <code class="docutils literal notranslate"><span class="pre">runtime.py</span></code> and <code class="docutils literal notranslate"><span class="pre">startup.py</span></code> entry points under
-<code class="docutils literal notranslate"><span class="pre">scripts/benchmarks/</span></code>. They default to <code class="docutils literal notranslate"><span class="pre">--benchmark_formatter</span> <span class="pre">schema</span></code>, which
+<p>Isaac Lab provides unified <code class="docutils literal notranslate"><span class="pre">runtime.py</span></code>, <code class="docutils literal notranslate"><span class="pre">startup.py</span></code>, and <code class="docutils literal notranslate"><span class="pre">training.py</span></code> entry points
+under <code class="docutils literal notranslate"><span class="pre">scripts/benchmarks/</span></code>. They default to <code class="docutils literal notranslate"><span class="pre">--benchmark_formatter</span> <span class="pre">schema</span></code>, which
 emits a schema-v1 JSON bundle via <code class="xref py py-mod docutils literal notranslate"><span class="pre">isaaclab.test.benchmark</span></code>.
 <code class="docutils literal notranslate"><span class="pre">--benchmark_formatter</span></code> accepts a comma-separated list (e.g.
 <code class="docutils literal notranslate"><span class="pre">schema,omniperf</span></code>) to emit several formats in a single run. Each selected
@@ -908,6 +909,7 @@ Isaac Lab environment, run the same workflows directly instead:</p>
 <ul class="simple">
 <li><p>Runtime: <code class="docutils literal notranslate"><span class="pre">./isaaclab.sh</span> <span class="pre">-p</span> <span class="pre">scripts/benchmarks/runtime.py</span> <span class="pre">&lt;arguments&gt;</span></code></p></li>
 <li><p>Startup: <code class="docutils literal notranslate"><span class="pre">./isaaclab.sh</span> <span class="pre">-p</span> <span class="pre">scripts/benchmarks/startup.py</span> <span class="pre">&lt;arguments&gt;</span></code></p></li>
+<li><p>Training: <code class="docutils literal notranslate"><span class="pre">./isaaclab.sh</span> <span class="pre">-p</span> <span class="pre">scripts/benchmarks/training.py</span> <span class="pre">&lt;arguments&gt;</span></code></p></li>
 </ul>
 <section id="non-rl-runtime-benchmarks">
 <h3>Non-RL / Runtime Benchmarks<a class="headerlink" href="#non-rl-runtime-benchmarks" title="Link to this heading">#</a></h3>
@@ -923,12 +925,20 @@ Isaac Lab environment, run the same workflows directly instead:</p>
 </section>
 <section id="rl-training-benchmarks">
 <h3>RL Training Benchmarks<a class="headerlink" href="#rl-training-benchmarks" title="Link to this heading">#</a></h3>
-<p>Measure training performance with RSL-RL:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Run training benchmarks</span>
-./scripts/benchmarks/run_training_benchmarks.sh<span class="w"> </span>./output_dir
+<p>Measure training performance.  Use <code class="docutils literal notranslate"><span class="pre">--rl_library</span></code> to select the RL library
+(<code class="docutils literal notranslate"><span class="pre">rsl_rl</span></code>, <code class="docutils literal notranslate"><span class="pre">rl_games</span></code>, <code class="docutils literal notranslate"><span class="pre">skrl</span></code>, or <code class="docutils literal notranslate"><span class="pre">sb3</span></code>):</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Benchmark with RSL-RL</span>
+uv<span class="w"> </span>run<span class="w"> </span>isaaclab<span class="w"> </span>benchmark<span class="w"> </span>training<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--rl_library<span class="w"> </span>rsl_rl<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--task<span class="w"> </span>Isaac-Cartpole<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--num_envs<span class="w"> </span><span class="m">4096</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--max_iterations<span class="w"> </span><span class="m">500</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--benchmark_formatter<span class="w"> </span>json<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--output_path<span class="w"> </span>./results
 
-<span class="c1"># Run manually with RSL-RL</span>
-./isaaclab.sh<span class="w"> </span>-p<span class="w"> </span>scripts/benchmarks/benchmark_rsl_rl.py<span class="w"> </span><span class="se">\</span>
+<span class="c1"># Benchmark with RL Games</span>
+uv<span class="w"> </span>run<span class="w"> </span>isaaclab<span class="w"> </span>benchmark<span class="w"> </span>training<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--rl_library<span class="w"> </span>rl_games<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--task<span class="w"> </span>Isaac-Cartpole<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--num_envs<span class="w"> </span><span class="m">4096</span><span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--max_iterations<span class="w"> </span><span class="m">500</span><span class="w"> </span><span class="se">\</span>
@@ -1123,16 +1133,20 @@ the same keys.</p>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">--task</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">--rl_library</span></code></p></td>
+<td><p>required</p></td>
+<td><p>RL library: <code class="docutils literal notranslate"><span class="pre">rsl_rl</span></code>, <code class="docutils literal notranslate"><span class="pre">rl_games</span></code>, <code class="docutils literal notranslate"><span class="pre">skrl</span></code>, or <code class="docutils literal notranslate"><span class="pre">sb3</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">--task</span></code></p></td>
 <td><p>required</p></td>
 <td><p>Environment task name</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">--num_envs</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">4096</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">--num_envs</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">None</span></code> (task config)</p></td>
 <td><p>Number of parallel environments</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">--max_iterations</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">500</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">--max_iterations</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">None</span></code> (task config)</p></td>
 <td><p>Number of training iterations</p></td>
 </tr>
 </tbody>
@@ -1435,6 +1449,13 @@ monitoring during blocking operations like RL training loops:</p>
 <span class="w">        </span>--task<span class="w"> </span>Isaac-Cartpole<span class="w"> </span>--num_envs<span class="w"> </span><span class="m">4096</span><span class="w"> </span>--num_frames<span class="w"> </span><span class="m">100</span><span class="w"> </span><span class="se">\</span>
 <span class="w">        </span>--benchmark_formatter<span class="w"> </span>json<span class="w"> </span>--output_path<span class="w"> </span>./benchmark_results
 
+-<span class="w"> </span>name:<span class="w"> </span>Run<span class="w"> </span>Training<span class="w"> </span>Benchmark
+<span class="w">  </span>run:<span class="w"> </span><span class="p">|</span>
+<span class="w">    </span>uv<span class="w"> </span>run<span class="w"> </span>isaaclab<span class="w"> </span>benchmark<span class="w"> </span>training<span class="w"> </span><span class="se">\</span>
+<span class="w">        </span>--rl_library<span class="w"> </span>rsl_rl<span class="w"> </span>--task<span class="w"> </span>Isaac-Cartpole<span class="w"> </span>--num_envs<span class="w"> </span><span class="m">4096</span><span class="w"> </span><span class="se">\</span>
+<span class="w">        </span>--max_iterations<span class="w"> </span><span class="m">500</span><span class="w"> </span>--benchmark_formatter<span class="w"> </span>json<span class="w"> </span><span class="se">\</span>
+<span class="w">        </span>--output_path<span class="w"> </span>./benchmark_results
+
 -<span class="w"> </span>name:<span class="w"> </span>Upload<span class="w"> </span>Results
 <span class="w">  </span>uses:<span class="w"> </span>actions/upload-artifact@v3
 <span class="w">  </span>with:
@@ -1630,7 +1651,7 @@ By The Isaac Lab Project Developers.
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Jul 09, 2026.
+  Last updated on Jul 10, 2026.
   <br/>
 </p>
   </div>

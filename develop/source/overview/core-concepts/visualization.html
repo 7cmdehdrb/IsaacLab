@@ -64,7 +64,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="3.0.0" />
-    <meta name="docbuild:last-update" content="Jul 09, 2026"/>
+    <meta name="docbuild:last-update" content="Jul 10, 2026"/>
   </head>
   
   
@@ -332,6 +332,7 @@
 
 <li class="toctree-l2"><a class="reference internal" href="../developer-guide/repo_structure.html">Repository organization</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../developer-guide/development.html">Extension Development</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../developer-guide/agent_skills.html">Agent Skills</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../testing/index.html">Testing</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -1090,7 +1091,8 @@ causes a dynamic-linker crash when loaded into the same process.
 Use <code class="docutils literal notranslate"><span class="pre">--visualizer</span> <span class="pre">newton</span></code> instead — it is compatible with all renderer presets.</p>
 </div>
 <p><strong>Record video with the ovrtx renderer preset</strong></p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./isaaclab.sh<span class="w"> </span>-p<span class="w"> </span>scripts/benchmarks/benchmark_rsl_rl.py<span class="w"> </span><span class="se">\</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>uv<span class="w"> </span>run<span class="w"> </span>isaaclab<span class="w"> </span>benchmark<span class="w"> </span>training<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--rl_library<span class="w"> </span>rsl_rl<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--task<span class="o">=</span>Isaac-Reorient-Cube-Shadow-Camera-Direct<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--enable_cameras<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--visualizer<span class="w"> </span>newton<span class="w"> </span><span class="se">\</span>
@@ -1099,12 +1101,13 @@ Use <code class="docutils literal notranslate"><span class="pre">--visualizer</s
 <span class="w">  </span>--video_interval<span class="o">=</span><span class="m">2000</span><span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--max_iterations<span class="o">=</span><span class="m">5</span><span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--num_envs<span class="o">=</span><span class="m">1024</span><span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--benchmark_backend<span class="o">=</span>summary<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--benchmark_formatter<span class="o">=</span>summary<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span><span class="nv">physics</span><span class="o">=</span>newton_mjwarp<span class="w"> </span><span class="nv">renderer</span><span class="o">=</span>ovrtx<span class="w"> </span><span class="nv">presets</span><span class="o">=</span>rgb
 </pre></div>
 </div>
 <p><strong>Record video with the Isaac RTX renderer preset using the Newton video backend</strong></p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./isaaclab.sh<span class="w"> </span>-p<span class="w"> </span>scripts/benchmarks/benchmark_rsl_rl.py<span class="w"> </span><span class="se">\</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>uv<span class="w"> </span>run<span class="w"> </span>isaaclab<span class="w"> </span>benchmark<span class="w"> </span>training<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--rl_library<span class="w"> </span>rsl_rl<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--task<span class="o">=</span>Isaac-Reorient-Cube-Shadow-Camera-Direct<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--enable_cameras<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--visualizer<span class="w"> </span>newton<span class="w"> </span><span class="se">\</span>
@@ -1113,12 +1116,13 @@ Use <code class="docutils literal notranslate"><span class="pre">--visualizer</s
 <span class="w">  </span>--video_interval<span class="o">=</span><span class="m">2000</span><span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--max_iterations<span class="o">=</span><span class="m">5</span><span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--num_envs<span class="o">=</span><span class="m">1024</span><span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--benchmark_backend<span class="o">=</span>summary<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--benchmark_formatter<span class="o">=</span>summary<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span><span class="nv">physics</span><span class="o">=</span>physx<span class="w"> </span><span class="nv">renderer</span><span class="o">=</span>isaacsim_rtx<span class="w"> </span><span class="nv">presets</span><span class="o">=</span>rgb
 </pre></div>
 </div>
 <p><strong>Record video with the Isaac RTX renderer preset using the Kit video backend</strong></p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./isaaclab.sh<span class="w"> </span>-p<span class="w"> </span>scripts/benchmarks/benchmark_rsl_rl.py<span class="w"> </span><span class="se">\</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>uv<span class="w"> </span>run<span class="w"> </span>isaaclab<span class="w"> </span>benchmark<span class="w"> </span>training<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--rl_library<span class="w"> </span>rsl_rl<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--task<span class="o">=</span>Isaac-Reorient-Cube-Shadow-Camera-Direct<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--enable_cameras<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--visualizer<span class="w"> </span>kit<span class="w"> </span><span class="se">\</span>
@@ -1127,7 +1131,7 @@ Use <code class="docutils literal notranslate"><span class="pre">--visualizer</s
 <span class="w">  </span>--video_interval<span class="o">=</span><span class="m">2000</span><span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--max_iterations<span class="o">=</span><span class="m">5</span><span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--num_envs<span class="o">=</span><span class="m">1024</span><span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--benchmark_backend<span class="o">=</span>summary<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--benchmark_formatter<span class="o">=</span>summary<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span><span class="nv">physics</span><span class="o">=</span>physx<span class="w"> </span><span class="nv">renderer</span><span class="o">=</span>isaacsim_rtx<span class="w"> </span><span class="nv">presets</span><span class="o">=</span>rgb
 </pre></div>
 </div>
@@ -1546,7 +1550,7 @@ By The Isaac Lab Project Developers.
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Jul 09, 2026.
+  Last updated on Jul 10, 2026.
   <br/>
 </p>
   </div>

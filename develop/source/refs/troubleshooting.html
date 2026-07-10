@@ -64,7 +64,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="3.0.0" />
-    <meta name="docbuild:last-update" content="Jul 09, 2026"/>
+    <meta name="docbuild:last-update" content="Jul 10, 2026"/>
   </head>
   
   
@@ -332,6 +332,7 @@
 
 <li class="toctree-l2"><a class="reference internal" href="../overview/developer-guide/repo_structure.html">Repository organization</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../overview/developer-guide/development.html">Extension Development</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview/developer-guide/agent_skills.html">Agent Skills</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../testing/index.html">Testing</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -746,6 +747,7 @@
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modulenotfounderror-no-module-named-isaacsim"><code class="docutils literal notranslate"><span class="pre">ModuleNotFoundError:</span> <span class="pre">No</span> <span class="pre">module</span> <span class="pre">named</span> <span class="pre">'isaacsim'</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modulenotfounderror-no-module-named-isaaclab-physx-or-isaaclab-ov"><code class="docutils literal notranslate"><span class="pre">ModuleNotFoundError:</span> <span class="pre">No</span> <span class="pre">module</span> <span class="pre">named</span> <span class="pre">'isaaclab_physx'</span></code> or <code class="docutils literal notranslate"><span class="pre">'isaaclab_ov'</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modulenotfounderror-no-module-named-isaaclab-assets"><code class="docutils literal notranslate"><span class="pre">ModuleNotFoundError:</span> <span class="pre">No</span> <span class="pre">module</span> <span class="pre">named</span> <span class="pre">'isaaclab_assets'</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modulenotfounderror-no-module-named-isaaclab-tasks"><code class="docutils literal notranslate"><span class="pre">ModuleNotFoundError:</span> <span class="pre">No</span> <span class="pre">module</span> <span class="pre">named</span> <span class="pre">'isaaclab_tasks'</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#package-requires-version-but-other-package-requires-version"><code class="docutils literal notranslate"><span class="pre">&lt;package&gt;</span> <span class="pre">requires</span> <span class="pre">&lt;version&gt;,</span> <span class="pre">but</span> <span class="pre">&lt;other-package&gt;</span> <span class="pre">requires</span> <span class="pre">&lt;version&gt;</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modulenotfounderror-no-module-named-rsl-rl"><code class="docutils literal notranslate"><span class="pre">ModuleNotFoundError:</span> <span class="pre">No</span> <span class="pre">module</span> <span class="pre">named</span> <span class="pre">'rsl_rl'</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#crash-in-libusd-tf-usd-symbol-collision-with-ovrtx">Crash in <code class="docutils literal notranslate"><span class="pre">libusd_tf</span></code> / USD Symbol Collision with OVRTX</a></li>
@@ -775,6 +777,13 @@
                   
   <section id="tricks-and-troubleshooting">
 <h1>Tricks and Troubleshooting<a class="headerlink" href="#tricks-and-troubleshooting" title="Link to this heading">#</a></h1>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>This page is the source of truth for the <code class="docutils literal notranslate"><span class="pre">isaaclab-setup-troubleshooting</span></code> agent skill
+(<a class="reference external" href="../../../skills/user/setup-troubleshooting/SKILL.md">skills/user/setup-troubleshooting/</a>).
+When you change this page, update the skill so agent guidance stays in sync. See
+<a class="reference internal" href="../overview/developer-guide/agent_skills.html"><span class="doc">Agent Skills</span></a>.</p>
+</div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>The following lists some of the common tricks and troubleshooting methods that we use in our common workflows.
@@ -808,6 +817,27 @@ packages.</p>
 <h3><code class="docutils literal notranslate"><span class="pre">ModuleNotFoundError:</span> <span class="pre">No</span> <span class="pre">module</span> <span class="pre">named</span> <span class="pre">'isaaclab_assets'</span></code><a class="headerlink" href="#modulenotfounderror-no-module-named-isaaclab-assets" title="Link to this heading">#</a></h3>
 <p>Include <code class="docutils literal notranslate"><span class="pre">assets</span></code> in your install command, or use <code class="docutils literal notranslate"><span class="pre">./isaaclab.sh</span> <span class="pre">-i</span></code> to install
 everything.</p>
+</section>
+<section id="modulenotfounderror-no-module-named-isaaclab-tasks">
+<h3><code class="docutils literal notranslate"><span class="pre">ModuleNotFoundError:</span> <span class="pre">No</span> <span class="pre">module</span> <span class="pre">named</span> <span class="pre">'isaaclab_tasks'</span></code><a class="headerlink" href="#modulenotfounderror-no-module-named-isaaclab-tasks" title="Link to this heading">#</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">isaaclab_tasks</span></code> package contains the registered task environments. This
+error usually means the command is not running in the Isaac Lab Python
+environment or the repository packages were not installed in editable mode.</p>
+<p>Try the following checks:</p>
+<ol class="arabic">
+<li><p>Run from the Isaac Lab repository root using uv:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>uv<span class="w"> </span>run<span class="w"> </span>python<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;import isaaclab_tasks; print(&#39;ok&#39;)&quot;</span>
+</pre></div>
+</div>
+</li>
+<li><p>If the import still fails, recreate the documented source-install
+environment for your workflow.</p></li>
+<li><p>Re-run the task command from the repository root instead of a system Python:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>uv<span class="w"> </span>run<span class="w"> </span>python<span class="w"> </span>scripts/environments/random_agent.py<span class="w"> </span>--task<span class="w"> </span>Isaac-Cartpole<span class="w"> </span>--num_envs<span class="w"> </span><span class="m">4</span>
+</pre></div>
+</div>
+</li>
+</ol>
 </section>
 <section id="package-requires-version-but-other-package-requires-version">
 <h3><code class="docutils literal notranslate"><span class="pre">&lt;package&gt;</span> <span class="pre">requires</span> <span class="pre">&lt;version&gt;,</span> <span class="pre">but</span> <span class="pre">&lt;other-package&gt;</span> <span class="pre">requires</span> <span class="pre">&lt;version&gt;</span></code><a class="headerlink" href="#package-requires-version-but-other-package-requires-version" title="Link to this heading">#</a></h3>
@@ -1168,6 +1198,7 @@ TypeError:<span class="w"> </span>expected<span class="w"> </span>Tensor<span cl
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modulenotfounderror-no-module-named-isaacsim"><code class="docutils literal notranslate"><span class="pre">ModuleNotFoundError:</span> <span class="pre">No</span> <span class="pre">module</span> <span class="pre">named</span> <span class="pre">'isaacsim'</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modulenotfounderror-no-module-named-isaaclab-physx-or-isaaclab-ov"><code class="docutils literal notranslate"><span class="pre">ModuleNotFoundError:</span> <span class="pre">No</span> <span class="pre">module</span> <span class="pre">named</span> <span class="pre">'isaaclab_physx'</span></code> or <code class="docutils literal notranslate"><span class="pre">'isaaclab_ov'</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modulenotfounderror-no-module-named-isaaclab-assets"><code class="docutils literal notranslate"><span class="pre">ModuleNotFoundError:</span> <span class="pre">No</span> <span class="pre">module</span> <span class="pre">named</span> <span class="pre">'isaaclab_assets'</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modulenotfounderror-no-module-named-isaaclab-tasks"><code class="docutils literal notranslate"><span class="pre">ModuleNotFoundError:</span> <span class="pre">No</span> <span class="pre">module</span> <span class="pre">named</span> <span class="pre">'isaaclab_tasks'</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#package-requires-version-but-other-package-requires-version"><code class="docutils literal notranslate"><span class="pre">&lt;package&gt;</span> <span class="pre">requires</span> <span class="pre">&lt;version&gt;,</span> <span class="pre">but</span> <span class="pre">&lt;other-package&gt;</span> <span class="pre">requires</span> <span class="pre">&lt;version&gt;</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modulenotfounderror-no-module-named-rsl-rl"><code class="docutils literal notranslate"><span class="pre">ModuleNotFoundError:</span> <span class="pre">No</span> <span class="pre">module</span> <span class="pre">named</span> <span class="pre">'rsl_rl'</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#crash-in-libusd-tf-usd-symbol-collision-with-ovrtx">Crash in <code class="docutils literal notranslate"><span class="pre">libusd_tf</span></code> / USD Symbol Collision with OVRTX</a></li>
@@ -1217,7 +1248,7 @@ By The Isaac Lab Project Developers.
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Jul 09, 2026.
+  Last updated on Jul 10, 2026.
   <br/>
 </p>
   </div>

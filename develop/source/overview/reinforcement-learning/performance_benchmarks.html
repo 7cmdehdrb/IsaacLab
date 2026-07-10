@@ -64,7 +64,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="3.0.0" />
-    <meta name="docbuild:last-update" content="Jul 09, 2026"/>
+    <meta name="docbuild:last-update" content="Jul 10, 2026"/>
   </head>
   
   
@@ -332,6 +332,7 @@
 
 <li class="toctree-l2"><a class="reference internal" href="../developer-guide/repo_structure.html">Repository organization</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../developer-guide/development.html">Extension Development</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../developer-guide/agent_skills.html">Agent Skills</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../testing/index.html">Testing</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -1001,24 +1002,23 @@ and Train FPS</p></th>
 <section id="benchmark-scripts">
 <h2>Benchmark Scripts<a class="headerlink" href="#benchmark-scripts" title="Link to this heading">#</a></h2>
 <p>For ease of reproducibility, we provide benchmarking scripts available at <code class="docutils literal notranslate"><span class="pre">scripts/benchmarks</span></code>.
-This folder contains individual benchmark scripts that resemble the <code class="docutils literal notranslate"><span class="pre">train.py</span></code> script for RL-Games
-and RSL RL. In addition, we also provide a benchmarking script that runs only the environment implementation
-without any reinforcement learning library.</p>
-<p>Example scripts can be run similarly to training scripts:</p>
+The unified entry points cover RL training with any supported library as well as environment
+stepping without any reinforcement learning library.</p>
+<p>Run the benchmark entry points through the Isaac Lab CLI:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># benchmark with RSL RL</span>
-python<span class="w"> </span>scripts/benchmarks/benchmark_rsl_rl.py<span class="w"> </span>--task<span class="o">=</span>Isaac-Cartpole
+uv<span class="w"> </span>run<span class="w"> </span>isaaclab<span class="w"> </span>benchmark<span class="w"> </span>training<span class="w"> </span>--rl_library<span class="w"> </span>rsl_rl<span class="w"> </span>--task<span class="o">=</span>Isaac-Cartpole
 
 <span class="c1"># benchmark with RL Games</span>
-python<span class="w"> </span>scripts/benchmarks/benchmark_rlgames.py<span class="w"> </span>--task<span class="o">=</span>Isaac-Cartpole
+uv<span class="w"> </span>run<span class="w"> </span>isaaclab<span class="w"> </span>benchmark<span class="w"> </span>training<span class="w"> </span>--rl_library<span class="w"> </span>rl_games<span class="w"> </span>--task<span class="o">=</span>Isaac-Cartpole
 
-<span class="c1"># benchmark without RL libraries</span>
-python<span class="w"> </span>scripts/benchmarks/benchmark_non_rl.py<span class="w"> </span>--task<span class="o">=</span>Isaac-Cartpole
+<span class="c1"># benchmark without RL libraries (environment stepping only)</span>
+uv<span class="w"> </span>run<span class="w"> </span>isaaclab<span class="w"> </span>benchmark<span class="w"> </span>runtime<span class="w"> </span>--task<span class="o">=</span>Isaac-Cartpole
 </pre></div>
 </div>
-<p>Each script will generate a set of KPI files at the end of the run, which includes data on the
-startup times, runtime statistics, such as the time taken for each simulation or rendering step,
+<p>Each benchmark emits a schema-v1 JSON bundle at the end of the run, which includes data on the
+startup times, runtime statistics such as the time taken for each simulation or rendering step,
 as well as overall environment FPS for stepping the environment, performing inference during
-rollout, as well as training.</p>
+rollout, and training.</p>
 </section>
 </section>
 
@@ -1111,7 +1111,7 @@ By The Isaac Lab Project Developers.
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Jul 09, 2026.
+  Last updated on Jul 10, 2026.
   <br/>
 </p>
   </div>

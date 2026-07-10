@@ -64,7 +64,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="3.0.0" />
-    <meta name="docbuild:last-update" content="Jul 09, 2026"/>
+    <meta name="docbuild:last-update" content="Jul 10, 2026"/>
   </head>
   
   
@@ -332,6 +332,7 @@
 
 <li class="toctree-l2"><a class="reference internal" href="../overview/developer-guide/repo_structure.html">Repository organization</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../overview/developer-guide/development.html">Extension Development</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview/developer-guide/agent_skills.html">Agent Skills</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../testing/index.html">Testing</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -790,6 +791,13 @@
                   
   <section id="from-isaacgymenvs">
 <span id="migrating-from-isaacgymenvs"></span><h1>From IsaacGymEnvs<a class="headerlink" href="#from-isaacgymenvs" title="Link to this heading">#</a></h1>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>This page is the source of truth for the <code class="docutils literal notranslate"><span class="pre">isaaclab-migrating-from-isaac-gym</span></code> agent skill
+(<a class="reference external" href="../../../skills/user/migrate-from-isaac-gym/SKILL.md">skills/user/migrate-from-isaac-gym/</a>).
+When you change this page, update the skill so agent guidance stays in sync. See
+<a class="reference internal" href="../overview/developer-guide/agent_skills.html"><span class="doc">Agent Skills</span></a>.</p>
+</div>
 <p><a class="reference external" href="https://github.com/isaac-sim/IsaacGymEnvs">IsaacGymEnvs</a> was a reinforcement learning framework designed for the <a class="reference external" href="https://developer.nvidia.com/isaac-gym">Isaac Gym Preview Release</a>.
 As both IsaacGymEnvs and the Isaac Gym Preview Release are now deprecated, the following guide walks through
 the key differences between IsaacGymEnvs and Isaac Lab, as well as differences in APIs between Isaac Gym Preview
@@ -1233,10 +1241,31 @@ should match with the dimension of the <code class="docutils literal notranslate
 </div>
 <section id="quaternion-convention">
 <h3>Quaternion Convention<a class="headerlink" href="#quaternion-convention" title="Link to this heading">#</a></h3>
-<p>Isaac Lab and Isaac Sim both adopt <code class="docutils literal notranslate"><span class="pre">wxyz</span></code> as the quaternion convention. However, the quaternion
-convention used in Isaac Gym Preview Release was <code class="docutils literal notranslate"><span class="pre">xyzw</span></code>.
-Remember to switch all quaternions to use the <code class="docutils literal notranslate"><span class="pre">xyzw</span></code> convention when working indexing rotation data.
-Similarly, please ensure all quaternions are in <code class="docutils literal notranslate"><span class="pre">wxyz</span></code> before passing them to Isaac Lab APIs.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Double-check quaternion order during migration. IsaacGymEnvs and Isaac Gym Preview Release tensor APIs commonly used
+<code class="docutils literal notranslate"><span class="pre">xyzw</span></code> ordering, while older Isaac Lab examples and some Isaac Sim or USD APIs may use <code class="docutils literal notranslate"><span class="pre">wxyz</span></code> ordering. Current
+Isaac Lab task configs, task tensors, and <a class="reference internal" href="../api/lab/isaaclab.utils.html#module-isaaclab.utils.math" title="isaaclab.utils.math"><code class="xref py py-mod docutils literal notranslate"><span class="pre">isaaclab.utils.math</span></code></a> utilities use <code class="docutils literal notranslate"><span class="pre">xyzw</span></code> ordering.</p>
+<p>This is easy to miss because both conventions have the same shape and both can contain normalized unit quaternions.
+A copied quaternion may therefore pass shape checks while representing a different orientation.</p>
+</div>
+<p>Use the following identities as a quick sanity check:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">xyzw</span></code> identity: <code class="docutils literal notranslate"><span class="pre">(0.0,</span> <span class="pre">0.0,</span> <span class="pre">0.0,</span> <span class="pre">1.0)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wxyz</span></code> identity: <code class="docutils literal notranslate"><span class="pre">(1.0,</span> <span class="pre">0.0,</span> <span class="pre">0.0,</span> <span class="pre">0.0)</span></code></p></li>
+</ul>
+<p>When moving data across a boundary that uses a different convention, reorder the components explicitly:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># wxyz -&gt; xyzw, for Isaac Lab task configs and math utilities</span>
+<span class="n">quat_xyzw</span> <span class="o">=</span> <span class="n">quat_wxyz</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">]]</span>
+
+<span class="c1"># xyzw -&gt; wxyz, for APIs that explicitly require wxyz</span>
+<span class="n">quat_wxyz</span> <span class="o">=</span> <span class="n">quat_xyzw</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]]</span>
+</pre></div>
+</div>
+<p>Audit every migrated rotation in initial states, root-state resets, goal or command orientations, observations,
+policy inputs, datasets, reward helpers, camera poses, and sensor offsets. Do not copy quaternion literals from
+IsaacGymEnvs, older Isaac Lab snippets, or USD examples without first confirming the expected convention at the API
+boundary.</p>
 </section>
 <section id="articulation-joint-order">
 <h3>Articulation Joint Order<a class="headerlink" href="#articulation-joint-order" title="Link to this heading">#</a></h3>
@@ -2054,7 +2083,7 @@ By The Isaac Lab Project Developers.
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Jul 09, 2026.
+  Last updated on Jul 10, 2026.
   <br/>
 </p>
   </div>
