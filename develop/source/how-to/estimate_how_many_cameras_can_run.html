@@ -36,7 +36,6 @@
     <link rel="stylesheet" type="text/css" href="/opt/hostedtoolcache/Python/3.12.13/x64/lib/python3.12/site-packages/sphinxcontrib/icon/node_modules/@fortawesome/fontawesome-free/css/all.min.css?v=53359634" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx_paramlinks.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=8fb98eed" />
   
   <!-- So that users can add custom icons -->
@@ -162,6 +161,9 @@
             <option value="estimate_how_many_cameras_can_run.html" selected>develop</option>
             <option value="../../../main/source/how-to/estimate_how_many_cameras_can_run.html" >main</option>
             <option value="../../../release/3.0.0-beta2/source/how-to/estimate_how_many_cameras_can_run.html" >release/3.0.0-beta2</option>
+            <option value="../../../v3.0.0-beta2.patch1/source/how-to/estimate_how_many_cameras_can_run.html" >v3.0.0-beta2.patch1</option>
+            <option value="../../../v3.0.0-beta2/source/how-to/estimate_how_many_cameras_can_run.html" >v3.0.0-beta2</option>
+            <option value="../../../v3.0.0-beta/source/how-to/estimate_how_many_cameras_can_run.html" >v3.0.0-beta</option>
             <option value="../../../v2.3.2/source/how-to/estimate_how_many_cameras_can_run.html" >v2.3.2</option>
             <option value="../../../v2.3.1/source/how-to/estimate_how_many_cameras_can_run.html" >v2.3.1</option>
             <option value="../../../v2.3.0/source/how-to/estimate_how_many_cameras_can_run.html" >v2.3.0</option>
@@ -201,7 +203,7 @@
           
           
           
-          <a href="https://developer.nvidia.com/isaac-sim" title="Isaac Sim" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="https://img.shields.io/badge/IsaacSim-6.0.0-silver.svg" class="icon-link-image" alt="Isaac Sim"/></a>
+          <a href="https://developer.nvidia.com/isaac-sim" title="Isaac Sim" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="https://img.shields.io/badge/IsaacSim-6.0.1-silver.svg" class="icon-link-image" alt="Isaac Sim"/></a>
         </li>
         <li class="nav-item">
           
@@ -1005,11 +1007,11 @@ directory.</p>
 <span class="linenos">226</span>
 <span class="linenos">227</span><span class="c1"># Benchmark arguments</span>
 <span class="linenos">228</span><span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span>
-<span class="linenos">229</span>    <span class="s2">&quot;--benchmark_backend&quot;</span><span class="p">,</span>
+<span class="linenos">229</span>    <span class="s2">&quot;--benchmark_formatter&quot;</span><span class="p">,</span>
 <span class="linenos">230</span>    <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span>
 <span class="linenos">231</span>    <span class="n">default</span><span class="o">=</span><span class="s2">&quot;omniperf&quot;</span><span class="p">,</span>
 <span class="linenos">232</span>    <span class="n">choices</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;json&quot;</span><span class="p">,</span> <span class="s2">&quot;osmo&quot;</span><span class="p">,</span> <span class="s2">&quot;omniperf&quot;</span><span class="p">,</span> <span class="s2">&quot;summary&quot;</span><span class="p">],</span>
-<span class="linenos">233</span>    <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Benchmarking backend options, defaults omniperf&quot;</span><span class="p">,</span>
+<span class="linenos">233</span>    <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Benchmark output formatter, defaults omniperf&quot;</span><span class="p">,</span>
 <span class="linenos">234</span><span class="p">)</span>
 <span class="linenos">235</span><span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--output_path&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;.&quot;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Path to output benchmark results.&quot;</span><span class="p">)</span>
 <span class="linenos">236</span>
@@ -1556,13 +1558,13 @@ directory.</p>
 <span class="linenos">777</span>        <span class="n">num_cameras</span> <span class="o">=</span> <span class="n">args_cli</span><span class="o">.</span><span class="n">num_ray_caster_cameras</span>
 <span class="linenos">778</span>
 <span class="linenos">779</span>    <span class="c1"># Create the benchmark</span>
-<span class="linenos">780</span>    <span class="n">backend_type</span> <span class="o">=</span> <span class="n">args_cli</span><span class="o">.</span><span class="n">benchmark_backend</span>
+<span class="linenos">780</span>    <span class="n">formatter_type</span> <span class="o">=</span> <span class="n">args_cli</span><span class="o">.</span><span class="n">benchmark_formatter</span>
 <span class="linenos">781</span>    <span class="n">benchmark</span> <span class="o">=</span> <span class="n">BaseIsaacLabBenchmark</span><span class="p">(</span>
 <span class="linenos">782</span>        <span class="n">benchmark_name</span><span class="o">=</span><span class="s2">&quot;benchmark_cameras&quot;</span><span class="p">,</span>
-<span class="linenos">783</span>        <span class="n">backend_type</span><span class="o">=</span><span class="n">backend_type</span><span class="p">,</span>
+<span class="linenos">783</span>        <span class="n">formatter_type</span><span class="o">=</span><span class="n">formatter_type</span><span class="p">,</span>
 <span class="linenos">784</span>        <span class="n">output_path</span><span class="o">=</span><span class="n">args_cli</span><span class="o">.</span><span class="n">output_path</span><span class="p">,</span>
 <span class="linenos">785</span>        <span class="n">use_recorders</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-<span class="linenos">786</span>        <span class="n">frametime_recorders</span><span class="o">=</span><span class="n">backend_type</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;summary&quot;</span><span class="p">,</span> <span class="s2">&quot;omniperf&quot;</span><span class="p">),</span>
+<span class="linenos">786</span>        <span class="n">frametime_recorders</span><span class="o">=</span><span class="n">formatter_type</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;summary&quot;</span><span class="p">,</span> <span class="s2">&quot;omniperf&quot;</span><span class="p">),</span>
 <span class="linenos">787</span>        <span class="n">output_prefix</span><span class="o">=</span><span class="s2">&quot;benchmark_cameras&quot;</span><span class="p">,</span>
 <span class="linenos">788</span>        <span class="n">workflow_metadata</span><span class="o">=</span><span class="p">{</span>
 <span class="linenos">789</span>            <span class="s2">&quot;metadata&quot;</span><span class="p">:</span> <span class="p">[</span>

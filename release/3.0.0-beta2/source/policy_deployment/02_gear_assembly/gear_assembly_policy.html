@@ -36,7 +36,6 @@
     <link rel="stylesheet" type="text/css" href="/opt/hostedtoolcache/Python/3.12.13/x64/lib/python3.12/site-packages/sphinxcontrib/icon/node_modules/@fortawesome/fontawesome-free/css/all.min.css?v=53359634" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx_paramlinks.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=8fb98eed" />
   
   <!-- So that users can add custom icons -->
@@ -162,6 +161,9 @@
             <option value="../../../../../develop/source/policy_deployment/02_gear_assembly/gear_assembly_policy.html" >develop</option>
             <option value="../../../../../main/source/policy_deployment/02_gear_assembly/gear_assembly_policy.html" >main</option>
             <option value="gear_assembly_policy.html" selected>release/3.0.0-beta2</option>
+            <option value="../../../../../v3.0.0-beta2.patch1/source/policy_deployment/02_gear_assembly/gear_assembly_policy.html" >v3.0.0-beta2.patch1</option>
+            <option value="../../../../../v3.0.0-beta2/source/policy_deployment/02_gear_assembly/gear_assembly_policy.html" >v3.0.0-beta2</option>
+            <option value="../../../../../v3.0.0-beta/source/policy_deployment/02_gear_assembly/gear_assembly_policy.html" >v3.0.0-beta</option>
             <option value="../../../../../v2.3.2/source/policy_deployment/02_gear_assembly/gear_assembly_policy.html" >v2.3.2</option>
             <option value="../../../../../v2.3.1/index.html" >v2.3.1</option>
             <option value="../../../../../v2.3.0/index.html" >v2.3.0</option>
@@ -201,7 +203,7 @@
           
           
           
-          <a href="https://developer.nvidia.com/isaac-sim" title="Isaac Sim" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="https://img.shields.io/badge/IsaacSim-6.0.0-silver.svg" class="icon-link-image" alt="Isaac Sim"/></a>
+          <a href="https://developer.nvidia.com/isaac-sim" title="Isaac Sim" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="https://img.shields.io/badge/IsaacSim-6.0.1-silver.svg" class="icon-link-image" alt="Isaac Sim"/></a>
         </li>
         <li class="nav-item">
           
@@ -810,7 +812,7 @@
 </figure>
 <p>This environment has been successfully deployed on real UR10e and Flexiv Rizon 4s robots without an IsaacLab dependency.</p>
 <p><strong>Scope of This Tutorial:</strong></p>
-<p>This tutorial focuses exclusively on the <strong>training part</strong> of the sim-to-real transfer workflow in Isaac Lab. For the complete deployment workflow on the real robot, including the exact steps to set up the vision pipeline, robot interface and the ROS inference node to run your trained policy on real hardware, please refer to the <a class="reference external" href="https://nvidia-isaac-ros.github.io/reference_workflows/isaac_for_manipulation/packages/isaac_ros_manipulation_ur_dnn_policy/index.html">Isaac ROS Documentation</a>.</p>
+<p>This tutorial focuses exclusively on the <strong>training part</strong> of the sim-to-real transfer workflow in Isaac Lab. For the complete deployment workflow on the real robot, including the exact steps to set up the vision pipeline, robot interface and the ROS inference node to run your trained policy on real hardware, please refer to the <a class="reference external" href="https://nvidia-isaac-ros.github.io/reference_workflows/isaac_for_manipulation/packages/isaac_ros_manipulation_dnn_policy/index.html">Isaac ROS Documentation</a>.</p>
 <section id="overview">
 <h2>Overview<a class="headerlink" href="#overview" title="Link to this heading">#</a></h2>
 <p>Successful sim-to-real transfer requires addressing three fundamental aspects:</p>
@@ -1511,7 +1513,7 @@ Flexiv Rizon 4s</label><div class="sd-tab-content docutils">
 </section>
 <section id="step-3-deploy-on-real-robot">
 <h3>Step 3: Deploy on Real Robot<a class="headerlink" href="#step-3-deploy-on-real-robot" title="Link to this heading">#</a></h3>
-<p>Once training is complete, follow the <a class="reference external" href="https://nvidia-isaac-ros.github.io/reference_workflows/isaac_for_manipulation/packages/isaac_ros_manipulation_ur_dnn_policy/index.html">Isaac ROS inference documentation</a> to deploy your policy.</p>
+<p>Once training is complete, follow the <a class="reference external" href="https://nvidia-isaac-ros.github.io/reference_workflows/isaac_for_manipulation/packages/isaac_ros_manipulation_dnn_policy/index.html">Isaac ROS inference documentation</a> to deploy your policy.</p>
 <p>The Isaac ROS deployment pipeline directly uses the trained model checkpoint (<code class="docutils literal notranslate"><span class="pre">.pt</span></code> file) along with the <code class="docutils literal notranslate"><span class="pre">agent.yaml</span></code> and <code class="docutils literal notranslate"><span class="pre">env.yaml</span></code> configuration files generated during training. No additional export step is required.</p>
 <p>The deployment pipeline uses Isaac ROS and a custom ROS inference node to run the policy on real hardware. The pipeline includes:</p>
 <ol class="arabic simple">

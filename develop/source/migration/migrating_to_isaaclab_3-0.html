@@ -36,7 +36,6 @@
     <link rel="stylesheet" type="text/css" href="/opt/hostedtoolcache/Python/3.12.13/x64/lib/python3.12/site-packages/sphinxcontrib/icon/node_modules/@fortawesome/fontawesome-free/css/all.min.css?v=53359634" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx_paramlinks.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=8fb98eed" />
   
   <!-- So that users can add custom icons -->
@@ -162,6 +161,9 @@
             <option value="migrating_to_isaaclab_3-0.html" selected>develop</option>
             <option value="../../../main/index.html" >main</option>
             <option value="../../../release/3.0.0-beta2/source/migration/migrating_to_isaaclab_3-0.html" >release/3.0.0-beta2</option>
+            <option value="../../../v3.0.0-beta2.patch1/source/migration/migrating_to_isaaclab_3-0.html" >v3.0.0-beta2.patch1</option>
+            <option value="../../../v3.0.0-beta2/source/migration/migrating_to_isaaclab_3-0.html" >v3.0.0-beta2</option>
+            <option value="../../../v3.0.0-beta/source/migration/migrating_to_isaaclab_3-0.html" >v3.0.0-beta</option>
             <option value="../../../v2.3.2/index.html" >v2.3.2</option>
             <option value="../../../v2.3.1/index.html" >v2.3.1</option>
             <option value="../../../v2.3.0/index.html" >v2.3.0</option>
@@ -201,7 +203,7 @@
           
           
           
-          <a href="https://developer.nvidia.com/isaac-sim" title="Isaac Sim" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="https://img.shields.io/badge/IsaacSim-6.0.0-silver.svg" class="icon-link-image" alt="Isaac Sim"/></a>
+          <a href="https://developer.nvidia.com/isaac-sim" title="Isaac Sim" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="https://img.shields.io/badge/IsaacSim-6.0.1-silver.svg" class="icon-link-image" alt="Isaac Sim"/></a>
         </li>
         <li class="nav-item">
           
@@ -812,6 +814,14 @@
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#renamed-settings">Renamed Settings</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Updated CLI Tool</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Updated Python API</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#benchmark-scripts">Benchmark Scripts</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-changed">What Changed</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#script-and-command-mapping">Script and Command Mapping</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#running-benchmarks">Running Benchmarks</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#output-format">Output Format</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#migration-steps">Migration Steps</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#xr-teleoperation-isaac-teleop-integration">XR Teleoperation: Isaac Teleop Integration</a><ul class="nav section-nav flex-column">
@@ -2704,6 +2714,161 @@ directly in your code, update your configuration:</p>
 </div>
 </section>
 </section>
+<section id="benchmark-scripts">
+<h2>Benchmark Scripts<a class="headerlink" href="#benchmark-scripts" title="Link to this heading">#</a></h2>
+<p>Isaac Lab 3.0 consolidates the per-backend environment benchmark entry points and their
+wrapper shell runners into a small set of unified, backend-agnostic scripts. The physics
+backend is now selected at launch time through the <code class="docutils literal notranslate"><span class="pre">presets=</span></code> system — the same pattern
+used for environment configurations (see “Multi-Backend Support: PresetCfg Pattern” above)
+— rather than by choosing a backend-specific script.</p>
+<section id="what-changed">
+<h3>What Changed<a class="headerlink" href="#what-changed" title="Link to this heading">#</a></h3>
+<p>The standalone environment benchmark entry-point scripts have been removed and replaced by
+unified scripts:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">runtime.py</span></code> — steps an environment with random actions (no policy) and emits a
+<code class="docutils literal notranslate"><span class="pre">RuntimeBundle</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">training.py</span></code> — dispatches a real training run for the RL library selected with
+<code class="docutils literal notranslate"><span class="pre">--rl_library</span></code> and emits a <code class="docutils literal notranslate"><span class="pre">TrainingBundle</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">startup.py</span></code> — profiles the five startup phases (<code class="docutils literal notranslate"><span class="pre">app_launch</span></code>, <code class="docutils literal notranslate"><span class="pre">python_imports</span></code>,
+<code class="docutils literal notranslate"><span class="pre">task_config</span></code>, <code class="docutils literal notranslate"><span class="pre">env_creation</span></code>, <code class="docutils literal notranslate"><span class="pre">first_step</span></code>) with <code class="docutils literal notranslate"><span class="pre">cProfile</span></code> and emits a
+<code class="docutils literal notranslate"><span class="pre">StartupBundle</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">play.py</span></code> — <strong>new in 3.0</strong> — loads a trained checkpoint and benchmarks policy inference
+for the RL library selected with <code class="docutils literal notranslate"><span class="pre">--rl_library</span></code>, emitting a <code class="docutils literal notranslate"><span class="pre">PlayBundle</span></code> (inference
+throughput plus the policy’s reward, episode length, and success rate). It consumes the
+checkpoints produced by <code class="docutils literal notranslate"><span class="pre">training.py</span></code>; 2.x had no per-backend play benchmark.</p></li>
+</ul>
+<p>The wrapper shell runners that drove these benchmarks — <code class="docutils literal notranslate"><span class="pre">run_non_rl_benchmarks.sh</span></code> and
+<code class="docutils literal notranslate"><span class="pre">run_training_benchmarks.sh</span></code> — were removed as well; their behavior is now expressed
+directly through script arguments and <code class="docutils literal notranslate"><span class="pre">presets=</span></code> tokens.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This consolidation affects only the <em>environment</em> benchmark suite. The PhysX
+micro-benchmarks under <code class="docutils literal notranslate"><span class="pre">source/isaaclab_physx/benchmark/</span></code> (<code class="docutils literal notranslate"><span class="pre">benchmark_articulation.py</span></code>,
+<code class="docutils literal notranslate"><span class="pre">benchmark_rigid_object.py</span></code>, and friends) are unchanged — only the
+<code class="docutils literal notranslate"><span class="pre">run_physx_benchmarks.sh</span></code> wrapper that invoked them was removed, so run those scripts
+directly. The other standalone benchmark scripts under <code class="docutils literal notranslate"><span class="pre">scripts/benchmarks/</span></code> —
+<code class="docutils literal notranslate"><span class="pre">benchmark_cameras.py</span></code>, <code class="docutils literal notranslate"><span class="pre">benchmark_load_robot.py</span></code>, <code class="docutils literal notranslate"><span class="pre">benchmark_view_comparison.py</span></code>,
+<code class="docutils literal notranslate"><span class="pre">benchmark_xform_prim_view.py</span></code>, <code class="docutils literal notranslate"><span class="pre">benchmark_lazy_export.py</span></code>, and
+<code class="docutils literal notranslate"><span class="pre">benchmark_hydra_resolve.py</span></code> — are independent of the unified suite and likewise
+unaffected.</p>
+</div>
+</section>
+<section id="script-and-command-mapping">
+<h3>Script and Command Mapping<a class="headerlink" href="#script-and-command-mapping" title="Link to this heading">#</a></h3>
+<p>Map each old invocation to its replacement:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<colgroup>
+<col style="width: 45.0%" />
+<col style="width: 55.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Isaac Lab 2.x</p></th>
+<th class="head"><p>Isaac Lab 3.0</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">benchmark_non_rl.py</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">runtime.py</span></code> (no <code class="docutils literal notranslate"><span class="pre">--rl_library</span></code> dispatch)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">benchmark_startup.py</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">startup.py</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">benchmark_rsl_rl.py</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">training.py</span> <span class="pre">--rl_library</span> <span class="pre">rsl_rl</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">benchmark_rlgames.py</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">training.py</span> <span class="pre">--rl_library</span> <span class="pre">rl_games</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><em>(newly supported)</em></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">training.py</span> <span class="pre">--rl_library</span> <span class="pre">skrl</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><em>(newly supported)</em></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">training.py</span> <span class="pre">--rl_library</span> <span class="pre">sb3</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><em>(newly supported)</em></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">play.py</span> <span class="pre">--rl_library</span> <span class="pre">{rsl_rl,rl_games,skrl,sb3}</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>SKRL and Stable-Baselines3 had no dedicated benchmark script in 2.x; both are now supported
+through the same <code class="docutils literal notranslate"><span class="pre">--rl_library</span></code> dispatch on <code class="docutils literal notranslate"><span class="pre">training.py</span></code>. <code class="docutils literal notranslate"><span class="pre">play.py</span></code> is likewise new in
+3.0: it benchmarks inference of a checkpoint trained by <code class="docutils literal notranslate"><span class="pre">training.py</span></code> for any of the four
+RL libraries.</p>
+</section>
+<section id="running-benchmarks">
+<h3>Running Benchmarks<a class="headerlink" href="#running-benchmarks" title="Link to this heading">#</a></h3>
+<p>The physics (and rendering) backend is selected with Hydra preset tokens — <code class="docutils literal notranslate"><span class="pre">presets=</span></code>,
+exactly as for <code class="docutils literal notranslate"><span class="pre">train.py</span></code>. There is no <code class="docutils literal notranslate"><span class="pre">--physics</span></code> or <code class="docutils literal notranslate"><span class="pre">--render</span></code> flag; pass
+<code class="docutils literal notranslate"><span class="pre">presets=physx</span></code>, <code class="docutils literal notranslate"><span class="pre">presets=newton_mjwarp</span></code>, etc. to choose the backend.</p>
+<p><strong>Before (Isaac Lab 2.x):</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Non-RL (random-action) runtime benchmark</span>
+./isaaclab.sh<span class="w"> </span>-p<span class="w"> </span>scripts/benchmarks/benchmark_non_rl.py<span class="w"> </span>--task<span class="w"> </span>Isaac-Cartpole-Direct
+
+<span class="c1"># Training benchmark (RSL-RL)</span>
+./isaaclab.sh<span class="w"> </span>-p<span class="w"> </span>scripts/benchmarks/benchmark_rsl_rl.py<span class="w"> </span>--task<span class="w"> </span>Isaac-Cartpole-Direct
+
+<span class="c1"># Wrapper shell runners</span>
+./scripts/benchmarks/run_non_rl_benchmarks.sh
+./scripts/benchmarks/run_training_benchmarks.sh
+</pre></div>
+</div>
+<p><strong>After (Isaac Lab 3.0):</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Non-RL (random-action) runtime benchmark — PhysX (default)</span>
+./isaaclab.sh<span class="w"> </span>-p<span class="w"> </span>scripts/benchmarks/runtime.py<span class="w"> </span>--task<span class="w"> </span>Isaac-Cartpole-Direct
+
+<span class="c1"># Same benchmark on Newton/MJWarp — select the backend via presets=</span>
+./isaaclab.sh<span class="w"> </span>-p<span class="w"> </span>scripts/benchmarks/runtime.py<span class="w"> </span>--task<span class="w"> </span>Isaac-Cartpole-Direct<span class="w"> </span><span class="nv">presets</span><span class="o">=</span>newton_mjwarp
+
+<span class="c1"># Training benchmark — choose the RL library with --rl_library</span>
+./isaaclab.sh<span class="w"> </span>-p<span class="w"> </span>scripts/benchmarks/training.py<span class="w"> </span>--task<span class="w"> </span>Isaac-Cartpole-Direct<span class="w"> </span>--rl_library<span class="w"> </span>rsl_rl
+./isaaclab.sh<span class="w"> </span>-p<span class="w"> </span>scripts/benchmarks/training.py<span class="w"> </span>--task<span class="w"> </span>Isaac-Cartpole-Direct<span class="w"> </span>--rl_library<span class="w"> </span>skrl<span class="w"> </span><span class="nv">presets</span><span class="o">=</span>newton_mjwarp
+
+<span class="c1"># Play (inference) benchmark — loads a checkpoint produced by training.py</span>
+./isaaclab.sh<span class="w"> </span>-p<span class="w"> </span>scripts/benchmarks/play.py<span class="w"> </span>--task<span class="w"> </span>Isaac-Cartpole-Direct<span class="w"> </span>--rl_library<span class="w"> </span>rsl_rl<span class="w"> </span>--checkpoint<span class="w"> </span>/path/to/model.pt
+
+<span class="c1"># Startup profiling</span>
+./isaaclab.sh<span class="w"> </span>-p<span class="w"> </span>scripts/benchmarks/startup.py<span class="w"> </span>--task<span class="w"> </span>Isaac-Cartpole-Direct<span class="w"> </span><span class="nv">presets</span><span class="o">=</span>newton_mjwarp
+</pre></div>
+</div>
+</section>
+<section id="output-format">
+<h3>Output Format<a class="headerlink" href="#output-format" title="Link to this heading">#</a></h3>
+<p>The output format is controlled by <code class="docutils literal notranslate"><span class="pre">--benchmark_formatter</span></code>, which is independent of the
+physics backend. It defaults to <code class="docutils literal notranslate"><span class="pre">schema</span></code> (the typed benchmark bundle) and accepts a
+comma-separated list to emit several formats at once. Supported values are <code class="docutils literal notranslate"><span class="pre">schema</span></code>,
+<code class="docutils literal notranslate"><span class="pre">omniperf</span></code>, <code class="docutils literal notranslate"><span class="pre">osmo</span></code>, <code class="docutils literal notranslate"><span class="pre">json</span></code>, and <code class="docutils literal notranslate"><span class="pre">summary</span></code> (legacy long-form aliases such as
+<code class="docutils literal notranslate"><span class="pre">OmniPerfKPIFile</span></code> are still accepted).</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Emit the typed schema bundle and an OmniPerf KPI file in one run</span>
+./isaaclab.sh<span class="w"> </span>-p<span class="w"> </span>scripts/benchmarks/runtime.py<span class="w"> </span>--task<span class="w"> </span>Isaac-Cartpole-Direct<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--benchmark_formatter<span class="w"> </span>schema,omniperf
+</pre></div>
+</div>
+</section>
+<section id="migration-steps">
+<h3>Migration Steps<a class="headerlink" href="#migration-steps" title="Link to this heading">#</a></h3>
+<p>If you have custom benchmark scripts or CI based on Isaac Lab 2.x:</p>
+<ol class="arabic simple">
+<li><p><strong>Replace the old entry points</strong> — swap <code class="docutils literal notranslate"><span class="pre">benchmark_non_rl.py</span></code> for <code class="docutils literal notranslate"><span class="pre">runtime.py</span></code>,
+<code class="docutils literal notranslate"><span class="pre">benchmark_startup.py</span></code> for <code class="docutils literal notranslate"><span class="pre">startup.py</span></code>, and the per-library training scripts for
+<code class="docutils literal notranslate"><span class="pre">training.py</span> <span class="pre">--rl_library</span> <span class="pre">&lt;lib&gt;</span></code>.</p></li>
+<li><p><strong>Drop the wrapper runners</strong> — <code class="docutils literal notranslate"><span class="pre">run_non_rl_benchmarks.sh</span></code> and
+<code class="docutils literal notranslate"><span class="pre">run_training_benchmarks.sh</span></code> no longer exist; express their behavior with script
+arguments and <code class="docutils literal notranslate"><span class="pre">presets=</span></code> tokens. <code class="docutils literal notranslate"><span class="pre">run_physx_benchmarks.sh</span></code> is also gone — invoke the
+PhysX micro-benchmarks under <code class="docutils literal notranslate"><span class="pre">source/isaaclab_physx/benchmark/</span></code> directly instead.</p></li>
+<li><p><strong>Select the backend with</strong> <code class="docutils literal notranslate"><span class="pre">presets=</span></code> — replace any per-backend script choice with a
+<code class="docutils literal notranslate"><span class="pre">presets=</span></code> (and, if needed, rendering) token on a single unified script. Update custom
+benchmark configs to the <code class="docutils literal notranslate"><span class="pre">PresetCfg</span></code> pattern.</p></li>
+<li><p><strong>Pick the output format with</strong> <code class="docutils literal notranslate"><span class="pre">--benchmark_formatter</span></code> — default <code class="docutils literal notranslate"><span class="pre">schema</span></code>; pass a
+comma-separated list for multiple formats.</p></li>
+<li><p><strong>Test both backends</strong> — verify your benchmarks pass with <code class="docutils literal notranslate"><span class="pre">presets=physx</span></code> (default) and
+<code class="docutils literal notranslate"><span class="pre">presets=newton_mjwarp</span></code>.</p></li>
+</ol>
+<p>For a complete guide to multi-backend support, see the “Multi-Backend Support: PresetCfg
+Pattern” section above.</p>
+</section>
+</section>
 <section id="xr-teleoperation-isaac-teleop-integration">
 <h2>XR Teleoperation: Isaac Teleop Integration<a class="headerlink" href="#xr-teleoperation-isaac-teleop-integration" title="Link to this heading">#</a></h2>
 <p>The native XR teleoperation stack in <code class="docutils literal notranslate"><span class="pre">isaaclab.devices.openxr</span></code> has been deprecated and replaced
@@ -3164,6 +3329,14 @@ should be similarly updated to <code class="docutils literal notranslate"><span 
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#renamed-settings">Renamed Settings</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Updated CLI Tool</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Updated Python API</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#benchmark-scripts">Benchmark Scripts</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-changed">What Changed</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#script-and-command-mapping">Script and Command Mapping</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#running-benchmarks">Running Benchmarks</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#output-format">Output Format</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#migration-steps">Migration Steps</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#xr-teleoperation-isaac-teleop-integration">XR Teleoperation: Isaac Teleop Integration</a><ul class="nav section-nav flex-column">
