@@ -36,6 +36,7 @@
     <link rel="stylesheet" type="text/css" href="/opt/hostedtoolcache/Python/3.12.13/x64/lib/python3.12/site-packages/sphinxcontrib/icon/node_modules/@fortawesome/fontawesome-free/css/all.min.css?v=53359634" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx_paramlinks.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=8fb98eed" />
   
   <!-- So that users can add custom icons -->
@@ -63,7 +64,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="3.0.0" />
-    <meta name="docbuild:last-update" content="Jul 10, 2026"/>
+    <meta name="docbuild:last-update" content="Jul 11, 2026"/>
   </head>
   
   
@@ -161,9 +162,6 @@
             <option value="environments.html" selected>develop</option>
             <option value="../../../main/source/overview/environments.html" >main</option>
             <option value="../../../release/3.0.0-beta2/source/overview/environments.html" >release/3.0.0-beta2</option>
-            <option value="../../../v3.0.0-beta2.patch1/source/overview/environments.html" >v3.0.0-beta2.patch1</option>
-            <option value="../../../v3.0.0-beta2/source/overview/environments.html" >v3.0.0-beta2</option>
-            <option value="../../../v3.0.0-beta/source/overview/environments.html" >v3.0.0-beta</option>
             <option value="../../../v2.3.2/source/overview/environments.html" >v2.3.2</option>
             <option value="../../../v2.3.1/source/overview/environments.html" >v2.3.1</option>
             <option value="../../../v2.3.0/source/overview/environments.html" >v2.3.0</option>
@@ -203,7 +201,7 @@
           
           
           
-          <a href="https://developer.nvidia.com/isaac-sim" title="Isaac Sim" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="https://img.shields.io/badge/IsaacSim-6.0.1-silver.svg" class="icon-link-image" alt="Isaac Sim"/></a>
+          <a href="https://developer.nvidia.com/isaac-sim" title="Isaac Sim" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="https://img.shields.io/badge/IsaacSim-6.0.0-silver.svg" class="icon-link-image" alt="Isaac Sim"/></a>
         </li>
         <li class="nav-item">
           
@@ -760,8 +758,8 @@
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multi-agent">Multi-agent</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id163">Classic</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id166">Manipulation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Classic</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Manipulation</a></li>
 </ul>
 </li>
 </ul>
@@ -871,8 +869,8 @@ for all available backend names and how the typed selectors work.</p>
 </thead>
 <tbody>
 <tr class="row-even"><td><p><img alt="humanoid" src="../../_images/humanoid.jpg" /></p></td>
-<td><p><a href="#id169"><span class="problematic" id="id170">|humanoid-link|</span></a></p>
-<p><a href="#id171"><span class="problematic" id="id172">|humanoid-direct-link|</span></a></p>
+<td><p><a class="reference external" href="https://github.com/isaac-sim/IsaacLab/blob/develop/source/isaaclab_tasks/isaaclab_tasks/core/locomotion/humanoid/humanoid_manager_env_cfg.py">Isaac-Humanoid</a></p>
+<p><a class="reference external" href="https://github.com/isaac-sim/IsaacLab/blob/develop/source/isaaclab_tasks/isaaclab_tasks/core/locomotion/humanoid/humanoid_direct_env.py">Isaac-Humanoid-Direct</a></p>
 </td>
 <td><p>Move towards a direction with the MuJoCo humanoid robot</p></td>
 <td><p><strong>physics=</strong>
@@ -881,8 +879,8 @@ for all available backend names and how the typed selectors work.</p>
 <code class="docutils literal notranslate"><span class="pre">ovphysx</span></code> (direct only)</p></td>
 </tr>
 <tr class="row-odd"><td><p><img alt="ant" src="../../_images/ant.jpg" /></p></td>
-<td><p><a href="#id173"><span class="problematic" id="id174">|ant-link|</span></a></p>
-<p><a href="#id175"><span class="problematic" id="id176">|ant-direct-link|</span></a></p>
+<td><p><a class="reference external" href="https://github.com/isaac-sim/IsaacLab/blob/develop/source/isaaclab_tasks/isaaclab_tasks/core/locomotion/ant/ant_manager_env_cfg.py">Isaac-Ant</a></p>
+<p><a class="reference external" href="https://github.com/isaac-sim/IsaacLab/blob/develop/source/isaaclab_tasks/isaaclab_tasks/core/locomotion/ant/ant_direct_env.py">Isaac-Ant-Direct</a></p>
 </td>
 <td><p>Move towards a direction with the MuJoCo ant robot</p></td>
 <td><p><strong>physics=</strong>
@@ -892,8 +890,8 @@ for all available backend names and how the typed selectors work.</p>
 <code class="docutils literal notranslate"><span class="pre">ovphysx</span></code> (direct only)</p></td>
 </tr>
 <tr class="row-even"><td><p><img alt="cartpole" src="../../_images/cartpole.jpg" /></p></td>
-<td><p><a href="#id177"><span class="problematic" id="id178">|cartpole-link|</span></a></p>
-<p><a href="#id179"><span class="problematic" id="id180">|cartpole-direct-link|</span></a></p>
+<td><p><a class="reference external" href="https://github.com/isaac-sim/IsaacLab/blob/develop/source/isaaclab_tasks/isaaclab_tasks/core/cartpole/cartpole_manager_env_cfg.py">Isaac-Cartpole</a></p>
+<p><a class="reference external" href="https://github.com/isaac-sim/IsaacLab/blob/develop/source/isaaclab_tasks/isaaclab_tasks/core/cartpole/cartpole_direct_env.py">Isaac-Cartpole-Direct</a></p>
 </td>
 <td><p>Move the cart to keep the pole upwards in the classic cartpole control</p></td>
 <td><p><strong>physics=</strong>
@@ -903,7 +901,7 @@ for all available backend names and how the typed selectors work.</p>
 <code class="docutils literal notranslate"><span class="pre">ovphysx</span></code> (direct only)</p></td>
 </tr>
 <tr class="row-odd"><td><p><img alt="cartpole" src="../../_images/cartpole.jpg" /></p></td>
-<td><p><a href="#id181"><span class="problematic" id="id182">|cartpole-camera-presets|</span></a></p></td>
+<td><p><a class="reference external" href="https://github.com/isaac-sim/IsaacLab/blob/develop/source/isaaclab_tasks/isaaclab_tasks/core/cartpole/cartpole_direct_camera_env_cfg.py">Isaac-Cartpole-Camera-Direct</a></p></td>
 <td><p>Move the cart to keep the pole upwards in the classic cartpole control
 and perceptive inputs. Select data type via <code class="docutils literal notranslate"><span class="pre">presets=</span></code>. Requires
 running with <code class="docutils literal notranslate"><span class="pre">--enable_cameras</span></code>.</p></td>
@@ -921,7 +919,7 @@ running with <code class="docutils literal notranslate"><span class="pre">--enab
 <code class="docutils literal notranslate"><span class="pre">simple_shading_*</span></code></p></td>
 </tr>
 <tr class="row-even"><td><p><img alt="cartpole" src="../../_images/cartpole.jpg" /></p></td>
-<td><p><a href="#id183"><span class="problematic" id="id184">|cartpole-camera-link|</span></a></p></td>
+<td><p><a class="reference external" href="https://github.com/isaac-sim/IsaacLab/blob/develop/source/isaaclab_tasks/isaaclab_tasks/core/cartpole/cartpole_manager_camera_env_cfg.py">Isaac-Cartpole-Camera</a></p></td>
 <td><p>Move the cart to keep the pole upwards in the classic cartpole control
 from raw RGB/depth observations or features extracted by pre-trained
 frozen vision encoders. Select pipeline via <code class="docutils literal notranslate"><span class="pre">presets=</span></code>. Requires
@@ -943,9 +941,9 @@ running with <code class="docutils literal notranslate"><span class="pre">--enab
 <p>For many of these tasks, we include configurations with different arm action spaces. For example,
 for the lift-cube environment:</p>
 <ul class="simple">
-<li><p><a href="#id185"><span class="problematic" id="id186">|lift-cube-link|</span></a>: Franka arm with joint position control</p></li>
-<li><p><a href="#id187"><span class="problematic" id="id188">|lift-cube-ik-abs-link|</span></a>: Franka arm with absolute IK control</p></li>
-<li><p><a href="#id189"><span class="problematic" id="id190">|lift-cube-ik-rel-link|</span></a>: Franka arm with relative IK control</p></li>
+<li><p><a class="reference external" href="https://github.com/isaac-sim/IsaacLab/blob/develop/source/isaaclab_tasks/isaaclab_tasks/core/lift/config/franka/joint_pos_env_cfg.py">Isaac-Lift-Cube-Franka</a>: Franka arm with joint position control</p></li>
+<li><p><a class="reference external" href="https://github.com/isaac-sim/IsaacLab/blob/develop/source/isaaclab_tasks/isaaclab_tasks/contrib/lift/config/franka/ik_abs_env_cfg.py">IsaacContrib-Lift-Cube-Franka-IK-Abs</a>: Franka arm with absolute IK control</p></li>
+<li><p><a class="reference external" href="https://github.com/isaac-sim/IsaacLab/blob/develop/source/isaaclab_tasks/isaaclab_tasks/contrib/lift/config/franka/ik_rel_env_cfg.py">IsaacContrib-Lift-Cube-Franka-IK-Rel</a>: Franka arm with relative IK control</p></li>
 </ul>
 <div class="pst-scrollable-table-container"><table class="table">
 <colgroup>
@@ -963,38 +961,38 @@ for the lift-cube environment:</p>
 </thead>
 <tbody>
 <tr class="row-even"><td><p><img alt="reach-franka" src="../../_images/franka_reach.jpg" /></p></td>
-<td><p><a href="#id191"><span class="problematic" id="id192">|reach-franka-link|</span></a></p></td>
+<td><p><a class="reference external" href="https://github.com/isaac-sim/IsaacLab/blob/develop/source/isaaclab_tasks/isaaclab_tasks/core/reach/config/franka/joint_pos_env_cfg.py">Isaac-Reach-Franka</a></p></td>
 <td><p>Move the end-effector to a sampled target pose with the Franka robot</p></td>
 <td><p><strong>physics=</strong> <code class="docutils literal notranslate"><span class="pre">physx</span></code>,
 <code class="docutils literal notranslate"><span class="pre">newton_mjwarp</span></code></p></td>
 </tr>
 <tr class="row-odd"><td><p><img alt="reach-ur10" src="../../_images/ur10_reach.jpg" /></p></td>
-<td><p><a href="#id193"><span class="problematic" id="id194">|reach-ur10-link|</span></a></p></td>
+<td><p><a class="reference external" href="https://github.com/isaac-sim/IsaacLab/blob/develop/source/isaaclab_tasks/isaaclab_tasks/core/reach/config/ur_10/joint_pos_env_cfg.py">Isaac-Reach-UR10</a></p></td>
 <td><p>Move the end-effector to a sampled target pose with the UR10 robot</p></td>
 <td><p><strong>physics=</strong> <code class="docutils literal notranslate"><span class="pre">physx</span></code>,
 <code class="docutils literal notranslate"><span class="pre">newton_mjwarp</span></code></p></td>
 </tr>
 <tr class="row-even"><td><p><img alt="deploy-reach-ur10e" src="../../_images/ur10e_reach.jpg" /></p></td>
-<td><p><a href="#id195"><span class="problematic" id="id196">|deploy-reach-ur10e-link|</span></a></p></td>
+<td><p><a class="reference external" href="https://github.com/isaac-sim/IsaacLab/blob/develop/source/isaaclab_tasks/isaaclab_tasks/contrib/deploy/reach/config/ur_10e/joint_pos_env_cfg.py">IsaacContrib-Deploy-Reach-UR10e</a></p></td>
 <td><p>Move the end-effector to a sampled target pose with the UR10e robot
 This policy has been deployed to a real robot</p></td>
 <td></td>
 </tr>
 <tr class="row-odd"><td><p><img alt="lift-cube" src="../../_images/franka_lift.jpg" /></p></td>
-<td><p><a href="#id197"><span class="problematic" id="id198">|lift-cube-link|</span></a></p></td>
+<td><p><a class="reference external" href="https://github.com/isaac-sim/IsaacLab/blob/develop/source/isaaclab_tasks/isaaclab_tasks/core/lift/config/franka/joint_pos_env_cfg.py">Isaac-Lift-Cube-Franka</a></p></td>
 <td><p>Pick a cube and bring it to a sampled target position with the Franka robot</p></td>
 <td></td>
 </tr>
 <tr class="row-even"><td><p><img alt="lift-soft-franka" src="../../_images/franka-mjwarp-vbd-coupling.png" /></p></td>
-<td><p><a href="#id199"><span class="problematic" id="id200">|lift-soft-franka-link|</span></a></p></td>
+<td><p><a class="reference external" href="https://github.com/isaac-sim/IsaacLab/blob/develop/source/isaaclab_tasks/isaaclab_tasks/core/lift/config/franka_soft/franka_soft_env_cfg.py">Isaac-Lift-Soft-Franka</a></p></td>
 <td><p>Pick a deformable soft body and bring it to a sampled target position with
 the Franka robot</p></td>
 <td><p><strong>physics=</strong> <code class="docutils literal notranslate"><span class="pre">physx</span></code>,
 <code class="docutils literal notranslate"><span class="pre">newton_mjwarp_vbd</span></code></p></td>
 </tr>
 <tr class="row-odd"><td><p><img alt="stack-cube" src="../../_images/franka_stack.jpg" /></p></td>
-<td><p><a href="#id201"><span class="problematic" id="id202">|stack-cube-link|</span></a></p>
-<p><a href="#id203"><span class="problematic" id="id204">|stack-cube-bp-link|</span></a></p>
+<td><p><a class="reference external" href="https://github.com/isaac-sim/IsaacLab/blob/develop/source/isaaclab_tasks/isaaclab_tasks/contrib/stack/config/franka/stack_joint_pos_env_cfg.py">IsaacContrib-Stack-Cube-Franka</a></p>
+<p><a class="reference external" href="https://github.com/isaac-sim/IsaacLab/blob/develop/source/isaaclab_tasks/isaaclab_tasks/contrib/stack/config/franka/stack_ik_rel_blueprint_env_cfg.py">IsaacContrib-Stack-Cube-Franka-IK-Rel-Blueprint</a></p>
 </td>
 <td><p>Stack three cubes (bottom to top: blue, red, green) with the Franka robot.
 Blueprint env used for the NVIDIA Isaac GR00T blueprint for synthetic
@@ -1002,8 +1000,8 @@ manipulation motion generation</p></td>
 <td></td>
 </tr>
 <tr class="row-even"><td><p><img alt="surface-gripper" src="../../_images/ur10_stack_surface_gripper.jpg" /></p></td>
-<td><p><a href="#id205"><span class="problematic" id="id206">|long-suction-link|</span></a></p>
-<p><a href="#id207"><span class="problematic" id="id208">|short-suction-link|</span></a></p>
+<td><p><a class="reference external" href="https://github.com/isaac-sim/IsaacLab/blob/develop/source/isaaclab_tasks/isaaclab_tasks/contrib/stack/config/ur10_gripper/stack_ik_rel_env_cfg.py">IsaacContrib-Stack-Cube-UR10-Long-Suction-IK-Rel</a></p>
+<p><a class="reference external" href="https://github.com/isaac-sim/IsaacLab/blob/develop/source/isaaclab_tasks/isaaclab_tasks/contrib/stack/config/ur10_gripper/stack_ik_rel_env_cfg.py">IsaacContrib-Stack-Cube-UR10-Short-Suction-IK-Rel</a></p>
 </td>
 <td><p>Stack three cubes (bottom to top: blue, red, green)
 with the UR10 arm and long surface gripper
@@ -1011,16 +1009,16 @@ or short surface gripper (cpu only).</p></td>
 <td></td>
 </tr>
 <tr class="row-odd"><td><p><img alt="cabi-franka" src="../../_images/franka_open_drawer.jpg" /></p></td>
-<td><p><a href="#id209"><span class="problematic" id="id210">|cabi-franka-link|</span></a></p>
-<p><a href="#id211"><span class="problematic" id="id212">|franka-direct-link|</span></a></p>
+<td><p><a class="reference external" href="https://github.com/isaac-sim/IsaacLab/blob/develop/source/isaaclab_tasks/isaaclab_tasks/core/cabinet/config/franka/joint_pos_env_cfg.py">Isaac-Open-Drawer-Franka</a></p>
+<p><a class="reference external" href="https://github.com/isaac-sim/IsaacLab/blob/develop/source/isaaclab_tasks/isaaclab_tasks/core/cabinet/cabinet_direct_env.py">Isaac-Open-Drawer-Franka-Direct</a></p>
 </td>
 <td><p>Grasp the handle of a cabinet’s drawer and open it with the Franka robot</p></td>
 <td><p><strong>physics=</strong> <code class="docutils literal notranslate"><span class="pre">physx</span></code>,
 <code class="docutils literal notranslate"><span class="pre">newton_mjwarp</span></code></p></td>
 </tr>
 <tr class="row-even"><td><p><img alt="cube-allegro" src="../../_images/allegro_cube.jpg" /></p></td>
-<td><p><a href="#id213"><span class="problematic" id="id214">|cube-allegro-link|</span></a></p>
-<p><a href="#id215"><span class="problematic" id="id216">|allegro-direct-link|</span></a></p>
+<td><p><a class="reference external" href="https://github.com/isaac-sim/IsaacLab/blob/develop/source/isaaclab_tasks/isaaclab_tasks/core/reorient/config/allegro_hand/allegro_hand_manager_env_cfg.py">Isaac-Reorient-Cube-Allegro</a></p>
+<p><a class="reference external" href="https://github.com/isaac-sim/IsaacLab/blob/develop/source/isaaclab_tasks/isaaclab_tasks/core/reorient/config/allegro_hand/allegro_hand_direct_env_cfg.py">Isaac-Reorient-Cube-Allegro-Direct</a></p>
 </td>
 <td><p>In-hand reorientation of a cube using Allegro hand</p></td>
 <td><p><strong>physics=</strong> <code class="docutils literal notranslate"><span class="pre">physx</span></code>,
@@ -1028,16 +1026,16 @@ or short surface gripper (cpu only).</p></td>
 <code class="docutils literal notranslate"><span class="pre">ovphysx</span></code> (direct only)</p></td>
 </tr>
 <tr class="row-odd"><td><p><img alt="cube-shadow" src="../../_images/shadow_cube.jpg" /></p></td>
-<td><p><a href="#id217"><span class="problematic" id="id218">|cube-shadow-link|</span></a></p>
-<p><a href="#id219"><span class="problematic" id="id220">|cube-shadow-ff-link|</span></a></p>
-<p><a href="#id221"><span class="problematic" id="id222">|cube-shadow-lstm-link|</span></a></p>
+<td><p><a class="reference external" href="https://github.com/isaac-sim/IsaacLab/blob/develop/source/isaaclab_tasks/isaaclab_tasks/core/reorient/config/shadow_hand/shadow_hand_env_cfg.py">Isaac-Reorient-Cube-Shadow-Direct</a></p>
+<p><a class="reference external" href="https://github.com/isaac-sim/IsaacLab/blob/develop/source/isaaclab_tasks/isaaclab_tasks/core/reorient/config/shadow_hand/shadow_hand_env_cfg.py">Isaac-Reorient-Cube-Shadow-OpenAI-FF-Direct</a></p>
+<p><a class="reference external" href="https://github.com/isaac-sim/IsaacLab/blob/develop/source/isaaclab_tasks/isaaclab_tasks/core/reorient/config/shadow_hand/shadow_hand_env_cfg.py">Isaac-Reorient-Cube-Shadow-OpenAI-LSTM-Direct</a></p>
 </td>
 <td><p>In-hand reorientation of a cube using Shadow hand</p></td>
 <td><p><strong>physics=</strong> <code class="docutils literal notranslate"><span class="pre">physx</span></code>,
 <code class="docutils literal notranslate"><span class="pre">newton_mjwarp</span></code></p></td>
 </tr>
 <tr class="row-even"><td><p><img alt="cube-shadow" src="../../_images/shadow_cube.jpg" /></p></td>
-<td><p><a href="#id223"><span class="problematic" id="id224">|cube-shadow-vis-link|</span></a></p></td>
+<td><p><a class="reference external" href="https://github.com/isaac-sim/IsaacLab/blob/develop/source/isaaclab_tasks/isaaclab_tasks/core/reorient/config/shadow_hand/shadow_hand_camera_env.py">Isaac-Reorient-Cube-Shadow-Camera-Direct</a></p></td>
 <td><p>In-hand reorientation of a cube using Shadow hand using perceptive inputs.
 Requires running with <code class="docutils literal notranslate"><span class="pre">--enable_cameras</span></code>.</p></td>
 <td><p><strong>physics=</strong> <code class="docutils literal notranslate"><span class="pre">physx</span></code>,
@@ -1053,29 +1051,29 @@ Requires running with <code class="docutils literal notranslate"><span class="pr
 <code class="docutils literal notranslate"><span class="pre">simple_shading_*</span></code></p></td>
 </tr>
 <tr class="row-odd"><td><p><img alt="gr1_pick_place" src="../../_images/gr-1_pick_place.jpg" /></p></td>
-<td><p><a href="#id225"><span class="problematic" id="id226">|gr1_pick_place-link|</span></a></p></td>
+<td><p><a class="reference external" href="https://github.com/isaac-sim/IsaacLab/blob/develop/source/isaaclab_tasks/isaaclab_tasks/contrib/pick_place/pickplace_gr1t2_env_cfg.py">IsaacContrib-PickPlace-GR1T2-Abs</a></p></td>
 <td><p>Pick up and place an object in a basket with a GR-1 humanoid robot</p></td>
 <td><p><strong>physics=</strong> <code class="docutils literal notranslate"><span class="pre">physx</span></code></p></td>
 </tr>
 <tr class="row-even"><td><p><img alt="gr1_pp_waist" src="../../_images/gr-1_pick_place_waist.jpg" /></p></td>
-<td><p><a href="#id227"><span class="problematic" id="id228">|gr1_pp_waist-link|</span></a></p></td>
+<td><p><a class="reference external" href="https://github.com/isaac-sim/IsaacLab/blob/develop/source/isaaclab_tasks/isaaclab_tasks/contrib/pick_place/pickplace_gr1t2_waist_enabled_env_cfg.py">IsaacContrib-PickPlace-GR1T2-WaistEnabled-Abs</a></p></td>
 <td><p>Pick up and place an object in a basket with a GR-1 humanoid robot
 with waist degrees-of-freedom enables that provides a wider reach space.</p></td>
 <td><p><strong>physics=</strong> <code class="docutils literal notranslate"><span class="pre">physx</span></code></p></td>
 </tr>
 <tr class="row-odd"><td><p><img alt="g1_pick_place" src="../../_images/g1_pick_place.jpg" /></p></td>
-<td><p><a href="#id229"><span class="problematic" id="id230">|g1_pick_place-link|</span></a></p></td>
+<td><p><a class="reference external" href="https://github.com/isaac-sim/IsaacLab/blob/develop/source/isaaclab_tasks/isaaclab_tasks/contrib/pick_place/pickplace_unitree_g1_inspire_hand_env_cfg.py">IsaacContrib-PickPlace-G1-InspireFTP-Abs</a></p></td>
 <td><p>Pick up and place an object in a basket with a Unitree G1 humanoid robot</p></td>
 <td><p><strong>physics=</strong> <code class="docutils literal notranslate"><span class="pre">physx</span></code></p></td>
 </tr>
 <tr class="row-even"><td><p><img alt="g1_pick_place_fixed" src="../../_images/g1_pick_place_fixed_base.jpg" /></p></td>
-<td><p><a href="#id231"><span class="problematic" id="id232">|g1_pick_place_fixed-link|</span></a></p></td>
+<td><p><a class="reference external" href="https://github.com/isaac-sim/IsaacLab/blob/develop/source/isaaclab_tasks/isaaclab_tasks/contrib/locomanip_pick_place/fixed_base_upper_body_ik_g1_env_cfg.py">IsaacContrib-PickPlace-FixedBaseUpperBodyIK-G1-Abs</a></p></td>
 <td><p>Pick up and place an object in a basket with a Unitree G1 humanoid robot
 with three-fingered hands. Robot is set up with the base fixed in place.</p></td>
 <td><p><strong>physics=</strong> <code class="docutils literal notranslate"><span class="pre">physx</span></code></p></td>
 </tr>
 <tr class="row-odd"><td><p><img alt="g1_pick_place_lm" src="../../_images/g1_pick_place_locomanipulation.jpg" /></p></td>
-<td><p><a href="#id233"><span class="problematic" id="id234">|g1_pick_place_lm-link|</span></a></p></td>
+<td><p><a class="reference external" href="https://github.com/isaac-sim/IsaacLab/blob/develop/source/isaaclab_tasks/isaaclab_tasks/contrib/locomanip_pick_place/locomanipulation_g1_env_cfg.py">IsaacContrib-PickPlace-Locomanipulation-G1-Abs</a></p></td>
 <td><p>Pick up and place an object in a basket with a Unitree G1 humanoid robot
 with three-fingered hands and in-place locomanipulation capabilities
 enabled (i.e. Robot lower body balances in-place while upper body is
@@ -1083,13 +1081,13 @@ controlled via Inverse Kinematics).</p></td>
 <td><p><strong>physics=</strong> <code class="docutils literal notranslate"><span class="pre">physx</span></code></p></td>
 </tr>
 <tr class="row-even"><td><p><img alt="kuka-allegro-lift" src="../../_images/kuka_allegro_lift.jpg" /></p></td>
-<td><p><a href="#id235"><span class="problematic" id="id236">|kuka-allegro-lift-link|</span></a></p></td>
+<td><p><a class="reference external" href="https://github.com/isaac-sim/IsaacLab/blob/develop/source/isaaclab_tasks/isaaclab_tasks/core/dexsuite/config/kuka_allegro/dexsuite_kuka_allegro_env_cfg.py">Isaac-Lift-KukaAllegro</a></p></td>
 <td><p>Pick up a primitive shape on the table and lift it to target position.</p></td>
 <td><p><strong>physics=</strong> <code class="docutils literal notranslate"><span class="pre">physx</span></code>,
 <code class="docutils literal notranslate"><span class="pre">newton_mjwarp</span></code></p></td>
 </tr>
 <tr class="row-odd"><td><p><img alt="kuka-allegro-lift" src="../../_images/kuka_allegro_lift.jpg" /></p></td>
-<td><p><a href="#id237"><span class="problematic" id="id238">|ka-lift-cam-link|</span></a></p></td>
+<td><p><a class="reference external" href="https://github.com/isaac-sim/IsaacLab/blob/develop/source/isaaclab_tasks/isaaclab_tasks/core/dexsuite/config/kuka_allegro/dexsuite_kuka_allegro_camera_env_cfg.py">Isaac-Lift-KukaAllegro-Camera</a></p></td>
 <td><p>Camera (vision) variant of the lift task, adding single- and dual-camera
 observations via <code class="docutils literal notranslate"><span class="pre">presets=single_camera</span></code> / <code class="docutils literal notranslate"><span class="pre">presets=duo_camera</span></code>.</p></td>
 <td><p><strong>physics=</strong> <code class="docutils literal notranslate"><span class="pre">physx</span></code>,
@@ -1106,13 +1104,13 @@ observations via <code class="docutils literal notranslate"><span class="pre">pr
 <code class="docutils literal notranslate"><span class="pre">simple_shading_*{..}</span></code></p></td>
 </tr>
 <tr class="row-even"><td><p><img alt="kuka-allegro-reorient" src="../../_images/kuka_allegro_reorient.jpg" /></p></td>
-<td><p><a href="#id239"><span class="problematic" id="id240">|kuka-allegro-reorient-link|</span></a></p></td>
+<td><p><a class="reference external" href="https://github.com/isaac-sim/IsaacLab/blob/develop/source/isaaclab_tasks/isaaclab_tasks/core/dexsuite/config/kuka_allegro/dexsuite_kuka_allegro_env_cfg.py">Isaac-Reorient-KukaAllegro</a></p></td>
 <td><p>Pick up a primitive shape on the table and orient it to target pose.</p></td>
 <td><p><strong>physics=</strong> <code class="docutils literal notranslate"><span class="pre">physx</span></code>,
 <code class="docutils literal notranslate"><span class="pre">newton_mjwarp</span></code></p></td>
 </tr>
 <tr class="row-odd"><td><p><img alt="kuka-allegro-reorient" src="../../_images/kuka_allegro_reorient.jpg" /></p></td>
-<td><p><a href="#id241"><span class="problematic" id="id242">|ka-reorient-cam-link|</span></a></p></td>
+<td><p><a class="reference external" href="https://github.com/isaac-sim/IsaacLab/blob/develop/source/isaaclab_tasks/isaaclab_tasks/core/dexsuite/config/kuka_allegro/dexsuite_kuka_allegro_camera_env_cfg.py">Isaac-Reorient-KukaAllegro-Camera</a></p></td>
 <td><p>Camera (vision) variant of the reorient task, adding single- and
 dual-camera observations via <code class="docutils literal notranslate"><span class="pre">presets=single_camera</span></code> /
 <code class="docutils literal notranslate"><span class="pre">presets=duo_camera</span></code>.</p></td>
@@ -1130,43 +1128,43 @@ dual-camera observations via <code class="docutils literal notranslate"><span cl
 <code class="docutils literal notranslate"><span class="pre">simple_shading_*{..}</span></code></p></td>
 </tr>
 <tr class="row-even"><td><p><img alt="galbot_stack" src="../../_images/galbot_stack_cube.jpg" /></p></td>
-<td><p><a href="#id243"><span class="problematic" id="id244">|galbot_stack-link|</span></a></p></td>
+<td><p><a class="reference external" href="https://github.com/isaac-sim/IsaacLab/blob/develop/source/isaaclab_tasks/isaaclab_tasks/contrib/stack/config/galbot/stack_rmp_rel_env_cfg.py">IsaacContrib-Stack-Cube-Galbot-Left-Arm-Gripper-RmpFlow</a></p></td>
 <td><p>Stack three cubes (bottom to top: blue, red, green) with the left arm of
 a Galbot humanoid robot</p></td>
 <td><p><strong>physics=</strong> <code class="docutils literal notranslate"><span class="pre">physx</span></code></p></td>
 </tr>
 <tr class="row-odd"><td><p><img alt="agibot_place_mug" src="../../_images/agibot_place_mug.jpg" /></p></td>
-<td><p><a href="#id245"><span class="problematic" id="id246">|agibot_place_mug-link|</span></a></p></td>
+<td><p><a class="reference external" href="https://github.com/isaac-sim/IsaacLab/blob/develop/source/isaaclab_tasks/isaaclab_tasks/contrib/place/config/agibot/place_upright_mug_rmp_rel_env_cfg.py">IsaacContrib-Place-Mug-Agibot-Left-Arm-RmpFlow</a></p></td>
 <td><p>Pick up and place a mug upright with a Agibot A2D humanoid robot</p></td>
 <td></td>
 </tr>
 <tr class="row-even"><td><p><img alt="agibot_place_toy" src="../../_images/agibot_place_toy.jpg" /></p></td>
-<td><p><a href="#id247"><span class="problematic" id="id248">|agibot_place_toy-link|</span></a></p></td>
+<td><p><a class="reference external" href="https://github.com/isaac-sim/IsaacLab/blob/develop/source/isaaclab_tasks/isaaclab_tasks/contrib/place/config/agibot/place_toy2box_rmp_rel_env_cfg.py">IsaacContrib-Place-Toy2Box-Agibot-Right-Arm-RmpFlow</a></p></td>
 <td><p>Pick up and place an object in a box with a Agibot A2D humanoid robot</p></td>
 <td></td>
 </tr>
 <tr class="row-odd"><td><p><img alt="reach_openarm_bi" src="../../_images/openarm_bi_reach.jpg" /></p></td>
-<td><p><a href="#id249"><span class="problematic" id="id250">|reach_openarm_bi-link|</span></a></p></td>
+<td><p><a class="reference external" href="https://github.com/isaac-sim/IsaacLab/blob/develop/source/isaaclab_tasks/isaaclab_tasks/contrib/reach/config/openarm/bimanual/joint_pos_env_cfg.py">IsaacContrib-Reach-OpenArmBi</a></p></td>
 <td><p>Move the end-effector to sampled target poses with the OpenArm robot</p></td>
 <td></td>
 </tr>
 <tr class="row-even"><td><p><img alt="reach_openarm_uni" src="../../_images/openarm_uni_reach.jpg" /></p></td>
-<td><p><a href="#id251"><span class="problematic" id="id252">|reach_openarm_uni-link|</span></a></p></td>
+<td><p><a class="reference external" href="https://github.com/isaac-sim/IsaacLab/blob/develop/source/isaaclab_tasks/isaaclab_tasks/contrib/reach/config/openarm/unimanual/joint_pos_env_cfg.py">IsaacContrib-Reach-OpenArm</a></p></td>
 <td><p>Move the end-effector to a sampled target pose with the OpenArm robot</p></td>
 <td></td>
 </tr>
 <tr class="row-odd"><td><p><img alt="lift_openarm_uni" src="../../_images/openarm_uni_lift.jpg" /></p></td>
-<td><p><a href="#id253"><span class="problematic" id="id254">|lift_openarm_uni-link|</span></a></p></td>
+<td><p><a class="reference external" href="https://github.com/isaac-sim/IsaacLab/blob/develop/source/isaaclab_tasks/isaaclab_tasks/contrib/lift/config/openarm/joint_pos_env_cfg.py">IsaacContrib-Lift-Cube-OpenArm</a></p></td>
 <td><p>Pick a cube and bring it to a sampled target position with the OpenArm robot</p></td>
 <td></td>
 </tr>
 <tr class="row-even"><td><p><img alt="cabi_openarm_uni" src="../../_images/openarm_uni_open_drawer.jpg" /></p></td>
-<td><p><a href="#id255"><span class="problematic" id="id256">|cabi_openarm_uni-link|</span></a></p></td>
+<td><p><a class="reference external" href="https://github.com/isaac-sim/IsaacLab/blob/develop/source/isaaclab_tasks/isaaclab_tasks/contrib/cabinet/config/openarm/joint_pos_env_cfg.py">IsaacContrib-Open-Drawer-OpenArm</a></p></td>
 <td><p>Grasp the handle of a cabinet’s drawer and open it with the OpenArm robot</p></td>
 <td></td>
 </tr>
 <tr class="row-odd"><td><p><img alt="g1_assemble_trocar" src="../../_images/g1_assemble_trocar.jpg" /></p></td>
-<td><p><a href="#id257"><span class="problematic" id="id258">|g1_assemble_trocar-link|</span></a></p></td>
+<td><p><a class="reference external" href="https://github.com/isaac-sim/IsaacLab/blob/develop/source/isaaclab_tasks/isaaclab_tasks/contrib/assemble_trocar/g129_dex3_env_cfg.py">IsaacContrib-Assemble-Trocar-G129-Dex3</a></p></td>
 <td><p>Assemble trocar with a Unitree G1 humanoid robot with Dex3 hands</p></td>
 <td></td>
 </tr>
@@ -1180,9 +1178,9 @@ a Galbot humanoid robot</p></td>
 <p>These tasks share the same task configurations and control options. You can switch between them by specifying the task name.
 For example:</p>
 <ul class="simple">
-<li><p><a href="#id259"><span class="problematic" id="id260">|factory-peg-link|</span></a>: Peg insertion with the Franka arm</p></li>
-<li><p><a href="#id261"><span class="problematic" id="id262">|factory-gear-link|</span></a>: Gear meshing with the Franka arm</p></li>
-<li><p><a href="#id263"><span class="problematic" id="id264">|factory-nut-link|</span></a>: Nut-Bolt fastening with the Franka arm</p></li>
+<li><p><a class="reference external" href="https://github.com/isaac-sim/IsaacLab/blob/develop/source/isaaclab_tasks/isaaclab_tasks/contrib/factory/factory_env_cfg.py">Isaac-Factory-PegInsert-Direct</a>: Peg insertion with the Franka arm</p></li>
+<li><p><a class="reference external" href="https://github.com/isaac-sim/IsaacLab/blob/develop/source/isaaclab_tasks/isaaclab_tasks/contrib/factory/factory_env_cfg.py">Isaac-Factory-GearMesh-Direct</a>: Gear meshing with the Franka arm</p></li>
+<li><p><a class="reference external" href="https://github.com/isaac-sim/IsaacLab/blob/develop/source/isaaclab_tasks/isaaclab_tasks/contrib/factory/factory_env_cfg.py">Isaac-Factory-NutThread-Direct</a>: Nut-Bolt fastening with the Franka arm</p></li>
 </ul>
 <div class="pst-scrollable-table-container"><table class="table">
 <colgroup>
@@ -1200,17 +1198,17 @@ For example:</p>
 </thead>
 <tbody>
 <tr class="row-even"><td><p><img alt="factory-peg" src="../../_images/peg_insert.jpg" /></p></td>
-<td><p><a href="#id265"><span class="problematic" id="id266">|factory-peg-link|</span></a></p></td>
+<td><p><a class="reference external" href="https://github.com/isaac-sim/IsaacLab/blob/develop/source/isaaclab_tasks/isaaclab_tasks/contrib/factory/factory_env_cfg.py">Isaac-Factory-PegInsert-Direct</a></p></td>
 <td><p>Insert peg into the socket with the Franka robot</p></td>
 <td></td>
 </tr>
 <tr class="row-odd"><td><p><img alt="factory-gear" src="../../_images/gear_mesh.jpg" /></p></td>
-<td><p><a href="#id267"><span class="problematic" id="id268">|factory-gear-link|</span></a></p></td>
+<td><p><a class="reference external" href="https://github.com/isaac-sim/IsaacLab/blob/develop/source/isaaclab_tasks/isaaclab_tasks/contrib/factory/factory_env_cfg.py">Isaac-Factory-GearMesh-Direct</a></p></td>
 <td><p>Insert and mesh gear into the base with other gears, using the Franka robot</p></td>
 <td></td>
 </tr>
 <tr class="row-even"><td><p><img alt="factory-nut" src="../../_images/nut_thread.jpg" /></p></td>
-<td><p><a href="#id269"><span class="problematic" id="id270">|factory-nut-link|</span></a></p></td>
+<td><p><a class="reference external" href="https://github.com/isaac-sim/IsaacLab/blob/develop/source/isaaclab_tasks/isaaclab_tasks/contrib/factory/factory_env_cfg.py">Isaac-Factory-NutThread-Direct</a></p></td>
 <td><p>Thread the nut onto the first 2 threads of the bolt, using the Franka robot</p></td>
 <td></td>
 </tr>
@@ -1243,8 +1241,8 @@ pip<span class="w"> </span>install<span class="w"> </span>numba-cuda<span class=
 </div>
 </div>
 <ul class="simple">
-<li><p><a href="#id271"><span class="problematic" id="id272">|disassembly-link|</span></a>: The plug starts inserted in the socket. A low-level controller lifts the plug out and moves it to a random position. This process is purely scripted and does not involve any learned policy. Therefore, it does not require policy training or evaluation. The resulting trajectories serve as demonstrations for the reverse process, i.e., learning to assemble. To run disassembly for a specific task: <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">source/isaaclab_tasks/isaaclab_tasks/contrib/automate/run_disassembly_w_id.py</span> <span class="pre">--assembly_id=ASSEMBLY_ID</span> <span class="pre">--disassembly_dir=DISASSEMBLY_DIR</span></code>. All generated trajectories are saved to a local directory <code class="docutils literal notranslate"><span class="pre">DISASSEMBLY_DIR</span></code>.</p></li>
-<li><p><a href="#id273"><span class="problematic" id="id274">|assembly-link|</span></a>: The goal is to insert the plug into the socket. You can use this environment to train a policy via reinforcement learning or evaluate a pre-trained checkpoint.</p>
+<li><p><a class="reference external" href="https://github.com/isaac-sim/IsaacLab/blob/develop/source/isaaclab_tasks/isaaclab_tasks/contrib/automate/disassembly_env_cfg.py">Isaac-AutoMate-Disassembly-Direct</a>: The plug starts inserted in the socket. A low-level controller lifts the plug out and moves it to a random position. This process is purely scripted and does not involve any learned policy. Therefore, it does not require policy training or evaluation. The resulting trajectories serve as demonstrations for the reverse process, i.e., learning to assemble. To run disassembly for a specific task: <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">source/isaaclab_tasks/isaaclab_tasks/contrib/automate/run_disassembly_w_id.py</span> <span class="pre">--assembly_id=ASSEMBLY_ID</span> <span class="pre">--disassembly_dir=DISASSEMBLY_DIR</span></code>. All generated trajectories are saved to a local directory <code class="docutils literal notranslate"><span class="pre">DISASSEMBLY_DIR</span></code>.</p></li>
+<li><p><a class="reference external" href="https://github.com/isaac-sim/IsaacLab/blob/develop/source/isaaclab_tasks/isaaclab_tasks/contrib/automate/assembly_env_cfg.py">Isaac-AutoMate-Assembly-Direct</a>: The goal is to insert the plug into the socket. You can use this environment to train a policy via reinforcement learning or evaluate a pre-trained checkpoint.</p>
 <ul>
 <li><p>To train an assembly policy, we run the command <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">source/isaaclab_tasks/isaaclab_tasks/contrib/automate/run_w_id.py</span> <span class="pre">--assembly_id=ASSEMBLY_ID</span> <span class="pre">--train</span></code>. We can customize the training process using the optional flags: <code class="docutils literal notranslate"><span class="pre">--max_iterations=MAX_ITERATIONS</span></code> to set the number of training iterations, <code class="docutils literal notranslate"><span class="pre">--num_envs=NUM_ENVS</span></code> to set the number of parallel environments during training, <code class="docutils literal notranslate"><span class="pre">--seed=SEED</span></code> to assign the random seed. The policy checkpoints will be saved automatically during training in the directory <code class="docutils literal notranslate"><span class="pre">logs/rl_games/Assembly/test</span></code>.</p></li>
 <li><p>To evaluate an assembly policy, we run the command <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">source/isaaclab_tasks/isaaclab_tasks/contrib/automate/run_w_id.py</span> <span class="pre">--assembly_id=ASSEMBLY_ID</span> <span class="pre">--checkpoint=CHECKPOINT</span> <span class="pre">--log_eval</span></code>. The evaluation results are stored in <code class="docutils literal notranslate"><span class="pre">evaluation_{ASSEMBLY_ID}.h5</span></code>.</p></li>
@@ -1267,12 +1265,12 @@ pip<span class="w"> </span>install<span class="w"> </span>numba-cuda<span class=
 </thead>
 <tbody>
 <tr class="row-even"><td><p><img alt="disassembly" src="../../_images/01053_disassembly.jpg" /></p></td>
-<td><p><a href="#id275"><span class="problematic" id="id276">|disassembly-link|</span></a></p></td>
+<td><p><a class="reference external" href="https://github.com/isaac-sim/IsaacLab/blob/develop/source/isaaclab_tasks/isaaclab_tasks/contrib/automate/disassembly_env_cfg.py">Isaac-AutoMate-Disassembly-Direct</a></p></td>
 <td><p>Lift a plug out of the socket with the Franka robot</p></td>
 <td></td>
 </tr>
 <tr class="row-odd"><td><p><img alt="assembly" src="../../_images/00004.jpg" /></p></td>
-<td><p><a href="#id277"><span class="problematic" id="id278">|assembly-link|</span></a></p></td>
+<td><p><a class="reference external" href="https://github.com/isaac-sim/IsaacLab/blob/develop/source/isaaclab_tasks/isaaclab_tasks/contrib/automate/assembly_env_cfg.py">Isaac-AutoMate-Assembly-Direct</a></p></td>
 <td><p>Insert a plug into its corresponding socket with the Franka robot</p></td>
 <td></td>
 </tr>
@@ -1291,9 +1289,9 @@ pip<span class="w"> </span>install<span class="w"> </span>numba-cuda<span class=
 </ul>
 <p>These tasks share the same task configurations and control options. You can switch between them by specifying the task name.</p>
 <ul class="simple">
-<li><p><a href="#id279"><span class="problematic" id="id280">|forge-peg-link|</span></a>: Peg insertion with the Franka arm</p></li>
-<li><p><a href="#id281"><span class="problematic" id="id282">|forge-gear-link|</span></a>: Gear meshing with the Franka arm</p></li>
-<li><p><a href="#id283"><span class="problematic" id="id284">|forge-nut-link|</span></a>: Nut-Bolt fastening with the Franka arm</p></li>
+<li><p><a class="reference external" href="https://github.com/isaac-sim/IsaacLab/blob/develop/source/isaaclab_tasks/isaaclab_tasks/contrib/forge/forge_env_cfg.py">Isaac-Forge-PegInsert-Direct</a>: Peg insertion with the Franka arm</p></li>
+<li><p><a class="reference external" href="https://github.com/isaac-sim/IsaacLab/blob/develop/source/isaaclab_tasks/isaaclab_tasks/contrib/forge/forge_env_cfg.py">Isaac-Forge-GearMesh-Direct</a>: Gear meshing with the Franka arm</p></li>
+<li><p><a class="reference external" href="https://github.com/isaac-sim/IsaacLab/blob/develop/source/isaaclab_tasks/isaaclab_tasks/contrib/forge/forge_env_cfg.py">Isaac-Forge-NutThread-Direct</a>: Nut-Bolt fastening with the Franka arm</p></li>
 </ul>
 <div class="pst-scrollable-table-container"><table class="table">
 <colgroup>
@@ -1311,17 +1309,17 @@ pip<span class="w"> </span>install<span class="w"> </span>numba-cuda<span class=
 </thead>
 <tbody>
 <tr class="row-even"><td><p><img alt="forge-peg" src="../../_images/peg_insert.jpg" /></p></td>
-<td><p><a href="#id285"><span class="problematic" id="id286">|forge-peg-link|</span></a></p></td>
+<td><p><a class="reference external" href="https://github.com/isaac-sim/IsaacLab/blob/develop/source/isaaclab_tasks/isaaclab_tasks/contrib/forge/forge_env_cfg.py">Isaac-Forge-PegInsert-Direct</a></p></td>
 <td><p>Insert peg into the socket with the Franka robot</p></td>
 <td></td>
 </tr>
 <tr class="row-odd"><td><p><img alt="forge-gear" src="../../_images/gear_mesh.jpg" /></p></td>
-<td><p><a href="#id287"><span class="problematic" id="id288">|forge-gear-link|</span></a></p></td>
+<td><p><a class="reference external" href="https://github.com/isaac-sim/IsaacLab/blob/develop/source/isaaclab_tasks/isaaclab_tasks/contrib/forge/forge_env_cfg.py">Isaac-Forge-GearMesh-Direct</a></p></td>
 <td><p>Insert and mesh gear into the base with other gears, using the Franka robot</p></td>
 <td></td>
 </tr>
 <tr class="row-even"><td><p><img alt="forge-nut" src="../../_images/nut_thread.jpg" /></p></td>
-<td><p><a href="#id289"><span class="problematic" id="id290">|forge-nut-link|</span></a></p></td>
+<td><p><a class="reference external" href="https://github.com/isaac-sim/IsaacLab/blob/develop/source/isaaclab_tasks/isaaclab_tasks/contrib/forge/forge_env_cfg.py">Isaac-Forge-NutThread-Direct</a></p></td>
 <td><p>Thread the nut onto the first 2 threads of the bolt, using the Franka robot</p></td>
 <td></td>
 </tr>
@@ -1348,20 +1346,20 @@ pip<span class="w"> </span>install<span class="w"> </span>numba-cuda<span class=
 </thead>
 <tbody>
 <tr class="row-even"><td><p><img alt="velocity-flat-anymal-b" src="../../_images/anymal_b_flat.jpg" /></p></td>
-<td><p><a href="#id291"><span class="problematic" id="id292">|velocity-flat-anymal-b-link|</span></a></p></td>
+<td><p><a class="reference external" href="https://github.com/isaac-sim/IsaacLab/blob/develop/source/isaaclab_tasks/isaaclab_tasks/contrib/velocity/config/anymal_b/flat_env_cfg.py">IsaacContrib-Velocity-Flat-AnymalB</a></p></td>
 <td><p>Track a velocity command on flat terrain with the Anymal B robot</p></td>
 <td><p><strong>physics=</strong> <code class="docutils literal notranslate"><span class="pre">physx</span></code>,
 <code class="docutils literal notranslate"><span class="pre">newton_mjwarp</span></code></p></td>
 </tr>
 <tr class="row-odd"><td><p><img alt="velocity-rough-anymal-b" src="../../_images/anymal_b_rough.jpg" /></p></td>
-<td><p><a href="#id293"><span class="problematic" id="id294">|velocity-rough-anymal-b-link|</span></a></p></td>
+<td><p><a class="reference external" href="https://github.com/isaac-sim/IsaacLab/blob/develop/source/isaaclab_tasks/isaaclab_tasks/contrib/velocity/config/anymal_b/rough_env_cfg.py">IsaacContrib-Velocity-Rough-AnymalB</a></p></td>
 <td><p>Track a velocity command on rough terrain with the Anymal B robot</p></td>
 <td><p><strong>physics=</strong> <code class="docutils literal notranslate"><span class="pre">physx</span></code>,
 <code class="docutils literal notranslate"><span class="pre">newton_mjwarp</span></code></p></td>
 </tr>
 <tr class="row-even"><td><p><img alt="velocity-flat-anymal-c" src="../../_images/anymal_c_flat.jpg" /></p></td>
-<td><p><a href="#id295"><span class="problematic" id="id296">|velocity-flat-anymal-c-link|</span></a></p>
-<p><a href="#id297"><span class="problematic" id="id298">|velocity-flat-anymal-c-direct-link|</span></a></p>
+<td><p><a class="reference external" href="https://github.com/isaac-sim/IsaacLab/blob/develop/source/isaaclab_tasks/isaaclab_tasks/contrib/velocity/config/anymal_c/flat_env_cfg.py">IsaacContrib-Velocity-Flat-AnymalC</a></p>
+<p><a class="reference external" href="https://github.com/isaac-sim/IsaacLab/blob/develop/source/isaaclab_tasks/isaaclab_tasks/contrib/anymal_c_direct/anymal_c_env.py">Isaac-Velocity-Flat-AnymalC-Direct</a></p>
 </td>
 <td><p>Track a velocity command on flat terrain with the Anymal C robot</p></td>
 <td><p><strong>physics=</strong> <code class="docutils literal notranslate"><span class="pre">physx</span></code>,
@@ -1369,8 +1367,8 @@ pip<span class="w"> </span>install<span class="w"> </span>numba-cuda<span class=
 (Manager-based only)</p></td>
 </tr>
 <tr class="row-odd"><td><p><img alt="velocity-rough-anymal-c" src="../../_images/anymal_c_rough.jpg" /></p></td>
-<td><p><a href="#id299"><span class="problematic" id="id300">|velocity-rough-anymal-c-link|</span></a></p>
-<p><a href="#id301"><span class="problematic" id="id302">|velocity-rough-anymal-c-direct-link|</span></a></p>
+<td><p><a class="reference external" href="https://github.com/isaac-sim/IsaacLab/blob/develop/source/isaaclab_tasks/isaaclab_tasks/contrib/velocity/config/anymal_c/rough_env_cfg.py">IsaacContrib-Velocity-Rough-AnymalC</a></p>
+<p><a class="reference external" href="https://github.com/isaac-sim/IsaacLab/blob/develop/source/isaaclab_tasks/isaaclab_tasks/contrib/anymal_c_direct/anymal_c_env.py">Isaac-Velocity-Rough-AnymalC-Direct</a></p>
 </td>
 <td><p>Track a velocity command on rough terrain with the Anymal C robot</p></td>
 <td><p><strong>physics=</strong> <code class="docutils literal notranslate"><span class="pre">physx</span></code>,
@@ -1378,96 +1376,96 @@ pip<span class="w"> </span>install<span class="w"> </span>numba-cuda<span class=
 (Manager-based only)</p></td>
 </tr>
 <tr class="row-even"><td><p><img alt="velocity-flat-anymal-d" src="../../_images/anymal_d_flat.jpg" /></p></td>
-<td><p><a href="#id303"><span class="problematic" id="id304">|velocity-flat-anymal-d-link|</span></a></p></td>
+<td><p><a class="reference external" href="https://github.com/isaac-sim/IsaacLab/blob/develop/source/isaaclab_tasks/isaaclab_tasks/core/velocity/config/anymal_d/flat_env_cfg.py">Isaac-Velocity-Flat-AnymalD</a></p></td>
 <td><p>Track a velocity command on flat terrain with the Anymal D robot</p></td>
 <td><p><strong>physics=</strong> <code class="docutils literal notranslate"><span class="pre">physx</span></code>,
 <code class="docutils literal notranslate"><span class="pre">newton_mjwarp</span></code>,
 <code class="docutils literal notranslate"><span class="pre">ovphysx</span></code></p></td>
 </tr>
 <tr class="row-odd"><td><p><img alt="velocity-rough-anymal-d" src="../../_images/anymal_d_rough.jpg" /></p></td>
-<td><p><a href="#id305"><span class="problematic" id="id306">|velocity-rough-anymal-d-link|</span></a></p></td>
+<td><p><a class="reference external" href="https://github.com/isaac-sim/IsaacLab/blob/develop/source/isaaclab_tasks/isaaclab_tasks/core/velocity/config/anymal_d/rough_env_cfg.py">Isaac-Velocity-Rough-AnymalD</a></p></td>
 <td><p>Track a velocity command on rough terrain with the Anymal D robot</p></td>
 <td><p><strong>physics=</strong> <code class="docutils literal notranslate"><span class="pre">physx</span></code>,
 <code class="docutils literal notranslate"><span class="pre">newton_mjwarp</span></code></p></td>
 </tr>
 <tr class="row-even"><td><p><img alt="velocity-flat-unitree-a1" src="../../_images/a1_flat.jpg" /></p></td>
-<td><p><a href="#id307"><span class="problematic" id="id308">|velocity-flat-unitree-a1-link|</span></a></p></td>
+<td><p><a class="reference external" href="https://github.com/isaac-sim/IsaacLab/blob/develop/source/isaaclab_tasks/isaaclab_tasks/contrib/velocity/config/a1/flat_env_cfg.py">IsaacContrib-Velocity-Flat-UnitreeA1</a></p></td>
 <td><p>Track a velocity command on flat terrain with the Unitree A1 robot</p></td>
 <td><p><strong>physics=</strong> <code class="docutils literal notranslate"><span class="pre">physx</span></code>,
 <code class="docutils literal notranslate"><span class="pre">newton_mjwarp</span></code></p></td>
 </tr>
 <tr class="row-odd"><td><p><img alt="velocity-rough-unitree-a1" src="../../_images/a1_rough.jpg" /></p></td>
-<td><p><a href="#id309"><span class="problematic" id="id310">|velocity-rough-unitree-a1-link|</span></a></p></td>
+<td><p><a class="reference external" href="https://github.com/isaac-sim/IsaacLab/blob/develop/source/isaaclab_tasks/isaaclab_tasks/contrib/velocity/config/a1/rough_env_cfg.py">IsaacContrib-Velocity-Rough-UnitreeA1</a></p></td>
 <td><p>Track a velocity command on rough terrain with the Unitree A1 robot</p></td>
 <td><p><strong>physics=</strong> <code class="docutils literal notranslate"><span class="pre">physx</span></code>,
 <code class="docutils literal notranslate"><span class="pre">newton_mjwarp</span></code></p></td>
 </tr>
 <tr class="row-even"><td><p><img alt="velocity-flat-unitree-go1" src="../../_images/go1_flat.jpg" /></p></td>
-<td><p><a href="#id311"><span class="problematic" id="id312">|velocity-flat-unitree-go1-link|</span></a></p></td>
+<td><p><a class="reference external" href="https://github.com/isaac-sim/IsaacLab/blob/develop/source/isaaclab_tasks/isaaclab_tasks/contrib/velocity/config/go1/flat_env_cfg.py">IsaacContrib-Velocity-Flat-UnitreeGo1</a></p></td>
 <td><p>Track a velocity command on flat terrain with the Unitree Go1 robot</p></td>
 <td><p><strong>physics=</strong> <code class="docutils literal notranslate"><span class="pre">physx</span></code>,
 <code class="docutils literal notranslate"><span class="pre">newton_mjwarp</span></code></p></td>
 </tr>
 <tr class="row-odd"><td><p><img alt="velocity-rough-unitree-go1" src="../../_images/go1_rough.jpg" /></p></td>
-<td><p><a href="#id313"><span class="problematic" id="id314">|velocity-rough-unitree-go1-link|</span></a></p></td>
+<td><p><a class="reference external" href="https://github.com/isaac-sim/IsaacLab/blob/develop/source/isaaclab_tasks/isaaclab_tasks/contrib/velocity/config/go1/rough_env_cfg.py">IsaacContrib-Velocity-Rough-UnitreeGo1</a></p></td>
 <td><p>Track a velocity command on rough terrain with the Unitree Go1 robot</p></td>
 <td><p><strong>physics=</strong> <code class="docutils literal notranslate"><span class="pre">physx</span></code>,
 <code class="docutils literal notranslate"><span class="pre">newton_mjwarp</span></code></p></td>
 </tr>
 <tr class="row-even"><td><p><img alt="velocity-flat-unitree-go2" src="../../_images/go2_flat.jpg" /></p></td>
-<td><p><a href="#id315"><span class="problematic" id="id316">|velocity-flat-unitree-go2-link|</span></a></p></td>
+<td><p><a class="reference external" href="https://github.com/isaac-sim/IsaacLab/blob/develop/source/isaaclab_tasks/isaaclab_tasks/core/velocity/config/go2/flat_env_cfg.py">Isaac-Velocity-Flat-UnitreeGo2</a></p></td>
 <td><p>Track a velocity command on flat terrain with the Unitree Go2 robot</p></td>
 <td><p><strong>physics=</strong> <code class="docutils literal notranslate"><span class="pre">physx</span></code>,
 <code class="docutils literal notranslate"><span class="pre">newton_mjwarp</span></code></p></td>
 </tr>
 <tr class="row-odd"><td><p><img alt="velocity-rough-unitree-go2" src="../../_images/go2_rough.jpg" /></p></td>
-<td><p><a href="#id317"><span class="problematic" id="id318">|velocity-rough-unitree-go2-link|</span></a></p></td>
+<td><p><a class="reference external" href="https://github.com/isaac-sim/IsaacLab/blob/develop/source/isaaclab_tasks/isaaclab_tasks/core/velocity/config/go2/rough_env_cfg.py">Isaac-Velocity-Rough-UnitreeGo2</a></p></td>
 <td><p>Track a velocity command on rough terrain with the Unitree Go2 robot</p></td>
 <td><p><strong>physics=</strong> <code class="docutils literal notranslate"><span class="pre">physx</span></code>,
 <code class="docutils literal notranslate"><span class="pre">newton_mjwarp</span></code></p></td>
 </tr>
 <tr class="row-even"><td><p><img alt="velocity-flat-spot" src="../../_images/spot_flat.jpg" /></p></td>
-<td><p><a href="#id319"><span class="problematic" id="id320">|velocity-flat-spot-link|</span></a></p></td>
+<td><p><a class="reference external" href="https://github.com/isaac-sim/IsaacLab/blob/develop/source/isaaclab_tasks/isaaclab_tasks/core/velocity/config/spot/flat_env_cfg.py">Isaac-Velocity-Flat-Spot</a></p></td>
 <td><p>Track a velocity command on flat terrain with the Boston Dynamics Spot robot</p></td>
 <td><p><strong>physics=</strong> <code class="docutils literal notranslate"><span class="pre">physx</span></code>,
 <code class="docutils literal notranslate"><span class="pre">newton_mjwarp</span></code></p></td>
 </tr>
 <tr class="row-odd"><td><p><img alt="velocity-flat-h1" src="../../_images/h1_flat.jpg" /></p></td>
-<td><p><a href="#id321"><span class="problematic" id="id322">|velocity-flat-h1-link|</span></a></p></td>
+<td><p><a class="reference external" href="https://github.com/isaac-sim/IsaacLab/blob/develop/source/isaaclab_tasks/isaaclab_tasks/core/velocity/config/h1/flat_env_cfg.py">Isaac-Velocity-Flat-H1</a></p></td>
 <td><p>Track a velocity command on flat terrain with the Unitree H1 robot</p></td>
 <td><p><strong>physics=</strong> <code class="docutils literal notranslate"><span class="pre">physx</span></code>,
 <code class="docutils literal notranslate"><span class="pre">newton_mjwarp</span></code></p></td>
 </tr>
 <tr class="row-even"><td><p><img alt="velocity-rough-h1" src="../../_images/h1_rough.jpg" /></p></td>
-<td><p><a href="#id323"><span class="problematic" id="id324">|velocity-rough-h1-link|</span></a></p></td>
+<td><p><a class="reference external" href="https://github.com/isaac-sim/IsaacLab/blob/develop/source/isaaclab_tasks/isaaclab_tasks/core/velocity/config/h1/rough_env_cfg.py">Isaac-Velocity-Rough-H1</a></p></td>
 <td><p>Track a velocity command on rough terrain with the Unitree H1 robot</p></td>
 <td><p><strong>physics=</strong> <code class="docutils literal notranslate"><span class="pre">physx</span></code>,
 <code class="docutils literal notranslate"><span class="pre">newton_mjwarp</span></code></p></td>
 </tr>
 <tr class="row-odd"><td><p><img alt="velocity-flat-g1" src="../../_images/g1_flat.jpg" /></p></td>
-<td><p><a href="#id325"><span class="problematic" id="id326">|velocity-flat-g1-link|</span></a></p></td>
+<td><p><a class="reference external" href="https://github.com/isaac-sim/IsaacLab/blob/develop/source/isaaclab_tasks/isaaclab_tasks/core/velocity/config/g1/flat_env_cfg.py">Isaac-Velocity-Flat-G1</a></p></td>
 <td><p>Track a velocity command on flat terrain with the Unitree G1 robot</p></td>
 <td><p><strong>physics=</strong> <code class="docutils literal notranslate"><span class="pre">physx</span></code>,
 <code class="docutils literal notranslate"><span class="pre">newton_mjwarp</span></code></p></td>
 </tr>
 <tr class="row-even"><td><p><img alt="velocity-rough-g1" src="../../_images/g1_rough.jpg" /></p></td>
-<td><p><a href="#id327"><span class="problematic" id="id328">|velocity-rough-g1-link|</span></a></p></td>
+<td><p><a class="reference external" href="https://github.com/isaac-sim/IsaacLab/blob/develop/source/isaaclab_tasks/isaaclab_tasks/core/velocity/config/g1/rough_env_cfg.py">Isaac-Velocity-Rough-G1</a></p></td>
 <td><p>Track a velocity command on rough terrain with the Unitree G1 robot</p></td>
 <td><p><strong>physics=</strong> <code class="docutils literal notranslate"><span class="pre">physx</span></code>,
 <code class="docutils literal notranslate"><span class="pre">newton_mjwarp</span></code></p></td>
 </tr>
 <tr class="row-odd"><td><p><img alt="velocity-flat-digit" src="../../_images/agility_digit_flat.jpg" /></p></td>
-<td><p><a href="#id329"><span class="problematic" id="id330">|velocity-flat-digit-link|</span></a></p></td>
+<td><p><a class="reference external" href="https://github.com/isaac-sim/IsaacLab/blob/develop/source/isaaclab_tasks/isaaclab_tasks/core/velocity/config/digit/flat_env_cfg.py">Isaac-Velocity-Flat-Digit</a></p></td>
 <td><p>Track a velocity command on flat terrain with the Agility Digit robot</p></td>
 <td><p><strong>physics=</strong> <code class="docutils literal notranslate"><span class="pre">physx</span></code></p></td>
 </tr>
 <tr class="row-even"><td><p><img alt="velocity-rough-digit" src="../../_images/agility_digit_rough.jpg" /></p></td>
-<td><p><a href="#id331"><span class="problematic" id="id332">|velocity-rough-digit-link|</span></a></p></td>
+<td><p><a class="reference external" href="https://github.com/isaac-sim/IsaacLab/blob/develop/source/isaaclab_tasks/isaaclab_tasks/core/velocity/config/digit/rough_env_cfg.py">Isaac-Velocity-Rough-Digit</a></p></td>
 <td><p>Track a velocity command on rough terrain with the Agility Digit robot</p></td>
 <td><p><strong>physics=</strong> <code class="docutils literal notranslate"><span class="pre">physx</span></code></p></td>
 </tr>
 <tr class="row-odd"><td><p><img alt="tracking-loco-manip-digit" src="../../_images/agility_digit_loco_manip.jpg" /></p></td>
-<td><p><a href="#id333"><span class="problematic" id="id334">|tracking-loco-manip-digit-link|</span></a></p></td>
+<td><p><a class="reference external" href="https://github.com/isaac-sim/IsaacLab/blob/develop/source/isaaclab_tasks/isaaclab_tasks/contrib/locomanip_tracking/config/digit/loco_manip_env_cfg.py">IsaacContrib-Tracking-LocoManip-Digit</a></p></td>
 <td><p>Track a root velocity and hand pose command with the Agility Digit robot</p></td>
 <td><p><strong>physics=</strong> <code class="docutils literal notranslate"><span class="pre">physx</span></code></p></td>
 </tr>
@@ -1499,7 +1497,7 @@ Digit-based tasks; see <a class="reference internal" href="../refs/issues.html#k
 </thead>
 <tbody>
 <tr class="row-even"><td><p><img alt="anymal_c_nav" src="../../_images/anymal_c_nav.jpg" /></p></td>
-<td><p><a href="#id335"><span class="problematic" id="id336">|anymal_c_nav-link|</span></a></p></td>
+<td><p><a class="reference external" href="https://github.com/isaac-sim/IsaacLab/blob/develop/source/isaaclab_tasks/isaaclab_tasks/contrib/navigation/config/anymal_c/navigation_env_cfg.py">IsaacContrib-Navigation-Flat-AnymalC</a></p></td>
 <td><p>Navigate towards a target x-y position and heading with the ANYmal C robot.</p></td>
 <td><p><strong>physics=</strong> <code class="docutils literal notranslate"><span class="pre">physx</span></code>,
 <code class="docutils literal notranslate"><span class="pre">newton_mjwarp</span></code></p></td>
@@ -1532,12 +1530,12 @@ See the <cite>drone_arl</cite> folder and the ARL robot config
 </thead>
 <tbody>
 <tr class="row-even"><td><p><img alt="arl_robot_track_position_state_based" src="../../_images/arl_robot_1_track_position_state_based.jpg" /></p></td>
-<td><p><a href="#id337"><span class="problematic" id="id338">|arl_robot_track_position_state_based-link|</span></a></p></td>
+<td><p><a class="reference external" href="https://github.com/isaac-sim/IsaacLab/blob/develop/source/isaaclab_tasks/isaaclab_tasks/contrib/drone_arl/track_position_state_based/config/arl_robot_1/track_position_state_based_env_cfg.py">IsaacContrib-TrackPositionNoObstacles-ARL-Robot-1</a></p></td>
 <td><p>Setpoint position control for the ARL robot using the track_position_state_based task.</p></td>
 <td></td>
 </tr>
 <tr class="row-odd"><td><p><img alt="arl_robot_navigation" src="../../_images/arl_robot_1_navigation.jpg" /></p></td>
-<td><p><a href="#id339"><span class="problematic" id="id340">|arl_robot_navigation-link|</span></a></p></td>
+<td><p><a class="reference external" href="https://github.com/isaac-sim/IsaacLab/blob/develop/source/isaaclab_tasks/isaaclab_tasks/contrib/drone_arl/navigation/config/arl_robot_1/floating_obstacles_env_cfg.py">IsaacContrib-Navigation-3DObstacles-ARL-Robot-1</a></p></td>
 <td><p>Navigate through 3D obstacles with the ARL robot using depth camera sensing.</p></td>
 <td></td>
 </tr>
@@ -1571,9 +1569,9 @@ The AMP algorithm can be activated by adding the command line input <code class=
 </thead>
 <tbody>
 <tr class="row-even"><td><p><img alt="humanoid_amp" src="../../_images/humanoid_amp.jpg" /></p></td>
-<td><p><a href="#id341"><span class="problematic" id="id342">|humanoid_amp_dance-link|</span></a></p>
-<p><a href="#id343"><span class="problematic" id="id344">|humanoid_amp_run-link|</span></a></p>
-<p><a href="#id345"><span class="problematic" id="id346">|humanoid_amp_walk-link|</span></a></p>
+<td><p><a class="reference external" href="https://github.com/isaac-sim/IsaacLab/blob/develop/source/isaaclab_tasks/isaaclab_tasks/contrib/humanoid_amp/humanoid_amp_env_cfg.py">Isaac-Humanoid-AMP-Dance-Direct</a></p>
+<p><a class="reference external" href="https://github.com/isaac-sim/IsaacLab/blob/develop/source/isaaclab_tasks/isaaclab_tasks/contrib/humanoid_amp/humanoid_amp_env_cfg.py">Isaac-Humanoid-AMP-Run-Direct</a></p>
+<p><a class="reference external" href="https://github.com/isaac-sim/IsaacLab/blob/develop/source/isaaclab_tasks/isaaclab_tasks/contrib/humanoid_amp/humanoid_amp_env_cfg.py">Isaac-Humanoid-AMP-Walk-Direct</a></p>
 </td>
 <td><p>Move a humanoid robot by imitating different pre-recorded human animations
 (Adversarial Motion Priors).</p></td>
@@ -1585,7 +1583,7 @@ The AMP algorithm can be activated by adding the command line input <code class=
 </section>
 <section id="spaces-showcase">
 <h3>Spaces showcase<a class="headerlink" href="#spaces-showcase" title="Link to this heading">#</a></h3>
-<p>The <a href="#id347"><span class="problematic" id="id348">|cartpole_showcase|</span></a> folder contains showcase tasks (based on the <em>Cartpole</em> and <em>Cartpole-Camera</em> Direct tasks)
+<p>The <a class="reference external" href="https://github.com/isaac-sim/IsaacLab/blob/develop/source/isaaclab_tasks/isaaclab_tasks/contrib/cartpole_showcase">cartpole_showcase</a> folder contains showcase tasks (based on the <em>Cartpole</em> and <em>Cartpole-Camera</em> Direct tasks)
 for the definition/use of the various Gymnasium observation and action spaces supported in Isaac Lab.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -1700,8 +1698,8 @@ Replace <code class="docutils literal notranslate"><span class="pre">&lt;OBSERVA
 It supports the <cite>IPPO</cite> and <cite>MAPPO</cite> algorithms, which can be activated by adding the command line input <code class="docutils literal notranslate"><span class="pre">--algorithm</span> <span class="pre">IPPO</span></code> or <code class="docutils literal notranslate"><span class="pre">--algorithm</span> <span class="pre">MAPPO</span></code> to the train/play script.
 If these environments are run with other libraries or without the <cite>IPPO</cite> or <cite>MAPPO</cite> flags, they will be converted to single-agent environments under the hood.</p>
 </div>
-<section id="id163">
-<h3>Classic<a class="headerlink" href="#id163" title="Link to this heading">#</a></h3>
+<section id="id1">
+<h3>Classic<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
 <div class="pst-scrollable-table-container"><table class="table">
 <colgroup>
 <col style="width: 25.0%" />
@@ -1718,7 +1716,7 @@ If these environments are run with other libraries or without the <cite>IPPO</ci
 </thead>
 <tbody>
 <tr class="row-even"><td><p><img alt="cart-double-pendulum" src="../../_images/cart_double_pendulum.jpg" /></p></td>
-<td><p><a href="#id349"><span class="problematic" id="id350">|cart-double-pendulum-direct-link|</span></a></p></td>
+<td><p><a class="reference external" href="https://github.com/isaac-sim/IsaacLab/blob/develop/source/isaaclab_tasks/isaaclab_tasks/core/pendulum/pendulum_env.py">Isaac-Pendulum-Direct</a></p></td>
 <td><p>Move the cart and the pendulum to keep the last one upwards in the classic inverted double pendulum on a cart control</p></td>
 <td></td>
 </tr>
@@ -1726,8 +1724,8 @@ If these environments are run with other libraries or without the <cite>IPPO</ci
 </table>
 </div>
 </section>
-<section id="id166">
-<h3>Manipulation<a class="headerlink" href="#id166" title="Link to this heading">#</a></h3>
+<section id="id2">
+<h3>Manipulation<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
 <p>Environments based on fixed-arm manipulation tasks.</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <colgroup>
@@ -1745,7 +1743,7 @@ If these environments are run with other libraries or without the <cite>IPPO</ci
 </thead>
 <tbody>
 <tr class="row-even"><td><p><img alt="shadow-hand-over" src="../../_images/shadow_hand_over.jpg" /></p></td>
-<td><p><a href="#id351"><span class="problematic" id="id352">|shadow-hand-over-direct-link|</span></a></p></td>
+<td><p><a class="reference external" href="https://github.com/isaac-sim/IsaacLab/blob/develop/source/isaaclab_tasks/isaaclab_tasks/core/handover/handover_env.py">Isaac-Shadow-Handover-Direct</a></p></td>
 <td><p>Passing an object from one hand over to the other hand</p></td>
 <td></td>
 </tr>
@@ -2818,8 +2816,8 @@ inferencing, including reading from an already trained checkpoint and disabling 
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multi-agent">Multi-agent</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id163">Classic</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id166">Manipulation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Classic</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Manipulation</a></li>
 </ul>
 </li>
 </ul>
@@ -2859,7 +2857,7 @@ By The Isaac Lab Project Developers.
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Jul 10, 2026.
+  Last updated on Jul 11, 2026.
   <br/>
 </p>
   </div>
