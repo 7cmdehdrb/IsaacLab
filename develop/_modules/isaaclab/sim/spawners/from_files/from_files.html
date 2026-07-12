@@ -35,6 +35,7 @@
     <link rel="stylesheet" type="text/css" href="/opt/hostedtoolcache/Python/3.12.13/x64/lib/python3.12/site-packages/sphinxcontrib/icon/node_modules/@fortawesome/fontawesome-free/css/all.min.css?v=53359634" />
     <link rel="stylesheet" type="text/css" href="../../../../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinx_paramlinks.css" />
     <link rel="stylesheet" type="text/css" href="../../../../../_static/custom.css?v=8fb98eed" />
   
   <!-- So that users can add custom icons -->
@@ -60,7 +61,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="3.0.0" />
-    <meta name="docbuild:last-update" content="Jul 11, 2026"/>
+    <meta name="docbuild:last-update" content="Jul 12, 2026"/>
   </head>
   
   
@@ -160,9 +161,6 @@
             <option value="from_files.html" selected>develop</option>
             <option value="../../../../../../main/index.html" >main</option>
             <option value="../../../../../../release/3.0.0-beta2/index.html" >release/3.0.0-beta2</option>
-            <option value="../../../../../../v3.0.0-beta2.patch1/index.html" >v3.0.0-beta2.patch1</option>
-            <option value="../../../../../../v3.0.0-beta2/index.html" >v3.0.0-beta2</option>
-            <option value="../../../../../../v3.0.0-beta/index.html" >v3.0.0-beta</option>
             <option value="../../../../../../v2.3.2/index.html" >v2.3.2</option>
             <option value="../../../../../../v2.3.1/index.html" >v2.3.1</option>
             <option value="../../../../../../v2.3.0/index.html" >v2.3.0</option>
@@ -202,7 +200,7 @@
           
           
           
-          <a href="https://developer.nvidia.com/isaac-sim" title="Isaac Sim" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="https://img.shields.io/badge/IsaacSim-6.0.1-silver.svg" class="icon-link-image" alt="Isaac Sim"/></a>
+          <a href="https://developer.nvidia.com/isaac-sim" title="Isaac Sim" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="https://img.shields.io/badge/IsaacSim-6.0.0-silver.svg" class="icon-link-image" alt="Isaac Sim"/></a>
         </li>
         <li class="nav-item">
           
@@ -1061,8 +1059,36 @@
             <span class="n">schemas</span><span class="o">.</span><span class="n">modify_mass_properties</span><span class="p">(</span><span class="n">prim_path</span><span class="p">,</span> <span class="n">cfg</span><span class="o">.</span><span class="n">mass_props</span><span class="p">)</span>
 
     <span class="c1"># modify articulation root properties</span>
-    <span class="k">if</span> <span class="n">cfg</span><span class="o">.</span><span class="n">articulation_props</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">schemas</span><span class="o">.</span><span class="n">modify_articulation_root_properties</span><span class="p">(</span><span class="n">prim_path</span><span class="p">,</span> <span class="n">cfg</span><span class="o">.</span><span class="n">articulation_props</span><span class="p">)</span>
+    <span class="c1"># ``fix_root_link`` is a spawner-level topology flag (not a schema property); it is honored on the</span>
+    <span class="c1"># fragment path independently of whether any articulation schema properties were supplied.</span>
+    <span class="n">articulation_props</span> <span class="o">=</span> <span class="n">cfg</span><span class="o">.</span><span class="n">articulation_props</span>
+    <span class="n">articulation_fix_root_link</span> <span class="o">=</span> <span class="n">cfg</span><span class="o">.</span><span class="n">fix_root_link</span>
+    <span class="c1"># transition shim, remove later: route a legacy single cfg (a dataclass, not a fragment) to the</span>
+    <span class="c1"># legacy writer -- it owns its own ``fix_root_link`` field; everything else goes to the fragment</span>
+    <span class="c1"># writer, routing by type so an empty list is still a valid (topology-only) fragment collection</span>
+    <span class="c1"># rather than being mis-sent to the legacy writer.</span>
+    <span class="k">if</span> <span class="p">(</span>
+        <span class="n">articulation_props</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+        <span class="ow">and</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">articulation_props</span><span class="p">,</span> <span class="p">(</span><span class="nb">list</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">))</span>
+        <span class="ow">and</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">articulation_props</span><span class="p">,</span> <span class="n">schemas</span><span class="o">.</span><span class="n">SchemaFragment</span><span class="p">)</span>
+    <span class="p">):</span>
+        <span class="k">if</span> <span class="n">articulation_fix_root_link</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;Ignoring the spawner-level &#39;fix_root_link=</span><span class="si">{</span><span class="n">articulation_fix_root_link</span><span class="si">}</span><span class="s2">&#39; because&quot;</span>
+                <span class="s2">&quot; &#39;articulation_props&#39; is a legacy cfg, which owns its own &#39;fix_root_link&#39; field. Set&quot;</span>
+                <span class="s2">&quot; it on that cfg instead.&quot;</span>
+            <span class="p">)</span>
+        <span class="n">schemas</span><span class="o">.</span><span class="n">modify_articulation_root_properties</span><span class="p">(</span><span class="n">prim_path</span><span class="p">,</span> <span class="n">articulation_props</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">articulation_frags</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="nb">list</span><span class="p">(</span><span class="n">articulation_props</span><span class="p">)</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">articulation_props</span><span class="p">,</span> <span class="p">(</span><span class="nb">list</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">))</span>
+            <span class="k">else</span> <span class="p">([</span><span class="n">articulation_props</span><span class="p">]</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">articulation_props</span><span class="p">,</span> <span class="n">schemas</span><span class="o">.</span><span class="n">SchemaFragment</span><span class="p">)</span> <span class="k">else</span> <span class="p">[])</span>
+        <span class="p">)</span>
+        <span class="k">if</span> <span class="n">articulation_frags</span> <span class="ow">or</span> <span class="n">articulation_fix_root_link</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">schemas</span><span class="o">.</span><span class="n">apply_articulation_root_properties</span><span class="p">(</span>
+                <span class="n">prim_path</span><span class="p">,</span> <span class="n">articulation_frags</span><span class="p">,</span> <span class="n">fix_root_link</span><span class="o">=</span><span class="n">articulation_fix_root_link</span>
+            <span class="p">)</span>
     <span class="c1"># modify tendon properties</span>
     <span class="k">if</span> <span class="n">cfg</span><span class="o">.</span><span class="n">fixed_tendons_props</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
         <span class="c1"># transition shim, remove later: fragment(s) -&gt; apply_*; legacy cfg -&gt; modify_*</span>
@@ -1299,7 +1325,7 @@ By The Isaac Lab Project Developers.
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Jul 11, 2026.
+  Last updated on Jul 12, 2026.
   <br/>
 </p>
   </div>

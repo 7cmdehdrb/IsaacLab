@@ -1,0 +1,1219 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>isaaclab.sensors.ray_caster.base_multi_mesh_ray_caster &#8212; Isaac Lab Documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/twemoji.css" />
+    <link rel="stylesheet" type="text/css" href="/opt/hostedtoolcache/Python/3.12.13/x64/lib/python3.12/site-packages/sphinxcontrib/icon/node_modules/@fortawesome/fontawesome-free/css/all.min.css?v=53359634" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx_paramlinks.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/custom.css?v=8fb98eed" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="https://unpkg.com/twemoji@latest/dist/twemoji.min.js"></script>
+    <script src="../../../../_static/twemoji.js"></script>
+    <script src="/opt/hostedtoolcache/Python/3.12.13/x64/lib/python3.12/site-packages/sphinxcontrib/icon/node_modules/@fortawesome/fontawesome-free/js/all.min.js?v=ec35c6c9"></script>
+    <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
+    <script src="../../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/isaaclab/sensors/ray_caster/base_multi_mesh_ray_caster';</script>
+    <link rel="icon" href="../../../../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="3.0.0" />
+    <meta name="docbuild:last-update" content="Jul 12, 2026"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../../_static/NVIDIA-logo-white.png" class="logo__image only-light" alt=""/>
+    <img src="../../../../_static/NVIDIA-logo-black.png" class="logo__image only-dark pst-js-only" alt=""/>
+  
+  
+    <p class="title logo__title">Isaac Lab Documentation</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+<nav class="bd-links bd-docs-nav">
+    <div class="bd-toc-item navbar-nav">
+      <ul class="nav bd-sidenav">
+        <li class="toctree-l1 has-children" style="display: flex; justify-content: center; align-items: center; flex-direction: column;">
+          <div  style ="text-align:center;">
+            <label for="version-select" style="font-weight: bold; display: block;">Version</label>
+          </div>
+          <select id="version-select" class="version-dropdown" style="margin: 0 auto; display: block;" onchange="location = this.value;">
+            <option value="base_multi_mesh_ray_caster.html" selected>develop</option>
+            <option value="../../../../../main/index.html" >main</option>
+            <option value="../../../../../release/3.0.0-beta2/index.html" >release/3.0.0-beta2</option>
+            <option value="../../../../../v2.3.2/index.html" >v2.3.2</option>
+            <option value="../../../../../v2.3.1/index.html" >v2.3.1</option>
+            <option value="../../../../../v2.3.0/index.html" >v2.3.0</option>
+            <option value="../../../../../v2.2.1/index.html" >v2.2.1</option>
+            <option value="../../../../../v2.2.0/index.html" >v2.2.0</option>
+            <option value="../../../../../v2.1.1/index.html" >v2.1.1</option>
+            <option value="../../../../../v2.1.0/index.html" >v2.1.0</option>
+            <option value="../../../../../v2.0.2/index.html" >v2.0.2</option>
+            <option value="../../../../../v2.0.1/index.html" >v2.0.1</option>
+            <option value="../../../../../v2.0.0/index.html" >v2.0.0</option>
+          </select>
+        </li>
+      </ul>
+    </div>
+</nav>
+</div>
+        <div class="sidebar-primary-item"><ul class="navbar-icon-links"
+    aria-label="Quick Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/isaac-sim/IsaacLab" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://developer.nvidia.com/isaac-sim" title="Isaac Sim" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="https://img.shields.io/badge/IsaacSim-6.0.0-silver.svg" class="icon-link-image" alt="Isaac Sim"/></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://img.shields.io/github/stars/isaac-sim/IsaacLab?color=fedcba" title="Stars" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="https://img.shields.io/github/stars/isaac-sim/IsaacLab?color=fedcba" class="icon-link-image" alt="Stars"/></a>
+        </li>
+</ul></div>
+        <div class="sidebar-primary-item">
+<form class="bd-search d-flex align-items-center"
+      action="../../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Isaac Lab</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../../source/setup/ecosystem.html">Isaac Lab Ecosystem</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../../source/setup/installation/index.html">Local Installation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../source/setup/installation/kitless_installation.html">Kit-less Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../source/setup/installation/pip_installation.html">Installation using Isaac Sim Pip Package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../source/setup/installation/binaries_installation.html">Installation using Isaac Sim Pre-built Binaries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../source/setup/installation/source_installation.html">Installation using Isaac Sim Source Code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../source/setup/installation/isaaclab_pip_installation.html">Installation using Isaac Lab Pip Packages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../source/setup/installation/asset_caching.html">Asset Caching</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../source/setup/installation/uv_run.html">uv run (experimental)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../../source/deployment/index.html">Container Deployment</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../source/deployment/docker.html">Docker Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../source/deployment/run_docker_example.html">Running an example with Docker</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../source/deployment/cluster.html">Cluster Guide</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../source/setup/installation/cloud_installation.html">Cloud Deployment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../source/refs/reference_architecture/index.html">Reference Architecture</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../../source/setup/quickstart.html">Quickstart</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../source/setup/quickstart_details.html">Quickstart Details</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../../source/overview/own-project/index.html">Build your Own Project or Task</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../source/overview/own-project/template.html">Create new project or task</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../source/overview/own-project/project_structure.html">Project Structure</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../../source/setup/walkthrough/index.html">Walkthrough</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../source/setup/walkthrough/concepts_env_design.html">Environment Design Background</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../source/setup/walkthrough/api_env_design.html">Classes and Configs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../source/setup/walkthrough/technical_env_design.html">Environment Design</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../source/setup/walkthrough/training_jetbot_gt.html">Training the Jetbot: Ground Truth</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../source/setup/walkthrough/training_jetbot_reward_exploration.html">Exploring the RL problem</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../../source/tutorials/index.html">Tutorials</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../source/tutorials/00_sim/create_empty.html">Creating an empty scene</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../source/tutorials/00_sim/spawn_prims.html">Spawning prims into the scene</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../source/tutorials/00_sim/launch_app.html">Deep-dive into AppLauncher</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../source/tutorials/01_assets/add_new_robot.html">Adding a New Robot to Isaac Lab</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../source/tutorials/01_assets/run_rigid_object.html">Interacting with a rigid object</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../source/tutorials/01_assets/run_articulation.html">Interacting with an articulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../source/tutorials/01_assets/run_deformable_object.html">Interacting with a deformable object</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../source/tutorials/01_assets/run_surface_gripper.html">Interacting with a surface gripper</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../source/tutorials/02_scene/create_scene.html">Using the Interactive Scene</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../source/tutorials/03_envs/create_manager_base_env.html">Creating a Manager-Based Base Environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../source/tutorials/03_envs/create_manager_rl_env.html">Creating a Manager-Based RL Environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../source/tutorials/03_envs/create_direct_rl_env.html">Creating a Direct Workflow RL Environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../source/tutorials/03_envs/register_rl_env_gym.html">Registering an Environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../source/tutorials/03_envs/run_rl_training.html">Training with an RL Agent</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../source/tutorials/03_envs/configuring_rl_training.html">Configuring an RL Agent</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../source/tutorials/03_envs/modify_direct_rl_env.html">Modifying an existing Direct RL Environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../source/tutorials/03_envs/policy_inference_in_usd.html">Policy Inference in USD Environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../source/tutorials/04_sensors/add_sensors_on_robot.html">Adding sensors on a robot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../source/tutorials/05_controllers/run_diff_ik.html">Using a task-space controller</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../source/tutorials/05_controllers/run_osc.html">Using an operational space controller</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../source/tutorials/06_exporting/exporting_direct_workflow_policies_with_leapp.html">Exporting Direct Workflow Policies with LEAPP</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../../source/how-to/index.html">How-to Guides</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../source/how-to/import_new_asset.html">Importing a New Asset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../source/how-to/write_articulation_cfg.html">Writing an Asset Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../source/how-to/robots.html">Robot Configurations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../source/how-to/make_fixed_prim.html">Making a physics prim fixed in the simulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../source/how-to/multi_asset_spawning.html">Spawning Multiple Assets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../source/how-to/cloning.html">Cloning Environments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../source/how-to/save_camera_output.html">Saving rendered images and 3D re-projection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../source/how-to/estimate_how_many_cameras_can_run.html">Find How Many/What Cameras You Should Train With</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../source/how-to/configure_rendering.html">Configuring RTX Rendering Settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../source/how-to/draw_markers.html">Creating Visualization Markers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../source/how-to/visualizer_tiled_camera.html">Using Visualizer Tiled Cameras</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../source/how-to/proxy_array.html">Working with ProxyArray</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../source/how-to/wrap_rl_env.html">Wrapping environments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../source/how-to/add_own_library.html">Adding your own learning library</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../source/how-to/record_animation.html">Recording Animations of Simulations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../source/how-to/record_video.html">Recording video clips during training</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../source/how-to/capture_sensor_frames.html">Capturing sensor frames during training</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../source/how-to/curriculums.html">Curriculum Utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../source/how-to/master_omniverse.html">Mastering Omniverse for Robotics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../source/how-to/cloudxr_teleoperation.html">Setting up Isaac Teleop with CloudXR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../source/how-to/haply_teleoperation.html">Setting up Haply Teleoperation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../source/how-to/simulation_performance.html">PhysX Simulation Performance and Tuning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../source/how-to/optimize_stage_creation.html">Optimize Stage Creation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../source/how-to/profile_with_nsys.html">Profiling Isaac Lab with Nsight Systems</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../../source/overview/developer-guide/index.html">Developer’s Guide</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../source/overview/developer-guide/vs_code.html">Setting up Visual Studio Code</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../../../../source/overview/developer-guide/repo_structure.html">Repository organization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../source/overview/developer-guide/development.html">Extension Development</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../source/overview/developer-guide/agent_skills.html">Agent Skills</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../../source/testing/index.html">Testing</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../source/testing/mock_interfaces.html">Mock Interfaces for Unit Testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../source/testing/micro_benchmarks.html">Micro-Benchmarks for Performance Testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../source/testing/benchmarks.html">Benchmarking Framework</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Overview</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../../source/overview/core-concepts/index.html">Core Concepts</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../source/overview/core-concepts/multi_backend_architecture.html">Multi-Backend Architecture</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../../source/overview/core-concepts/physical-backends/index.html">Physics Backends</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../../source/overview/core-concepts/physical-backends/physx/index.html">PhysX Backend</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../source/overview/core-concepts/physical-backends/physx/installation.html">Installation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../source/overview/core-concepts/physical-backends/physx/configuration.html">PhysX Configuration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../source/overview/core-concepts/physical-backends/physx/supported-features.html">Supported Features</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../../source/overview/core-concepts/physical-backends/newton/index.html">Newton Backend</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../source/overview/core-concepts/physical-backends/newton/installation.html">Installation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../source/overview/core-concepts/physical-backends/newton/supported-features.html">Supported Features</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../source/overview/core-concepts/physical-backends/newton/mjwarp-solver.html">MJWarp Solver</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../source/overview/core-concepts/physical-backends/newton/kamino-solver.html">Kamino Solver</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../source/overview/core-concepts/physical-backends/newton/using-vbd-solver.html">VBD Solver</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../source/overview/core-concepts/physical-backends/newton/newton-manager-abstraction.html">Newton Manager Abstraction</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../source/overview/core-concepts/physical-backends/newton/warp-environments.html">Warp Experimental Environments</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../source/overview/core-concepts/physical-backends/newton/warp-env-migration.html">Warp Environment Migration Guide</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../source/overview/core-concepts/physical-backends/ovphysx/index.html">OvPhysX Backend</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../source/overview/core-concepts/physical-backends/solver-comparison.html">Solver Comparison</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../source/overview/core-concepts/schema_cfgs.html">Schema Configuration Classes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../source/overview/core-concepts/task_workflows.html">Task Design Workflows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../source/overview/core-concepts/actuators.html">Actuators</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../../source/overview/core-concepts/sensors/index.html">Sensors</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../source/overview/core-concepts/sensors/camera.html">Camera</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../source/overview/core-concepts/sensors/contact_sensor.html">Contact Sensor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../source/overview/core-concepts/sensors/frame_transformer.html">Frame Transformer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../source/overview/core-concepts/sensors/imu.html">Inertial Measurement Unit (IMU)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../source/overview/core-concepts/sensors/pva.html">Pose Velocity Acceleration (PVA) Sensor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../source/overview/core-concepts/sensors/joint_wrench_sensor.html">Joint Wrench Sensor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../source/overview/core-concepts/sensors/ray_caster.html">Ray Caster</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../source/overview/core-concepts/renderers.html">Renderers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../source/overview/core-concepts/motion_generators.html">Motion Generators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../source/overview/core-concepts/scene_data_providers.html">Scene Data Provider</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../source/overview/core-concepts/visualization.html">Visualization</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../source/overview/environments.html">Available Environments</a></li>
+
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../../source/overview/reinforcement-learning/index.html">Reinforcement Learning</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../source/overview/reinforcement-learning/rl_existing_scripts.html">Reinforcement Learning Workflows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../source/overview/reinforcement-learning/rl_frameworks.html">Reinforcement Learning Library Comparison</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../source/overview/reinforcement-learning/performance_benchmarks.html">Performance Benchmarks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../source/overview/reinforcement-learning/training_guide.html">Debugging and Training Guide</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../../source/overview/imitation-learning/index.html">Imitation Learning</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../source/overview/imitation-learning/teleop_imitation.html">Synthetic Data Generation and Imitation Learning with Isaac Lab Mimic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../source/overview/imitation-learning/humanoids_imitation.html">Examples: Data Generation and Imitation Learning for Humanoids</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../source/overview/imitation-learning/augmented_imitation.html">Augmented Imitation Learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../source/overview/imitation-learning/skillgen.html">SkillGen for Automated Demonstration Generation</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../source/overview/showroom.html">Showroom Demos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../source/overview/simple_agents.html">Simple Agents</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Features</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../../source/features/isaac_teleop.html">Isaac Teleop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../source/features/hydra.html">Hydra Configuration System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../source/features/multi_gpu.html">Multi-GPU and Multi-Node Training</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../source/features/population_based_training.html">Population Based Training</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../source/features/ray.html">Ray Job Dispatch and Tuning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../source/features/reproducibility.html">Reproducibility and Determinism</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Experimental Features</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../../source/experimental-features/bleeding-edge.html">Welcome to the bleeding edge!</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../source/experimental-features/visuo_tactile_sensor.html">Visuo-Tactile Sensor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../source/experimental-features/rlinf_vla_posttraining.html">RL Post-Training for VLA Models</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Resources</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../../source/policy_deployment/index.html">Sim2Real Deployment of Policies Trained in Isaac Lab</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../source/policy_deployment/01_io_descriptors/io_descriptors_101.html">IO Descriptors 101</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../source/policy_deployment/02_gear_assembly/gear_assembly_policy.html">Training a Gear Insertion Policy and ROS Deployment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../source/policy_deployment/03_compass_with_NuRec/compass_navigation_policy_with_NuRec.html">Training and Deploying COMPASS Policies with NuRec Assets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../source/policy_deployment/04_reach/reach_policy.html">Training a Reach Policy for Real Robot Deployment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../source/policy_deployment/05_leapp/exporting_policies_with_leapp.html">Exporting Policies with LEAPP</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Migration Guides</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../../source/migration/migrating_to_isaaclab_3-0.html">Migrating to Isaac Lab 3.0</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../source/migration/migrating_deformables.html">Migration of Deformables</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../../source/migration/migrating_from_isaacgymenvs.html">From IsaacGymEnvs</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../source/migration/comparing_simulation_isaacgym.html">Comparing Simulations Between Isaac Gym and Isaac Lab</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../source/migration/migrating_from_omniisaacgymenvs.html">From OmniIsaacGymEnvs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../source/migration/migrating_from_orbit.html">From Orbit</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Source API</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../../source/api/index.html">API Reference</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../source/api/lab/isaaclab.app.html">isaaclab.app</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../source/api/lab/isaaclab.actuators.html">isaaclab.actuators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../source/api/lab/isaaclab.assets.html">isaaclab.assets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../source/api/lab/isaaclab.cloner.html">isaaclab.cloner</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../source/api/lab/isaaclab.controllers.html">isaaclab.controllers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../source/api/lab/isaaclab.devices.html">isaaclab.devices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../source/api/lab/isaaclab.envs.html">isaaclab.envs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../source/api/lab/isaaclab.managers.html">isaaclab.managers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../source/api/lab/isaaclab.markers.html">isaaclab.markers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../source/api/lab/isaaclab.physics.html">isaaclab.physics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../source/api/lab/isaaclab.renderers.html">isaaclab.renderers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../source/api/lab/isaaclab.scene.html">isaaclab.scene</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../source/api/lab/isaaclab.scene_data.html">isaaclab.scene_data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../source/api/lab/isaaclab.sensors.html">isaaclab.sensors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../source/api/lab/isaaclab.sim.html">isaaclab.sim</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../source/api/lab/isaaclab.terrains.html">isaaclab.terrains</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../source/api/lab/isaaclab.utils.html">isaaclab.utils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../source/api/lab/isaaclab.visualizers.html">isaaclab.visualizers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../source/api/lab/isaaclab.envs.mdp.html">isaaclab.envs.mdp</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../source/api/lab/isaaclab.envs.ui.html">isaaclab.envs.ui</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../source/api/lab/isaaclab.sensors.patterns.html">isaaclab.sensors.patterns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../source/api/lab/isaaclab.sim.converters.html">isaaclab.sim.converters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../source/api/lab/isaaclab.sim.schemas.html">isaaclab.sim.schemas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../source/api/lab/isaaclab.sim.spawners.html">isaaclab.sim.spawners</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../source/api/lab/isaaclab.sim.views.html">isaaclab.sim.views</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../source/api/lab/isaaclab.sim.utils.html">isaaclab.sim.utils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../source/api/lab_rl/isaaclab_rl.html">isaaclab_rl</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../source/api/lab_mimic/isaaclab_mimic.datagen.html">isaaclab_mimic.datagen</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../source/api/lab_mimic/isaaclab_mimic.envs.html">isaaclab_mimic.envs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../source/api/lab_contrib/isaaclab_contrib.actuators.html">isaaclab_contrib.actuators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../source/api/lab_contrib/isaaclab_contrib.assets.html">isaaclab_contrib.assets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../source/api/lab_contrib/isaaclab_contrib.controllers.html">isaaclab_contrib.controllers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../source/api/lab_contrib/isaaclab_contrib.deformable.html">isaaclab_contrib.deformable</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../source/api/lab_contrib/isaaclab_contrib.mdp.html">isaaclab_contrib.mdp</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../source/api/lab_contrib/isaaclab_contrib.rl.html">isaaclab_contrib.rl</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../source/api/lab_contrib/isaaclab_contrib.sensors.html">isaaclab_contrib.sensors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../source/api/lab_tasks/isaaclab_tasks.utils.html">isaaclab_tasks.utils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../source/api/lab_teleop/isaaclab_teleop.html">isaaclab_teleop</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../source/api/lab_physx/isaaclab_physx.assets.html">isaaclab_physx.assets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../source/api/lab_physx/isaaclab_physx.cloner.html">isaaclab_physx.cloner</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../source/api/lab_physx/isaaclab_physx.physics.html">isaaclab_physx.physics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../source/api/lab_physx/isaaclab_physx.renderers.html">isaaclab_physx.renderers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../source/api/lab_physx/isaaclab_physx.sensors.html">isaaclab_physx.sensors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../source/api/lab_physx/isaaclab_physx.sim.schemas.html">isaaclab_physx.sim.schemas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../source/api/lab_physx/isaaclab_physx.sim.spawners.html">isaaclab_physx.sim.spawners</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../source/api/lab_newton/isaaclab_newton.assets.html">isaaclab_newton.assets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../source/api/lab_newton/isaaclab_newton.cloner.html">isaaclab_newton.cloner</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../source/api/lab_newton/isaaclab_newton.physics.html">isaaclab_newton.physics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../source/api/lab_newton/isaaclab_newton.renderers.html">isaaclab_newton.renderers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../source/api/lab_newton/isaaclab_newton.sensors.html">isaaclab_newton.sensors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../source/api/lab_newton/isaaclab_newton.sim.schemas.html">isaaclab_newton.sim.schemas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../source/api/lab_newton/isaaclab_newton.sim.spawners.html">isaaclab_newton.sim.spawners</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../source/api/lab_ov/isaaclab_ov.renderers.html">isaaclab_ov.renderers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../source/api/lab_assets/isaaclab_assets.robots.html">isaaclab_assets.robots</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../source/api/lab_assets/isaaclab_assets.sensors.html">isaaclab_assets.sensors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../source/api/lab_visualizers/isaaclab_visualizers.kit.html">isaaclab_visualizers.kit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../source/api/lab_visualizers/isaaclab_visualizers.newton.html">isaaclab_visualizers.newton</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../source/api/lab_visualizers/isaaclab_visualizers.rerun.html">isaaclab_visualizers.rerun</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../source/api/lab_visualizers/isaaclab_visualizers.viser.html">isaaclab_visualizers.viser</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../source/api/lab_ovphysx/isaaclab_ovphysx.assets.html">isaaclab_ovphysx.assets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../source/api/lab_ovphysx/isaaclab_ovphysx.cloner.html">isaaclab_ovphysx.cloner</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../source/api/lab_ovphysx/isaaclab_ovphysx.physics.html">isaaclab_ovphysx.physics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../source/api/lab_ovphysx/isaaclab_ovphysx.sim.views.html">isaaclab_ovphysx.sim.views</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../source/api/lab_experimental/isaaclab_experimental.envs.html">isaaclab_experimental.envs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../source/api/lab_experimental/isaaclab_experimental.managers.html">isaaclab_experimental.managers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../source/api/lab_experimental/isaaclab_experimental.utils.html">isaaclab_experimental.utils</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">References</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../../source/refs/additional_resources.html">Additional Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../source/refs/contributing.html">Contribution Guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../source/refs/troubleshooting.html">Tricks and Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../source/refs/migration.html">Migration Guide (Isaac Sim)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../source/refs/issues.html">Known Issues</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../source/refs/release_notes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../source/refs/changelog.html">Extensions Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../source/refs/license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../source/refs/bibliography.html">Bibliography</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Project Links</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference external" href="https://github.com/isaac-sim/IsaacLab">GitHub</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://docs.isaacsim.omniverse.nvidia.com/latest/index.html">NVIDIA Isaac Sim</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://nvidia-omniverse.github.io/PhysX/physx/5.4.1/index.html">NVIDIA PhysX</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/newton-physics/newton">NVIDIA Newton</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/isaac-sim/IsaacLab" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/isaac-sim/IsaacLab/issues/new?title=Issue%20on%20page%20%2F_modules/isaaclab/sensors/ray_caster/base_multi_mesh_ray_caster.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1></h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <h1>Source code for isaaclab.sensors.ray_caster.base_multi_mesh_ray_caster</h1><div class="highlight"><pre>
+<span></span><span class="c1"># Copyright (c) 2022-2026, The Isaac Lab Project Developers (https://github.com/isaac-sim/IsaacLab/blob/main/CONTRIBUTORS.md).</span>
+<span class="c1"># All rights reserved.</span>
+<span class="c1">#</span>
+<span class="c1"># SPDX-License-Identifier: BSD-3-Clause</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">annotations</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">logging</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">TYPE_CHECKING</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">trimesh</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">warp</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">wp</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">pxr</span><span class="w"> </span><span class="kn">import</span> <span class="n">Usd</span><span class="p">,</span> <span class="n">UsdPhysics</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">isaaclab.sim</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sim_utils</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">isaaclab.cloner.cloner_utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">iter_clone_plan_matches</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">isaaclab.sim.simulation_context</span><span class="w"> </span><span class="kn">import</span> <span class="n">SimulationContext</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">isaaclab.utils.mesh</span><span class="w"> </span><span class="kn">import</span> <span class="n">PRIMITIVE_MESH_TYPES</span><span class="p">,</span> <span class="n">create_trimesh_from_geom_mesh</span><span class="p">,</span> <span class="n">create_trimesh_from_geom_shape</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">isaaclab.utils.warp</span><span class="w"> </span><span class="kn">import</span> <span class="n">ProxyArray</span><span class="p">,</span> <span class="n">convert_to_warp_mesh</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">isaaclab.utils.warp</span><span class="w"> </span><span class="kn">import</span> <span class="n">kernels</span> <span class="k">as</span> <span class="n">warp_kernels</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">.base_ray_caster</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseRayCaster</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.kernels</span><span class="w"> </span><span class="kn">import</span> <span class="n">copy_mesh_poses_to_table_kernel</span><span class="p">,</span> <span class="n">fill_ray_hits_distance_inf_kernel</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.multi_mesh_ray_caster_data</span><span class="w"> </span><span class="kn">import</span> <span class="n">MultiMeshRayCasterData</span>
+
+<span class="k">if</span> <span class="n">TYPE_CHECKING</span><span class="p">:</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">isaaclab.cloner</span><span class="w"> </span><span class="kn">import</span> <span class="n">ClonePlan</span>
+
+    <span class="kn">from</span><span class="w"> </span><span class="nn">.multi_mesh_ray_caster_cfg</span><span class="w"> </span><span class="kn">import</span> <span class="n">MultiMeshRayCasterCfg</span>
+
+<span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_matrix_from_quat_xyzw</span><span class="p">(</span><span class="n">quat</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return a rotation matrix from an ``(x, y, z, w)`` quaternion.&quot;&quot;&quot;</span>
+    <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="n">w</span> <span class="o">=</span> <span class="n">quat</span>
+    <span class="n">two_s</span> <span class="o">=</span> <span class="mf">2.0</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">quat</span><span class="p">,</span> <span class="n">quat</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span>
+        <span class="p">[</span>
+            <span class="p">[</span><span class="mf">1.0</span> <span class="o">-</span> <span class="n">two_s</span> <span class="o">*</span> <span class="p">(</span><span class="n">y</span> <span class="o">*</span> <span class="n">y</span> <span class="o">+</span> <span class="n">z</span> <span class="o">*</span> <span class="n">z</span><span class="p">),</span> <span class="n">two_s</span> <span class="o">*</span> <span class="p">(</span><span class="n">x</span> <span class="o">*</span> <span class="n">y</span> <span class="o">-</span> <span class="n">z</span> <span class="o">*</span> <span class="n">w</span><span class="p">),</span> <span class="n">two_s</span> <span class="o">*</span> <span class="p">(</span><span class="n">x</span> <span class="o">*</span> <span class="n">z</span> <span class="o">+</span> <span class="n">y</span> <span class="o">*</span> <span class="n">w</span><span class="p">)],</span>
+            <span class="p">[</span><span class="n">two_s</span> <span class="o">*</span> <span class="p">(</span><span class="n">x</span> <span class="o">*</span> <span class="n">y</span> <span class="o">+</span> <span class="n">z</span> <span class="o">*</span> <span class="n">w</span><span class="p">),</span> <span class="mf">1.0</span> <span class="o">-</span> <span class="n">two_s</span> <span class="o">*</span> <span class="p">(</span><span class="n">x</span> <span class="o">*</span> <span class="n">x</span> <span class="o">+</span> <span class="n">z</span> <span class="o">*</span> <span class="n">z</span><span class="p">),</span> <span class="n">two_s</span> <span class="o">*</span> <span class="p">(</span><span class="n">y</span> <span class="o">*</span> <span class="n">z</span> <span class="o">-</span> <span class="n">x</span> <span class="o">*</span> <span class="n">w</span><span class="p">)],</span>
+            <span class="p">[</span><span class="n">two_s</span> <span class="o">*</span> <span class="p">(</span><span class="n">x</span> <span class="o">*</span> <span class="n">z</span> <span class="o">-</span> <span class="n">y</span> <span class="o">*</span> <span class="n">w</span><span class="p">),</span> <span class="n">two_s</span> <span class="o">*</span> <span class="p">(</span><span class="n">y</span> <span class="o">*</span> <span class="n">z</span> <span class="o">+</span> <span class="n">x</span> <span class="o">*</span> <span class="n">w</span><span class="p">),</span> <span class="mf">1.0</span> <span class="o">-</span> <span class="n">two_s</span> <span class="o">*</span> <span class="p">(</span><span class="n">x</span> <span class="o">*</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span> <span class="o">*</span> <span class="n">y</span><span class="p">)],</span>
+        <span class="p">],</span>
+        <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">,</span>
+    <span class="p">)</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">BaseMultiMeshRayCaster</span><span class="p">(</span><span class="n">BaseRayCaster</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;A multi-mesh ray-casting sensor.</span>
+
+<span class="sd">    The ray-caster uses a set of rays to detect collisions with meshes in the scene. The rays are</span>
+<span class="sd">    defined in the sensor&#39;s local coordinate frame. The sensor can be configured to ray-cast against</span>
+<span class="sd">    a set of meshes with a given ray pattern.</span>
+
+<span class="sd">    The meshes are parsed from the list of primitive paths provided in the configuration. These are then</span>
+<span class="sd">    converted to warp meshes and stored in the :attr:`meshes` dictionary. The ray-caster then ray-casts</span>
+<span class="sd">    against these warp meshes using the ray pattern provided in the configuration.</span>
+
+<span class="sd">    Compared to the default RayCaster, the MultiMeshRayCaster provides additional functionality and flexibility as</span>
+<span class="sd">    an extension of the default RayCaster with the following enhancements:</span>
+
+<span class="sd">    - Raycasting against multiple target types : Supports primitive shapes (spheres, cubes, etc.) as well as arbitrary</span>
+<span class="sd">      meshes.</span>
+<span class="sd">    - Dynamic mesh tracking : Keeps track of specified meshes, enabling raycasting against moving parts</span>
+<span class="sd">      (e.g., robot links, articulated bodies, or dynamic obstacles).</span>
+<span class="sd">    - Memory-efficient caching : Avoids redundant memory usage by reusing mesh data across environments.</span>
+
+<span class="sd">    .. warning::</span>
+<span class="sd">        **Known limitation (multi-mesh closest-hit resolution):** When two meshes produce a</span>
+<span class="sd">        hit at the exact same distance for a given ray, the ``atomic_min`` + equality-check</span>
+<span class="sd">        pattern in the raycasting kernel is not fully thread-safe. The hit *position* is always</span>
+<span class="sd">        correct, but auxiliary outputs (normals, face IDs, mesh IDs) may originate from</span>
+<span class="sd">        different meshes for the affected ray. This requires an exact floating-point tie and is</span>
+<span class="sd">        rare in practice. See `warp#1058 &lt;https://github.com/NVIDIA/warp/issues/1058&gt;`_ for</span>
+<span class="sd">        upstream progress on a thread-safe ``atomic_min`` return value.</span>
+
+<span class="sd">    Example usage to raycast against the visual meshes of a robot (e.g. ANYmal):</span>
+
+<span class="sd">    .. code-block:: python</span>
+
+<span class="sd">        ray_caster_cfg = MultiMeshRayCasterCfg(</span>
+<span class="sd">            prim_path=&quot;{ENV_REGEX_NS}/Robot&quot;,</span>
+<span class="sd">            mesh_prim_paths=[</span>
+<span class="sd">                &quot;/World/Ground&quot;,</span>
+<span class="sd">                MultiMeshRayCasterCfg.RaycastTargetCfg(prim_expr=&quot;{ENV_REGEX_NS}/Robot/LF_.*/visuals&quot;),</span>
+<span class="sd">                MultiMeshRayCasterCfg.RaycastTargetCfg(prim_expr=&quot;{ENV_REGEX_NS}/Robot/RF_.*/visuals&quot;),</span>
+<span class="sd">                MultiMeshRayCasterCfg.RaycastTargetCfg(prim_expr=&quot;{ENV_REGEX_NS}/Robot/LH_.*/visuals&quot;),</span>
+<span class="sd">                MultiMeshRayCasterCfg.RaycastTargetCfg(prim_expr=&quot;{ENV_REGEX_NS}/Robot/RH_.*/visuals&quot;),</span>
+<span class="sd">                MultiMeshRayCasterCfg.RaycastTargetCfg(prim_expr=&quot;{ENV_REGEX_NS}/Robot/base/visuals&quot;),</span>
+<span class="sd">            ],</span>
+<span class="sd">            ray_alignment=&quot;world&quot;,</span>
+<span class="sd">            pattern_cfg=patterns.GridPatternCfg(resolution=0.02, size=(2.5, 2.5), direction=(0, 0, -1)),</span>
+<span class="sd">        )</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">cfg</span><span class="p">:</span> <span class="n">MultiMeshRayCasterCfg</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;The configuration parameters.&quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cfg</span><span class="p">:</span> <span class="n">MultiMeshRayCasterCfg</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Initializes the ray-caster object.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            cfg: The configuration parameters.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">cfg</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_num_meshes_per_env</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_raycast_targets_cfg</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">MultiMeshRayCasterCfg</span><span class="o">.</span><span class="n">RaycastTargetCfg</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">target</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">cfg</span><span class="o">.</span><span class="n">mesh_prim_paths</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">target</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+                <span class="n">target_cfg</span> <span class="o">=</span> <span class="n">cfg</span><span class="o">.</span><span class="n">RaycastTargetCfg</span><span class="p">(</span><span class="n">prim_expr</span><span class="o">=</span><span class="n">target</span><span class="p">,</span> <span class="n">track_mesh_transforms</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">target_cfg</span> <span class="o">=</span> <span class="n">target</span>
+            <span class="n">target_cfg</span><span class="o">.</span><span class="n">prim_expr</span> <span class="o">=</span> <span class="n">target_cfg</span><span class="o">.</span><span class="n">prim_expr</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">ENV_REGEX_NS</span><span class="o">=</span><span class="s2">&quot;/World/envs/env_.*&quot;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_raycast_targets_cfg</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">target_cfg</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_data</span> <span class="o">=</span> <span class="n">MultiMeshRayCasterData</span><span class="p">()</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns: A string containing information about the instance.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;Ray-caster @ &#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">cfg</span><span class="o">.</span><span class="n">prim_path</span><span class="si">}</span><span class="s2">&#39;: </span><span class="se">\n</span><span class="s2">&quot;</span>
+            <span class="sa">f</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">view type            : </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_view</span><span class="o">.</span><span class="vm">__class__</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span>
+            <span class="sa">f</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">update period (s)    : </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">cfg</span><span class="o">.</span><span class="n">update_period</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span>
+            <span class="sa">f</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">number of meshes     : </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_num_envs</span><span class="si">}</span><span class="s2"> x </span><span class="si">{</span><span class="nb">sum</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_num_meshes_per_env</span><span class="o">.</span><span class="n">values</span><span class="p">())</span><span class="si">}</span><span class="s2"> </span><span class="se">\n</span><span class="s2">&quot;</span>
+            <span class="sa">f</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">number of sensors    : </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_view_count</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span>
+            <span class="sa">f</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">number of rays/sensor: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">num_rays</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span>
+            <span class="sa">f</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">total number of rays : </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">num_rays</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">_view_count</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="p">)</span>
+
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Properties</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">data</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">MultiMeshRayCasterData</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_update_outdated_buffers</span><span class="p">()</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data</span>
+
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Implementation.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_initialize_warp_meshes</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Initialize mesh buffers from the ClonePlan when env-scoped, else from the stage.&quot;&quot;&quot;</span>
+        <span class="n">sim</span> <span class="o">=</span> <span class="n">SimulationContext</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span>
+        <span class="n">plan</span> <span class="o">=</span> <span class="n">sim</span><span class="o">.</span><span class="n">get_clone_plan</span><span class="p">()</span> <span class="k">if</span> <span class="n">sim</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="kc">None</span>
+        <span class="n">target_records_by_expr</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="n">dummy_mesh_id</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_mesh_views</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="c1"># Build one per-env mesh list for each configured raycast target.</span>
+        <span class="k">for</span> <span class="n">target_cfg</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_raycast_targets_cfg</span><span class="p">:</span>
+            <span class="n">records_per_env</span><span class="p">,</span> <span class="n">dummy_mesh_id</span><span class="p">,</span> <span class="n">tracked_target_exprs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_build_mesh_records</span><span class="p">(</span>
+                <span class="n">target_cfg</span><span class="p">,</span> <span class="n">plan</span><span class="p">,</span> <span class="n">dummy_mesh_id</span>
+            <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_num_meshes_per_env</span><span class="p">[</span><span class="n">target_cfg</span><span class="o">.</span><span class="n">prim_expr</span><span class="p">]</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">records</span><span class="p">)</span> <span class="k">for</span> <span class="n">records</span> <span class="ow">in</span> <span class="n">records_per_env</span><span class="p">)</span>
+            <span class="n">target_records_by_expr</span><span class="p">[</span><span class="n">target_cfg</span><span class="o">.</span><span class="n">prim_expr</span><span class="p">]</span> <span class="o">=</span> <span class="n">records_per_env</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_mesh_views</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_create_tracked_target_view</span><span class="p">(</span><span class="n">tracked_target_exprs</span><span class="p">)</span> <span class="k">if</span> <span class="n">target_cfg</span><span class="o">.</span><span class="n">track_mesh_transforms</span> <span class="k">else</span> <span class="kc">None</span>
+            <span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">dummy_mesh_id</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;No meshes found for ray-casting! Please check the mesh prim paths: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">cfg</span><span class="o">.</span><span class="n">mesh_prim_paths</span><span class="si">}</span><span class="s2">&quot;</span>
+            <span class="p">)</span>
+
+        <span class="n">total_meshes_per_env</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_num_meshes_per_env</span><span class="p">[</span><span class="n">target_cfg</span><span class="o">.</span><span class="n">prim_expr</span><span class="p">]</span> <span class="k">for</span> <span class="n">target_cfg</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_raycast_targets_cfg</span>
+        <span class="p">)</span>
+        <span class="n">mesh_ids</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">_num_envs</span><span class="p">,</span> <span class="n">total_meshes_per_env</span><span class="p">),</span> <span class="n">dummy_mesh_id</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">uint64</span><span class="p">)</span>
+        <span class="n">mesh_positions</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">_num_envs</span><span class="p">,</span> <span class="n">total_meshes_per_env</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="mf">1.0e9</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+        <span class="n">mesh_orientations</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">_num_envs</span><span class="p">,</span> <span class="n">total_meshes_per_env</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+        <span class="n">mesh_orientations</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.0</span>
+
+        <span class="n">mesh_offset</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">for</span> <span class="n">target_cfg</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_raycast_targets_cfg</span><span class="p">:</span>
+            <span class="n">records_per_env</span> <span class="o">=</span> <span class="n">target_records_by_expr</span><span class="p">[</span><span class="n">target_cfg</span><span class="o">.</span><span class="n">prim_expr</span><span class="p">]</span>
+            <span class="n">target_width</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_num_meshes_per_env</span><span class="p">[</span><span class="n">target_cfg</span><span class="o">.</span><span class="n">prim_expr</span><span class="p">]</span>
+            <span class="k">for</span> <span class="n">env_id</span><span class="p">,</span> <span class="n">records</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">records_per_env</span><span class="p">):</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="n">records</span><span class="p">:</span>
+                    <span class="k">continue</span>
+                <span class="n">count</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">records</span><span class="p">)</span>
+                <span class="n">record_mesh_ids</span><span class="p">,</span> <span class="n">record_positions</span><span class="p">,</span> <span class="n">record_orientations</span> <span class="o">=</span> <span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="n">records</span><span class="p">)</span>
+                <span class="n">target_slice</span> <span class="o">=</span> <span class="nb">slice</span><span class="p">(</span><span class="n">mesh_offset</span><span class="p">,</span> <span class="n">mesh_offset</span> <span class="o">+</span> <span class="n">count</span><span class="p">)</span>
+                <span class="n">mesh_ids</span><span class="p">[</span><span class="n">env_id</span><span class="p">,</span> <span class="n">target_slice</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">record_mesh_ids</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">uint64</span><span class="p">)</span>
+                <span class="n">mesh_positions</span><span class="p">[</span><span class="n">env_id</span><span class="p">,</span> <span class="n">target_slice</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">record_positions</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+                <span class="n">mesh_orientations</span><span class="p">[</span><span class="n">env_id</span><span class="p">,</span> <span class="n">target_slice</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">record_orientations</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+            <span class="n">mesh_offset</span> <span class="o">+=</span> <span class="n">target_width</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_mesh_ids_wp</span> <span class="o">=</span> <span class="n">wp</span><span class="o">.</span><span class="n">array2d</span><span class="p">(</span><span class="n">mesh_ids</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">wp</span><span class="o">.</span><span class="n">uint64</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">device</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_mesh_positions_w</span> <span class="o">=</span> <span class="n">wp</span><span class="o">.</span><span class="n">array2d</span><span class="p">(</span><span class="n">mesh_positions</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">wp</span><span class="o">.</span><span class="n">vec3f</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">device</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_mesh_orientations_w</span> <span class="o">=</span> <span class="n">wp</span><span class="o">.</span><span class="n">array2d</span><span class="p">(</span><span class="n">mesh_orientations</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">wp</span><span class="o">.</span><span class="n">quatf</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">device</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_build_mesh_records</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">target_cfg</span><span class="p">:</span> <span class="n">MultiMeshRayCasterCfg</span><span class="o">.</span><span class="n">RaycastTargetCfg</span><span class="p">,</span>
+        <span class="n">plan</span><span class="p">:</span> <span class="n">ClonePlan</span> <span class="o">|</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">dummy_mesh_id</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Build mesh records for the target configuration.&quot;&quot;&quot;</span>
+        <span class="n">records_per_env</span> <span class="o">=</span> <span class="p">[[]</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_num_envs</span><span class="p">)]</span>
+        <span class="n">target_in_plan</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="n">tracked_target_exprs</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">target_cfg</span><span class="o">.</span><span class="n">prim_expr</span><span class="p">]</span>
+        <span class="n">has_rigid_body_api</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">p</span><span class="p">:</span> <span class="n">p</span><span class="o">.</span><span class="n">HasAPI</span><span class="p">(</span><span class="n">UsdPhysics</span><span class="o">.</span><span class="n">RigidBodyAPI</span><span class="p">)</span>  <span class="c1"># noqa: E731</span>
+        <span class="c1"># Prefer ClonePlan data for env-scoped targets; destination USD prims may not exist.</span>
+        <span class="k">if</span> <span class="n">plan</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">target_cfg</span><span class="o">.</span><span class="n">track_mesh_transforms</span><span class="p">:</span>
+            <span class="n">plan_tracked_target_exprs</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="n">prim_expr</span> <span class="o">=</span> <span class="n">target_cfg</span><span class="o">.</span><span class="n">prim_expr</span>
+            <span class="k">for</span> <span class="n">source_root</span><span class="p">,</span> <span class="n">destination_template</span><span class="p">,</span> <span class="n">source_path</span><span class="p">,</span> <span class="n">env_ids</span> <span class="ow">in</span> <span class="n">iter_clone_plan_matches</span><span class="p">(</span><span class="n">plan</span><span class="p">,</span> <span class="n">prim_expr</span><span class="p">):</span>
+                <span class="n">target_in_plan</span> <span class="o">=</span> <span class="kc">True</span>
+
+                <span class="c1"># Load meshes from the authored source entry.</span>
+                <span class="n">source_prims</span> <span class="o">=</span> <span class="n">sim_utils</span><span class="o">.</span><span class="n">find_matching_prims</span><span class="p">(</span><span class="n">source_path</span><span class="p">)</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="n">source_prims</span><span class="p">:</span>
+                    <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;No ClonePlan source prims matched &#39;</span><span class="si">{</span><span class="n">source_path</span><span class="si">}</span><span class="s2">&#39;.&quot;</span><span class="p">)</span>
+
+                <span class="n">mesh_ids</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+                <span class="n">row_tracked_target_exprs</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+                <span class="k">for</span> <span class="n">source_prim</span> <span class="ow">in</span> <span class="n">source_prims</span><span class="p">:</span>
+                    <span class="n">source_prim_path</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">source_prim</span><span class="o">.</span><span class="n">GetPath</span><span class="p">())</span>
+                    <span class="c1"># Use a bounded rigid-body ancestor when the match is below a body; otherwise</span>
+                    <span class="c1"># enumerate rigid bodies under the match, including the matched prim itself.</span>
+                    <span class="n">owner_prim</span> <span class="o">=</span> <span class="kc">None</span>
+                    <span class="n">rigid_body_records</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="n">Usd</span><span class="o">.</span><span class="n">Prim</span><span class="p">,</span> <span class="n">Usd</span><span class="o">.</span><span class="n">Prim</span><span class="p">]]</span>
+                    <span class="k">if</span> <span class="ow">not</span> <span class="n">source_prim</span><span class="o">.</span><span class="n">HasAPI</span><span class="p">(</span><span class="n">UsdPhysics</span><span class="o">.</span><span class="n">ArticulationRootAPI</span><span class="p">):</span>
+                        <span class="n">owner_prim</span> <span class="o">=</span> <span class="n">sim_utils</span><span class="o">.</span><span class="n">get_first_matching_ancestor_prim</span><span class="p">(</span><span class="n">source_prim_path</span><span class="p">,</span> <span class="n">has_rigid_body_api</span><span class="p">)</span>
+                    <span class="n">owner_path</span> <span class="o">=</span> <span class="kc">None</span> <span class="k">if</span> <span class="n">owner_prim</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="nb">str</span><span class="p">(</span><span class="n">owner_prim</span><span class="o">.</span><span class="n">GetPath</span><span class="p">())</span>
+                    <span class="k">if</span> <span class="n">owner_path</span> <span class="ow">and</span> <span class="p">(</span><span class="n">owner_path</span> <span class="o">==</span> <span class="n">source_root</span> <span class="ow">or</span> <span class="n">owner_path</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">source_root</span><span class="si">}</span><span class="s2">/&quot;</span><span class="p">)):</span>
+                        <span class="n">rigid_body_records</span> <span class="o">=</span> <span class="p">[(</span><span class="n">source_prim</span><span class="p">,</span> <span class="n">owner_prim</span><span class="p">)]</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="n">rigid_body_records</span> <span class="o">=</span> <span class="p">[</span>
+                            <span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">sim_utils</span><span class="o">.</span><span class="n">get_all_matching_child_prims</span><span class="p">(</span><span class="n">source_prim_path</span><span class="p">,</span> <span class="n">has_rigid_body_api</span><span class="p">)</span>
+                        <span class="p">]</span>
+                    <span class="k">if</span> <span class="ow">not</span> <span class="n">rigid_body_records</span><span class="p">:</span>
+                        <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span>
+                            <span class="sa">f</span><span class="s2">&quot;Cannot track ClonePlan target &#39;</span><span class="si">{</span><span class="n">target_cfg</span><span class="o">.</span><span class="n">prim_expr</span><span class="si">}</span><span class="s2">&#39; because source prim &quot;</span>
+                            <span class="sa">f</span><span class="s2">&quot;&#39;</span><span class="si">{</span><span class="n">source_prim</span><span class="o">.</span><span class="n">GetPath</span><span class="p">()</span><span class="si">}</span><span class="s2">&#39; has no rigid-body ancestor or descendant.&quot;</span>
+                        <span class="p">)</span>
+                    <span class="k">for</span> <span class="n">geometry_prim</span><span class="p">,</span> <span class="n">owner_prim</span> <span class="ow">in</span> <span class="n">rigid_body_records</span><span class="p">:</span>
+                        <span class="n">mesh_id</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_load_target_prim_warp_mesh</span><span class="p">(</span><span class="n">geometry_prim</span><span class="p">,</span> <span class="n">target_cfg</span><span class="p">,</span> <span class="n">reference_prim</span><span class="o">=</span><span class="n">owner_prim</span><span class="p">)</span>
+                        <span class="n">dummy_mesh_id</span> <span class="o">=</span> <span class="n">mesh_id</span> <span class="k">if</span> <span class="n">dummy_mesh_id</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">dummy_mesh_id</span>
+                        <span class="n">mesh_ids</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">mesh_id</span><span class="p">)</span>
+                        <span class="n">owner_path</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">owner_prim</span><span class="o">.</span><span class="n">GetPath</span><span class="p">())</span>
+                        <span class="k">if</span> <span class="n">owner_path</span> <span class="o">==</span> <span class="n">source_root</span><span class="p">:</span>
+                            <span class="n">owner_suffix</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+                        <span class="k">elif</span> <span class="n">owner_path</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="n">source_root</span> <span class="o">+</span> <span class="s2">&quot;/&quot;</span><span class="p">):</span>
+                            <span class="n">owner_suffix</span> <span class="o">=</span> <span class="n">owner_path</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">source_root</span><span class="p">)</span> <span class="p">:]</span>
+                        <span class="k">else</span><span class="p">:</span>
+                            <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span>
+                                <span class="sa">f</span><span class="s2">&quot;Tracked target owner &#39;</span><span class="si">{</span><span class="n">owner_path</span><span class="si">}</span><span class="s2">&#39; is not under ClonePlan source root &quot;</span>
+                                <span class="sa">f</span><span class="s2">&quot;&#39;</span><span class="si">{</span><span class="n">source_root</span><span class="si">}</span><span class="s2">&#39;.&quot;</span>
+                            <span class="p">)</span>
+                        <span class="n">row_tracked_target_exprs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">destination_template</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;.*&quot;</span><span class="p">)</span> <span class="o">+</span> <span class="n">owner_suffix</span><span class="p">)</span>
+
+                <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">row_tracked_target_exprs</span><span class="p">)</span> <span class="o">&gt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">plan_tracked_target_exprs</span><span class="p">):</span>
+                    <span class="n">plan_tracked_target_exprs</span> <span class="o">=</span> <span class="n">row_tracked_target_exprs</span>
+
+                <span class="c1"># Geometry is selected by ClonePlan; live pose is supplied by backend body/site views.</span>
+                <span class="k">for</span> <span class="n">env_id</span> <span class="ow">in</span> <span class="n">env_ids</span><span class="p">:</span>
+                    <span class="k">for</span> <span class="n">mesh_id</span> <span class="ow">in</span> <span class="n">mesh_ids</span><span class="p">:</span>
+                        <span class="n">records_per_env</span><span class="p">[</span><span class="n">env_id</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">mesh_id</span><span class="p">,</span> <span class="p">(</span><span class="mf">1.0e9</span><span class="p">,</span> <span class="mf">1.0e9</span><span class="p">,</span> <span class="mf">1.0e9</span><span class="p">),</span> <span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)))</span>
+
+            <span class="k">if</span> <span class="n">target_in_plan</span><span class="p">:</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="n">plan_tracked_target_exprs</span><span class="p">:</span>
+                    <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span>
+                        <span class="sa">f</span><span class="s2">&quot;No tracked body expressions were resolved for target &#39;</span><span class="si">{</span><span class="n">target_cfg</span><span class="o">.</span><span class="n">prim_expr</span><span class="si">}</span><span class="s2">&#39;.&quot;</span>
+                    <span class="p">)</span>
+                <span class="k">return</span> <span class="n">records_per_env</span><span class="p">,</span> <span class="n">dummy_mesh_id</span><span class="p">,</span> <span class="n">plan_tracked_target_exprs</span>
+
+        <span class="c1"># Fall back to authored USD prims for global targets and scenes without ClonePlan data.</span>
+        <span class="n">target_prims</span> <span class="o">=</span> <span class="n">sim_utils</span><span class="o">.</span><span class="n">find_matching_prims</span><span class="p">(</span><span class="n">target_cfg</span><span class="o">.</span><span class="n">prim_expr</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">target_prims</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Failed to find a prim at path expression: </span><span class="si">{</span><span class="n">target_cfg</span><span class="o">.</span><span class="n">prim_expr</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+        <span class="n">records</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">tracked_target_exprs</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">target_prim</span> <span class="ow">in</span> <span class="n">target_prims</span><span class="p">:</span>
+            <span class="n">reference_prim</span> <span class="o">=</span> <span class="n">target_prim</span>
+            <span class="k">if</span> <span class="n">target_cfg</span><span class="o">.</span><span class="n">track_mesh_transforms</span><span class="p">:</span>
+                <span class="k">while</span> <span class="n">reference_prim</span> <span class="ow">and</span> <span class="n">reference_prim</span><span class="o">.</span><span class="n">IsValid</span><span class="p">()</span> <span class="ow">and</span> <span class="nb">str</span><span class="p">(</span><span class="n">reference_prim</span><span class="o">.</span><span class="n">GetPath</span><span class="p">())</span> <span class="o">!=</span> <span class="s2">&quot;/&quot;</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="n">reference_prim</span><span class="o">.</span><span class="n">HasAPI</span><span class="p">(</span><span class="n">UsdPhysics</span><span class="o">.</span><span class="n">RigidBodyAPI</span><span class="p">):</span>
+                        <span class="k">break</span>
+                    <span class="n">reference_prim</span> <span class="o">=</span> <span class="n">reference_prim</span><span class="o">.</span><span class="n">GetParent</span><span class="p">()</span>
+                <span class="k">if</span> <span class="n">reference_prim</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">reference_prim</span><span class="o">.</span><span class="n">IsValid</span><span class="p">()</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">has_rigid_body_api</span><span class="p">(</span><span class="n">reference_prim</span><span class="p">):</span>
+                    <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span>
+                        <span class="sa">f</span><span class="s2">&quot;Cannot track non-physics ray-cast target &#39;</span><span class="si">{</span><span class="n">target_cfg</span><span class="o">.</span><span class="n">prim_expr</span><span class="si">}</span><span class="s2">&#39;. &quot;</span>
+                        <span class="s2">&quot;Set track_mesh_transforms=False for static targets, or apply RigidBodyAPI to dynamic targets.&quot;</span>
+                    <span class="p">)</span>
+                <span class="n">tracked_target_exprs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">reference_prim</span><span class="o">.</span><span class="n">GetPath</span><span class="p">()))</span>
+
+            <span class="n">mesh_id</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_load_target_prim_warp_mesh</span><span class="p">(</span><span class="n">target_prim</span><span class="p">,</span> <span class="n">target_cfg</span><span class="p">,</span> <span class="n">reference_prim</span><span class="o">=</span><span class="n">reference_prim</span><span class="p">)</span>
+            <span class="n">dummy_mesh_id</span> <span class="o">=</span> <span class="n">mesh_id</span> <span class="k">if</span> <span class="n">dummy_mesh_id</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">dummy_mesh_id</span>
+            <span class="n">records</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">mesh_id</span><span class="p">,</span> <span class="o">*</span><span class="n">sim_utils</span><span class="o">.</span><span class="n">resolve_prim_pose</span><span class="p">(</span><span class="n">reference_prim</span><span class="p">)))</span>
+
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">records</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">[</span><span class="nb">list</span><span class="p">(</span><span class="n">records</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_num_envs</span><span class="p">)],</span> <span class="n">dummy_mesh_id</span><span class="p">,</span> <span class="n">tracked_target_exprs</span>
+
+        <span class="c1"># Multiple USD matches are expected to be laid out evenly by environment.</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">records</span><span class="p">)</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">_num_envs</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;Target expression &#39;</span><span class="si">{</span><span class="n">target_cfg</span><span class="o">.</span><span class="n">prim_expr</span><span class="si">}</span><span class="s2">&#39; matched </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">records</span><span class="p">)</span><span class="si">}</span><span class="s2"> mesh records, &quot;</span>
+                <span class="sa">f</span><span class="s2">&quot;which cannot be evenly partitioned across </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_num_envs</span><span class="si">}</span><span class="s2"> environments.&quot;</span>
+            <span class="p">)</span>
+        <span class="n">n_meshes</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">records</span><span class="p">)</span> <span class="o">//</span> <span class="bp">self</span><span class="o">.</span><span class="n">_num_envs</span>
+        <span class="n">records_per_env</span> <span class="o">=</span> <span class="p">[</span><span class="n">records</span><span class="p">[</span><span class="n">env_id</span> <span class="o">*</span> <span class="n">n_meshes</span> <span class="p">:</span> <span class="p">(</span><span class="n">env_id</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">n_meshes</span><span class="p">]</span> <span class="k">for</span> <span class="n">env_id</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_num_envs</span><span class="p">)]</span>
+
+        <span class="k">return</span> <span class="n">records_per_env</span><span class="p">,</span> <span class="n">dummy_mesh_id</span><span class="p">,</span> <span class="n">tracked_target_exprs</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_load_target_prim_warp_mesh</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">target_prim</span><span class="p">,</span> <span class="n">target_cfg</span><span class="p">,</span> <span class="n">reference_prim</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="n">reference_prim</span> <span class="o">=</span> <span class="n">target_prim</span> <span class="k">if</span> <span class="n">reference_prim</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">reference_prim</span>
+        <span class="n">prim_key</span> <span class="o">=</span> <span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">target_prim</span><span class="o">.</span><span class="n">GetPath</span><span class="p">()</span><span class="si">}</span><span class="s2">@</span><span class="si">{</span><span class="n">reference_prim</span><span class="o">.</span><span class="n">GetPath</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_device</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">prim_key</span> <span class="ow">in</span> <span class="n">BaseMultiMeshRayCaster</span><span class="o">.</span><span class="n">meshes</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">BaseMultiMeshRayCaster</span><span class="o">.</span><span class="n">meshes</span><span class="p">[</span><span class="n">prim_key</span><span class="p">]</span><span class="o">.</span><span class="n">id</span>
+
+        <span class="n">mesh_prims</span> <span class="o">=</span> <span class="n">sim_utils</span><span class="o">.</span><span class="n">get_all_matching_child_prims</span><span class="p">(</span>
+            <span class="n">target_prim</span><span class="o">.</span><span class="n">GetPath</span><span class="p">(),</span> <span class="k">lambda</span> <span class="n">prim</span><span class="p">:</span> <span class="n">prim</span><span class="o">.</span><span class="n">GetTypeName</span><span class="p">()</span> <span class="ow">in</span> <span class="n">PRIMITIVE_MESH_TYPES</span> <span class="o">+</span> <span class="p">[</span><span class="s2">&quot;Mesh&quot;</span><span class="p">]</span>
+        <span class="p">)</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">mesh_prims</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;No mesh prims found at path: </span><span class="si">{</span><span class="n">target_prim</span><span class="o">.</span><span class="n">GetPath</span><span class="p">()</span><span class="si">}</span><span class="s2"> with supported types:&quot;</span>
+                <span class="sa">f</span><span class="s2">&quot; </span><span class="si">{</span><span class="n">PRIMITIVE_MESH_TYPES</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;Mesh&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span>
+            <span class="p">)</span>
+
+        <span class="n">trimesh_meshes</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">mesh_prim</span> <span class="ow">in</span> <span class="n">mesh_prims</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">mesh_prim</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">mesh_prim</span><span class="o">.</span><span class="n">IsValid</span><span class="p">():</span>
+                <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Invalid mesh prim path: </span><span class="si">{</span><span class="n">target_prim</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">mesh_prim</span><span class="o">.</span><span class="n">GetTypeName</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;Mesh&quot;</span><span class="p">:</span>
+                <span class="n">mesh</span> <span class="o">=</span> <span class="n">create_trimesh_from_geom_mesh</span><span class="p">(</span><span class="n">mesh_prim</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">mesh</span> <span class="o">=</span> <span class="n">create_trimesh_from_geom_shape</span><span class="p">(</span><span class="n">mesh_prim</span><span class="p">)</span>
+            <span class="n">mesh</span><span class="o">.</span><span class="n">apply_scale</span><span class="p">(</span><span class="n">sim_utils</span><span class="o">.</span><span class="n">resolve_prim_scale</span><span class="p">(</span><span class="n">mesh_prim</span><span class="p">))</span>
+            <span class="n">relative_pos</span><span class="p">,</span> <span class="n">relative_quat</span> <span class="o">=</span> <span class="n">sim_utils</span><span class="o">.</span><span class="n">resolve_prim_pose</span><span class="p">(</span><span class="n">mesh_prim</span><span class="p">,</span> <span class="n">reference_prim</span><span class="p">)</span>
+            <span class="n">relative_pos</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">relative_pos</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+            <span class="n">relative_quat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">relative_quat</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+            <span class="n">transform</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+            <span class="n">transform</span><span class="p">[:</span><span class="mi">3</span><span class="p">,</span> <span class="p">:</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="n">_matrix_from_quat_xyzw</span><span class="p">(</span><span class="n">relative_quat</span><span class="p">)</span>
+            <span class="n">transform</span><span class="p">[:</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="n">relative_pos</span>
+            <span class="n">mesh</span><span class="o">.</span><span class="n">apply_transform</span><span class="p">(</span><span class="n">transform</span><span class="p">)</span>
+            <span class="n">trimesh_meshes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">mesh</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">trimesh_meshes</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">trimesh_mesh</span> <span class="o">=</span> <span class="n">trimesh_meshes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">elif</span> <span class="n">target_cfg</span><span class="o">.</span><span class="n">merge_prim_meshes</span><span class="p">:</span>
+            <span class="n">trimesh_mesh</span> <span class="o">=</span> <span class="n">trimesh</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span><span class="n">trimesh_meshes</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;Multiple mesh prims found at path: </span><span class="si">{</span><span class="n">target_prim</span><span class="o">.</span><span class="n">GetPath</span><span class="p">()</span><span class="si">}</span><span class="s2"> but merging is disabled. Please&quot;</span>
+                <span class="s2">&quot; enable `merge_prim_meshes` in the configuration or specify each mesh separately.&quot;</span>
+            <span class="p">)</span>
+
+        <span class="n">wp_mesh</span> <span class="o">=</span> <span class="n">convert_to_warp_mesh</span><span class="p">(</span><span class="n">trimesh_mesh</span><span class="o">.</span><span class="n">vertices</span><span class="p">,</span> <span class="n">trimesh_mesh</span><span class="o">.</span><span class="n">faces</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_device</span><span class="p">)</span>
+        <span class="n">BaseMultiMeshRayCaster</span><span class="o">.</span><span class="n">meshes</span><span class="p">[</span><span class="n">prim_key</span><span class="p">]</span> <span class="o">=</span> <span class="n">wp_mesh</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;Read &#39;</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">mesh_prims</span><span class="p">)</span><span class="si">}</span><span class="s2">&#39; mesh prims under path &#39;</span><span class="si">{</span><span class="n">target_prim</span><span class="o">.</span><span class="n">GetPath</span><span class="p">()</span><span class="si">}</span><span class="s2">&#39; with&quot;</span>
+            <span class="sa">f</span><span class="s2">&quot; </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">trimesh_mesh</span><span class="o">.</span><span class="n">vertices</span><span class="p">)</span><span class="si">}</span><span class="s2"> vertices and </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">trimesh_mesh</span><span class="o">.</span><span class="n">faces</span><span class="p">)</span><span class="si">}</span><span class="s2"> faces.&quot;</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="n">wp_mesh</span><span class="o">.</span><span class="n">id</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_create_tracked_target_view</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">target_prim_paths</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]):</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;Tracked multi-mesh targets must be implemented by the active physics backend.&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_initialize_rays_impl</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">_initialize_rays_impl</span><span class="p">()</span>
+        <span class="c1"># Persistent buffer for tracking closest-hit distance across meshes (for atomic_min)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ray_distance_wp</span> <span class="o">=</span> <span class="n">wp</span><span class="o">.</span><span class="n">empty</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">_view_count</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_rays</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">wp</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_device</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">cfg</span><span class="o">.</span><span class="n">update_mesh_ids</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="o">.</span><span class="n">ray_mesh_ids</span> <span class="o">=</span> <span class="n">ProxyArray</span><span class="p">(</span>
+                <span class="n">wp</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">_view_count</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_rays</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">wp</span><span class="o">.</span><span class="n">int16</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_device</span><span class="p">)</span>
+            <span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># Dummy 1×1 buffer so the kernel launch always has a valid array to bind</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_ray_mesh_id_wp</span> <span class="o">=</span> <span class="n">wp</span><span class="o">.</span><span class="n">empty</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">wp</span><span class="o">.</span><span class="n">int16</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_device</span><span class="p">)</span>
+        <span class="c1"># Persistent dummy buffers for unused kernel outputs; allocated once to avoid per-step allocations.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_dummy_normal_wp</span> <span class="o">=</span> <span class="n">wp</span><span class="o">.</span><span class="n">empty</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">wp</span><span class="o">.</span><span class="n">vec3</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_device</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_dummy_face_id_wp</span> <span class="o">=</span> <span class="n">wp</span><span class="o">.</span><span class="n">empty</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">wp</span><span class="o">.</span><span class="n">int32</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_device</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_update_mesh_transforms</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Update world-frame mesh positions and orientations for dynamically tracked targets.</span>
+
+<span class="sd">        Iterates over all tracked views and writes the current world poses into</span>
+<span class="sd">        the rectangular mesh pose buffers. Static (non-tracked) targets are</span>
+<span class="sd">        skipped; their initial poses were set during :meth:`_initialize_warp_meshes`.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">mesh_idx</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">for</span> <span class="n">view</span><span class="p">,</span> <span class="n">target_cfg</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_mesh_views</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_raycast_targets_cfg</span><span class="p">):</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">target_cfg</span><span class="o">.</span><span class="n">track_mesh_transforms</span><span class="p">:</span>
+                <span class="n">mesh_idx</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_num_meshes_per_env</span><span class="p">[</span><span class="n">target_cfg</span><span class="o">.</span><span class="n">prim_expr</span><span class="p">]</span>
+                <span class="k">continue</span>
+
+            <span class="n">pos_w</span><span class="p">,</span> <span class="n">ori_w</span> <span class="o">=</span> <span class="n">view</span><span class="o">.</span><span class="n">get_world_poses</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
+            <span class="n">view_count</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">view</span><span class="p">,</span> <span class="s2">&quot;count&quot;</span><span class="p">,</span> <span class="n">pos_w</span><span class="o">.</span><span class="n">warp</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+            <span class="n">meshes_per_env</span> <span class="o">=</span> <span class="n">view_count</span>
+            <span class="k">if</span> <span class="n">view_count</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="c1"># Backend views return a flat list across envs; the mesh table is indexed per env.</span>
+                <span class="n">meshes_per_env</span> <span class="o">=</span> <span class="n">view_count</span> <span class="o">//</span> <span class="bp">self</span><span class="o">.</span><span class="n">_num_envs</span>
+
+            <span class="n">wp</span><span class="o">.</span><span class="n">launch</span><span class="p">(</span>
+                <span class="n">copy_mesh_poses_to_table_kernel</span><span class="p">,</span>
+                <span class="n">dim</span><span class="o">=</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_num_envs</span><span class="p">,</span> <span class="n">meshes_per_env</span><span class="p">),</span>
+                <span class="n">inputs</span><span class="o">=</span><span class="p">[</span>
+                    <span class="n">pos_w</span><span class="o">.</span><span class="n">warp</span><span class="p">,</span>
+                    <span class="n">ori_w</span><span class="o">.</span><span class="n">warp</span><span class="p">,</span>
+                    <span class="nb">int</span><span class="p">(</span><span class="n">meshes_per_env</span><span class="p">),</span>
+                    <span class="nb">int</span><span class="p">(</span><span class="n">mesh_idx</span><span class="p">),</span>
+                    <span class="nb">bool</span><span class="p">(</span><span class="n">view_count</span> <span class="o">==</span> <span class="mi">1</span><span class="p">),</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_mesh_positions_w</span><span class="p">,</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_mesh_orientations_w</span><span class="p">,</span>
+                <span class="p">],</span>
+                <span class="n">device</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_device</span><span class="p">,</span>
+            <span class="p">)</span>
+            <span class="n">mesh_idx</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_num_meshes_per_env</span><span class="p">[</span><span class="n">target_cfg</span><span class="o">.</span><span class="n">prim_expr</span><span class="p">]</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_update_buffers_impl</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">env_mask</span><span class="p">:</span> <span class="n">wp</span><span class="o">.</span><span class="n">array</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Fills the buffers of the sensor data.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_update_ray_infos</span><span class="p">(</span><span class="n">env_mask</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_update_mesh_transforms</span><span class="p">()</span>
+
+        <span class="c1"># Fill output and distance buffers with inf for masked environments</span>
+        <span class="n">wp</span><span class="o">.</span><span class="n">launch</span><span class="p">(</span>
+            <span class="n">fill_ray_hits_distance_inf_kernel</span><span class="p">,</span>
+            <span class="n">dim</span><span class="o">=</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_num_envs</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_rays</span><span class="p">),</span>
+            <span class="n">inputs</span><span class="o">=</span><span class="p">[</span><span class="n">env_mask</span><span class="p">,</span> <span class="kc">False</span><span class="p">],</span>
+            <span class="n">outputs</span><span class="o">=</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="o">.</span><span class="n">_ray_hits_w</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ray_distance_wp</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dummy_normal_wp</span><span class="p">],</span>
+            <span class="n">device</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_device</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="n">n_meshes</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mesh_ids_wp</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">return_normal</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="n">return_face_id</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="n">write_mesh_ids</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cfg</span><span class="o">.</span><span class="n">update_mesh_ids</span>
+
+        <span class="c1"># Ray-cast against all meshes; closest hit wins via atomic_min on ray_distance.</span>
+        <span class="n">wp</span><span class="o">.</span><span class="n">launch</span><span class="p">(</span>
+            <span class="n">warp_kernels</span><span class="o">.</span><span class="n">raycast_dynamic_meshes_kernel</span><span class="p">,</span>
+            <span class="n">dim</span><span class="o">=</span><span class="p">(</span><span class="n">n_meshes</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_num_envs</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_rays</span><span class="p">),</span>
+            <span class="n">inputs</span><span class="o">=</span><span class="p">[</span>
+                <span class="n">env_mask</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_mesh_ids_wp</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_ray_starts_w</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_ray_directions_w</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="o">.</span><span class="n">_ray_hits_w</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_ray_distance_wp</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_dummy_normal_wp</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_dummy_face_id_wp</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="o">.</span><span class="n">ray_mesh_ids</span><span class="o">.</span><span class="n">warp</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">cfg</span><span class="o">.</span><span class="n">update_mesh_ids</span> <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ray_mesh_id_wp</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_mesh_positions_w</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_mesh_orientations_w</span><span class="p">,</span>
+                <span class="nb">float</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cfg</span><span class="o">.</span><span class="n">max_distance</span><span class="p">),</span>
+                <span class="nb">int</span><span class="p">(</span><span class="n">return_normal</span><span class="p">),</span>
+                <span class="nb">int</span><span class="p">(</span><span class="n">return_face_id</span><span class="p">),</span>
+                <span class="nb">int</span><span class="p">(</span><span class="n">write_mesh_ids</span><span class="p">),</span>
+            <span class="p">],</span>
+            <span class="n">device</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_device</span><span class="p">,</span>
+        <span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_invalidate_initialize_callback</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Invalidates the scene elements.&quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">_invalidate_initialize_callback</span><span class="p">(</span><span class="n">event</span><span class="p">)</span>
+        <span class="c1"># clear mesh views so they are re-created on the next initialization</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_mesh_views</span> <span class="o">=</span> <span class="p">[]</span>
+</pre></div>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By The Isaac Lab Project Developers.
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022-2025, The Isaac Lab Project Developers..
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    <p class="last-updated">
+  Last updated on Jul 12, 2026.
+  <br/>
+</p>
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

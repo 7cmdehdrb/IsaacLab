@@ -36,6 +36,7 @@
     <link rel="stylesheet" type="text/css" href="/opt/hostedtoolcache/Python/3.12.13/x64/lib/python3.12/site-packages/sphinxcontrib/icon/node_modules/@fortawesome/fontawesome-free/css/all.min.css?v=53359634" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx_paramlinks.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=8fb98eed" />
   
   <!-- So that users can add custom icons -->
@@ -65,7 +66,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="3.0.0" />
-    <meta name="docbuild:last-update" content="Jul 11, 2026"/>
+    <meta name="docbuild:last-update" content="Jul 12, 2026"/>
   </head>
   
   
@@ -163,9 +164,6 @@
             <option value="isaaclab.sim.spawners.html" selected>develop</option>
             <option value="../../../../main/source/api/lab/isaaclab.sim.spawners.html" >main</option>
             <option value="../../../../release/3.0.0-beta2/source/api/lab/isaaclab.sim.spawners.html" >release/3.0.0-beta2</option>
-            <option value="../../../../v3.0.0-beta2.patch1/source/api/lab/isaaclab.sim.spawners.html" >v3.0.0-beta2.patch1</option>
-            <option value="../../../../v3.0.0-beta2/source/api/lab/isaaclab.sim.spawners.html" >v3.0.0-beta2</option>
-            <option value="../../../../v3.0.0-beta/source/api/lab/isaaclab.sim.spawners.html" >v3.0.0-beta</option>
             <option value="../../../../v2.3.2/source/api/lab/isaaclab.sim.spawners.html" >v2.3.2</option>
             <option value="../../../../v2.3.1/source/api/lab/isaaclab.sim.spawners.html" >v2.3.1</option>
             <option value="../../../../v2.3.0/source/api/lab/isaaclab.sim.spawners.html" >v2.3.0</option>
@@ -205,7 +203,7 @@
           
           
           
-          <a href="https://developer.nvidia.com/isaac-sim" title="Isaac Sim" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="https://img.shields.io/badge/IsaacSim-6.0.1-silver.svg" class="icon-link-image" alt="Isaac Sim"/></a>
+          <a href="https://developer.nvidia.com/isaac-sim" title="Isaac Sim" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="https://img.shields.io/badge/IsaacSim-6.0.0-silver.svg" class="icon-link-image" alt="Isaac Sim"/></a>
         </li>
         <li class="nav-item">
           
@@ -1205,6 +1203,7 @@
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.sim.spawners.from_files.UrdfFileCfg.activate_contact_sensors"><code class="docutils literal notranslate"><span class="pre">UrdfFileCfg.activate_contact_sensors</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.sim.spawners.from_files.UrdfFileCfg.scale"><code class="docutils literal notranslate"><span class="pre">UrdfFileCfg.scale</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.sim.spawners.from_files.UrdfFileCfg.articulation_props"><code class="docutils literal notranslate"><span class="pre">UrdfFileCfg.articulation_props</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.sim.spawners.from_files.UrdfFileCfg.fix_root_link"><code class="docutils literal notranslate"><span class="pre">UrdfFileCfg.fix_root_link</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.sim.spawners.from_files.UrdfFileCfg.fixed_tendons_props"><code class="docutils literal notranslate"><span class="pre">UrdfFileCfg.fixed_tendons_props</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.sim.spawners.from_files.UrdfFileCfg.spatial_tendons_props"><code class="docutils literal notranslate"><span class="pre">UrdfFileCfg.spatial_tendons_props</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.sim.spawners.from_files.UrdfFileCfg.joint_drive_props"><code class="docutils literal notranslate"><span class="pre">UrdfFileCfg.joint_drive_props</span></code></a></li>
@@ -1230,6 +1229,7 @@
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.sim.spawners.from_files.UsdFileCfg.activate_contact_sensors"><code class="docutils literal notranslate"><span class="pre">UsdFileCfg.activate_contact_sensors</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.sim.spawners.from_files.UsdFileCfg.scale"><code class="docutils literal notranslate"><span class="pre">UsdFileCfg.scale</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.sim.spawners.from_files.UsdFileCfg.articulation_props"><code class="docutils literal notranslate"><span class="pre">UsdFileCfg.articulation_props</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.sim.spawners.from_files.UsdFileCfg.fix_root_link"><code class="docutils literal notranslate"><span class="pre">UsdFileCfg.fix_root_link</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.sim.spawners.from_files.UsdFileCfg.fixed_tendons_props"><code class="docutils literal notranslate"><span class="pre">UsdFileCfg.fixed_tendons_props</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.sim.spawners.from_files.UsdFileCfg.spatial_tendons_props"><code class="docutils literal notranslate"><span class="pre">UsdFileCfg.spatial_tendons_props</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.sim.spawners.from_files.UsdFileCfg.joint_drive_props"><code class="docutils literal notranslate"><span class="pre">UsdFileCfg.joint_drive_props</span></code></a></li>
@@ -1354,6 +1354,7 @@
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.sim.spawners.wrappers.MultiUsdFileCfg.activate_contact_sensors"><code class="docutils literal notranslate"><span class="pre">MultiUsdFileCfg.activate_contact_sensors</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.sim.spawners.wrappers.MultiUsdFileCfg.scale"><code class="docutils literal notranslate"><span class="pre">MultiUsdFileCfg.scale</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.sim.spawners.wrappers.MultiUsdFileCfg.articulation_props"><code class="docutils literal notranslate"><span class="pre">MultiUsdFileCfg.articulation_props</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.sim.spawners.wrappers.MultiUsdFileCfg.fix_root_link"><code class="docutils literal notranslate"><span class="pre">MultiUsdFileCfg.fix_root_link</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.sim.spawners.wrappers.MultiUsdFileCfg.fixed_tendons_props"><code class="docutils literal notranslate"><span class="pre">MultiUsdFileCfg.fixed_tendons_props</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.sim.spawners.wrappers.MultiUsdFileCfg.spatial_tendons_props"><code class="docutils literal notranslate"><span class="pre">MultiUsdFileCfg.spatial_tendons_props</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.sim.spawners.wrappers.MultiUsdFileCfg.joint_drive_props"><code class="docutils literal notranslate"><span class="pre">MultiUsdFileCfg.joint_drive_props</span></code></a></li>
@@ -2002,14 +2003,14 @@ from a single and cloning the USD prim at the given path expression.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>prim_path</strong> – The prim path or pattern to spawn the asset at. If the prim path is a regex pattern,
+<li><p><span class="target" id="isaaclab.sim.spawners.shapes.spawn_capsule.params.prim_path"></span><strong>prim_path</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.spawners.shapes.spawn_capsule.params.prim_path">¶</a> – The prim path or pattern to spawn the asset at. If the prim path is a regex pattern,
 then the asset is spawned at all the matching prim paths.</p></li>
-<li><p><strong>cfg</strong> – The configuration instance.</p></li>
-<li><p><strong>translation</strong> – The translation to apply to the prim w.r.t. its parent prim. Defaults to None, in which case
+<li><p><span class="target" id="isaaclab.sim.spawners.shapes.spawn_capsule.params.cfg"></span><strong>cfg</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.spawners.shapes.spawn_capsule.params.cfg">¶</a> – The configuration instance.</p></li>
+<li><p><span class="target" id="isaaclab.sim.spawners.shapes.spawn_capsule.params.translation"></span><strong>translation</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.spawners.shapes.spawn_capsule.params.translation">¶</a> – The translation to apply to the prim w.r.t. its parent prim. Defaults to None, in which case
 this is set to the origin.</p></li>
-<li><p><strong>orientation</strong> – The orientation in (x, y, z, w) to apply to the prim w.r.t. its parent prim. Defaults to None,
+<li><p><span class="target" id="isaaclab.sim.spawners.shapes.spawn_capsule.params.orientation"></span><strong>orientation</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.spawners.shapes.spawn_capsule.params.orientation">¶</a> – The orientation in (x, y, z, w) to apply to the prim w.r.t. its parent prim. Defaults to None,
 in which case this is set to identity.</p></li>
-<li><p><strong>**kwargs</strong> – Additional keyword arguments, like <code class="docutils literal notranslate"><span class="pre">clone_in_fabric</span></code>.</p></li>
+<li><p><span class="target" id="isaaclab.sim.spawners.shapes.spawn_capsule.params.**kwargs"></span><strong>**kwargs</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.spawners.shapes.spawn_capsule.params.**kwargs">¶</a> – Additional keyword arguments, like <code class="docutils literal notranslate"><span class="pre">clone_in_fabric</span></code>.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -2231,14 +2232,14 @@ from a single and cloning the USD prim at the given path expression.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>prim_path</strong> – The prim path or pattern to spawn the asset at. If the prim path is a regex pattern,
+<li><p><span class="target" id="isaaclab.sim.spawners.shapes.spawn_cone.params.prim_path"></span><strong>prim_path</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.spawners.shapes.spawn_cone.params.prim_path">¶</a> – The prim path or pattern to spawn the asset at. If the prim path is a regex pattern,
 then the asset is spawned at all the matching prim paths.</p></li>
-<li><p><strong>cfg</strong> – The configuration instance.</p></li>
-<li><p><strong>translation</strong> – The translation to apply to the prim w.r.t. its parent prim. Defaults to None, in which case
+<li><p><span class="target" id="isaaclab.sim.spawners.shapes.spawn_cone.params.cfg"></span><strong>cfg</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.spawners.shapes.spawn_cone.params.cfg">¶</a> – The configuration instance.</p></li>
+<li><p><span class="target" id="isaaclab.sim.spawners.shapes.spawn_cone.params.translation"></span><strong>translation</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.spawners.shapes.spawn_cone.params.translation">¶</a> – The translation to apply to the prim w.r.t. its parent prim. Defaults to None, in which case
 this is set to the origin.</p></li>
-<li><p><strong>orientation</strong> – The orientation in (x, y, z, w) to apply to the prim w.r.t. its parent prim. Defaults to None,
+<li><p><span class="target" id="isaaclab.sim.spawners.shapes.spawn_cone.params.orientation"></span><strong>orientation</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.spawners.shapes.spawn_cone.params.orientation">¶</a> – The orientation in (x, y, z, w) to apply to the prim w.r.t. its parent prim. Defaults to None,
 in which case this is set to identity.</p></li>
-<li><p><strong>**kwargs</strong> – Additional keyword arguments, like <code class="docutils literal notranslate"><span class="pre">clone_in_fabric</span></code>.</p></li>
+<li><p><span class="target" id="isaaclab.sim.spawners.shapes.spawn_cone.params.**kwargs"></span><strong>**kwargs</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.spawners.shapes.spawn_cone.params.**kwargs">¶</a> – Additional keyword arguments, like <code class="docutils literal notranslate"><span class="pre">clone_in_fabric</span></code>.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -2465,14 +2466,14 @@ from a single and cloning the USD prim at the given path expression.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>prim_path</strong> – The prim path or pattern to spawn the asset at. If the prim path is a regex pattern,
+<li><p><span class="target" id="isaaclab.sim.spawners.shapes.spawn_cuboid.params.prim_path"></span><strong>prim_path</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.spawners.shapes.spawn_cuboid.params.prim_path">¶</a> – The prim path or pattern to spawn the asset at. If the prim path is a regex pattern,
 then the asset is spawned at all the matching prim paths.</p></li>
-<li><p><strong>cfg</strong> – The configuration instance.</p></li>
-<li><p><strong>translation</strong> – The translation to apply to the prim w.r.t. its parent prim. Defaults to None, in which case
+<li><p><span class="target" id="isaaclab.sim.spawners.shapes.spawn_cuboid.params.cfg"></span><strong>cfg</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.spawners.shapes.spawn_cuboid.params.cfg">¶</a> – The configuration instance.</p></li>
+<li><p><span class="target" id="isaaclab.sim.spawners.shapes.spawn_cuboid.params.translation"></span><strong>translation</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.spawners.shapes.spawn_cuboid.params.translation">¶</a> – The translation to apply to the prim w.r.t. its parent prim. Defaults to None, in which case
 this is set to the origin.</p></li>
-<li><p><strong>orientation</strong> – The orientation in (x, y, z, w) to apply to the prim w.r.t. its parent prim. Defaults to None,
+<li><p><span class="target" id="isaaclab.sim.spawners.shapes.spawn_cuboid.params.orientation"></span><strong>orientation</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.spawners.shapes.spawn_cuboid.params.orientation">¶</a> – The orientation in (x, y, z, w) to apply to the prim w.r.t. its parent prim. Defaults to None,
 in which case this is set to identity.</p></li>
-<li><p><strong>**kwargs</strong> – Additional keyword arguments, like <code class="docutils literal notranslate"><span class="pre">clone_in_fabric</span></code>.</p></li>
+<li><p><span class="target" id="isaaclab.sim.spawners.shapes.spawn_cuboid.params.**kwargs"></span><strong>**kwargs</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.spawners.shapes.spawn_cuboid.params.**kwargs">¶</a> – Additional keyword arguments, like <code class="docutils literal notranslate"><span class="pre">clone_in_fabric</span></code>.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -2676,14 +2677,14 @@ from a single and cloning the USD prim at the given path expression.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>prim_path</strong> – The prim path or pattern to spawn the asset at. If the prim path is a regex pattern,
+<li><p><span class="target" id="isaaclab.sim.spawners.shapes.spawn_cylinder.params.prim_path"></span><strong>prim_path</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.spawners.shapes.spawn_cylinder.params.prim_path">¶</a> – The prim path or pattern to spawn the asset at. If the prim path is a regex pattern,
 then the asset is spawned at all the matching prim paths.</p></li>
-<li><p><strong>cfg</strong> – The configuration instance.</p></li>
-<li><p><strong>translation</strong> – The translation to apply to the prim w.r.t. its parent prim. Defaults to None, in which case
+<li><p><span class="target" id="isaaclab.sim.spawners.shapes.spawn_cylinder.params.cfg"></span><strong>cfg</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.spawners.shapes.spawn_cylinder.params.cfg">¶</a> – The configuration instance.</p></li>
+<li><p><span class="target" id="isaaclab.sim.spawners.shapes.spawn_cylinder.params.translation"></span><strong>translation</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.spawners.shapes.spawn_cylinder.params.translation">¶</a> – The translation to apply to the prim w.r.t. its parent prim. Defaults to None, in which case
 this is set to the origin.</p></li>
-<li><p><strong>orientation</strong> – The orientation in (x, y, z, w) to apply to the prim w.r.t. its parent prim. Defaults to None,
+<li><p><span class="target" id="isaaclab.sim.spawners.shapes.spawn_cylinder.params.orientation"></span><strong>orientation</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.spawners.shapes.spawn_cylinder.params.orientation">¶</a> – The orientation in (x, y, z, w) to apply to the prim w.r.t. its parent prim. Defaults to None,
 in which case this is set to identity.</p></li>
-<li><p><strong>**kwargs</strong> – Additional keyword arguments, like <code class="docutils literal notranslate"><span class="pre">clone_in_fabric</span></code>.</p></li>
+<li><p><span class="target" id="isaaclab.sim.spawners.shapes.spawn_cylinder.params.**kwargs"></span><strong>**kwargs</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.spawners.shapes.spawn_cylinder.params.**kwargs">¶</a> – Additional keyword arguments, like <code class="docutils literal notranslate"><span class="pre">clone_in_fabric</span></code>.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -2905,14 +2906,14 @@ from a single and cloning the USD prim at the given path expression.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>prim_path</strong> – The prim path or pattern to spawn the asset at. If the prim path is a regex pattern,
+<li><p><span class="target" id="isaaclab.sim.spawners.shapes.spawn_sphere.params.prim_path"></span><strong>prim_path</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.spawners.shapes.spawn_sphere.params.prim_path">¶</a> – The prim path or pattern to spawn the asset at. If the prim path is a regex pattern,
 then the asset is spawned at all the matching prim paths.</p></li>
-<li><p><strong>cfg</strong> – The configuration instance.</p></li>
-<li><p><strong>translation</strong> – The translation to apply to the prim w.r.t. its parent prim. Defaults to None, in which case
+<li><p><span class="target" id="isaaclab.sim.spawners.shapes.spawn_sphere.params.cfg"></span><strong>cfg</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.spawners.shapes.spawn_sphere.params.cfg">¶</a> – The configuration instance.</p></li>
+<li><p><span class="target" id="isaaclab.sim.spawners.shapes.spawn_sphere.params.translation"></span><strong>translation</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.spawners.shapes.spawn_sphere.params.translation">¶</a> – The translation to apply to the prim w.r.t. its parent prim. Defaults to None, in which case
 this is set to the origin.</p></li>
-<li><p><strong>orientation</strong> – The orientation in (x, y, z, w) to apply to the prim w.r.t. its parent prim. Defaults to None,
+<li><p><span class="target" id="isaaclab.sim.spawners.shapes.spawn_sphere.params.orientation"></span><strong>orientation</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.spawners.shapes.spawn_sphere.params.orientation">¶</a> – The orientation in (x, y, z, w) to apply to the prim w.r.t. its parent prim. Defaults to None,
 in which case this is set to identity.</p></li>
-<li><p><strong>**kwargs</strong> – Additional keyword arguments, like <code class="docutils literal notranslate"><span class="pre">clone_in_fabric</span></code>.</p></li>
+<li><p><span class="target" id="isaaclab.sim.spawners.shapes.spawn_sphere.params.**kwargs"></span><strong>**kwargs</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.spawners.shapes.spawn_sphere.params.**kwargs">¶</a> – Additional keyword arguments, like <code class="docutils literal notranslate"><span class="pre">clone_in_fabric</span></code>.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -3350,14 +3351,14 @@ from a single and cloning the USD prim at the given path expression.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>prim_path</strong> – The prim path or pattern to spawn the asset at. If the prim path is a regex pattern,
+<li><p><span class="target" id="isaaclab.sim.spawners.meshes.spawn_mesh_capsule.params.prim_path"></span><strong>prim_path</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.spawners.meshes.spawn_mesh_capsule.params.prim_path">¶</a> – The prim path or pattern to spawn the asset at. If the prim path is a regex pattern,
 then the asset is spawned at all the matching prim paths.</p></li>
-<li><p><strong>cfg</strong> – The configuration instance.</p></li>
-<li><p><strong>translation</strong> – The translation to apply to the prim w.r.t. its parent prim. Defaults to None, in which case
+<li><p><span class="target" id="isaaclab.sim.spawners.meshes.spawn_mesh_capsule.params.cfg"></span><strong>cfg</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.spawners.meshes.spawn_mesh_capsule.params.cfg">¶</a> – The configuration instance.</p></li>
+<li><p><span class="target" id="isaaclab.sim.spawners.meshes.spawn_mesh_capsule.params.translation"></span><strong>translation</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.spawners.meshes.spawn_mesh_capsule.params.translation">¶</a> – The translation to apply to the prim w.r.t. its parent prim. Defaults to None, in which case
 this is set to the origin.</p></li>
-<li><p><strong>orientation</strong> – The orientation in (x, y, z, w) to apply to the prim w.r.t. its parent prim. Defaults to None,
+<li><p><span class="target" id="isaaclab.sim.spawners.meshes.spawn_mesh_capsule.params.orientation"></span><strong>orientation</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.spawners.meshes.spawn_mesh_capsule.params.orientation">¶</a> – The orientation in (x, y, z, w) to apply to the prim w.r.t. its parent prim. Defaults to None,
 in which case this is set to identity.</p></li>
-<li><p><strong>**kwargs</strong> – Additional keyword arguments, like <code class="docutils literal notranslate"><span class="pre">clone_in_fabric</span></code>.</p></li>
+<li><p><span class="target" id="isaaclab.sim.spawners.meshes.spawn_mesh_capsule.params.**kwargs"></span><strong>**kwargs</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.spawners.meshes.spawn_mesh_capsule.params.**kwargs">¶</a> – Additional keyword arguments, like <code class="docutils literal notranslate"><span class="pre">clone_in_fabric</span></code>.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -3587,14 +3588,14 @@ from a single and cloning the USD prim at the given path expression.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>prim_path</strong> – The prim path or pattern to spawn the asset at. If the prim path is a regex pattern,
+<li><p><span class="target" id="isaaclab.sim.spawners.meshes.spawn_mesh_cone.params.prim_path"></span><strong>prim_path</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.spawners.meshes.spawn_mesh_cone.params.prim_path">¶</a> – The prim path or pattern to spawn the asset at. If the prim path is a regex pattern,
 then the asset is spawned at all the matching prim paths.</p></li>
-<li><p><strong>cfg</strong> – The configuration instance.</p></li>
-<li><p><strong>translation</strong> – The translation to apply to the prim w.r.t. its parent prim. Defaults to None, in which case
+<li><p><span class="target" id="isaaclab.sim.spawners.meshes.spawn_mesh_cone.params.cfg"></span><strong>cfg</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.spawners.meshes.spawn_mesh_cone.params.cfg">¶</a> – The configuration instance.</p></li>
+<li><p><span class="target" id="isaaclab.sim.spawners.meshes.spawn_mesh_cone.params.translation"></span><strong>translation</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.spawners.meshes.spawn_mesh_cone.params.translation">¶</a> – The translation to apply to the prim w.r.t. its parent prim. Defaults to None, in which case
 this is set to the origin.</p></li>
-<li><p><strong>orientation</strong> – The orientation in (x, y, z, w) to apply to the prim w.r.t. its parent prim. Defaults to None,
+<li><p><span class="target" id="isaaclab.sim.spawners.meshes.spawn_mesh_cone.params.orientation"></span><strong>orientation</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.spawners.meshes.spawn_mesh_cone.params.orientation">¶</a> – The orientation in (x, y, z, w) to apply to the prim w.r.t. its parent prim. Defaults to None,
 in which case this is set to identity.</p></li>
-<li><p><strong>**kwargs</strong> – Additional keyword arguments, like <code class="docutils literal notranslate"><span class="pre">clone_in_fabric</span></code>.</p></li>
+<li><p><span class="target" id="isaaclab.sim.spawners.meshes.spawn_mesh_cone.params.**kwargs"></span><strong>**kwargs</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.spawners.meshes.spawn_mesh_cone.params.**kwargs">¶</a> – Additional keyword arguments, like <code class="docutils literal notranslate"><span class="pre">clone_in_fabric</span></code>.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -3824,14 +3825,14 @@ from a single and cloning the USD prim at the given path expression.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>prim_path</strong> – The prim path or pattern to spawn the asset at. If the prim path is a regex pattern,
+<li><p><span class="target" id="isaaclab.sim.spawners.meshes.spawn_mesh_cuboid.params.prim_path"></span><strong>prim_path</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.spawners.meshes.spawn_mesh_cuboid.params.prim_path">¶</a> – The prim path or pattern to spawn the asset at. If the prim path is a regex pattern,
 then the asset is spawned at all the matching prim paths.</p></li>
-<li><p><strong>cfg</strong> – The configuration instance.</p></li>
-<li><p><strong>translation</strong> – The translation to apply to the prim w.r.t. its parent prim. Defaults to None, in which case
+<li><p><span class="target" id="isaaclab.sim.spawners.meshes.spawn_mesh_cuboid.params.cfg"></span><strong>cfg</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.spawners.meshes.spawn_mesh_cuboid.params.cfg">¶</a> – The configuration instance.</p></li>
+<li><p><span class="target" id="isaaclab.sim.spawners.meshes.spawn_mesh_cuboid.params.translation"></span><strong>translation</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.spawners.meshes.spawn_mesh_cuboid.params.translation">¶</a> – The translation to apply to the prim w.r.t. its parent prim. Defaults to None, in which case
 this is set to the origin.</p></li>
-<li><p><strong>orientation</strong> – The orientation in (x, y, z, w) to apply to the prim w.r.t. its parent prim. Defaults to None,
+<li><p><span class="target" id="isaaclab.sim.spawners.meshes.spawn_mesh_cuboid.params.orientation"></span><strong>orientation</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.spawners.meshes.spawn_mesh_cuboid.params.orientation">¶</a> – The orientation in (x, y, z, w) to apply to the prim w.r.t. its parent prim. Defaults to None,
 in which case this is set to identity.</p></li>
-<li><p><strong>**kwargs</strong> – Additional keyword arguments, like <code class="docutils literal notranslate"><span class="pre">clone_in_fabric</span></code>.</p></li>
+<li><p><span class="target" id="isaaclab.sim.spawners.meshes.spawn_mesh_cuboid.params.**kwargs"></span><strong>**kwargs</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.spawners.meshes.spawn_mesh_cuboid.params.**kwargs">¶</a> – Additional keyword arguments, like <code class="docutils literal notranslate"><span class="pre">clone_in_fabric</span></code>.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -4043,14 +4044,14 @@ from a single and cloning the USD prim at the given path expression.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>prim_path</strong> – The prim path or pattern to spawn the asset at. If the prim path is a regex pattern,
+<li><p><span class="target" id="isaaclab.sim.spawners.meshes.spawn_mesh_cylinder.params.prim_path"></span><strong>prim_path</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.spawners.meshes.spawn_mesh_cylinder.params.prim_path">¶</a> – The prim path or pattern to spawn the asset at. If the prim path is a regex pattern,
 then the asset is spawned at all the matching prim paths.</p></li>
-<li><p><strong>cfg</strong> – The configuration instance.</p></li>
-<li><p><strong>translation</strong> – The translation to apply to the prim w.r.t. its parent prim. Defaults to None, in which case
+<li><p><span class="target" id="isaaclab.sim.spawners.meshes.spawn_mesh_cylinder.params.cfg"></span><strong>cfg</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.spawners.meshes.spawn_mesh_cylinder.params.cfg">¶</a> – The configuration instance.</p></li>
+<li><p><span class="target" id="isaaclab.sim.spawners.meshes.spawn_mesh_cylinder.params.translation"></span><strong>translation</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.spawners.meshes.spawn_mesh_cylinder.params.translation">¶</a> – The translation to apply to the prim w.r.t. its parent prim. Defaults to None, in which case
 this is set to the origin.</p></li>
-<li><p><strong>orientation</strong> – The orientation in (x, y, z, w) to apply to the prim w.r.t. its parent prim. Defaults to None,
+<li><p><span class="target" id="isaaclab.sim.spawners.meshes.spawn_mesh_cylinder.params.orientation"></span><strong>orientation</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.spawners.meshes.spawn_mesh_cylinder.params.orientation">¶</a> – The orientation in (x, y, z, w) to apply to the prim w.r.t. its parent prim. Defaults to None,
 in which case this is set to identity.</p></li>
-<li><p><strong>**kwargs</strong> – Additional keyword arguments, like <code class="docutils literal notranslate"><span class="pre">clone_in_fabric</span></code>.</p></li>
+<li><p><span class="target" id="isaaclab.sim.spawners.meshes.spawn_mesh_cylinder.params.**kwargs"></span><strong>**kwargs</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.spawners.meshes.spawn_mesh_cylinder.params.**kwargs">¶</a> – Additional keyword arguments, like <code class="docutils literal notranslate"><span class="pre">clone_in_fabric</span></code>.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -4280,14 +4281,14 @@ from a single and cloning the USD prim at the given path expression.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>prim_path</strong> – The prim path or pattern to spawn the asset at. If the prim path is a regex pattern,
+<li><p><span class="target" id="isaaclab.sim.spawners.meshes.spawn_mesh_rectangle.params.prim_path"></span><strong>prim_path</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.spawners.meshes.spawn_mesh_rectangle.params.prim_path">¶</a> – The prim path or pattern to spawn the asset at. If the prim path is a regex pattern,
 then the asset is spawned at all the matching prim paths.</p></li>
-<li><p><strong>cfg</strong> – The configuration instance.</p></li>
-<li><p><strong>translation</strong> – The translation to apply to the prim w.r.t. its parent prim. Defaults to None, in which case
+<li><p><span class="target" id="isaaclab.sim.spawners.meshes.spawn_mesh_rectangle.params.cfg"></span><strong>cfg</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.spawners.meshes.spawn_mesh_rectangle.params.cfg">¶</a> – The configuration instance.</p></li>
+<li><p><span class="target" id="isaaclab.sim.spawners.meshes.spawn_mesh_rectangle.params.translation"></span><strong>translation</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.spawners.meshes.spawn_mesh_rectangle.params.translation">¶</a> – The translation to apply to the prim w.r.t. its parent prim. Defaults to None, in which case
 this is set to the origin.</p></li>
-<li><p><strong>orientation</strong> – The orientation in (x, y, z, w) to apply to the prim w.r.t. its parent prim. Defaults to None,
+<li><p><span class="target" id="isaaclab.sim.spawners.meshes.spawn_mesh_rectangle.params.orientation"></span><strong>orientation</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.spawners.meshes.spawn_mesh_rectangle.params.orientation">¶</a> – The orientation in (x, y, z, w) to apply to the prim w.r.t. its parent prim. Defaults to None,
 in which case this is set to identity.</p></li>
-<li><p><strong>**kwargs</strong> – Additional keyword arguments, like <code class="docutils literal notranslate"><span class="pre">clone_in_fabric</span></code>.</p></li>
+<li><p><span class="target" id="isaaclab.sim.spawners.meshes.spawn_mesh_rectangle.params.**kwargs"></span><strong>**kwargs</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.spawners.meshes.spawn_mesh_rectangle.params.**kwargs">¶</a> – Additional keyword arguments, like <code class="docutils literal notranslate"><span class="pre">clone_in_fabric</span></code>.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -4508,14 +4509,14 @@ from a single and cloning the USD prim at the given path expression.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>prim_path</strong> – The prim path or pattern to spawn the asset at. If the prim path is a regex pattern,
+<li><p><span class="target" id="isaaclab.sim.spawners.meshes.spawn_mesh_sphere.params.prim_path"></span><strong>prim_path</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.spawners.meshes.spawn_mesh_sphere.params.prim_path">¶</a> – The prim path or pattern to spawn the asset at. If the prim path is a regex pattern,
 then the asset is spawned at all the matching prim paths.</p></li>
-<li><p><strong>cfg</strong> – The configuration instance.</p></li>
-<li><p><strong>translation</strong> – The translation to apply to the prim w.r.t. its parent prim. Defaults to None, in which case
+<li><p><span class="target" id="isaaclab.sim.spawners.meshes.spawn_mesh_sphere.params.cfg"></span><strong>cfg</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.spawners.meshes.spawn_mesh_sphere.params.cfg">¶</a> – The configuration instance.</p></li>
+<li><p><span class="target" id="isaaclab.sim.spawners.meshes.spawn_mesh_sphere.params.translation"></span><strong>translation</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.spawners.meshes.spawn_mesh_sphere.params.translation">¶</a> – The translation to apply to the prim w.r.t. its parent prim. Defaults to None, in which case
 this is set to the origin.</p></li>
-<li><p><strong>orientation</strong> – The orientation in (x, y, z, w) to apply to the prim w.r.t. its parent prim. Defaults to None,
+<li><p><span class="target" id="isaaclab.sim.spawners.meshes.spawn_mesh_sphere.params.orientation"></span><strong>orientation</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.spawners.meshes.spawn_mesh_sphere.params.orientation">¶</a> – The orientation in (x, y, z, w) to apply to the prim w.r.t. its parent prim. Defaults to None,
 in which case this is set to identity.</p></li>
-<li><p><strong>**kwargs</strong> – Additional keyword arguments, like <code class="docutils literal notranslate"><span class="pre">clone_in_fabric</span></code>.</p></li>
+<li><p><span class="target" id="isaaclab.sim.spawners.meshes.spawn_mesh_sphere.params.**kwargs"></span><strong>**kwargs</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.spawners.meshes.spawn_mesh_sphere.params.**kwargs">¶</a> – Additional keyword arguments, like <code class="docutils literal notranslate"><span class="pre">clone_in_fabric</span></code>.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -4758,13 +4759,13 @@ from a single and cloning the USD prim at the given path expression.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>prim_path</strong> – The prim path or pattern to spawn the asset at. If the prim path is a regex pattern,
+<li><p><span class="target" id="isaaclab.sim.spawners.lights.spawn_light.params.prim_path"></span><strong>prim_path</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.spawners.lights.spawn_light.params.prim_path">¶</a> – The prim path or pattern to spawn the asset at. If the prim path is a regex pattern,
 then the asset is spawned at all the matching prim paths.</p></li>
-<li><p><strong>cfg</strong> – The configuration for the light source.</p></li>
-<li><p><strong>translation</strong> – The translation of the prim. Defaults to None, in which case this is set to the origin.</p></li>
-<li><p><strong>orientation</strong> – The orientation of the prim as (x, y, z, w). Defaults to None, in which case this
+<li><p><span class="target" id="isaaclab.sim.spawners.lights.spawn_light.params.cfg"></span><strong>cfg</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.spawners.lights.spawn_light.params.cfg">¶</a> – The configuration for the light source.</p></li>
+<li><p><span class="target" id="isaaclab.sim.spawners.lights.spawn_light.params.translation"></span><strong>translation</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.spawners.lights.spawn_light.params.translation">¶</a> – The translation of the prim. Defaults to None, in which case this is set to the origin.</p></li>
+<li><p><span class="target" id="isaaclab.sim.spawners.lights.spawn_light.params.orientation"></span><strong>orientation</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.spawners.lights.spawn_light.params.orientation">¶</a> – The orientation of the prim as (x, y, z, w). Defaults to None, in which case this
 is set to identity.</p></li>
-<li><p><strong>**kwargs</strong> – Additional keyword arguments, like <code class="docutils literal notranslate"><span class="pre">clone_in_fabric</span></code>.</p></li>
+<li><p><span class="target" id="isaaclab.sim.spawners.lights.spawn_light.params.**kwargs"></span><strong>**kwargs</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.spawners.lights.spawn_light.params.**kwargs">¶</a> – Additional keyword arguments, like <code class="docutils literal notranslate"><span class="pre">clone_in_fabric</span></code>.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Raises<span class="colon">:</span></dt>
@@ -5764,14 +5765,14 @@ from a single and cloning the USD prim at the given path expression.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>prim_path</strong> – The prim path or pattern to spawn the asset at. If the prim path is a regex pattern,
+<li><p><span class="target" id="isaaclab.sim.spawners.sensors.spawn_camera.params.prim_path"></span><strong>prim_path</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.spawners.sensors.spawn_camera.params.prim_path">¶</a> – The prim path or pattern to spawn the asset at. If the prim path is a regex pattern,
 then the asset is spawned at all the matching prim paths.</p></li>
-<li><p><strong>cfg</strong> – The configuration instance.</p></li>
-<li><p><strong>translation</strong> – The translation to apply to the prim w.r.t. its parent prim. Defaults to None, in which case
+<li><p><span class="target" id="isaaclab.sim.spawners.sensors.spawn_camera.params.cfg"></span><strong>cfg</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.spawners.sensors.spawn_camera.params.cfg">¶</a> – The configuration instance.</p></li>
+<li><p><span class="target" id="isaaclab.sim.spawners.sensors.spawn_camera.params.translation"></span><strong>translation</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.spawners.sensors.spawn_camera.params.translation">¶</a> – The translation to apply to the prim w.r.t. its parent prim. Defaults to None, in which case
 this is set to the origin.</p></li>
-<li><p><strong>orientation</strong> – The orientation in (x, y, z, w) to apply to the prim w.r.t. its parent prim. Defaults to None,
+<li><p><span class="target" id="isaaclab.sim.spawners.sensors.spawn_camera.params.orientation"></span><strong>orientation</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.spawners.sensors.spawn_camera.params.orientation">¶</a> – The orientation in (x, y, z, w) to apply to the prim w.r.t. its parent prim. Defaults to None,
 in which case this is set to identity.</p></li>
-<li><p><strong>**kwargs</strong> – Additional keyword arguments, like <code class="docutils literal notranslate"><span class="pre">clone_in_fabric</span></code>.</p></li>
+<li><p><span class="target" id="isaaclab.sim.spawners.sensors.spawn_camera.params.**kwargs"></span><strong>**kwargs</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.spawners.sensors.spawn_camera.params.**kwargs">¶</a> – Additional keyword arguments, like <code class="docutils literal notranslate"><span class="pre">clone_in_fabric</span></code>.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -5947,17 +5948,17 @@ f_x &amp; 0 &amp; c_x \\
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>intrinsic_matrix</strong> – Intrinsic matrix of the camera in row-major format.
+<li><p><span class="target" id="isaaclab.sim.spawners.sensors.PinholeCameraCfg.from_intrinsic_matrix.params.intrinsic_matrix"></span><strong>intrinsic_matrix</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.spawners.sensors.PinholeCameraCfg.from_intrinsic_matrix.params.intrinsic_matrix">¶</a> – Intrinsic matrix of the camera in row-major format.
 The matrix is defined as [f_x, 0, c_x, 0, f_y, c_y, 0, 0, 1]. Shape is (9,).</p></li>
-<li><p><strong>width</strong> – Width of the image (in pixels).</p></li>
-<li><p><strong>height</strong> – Height of the image (in pixels).</p></li>
-<li><p><strong>clipping_range</strong> – Near and far clipping distances (in m). Defaults to (0.01, 1e6).</p></li>
-<li><p><strong>focal_length</strong> – Perspective focal length (in cm) used to calculate pixel size. Defaults to None. If None
+<li><p><span class="target" id="isaaclab.sim.spawners.sensors.PinholeCameraCfg.from_intrinsic_matrix.params.width"></span><strong>width</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.spawners.sensors.PinholeCameraCfg.from_intrinsic_matrix.params.width">¶</a> – Width of the image (in pixels).</p></li>
+<li><p><span class="target" id="isaaclab.sim.spawners.sensors.PinholeCameraCfg.from_intrinsic_matrix.params.height"></span><strong>height</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.spawners.sensors.PinholeCameraCfg.from_intrinsic_matrix.params.height">¶</a> – Height of the image (in pixels).</p></li>
+<li><p><span class="target" id="isaaclab.sim.spawners.sensors.PinholeCameraCfg.from_intrinsic_matrix.params.clipping_range"></span><strong>clipping_range</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.spawners.sensors.PinholeCameraCfg.from_intrinsic_matrix.params.clipping_range">¶</a> – Near and far clipping distances (in m). Defaults to (0.01, 1e6).</p></li>
+<li><p><span class="target" id="isaaclab.sim.spawners.sensors.PinholeCameraCfg.from_intrinsic_matrix.params.focal_length"></span><strong>focal_length</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.spawners.sensors.PinholeCameraCfg.from_intrinsic_matrix.params.focal_length">¶</a> – Perspective focal length (in cm) used to calculate pixel size. Defaults to None. If None
 focal_length will be calculated 1 / width.</p></li>
-<li><p><strong>focus_distance</strong> – Distance from the camera to the focus plane (in m). Defaults to 400.0 m.</p></li>
-<li><p><strong>f_stop</strong> – Lens aperture. Defaults to 0.0, which turns off focusing.</p></li>
-<li><p><strong>projection_type</strong> – Type of projection to use for the camera. Defaults to “pinhole”.</p></li>
-<li><p><strong>lock_camera</strong> – Locks the camera in the Omniverse viewport. Defaults to True.</p></li>
+<li><p><span class="target" id="isaaclab.sim.spawners.sensors.PinholeCameraCfg.from_intrinsic_matrix.params.focus_distance"></span><strong>focus_distance</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.spawners.sensors.PinholeCameraCfg.from_intrinsic_matrix.params.focus_distance">¶</a> – Distance from the camera to the focus plane (in m). Defaults to 400.0 m.</p></li>
+<li><p><span class="target" id="isaaclab.sim.spawners.sensors.PinholeCameraCfg.from_intrinsic_matrix.params.f_stop"></span><strong>f_stop</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.spawners.sensors.PinholeCameraCfg.from_intrinsic_matrix.params.f_stop">¶</a> – Lens aperture. Defaults to 0.0, which turns off focusing.</p></li>
+<li><p><span class="target" id="isaaclab.sim.spawners.sensors.PinholeCameraCfg.from_intrinsic_matrix.params.projection_type"></span><strong>projection_type</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.spawners.sensors.PinholeCameraCfg.from_intrinsic_matrix.params.projection_type">¶</a> – Type of projection to use for the camera. Defaults to “pinhole”.</p></li>
+<li><p><span class="target" id="isaaclab.sim.spawners.sensors.PinholeCameraCfg.from_intrinsic_matrix.params.lock_camera"></span><strong>lock_camera</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.spawners.sensors.PinholeCameraCfg.from_intrinsic_matrix.params.lock_camera">¶</a> – Locks the camera in the Omniverse viewport. Defaults to True.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -6331,14 +6332,14 @@ from a single and cloning the USD prim at the given path expression.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>prim_path</strong> – The prim path or pattern to spawn the asset at. If the prim path is a regex pattern,
+<li><p><span class="target" id="isaaclab.sim.spawners.from_files.spawn_from_urdf.params.prim_path"></span><strong>prim_path</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.spawners.from_files.spawn_from_urdf.params.prim_path">¶</a> – The prim path or pattern to spawn the asset at. If the prim path is a regex pattern,
 then the asset is spawned at all the matching prim paths.</p></li>
-<li><p><strong>cfg</strong> – The configuration instance.</p></li>
-<li><p><strong>translation</strong> – The translation to apply to the prim w.r.t. its parent prim. Defaults to None, in which
+<li><p><span class="target" id="isaaclab.sim.spawners.from_files.spawn_from_urdf.params.cfg"></span><strong>cfg</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.spawners.from_files.spawn_from_urdf.params.cfg">¶</a> – The configuration instance.</p></li>
+<li><p><span class="target" id="isaaclab.sim.spawners.from_files.spawn_from_urdf.params.translation"></span><strong>translation</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.spawners.from_files.spawn_from_urdf.params.translation">¶</a> – The translation to apply to the prim w.r.t. its parent prim. Defaults to None, in which
 case the translation specified in the generated USD file is used.</p></li>
-<li><p><strong>orientation</strong> – The orientation in (x, y, z, w) to apply to the prim w.r.t. its parent prim. Defaults to None,
+<li><p><span class="target" id="isaaclab.sim.spawners.from_files.spawn_from_urdf.params.orientation"></span><strong>orientation</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.spawners.from_files.spawn_from_urdf.params.orientation">¶</a> – The orientation in (x, y, z, w) to apply to the prim w.r.t. its parent prim. Defaults to None,
 in which case the orientation specified in the generated USD file is used.</p></li>
-<li><p><strong>**kwargs</strong> – Additional keyword arguments, like <code class="docutils literal notranslate"><span class="pre">clone_in_fabric</span></code>.</p></li>
+<li><p><span class="target" id="isaaclab.sim.spawners.from_files.spawn_from_urdf.params.**kwargs"></span><strong>**kwargs</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.spawners.from_files.spawn_from_urdf.params.**kwargs">¶</a> – Additional keyword arguments, like <code class="docutils literal notranslate"><span class="pre">clone_in_fabric</span></code>.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -6464,28 +6465,31 @@ This is done by calling the respective function with the specified properties.</
 <tr class="row-even"><td><p><a class="reference internal" href="#isaaclab.sim.spawners.from_files.UrdfFileCfg.articulation_props" title="isaaclab.sim.spawners.from_files.UrdfFileCfg.articulation_props"><code class="xref py py-obj docutils literal notranslate"><span class="pre">articulation_props</span></code></a></p></td>
 <td><p>Properties to apply to the articulation root.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab.sim.spawners.from_files.UrdfFileCfg.fixed_tendons_props" title="isaaclab.sim.spawners.from_files.UrdfFileCfg.fixed_tendons_props"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fixed_tendons_props</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab.sim.spawners.from_files.UrdfFileCfg.fix_root_link" title="isaaclab.sim.spawners.from_files.UrdfFileCfg.fix_root_link"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fix_root_link</span></code></a></p></td>
+<td><p>Whether to fix the root link of the articulation.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab.sim.spawners.from_files.UrdfFileCfg.fixed_tendons_props" title="isaaclab.sim.spawners.from_files.UrdfFileCfg.fixed_tendons_props"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fixed_tendons_props</span></code></a></p></td>
 <td><p>Properties to apply to the fixed tendons (if any).</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab.sim.spawners.from_files.UrdfFileCfg.spatial_tendons_props" title="isaaclab.sim.spawners.from_files.UrdfFileCfg.spatial_tendons_props"><code class="xref py py-obj docutils literal notranslate"><span class="pre">spatial_tendons_props</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab.sim.spawners.from_files.UrdfFileCfg.spatial_tendons_props" title="isaaclab.sim.spawners.from_files.UrdfFileCfg.spatial_tendons_props"><code class="xref py py-obj docutils literal notranslate"><span class="pre">spatial_tendons_props</span></code></a></p></td>
 <td><p>Properties to apply to the spatial tendons (if any).</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab.sim.spawners.from_files.UrdfFileCfg.joint_drive_props" title="isaaclab.sim.spawners.from_files.UrdfFileCfg.joint_drive_props"><code class="xref py py-obj docutils literal notranslate"><span class="pre">joint_drive_props</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab.sim.spawners.from_files.UrdfFileCfg.joint_drive_props" title="isaaclab.sim.spawners.from_files.UrdfFileCfg.joint_drive_props"><code class="xref py py-obj docutils literal notranslate"><span class="pre">joint_drive_props</span></code></a></p></td>
 <td><p>Properties to apply to a joint.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab.sim.spawners.from_files.UrdfFileCfg.ensure_drives_exist" title="isaaclab.sim.spawners.from_files.UrdfFileCfg.ensure_drives_exist"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ensure_drives_exist</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab.sim.spawners.from_files.UrdfFileCfg.ensure_drives_exist" title="isaaclab.sim.spawners.from_files.UrdfFileCfg.ensure_drives_exist"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ensure_drives_exist</span></code></a></p></td>
 <td><p>Whether to ensure every joint drive is active when authoring <a class="reference internal" href="#isaaclab.sim.spawners.from_files.UrdfFileCfg.joint_drive_props" title="isaaclab.sim.spawners.from_files.UrdfFileCfg.joint_drive_props"><code class="xref py py-attr docutils literal notranslate"><span class="pre">joint_drive_props</span></code></a>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab.sim.spawners.from_files.UrdfFileCfg.visual_material_path" title="isaaclab.sim.spawners.from_files.UrdfFileCfg.visual_material_path"><code class="xref py py-obj docutils literal notranslate"><span class="pre">visual_material_path</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab.sim.spawners.from_files.UrdfFileCfg.visual_material_path" title="isaaclab.sim.spawners.from_files.UrdfFileCfg.visual_material_path"><code class="xref py py-obj docutils literal notranslate"><span class="pre">visual_material_path</span></code></a></p></td>
 <td><p>Path to the visual material to use for the prim.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab.sim.spawners.from_files.UrdfFileCfg.visual_material" title="isaaclab.sim.spawners.from_files.UrdfFileCfg.visual_material"><code class="xref py py-obj docutils literal notranslate"><span class="pre">visual_material</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab.sim.spawners.from_files.UrdfFileCfg.visual_material" title="isaaclab.sim.spawners.from_files.UrdfFileCfg.visual_material"><code class="xref py py-obj docutils literal notranslate"><span class="pre">visual_material</span></code></a></p></td>
 <td><p>Visual material properties to override the visual material properties in the URDF file.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab.sim.spawners.from_files.UrdfFileCfg.physics_material_path" title="isaaclab.sim.spawners.from_files.UrdfFileCfg.physics_material_path"><code class="xref py py-obj docutils literal notranslate"><span class="pre">physics_material_path</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab.sim.spawners.from_files.UrdfFileCfg.physics_material_path" title="isaaclab.sim.spawners.from_files.UrdfFileCfg.physics_material_path"><code class="xref py py-obj docutils literal notranslate"><span class="pre">physics_material_path</span></code></a></p></td>
 <td><p>Path to the physics material to use for the prim.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab.sim.spawners.from_files.UrdfFileCfg.physics_material" title="isaaclab.sim.spawners.from_files.UrdfFileCfg.physics_material"><code class="xref py py-obj docutils literal notranslate"><span class="pre">physics_material</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab.sim.spawners.from_files.UrdfFileCfg.physics_material" title="isaaclab.sim.spawners.from_files.UrdfFileCfg.physics_material"><code class="xref py py-obj docutils literal notranslate"><span class="pre">physics_material</span></code></a></p></td>
 <td><p>Physics material properties.</p></td>
 </tr>
 </tbody>
@@ -6768,8 +6772,31 @@ namespace.</p>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="isaaclab.sim.spawners.from_files.UrdfFileCfg.articulation_props">
-<span class="sig-name descname"><span class="pre">articulation_props</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">schemas.ArticulationRootPropertiesCfg</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><a class="headerlink" href="#isaaclab.sim.spawners.from_files.UrdfFileCfg.articulation_props" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">articulation_props</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="isaaclab.sim.schemas.html#isaaclab.sim.schemas.ArticulationRootBaseCfg" title="isaaclab.sim.schemas.ArticulationRootBaseCfg"><span class="pre">schemas.ArticulationRootBaseCfg</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">schemas.ArticulationRootFragment</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><span class="pre">schemas.ArticulationRootFragment</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><a class="headerlink" href="#isaaclab.sim.spawners.from_files.UrdfFileCfg.articulation_props" title="Link to this definition">#</a></dt>
 <dd><p>Properties to apply to the articulation root.</p>
+<p>Accepts either a single legacy cfg (e.g. <a class="reference internal" href="isaaclab.sim.schemas.html#isaaclab.sim.schemas.ArticulationRootBaseCfg" title="isaaclab.sim.schemas.ArticulationRootBaseCfg"><code class="xref py py-class docutils literal notranslate"><span class="pre">ArticulationRootBaseCfg</span></code></a>)
+or a list of <code class="xref py py-class docutils literal notranslate"><span class="pre">ArticulationRootFragment</span></code> fragments
+(e.g. <code class="docutils literal notranslate"><span class="pre">[PhysxArticulationCfg(...),</span> <span class="pre">NewtonArticulationCfg(...)]</span></code>). When a fragment list is
+given, <code class="docutils literal notranslate"><span class="pre">UsdPhysics.ArticulationRootAPI</span></code> is applied as the anchor (presence-gated) and each
+fragment writes its own namespace.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="isaaclab.sim.spawners.from_files.UrdfFileCfg.fix_root_link">
+<span class="sig-name descname"><span class="pre">fix_root_link</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><span class="pre">bool</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><a class="headerlink" href="#isaaclab.sim.spawners.from_files.UrdfFileCfg.fix_root_link" title="Link to this definition">#</a></dt>
+<dd><p>Whether to fix the root link of the articulation. Defaults to None.</p>
+<p>This is a non-USD, spawner-level behaviour flag consumed by
+<code class="xref py py-func docutils literal notranslate"><span class="pre">apply_articulation_root_properties()</span></code> on the fragment/topology path,
+including when <a class="reference internal" href="#isaaclab.sim.spawners.from_files.UrdfFileCfg.articulation_props" title="isaaclab.sim.spawners.from_files.UrdfFileCfg.articulation_props"><code class="xref py py-attr docutils literal notranslate"><span class="pre">articulation_props</span></code></a> is <code class="docutils literal notranslate"><span class="pre">None</span></code> or an empty fragment collection. It is handled
+independently of whether any schema properties are supplied:</p>
+<ul class="simple">
+<li><p>If set to None, the root link is not modified.</p></li>
+<li><p>If the articulation already has a fixed root link, this flag enables or disables the fixed joint.</p></li>
+<li><p>If the articulation does not have a fixed root link, this flag creates a fixed joint between the
+world frame and the root link (named “FixedJoint” under the articulation prim).</p></li>
+</ul>
+<p>When <a class="reference internal" href="#isaaclab.sim.spawners.from_files.UrdfFileCfg.articulation_props" title="isaaclab.sim.spawners.from_files.UrdfFileCfg.articulation_props"><code class="xref py py-attr docutils literal notranslate"><span class="pre">articulation_props</span></code></a> is given as a legacy cfg, set
+<a class="reference internal" href="isaaclab.sim.schemas.html#isaaclab.sim.schemas.ArticulationRootBaseCfg.fix_root_link" title="isaaclab.sim.schemas.ArticulationRootBaseCfg.fix_root_link"><code class="xref py py-attr docutils literal notranslate"><span class="pre">fix_root_link</span></code></a> on that cfg instead.</p>
 </dd></dl>
 
 <dl class="py attribute">
@@ -6878,14 +6905,14 @@ from a single and cloning the USD prim at the given path expression.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>prim_path</strong> – The prim path or pattern to spawn the asset at. If the prim path is a regex pattern,
+<li><p><span class="target" id="isaaclab.sim.spawners.from_files.spawn_from_usd.params.prim_path"></span><strong>prim_path</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.spawners.from_files.spawn_from_usd.params.prim_path">¶</a> – The prim path or pattern to spawn the asset at. If the prim path is a regex pattern,
 then the asset is spawned at all the matching prim paths.</p></li>
-<li><p><strong>cfg</strong> – The configuration instance.</p></li>
-<li><p><strong>translation</strong> – The translation to apply to the prim w.r.t. its parent prim. Defaults to None, in which
+<li><p><span class="target" id="isaaclab.sim.spawners.from_files.spawn_from_usd.params.cfg"></span><strong>cfg</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.spawners.from_files.spawn_from_usd.params.cfg">¶</a> – The configuration instance.</p></li>
+<li><p><span class="target" id="isaaclab.sim.spawners.from_files.spawn_from_usd.params.translation"></span><strong>translation</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.spawners.from_files.spawn_from_usd.params.translation">¶</a> – The translation to apply to the prim w.r.t. its parent prim. Defaults to None, in which
 case the translation specified in the USD file is used.</p></li>
-<li><p><strong>orientation</strong> – The orientation in (x, y, z, w) to apply to the prim w.r.t. its parent prim. Defaults to None,
+<li><p><span class="target" id="isaaclab.sim.spawners.from_files.spawn_from_usd.params.orientation"></span><strong>orientation</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.spawners.from_files.spawn_from_usd.params.orientation">¶</a> – The orientation in (x, y, z, w) to apply to the prim w.r.t. its parent prim. Defaults to None,
 in which case the orientation specified in the USD file is used.</p></li>
-<li><p><strong>**kwargs</strong> – Additional keyword arguments, like <code class="docutils literal notranslate"><span class="pre">clone_in_fabric</span></code>.</p></li>
+<li><p><span class="target" id="isaaclab.sim.spawners.from_files.spawn_from_usd.params.**kwargs"></span><strong>**kwargs</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.spawners.from_files.spawn_from_usd.params.**kwargs">¶</a> – Additional keyword arguments, like <code class="docutils literal notranslate"><span class="pre">clone_in_fabric</span></code>.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -6962,28 +6989,31 @@ This is done by calling the respective function with the specified properties.</
 <tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab.sim.spawners.from_files.UsdFileCfg.articulation_props" title="isaaclab.sim.spawners.from_files.UsdFileCfg.articulation_props"><code class="xref py py-obj docutils literal notranslate"><span class="pre">articulation_props</span></code></a></p></td>
 <td><p>Properties to apply to the articulation root.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab.sim.spawners.from_files.UsdFileCfg.fixed_tendons_props" title="isaaclab.sim.spawners.from_files.UsdFileCfg.fixed_tendons_props"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fixed_tendons_props</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab.sim.spawners.from_files.UsdFileCfg.fix_root_link" title="isaaclab.sim.spawners.from_files.UsdFileCfg.fix_root_link"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fix_root_link</span></code></a></p></td>
+<td><p>Whether to fix the root link of the articulation.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab.sim.spawners.from_files.UsdFileCfg.fixed_tendons_props" title="isaaclab.sim.spawners.from_files.UsdFileCfg.fixed_tendons_props"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fixed_tendons_props</span></code></a></p></td>
 <td><p>Properties to apply to the fixed tendons (if any).</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab.sim.spawners.from_files.UsdFileCfg.spatial_tendons_props" title="isaaclab.sim.spawners.from_files.UsdFileCfg.spatial_tendons_props"><code class="xref py py-obj docutils literal notranslate"><span class="pre">spatial_tendons_props</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab.sim.spawners.from_files.UsdFileCfg.spatial_tendons_props" title="isaaclab.sim.spawners.from_files.UsdFileCfg.spatial_tendons_props"><code class="xref py py-obj docutils literal notranslate"><span class="pre">spatial_tendons_props</span></code></a></p></td>
 <td><p>Properties to apply to the spatial tendons (if any).</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab.sim.spawners.from_files.UsdFileCfg.joint_drive_props" title="isaaclab.sim.spawners.from_files.UsdFileCfg.joint_drive_props"><code class="xref py py-obj docutils literal notranslate"><span class="pre">joint_drive_props</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab.sim.spawners.from_files.UsdFileCfg.joint_drive_props" title="isaaclab.sim.spawners.from_files.UsdFileCfg.joint_drive_props"><code class="xref py py-obj docutils literal notranslate"><span class="pre">joint_drive_props</span></code></a></p></td>
 <td><p>Properties to apply to a joint.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab.sim.spawners.from_files.UsdFileCfg.ensure_drives_exist" title="isaaclab.sim.spawners.from_files.UsdFileCfg.ensure_drives_exist"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ensure_drives_exist</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab.sim.spawners.from_files.UsdFileCfg.ensure_drives_exist" title="isaaclab.sim.spawners.from_files.UsdFileCfg.ensure_drives_exist"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ensure_drives_exist</span></code></a></p></td>
 <td><p>Whether to ensure every joint drive is active when authoring <a class="reference internal" href="#isaaclab.sim.spawners.from_files.UsdFileCfg.joint_drive_props" title="isaaclab.sim.spawners.from_files.UsdFileCfg.joint_drive_props"><code class="xref py py-attr docutils literal notranslate"><span class="pre">joint_drive_props</span></code></a>.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab.sim.spawners.from_files.UsdFileCfg.visual_material_path" title="isaaclab.sim.spawners.from_files.UsdFileCfg.visual_material_path"><code class="xref py py-obj docutils literal notranslate"><span class="pre">visual_material_path</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab.sim.spawners.from_files.UsdFileCfg.visual_material_path" title="isaaclab.sim.spawners.from_files.UsdFileCfg.visual_material_path"><code class="xref py py-obj docutils literal notranslate"><span class="pre">visual_material_path</span></code></a></p></td>
 <td><p>Path to the visual material to use for the prim.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab.sim.spawners.from_files.UsdFileCfg.visual_material" title="isaaclab.sim.spawners.from_files.UsdFileCfg.visual_material"><code class="xref py py-obj docutils literal notranslate"><span class="pre">visual_material</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab.sim.spawners.from_files.UsdFileCfg.visual_material" title="isaaclab.sim.spawners.from_files.UsdFileCfg.visual_material"><code class="xref py py-obj docutils literal notranslate"><span class="pre">visual_material</span></code></a></p></td>
 <td><p>Visual material properties to override the visual material properties in the URDF file.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab.sim.spawners.from_files.UsdFileCfg.physics_material_path" title="isaaclab.sim.spawners.from_files.UsdFileCfg.physics_material_path"><code class="xref py py-obj docutils literal notranslate"><span class="pre">physics_material_path</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab.sim.spawners.from_files.UsdFileCfg.physics_material_path" title="isaaclab.sim.spawners.from_files.UsdFileCfg.physics_material_path"><code class="xref py py-obj docutils literal notranslate"><span class="pre">physics_material_path</span></code></a></p></td>
 <td><p>Path to the physics material to use for the prim.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab.sim.spawners.from_files.UsdFileCfg.physics_material" title="isaaclab.sim.spawners.from_files.UsdFileCfg.physics_material"><code class="xref py py-obj docutils literal notranslate"><span class="pre">physics_material</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab.sim.spawners.from_files.UsdFileCfg.physics_material" title="isaaclab.sim.spawners.from_files.UsdFileCfg.physics_material"><code class="xref py py-obj docutils literal notranslate"><span class="pre">physics_material</span></code></a></p></td>
 <td><p>Physics material properties.</p></td>
 </tr>
 </tbody>
@@ -7098,8 +7128,31 @@ namespace.</p>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="isaaclab.sim.spawners.from_files.UsdFileCfg.articulation_props">
-<span class="sig-name descname"><span class="pre">articulation_props</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">schemas.ArticulationRootPropertiesCfg</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><a class="headerlink" href="#isaaclab.sim.spawners.from_files.UsdFileCfg.articulation_props" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">articulation_props</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="isaaclab.sim.schemas.html#isaaclab.sim.schemas.ArticulationRootBaseCfg" title="isaaclab.sim.schemas.ArticulationRootBaseCfg"><span class="pre">schemas.ArticulationRootBaseCfg</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">schemas.ArticulationRootFragment</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><span class="pre">schemas.ArticulationRootFragment</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><a class="headerlink" href="#isaaclab.sim.spawners.from_files.UsdFileCfg.articulation_props" title="Link to this definition">#</a></dt>
 <dd><p>Properties to apply to the articulation root.</p>
+<p>Accepts either a single legacy cfg (e.g. <a class="reference internal" href="isaaclab.sim.schemas.html#isaaclab.sim.schemas.ArticulationRootBaseCfg" title="isaaclab.sim.schemas.ArticulationRootBaseCfg"><code class="xref py py-class docutils literal notranslate"><span class="pre">ArticulationRootBaseCfg</span></code></a>)
+or a list of <code class="xref py py-class docutils literal notranslate"><span class="pre">ArticulationRootFragment</span></code> fragments
+(e.g. <code class="docutils literal notranslate"><span class="pre">[PhysxArticulationCfg(...),</span> <span class="pre">NewtonArticulationCfg(...)]</span></code>). When a fragment list is
+given, <code class="docutils literal notranslate"><span class="pre">UsdPhysics.ArticulationRootAPI</span></code> is applied as the anchor (presence-gated) and each
+fragment writes its own namespace.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="isaaclab.sim.spawners.from_files.UsdFileCfg.fix_root_link">
+<span class="sig-name descname"><span class="pre">fix_root_link</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><span class="pre">bool</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><a class="headerlink" href="#isaaclab.sim.spawners.from_files.UsdFileCfg.fix_root_link" title="Link to this definition">#</a></dt>
+<dd><p>Whether to fix the root link of the articulation. Defaults to None.</p>
+<p>This is a non-USD, spawner-level behaviour flag consumed by
+<code class="xref py py-func docutils literal notranslate"><span class="pre">apply_articulation_root_properties()</span></code> on the fragment/topology path,
+including when <a class="reference internal" href="#isaaclab.sim.spawners.from_files.UsdFileCfg.articulation_props" title="isaaclab.sim.spawners.from_files.UsdFileCfg.articulation_props"><code class="xref py py-attr docutils literal notranslate"><span class="pre">articulation_props</span></code></a> is <code class="docutils literal notranslate"><span class="pre">None</span></code> or an empty fragment collection. It is handled
+independently of whether any schema properties are supplied:</p>
+<ul class="simple">
+<li><p>If set to None, the root link is not modified.</p></li>
+<li><p>If the articulation already has a fixed root link, this flag enables or disables the fixed joint.</p></li>
+<li><p>If the articulation does not have a fixed root link, this flag creates a fixed joint between the
+world frame and the root link (named “FixedJoint” under the articulation prim).</p></li>
+</ul>
+<p>When <a class="reference internal" href="#isaaclab.sim.spawners.from_files.UsdFileCfg.articulation_props" title="isaaclab.sim.spawners.from_files.UsdFileCfg.articulation_props"><code class="xref py py-attr docutils literal notranslate"><span class="pre">articulation_props</span></code></a> is given as a legacy cfg, set
+<a class="reference internal" href="isaaclab.sim.schemas.html#isaaclab.sim.schemas.ArticulationRootBaseCfg.fix_root_link" title="isaaclab.sim.schemas.ArticulationRootBaseCfg.fix_root_link"><code class="xref py py-attr docutils literal notranslate"><span class="pre">fix_root_link</span></code></a> on that cfg instead.</p>
 </dd></dl>
 
 <dl class="py attribute">
@@ -7205,13 +7258,13 @@ use any of the kwargs.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>prim_path</strong> – The path to spawn the asset at.</p></li>
-<li><p><strong>cfg</strong> – The configuration instance.</p></li>
-<li><p><strong>translation</strong> – The translation to apply to the prim w.r.t. its parent prim. Defaults to None, in which
+<li><p><span class="target" id="isaaclab.sim.spawners.from_files.spawn_ground_plane.params.prim_path"></span><strong>prim_path</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.spawners.from_files.spawn_ground_plane.params.prim_path">¶</a> – The path to spawn the asset at.</p></li>
+<li><p><span class="target" id="isaaclab.sim.spawners.from_files.spawn_ground_plane.params.cfg"></span><strong>cfg</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.spawners.from_files.spawn_ground_plane.params.cfg">¶</a> – The configuration instance.</p></li>
+<li><p><span class="target" id="isaaclab.sim.spawners.from_files.spawn_ground_plane.params.translation"></span><strong>translation</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.spawners.from_files.spawn_ground_plane.params.translation">¶</a> – The translation to apply to the prim w.r.t. its parent prim. Defaults to None, in which
 case the translation specified in the USD file is used.</p></li>
-<li><p><strong>orientation</strong> – The orientation in (x, y, z, w) to apply to the prim w.r.t. its parent prim. Defaults to None,
+<li><p><span class="target" id="isaaclab.sim.spawners.from_files.spawn_ground_plane.params.orientation"></span><strong>orientation</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.spawners.from_files.spawn_ground_plane.params.orientation">¶</a> – The orientation in (x, y, z, w) to apply to the prim w.r.t. its parent prim. Defaults to None,
 in which case the orientation specified in the USD file is used.</p></li>
-<li><p><strong>**kwargs</strong> – Additional keyword arguments, like <code class="docutils literal notranslate"><span class="pre">clone_in_fabric</span></code>.</p></li>
+<li><p><span class="target" id="isaaclab.sim.spawners.from_files.spawn_ground_plane.params.**kwargs"></span><strong>**kwargs</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.spawners.from_files.spawn_ground_plane.params.**kwargs">¶</a> – Additional keyword arguments, like <code class="docutils literal notranslate"><span class="pre">clone_in_fabric</span></code>.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -7438,9 +7491,9 @@ from a single and cloning the USD prim at the given path expression.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>prim_path</strong> – The prim path or pattern to spawn the asset at. If the prim path is a regex pattern,
+<li><p><span class="target" id="isaaclab.sim.spawners.materials.spawn_preview_surface.params.prim_path"></span><strong>prim_path</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.spawners.materials.spawn_preview_surface.params.prim_path">¶</a> – The prim path or pattern to spawn the asset at. If the prim path is a regex pattern,
 then the asset is spawned at all the matching prim paths.</p></li>
-<li><p><strong>cfg</strong> – The configuration instance.</p></li>
+<li><p><span class="target" id="isaaclab.sim.spawners.materials.spawn_preview_surface.params.cfg"></span><strong>cfg</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.spawners.materials.spawn_preview_surface.params.cfg">¶</a> – The configuration instance.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -7532,9 +7585,9 @@ from a single and cloning the USD prim at the given path expression.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>prim_path</strong> – The prim path or pattern to spawn the asset at. If the prim path is a regex pattern,
+<li><p><span class="target" id="isaaclab.sim.spawners.materials.spawn_from_mdl_file.params.prim_path"></span><strong>prim_path</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.spawners.materials.spawn_from_mdl_file.params.prim_path">¶</a> – The prim path or pattern to spawn the asset at. If the prim path is a regex pattern,
 then the asset is spawned at all the matching prim paths.</p></li>
-<li><p><strong>cfg</strong> – The configuration instance.</p></li>
+<li><p><span class="target" id="isaaclab.sim.spawners.materials.spawn_from_mdl_file.params.cfg"></span><strong>cfg</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.spawners.materials.spawn_from_mdl_file.params.cfg">¶</a> – The configuration instance.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -7694,10 +7747,10 @@ from one call site.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>prim_path</strong> – The prim path to spawn the material at.</p></li>
-<li><p><strong>material</strong> – A <a class="reference internal" href="#isaaclab.sim.spawners.materials.RigidBodyMaterialFragment" title="isaaclab.sim.spawners.materials.RigidBodyMaterialFragment"><code class="xref py py-class docutils literal notranslate"><span class="pre">RigidBodyMaterialFragment</span></code></a> (or list/tuple
+<li><p><span class="target" id="isaaclab.sim.spawners.materials.spawn_physics_material.params.prim_path"></span><strong>prim_path</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.spawners.materials.spawn_physics_material.params.prim_path">¶</a> – The prim path to spawn the material at.</p></li>
+<li><p><span class="target" id="isaaclab.sim.spawners.materials.spawn_physics_material.params.material"></span><strong>material</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.spawners.materials.spawn_physics_material.params.material">¶</a> – A <a class="reference internal" href="#isaaclab.sim.spawners.materials.RigidBodyMaterialFragment" title="isaaclab.sim.spawners.materials.RigidBodyMaterialFragment"><code class="xref py py-class docutils literal notranslate"><span class="pre">RigidBodyMaterialFragment</span></code></a> (or list/tuple
 of them), or a legacy material cfg carrying a <code class="xref py py-attr docutils literal notranslate"><span class="pre">func</span></code>.</p></li>
-<li><p><strong>stage</strong> – The stage to spawn on. Defaults to None, in which case the current stage is used. A
+<li><p><span class="target" id="isaaclab.sim.spawners.materials.spawn_physics_material.params.stage"></span><strong>stage</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.spawners.materials.spawn_physics_material.params.stage">¶</a> – The stage to spawn on. Defaults to None, in which case the current stage is used. A
 legacy material cfg only supports the current stage (or None); passing a different
 stage raises.</p></li>
 </ul>
@@ -7740,9 +7793,9 @@ from a single and cloning the USD prim at the given path expression.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>prim_path</strong> – The prim path or pattern to spawn the asset at. If the prim path is a regex pattern,
+<li><p><span class="target" id="isaaclab.sim.spawners.materials.spawn_rigid_body_material.params.prim_path"></span><strong>prim_path</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.spawners.materials.spawn_rigid_body_material.params.prim_path">¶</a> – The prim path or pattern to spawn the asset at. If the prim path is a regex pattern,
 then the asset is spawned at all the matching prim paths.</p></li>
-<li><p><strong>cfg</strong> – The configuration for the physics material.</p></li>
+<li><p><span class="target" id="isaaclab.sim.spawners.materials.spawn_rigid_body_material.params.cfg"></span><strong>cfg</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.spawners.materials.spawn_rigid_body_material.params.cfg">¶</a> – The configuration for the physics material.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -7832,10 +7885,10 @@ so regex resolution does not apply here.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>prim_path</strong> – The prim path to spawn the material at.</p></li>
-<li><p><strong>fragments</strong> – A single <a class="reference internal" href="#isaaclab.sim.spawners.materials.RigidBodyMaterialFragment" title="isaaclab.sim.spawners.materials.RigidBodyMaterialFragment"><code class="xref py py-class docutils literal notranslate"><span class="pre">RigidBodyMaterialFragment</span></code></a>,
+<li><p><span class="target" id="isaaclab.sim.spawners.materials.spawn_rigid_body_material_from_fragments.params.prim_path"></span><strong>prim_path</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.spawners.materials.spawn_rigid_body_material_from_fragments.params.prim_path">¶</a> – The prim path to spawn the material at.</p></li>
+<li><p><span class="target" id="isaaclab.sim.spawners.materials.spawn_rigid_body_material_from_fragments.params.fragments"></span><strong>fragments</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.spawners.materials.spawn_rigid_body_material_from_fragments.params.fragments">¶</a> – A single <a class="reference internal" href="#isaaclab.sim.spawners.materials.RigidBodyMaterialFragment" title="isaaclab.sim.spawners.materials.RigidBodyMaterialFragment"><code class="xref py py-class docutils literal notranslate"><span class="pre">RigidBodyMaterialFragment</span></code></a>,
 or a list/tuple of them.</p></li>
-<li><p><strong>stage</strong> – The stage to spawn on. Defaults to None, in which case the current stage is used.</p></li>
+<li><p><span class="target" id="isaaclab.sim.spawners.materials.spawn_rigid_body_material_from_fragments.params.stage"></span><strong>stage</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.spawners.materials.spawn_rigid_body_material_from_fragments.params.stage">¶</a> – The stage to spawn on. Defaults to None, in which case the current stage is used.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -8070,9 +8123,9 @@ from a single and cloning the USD prim at the given path expression.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>prim_path</strong> – The prim path or pattern to spawn the asset at. If the prim path is a regex pattern,
+<li><p><span class="target" id="isaaclab.sim.spawners.materials.spawn_deformable_body_material.params.prim_path"></span><strong>prim_path</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.spawners.materials.spawn_deformable_body_material.params.prim_path">¶</a> – The prim path or pattern to spawn the asset at. If the prim path is a regex pattern,
 then the asset is spawned at all the matching prim paths.</p></li>
-<li><p><strong>cfg</strong> – The configuration for the physics material.</p></li>
+<li><p><span class="target" id="isaaclab.sim.spawners.materials.spawn_deformable_body_material.params.cfg"></span><strong>cfg</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.spawners.materials.spawn_deformable_body_material.params.cfg">¶</a> – The configuration for the physics material.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -8325,12 +8378,12 @@ which must contain <code class="docutils literal notranslate"><span class="pre">
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>prim_path</strong> – The prim path to spawn the assets.</p></li>
-<li><p><strong>cfg</strong> – The configuration for spawning the assets.</p></li>
-<li><p><strong>translation</strong> – The translation of the spawned assets. Default is None.</p></li>
-<li><p><strong>orientation</strong> – The orientation of the spawned assets in (x, y, z, w) order. Default is None.</p></li>
-<li><p><strong>clone_in_fabric</strong> – Whether to clone in fabric. Default is False.</p></li>
-<li><p><strong>replicate_physics</strong> – Whether to replicate physics. Default is False.</p></li>
+<li><p><span class="target" id="isaaclab.sim.spawners.wrappers.spawn_multi_asset.params.prim_path"></span><strong>prim_path</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.spawners.wrappers.spawn_multi_asset.params.prim_path">¶</a> – The prim path to spawn the assets.</p></li>
+<li><p><span class="target" id="isaaclab.sim.spawners.wrappers.spawn_multi_asset.params.cfg"></span><strong>cfg</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.spawners.wrappers.spawn_multi_asset.params.cfg">¶</a> – The configuration for spawning the assets.</p></li>
+<li><p><span class="target" id="isaaclab.sim.spawners.wrappers.spawn_multi_asset.params.translation"></span><strong>translation</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.spawners.wrappers.spawn_multi_asset.params.translation">¶</a> – The translation of the spawned assets. Default is None.</p></li>
+<li><p><span class="target" id="isaaclab.sim.spawners.wrappers.spawn_multi_asset.params.orientation"></span><strong>orientation</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.spawners.wrappers.spawn_multi_asset.params.orientation">¶</a> – The orientation of the spawned assets in (x, y, z, w) order. Default is None.</p></li>
+<li><p><span class="target" id="isaaclab.sim.spawners.wrappers.spawn_multi_asset.params.clone_in_fabric"></span><strong>clone_in_fabric</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.spawners.wrappers.spawn_multi_asset.params.clone_in_fabric">¶</a> – Whether to clone in fabric. Default is False.</p></li>
+<li><p><span class="target" id="isaaclab.sim.spawners.wrappers.spawn_multi_asset.params.replicate_physics"></span><strong>replicate_physics</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.spawners.wrappers.spawn_multi_asset.params.replicate_physics">¶</a> – Whether to replicate physics. Default is False.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -8519,12 +8572,12 @@ calls the <a class="reference internal" href="#isaaclab.sim.spawners.wrappers.sp
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>prim_path</strong> – The prim path to spawn the assets.</p></li>
-<li><p><strong>cfg</strong> – The configuration for spawning the assets.</p></li>
-<li><p><strong>translation</strong> – The translation of the spawned assets. Default is None.</p></li>
-<li><p><strong>orientation</strong> – The orientation of the spawned assets in (x, y, z, w) order. Default is None.</p></li>
-<li><p><strong>clone_in_fabric</strong> – Whether to clone in fabric. Default is False.</p></li>
-<li><p><strong>replicate_physics</strong> – Whether to replicate physics. Default is False.</p></li>
+<li><p><span class="target" id="isaaclab.sim.spawners.wrappers.spawn_multi_usd_file.params.prim_path"></span><strong>prim_path</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.spawners.wrappers.spawn_multi_usd_file.params.prim_path">¶</a> – The prim path to spawn the assets.</p></li>
+<li><p><span class="target" id="isaaclab.sim.spawners.wrappers.spawn_multi_usd_file.params.cfg"></span><strong>cfg</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.spawners.wrappers.spawn_multi_usd_file.params.cfg">¶</a> – The configuration for spawning the assets.</p></li>
+<li><p><span class="target" id="isaaclab.sim.spawners.wrappers.spawn_multi_usd_file.params.translation"></span><strong>translation</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.spawners.wrappers.spawn_multi_usd_file.params.translation">¶</a> – The translation of the spawned assets. Default is None.</p></li>
+<li><p><span class="target" id="isaaclab.sim.spawners.wrappers.spawn_multi_usd_file.params.orientation"></span><strong>orientation</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.spawners.wrappers.spawn_multi_usd_file.params.orientation">¶</a> – The orientation of the spawned assets in (x, y, z, w) order. Default is None.</p></li>
+<li><p><span class="target" id="isaaclab.sim.spawners.wrappers.spawn_multi_usd_file.params.clone_in_fabric"></span><strong>clone_in_fabric</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.spawners.wrappers.spawn_multi_usd_file.params.clone_in_fabric">¶</a> – Whether to clone in fabric. Default is False.</p></li>
+<li><p><span class="target" id="isaaclab.sim.spawners.wrappers.spawn_multi_usd_file.params.replicate_physics"></span><strong>replicate_physics</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.spawners.wrappers.spawn_multi_usd_file.params.replicate_physics">¶</a> – Whether to replicate physics. Default is False.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -8579,40 +8632,43 @@ imported from their USD files.</p>
 <tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab.sim.spawners.wrappers.MultiUsdFileCfg.articulation_props" title="isaaclab.sim.spawners.wrappers.MultiUsdFileCfg.articulation_props"><code class="xref py py-obj docutils literal notranslate"><span class="pre">articulation_props</span></code></a></p></td>
 <td><p>Properties to apply to the articulation root.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab.sim.spawners.wrappers.MultiUsdFileCfg.fixed_tendons_props" title="isaaclab.sim.spawners.wrappers.MultiUsdFileCfg.fixed_tendons_props"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fixed_tendons_props</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab.sim.spawners.wrappers.MultiUsdFileCfg.fix_root_link" title="isaaclab.sim.spawners.wrappers.MultiUsdFileCfg.fix_root_link"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fix_root_link</span></code></a></p></td>
+<td><p>Whether to fix the root link of the articulation.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab.sim.spawners.wrappers.MultiUsdFileCfg.fixed_tendons_props" title="isaaclab.sim.spawners.wrappers.MultiUsdFileCfg.fixed_tendons_props"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fixed_tendons_props</span></code></a></p></td>
 <td><p>Properties to apply to the fixed tendons (if any).</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab.sim.spawners.wrappers.MultiUsdFileCfg.spatial_tendons_props" title="isaaclab.sim.spawners.wrappers.MultiUsdFileCfg.spatial_tendons_props"><code class="xref py py-obj docutils literal notranslate"><span class="pre">spatial_tendons_props</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab.sim.spawners.wrappers.MultiUsdFileCfg.spatial_tendons_props" title="isaaclab.sim.spawners.wrappers.MultiUsdFileCfg.spatial_tendons_props"><code class="xref py py-obj docutils literal notranslate"><span class="pre">spatial_tendons_props</span></code></a></p></td>
 <td><p>Properties to apply to the spatial tendons (if any).</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab.sim.spawners.wrappers.MultiUsdFileCfg.joint_drive_props" title="isaaclab.sim.spawners.wrappers.MultiUsdFileCfg.joint_drive_props"><code class="xref py py-obj docutils literal notranslate"><span class="pre">joint_drive_props</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab.sim.spawners.wrappers.MultiUsdFileCfg.joint_drive_props" title="isaaclab.sim.spawners.wrappers.MultiUsdFileCfg.joint_drive_props"><code class="xref py py-obj docutils literal notranslate"><span class="pre">joint_drive_props</span></code></a></p></td>
 <td><p>Properties to apply to a joint.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab.sim.spawners.wrappers.MultiUsdFileCfg.ensure_drives_exist" title="isaaclab.sim.spawners.wrappers.MultiUsdFileCfg.ensure_drives_exist"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ensure_drives_exist</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab.sim.spawners.wrappers.MultiUsdFileCfg.ensure_drives_exist" title="isaaclab.sim.spawners.wrappers.MultiUsdFileCfg.ensure_drives_exist"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ensure_drives_exist</span></code></a></p></td>
 <td><p>Whether to ensure every joint drive is active when authoring <a class="reference internal" href="#isaaclab.sim.spawners.wrappers.MultiUsdFileCfg.joint_drive_props" title="isaaclab.sim.spawners.wrappers.MultiUsdFileCfg.joint_drive_props"><code class="xref py py-attr docutils literal notranslate"><span class="pre">joint_drive_props</span></code></a>.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab.sim.spawners.wrappers.MultiUsdFileCfg.visual_material_path" title="isaaclab.sim.spawners.wrappers.MultiUsdFileCfg.visual_material_path"><code class="xref py py-obj docutils literal notranslate"><span class="pre">visual_material_path</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab.sim.spawners.wrappers.MultiUsdFileCfg.visual_material_path" title="isaaclab.sim.spawners.wrappers.MultiUsdFileCfg.visual_material_path"><code class="xref py py-obj docutils literal notranslate"><span class="pre">visual_material_path</span></code></a></p></td>
 <td><p>Path to the visual material to use for the prim.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab.sim.spawners.wrappers.MultiUsdFileCfg.visual_material" title="isaaclab.sim.spawners.wrappers.MultiUsdFileCfg.visual_material"><code class="xref py py-obj docutils literal notranslate"><span class="pre">visual_material</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab.sim.spawners.wrappers.MultiUsdFileCfg.visual_material" title="isaaclab.sim.spawners.wrappers.MultiUsdFileCfg.visual_material"><code class="xref py py-obj docutils literal notranslate"><span class="pre">visual_material</span></code></a></p></td>
 <td><p>Visual material properties to override the visual material properties in the URDF file.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab.sim.spawners.wrappers.MultiUsdFileCfg.physics_material_path" title="isaaclab.sim.spawners.wrappers.MultiUsdFileCfg.physics_material_path"><code class="xref py py-obj docutils literal notranslate"><span class="pre">physics_material_path</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab.sim.spawners.wrappers.MultiUsdFileCfg.physics_material_path" title="isaaclab.sim.spawners.wrappers.MultiUsdFileCfg.physics_material_path"><code class="xref py py-obj docutils literal notranslate"><span class="pre">physics_material_path</span></code></a></p></td>
 <td><p>Path to the physics material to use for the prim.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab.sim.spawners.wrappers.MultiUsdFileCfg.physics_material" title="isaaclab.sim.spawners.wrappers.MultiUsdFileCfg.physics_material"><code class="xref py py-obj docutils literal notranslate"><span class="pre">physics_material</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab.sim.spawners.wrappers.MultiUsdFileCfg.physics_material" title="isaaclab.sim.spawners.wrappers.MultiUsdFileCfg.physics_material"><code class="xref py py-obj docutils literal notranslate"><span class="pre">physics_material</span></code></a></p></td>
 <td><p>Physics material properties.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab.sim.spawners.wrappers.MultiUsdFileCfg.variants" title="isaaclab.sim.spawners.wrappers.MultiUsdFileCfg.variants"><code class="xref py py-obj docutils literal notranslate"><span class="pre">variants</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab.sim.spawners.wrappers.MultiUsdFileCfg.variants" title="isaaclab.sim.spawners.wrappers.MultiUsdFileCfg.variants"><code class="xref py py-obj docutils literal notranslate"><span class="pre">variants</span></code></a></p></td>
 <td><p>Variants to select from in the input USD file.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab.sim.spawners.wrappers.MultiUsdFileCfg.usd_path" title="isaaclab.sim.spawners.wrappers.MultiUsdFileCfg.usd_path"><code class="xref py py-obj docutils literal notranslate"><span class="pre">usd_path</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab.sim.spawners.wrappers.MultiUsdFileCfg.usd_path" title="isaaclab.sim.spawners.wrappers.MultiUsdFileCfg.usd_path"><code class="xref py py-obj docutils literal notranslate"><span class="pre">usd_path</span></code></a></p></td>
 <td><p>Path or a list of paths to the USD files to spawn asset from.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab.sim.spawners.wrappers.MultiUsdFileCfg.spawn_paths" title="isaaclab.sim.spawners.wrappers.MultiUsdFileCfg.spawn_paths"><code class="xref py py-obj docutils literal notranslate"><span class="pre">spawn_paths</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab.sim.spawners.wrappers.MultiUsdFileCfg.spawn_paths" title="isaaclab.sim.spawners.wrappers.MultiUsdFileCfg.spawn_paths"><code class="xref py py-obj docutils literal notranslate"><span class="pre">spawn_paths</span></code></a></p></td>
 <td><p>Optional concrete spawn paths, one per USD path.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab.sim.spawners.wrappers.MultiUsdFileCfg.random_choice" title="isaaclab.sim.spawners.wrappers.MultiUsdFileCfg.random_choice"><code class="xref py py-obj docutils literal notranslate"><span class="pre">random_choice</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab.sim.spawners.wrappers.MultiUsdFileCfg.random_choice" title="isaaclab.sim.spawners.wrappers.MultiUsdFileCfg.random_choice"><code class="xref py py-obj docutils literal notranslate"><span class="pre">random_choice</span></code></a></p></td>
 <td><p>Whether to randomly select an asset configuration.</p></td>
 </tr>
 </tbody>
@@ -8712,8 +8768,31 @@ namespace.</p>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="isaaclab.sim.spawners.wrappers.MultiUsdFileCfg.articulation_props">
-<span class="sig-name descname"><span class="pre">articulation_props</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">schemas.ArticulationRootPropertiesCfg</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><a class="headerlink" href="#isaaclab.sim.spawners.wrappers.MultiUsdFileCfg.articulation_props" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">articulation_props</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="isaaclab.sim.schemas.html#isaaclab.sim.schemas.ArticulationRootBaseCfg" title="isaaclab.sim.schemas.ArticulationRootBaseCfg"><span class="pre">schemas.ArticulationRootBaseCfg</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">schemas.ArticulationRootFragment</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><span class="pre">schemas.ArticulationRootFragment</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><a class="headerlink" href="#isaaclab.sim.spawners.wrappers.MultiUsdFileCfg.articulation_props" title="Link to this definition">#</a></dt>
 <dd><p>Properties to apply to the articulation root.</p>
+<p>Accepts either a single legacy cfg (e.g. <a class="reference internal" href="isaaclab.sim.schemas.html#isaaclab.sim.schemas.ArticulationRootBaseCfg" title="isaaclab.sim.schemas.ArticulationRootBaseCfg"><code class="xref py py-class docutils literal notranslate"><span class="pre">ArticulationRootBaseCfg</span></code></a>)
+or a list of <code class="xref py py-class docutils literal notranslate"><span class="pre">ArticulationRootFragment</span></code> fragments
+(e.g. <code class="docutils literal notranslate"><span class="pre">[PhysxArticulationCfg(...),</span> <span class="pre">NewtonArticulationCfg(...)]</span></code>). When a fragment list is
+given, <code class="docutils literal notranslate"><span class="pre">UsdPhysics.ArticulationRootAPI</span></code> is applied as the anchor (presence-gated) and each
+fragment writes its own namespace.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="isaaclab.sim.spawners.wrappers.MultiUsdFileCfg.fix_root_link">
+<span class="sig-name descname"><span class="pre">fix_root_link</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><span class="pre">bool</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><a class="headerlink" href="#isaaclab.sim.spawners.wrappers.MultiUsdFileCfg.fix_root_link" title="Link to this definition">#</a></dt>
+<dd><p>Whether to fix the root link of the articulation. Defaults to None.</p>
+<p>This is a non-USD, spawner-level behaviour flag consumed by
+<code class="xref py py-func docutils literal notranslate"><span class="pre">apply_articulation_root_properties()</span></code> on the fragment/topology path,
+including when <a class="reference internal" href="#isaaclab.sim.spawners.wrappers.MultiUsdFileCfg.articulation_props" title="isaaclab.sim.spawners.wrappers.MultiUsdFileCfg.articulation_props"><code class="xref py py-attr docutils literal notranslate"><span class="pre">articulation_props</span></code></a> is <code class="docutils literal notranslate"><span class="pre">None</span></code> or an empty fragment collection. It is handled
+independently of whether any schema properties are supplied:</p>
+<ul class="simple">
+<li><p>If set to None, the root link is not modified.</p></li>
+<li><p>If the articulation already has a fixed root link, this flag enables or disables the fixed joint.</p></li>
+<li><p>If the articulation does not have a fixed root link, this flag creates a fixed joint between the
+world frame and the root link (named “FixedJoint” under the articulation prim).</p></li>
+</ul>
+<p>When <a class="reference internal" href="#isaaclab.sim.spawners.wrappers.MultiUsdFileCfg.articulation_props" title="isaaclab.sim.spawners.wrappers.MultiUsdFileCfg.articulation_props"><code class="xref py py-attr docutils literal notranslate"><span class="pre">articulation_props</span></code></a> is given as a legacy cfg, set
+<a class="reference internal" href="isaaclab.sim.schemas.html#isaaclab.sim.schemas.ArticulationRootBaseCfg.fix_root_link" title="isaaclab.sim.schemas.ArticulationRootBaseCfg.fix_root_link"><code class="xref py py-attr docutils literal notranslate"><span class="pre">fix_root_link</span></code></a> on that cfg instead.</p>
 </dd></dl>
 
 <dl class="py attribute">
@@ -9350,6 +9429,7 @@ If True, a random asset configuration is selected for each spawn.</p>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.sim.spawners.from_files.UrdfFileCfg.activate_contact_sensors"><code class="docutils literal notranslate"><span class="pre">UrdfFileCfg.activate_contact_sensors</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.sim.spawners.from_files.UrdfFileCfg.scale"><code class="docutils literal notranslate"><span class="pre">UrdfFileCfg.scale</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.sim.spawners.from_files.UrdfFileCfg.articulation_props"><code class="docutils literal notranslate"><span class="pre">UrdfFileCfg.articulation_props</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.sim.spawners.from_files.UrdfFileCfg.fix_root_link"><code class="docutils literal notranslate"><span class="pre">UrdfFileCfg.fix_root_link</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.sim.spawners.from_files.UrdfFileCfg.fixed_tendons_props"><code class="docutils literal notranslate"><span class="pre">UrdfFileCfg.fixed_tendons_props</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.sim.spawners.from_files.UrdfFileCfg.spatial_tendons_props"><code class="docutils literal notranslate"><span class="pre">UrdfFileCfg.spatial_tendons_props</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.sim.spawners.from_files.UrdfFileCfg.joint_drive_props"><code class="docutils literal notranslate"><span class="pre">UrdfFileCfg.joint_drive_props</span></code></a></li>
@@ -9375,6 +9455,7 @@ If True, a random asset configuration is selected for each spawn.</p>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.sim.spawners.from_files.UsdFileCfg.activate_contact_sensors"><code class="docutils literal notranslate"><span class="pre">UsdFileCfg.activate_contact_sensors</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.sim.spawners.from_files.UsdFileCfg.scale"><code class="docutils literal notranslate"><span class="pre">UsdFileCfg.scale</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.sim.spawners.from_files.UsdFileCfg.articulation_props"><code class="docutils literal notranslate"><span class="pre">UsdFileCfg.articulation_props</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.sim.spawners.from_files.UsdFileCfg.fix_root_link"><code class="docutils literal notranslate"><span class="pre">UsdFileCfg.fix_root_link</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.sim.spawners.from_files.UsdFileCfg.fixed_tendons_props"><code class="docutils literal notranslate"><span class="pre">UsdFileCfg.fixed_tendons_props</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.sim.spawners.from_files.UsdFileCfg.spatial_tendons_props"><code class="docutils literal notranslate"><span class="pre">UsdFileCfg.spatial_tendons_props</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.sim.spawners.from_files.UsdFileCfg.joint_drive_props"><code class="docutils literal notranslate"><span class="pre">UsdFileCfg.joint_drive_props</span></code></a></li>
@@ -9499,6 +9580,7 @@ If True, a random asset configuration is selected for each spawn.</p>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.sim.spawners.wrappers.MultiUsdFileCfg.activate_contact_sensors"><code class="docutils literal notranslate"><span class="pre">MultiUsdFileCfg.activate_contact_sensors</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.sim.spawners.wrappers.MultiUsdFileCfg.scale"><code class="docutils literal notranslate"><span class="pre">MultiUsdFileCfg.scale</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.sim.spawners.wrappers.MultiUsdFileCfg.articulation_props"><code class="docutils literal notranslate"><span class="pre">MultiUsdFileCfg.articulation_props</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.sim.spawners.wrappers.MultiUsdFileCfg.fix_root_link"><code class="docutils literal notranslate"><span class="pre">MultiUsdFileCfg.fix_root_link</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.sim.spawners.wrappers.MultiUsdFileCfg.fixed_tendons_props"><code class="docutils literal notranslate"><span class="pre">MultiUsdFileCfg.fixed_tendons_props</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.sim.spawners.wrappers.MultiUsdFileCfg.spatial_tendons_props"><code class="docutils literal notranslate"><span class="pre">MultiUsdFileCfg.spatial_tendons_props</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.sim.spawners.wrappers.MultiUsdFileCfg.joint_drive_props"><code class="docutils literal notranslate"><span class="pre">MultiUsdFileCfg.joint_drive_props</span></code></a></li>
@@ -9548,7 +9630,7 @@ By The Isaac Lab Project Developers.
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Jul 11, 2026.
+  Last updated on Jul 12, 2026.
   <br/>
 </p>
   </div>
