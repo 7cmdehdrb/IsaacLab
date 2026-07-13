@@ -64,7 +64,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="3.0.0" />
-    <meta name="docbuild:last-update" content="Jul 12, 2026"/>
+    <meta name="docbuild:last-update" content="Jul 13, 2026"/>
   </head>
   
   
@@ -1916,6 +1916,13 @@ as simulation mesh.</p>
 under it. If no mesh or multiple meshes are found, an error is raised. This is because the deformable
 body schema can only be applied to a single mesh.</p>
 </div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This function authors a new deformable body setup from scratch. It does not remove or clear existing
+deformable body schemas, simulation meshes, or pose data. Use <a class="reference internal" href="#isaaclab.sim.schemas.modify_deformable_body_properties" title="isaaclab.sim.schemas.modify_deformable_body_properties"><code class="xref py py-func docutils literal notranslate"><span class="pre">modify_deformable_body_properties()</span></code></a>
+to update properties on an existing deformable body, or clear any previous setup before calling this
+function.</p>
+</div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
@@ -2153,7 +2160,7 @@ By The Isaac Lab Project Developers.
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Jul 12, 2026.
+  Last updated on Jul 13, 2026.
   <br/>
 </p>
   </div>

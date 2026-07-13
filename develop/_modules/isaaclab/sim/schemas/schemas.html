@@ -61,7 +61,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="3.0.0" />
-    <meta name="docbuild:last-update" content="Jul 12, 2026"/>
+    <meta name="docbuild:last-update" content="Jul 13, 2026"/>
   </head>
   
   
@@ -705,6 +705,7 @@
     <span class="n">create_prim</span><span class="p">,</span>
     <span class="n">find_global_fixed_joint_prim</span><span class="p">,</span>
     <span class="n">get_all_matching_child_prims</span><span class="p">,</span>
+    <span class="n">has_deformable_body_api</span><span class="p">,</span>
     <span class="n">safe_set_attribute_on_usd_prim</span><span class="p">,</span>
     <span class="n">safe_set_attribute_on_usd_schema</span><span class="p">,</span>
 <span class="p">)</span>
@@ -2526,6 +2527,12 @@
 <span class="sd">        under it. If no mesh or multiple meshes are found, an error is raised. This is because the deformable</span>
 <span class="sd">        body schema can only be applied to a single mesh.</span>
 
+<span class="sd">    .. note::</span>
+<span class="sd">        This function authors a new deformable body setup from scratch. It does not remove or clear existing</span>
+<span class="sd">        deformable body schemas, simulation meshes, or pose data. Use :func:`modify_deformable_body_properties`</span>
+<span class="sd">        to update properties on an existing deformable body, or clear any previous setup before calling this</span>
+<span class="sd">        function.</span>
+
 <span class="sd">    Args:</span>
 <span class="sd">        prim_path: The prim path where to apply the deformable body schema.</span>
 <span class="sd">        cfg: The configuration for the deformable body.</span>
@@ -2542,8 +2549,6 @@
 <span class="sd">        ValueError: When the prim has no mesh or multiple meshes.</span>
 <span class="sd">        RuntimeError: When setting the deformable body properties fails.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="kn">from</span><span class="w"> </span><span class="nn">omni.physx.scripts</span><span class="w"> </span><span class="kn">import</span> <span class="n">deformableUtils</span>
-
     <span class="c1"># get stage handle</span>
     <span class="k">if</span> <span class="n">stage</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">stage</span> <span class="o">=</span> <span class="n">get_current_stage</span><span class="p">()</span>
@@ -2613,8 +2618,9 @@
     <span class="k">if</span> <span class="ow">not</span> <span class="n">vis_mesh_prim</span><span class="o">.</span><span class="n">IsValid</span><span class="p">():</span>
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Mesh prim path &#39;</span><span class="si">{</span><span class="n">vis_mesh_prim</span><span class="o">.</span><span class="n">GetPrimPath</span><span class="p">()</span><span class="si">}</span><span class="s2">&#39; is not valid.&quot;</span><span class="p">)</span>
 
-    <span class="c1"># remove potential previous configuration</span>
-    <span class="n">deformableUtils</span><span class="o">.</span><span class="n">remove_deformable_body</span><span class="p">(</span><span class="n">stage</span><span class="p">,</span> <span class="n">prim_path</span><span class="p">)</span>
+    <span class="c1"># define authors a fresh deformable setup; callers must clear any previous setup before calling this function.</span>
+    <span class="c1"># We check the USD namespace to determine which API to use for the deformable body.</span>
+    <span class="n">use_omni_physics_apis</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">cfg</span><span class="p">,</span> <span class="s2">&quot;_usd_namespace&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span> <span class="o">!=</span> <span class="s2">&quot;newton&quot;</span>
 
     <span class="c1"># create and set simulation/root prim properties based on the type of the deformable mesh (surface vs volume)</span>
     <span class="n">sim_mesh_prim_path</span> <span class="o">=</span> <span class="n">prim_path</span> <span class="o">+</span> <span class="s2">&quot;/sim_mesh&quot;</span> <span class="k">if</span> <span class="n">sim_mesh_prim_path</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">sim_mesh_prim_path</span>
@@ -2634,18 +2640,16 @@
             <span class="p">},</span>
             <span class="n">stage</span><span class="o">=</span><span class="n">stage</span><span class="p">,</span>
         <span class="p">)</span>
-
         <span class="c1"># apply sim API</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="n">sim_mesh_prim</span><span class="o">.</span><span class="n">ApplyAPI</span><span class="p">(</span><span class="s2">&quot;OmniPhysicsSurfaceDeformableSimAPI&quot;</span><span class="p">):</span>
-            <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Failed to set surface deformable body API on prim &#39;</span><span class="si">{</span><span class="n">sim_mesh_prim_path</span><span class="si">}</span><span class="s2">&#39;.&quot;</span><span class="p">)</span>
-
-        <span class="c1"># apply collision API</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="n">sim_mesh_prim</span><span class="o">.</span><span class="n">ApplyAPI</span><span class="p">(</span><span class="n">UsdPhysics</span><span class="o">.</span><span class="n">CollisionAPI</span><span class="p">):</span>
-            <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Failed to set surface deformable collision API on prim &#39;</span><span class="si">{</span><span class="n">sim_mesh_prim_path</span><span class="si">}</span><span class="s2">&#39;.&quot;</span><span class="p">)</span>
-
-        <span class="c1"># set rest-shape attributes required by OmniPhysicsSurfaceDeformableSimAPI</span>
-        <span class="n">sim_mesh_prim</span><span class="o">.</span><span class="n">GetAttribute</span><span class="p">(</span><span class="s2">&quot;omniphysics:restShapePoints&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">Set</span><span class="p">(</span><span class="n">vertices</span><span class="p">)</span>
-        <span class="n">sim_mesh_prim</span><span class="o">.</span><span class="n">GetAttribute</span><span class="p">(</span><span class="s2">&quot;omniphysics:restTriVtxIndices&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">Set</span><span class="p">(</span><span class="n">faces</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">use_omni_physics_apis</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">sim_mesh_prim</span><span class="o">.</span><span class="n">ApplyAPI</span><span class="p">(</span><span class="s2">&quot;OmniPhysicsSurfaceDeformableSimAPI&quot;</span><span class="p">):</span>
+                <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Failed to set surface deformable body API on prim &#39;</span><span class="si">{</span><span class="n">sim_mesh_prim_path</span><span class="si">}</span><span class="s2">&#39;.&quot;</span><span class="p">)</span>
+            <span class="c1"># set rest-shape attributes required by OmniPhysicsSurfaceDeformableSimAPI</span>
+            <span class="n">sim_mesh_prim</span><span class="o">.</span><span class="n">GetAttribute</span><span class="p">(</span><span class="s2">&quot;omniphysics:restShapePoints&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">Set</span><span class="p">(</span><span class="n">vertices</span><span class="p">)</span>
+            <span class="n">sim_mesh_prim</span><span class="o">.</span><span class="n">GetAttribute</span><span class="p">(</span><span class="s2">&quot;omniphysics:restTriVtxIndices&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">Set</span><span class="p">(</span><span class="n">faces</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">sim_mesh_prim</span><span class="o">.</span><span class="n">AddAppliedSchema</span><span class="p">(</span><span class="s2">&quot;PhysicsSurfaceDeformableSimAPI&quot;</span><span class="p">):</span>
+                <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Failed to set surface deformable body API on prim &#39;</span><span class="si">{</span><span class="n">sim_mesh_prim_path</span><span class="si">}</span><span class="s2">&#39;.&quot;</span><span class="p">)</span>
 
     <span class="k">elif</span> <span class="n">deformable_type</span> <span class="o">==</span> <span class="s2">&quot;volume&quot;</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">sim_mesh_prim</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
@@ -2691,22 +2695,23 @@
             <span class="p">)</span>
 
         <span class="c1"># apply sim API</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="n">sim_mesh_prim</span><span class="o">.</span><span class="n">ApplyAPI</span><span class="p">(</span><span class="s2">&quot;OmniPhysicsVolumeDeformableSimAPI&quot;</span><span class="p">):</span>
-            <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Failed to set volume deformable body API on prim &#39;</span><span class="si">{</span><span class="n">sim_mesh_prim_path</span><span class="si">}</span><span class="s2">&#39;.&quot;</span><span class="p">)</span>
-
-        <span class="c1"># apply collision API</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="n">sim_mesh_prim</span><span class="o">.</span><span class="n">ApplyAPI</span><span class="p">(</span><span class="n">UsdPhysics</span><span class="o">.</span><span class="n">CollisionAPI</span><span class="p">):</span>
-            <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Failed to set volume deformable collision API on prim &#39;</span><span class="si">{</span><span class="n">sim_mesh_prim_path</span><span class="si">}</span><span class="s2">&#39;.&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">use_omni_physics_apis</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">sim_mesh_prim</span><span class="o">.</span><span class="n">ApplyAPI</span><span class="p">(</span><span class="s2">&quot;OmniPhysicsVolumeDeformableSimAPI&quot;</span><span class="p">):</span>
+                <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Failed to set volume deformable body API on prim &#39;</span><span class="si">{</span><span class="n">sim_mesh_prim_path</span><span class="si">}</span><span class="s2">&#39;.&quot;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">sim_mesh_prim</span><span class="o">.</span><span class="n">AddAppliedSchema</span><span class="p">(</span><span class="s2">&quot;PhysicsVolumeDeformableSimAPI&quot;</span><span class="p">):</span>
+                <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Failed to set volume deformable body API on prim &#39;</span><span class="si">{</span><span class="n">sim_mesh_prim_path</span><span class="si">}</span><span class="s2">&#39;.&quot;</span><span class="p">)</span>
 
         <span class="c1"># set surface faces and rest-shape attributes required by OmniPhysicsVolumeDeformableSimAPI</span>
         <span class="n">surface_face_indices</span> <span class="o">=</span> <span class="n">UsdGeom</span><span class="o">.</span><span class="n">TetMesh</span><span class="o">.</span><span class="n">ComputeSurfaceFaces</span><span class="p">(</span>
             <span class="n">UsdGeom</span><span class="o">.</span><span class="n">TetMesh</span><span class="p">(</span><span class="n">sim_mesh_prim</span><span class="p">),</span> <span class="n">Usd</span><span class="o">.</span><span class="n">TimeCode</span><span class="o">.</span><span class="n">Default</span><span class="p">()</span>
         <span class="p">)</span>
         <span class="n">UsdGeom</span><span class="o">.</span><span class="n">TetMesh</span><span class="p">(</span><span class="n">sim_mesh_prim</span><span class="p">)</span><span class="o">.</span><span class="n">GetSurfaceFaceVertexIndicesAttr</span><span class="p">()</span><span class="o">.</span><span class="n">Set</span><span class="p">(</span><span class="n">surface_face_indices</span><span class="p">)</span>
-        <span class="n">sim_mesh_prim</span><span class="o">.</span><span class="n">GetAttribute</span><span class="p">(</span><span class="s2">&quot;omniphysics:restShapePoints&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">Set</span><span class="p">(</span><span class="n">sim_mesh_prim</span><span class="o">.</span><span class="n">GetAttribute</span><span class="p">(</span><span class="s2">&quot;points&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">Get</span><span class="p">())</span>
-        <span class="n">sim_mesh_prim</span><span class="o">.</span><span class="n">GetAttribute</span><span class="p">(</span><span class="s2">&quot;omniphysics:restTetVtxIndices&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">Set</span><span class="p">(</span>
-            <span class="n">sim_mesh_prim</span><span class="o">.</span><span class="n">GetAttribute</span><span class="p">(</span><span class="s2">&quot;tetVertexIndices&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">Get</span><span class="p">()</span>
-        <span class="p">)</span>
+        <span class="k">if</span> <span class="n">use_omni_physics_apis</span><span class="p">:</span>
+            <span class="n">sim_mesh_prim</span><span class="o">.</span><span class="n">GetAttribute</span><span class="p">(</span><span class="s2">&quot;omniphysics:restShapePoints&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">Set</span><span class="p">(</span><span class="n">sim_mesh_prim</span><span class="o">.</span><span class="n">GetAttribute</span><span class="p">(</span><span class="s2">&quot;points&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">Get</span><span class="p">())</span>
+            <span class="n">sim_mesh_prim</span><span class="o">.</span><span class="n">GetAttribute</span><span class="p">(</span><span class="s2">&quot;omniphysics:restTetVtxIndices&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">Set</span><span class="p">(</span>
+                <span class="n">sim_mesh_prim</span><span class="o">.</span><span class="n">GetAttribute</span><span class="p">(</span><span class="s2">&quot;tetVertexIndices&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">Get</span><span class="p">()</span>
+            <span class="p">)</span>
 
     <span class="k">else</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
@@ -2714,48 +2719,57 @@
 <span class="s2">            Only surface and volume deformables are supported.&quot;&quot;&quot;</span>
         <span class="p">)</span>
 
-    <span class="c1"># TODO: Temporary solution: Overwrite visual mesh with tet mesh surface points or copy</span>
-    <span class="c1"># surface sim mesh to vis mesh. In the future we can have separate visual from simulation mesh.</span>
-    <span class="c1"># This currently does not work if an asset is loaded where the visual mesh is not the simulation mesh surface.</span>
-    <span class="n">vis_mesh</span> <span class="o">=</span> <span class="n">UsdGeom</span><span class="o">.</span><span class="n">Mesh</span><span class="p">(</span><span class="n">vis_mesh_prim</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">deformable_type</span> <span class="o">==</span> <span class="s2">&quot;volume&quot;</span><span class="p">:</span>
-        <span class="n">tet_mesh_prim</span> <span class="o">=</span> <span class="n">UsdGeom</span><span class="o">.</span><span class="n">TetMesh</span><span class="p">(</span><span class="n">sim_mesh_prim</span><span class="p">)</span>
-        <span class="n">surface_indices</span> <span class="o">=</span> <span class="n">tet_mesh_prim</span><span class="o">.</span><span class="n">GetSurfaceFaceVertexIndicesAttr</span><span class="p">()</span><span class="o">.</span><span class="n">Get</span><span class="p">()</span>
-        <span class="k">if</span> <span class="n">surface_indices</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="nb">len</span><span class="p">(</span><span class="n">surface_indices</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-                <span class="sa">f</span><span class="s2">&quot;Deformable body at &#39;</span><span class="si">{</span><span class="n">prim_path</span><span class="si">}</span><span class="s2">&#39; has no surface indices on its TetMesh prim; &quot;</span>
-                <span class="s2">&quot;cannot sync to visual mesh.&quot;</span>
-            <span class="p">)</span>
-        <span class="n">vis_mesh</span><span class="o">.</span><span class="n">GetPointsAttr</span><span class="p">()</span><span class="o">.</span><span class="n">Set</span><span class="p">(</span><span class="n">tet_mesh_prim</span><span class="o">.</span><span class="n">GetPointsAttr</span><span class="p">()</span><span class="o">.</span><span class="n">Get</span><span class="p">())</span>
-        <span class="n">vis_mesh</span><span class="o">.</span><span class="n">GetFaceVertexIndicesAttr</span><span class="p">()</span><span class="o">.</span><span class="n">Set</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">surface_indices</span><span class="p">)</span><span class="o">.</span><span class="n">flatten</span><span class="p">())</span>
-        <span class="n">vis_mesh</span><span class="o">.</span><span class="n">GetFaceVertexCountsAttr</span><span class="p">()</span><span class="o">.</span><span class="n">Set</span><span class="p">([</span><span class="mi">3</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">surface_indices</span><span class="p">))</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="n">sim_mesh</span> <span class="o">=</span> <span class="n">UsdGeom</span><span class="o">.</span><span class="n">Mesh</span><span class="p">(</span><span class="n">sim_mesh_prim</span><span class="p">)</span>
-        <span class="n">vis_mesh</span><span class="o">.</span><span class="n">GetFaceVertexIndicesAttr</span><span class="p">()</span><span class="o">.</span><span class="n">Set</span><span class="p">(</span><span class="n">sim_mesh</span><span class="o">.</span><span class="n">GetFaceVertexIndicesAttr</span><span class="p">()</span><span class="o">.</span><span class="n">Get</span><span class="p">())</span>
-        <span class="n">vis_mesh</span><span class="o">.</span><span class="n">GetFaceVertexCountsAttr</span><span class="p">()</span><span class="o">.</span><span class="n">Set</span><span class="p">(</span><span class="n">sim_mesh</span><span class="o">.</span><span class="n">GetFaceVertexCountsAttr</span><span class="p">()</span><span class="o">.</span><span class="n">Get</span><span class="p">())</span>
-
-    <span class="c1"># bind visual to sim mesh by applying bind pose deformable pose API</span>
-    <span class="n">purposes</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;bindPose&quot;</span><span class="p">]</span>
-    <span class="n">vis_mesh_prim</span><span class="o">.</span><span class="n">ApplyAPI</span><span class="p">(</span><span class="s2">&quot;OmniPhysicsDeformablePoseAPI&quot;</span><span class="p">,</span> <span class="s2">&quot;default&quot;</span><span class="p">)</span>
-    <span class="n">vis_mesh_prim</span><span class="o">.</span><span class="n">CreateAttribute</span><span class="p">(</span><span class="s2">&quot;deformablePose:default:omniphysics:purposes&quot;</span><span class="p">,</span> <span class="n">Sdf</span><span class="o">.</span><span class="n">ValueTypeNames</span><span class="o">.</span><span class="n">TokenArray</span><span class="p">)</span><span class="o">.</span><span class="n">Set</span><span class="p">(</span>
-        <span class="n">purposes</span>
-    <span class="p">)</span>
-    <span class="n">points</span> <span class="o">=</span> <span class="n">UsdGeom</span><span class="o">.</span><span class="n">PointBased</span><span class="p">(</span><span class="n">vis_mesh_prim</span><span class="p">)</span><span class="o">.</span><span class="n">GetPointsAttr</span><span class="p">()</span><span class="o">.</span><span class="n">Get</span><span class="p">()</span>
-    <span class="n">vis_mesh_prim</span><span class="o">.</span><span class="n">CreateAttribute</span><span class="p">(</span><span class="s2">&quot;deformablePose:default:omniphysics:points&quot;</span><span class="p">,</span> <span class="n">Sdf</span><span class="o">.</span><span class="n">ValueTypeNames</span><span class="o">.</span><span class="n">Point3fArray</span><span class="p">)</span><span class="o">.</span><span class="n">Set</span><span class="p">(</span>
-        <span class="n">points</span>
-    <span class="p">)</span>
-
-    <span class="n">sim_mesh_prim</span><span class="o">.</span><span class="n">ApplyAPI</span><span class="p">(</span><span class="s2">&quot;OmniPhysicsDeformablePoseAPI&quot;</span><span class="p">,</span> <span class="s2">&quot;default&quot;</span><span class="p">)</span>
-    <span class="n">sim_mesh_prim</span><span class="o">.</span><span class="n">CreateAttribute</span><span class="p">(</span><span class="s2">&quot;deformablePose:default:omniphysics:purposes&quot;</span><span class="p">,</span> <span class="n">Sdf</span><span class="o">.</span><span class="n">ValueTypeNames</span><span class="o">.</span><span class="n">TokenArray</span><span class="p">)</span><span class="o">.</span><span class="n">Set</span><span class="p">(</span>
-        <span class="n">purposes</span>
-    <span class="p">)</span>
+    <span class="c1"># apply collision API</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">sim_mesh_prim</span><span class="o">.</span><span class="n">ApplyAPI</span><span class="p">(</span><span class="n">UsdPhysics</span><span class="o">.</span><span class="n">CollisionAPI</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Failed to set </span><span class="si">{</span><span class="n">deformable_type</span><span class="si">}</span><span class="s2"> deformable collision API on prim &#39;</span><span class="si">{</span><span class="n">sim_mesh_prim_path</span><span class="si">}</span><span class="s2">&#39;.&quot;</span><span class="p">)</span>
 
     <span class="c1"># disable simulation mesh for rendering</span>
     <span class="n">UsdGeom</span><span class="o">.</span><span class="n">Imageable</span><span class="p">(</span><span class="n">sim_mesh_prim</span><span class="p">)</span><span class="o">.</span><span class="n">GetPurposeAttr</span><span class="p">()</span><span class="o">.</span><span class="n">Set</span><span class="p">(</span><span class="n">UsdGeom</span><span class="o">.</span><span class="n">Tokens</span><span class="o">.</span><span class="n">guide</span><span class="p">)</span>
 
-    <span class="c1"># apply deformable body api</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="n">root_prim</span><span class="o">.</span><span class="n">ApplyAPI</span><span class="p">(</span><span class="s2">&quot;OmniPhysicsDeformableBodyAPI&quot;</span><span class="p">):</span>
-        <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Failed to set deformable body API on prim &#39;</span><span class="si">{</span><span class="n">prim_path</span><span class="si">}</span><span class="s2">&#39;.&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">use_omni_physics_apis</span><span class="p">:</span>
+        <span class="c1"># For PhysX: bind visual to sim mesh by applying bind pose deformable pose API</span>
+        <span class="n">purposes</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;bindPose&quot;</span><span class="p">]</span>
+        <span class="n">vis_mesh_prim</span><span class="o">.</span><span class="n">ApplyAPI</span><span class="p">(</span><span class="s2">&quot;OmniPhysicsDeformablePoseAPI&quot;</span><span class="p">,</span> <span class="s2">&quot;default&quot;</span><span class="p">)</span>
+        <span class="n">vis_mesh_prim</span><span class="o">.</span><span class="n">CreateAttribute</span><span class="p">(</span><span class="s2">&quot;deformablePose:default:omniphysics:purposes&quot;</span><span class="p">,</span> <span class="n">Sdf</span><span class="o">.</span><span class="n">ValueTypeNames</span><span class="o">.</span><span class="n">TokenArray</span><span class="p">)</span><span class="o">.</span><span class="n">Set</span><span class="p">(</span>
+            <span class="n">purposes</span>
+        <span class="p">)</span>
+        <span class="n">points</span> <span class="o">=</span> <span class="n">UsdGeom</span><span class="o">.</span><span class="n">PointBased</span><span class="p">(</span><span class="n">vis_mesh_prim</span><span class="p">)</span><span class="o">.</span><span class="n">GetPointsAttr</span><span class="p">()</span><span class="o">.</span><span class="n">Get</span><span class="p">()</span>
+        <span class="n">vis_mesh_prim</span><span class="o">.</span><span class="n">CreateAttribute</span><span class="p">(</span><span class="s2">&quot;deformablePose:default:omniphysics:points&quot;</span><span class="p">,</span> <span class="n">Sdf</span><span class="o">.</span><span class="n">ValueTypeNames</span><span class="o">.</span><span class="n">Point3fArray</span><span class="p">)</span><span class="o">.</span><span class="n">Set</span><span class="p">(</span>
+            <span class="n">points</span>
+        <span class="p">)</span>
+
+        <span class="n">sim_mesh_prim</span><span class="o">.</span><span class="n">ApplyAPI</span><span class="p">(</span><span class="s2">&quot;OmniPhysicsDeformablePoseAPI&quot;</span><span class="p">,</span> <span class="s2">&quot;default&quot;</span><span class="p">)</span>
+        <span class="n">sim_mesh_prim</span><span class="o">.</span><span class="n">CreateAttribute</span><span class="p">(</span><span class="s2">&quot;deformablePose:default:omniphysics:purposes&quot;</span><span class="p">,</span> <span class="n">Sdf</span><span class="o">.</span><span class="n">ValueTypeNames</span><span class="o">.</span><span class="n">TokenArray</span><span class="p">)</span><span class="o">.</span><span class="n">Set</span><span class="p">(</span>
+            <span class="n">purposes</span>
+        <span class="p">)</span>
+
+        <span class="c1"># apply deformable body api</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">root_prim</span><span class="o">.</span><span class="n">ApplyAPI</span><span class="p">(</span><span class="s2">&quot;OmniPhysicsDeformableBodyAPI&quot;</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Failed to set deformable body API on prim &#39;</span><span class="si">{</span><span class="n">prim_path</span><span class="si">}</span><span class="s2">&#39;.&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="c1"># TODO: Temporary solution for Newton: Overwrite visual mesh with tet mesh surface points or copy</span>
+        <span class="c1"># surface sim mesh to vis mesh. In the future we can have separate visual from simulation mesh.</span>
+        <span class="c1"># This currently does not work if an asset is loaded where the visual mesh is not the simulation mesh surface.</span>
+        <span class="n">vis_mesh</span> <span class="o">=</span> <span class="n">UsdGeom</span><span class="o">.</span><span class="n">Mesh</span><span class="p">(</span><span class="n">vis_mesh_prim</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">deformable_type</span> <span class="o">==</span> <span class="s2">&quot;volume&quot;</span><span class="p">:</span>
+            <span class="n">tet_mesh_prim</span> <span class="o">=</span> <span class="n">UsdGeom</span><span class="o">.</span><span class="n">TetMesh</span><span class="p">(</span><span class="n">sim_mesh_prim</span><span class="p">)</span>
+            <span class="n">surface_indices</span> <span class="o">=</span> <span class="n">tet_mesh_prim</span><span class="o">.</span><span class="n">GetSurfaceFaceVertexIndicesAttr</span><span class="p">()</span><span class="o">.</span><span class="n">Get</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">surface_indices</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="nb">len</span><span class="p">(</span><span class="n">surface_indices</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                    <span class="sa">f</span><span class="s2">&quot;Deformable body at &#39;</span><span class="si">{</span><span class="n">prim_path</span><span class="si">}</span><span class="s2">&#39; has no surface indices on its TetMesh prim; &quot;</span>
+                    <span class="s2">&quot;cannot sync to visual mesh.&quot;</span>
+                <span class="p">)</span>
+            <span class="n">vis_mesh</span><span class="o">.</span><span class="n">GetPointsAttr</span><span class="p">()</span><span class="o">.</span><span class="n">Set</span><span class="p">(</span><span class="n">tet_mesh_prim</span><span class="o">.</span><span class="n">GetPointsAttr</span><span class="p">()</span><span class="o">.</span><span class="n">Get</span><span class="p">())</span>
+            <span class="n">vis_mesh</span><span class="o">.</span><span class="n">GetFaceVertexIndicesAttr</span><span class="p">()</span><span class="o">.</span><span class="n">Set</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">surface_indices</span><span class="p">)</span><span class="o">.</span><span class="n">flatten</span><span class="p">())</span>
+            <span class="n">vis_mesh</span><span class="o">.</span><span class="n">GetFaceVertexCountsAttr</span><span class="p">()</span><span class="o">.</span><span class="n">Set</span><span class="p">([</span><span class="mi">3</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">surface_indices</span><span class="p">))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">sim_mesh</span> <span class="o">=</span> <span class="n">UsdGeom</span><span class="o">.</span><span class="n">Mesh</span><span class="p">(</span><span class="n">sim_mesh_prim</span><span class="p">)</span>
+            <span class="n">vis_mesh</span><span class="o">.</span><span class="n">GetFaceVertexIndicesAttr</span><span class="p">()</span><span class="o">.</span><span class="n">Set</span><span class="p">(</span><span class="n">sim_mesh</span><span class="o">.</span><span class="n">GetFaceVertexIndicesAttr</span><span class="p">()</span><span class="o">.</span><span class="n">Get</span><span class="p">())</span>
+            <span class="n">vis_mesh</span><span class="o">.</span><span class="n">GetFaceVertexCountsAttr</span><span class="p">()</span><span class="o">.</span><span class="n">Set</span><span class="p">(</span><span class="n">sim_mesh</span><span class="o">.</span><span class="n">GetFaceVertexCountsAttr</span><span class="p">()</span><span class="o">.</span><span class="n">Get</span><span class="p">())</span>
+
+        <span class="c1"># apply deformable body api</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">root_prim</span><span class="o">.</span><span class="n">AddAppliedSchema</span><span class="p">(</span><span class="s2">&quot;PhysicsDeformableBodyAPI&quot;</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Failed to set deformable body API on prim &#39;</span><span class="si">{</span><span class="n">prim_path</span><span class="si">}</span><span class="s2">&#39;.&quot;</span><span class="p">)</span>
 
     <span class="c1"># set deformable body properties</span>
     <span class="n">modify_deformable_body_properties</span><span class="p">(</span><span class="n">prim_path</span><span class="p">,</span> <span class="n">cfg</span><span class="p">,</span> <span class="n">stage</span><span class="p">)</span></div>
@@ -2818,7 +2832,7 @@
     <span class="k">if</span> <span class="ow">not</span> <span class="n">deformable_body_prim</span><span class="o">.</span><span class="n">IsValid</span><span class="p">():</span>
         <span class="k">return</span> <span class="kc">False</span>
     <span class="c1"># check if deformable body API is applied</span>
-    <span class="k">if</span> <span class="s2">&quot;OmniPhysicsDeformableBodyAPI&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">deformable_body_prim</span><span class="o">.</span><span class="n">GetAppliedSchemas</span><span class="p">():</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">has_deformable_body_api</span><span class="p">(</span><span class="n">deformable_body_prim</span><span class="p">):</span>
         <span class="k">return</span> <span class="kc">False</span>
 
     <span class="c1"># build cfg dict from dataclass fields only; USD routing is driven by the</span>
@@ -2882,7 +2896,7 @@ By The Isaac Lab Project Developers.
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Jul 12, 2026.
+  Last updated on Jul 13, 2026.
   <br/>
 </p>
   </div>

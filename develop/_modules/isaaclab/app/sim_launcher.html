@@ -61,7 +61,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="3.0.0" />
-    <meta name="docbuild:last-update" content="Jul 12, 2026"/>
+    <meta name="docbuild:last-update" content="Jul 13, 2026"/>
   </head>
   
   
@@ -738,7 +738,7 @@
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Build a concrete physics config for the requested backend.</span>
 
 <span class="sd">    Args:</span>
-<span class="sd">        physics_cfg_str: Backend selector: ``&quot;physx&quot;``, ``&quot;newton_mjwarp&quot;``, or ``&quot;ovphysx&quot;``.</span>
+<span class="sd">        physics_cfg_str: Backend selector: ``&quot;physx&quot;``, ``&quot;newton_mjwarp&quot;``, ``&quot;newton_vbd&quot;``, or ``&quot;ovphysx&quot;``.</span>
 
 <span class="sd">    Returns:</span>
 <span class="sd">        A new physics config instance for the requested backend.</span>
@@ -750,9 +750,22 @@
         <span class="k">return</span> <span class="n">PhysxCfg</span><span class="p">()</span>
     <span class="k">if</span> <span class="n">physics_cfg_str</span> <span class="o">==</span> <span class="s2">&quot;newton_mjwarp&quot;</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">NewtonCfg</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">physics_cfg_str</span> <span class="o">==</span> <span class="s2">&quot;newton_vbd&quot;</span><span class="p">:</span>
+        <span class="c1"># lazy import: core depends on isaaclab_contrib only when VBD is requested</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="kn">from</span><span class="w"> </span><span class="nn">isaaclab_contrib.deformable.newton_manager_cfg</span><span class="w"> </span><span class="kn">import</span> <span class="n">VBDSolverCfg</span>
+        <span class="k">except</span> <span class="ne">ImportError</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ImportError</span><span class="p">(</span>
+                <span class="s2">&quot;The &#39;newton_vbd&#39; physics backend requires the isaaclab_contrib package.&quot;</span>
+                <span class="s2">&quot; Install it with `./isaaclab.sh -i contrib`.&quot;</span>
+            <span class="p">)</span> <span class="kn">from</span><span class="w"> </span><span class="nn">err</span>
+
+        <span class="k">return</span> <span class="n">NewtonCfg</span><span class="p">(</span><span class="n">solver_cfg</span><span class="o">=</span><span class="n">VBDSolverCfg</span><span class="p">())</span>
     <span class="k">if</span> <span class="n">physics_cfg_str</span> <span class="o">==</span> <span class="s2">&quot;ovphysx&quot;</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">OvPhysxCfg</span><span class="p">()</span>
-    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Invalid physics config: </span><span class="si">{</span><span class="n">physics_cfg_str</span><span class="si">!r}</span><span class="s2"> (expected &#39;physx&#39;, &#39;newton_mjwarp&#39;, or &#39;ovphysx&#39;).&quot;</span><span class="p">)</span></div>
+    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+        <span class="sa">f</span><span class="s2">&quot;Invalid physics config: </span><span class="si">{</span><span class="n">physics_cfg_str</span><span class="si">!r}</span><span class="s2"> (expected &#39;physx&#39;, &#39;newton_mjwarp&#39;, &#39;newton_vbd&#39;, or &#39;ovphysx&#39;).&quot;</span>
+    <span class="p">)</span></div>
 
 
 
@@ -1270,7 +1283,7 @@ By The Isaac Lab Project Developers.
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Jul 12, 2026.
+  Last updated on Jul 13, 2026.
   <br/>
 </p>
   </div>

@@ -61,7 +61,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="3.0.0" />
-    <meta name="docbuild:last-update" content="Jul 12, 2026"/>
+    <meta name="docbuild:last-update" content="Jul 13, 2026"/>
   </head>
   
   
@@ -1274,6 +1274,26 @@
 
     <span class="k">return</span> <span class="n">fixed_joint_prim</span></div>
 
+
+
+<div class="viewcode-block" id="has_deformable_body_api">
+<a class="viewcode-back" href="../../../../source/api/lab/isaaclab.sim.utils.html#isaaclab.sim.utils.queries.has_deformable_body_api">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">has_deformable_body_api</span><span class="p">(</span><span class="n">prim</span><span class="p">:</span> <span class="n">Usd</span><span class="o">.</span><span class="n">Prim</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Check whether a deformable body API schema is applied on the prim.</span>
+
+<span class="sd">    Uses :meth:`Usd.PrimTypeInfo.GetAppliedAPISchemas` so that token-authored schemas</span>
+<span class="sd">    (e.g. Newton&#39;s unregistered ``PhysicsDeformableBodyAPI``) are detected in addition</span>
+<span class="sd">    to registered applied schemas.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        prim: The USD prim to check.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        True if ``OmniPhysicsDeformableBodyAPI`` or ``PhysicsDeformableBodyAPI`` is applied.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">applied_schemas</span> <span class="o">=</span> <span class="n">prim</span><span class="o">.</span><span class="n">GetPrimTypeInfo</span><span class="p">()</span><span class="o">.</span><span class="n">GetAppliedAPISchemas</span><span class="p">()</span>
+    <span class="k">return</span> <span class="s2">&quot;OmniPhysicsDeformableBodyAPI&quot;</span> <span class="ow">in</span> <span class="n">applied_schemas</span> <span class="ow">or</span> <span class="s2">&quot;PhysicsDeformableBodyAPI&quot;</span> <span class="ow">in</span> <span class="n">applied_schemas</span></div>
+
 </pre></div>
 
                 </article>
@@ -1321,7 +1341,7 @@ By The Isaac Lab Project Developers.
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Jul 12, 2026.
+  Last updated on Jul 13, 2026.
   <br/>
 </p>
   </div>

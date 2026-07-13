@@ -61,7 +61,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="3.0.0" />
-    <meta name="docbuild:last-update" content="Jul 12, 2026"/>
+    <meta name="docbuild:last-update" content="Jul 13, 2026"/>
   </head>
   
   
@@ -1445,7 +1445,8 @@
         <span class="c1"># (UsdGeom.TetMesh for volume, UsdGeom.Mesh for surface) with a</span>
         <span class="c1"># ``*DeformableSimAPI`` applied, so we split candidates by that schema.</span>
         <span class="k">def</span><span class="w"> </span><span class="nf">_is_sim_mesh</span><span class="p">(</span><span class="n">prim</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-            <span class="k">return</span> <span class="nb">any</span><span class="p">(</span><span class="s2">&quot;DeformableSimAPI&quot;</span> <span class="ow">in</span> <span class="n">api</span> <span class="k">for</span> <span class="n">api</span> <span class="ow">in</span> <span class="n">prim</span><span class="o">.</span><span class="n">GetAppliedSchemas</span><span class="p">())</span>
+            <span class="c1"># composed view: also sees token-authored (unregistered) schemas, unlike GetAppliedSchemas</span>
+            <span class="k">return</span> <span class="nb">any</span><span class="p">(</span><span class="s2">&quot;DeformableSimAPI&quot;</span> <span class="ow">in</span> <span class="n">api</span> <span class="k">for</span> <span class="n">api</span> <span class="ow">in</span> <span class="n">prim</span><span class="o">.</span><span class="n">GetPrimTypeInfo</span><span class="p">()</span><span class="o">.</span><span class="n">GetAppliedAPISchemas</span><span class="p">())</span>
 
         <span class="n">tet_prims</span> <span class="o">=</span> <span class="n">sim_utils</span><span class="o">.</span><span class="n">get_all_matching_child_prims</span><span class="p">(</span><span class="n">template_prim_path</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">p</span><span class="p">:</span> <span class="n">p</span><span class="o">.</span><span class="n">GetTypeName</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;TetMesh&quot;</span><span class="p">)</span>
         <span class="n">mesh_prims</span> <span class="o">=</span> <span class="n">sim_utils</span><span class="o">.</span><span class="n">get_all_matching_child_prims</span><span class="p">(</span><span class="n">template_prim_path</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">p</span><span class="p">:</span> <span class="n">p</span><span class="o">.</span><span class="n">GetTypeName</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;Mesh&quot;</span><span class="p">)</span>
@@ -1784,7 +1785,7 @@ By The Isaac Lab Project Developers.
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Jul 12, 2026.
+  Last updated on Jul 13, 2026.
   <br/>
 </p>
   </div>

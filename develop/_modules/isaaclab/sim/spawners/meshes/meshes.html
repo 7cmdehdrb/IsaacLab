@@ -61,7 +61,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="3.0.0" />
-    <meta name="docbuild:last-update" content="Jul 12, 2026"/>
+    <meta name="docbuild:last-update" content="Jul 13, 2026"/>
   </head>
   
   
@@ -686,6 +686,7 @@
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">annotations</span>
 
+<span class="kn">import</span><span class="w"> </span><span class="nn">logging</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">TYPE_CHECKING</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
@@ -696,6 +697,7 @@
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">isaaclab.sim</span><span class="w"> </span><span class="kn">import</span> <span class="n">schemas</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">isaaclab.sim.utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">bind_physics_material</span><span class="p">,</span> <span class="n">bind_visual_material</span><span class="p">,</span> <span class="n">clone</span><span class="p">,</span> <span class="n">create_prim</span><span class="p">,</span> <span class="n">get_current_stage</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">isaaclab.utils.version</span><span class="w"> </span><span class="kn">import</span> <span class="n">has_kit</span>
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">..materials</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
     <span class="n">DeformableBodyMaterialBaseCfg</span><span class="p">,</span>
@@ -707,6 +709,9 @@
 
 <span class="k">if</span> <span class="n">TYPE_CHECKING</span><span class="p">:</span>
     <span class="kn">from</span><span class="w"> </span><span class="nn">.</span><span class="w"> </span><span class="kn">import</span> <span class="n">meshes_cfg</span>
+
+<span class="c1"># import logger</span>
+<span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
 
 
 <div class="viewcode-block" id="spawn_mesh_sphere">
@@ -992,11 +997,10 @@
 <span class="sd">        ValueError: If a prim already exists at the given path.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="c1"># create a 2D triangle mesh grid</span>
-    <span class="kn">from</span><span class="w"> </span><span class="nn">omni.physx.scripts</span><span class="w"> </span><span class="kn">import</span> <span class="n">deformableUtils</span>
-
-    <span class="n">vertices</span><span class="p">,</span> <span class="n">faces</span> <span class="o">=</span> <span class="n">deformableUtils</span><span class="o">.</span><span class="n">create_triangle_mesh_square</span><span class="p">(</span><span class="n">cfg</span><span class="o">.</span><span class="n">resolution</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">cfg</span><span class="o">.</span><span class="n">resolution</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">scale</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span>
-    <span class="n">vertices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([(</span><span class="n">v</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">cfg</span><span class="o">.</span><span class="n">size</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">v</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">cfg</span><span class="o">.</span><span class="n">size</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">v</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">vertices</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
-    <span class="n">grid</span> <span class="o">=</span> <span class="n">trimesh</span><span class="o">.</span><span class="n">Trimesh</span><span class="p">(</span><span class="n">vertices</span><span class="o">=</span><span class="n">vertices</span><span class="p">,</span> <span class="n">faces</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">faces</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">process</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">vertices</span><span class="p">,</span> <span class="n">faces</span> <span class="o">=</span> <span class="n">_create_triangle_mesh_grid</span><span class="p">(</span><span class="n">cfg</span><span class="o">.</span><span class="n">resolution</span><span class="p">)</span>
+    <span class="n">vertices</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">*=</span> <span class="n">cfg</span><span class="o">.</span><span class="n">size</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">vertices</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">*=</span> <span class="n">cfg</span><span class="o">.</span><span class="n">size</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">grid</span> <span class="o">=</span> <span class="n">trimesh</span><span class="o">.</span><span class="n">Trimesh</span><span class="p">(</span><span class="n">vertices</span><span class="o">=</span><span class="n">vertices</span><span class="p">,</span> <span class="n">faces</span><span class="o">=</span><span class="n">faces</span><span class="p">,</span> <span class="n">process</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 
     <span class="c1"># obtain stage handle</span>
     <span class="n">stage</span> <span class="o">=</span> <span class="n">get_current_stage</span><span class="p">()</span>
@@ -1005,6 +1009,34 @@
     <span class="c1"># return the prim</span>
     <span class="k">return</span> <span class="n">stage</span><span class="o">.</span><span class="n">GetPrimAtPath</span><span class="p">(</span><span class="n">prim_path</span><span class="p">)</span></div>
 
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_create_triangle_mesh_grid</span><span class="p">(</span><span class="n">resolution</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Create a centered triangle grid for :class:`MeshRectangleCfg`.&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">resolution</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">1</span> <span class="ow">or</span> <span class="n">resolution</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Rectangle mesh resolution must be positive, got </span><span class="si">{</span><span class="n">resolution</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+
+    <span class="n">num_x</span><span class="p">,</span> <span class="n">num_y</span> <span class="o">=</span> <span class="n">resolution</span>
+    <span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">num_x</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+    <span class="n">ys</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">num_y</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+    <span class="n">vertices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span> <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">ys</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">xs</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+
+    <span class="n">faces</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">row_stride</span> <span class="o">=</span> <span class="n">num_x</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="k">for</span> <span class="n">iy</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_y</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">ix</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_x</span><span class="p">):</span>
+            <span class="n">v0</span> <span class="o">=</span> <span class="n">iy</span> <span class="o">*</span> <span class="n">row_stride</span> <span class="o">+</span> <span class="n">ix</span>
+            <span class="n">v1</span> <span class="o">=</span> <span class="n">v0</span> <span class="o">+</span> <span class="mi">1</span>
+            <span class="n">v2</span> <span class="o">=</span> <span class="n">v0</span> <span class="o">+</span> <span class="n">row_stride</span>
+            <span class="n">v3</span> <span class="o">=</span> <span class="n">v2</span> <span class="o">+</span> <span class="mi">1</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">ix</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="o">!=</span> <span class="p">(</span><span class="n">iy</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">):</span>
+                <span class="n">faces</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">v0</span><span class="p">,</span> <span class="n">v1</span><span class="p">,</span> <span class="n">v2</span><span class="p">))</span>
+                <span class="n">faces</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">v1</span><span class="p">,</span> <span class="n">v3</span><span class="p">,</span> <span class="n">v2</span><span class="p">))</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">faces</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">v0</span><span class="p">,</span> <span class="n">v1</span><span class="p">,</span> <span class="n">v3</span><span class="p">))</span>
+                <span class="n">faces</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">v0</span><span class="p">,</span> <span class="n">v3</span><span class="p">,</span> <span class="n">v2</span><span class="p">))</span>
+
+    <span class="k">return</span> <span class="n">vertices</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">faces</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int64</span><span class="p">)</span>
 
 
 <span class="sd">&quot;&quot;&quot;</span>
@@ -1137,14 +1169,17 @@
 
     <span class="c1"># apply visual material</span>
     <span class="k">if</span> <span class="n">cfg</span><span class="o">.</span><span class="n">visual_material</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="n">cfg</span><span class="o">.</span><span class="n">visual_material_path</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">):</span>
-            <span class="n">material_path</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">geom_prim_path</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">cfg</span><span class="o">.</span><span class="n">visual_material_path</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">has_kit</span><span class="p">():</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;Skipping visual material application for &#39;</span><span class="si">%s</span><span class="s2">&#39; in kitless mode.&quot;</span><span class="p">,</span> <span class="n">mesh_prim_path</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="n">material_path</span> <span class="o">=</span> <span class="n">cfg</span><span class="o">.</span><span class="n">visual_material_path</span>
-        <span class="c1"># create material</span>
-        <span class="n">cfg</span><span class="o">.</span><span class="n">visual_material</span><span class="o">.</span><span class="n">func</span><span class="p">(</span><span class="n">material_path</span><span class="p">,</span> <span class="n">cfg</span><span class="o">.</span><span class="n">visual_material</span><span class="p">)</span>
-        <span class="c1"># apply material</span>
-        <span class="n">bind_visual_material</span><span class="p">(</span><span class="n">mesh_prim_path</span><span class="p">,</span> <span class="n">material_path</span><span class="p">,</span> <span class="n">stage</span><span class="o">=</span><span class="n">stage</span><span class="p">)</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">cfg</span><span class="o">.</span><span class="n">visual_material_path</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">):</span>
+                <span class="n">material_path</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">geom_prim_path</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">cfg</span><span class="o">.</span><span class="n">visual_material_path</span><span class="si">}</span><span class="s2">&quot;</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">material_path</span> <span class="o">=</span> <span class="n">cfg</span><span class="o">.</span><span class="n">visual_material_path</span>
+            <span class="c1"># create material</span>
+            <span class="n">cfg</span><span class="o">.</span><span class="n">visual_material</span><span class="o">.</span><span class="n">func</span><span class="p">(</span><span class="n">material_path</span><span class="p">,</span> <span class="n">cfg</span><span class="o">.</span><span class="n">visual_material</span><span class="p">)</span>
+            <span class="c1"># apply material</span>
+            <span class="n">bind_visual_material</span><span class="p">(</span><span class="n">mesh_prim_path</span><span class="p">,</span> <span class="n">material_path</span><span class="p">,</span> <span class="n">stage</span><span class="o">=</span><span class="n">stage</span><span class="p">)</span>
 
     <span class="c1"># apply physics material</span>
     <span class="k">if</span> <span class="n">cfg</span><span class="o">.</span><span class="n">physics_material</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
@@ -1220,7 +1255,7 @@ By The Isaac Lab Project Developers.
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Jul 12, 2026.
+  Last updated on Jul 13, 2026.
   <br/>
 </p>
   </div>

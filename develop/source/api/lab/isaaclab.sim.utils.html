@@ -64,7 +64,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="3.0.0" />
-    <meta name="docbuild:last-update" content="Jul 12, 2026"/>
+    <meta name="docbuild:last-update" content="Jul 13, 2026"/>
   </head>
   
   
@@ -767,6 +767,7 @@
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.sim.utils.queries.resolve_matching_prims_from_source"><code class="docutils literal notranslate"><span class="pre">resolve_matching_prims_from_source()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.sim.utils.queries.find_matching_prim_paths"><code class="docutils literal notranslate"><span class="pre">find_matching_prim_paths()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.sim.utils.queries.find_global_fixed_joint_prim"><code class="docutils literal notranslate"><span class="pre">find_global_fixed_joint_prim()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.sim.utils.queries.has_deformable_body_api"><code class="docutils literal notranslate"><span class="pre">has_deformable_body_api()</span></code></a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-isaaclab.sim.utils.prims">Prims</a><ul class="nav section-nav flex-column">
@@ -1250,6 +1251,9 @@ a default predicate will be used that deletes all prims.</p>
 <tr class="row-even"><td><p><a class="reference internal" href="#isaaclab.sim.utils.queries.find_global_fixed_joint_prim" title="isaaclab.sim.utils.queries.find_global_fixed_joint_prim"><code class="xref py py-obj docutils literal notranslate"><span class="pre">find_global_fixed_joint_prim</span></code></a>(prim_path[, ...])</p></td>
 <td><p>Find the fixed joint prim under the specified prim path that connects the target to the simulation world.</p></td>
 </tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab.sim.utils.queries.has_deformable_body_api" title="isaaclab.sim.utils.queries.has_deformable_body_api"><code class="xref py py-obj docutils literal notranslate"><span class="pre">has_deformable_body_api</span></code></a>(prim)</p></td>
+<td><p>Check whether a deformable body API schema is applied on the prim.</p></td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -1500,6 +1504,23 @@ If False, then all joints (enabled or disabled) are considered.</p></li>
 <li><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#ValueError" title="(in Python v3.14)"><strong>ValueError</strong></a> – If the prim path is not global (i.e: does not start with ‘/’).</p></li>
 <li><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#ValueError" title="(in Python v3.14)"><strong>ValueError</strong></a> – If the prim path does not exist on the stage.</p></li>
 </ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="isaaclab.sim.utils.queries.has_deformable_body_api">
+<span class="sig-prename descclassname"><span class="pre">isaaclab.sim.utils.queries.</span></span><span class="sig-name descname"><span class="pre">has_deformable_body_api</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">prim</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Usd.Prim</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><span class="pre">bool</span></a></span></span><a class="reference internal" href="../../../_modules/isaaclab/sim/utils/queries.html#has_deformable_body_api"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#isaaclab.sim.utils.queries.has_deformable_body_api" title="Link to this definition">#</a></dt>
+<dd><p>Check whether a deformable body API schema is applied on the prim.</p>
+<p>Uses <code class="xref py py-meth docutils literal notranslate"><span class="pre">Usd.PrimTypeInfo.GetAppliedAPISchemas()</span></code> so that token-authored schemas
+(e.g. Newton’s unregistered <code class="docutils literal notranslate"><span class="pre">PhysicsDeformableBodyAPI</span></code>) are detected in addition
+to registered applied schemas.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="target" id="isaaclab.sim.utils.queries.has_deformable_body_api.params.prim"></span><strong>prim</strong><a class="paramlink headerlink reference internal" href="#isaaclab.sim.utils.queries.has_deformable_body_api.params.prim">¶</a> – The USD prim to check.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>True if <code class="docutils literal notranslate"><span class="pre">OmniPhysicsDeformableBodyAPI</span></code> or <code class="docutils literal notranslate"><span class="pre">PhysicsDeformableBodyAPI</span></code> is applied.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -2798,6 +2819,7 @@ function instead.</p>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.sim.utils.queries.resolve_matching_prims_from_source"><code class="docutils literal notranslate"><span class="pre">resolve_matching_prims_from_source()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.sim.utils.queries.find_matching_prim_paths"><code class="docutils literal notranslate"><span class="pre">find_matching_prim_paths()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.sim.utils.queries.find_global_fixed_joint_prim"><code class="docutils literal notranslate"><span class="pre">find_global_fixed_joint_prim()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.sim.utils.queries.has_deformable_body_api"><code class="docutils literal notranslate"><span class="pre">has_deformable_body_api()</span></code></a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-isaaclab.sim.utils.prims">Prims</a><ul class="nav section-nav flex-column">
@@ -2881,7 +2903,7 @@ By The Isaac Lab Project Developers.
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Jul 12, 2026.
+  Last updated on Jul 13, 2026.
   <br/>
 </p>
   </div>
