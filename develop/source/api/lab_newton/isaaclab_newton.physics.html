@@ -36,7 +36,6 @@
     <link rel="stylesheet" type="text/css" href="/opt/hostedtoolcache/Python/3.12.13/x64/lib/python3.12/site-packages/sphinxcontrib/icon/node_modules/@fortawesome/fontawesome-free/css/all.min.css?v=53359634" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx_paramlinks.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=8fb98eed" />
   
   <!-- So that users can add custom icons -->
@@ -162,6 +161,9 @@
             <option value="isaaclab_newton.physics.html" selected>develop</option>
             <option value="../../../../main/index.html" >main</option>
             <option value="../../../../release/3.0.0-beta2/source/api/lab_newton/isaaclab_newton.physics.html" >release/3.0.0-beta2</option>
+            <option value="../../../../v3.0.0-beta2.patch1/source/api/lab_newton/isaaclab_newton.physics.html" >v3.0.0-beta2.patch1</option>
+            <option value="../../../../v3.0.0-beta2/source/api/lab_newton/isaaclab_newton.physics.html" >v3.0.0-beta2</option>
+            <option value="../../../../v3.0.0-beta/source/api/lab_newton/isaaclab_newton.physics.html" >v3.0.0-beta</option>
             <option value="../../../../v2.3.2/index.html" >v2.3.2</option>
             <option value="../../../../v2.3.1/index.html" >v2.3.1</option>
             <option value="../../../../v2.3.0/index.html" >v2.3.0</option>
@@ -201,7 +203,7 @@
           
           
           
-          <a href="https://developer.nvidia.com/isaac-sim" title="Isaac Sim" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="https://img.shields.io/badge/IsaacSim-6.0.0-silver.svg" class="icon-link-image" alt="Isaac Sim"/></a>
+          <a href="https://developer.nvidia.com/isaac-sim" title="Isaac Sim" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="https://img.shields.io/badge/IsaacSim-6.0.1-silver.svg" class="icon-link-image" alt="Isaac Sim"/></a>
         </li>
         <li class="nav-item">
           
@@ -1551,7 +1553,7 @@ cue in the observation (e.g. frame stacking).</p>
 <dd><p>Initialize the manager with simulation context.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab_newton.physics.NewtonManager.initialize.params.sim_context"></span><strong>sim_context</strong><a class="paramlink headerlink reference internal" href="#isaaclab_newton.physics.NewtonManager.initialize.params.sim_context">¶</a> – Parent simulation context.</p>
+<dd class="field-odd"><p><strong>sim_context</strong> – Parent simulation context.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1562,7 +1564,7 @@ cue in the observation (e.g. frame stacking).</p>
 <dd><p>Reset physics simulation.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab_newton.physics.NewtonManager.reset.params.soft"></span><strong>soft</strong><a class="paramlink headerlink reference internal" href="#isaaclab_newton.physics.NewtonManager.reset.params.soft">¶</a> – If True, skip full reinitialization.</p>
+<dd class="field-odd"><p><strong>soft</strong> – If True, skip full reinitialization.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1633,10 +1635,10 @@ last sync.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_newton.physics.NewtonManager.register_particle_visual_prim.params.prim_path"></span><strong>prim_path</strong><a class="paramlink headerlink reference internal" href="#isaaclab_newton.physics.NewtonManager.register_particle_visual_prim.params.prim_path">¶</a> – Stage path of an existing <code class="docutils literal notranslate"><span class="pre">UsdGeom.Points</span></code> prim.</p></li>
-<li><p><span class="target" id="isaaclab_newton.physics.NewtonManager.register_particle_visual_prim.params.particle_offset"></span><strong>particle_offset</strong><a class="paramlink headerlink reference internal" href="#isaaclab_newton.physics.NewtonManager.register_particle_visual_prim.params.particle_offset">¶</a> – First index of the prim’s slice in <code class="docutils literal notranslate"><span class="pre">state.particle_q</span></code>.</p></li>
-<li><p><span class="target" id="isaaclab_newton.physics.NewtonManager.register_particle_visual_prim.params.particle_count"></span><strong>particle_count</strong><a class="paramlink headerlink reference internal" href="#isaaclab_newton.physics.NewtonManager.register_particle_visual_prim.params.particle_count">¶</a> – Number of particles in the slice.</p></li>
-<li><p><span class="target" id="isaaclab_newton.physics.NewtonManager.register_particle_visual_prim.params.sync_frequency"></span><strong>sync_frequency</strong><a class="paramlink headerlink reference internal" href="#isaaclab_newton.physics.NewtonManager.register_particle_visual_prim.params.sync_frequency">¶</a> – Sync the prim every N dirty render frames.</p></li>
+<li><p><strong>prim_path</strong> – Stage path of an existing <code class="docutils literal notranslate"><span class="pre">UsdGeom.Points</span></code> prim.</p></li>
+<li><p><strong>particle_offset</strong> – First index of the prim’s slice in <code class="docutils literal notranslate"><span class="pre">state.particle_q</span></code>.</p></li>
+<li><p><strong>particle_count</strong> – Number of particles in the slice.</p></li>
+<li><p><strong>sync_frequency</strong> – Sync the prim every N dirty render frames.</p></li>
 </ul>
 </dd>
 </dl>
@@ -1725,9 +1727,9 @@ rough-terrain margin/gap still apply during early construction.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_newton.physics.NewtonManager.create_builder.params.up_axis"></span><strong>up_axis</strong><a class="paramlink headerlink reference internal" href="#isaaclab_newton.physics.NewtonManager.create_builder.params.up_axis">¶</a> – Override for the up-axis. Defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code>, which uses
+<li><p><strong>up_axis</strong> – Override for the up-axis. Defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code>, which uses
 the manager’s <code class="docutils literal notranslate"><span class="pre">_up_axis</span></code>.</p></li>
-<li><p><span class="target" id="isaaclab_newton.physics.NewtonManager.create_builder.params.**kwargs"></span><strong>**kwargs</strong><a class="paramlink headerlink reference internal" href="#isaaclab_newton.physics.NewtonManager.create_builder.params.**kwargs">¶</a> – Forwarded to <code class="xref py py-class docutils literal notranslate"><span class="pre">ModelBuilder</span></code>.</p></li>
+<li><p><strong>**kwargs</strong> – Forwarded to <code class="xref py py-class docutils literal notranslate"><span class="pre">ModelBuilder</span></code>.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -1751,12 +1753,12 @@ that match multiple bodies create one site per matched body.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_newton.physics.NewtonManager.cl_register_site.params.body_pattern"></span><strong>body_pattern</strong><a class="paramlink headerlink reference internal" href="#isaaclab_newton.physics.NewtonManager.cl_register_site.params.body_pattern">¶</a> – Regex pattern matched against body labels in the
+<li><p><strong>body_pattern</strong> – Regex pattern matched against body labels in the
 prototype builder (e.g. <code class="docutils literal notranslate"><span class="pre">&quot;Robot/link0&quot;</span></code> or <code class="docutils literal notranslate"><span class="pre">&quot;Robot/finger.*&quot;</span></code>
 for multi-body wildcards), or <code class="docutils literal notranslate"><span class="pre">None</span></code> for global sites
 (world-origin reference, etc.).</p></li>
-<li><p><span class="target" id="isaaclab_newton.physics.NewtonManager.cl_register_site.params.xform"></span><strong>xform</strong><a class="paramlink headerlink reference internal" href="#isaaclab_newton.physics.NewtonManager.cl_register_site.params.xform">¶</a> – Site transform relative to body.</p></li>
-<li><p><span class="target" id="isaaclab_newton.physics.NewtonManager.cl_register_site.params.per_world"></span><strong>per_world</strong><a class="paramlink headerlink reference internal" href="#isaaclab_newton.physics.NewtonManager.cl_register_site.params.per_world">¶</a> – When <code class="docutils literal notranslate"><span class="pre">True</span></code>, <code class="docutils literal notranslate"><span class="pre">body_pattern</span></code> must be <code class="docutils literal notranslate"><span class="pre">None</span></code> and one
+<li><p><strong>xform</strong> – Site transform relative to body.</p></li>
+<li><p><strong>per_world</strong> – When <code class="docutils literal notranslate"><span class="pre">True</span></code>, <code class="docutils literal notranslate"><span class="pre">body_pattern</span></code> must be <code class="docutils literal notranslate"><span class="pre">None</span></code> and one
 bodyless site is created in each cloned world’s frame.</p></li>
 </ul>
 </dd>
@@ -1775,7 +1777,7 @@ Attributes are forwarded to the builder in <a class="reference internal" href="#
 so that subsequent <code class="docutils literal notranslate"><span class="pre">model.state()</span></code> calls allocate them.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab_newton.physics.NewtonManager.request_extended_state_attribute.params.attr"></span><strong>attr</strong><a class="paramlink headerlink reference internal" href="#isaaclab_newton.physics.NewtonManager.request_extended_state_attribute.params.attr">¶</a> – State attribute name (must be in <code class="docutils literal notranslate"><span class="pre">State.EXTENDED_ATTRIBUTES</span></code>).</p>
+<dd class="field-odd"><p><strong>attr</strong> – State attribute name (must be in <code class="docutils literal notranslate"><span class="pre">State.EXTENDED_ATTRIBUTES</span></code>).</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1789,7 +1791,7 @@ Attributes are forwarded to the model in <a class="reference internal" href="#is
 so that subsequent <code class="docutils literal notranslate"><span class="pre">Contacts</span></code> creation includes them.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab_newton.physics.NewtonManager.request_extended_contact_attribute.params.attr"></span><strong>attr</strong><a class="paramlink headerlink reference internal" href="#isaaclab_newton.physics.NewtonManager.request_extended_contact_attribute.params.attr">¶</a> – Contact attribute name.</p>
+<dd class="field-odd"><p><strong>attr</strong> – Contact attribute name.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1810,11 +1812,11 @@ rendering, or physics-step boundary.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_newton.physics.NewtonManager.invalidate_fk.params.env_mask"></span><strong>env_mask</strong><a class="paramlink headerlink reference internal" href="#isaaclab_newton.physics.NewtonManager.invalidate_fk.params.env_mask">¶</a> – Boolean mask of dirtied environments. Shape <code class="docutils literal notranslate"><span class="pre">(num_envs,)</span></code>.
+<li><p><strong>env_mask</strong> – Boolean mask of dirtied environments. Shape <code class="docutils literal notranslate"><span class="pre">(num_envs,)</span></code>.
 Used by <code class="docutils literal notranslate"><span class="pre">_mask</span></code> write methods.</p></li>
-<li><p><span class="target" id="isaaclab_newton.physics.NewtonManager.invalidate_fk.params.env_ids"></span><strong>env_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab_newton.physics.NewtonManager.invalidate_fk.params.env_ids">¶</a> – Integer indices of dirtied environments.
+<li><p><strong>env_ids</strong> – Integer indices of dirtied environments.
 Used by <code class="docutils literal notranslate"><span class="pre">_index</span></code> write methods.</p></li>
-<li><p><span class="target" id="isaaclab_newton.physics.NewtonManager.invalidate_fk.params.articulation_ids"></span><strong>articulation_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab_newton.physics.NewtonManager.invalidate_fk.params.articulation_ids">¶</a> – Mapping from <code class="docutils literal notranslate"><span class="pre">(world,</span> <span class="pre">arti)</span></code> to model articulation
+<li><p><strong>articulation_ids</strong> – Mapping from <code class="docutils literal notranslate"><span class="pre">(world,</span> <span class="pre">arti)</span></code> to model articulation
 index. Shape <code class="docutils literal notranslate"><span class="pre">(world_count,</span> <span class="pre">count_per_world)</span></code>. Obtained from
 <code class="docutils literal notranslate"><span class="pre">ArticulationView.articulation_ids</span></code>.</p></li>
 </ul>
@@ -2000,11 +2002,11 @@ fnmatch globs and delegates to <code class="xref py py-class docutils literal no
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_newton.physics.NewtonManager.add_contact_sensor.params.body_names_expr"></span><strong>body_names_expr</strong><a class="paramlink headerlink reference internal" href="#isaaclab_newton.physics.NewtonManager.add_contact_sensor.params.body_names_expr">¶</a> – Expression for body names to sense.</p></li>
-<li><p><span class="target" id="isaaclab_newton.physics.NewtonManager.add_contact_sensor.params.shape_names_expr"></span><strong>shape_names_expr</strong><a class="paramlink headerlink reference internal" href="#isaaclab_newton.physics.NewtonManager.add_contact_sensor.params.shape_names_expr">¶</a> – Expression for shape names to sense.</p></li>
-<li><p><span class="target" id="isaaclab_newton.physics.NewtonManager.add_contact_sensor.params.contact_partners_body_expr"></span><strong>contact_partners_body_expr</strong><a class="paramlink headerlink reference internal" href="#isaaclab_newton.physics.NewtonManager.add_contact_sensor.params.contact_partners_body_expr">¶</a> – Expression for contact partner body names.</p></li>
-<li><p><span class="target" id="isaaclab_newton.physics.NewtonManager.add_contact_sensor.params.contact_partners_shape_expr"></span><strong>contact_partners_shape_expr</strong><a class="paramlink headerlink reference internal" href="#isaaclab_newton.physics.NewtonManager.add_contact_sensor.params.contact_partners_shape_expr">¶</a> – Expression for contact partner shape names.</p></li>
-<li><p><span class="target" id="isaaclab_newton.physics.NewtonManager.add_contact_sensor.params.verbose"></span><strong>verbose</strong><a class="paramlink headerlink reference internal" href="#isaaclab_newton.physics.NewtonManager.add_contact_sensor.params.verbose">¶</a> – Print verbose information.</p></li>
+<li><p><strong>body_names_expr</strong> – Expression for body names to sense.</p></li>
+<li><p><strong>shape_names_expr</strong> – Expression for shape names to sense.</p></li>
+<li><p><strong>contact_partners_body_expr</strong> – Expression for contact partner body names.</p></li>
+<li><p><strong>contact_partners_shape_expr</strong> – Expression for contact partner shape names.</p></li>
+<li><p><strong>verbose</strong> – Print verbose information.</p></li>
 </ul>
 </dd>
 </dl>
@@ -2019,8 +2021,8 @@ site indices, appends it to the internal list, and returns its index.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_newton.physics.NewtonManager.add_frame_transform_sensor.params.shapes"></span><strong>shapes</strong><a class="paramlink headerlink reference internal" href="#isaaclab_newton.physics.NewtonManager.add_frame_transform_sensor.params.shapes">¶</a> – Ordered list of shape indices to measure.</p></li>
-<li><p><span class="target" id="isaaclab_newton.physics.NewtonManager.add_frame_transform_sensor.params.reference_sites"></span><strong>reference_sites</strong><a class="paramlink headerlink reference internal" href="#isaaclab_newton.physics.NewtonManager.add_frame_transform_sensor.params.reference_sites">¶</a> – 1:1 list of reference site indices (same length as shapes).</p></li>
+<li><p><strong>shapes</strong> – Ordered list of shape indices to measure.</p></li>
+<li><p><strong>reference_sites</strong> – 1:1 list of reference site indices (same length as shapes).</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -2037,7 +2039,7 @@ site indices, appends it to the internal list, and returns its index.</p>
 appends it to the internal list, and returns its index.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab_newton.physics.NewtonManager.add_imu_sensor.params.sites"></span><strong>sites</strong><a class="paramlink headerlink reference internal" href="#isaaclab_newton.physics.NewtonManager.add_imu_sensor.params.sites">¶</a> – Ordered list of site indices (one per environment).</p>
+<dd class="field-odd"><p><strong>sites</strong> – Ordered list of site indices (one per environment).</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>Index of the newly created sensor in the internal IMU sensor list.</p>
@@ -2077,7 +2079,7 @@ forever uninitialized.</p>
 <dd><p>Remove a registered callback.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab_newton.physics.NewtonManager.deregister_callback.params.callback_id"></span><strong>callback_id</strong><a class="paramlink headerlink reference internal" href="#isaaclab_newton.physics.NewtonManager.deregister_callback.params.callback_id">¶</a> – The ID or CallbackHandle returned by register_callback().</p>
+<dd class="field-odd"><p><strong>callback_id</strong> – The ID or CallbackHandle returned by register_callback().</p>
 </dd>
 </dl>
 </dd></dl>
@@ -2091,8 +2093,8 @@ Subclasses may override or extend with platform-specific dispatch.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_newton.physics.NewtonManager.dispatch_event.params.event"></span><strong>event</strong><a class="paramlink headerlink reference internal" href="#isaaclab_newton.physics.NewtonManager.dispatch_event.params.event">¶</a> – The event to dispatch.</p></li>
-<li><p><span class="target" id="isaaclab_newton.physics.NewtonManager.dispatch_event.params.payload"></span><strong>payload</strong><a class="paramlink headerlink reference internal" href="#isaaclab_newton.physics.NewtonManager.dispatch_event.params.payload">¶</a> – Optional data to pass to callbacks.</p></li>
+<li><p><strong>event</strong> – The event to dispatch.</p></li>
+<li><p><strong>payload</strong> – Optional data to pass to callbacks.</p></li>
 </ul>
 </dd>
 </dl>
@@ -2107,8 +2109,8 @@ root topology may relocate it and return the resulting root prim.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_newton.physics.NewtonManager.fix_articulation_root.params.articulation_prim"></span><strong>articulation_prim</strong><a class="paramlink headerlink reference internal" href="#isaaclab_newton.physics.NewtonManager.fix_articulation_root.params.articulation_prim">¶</a> – The articulation-root prim to fix.</p></li>
-<li><p><span class="target" id="isaaclab_newton.physics.NewtonManager.fix_articulation_root.params.stage"></span><strong>stage</strong><a class="paramlink headerlink reference internal" href="#isaaclab_newton.physics.NewtonManager.fix_articulation_root.params.stage">¶</a> – The stage containing the prim. Defaults to the current stage.</p></li>
+<li><p><strong>articulation_prim</strong> – The articulation-root prim to fix.</p></li>
+<li><p><strong>stage</strong> – The stage containing the prim. Defaults to the current stage.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -3906,11 +3908,11 @@ fnmatch globs and delegates to <code class="xref py py-class docutils literal no
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_newton.physics.NewtonMJWarpManager.add_contact_sensor.params.body_names_expr"></span><strong>body_names_expr</strong><a class="paramlink headerlink reference internal" href="#isaaclab_newton.physics.NewtonMJWarpManager.add_contact_sensor.params.body_names_expr">¶</a> – Expression for body names to sense.</p></li>
-<li><p><span class="target" id="isaaclab_newton.physics.NewtonMJWarpManager.add_contact_sensor.params.shape_names_expr"></span><strong>shape_names_expr</strong><a class="paramlink headerlink reference internal" href="#isaaclab_newton.physics.NewtonMJWarpManager.add_contact_sensor.params.shape_names_expr">¶</a> – Expression for shape names to sense.</p></li>
-<li><p><span class="target" id="isaaclab_newton.physics.NewtonMJWarpManager.add_contact_sensor.params.contact_partners_body_expr"></span><strong>contact_partners_body_expr</strong><a class="paramlink headerlink reference internal" href="#isaaclab_newton.physics.NewtonMJWarpManager.add_contact_sensor.params.contact_partners_body_expr">¶</a> – Expression for contact partner body names.</p></li>
-<li><p><span class="target" id="isaaclab_newton.physics.NewtonMJWarpManager.add_contact_sensor.params.contact_partners_shape_expr"></span><strong>contact_partners_shape_expr</strong><a class="paramlink headerlink reference internal" href="#isaaclab_newton.physics.NewtonMJWarpManager.add_contact_sensor.params.contact_partners_shape_expr">¶</a> – Expression for contact partner shape names.</p></li>
-<li><p><span class="target" id="isaaclab_newton.physics.NewtonMJWarpManager.add_contact_sensor.params.verbose"></span><strong>verbose</strong><a class="paramlink headerlink reference internal" href="#isaaclab_newton.physics.NewtonMJWarpManager.add_contact_sensor.params.verbose">¶</a> – Print verbose information.</p></li>
+<li><p><strong>body_names_expr</strong> – Expression for body names to sense.</p></li>
+<li><p><strong>shape_names_expr</strong> – Expression for shape names to sense.</p></li>
+<li><p><strong>contact_partners_body_expr</strong> – Expression for contact partner body names.</p></li>
+<li><p><strong>contact_partners_shape_expr</strong> – Expression for contact partner shape names.</p></li>
+<li><p><strong>verbose</strong> – Print verbose information.</p></li>
 </ul>
 </dd>
 </dl>
@@ -3925,8 +3927,8 @@ site indices, appends it to the internal list, and returns its index.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_newton.physics.NewtonMJWarpManager.add_frame_transform_sensor.params.shapes"></span><strong>shapes</strong><a class="paramlink headerlink reference internal" href="#isaaclab_newton.physics.NewtonMJWarpManager.add_frame_transform_sensor.params.shapes">¶</a> – Ordered list of shape indices to measure.</p></li>
-<li><p><span class="target" id="isaaclab_newton.physics.NewtonMJWarpManager.add_frame_transform_sensor.params.reference_sites"></span><strong>reference_sites</strong><a class="paramlink headerlink reference internal" href="#isaaclab_newton.physics.NewtonMJWarpManager.add_frame_transform_sensor.params.reference_sites">¶</a> – 1:1 list of reference site indices (same length as shapes).</p></li>
+<li><p><strong>shapes</strong> – Ordered list of shape indices to measure.</p></li>
+<li><p><strong>reference_sites</strong> – 1:1 list of reference site indices (same length as shapes).</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -3943,7 +3945,7 @@ site indices, appends it to the internal list, and returns its index.</p>
 appends it to the internal list, and returns its index.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab_newton.physics.NewtonMJWarpManager.add_imu_sensor.params.sites"></span><strong>sites</strong><a class="paramlink headerlink reference internal" href="#isaaclab_newton.physics.NewtonMJWarpManager.add_imu_sensor.params.sites">¶</a> – Ordered list of site indices (one per environment).</p>
+<dd class="field-odd"><p><strong>sites</strong> – Ordered list of site indices (one per environment).</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>Index of the newly created sensor in the internal IMU sensor list.</p>
@@ -3981,12 +3983,12 @@ that match multiple bodies create one site per matched body.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_newton.physics.NewtonMJWarpManager.cl_register_site.params.body_pattern"></span><strong>body_pattern</strong><a class="paramlink headerlink reference internal" href="#isaaclab_newton.physics.NewtonMJWarpManager.cl_register_site.params.body_pattern">¶</a> – Regex pattern matched against body labels in the
+<li><p><strong>body_pattern</strong> – Regex pattern matched against body labels in the
 prototype builder (e.g. <code class="docutils literal notranslate"><span class="pre">&quot;Robot/link0&quot;</span></code> or <code class="docutils literal notranslate"><span class="pre">&quot;Robot/finger.*&quot;</span></code>
 for multi-body wildcards), or <code class="docutils literal notranslate"><span class="pre">None</span></code> for global sites
 (world-origin reference, etc.).</p></li>
-<li><p><span class="target" id="isaaclab_newton.physics.NewtonMJWarpManager.cl_register_site.params.xform"></span><strong>xform</strong><a class="paramlink headerlink reference internal" href="#isaaclab_newton.physics.NewtonMJWarpManager.cl_register_site.params.xform">¶</a> – Site transform relative to body.</p></li>
-<li><p><span class="target" id="isaaclab_newton.physics.NewtonMJWarpManager.cl_register_site.params.per_world"></span><strong>per_world</strong><a class="paramlink headerlink reference internal" href="#isaaclab_newton.physics.NewtonMJWarpManager.cl_register_site.params.per_world">¶</a> – When <code class="docutils literal notranslate"><span class="pre">True</span></code>, <code class="docutils literal notranslate"><span class="pre">body_pattern</span></code> must be <code class="docutils literal notranslate"><span class="pre">None</span></code> and one
+<li><p><strong>xform</strong> – Site transform relative to body.</p></li>
+<li><p><strong>per_world</strong> – When <code class="docutils literal notranslate"><span class="pre">True</span></code>, <code class="docutils literal notranslate"><span class="pre">body_pattern</span></code> must be <code class="docutils literal notranslate"><span class="pre">None</span></code> and one
 bodyless site is created in each cloned world’s frame.</p></li>
 </ul>
 </dd>
@@ -4036,9 +4038,9 @@ rough-terrain margin/gap still apply during early construction.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_newton.physics.NewtonMJWarpManager.create_builder.params.up_axis"></span><strong>up_axis</strong><a class="paramlink headerlink reference internal" href="#isaaclab_newton.physics.NewtonMJWarpManager.create_builder.params.up_axis">¶</a> – Override for the up-axis. Defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code>, which uses
+<li><p><strong>up_axis</strong> – Override for the up-axis. Defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code>, which uses
 the manager’s <code class="docutils literal notranslate"><span class="pre">_up_axis</span></code>.</p></li>
-<li><p><span class="target" id="isaaclab_newton.physics.NewtonMJWarpManager.create_builder.params.**kwargs"></span><strong>**kwargs</strong><a class="paramlink headerlink reference internal" href="#isaaclab_newton.physics.NewtonMJWarpManager.create_builder.params.**kwargs">¶</a> – Forwarded to <code class="xref py py-class docutils literal notranslate"><span class="pre">ModelBuilder</span></code>.</p></li>
+<li><p><strong>**kwargs</strong> – Forwarded to <code class="xref py py-class docutils literal notranslate"><span class="pre">ModelBuilder</span></code>.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -4053,7 +4055,7 @@ the manager’s <code class="docutils literal notranslate"><span class="pre">_up
 <dd><p>Remove a registered callback.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab_newton.physics.NewtonMJWarpManager.deregister_callback.params.callback_id"></span><strong>callback_id</strong><a class="paramlink headerlink reference internal" href="#isaaclab_newton.physics.NewtonMJWarpManager.deregister_callback.params.callback_id">¶</a> – The ID or CallbackHandle returned by register_callback().</p>
+<dd class="field-odd"><p><strong>callback_id</strong> – The ID or CallbackHandle returned by register_callback().</p>
 </dd>
 </dl>
 </dd></dl>
@@ -4067,8 +4069,8 @@ Subclasses may override or extend with platform-specific dispatch.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_newton.physics.NewtonMJWarpManager.dispatch_event.params.event"></span><strong>event</strong><a class="paramlink headerlink reference internal" href="#isaaclab_newton.physics.NewtonMJWarpManager.dispatch_event.params.event">¶</a> – The event to dispatch.</p></li>
-<li><p><span class="target" id="isaaclab_newton.physics.NewtonMJWarpManager.dispatch_event.params.payload"></span><strong>payload</strong><a class="paramlink headerlink reference internal" href="#isaaclab_newton.physics.NewtonMJWarpManager.dispatch_event.params.payload">¶</a> – Optional data to pass to callbacks.</p></li>
+<li><p><strong>event</strong> – The event to dispatch.</p></li>
+<li><p><strong>payload</strong> – Optional data to pass to callbacks.</p></li>
 </ul>
 </dd>
 </dl>
@@ -4083,8 +4085,8 @@ root topology may relocate it and return the resulting root prim.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_newton.physics.NewtonMJWarpManager.fix_articulation_root.params.articulation_prim"></span><strong>articulation_prim</strong><a class="paramlink headerlink reference internal" href="#isaaclab_newton.physics.NewtonMJWarpManager.fix_articulation_root.params.articulation_prim">¶</a> – The articulation-root prim to fix.</p></li>
-<li><p><span class="target" id="isaaclab_newton.physics.NewtonMJWarpManager.fix_articulation_root.params.stage"></span><strong>stage</strong><a class="paramlink headerlink reference internal" href="#isaaclab_newton.physics.NewtonMJWarpManager.fix_articulation_root.params.stage">¶</a> – The stage containing the prim. Defaults to the current stage.</p></li>
+<li><p><strong>articulation_prim</strong> – The articulation-root prim to fix.</p></li>
+<li><p><strong>stage</strong> – The stage containing the prim. Defaults to the current stage.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -4234,7 +4236,7 @@ is folded into a single <a class="reference internal" href="#isaaclab_newton.phy
 <dd><p>Initialize the manager with simulation context.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab_newton.physics.NewtonMJWarpManager.initialize.params.sim_context"></span><strong>sim_context</strong><a class="paramlink headerlink reference internal" href="#isaaclab_newton.physics.NewtonMJWarpManager.initialize.params.sim_context">¶</a> – Parent simulation context.</p>
+<dd class="field-odd"><p><strong>sim_context</strong> – Parent simulation context.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -4277,11 +4279,11 @@ rendering, or physics-step boundary.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_newton.physics.NewtonMJWarpManager.invalidate_fk.params.env_mask"></span><strong>env_mask</strong><a class="paramlink headerlink reference internal" href="#isaaclab_newton.physics.NewtonMJWarpManager.invalidate_fk.params.env_mask">¶</a> – Boolean mask of dirtied environments. Shape <code class="docutils literal notranslate"><span class="pre">(num_envs,)</span></code>.
+<li><p><strong>env_mask</strong> – Boolean mask of dirtied environments. Shape <code class="docutils literal notranslate"><span class="pre">(num_envs,)</span></code>.
 Used by <code class="docutils literal notranslate"><span class="pre">_mask</span></code> write methods.</p></li>
-<li><p><span class="target" id="isaaclab_newton.physics.NewtonMJWarpManager.invalidate_fk.params.env_ids"></span><strong>env_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab_newton.physics.NewtonMJWarpManager.invalidate_fk.params.env_ids">¶</a> – Integer indices of dirtied environments.
+<li><p><strong>env_ids</strong> – Integer indices of dirtied environments.
 Used by <code class="docutils literal notranslate"><span class="pre">_index</span></code> write methods.</p></li>
-<li><p><span class="target" id="isaaclab_newton.physics.NewtonMJWarpManager.invalidate_fk.params.articulation_ids"></span><strong>articulation_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab_newton.physics.NewtonMJWarpManager.invalidate_fk.params.articulation_ids">¶</a> – Mapping from <code class="docutils literal notranslate"><span class="pre">(world,</span> <span class="pre">arti)</span></code> to model articulation
+<li><p><strong>articulation_ids</strong> – Mapping from <code class="docutils literal notranslate"><span class="pre">(world,</span> <span class="pre">arti)</span></code> to model articulation
 index. Shape <code class="docutils literal notranslate"><span class="pre">(world_count,</span> <span class="pre">count_per_world)</span></code>. Obtained from
 <code class="docutils literal notranslate"><span class="pre">ArticulationView.articulation_ids</span></code>.</p></li>
 </ul>
@@ -4341,10 +4343,10 @@ cue in the observation (e.g. frame stacking).</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_newton.physics.NewtonMJWarpManager.register_particle_visual_prim.params.prim_path"></span><strong>prim_path</strong><a class="paramlink headerlink reference internal" href="#isaaclab_newton.physics.NewtonMJWarpManager.register_particle_visual_prim.params.prim_path">¶</a> – Stage path of an existing <code class="docutils literal notranslate"><span class="pre">UsdGeom.Points</span></code> prim.</p></li>
-<li><p><span class="target" id="isaaclab_newton.physics.NewtonMJWarpManager.register_particle_visual_prim.params.particle_offset"></span><strong>particle_offset</strong><a class="paramlink headerlink reference internal" href="#isaaclab_newton.physics.NewtonMJWarpManager.register_particle_visual_prim.params.particle_offset">¶</a> – First index of the prim’s slice in <code class="docutils literal notranslate"><span class="pre">state.particle_q</span></code>.</p></li>
-<li><p><span class="target" id="isaaclab_newton.physics.NewtonMJWarpManager.register_particle_visual_prim.params.particle_count"></span><strong>particle_count</strong><a class="paramlink headerlink reference internal" href="#isaaclab_newton.physics.NewtonMJWarpManager.register_particle_visual_prim.params.particle_count">¶</a> – Number of particles in the slice.</p></li>
-<li><p><span class="target" id="isaaclab_newton.physics.NewtonMJWarpManager.register_particle_visual_prim.params.sync_frequency"></span><strong>sync_frequency</strong><a class="paramlink headerlink reference internal" href="#isaaclab_newton.physics.NewtonMJWarpManager.register_particle_visual_prim.params.sync_frequency">¶</a> – Sync the prim every N dirty render frames.</p></li>
+<li><p><strong>prim_path</strong> – Stage path of an existing <code class="docutils literal notranslate"><span class="pre">UsdGeom.Points</span></code> prim.</p></li>
+<li><p><strong>particle_offset</strong> – First index of the prim’s slice in <code class="docutils literal notranslate"><span class="pre">state.particle_q</span></code>.</p></li>
+<li><p><strong>particle_count</strong> – Number of particles in the slice.</p></li>
+<li><p><strong>sync_frequency</strong> – Sync the prim every N dirty render frames.</p></li>
 </ul>
 </dd>
 </dl>
@@ -4372,7 +4374,7 @@ Attributes are forwarded to the model in <a class="reference internal" href="#is
 so that subsequent <code class="docutils literal notranslate"><span class="pre">Contacts</span></code> creation includes them.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab_newton.physics.NewtonMJWarpManager.request_extended_contact_attribute.params.attr"></span><strong>attr</strong><a class="paramlink headerlink reference internal" href="#isaaclab_newton.physics.NewtonMJWarpManager.request_extended_contact_attribute.params.attr">¶</a> – Contact attribute name.</p>
+<dd class="field-odd"><p><strong>attr</strong> – Contact attribute name.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -4386,7 +4388,7 @@ Attributes are forwarded to the builder in <a class="reference internal" href="#
 so that subsequent <code class="docutils literal notranslate"><span class="pre">model.state()</span></code> calls allocate them.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab_newton.physics.NewtonMJWarpManager.request_extended_state_attribute.params.attr"></span><strong>attr</strong><a class="paramlink headerlink reference internal" href="#isaaclab_newton.physics.NewtonMJWarpManager.request_extended_state_attribute.params.attr">¶</a> – State attribute name (must be in <code class="docutils literal notranslate"><span class="pre">State.EXTENDED_ATTRIBUTES</span></code>).</p>
+<dd class="field-odd"><p><strong>attr</strong> – State attribute name (must be in <code class="docutils literal notranslate"><span class="pre">State.EXTENDED_ATTRIBUTES</span></code>).</p>
 </dd>
 </dl>
 </dd></dl>
@@ -4397,7 +4399,7 @@ so that subsequent <code class="docutils literal notranslate"><span class="pre">
 <dd><p>Reset physics simulation.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab_newton.physics.NewtonMJWarpManager.reset.params.soft"></span><strong>soft</strong><a class="paramlink headerlink reference internal" href="#isaaclab_newton.physics.NewtonMJWarpManager.reset.params.soft">¶</a> – If True, skip full reinitialization.</p>
+<dd class="field-odd"><p><strong>soft</strong> – If True, skip full reinitialization.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -4744,11 +4746,11 @@ fnmatch globs and delegates to <code class="xref py py-class docutils literal no
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_newton.physics.NewtonXPBDManager.add_contact_sensor.params.body_names_expr"></span><strong>body_names_expr</strong><a class="paramlink headerlink reference internal" href="#isaaclab_newton.physics.NewtonXPBDManager.add_contact_sensor.params.body_names_expr">¶</a> – Expression for body names to sense.</p></li>
-<li><p><span class="target" id="isaaclab_newton.physics.NewtonXPBDManager.add_contact_sensor.params.shape_names_expr"></span><strong>shape_names_expr</strong><a class="paramlink headerlink reference internal" href="#isaaclab_newton.physics.NewtonXPBDManager.add_contact_sensor.params.shape_names_expr">¶</a> – Expression for shape names to sense.</p></li>
-<li><p><span class="target" id="isaaclab_newton.physics.NewtonXPBDManager.add_contact_sensor.params.contact_partners_body_expr"></span><strong>contact_partners_body_expr</strong><a class="paramlink headerlink reference internal" href="#isaaclab_newton.physics.NewtonXPBDManager.add_contact_sensor.params.contact_partners_body_expr">¶</a> – Expression for contact partner body names.</p></li>
-<li><p><span class="target" id="isaaclab_newton.physics.NewtonXPBDManager.add_contact_sensor.params.contact_partners_shape_expr"></span><strong>contact_partners_shape_expr</strong><a class="paramlink headerlink reference internal" href="#isaaclab_newton.physics.NewtonXPBDManager.add_contact_sensor.params.contact_partners_shape_expr">¶</a> – Expression for contact partner shape names.</p></li>
-<li><p><span class="target" id="isaaclab_newton.physics.NewtonXPBDManager.add_contact_sensor.params.verbose"></span><strong>verbose</strong><a class="paramlink headerlink reference internal" href="#isaaclab_newton.physics.NewtonXPBDManager.add_contact_sensor.params.verbose">¶</a> – Print verbose information.</p></li>
+<li><p><strong>body_names_expr</strong> – Expression for body names to sense.</p></li>
+<li><p><strong>shape_names_expr</strong> – Expression for shape names to sense.</p></li>
+<li><p><strong>contact_partners_body_expr</strong> – Expression for contact partner body names.</p></li>
+<li><p><strong>contact_partners_shape_expr</strong> – Expression for contact partner shape names.</p></li>
+<li><p><strong>verbose</strong> – Print verbose information.</p></li>
 </ul>
 </dd>
 </dl>
@@ -4763,8 +4765,8 @@ site indices, appends it to the internal list, and returns its index.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_newton.physics.NewtonXPBDManager.add_frame_transform_sensor.params.shapes"></span><strong>shapes</strong><a class="paramlink headerlink reference internal" href="#isaaclab_newton.physics.NewtonXPBDManager.add_frame_transform_sensor.params.shapes">¶</a> – Ordered list of shape indices to measure.</p></li>
-<li><p><span class="target" id="isaaclab_newton.physics.NewtonXPBDManager.add_frame_transform_sensor.params.reference_sites"></span><strong>reference_sites</strong><a class="paramlink headerlink reference internal" href="#isaaclab_newton.physics.NewtonXPBDManager.add_frame_transform_sensor.params.reference_sites">¶</a> – 1:1 list of reference site indices (same length as shapes).</p></li>
+<li><p><strong>shapes</strong> – Ordered list of shape indices to measure.</p></li>
+<li><p><strong>reference_sites</strong> – 1:1 list of reference site indices (same length as shapes).</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -4781,7 +4783,7 @@ site indices, appends it to the internal list, and returns its index.</p>
 appends it to the internal list, and returns its index.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab_newton.physics.NewtonXPBDManager.add_imu_sensor.params.sites"></span><strong>sites</strong><a class="paramlink headerlink reference internal" href="#isaaclab_newton.physics.NewtonXPBDManager.add_imu_sensor.params.sites">¶</a> – Ordered list of site indices (one per environment).</p>
+<dd class="field-odd"><p><strong>sites</strong> – Ordered list of site indices (one per environment).</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>Index of the newly created sensor in the internal IMU sensor list.</p>
@@ -4819,12 +4821,12 @@ that match multiple bodies create one site per matched body.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_newton.physics.NewtonXPBDManager.cl_register_site.params.body_pattern"></span><strong>body_pattern</strong><a class="paramlink headerlink reference internal" href="#isaaclab_newton.physics.NewtonXPBDManager.cl_register_site.params.body_pattern">¶</a> – Regex pattern matched against body labels in the
+<li><p><strong>body_pattern</strong> – Regex pattern matched against body labels in the
 prototype builder (e.g. <code class="docutils literal notranslate"><span class="pre">&quot;Robot/link0&quot;</span></code> or <code class="docutils literal notranslate"><span class="pre">&quot;Robot/finger.*&quot;</span></code>
 for multi-body wildcards), or <code class="docutils literal notranslate"><span class="pre">None</span></code> for global sites
 (world-origin reference, etc.).</p></li>
-<li><p><span class="target" id="isaaclab_newton.physics.NewtonXPBDManager.cl_register_site.params.xform"></span><strong>xform</strong><a class="paramlink headerlink reference internal" href="#isaaclab_newton.physics.NewtonXPBDManager.cl_register_site.params.xform">¶</a> – Site transform relative to body.</p></li>
-<li><p><span class="target" id="isaaclab_newton.physics.NewtonXPBDManager.cl_register_site.params.per_world"></span><strong>per_world</strong><a class="paramlink headerlink reference internal" href="#isaaclab_newton.physics.NewtonXPBDManager.cl_register_site.params.per_world">¶</a> – When <code class="docutils literal notranslate"><span class="pre">True</span></code>, <code class="docutils literal notranslate"><span class="pre">body_pattern</span></code> must be <code class="docutils literal notranslate"><span class="pre">None</span></code> and one
+<li><p><strong>xform</strong> – Site transform relative to body.</p></li>
+<li><p><strong>per_world</strong> – When <code class="docutils literal notranslate"><span class="pre">True</span></code>, <code class="docutils literal notranslate"><span class="pre">body_pattern</span></code> must be <code class="docutils literal notranslate"><span class="pre">None</span></code> and one
 bodyless site is created in each cloned world’s frame.</p></li>
 </ul>
 </dd>
@@ -4874,9 +4876,9 @@ rough-terrain margin/gap still apply during early construction.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_newton.physics.NewtonXPBDManager.create_builder.params.up_axis"></span><strong>up_axis</strong><a class="paramlink headerlink reference internal" href="#isaaclab_newton.physics.NewtonXPBDManager.create_builder.params.up_axis">¶</a> – Override for the up-axis. Defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code>, which uses
+<li><p><strong>up_axis</strong> – Override for the up-axis. Defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code>, which uses
 the manager’s <code class="docutils literal notranslate"><span class="pre">_up_axis</span></code>.</p></li>
-<li><p><span class="target" id="isaaclab_newton.physics.NewtonXPBDManager.create_builder.params.**kwargs"></span><strong>**kwargs</strong><a class="paramlink headerlink reference internal" href="#isaaclab_newton.physics.NewtonXPBDManager.create_builder.params.**kwargs">¶</a> – Forwarded to <code class="xref py py-class docutils literal notranslate"><span class="pre">ModelBuilder</span></code>.</p></li>
+<li><p><strong>**kwargs</strong> – Forwarded to <code class="xref py py-class docutils literal notranslate"><span class="pre">ModelBuilder</span></code>.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -4891,7 +4893,7 @@ the manager’s <code class="docutils literal notranslate"><span class="pre">_up
 <dd><p>Remove a registered callback.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab_newton.physics.NewtonXPBDManager.deregister_callback.params.callback_id"></span><strong>callback_id</strong><a class="paramlink headerlink reference internal" href="#isaaclab_newton.physics.NewtonXPBDManager.deregister_callback.params.callback_id">¶</a> – The ID or CallbackHandle returned by register_callback().</p>
+<dd class="field-odd"><p><strong>callback_id</strong> – The ID or CallbackHandle returned by register_callback().</p>
 </dd>
 </dl>
 </dd></dl>
@@ -4905,8 +4907,8 @@ Subclasses may override or extend with platform-specific dispatch.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_newton.physics.NewtonXPBDManager.dispatch_event.params.event"></span><strong>event</strong><a class="paramlink headerlink reference internal" href="#isaaclab_newton.physics.NewtonXPBDManager.dispatch_event.params.event">¶</a> – The event to dispatch.</p></li>
-<li><p><span class="target" id="isaaclab_newton.physics.NewtonXPBDManager.dispatch_event.params.payload"></span><strong>payload</strong><a class="paramlink headerlink reference internal" href="#isaaclab_newton.physics.NewtonXPBDManager.dispatch_event.params.payload">¶</a> – Optional data to pass to callbacks.</p></li>
+<li><p><strong>event</strong> – The event to dispatch.</p></li>
+<li><p><strong>payload</strong> – Optional data to pass to callbacks.</p></li>
 </ul>
 </dd>
 </dl>
@@ -4921,8 +4923,8 @@ root topology may relocate it and return the resulting root prim.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_newton.physics.NewtonXPBDManager.fix_articulation_root.params.articulation_prim"></span><strong>articulation_prim</strong><a class="paramlink headerlink reference internal" href="#isaaclab_newton.physics.NewtonXPBDManager.fix_articulation_root.params.articulation_prim">¶</a> – The articulation-root prim to fix.</p></li>
-<li><p><span class="target" id="isaaclab_newton.physics.NewtonXPBDManager.fix_articulation_root.params.stage"></span><strong>stage</strong><a class="paramlink headerlink reference internal" href="#isaaclab_newton.physics.NewtonXPBDManager.fix_articulation_root.params.stage">¶</a> – The stage containing the prim. Defaults to the current stage.</p></li>
+<li><p><strong>articulation_prim</strong> – The articulation-root prim to fix.</p></li>
+<li><p><strong>stage</strong> – The stage containing the prim. Defaults to the current stage.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -5072,7 +5074,7 @@ is folded into a single <a class="reference internal" href="#isaaclab_newton.phy
 <dd><p>Initialize the manager with simulation context.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab_newton.physics.NewtonXPBDManager.initialize.params.sim_context"></span><strong>sim_context</strong><a class="paramlink headerlink reference internal" href="#isaaclab_newton.physics.NewtonXPBDManager.initialize.params.sim_context">¶</a> – Parent simulation context.</p>
+<dd class="field-odd"><p><strong>sim_context</strong> – Parent simulation context.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -5115,11 +5117,11 @@ rendering, or physics-step boundary.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_newton.physics.NewtonXPBDManager.invalidate_fk.params.env_mask"></span><strong>env_mask</strong><a class="paramlink headerlink reference internal" href="#isaaclab_newton.physics.NewtonXPBDManager.invalidate_fk.params.env_mask">¶</a> – Boolean mask of dirtied environments. Shape <code class="docutils literal notranslate"><span class="pre">(num_envs,)</span></code>.
+<li><p><strong>env_mask</strong> – Boolean mask of dirtied environments. Shape <code class="docutils literal notranslate"><span class="pre">(num_envs,)</span></code>.
 Used by <code class="docutils literal notranslate"><span class="pre">_mask</span></code> write methods.</p></li>
-<li><p><span class="target" id="isaaclab_newton.physics.NewtonXPBDManager.invalidate_fk.params.env_ids"></span><strong>env_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab_newton.physics.NewtonXPBDManager.invalidate_fk.params.env_ids">¶</a> – Integer indices of dirtied environments.
+<li><p><strong>env_ids</strong> – Integer indices of dirtied environments.
 Used by <code class="docutils literal notranslate"><span class="pre">_index</span></code> write methods.</p></li>
-<li><p><span class="target" id="isaaclab_newton.physics.NewtonXPBDManager.invalidate_fk.params.articulation_ids"></span><strong>articulation_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab_newton.physics.NewtonXPBDManager.invalidate_fk.params.articulation_ids">¶</a> – Mapping from <code class="docutils literal notranslate"><span class="pre">(world,</span> <span class="pre">arti)</span></code> to model articulation
+<li><p><strong>articulation_ids</strong> – Mapping from <code class="docutils literal notranslate"><span class="pre">(world,</span> <span class="pre">arti)</span></code> to model articulation
 index. Shape <code class="docutils literal notranslate"><span class="pre">(world_count,</span> <span class="pre">count_per_world)</span></code>. Obtained from
 <code class="docutils literal notranslate"><span class="pre">ArticulationView.articulation_ids</span></code>.</p></li>
 </ul>
@@ -5179,10 +5181,10 @@ cue in the observation (e.g. frame stacking).</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_newton.physics.NewtonXPBDManager.register_particle_visual_prim.params.prim_path"></span><strong>prim_path</strong><a class="paramlink headerlink reference internal" href="#isaaclab_newton.physics.NewtonXPBDManager.register_particle_visual_prim.params.prim_path">¶</a> – Stage path of an existing <code class="docutils literal notranslate"><span class="pre">UsdGeom.Points</span></code> prim.</p></li>
-<li><p><span class="target" id="isaaclab_newton.physics.NewtonXPBDManager.register_particle_visual_prim.params.particle_offset"></span><strong>particle_offset</strong><a class="paramlink headerlink reference internal" href="#isaaclab_newton.physics.NewtonXPBDManager.register_particle_visual_prim.params.particle_offset">¶</a> – First index of the prim’s slice in <code class="docutils literal notranslate"><span class="pre">state.particle_q</span></code>.</p></li>
-<li><p><span class="target" id="isaaclab_newton.physics.NewtonXPBDManager.register_particle_visual_prim.params.particle_count"></span><strong>particle_count</strong><a class="paramlink headerlink reference internal" href="#isaaclab_newton.physics.NewtonXPBDManager.register_particle_visual_prim.params.particle_count">¶</a> – Number of particles in the slice.</p></li>
-<li><p><span class="target" id="isaaclab_newton.physics.NewtonXPBDManager.register_particle_visual_prim.params.sync_frequency"></span><strong>sync_frequency</strong><a class="paramlink headerlink reference internal" href="#isaaclab_newton.physics.NewtonXPBDManager.register_particle_visual_prim.params.sync_frequency">¶</a> – Sync the prim every N dirty render frames.</p></li>
+<li><p><strong>prim_path</strong> – Stage path of an existing <code class="docutils literal notranslate"><span class="pre">UsdGeom.Points</span></code> prim.</p></li>
+<li><p><strong>particle_offset</strong> – First index of the prim’s slice in <code class="docutils literal notranslate"><span class="pre">state.particle_q</span></code>.</p></li>
+<li><p><strong>particle_count</strong> – Number of particles in the slice.</p></li>
+<li><p><strong>sync_frequency</strong> – Sync the prim every N dirty render frames.</p></li>
 </ul>
 </dd>
 </dl>
@@ -5210,7 +5212,7 @@ Attributes are forwarded to the model in <a class="reference internal" href="#is
 so that subsequent <code class="docutils literal notranslate"><span class="pre">Contacts</span></code> creation includes them.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab_newton.physics.NewtonXPBDManager.request_extended_contact_attribute.params.attr"></span><strong>attr</strong><a class="paramlink headerlink reference internal" href="#isaaclab_newton.physics.NewtonXPBDManager.request_extended_contact_attribute.params.attr">¶</a> – Contact attribute name.</p>
+<dd class="field-odd"><p><strong>attr</strong> – Contact attribute name.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -5224,7 +5226,7 @@ Attributes are forwarded to the builder in <a class="reference internal" href="#
 so that subsequent <code class="docutils literal notranslate"><span class="pre">model.state()</span></code> calls allocate them.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab_newton.physics.NewtonXPBDManager.request_extended_state_attribute.params.attr"></span><strong>attr</strong><a class="paramlink headerlink reference internal" href="#isaaclab_newton.physics.NewtonXPBDManager.request_extended_state_attribute.params.attr">¶</a> – State attribute name (must be in <code class="docutils literal notranslate"><span class="pre">State.EXTENDED_ATTRIBUTES</span></code>).</p>
+<dd class="field-odd"><p><strong>attr</strong> – State attribute name (must be in <code class="docutils literal notranslate"><span class="pre">State.EXTENDED_ATTRIBUTES</span></code>).</p>
 </dd>
 </dl>
 </dd></dl>
@@ -5235,7 +5237,7 @@ so that subsequent <code class="docutils literal notranslate"><span class="pre">
 <dd><p>Reset physics simulation.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab_newton.physics.NewtonXPBDManager.reset.params.soft"></span><strong>soft</strong><a class="paramlink headerlink reference internal" href="#isaaclab_newton.physics.NewtonXPBDManager.reset.params.soft">¶</a> – If True, skip full reinitialization.</p>
+<dd class="field-odd"><p><strong>soft</strong> – If True, skip full reinitialization.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -5582,11 +5584,11 @@ fnmatch globs and delegates to <code class="xref py py-class docutils literal no
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_newton.physics.NewtonFeatherstoneManager.add_contact_sensor.params.body_names_expr"></span><strong>body_names_expr</strong><a class="paramlink headerlink reference internal" href="#isaaclab_newton.physics.NewtonFeatherstoneManager.add_contact_sensor.params.body_names_expr">¶</a> – Expression for body names to sense.</p></li>
-<li><p><span class="target" id="isaaclab_newton.physics.NewtonFeatherstoneManager.add_contact_sensor.params.shape_names_expr"></span><strong>shape_names_expr</strong><a class="paramlink headerlink reference internal" href="#isaaclab_newton.physics.NewtonFeatherstoneManager.add_contact_sensor.params.shape_names_expr">¶</a> – Expression for shape names to sense.</p></li>
-<li><p><span class="target" id="isaaclab_newton.physics.NewtonFeatherstoneManager.add_contact_sensor.params.contact_partners_body_expr"></span><strong>contact_partners_body_expr</strong><a class="paramlink headerlink reference internal" href="#isaaclab_newton.physics.NewtonFeatherstoneManager.add_contact_sensor.params.contact_partners_body_expr">¶</a> – Expression for contact partner body names.</p></li>
-<li><p><span class="target" id="isaaclab_newton.physics.NewtonFeatherstoneManager.add_contact_sensor.params.contact_partners_shape_expr"></span><strong>contact_partners_shape_expr</strong><a class="paramlink headerlink reference internal" href="#isaaclab_newton.physics.NewtonFeatherstoneManager.add_contact_sensor.params.contact_partners_shape_expr">¶</a> – Expression for contact partner shape names.</p></li>
-<li><p><span class="target" id="isaaclab_newton.physics.NewtonFeatherstoneManager.add_contact_sensor.params.verbose"></span><strong>verbose</strong><a class="paramlink headerlink reference internal" href="#isaaclab_newton.physics.NewtonFeatherstoneManager.add_contact_sensor.params.verbose">¶</a> – Print verbose information.</p></li>
+<li><p><strong>body_names_expr</strong> – Expression for body names to sense.</p></li>
+<li><p><strong>shape_names_expr</strong> – Expression for shape names to sense.</p></li>
+<li><p><strong>contact_partners_body_expr</strong> – Expression for contact partner body names.</p></li>
+<li><p><strong>contact_partners_shape_expr</strong> – Expression for contact partner shape names.</p></li>
+<li><p><strong>verbose</strong> – Print verbose information.</p></li>
 </ul>
 </dd>
 </dl>
@@ -5601,8 +5603,8 @@ site indices, appends it to the internal list, and returns its index.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_newton.physics.NewtonFeatherstoneManager.add_frame_transform_sensor.params.shapes"></span><strong>shapes</strong><a class="paramlink headerlink reference internal" href="#isaaclab_newton.physics.NewtonFeatherstoneManager.add_frame_transform_sensor.params.shapes">¶</a> – Ordered list of shape indices to measure.</p></li>
-<li><p><span class="target" id="isaaclab_newton.physics.NewtonFeatherstoneManager.add_frame_transform_sensor.params.reference_sites"></span><strong>reference_sites</strong><a class="paramlink headerlink reference internal" href="#isaaclab_newton.physics.NewtonFeatherstoneManager.add_frame_transform_sensor.params.reference_sites">¶</a> – 1:1 list of reference site indices (same length as shapes).</p></li>
+<li><p><strong>shapes</strong> – Ordered list of shape indices to measure.</p></li>
+<li><p><strong>reference_sites</strong> – 1:1 list of reference site indices (same length as shapes).</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -5619,7 +5621,7 @@ site indices, appends it to the internal list, and returns its index.</p>
 appends it to the internal list, and returns its index.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab_newton.physics.NewtonFeatherstoneManager.add_imu_sensor.params.sites"></span><strong>sites</strong><a class="paramlink headerlink reference internal" href="#isaaclab_newton.physics.NewtonFeatherstoneManager.add_imu_sensor.params.sites">¶</a> – Ordered list of site indices (one per environment).</p>
+<dd class="field-odd"><p><strong>sites</strong> – Ordered list of site indices (one per environment).</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>Index of the newly created sensor in the internal IMU sensor list.</p>
@@ -5657,12 +5659,12 @@ that match multiple bodies create one site per matched body.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_newton.physics.NewtonFeatherstoneManager.cl_register_site.params.body_pattern"></span><strong>body_pattern</strong><a class="paramlink headerlink reference internal" href="#isaaclab_newton.physics.NewtonFeatherstoneManager.cl_register_site.params.body_pattern">¶</a> – Regex pattern matched against body labels in the
+<li><p><strong>body_pattern</strong> – Regex pattern matched against body labels in the
 prototype builder (e.g. <code class="docutils literal notranslate"><span class="pre">&quot;Robot/link0&quot;</span></code> or <code class="docutils literal notranslate"><span class="pre">&quot;Robot/finger.*&quot;</span></code>
 for multi-body wildcards), or <code class="docutils literal notranslate"><span class="pre">None</span></code> for global sites
 (world-origin reference, etc.).</p></li>
-<li><p><span class="target" id="isaaclab_newton.physics.NewtonFeatherstoneManager.cl_register_site.params.xform"></span><strong>xform</strong><a class="paramlink headerlink reference internal" href="#isaaclab_newton.physics.NewtonFeatherstoneManager.cl_register_site.params.xform">¶</a> – Site transform relative to body.</p></li>
-<li><p><span class="target" id="isaaclab_newton.physics.NewtonFeatherstoneManager.cl_register_site.params.per_world"></span><strong>per_world</strong><a class="paramlink headerlink reference internal" href="#isaaclab_newton.physics.NewtonFeatherstoneManager.cl_register_site.params.per_world">¶</a> – When <code class="docutils literal notranslate"><span class="pre">True</span></code>, <code class="docutils literal notranslate"><span class="pre">body_pattern</span></code> must be <code class="docutils literal notranslate"><span class="pre">None</span></code> and one
+<li><p><strong>xform</strong> – Site transform relative to body.</p></li>
+<li><p><strong>per_world</strong> – When <code class="docutils literal notranslate"><span class="pre">True</span></code>, <code class="docutils literal notranslate"><span class="pre">body_pattern</span></code> must be <code class="docutils literal notranslate"><span class="pre">None</span></code> and one
 bodyless site is created in each cloned world’s frame.</p></li>
 </ul>
 </dd>
@@ -5712,9 +5714,9 @@ rough-terrain margin/gap still apply during early construction.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_newton.physics.NewtonFeatherstoneManager.create_builder.params.up_axis"></span><strong>up_axis</strong><a class="paramlink headerlink reference internal" href="#isaaclab_newton.physics.NewtonFeatherstoneManager.create_builder.params.up_axis">¶</a> – Override for the up-axis. Defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code>, which uses
+<li><p><strong>up_axis</strong> – Override for the up-axis. Defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code>, which uses
 the manager’s <code class="docutils literal notranslate"><span class="pre">_up_axis</span></code>.</p></li>
-<li><p><span class="target" id="isaaclab_newton.physics.NewtonFeatherstoneManager.create_builder.params.**kwargs"></span><strong>**kwargs</strong><a class="paramlink headerlink reference internal" href="#isaaclab_newton.physics.NewtonFeatherstoneManager.create_builder.params.**kwargs">¶</a> – Forwarded to <code class="xref py py-class docutils literal notranslate"><span class="pre">ModelBuilder</span></code>.</p></li>
+<li><p><strong>**kwargs</strong> – Forwarded to <code class="xref py py-class docutils literal notranslate"><span class="pre">ModelBuilder</span></code>.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -5729,7 +5731,7 @@ the manager’s <code class="docutils literal notranslate"><span class="pre">_up
 <dd><p>Remove a registered callback.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab_newton.physics.NewtonFeatherstoneManager.deregister_callback.params.callback_id"></span><strong>callback_id</strong><a class="paramlink headerlink reference internal" href="#isaaclab_newton.physics.NewtonFeatherstoneManager.deregister_callback.params.callback_id">¶</a> – The ID or CallbackHandle returned by register_callback().</p>
+<dd class="field-odd"><p><strong>callback_id</strong> – The ID or CallbackHandle returned by register_callback().</p>
 </dd>
 </dl>
 </dd></dl>
@@ -5743,8 +5745,8 @@ Subclasses may override or extend with platform-specific dispatch.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_newton.physics.NewtonFeatherstoneManager.dispatch_event.params.event"></span><strong>event</strong><a class="paramlink headerlink reference internal" href="#isaaclab_newton.physics.NewtonFeatherstoneManager.dispatch_event.params.event">¶</a> – The event to dispatch.</p></li>
-<li><p><span class="target" id="isaaclab_newton.physics.NewtonFeatherstoneManager.dispatch_event.params.payload"></span><strong>payload</strong><a class="paramlink headerlink reference internal" href="#isaaclab_newton.physics.NewtonFeatherstoneManager.dispatch_event.params.payload">¶</a> – Optional data to pass to callbacks.</p></li>
+<li><p><strong>event</strong> – The event to dispatch.</p></li>
+<li><p><strong>payload</strong> – Optional data to pass to callbacks.</p></li>
 </ul>
 </dd>
 </dl>
@@ -5759,8 +5761,8 @@ root topology may relocate it and return the resulting root prim.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_newton.physics.NewtonFeatherstoneManager.fix_articulation_root.params.articulation_prim"></span><strong>articulation_prim</strong><a class="paramlink headerlink reference internal" href="#isaaclab_newton.physics.NewtonFeatherstoneManager.fix_articulation_root.params.articulation_prim">¶</a> – The articulation-root prim to fix.</p></li>
-<li><p><span class="target" id="isaaclab_newton.physics.NewtonFeatherstoneManager.fix_articulation_root.params.stage"></span><strong>stage</strong><a class="paramlink headerlink reference internal" href="#isaaclab_newton.physics.NewtonFeatherstoneManager.fix_articulation_root.params.stage">¶</a> – The stage containing the prim. Defaults to the current stage.</p></li>
+<li><p><strong>articulation_prim</strong> – The articulation-root prim to fix.</p></li>
+<li><p><strong>stage</strong> – The stage containing the prim. Defaults to the current stage.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -5910,7 +5912,7 @@ is folded into a single <a class="reference internal" href="#isaaclab_newton.phy
 <dd><p>Initialize the manager with simulation context.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab_newton.physics.NewtonFeatherstoneManager.initialize.params.sim_context"></span><strong>sim_context</strong><a class="paramlink headerlink reference internal" href="#isaaclab_newton.physics.NewtonFeatherstoneManager.initialize.params.sim_context">¶</a> – Parent simulation context.</p>
+<dd class="field-odd"><p><strong>sim_context</strong> – Parent simulation context.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -5953,11 +5955,11 @@ rendering, or physics-step boundary.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_newton.physics.NewtonFeatherstoneManager.invalidate_fk.params.env_mask"></span><strong>env_mask</strong><a class="paramlink headerlink reference internal" href="#isaaclab_newton.physics.NewtonFeatherstoneManager.invalidate_fk.params.env_mask">¶</a> – Boolean mask of dirtied environments. Shape <code class="docutils literal notranslate"><span class="pre">(num_envs,)</span></code>.
+<li><p><strong>env_mask</strong> – Boolean mask of dirtied environments. Shape <code class="docutils literal notranslate"><span class="pre">(num_envs,)</span></code>.
 Used by <code class="docutils literal notranslate"><span class="pre">_mask</span></code> write methods.</p></li>
-<li><p><span class="target" id="isaaclab_newton.physics.NewtonFeatherstoneManager.invalidate_fk.params.env_ids"></span><strong>env_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab_newton.physics.NewtonFeatherstoneManager.invalidate_fk.params.env_ids">¶</a> – Integer indices of dirtied environments.
+<li><p><strong>env_ids</strong> – Integer indices of dirtied environments.
 Used by <code class="docutils literal notranslate"><span class="pre">_index</span></code> write methods.</p></li>
-<li><p><span class="target" id="isaaclab_newton.physics.NewtonFeatherstoneManager.invalidate_fk.params.articulation_ids"></span><strong>articulation_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab_newton.physics.NewtonFeatherstoneManager.invalidate_fk.params.articulation_ids">¶</a> – Mapping from <code class="docutils literal notranslate"><span class="pre">(world,</span> <span class="pre">arti)</span></code> to model articulation
+<li><p><strong>articulation_ids</strong> – Mapping from <code class="docutils literal notranslate"><span class="pre">(world,</span> <span class="pre">arti)</span></code> to model articulation
 index. Shape <code class="docutils literal notranslate"><span class="pre">(world_count,</span> <span class="pre">count_per_world)</span></code>. Obtained from
 <code class="docutils literal notranslate"><span class="pre">ArticulationView.articulation_ids</span></code>.</p></li>
 </ul>
@@ -6017,10 +6019,10 @@ cue in the observation (e.g. frame stacking).</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_newton.physics.NewtonFeatherstoneManager.register_particle_visual_prim.params.prim_path"></span><strong>prim_path</strong><a class="paramlink headerlink reference internal" href="#isaaclab_newton.physics.NewtonFeatherstoneManager.register_particle_visual_prim.params.prim_path">¶</a> – Stage path of an existing <code class="docutils literal notranslate"><span class="pre">UsdGeom.Points</span></code> prim.</p></li>
-<li><p><span class="target" id="isaaclab_newton.physics.NewtonFeatherstoneManager.register_particle_visual_prim.params.particle_offset"></span><strong>particle_offset</strong><a class="paramlink headerlink reference internal" href="#isaaclab_newton.physics.NewtonFeatherstoneManager.register_particle_visual_prim.params.particle_offset">¶</a> – First index of the prim’s slice in <code class="docutils literal notranslate"><span class="pre">state.particle_q</span></code>.</p></li>
-<li><p><span class="target" id="isaaclab_newton.physics.NewtonFeatherstoneManager.register_particle_visual_prim.params.particle_count"></span><strong>particle_count</strong><a class="paramlink headerlink reference internal" href="#isaaclab_newton.physics.NewtonFeatherstoneManager.register_particle_visual_prim.params.particle_count">¶</a> – Number of particles in the slice.</p></li>
-<li><p><span class="target" id="isaaclab_newton.physics.NewtonFeatherstoneManager.register_particle_visual_prim.params.sync_frequency"></span><strong>sync_frequency</strong><a class="paramlink headerlink reference internal" href="#isaaclab_newton.physics.NewtonFeatherstoneManager.register_particle_visual_prim.params.sync_frequency">¶</a> – Sync the prim every N dirty render frames.</p></li>
+<li><p><strong>prim_path</strong> – Stage path of an existing <code class="docutils literal notranslate"><span class="pre">UsdGeom.Points</span></code> prim.</p></li>
+<li><p><strong>particle_offset</strong> – First index of the prim’s slice in <code class="docutils literal notranslate"><span class="pre">state.particle_q</span></code>.</p></li>
+<li><p><strong>particle_count</strong> – Number of particles in the slice.</p></li>
+<li><p><strong>sync_frequency</strong> – Sync the prim every N dirty render frames.</p></li>
 </ul>
 </dd>
 </dl>
@@ -6048,7 +6050,7 @@ Attributes are forwarded to the model in <a class="reference internal" href="#is
 so that subsequent <code class="docutils literal notranslate"><span class="pre">Contacts</span></code> creation includes them.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab_newton.physics.NewtonFeatherstoneManager.request_extended_contact_attribute.params.attr"></span><strong>attr</strong><a class="paramlink headerlink reference internal" href="#isaaclab_newton.physics.NewtonFeatherstoneManager.request_extended_contact_attribute.params.attr">¶</a> – Contact attribute name.</p>
+<dd class="field-odd"><p><strong>attr</strong> – Contact attribute name.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -6062,7 +6064,7 @@ Attributes are forwarded to the builder in <a class="reference internal" href="#
 so that subsequent <code class="docutils literal notranslate"><span class="pre">model.state()</span></code> calls allocate them.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab_newton.physics.NewtonFeatherstoneManager.request_extended_state_attribute.params.attr"></span><strong>attr</strong><a class="paramlink headerlink reference internal" href="#isaaclab_newton.physics.NewtonFeatherstoneManager.request_extended_state_attribute.params.attr">¶</a> – State attribute name (must be in <code class="docutils literal notranslate"><span class="pre">State.EXTENDED_ATTRIBUTES</span></code>).</p>
+<dd class="field-odd"><p><strong>attr</strong> – State attribute name (must be in <code class="docutils literal notranslate"><span class="pre">State.EXTENDED_ATTRIBUTES</span></code>).</p>
 </dd>
 </dl>
 </dd></dl>
@@ -6073,7 +6075,7 @@ so that subsequent <code class="docutils literal notranslate"><span class="pre">
 <dd><p>Reset physics simulation.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab_newton.physics.NewtonFeatherstoneManager.reset.params.soft"></span><strong>soft</strong><a class="paramlink headerlink reference internal" href="#isaaclab_newton.physics.NewtonFeatherstoneManager.reset.params.soft">¶</a> – If True, skip full reinitialization.</p>
+<dd class="field-odd"><p><strong>soft</strong> – If True, skip full reinitialization.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -6422,11 +6424,11 @@ fnmatch globs and delegates to <code class="xref py py-class docutils literal no
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_newton.physics.NewtonKaminoManager.add_contact_sensor.params.body_names_expr"></span><strong>body_names_expr</strong><a class="paramlink headerlink reference internal" href="#isaaclab_newton.physics.NewtonKaminoManager.add_contact_sensor.params.body_names_expr">¶</a> – Expression for body names to sense.</p></li>
-<li><p><span class="target" id="isaaclab_newton.physics.NewtonKaminoManager.add_contact_sensor.params.shape_names_expr"></span><strong>shape_names_expr</strong><a class="paramlink headerlink reference internal" href="#isaaclab_newton.physics.NewtonKaminoManager.add_contact_sensor.params.shape_names_expr">¶</a> – Expression for shape names to sense.</p></li>
-<li><p><span class="target" id="isaaclab_newton.physics.NewtonKaminoManager.add_contact_sensor.params.contact_partners_body_expr"></span><strong>contact_partners_body_expr</strong><a class="paramlink headerlink reference internal" href="#isaaclab_newton.physics.NewtonKaminoManager.add_contact_sensor.params.contact_partners_body_expr">¶</a> – Expression for contact partner body names.</p></li>
-<li><p><span class="target" id="isaaclab_newton.physics.NewtonKaminoManager.add_contact_sensor.params.contact_partners_shape_expr"></span><strong>contact_partners_shape_expr</strong><a class="paramlink headerlink reference internal" href="#isaaclab_newton.physics.NewtonKaminoManager.add_contact_sensor.params.contact_partners_shape_expr">¶</a> – Expression for contact partner shape names.</p></li>
-<li><p><span class="target" id="isaaclab_newton.physics.NewtonKaminoManager.add_contact_sensor.params.verbose"></span><strong>verbose</strong><a class="paramlink headerlink reference internal" href="#isaaclab_newton.physics.NewtonKaminoManager.add_contact_sensor.params.verbose">¶</a> – Print verbose information.</p></li>
+<li><p><strong>body_names_expr</strong> – Expression for body names to sense.</p></li>
+<li><p><strong>shape_names_expr</strong> – Expression for shape names to sense.</p></li>
+<li><p><strong>contact_partners_body_expr</strong> – Expression for contact partner body names.</p></li>
+<li><p><strong>contact_partners_shape_expr</strong> – Expression for contact partner shape names.</p></li>
+<li><p><strong>verbose</strong> – Print verbose information.</p></li>
 </ul>
 </dd>
 </dl>
@@ -6441,8 +6443,8 @@ site indices, appends it to the internal list, and returns its index.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_newton.physics.NewtonKaminoManager.add_frame_transform_sensor.params.shapes"></span><strong>shapes</strong><a class="paramlink headerlink reference internal" href="#isaaclab_newton.physics.NewtonKaminoManager.add_frame_transform_sensor.params.shapes">¶</a> – Ordered list of shape indices to measure.</p></li>
-<li><p><span class="target" id="isaaclab_newton.physics.NewtonKaminoManager.add_frame_transform_sensor.params.reference_sites"></span><strong>reference_sites</strong><a class="paramlink headerlink reference internal" href="#isaaclab_newton.physics.NewtonKaminoManager.add_frame_transform_sensor.params.reference_sites">¶</a> – 1:1 list of reference site indices (same length as shapes).</p></li>
+<li><p><strong>shapes</strong> – Ordered list of shape indices to measure.</p></li>
+<li><p><strong>reference_sites</strong> – 1:1 list of reference site indices (same length as shapes).</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -6459,7 +6461,7 @@ site indices, appends it to the internal list, and returns its index.</p>
 appends it to the internal list, and returns its index.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab_newton.physics.NewtonKaminoManager.add_imu_sensor.params.sites"></span><strong>sites</strong><a class="paramlink headerlink reference internal" href="#isaaclab_newton.physics.NewtonKaminoManager.add_imu_sensor.params.sites">¶</a> – Ordered list of site indices (one per environment).</p>
+<dd class="field-odd"><p><strong>sites</strong> – Ordered list of site indices (one per environment).</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>Index of the newly created sensor in the internal IMU sensor list.</p>
@@ -6497,12 +6499,12 @@ that match multiple bodies create one site per matched body.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_newton.physics.NewtonKaminoManager.cl_register_site.params.body_pattern"></span><strong>body_pattern</strong><a class="paramlink headerlink reference internal" href="#isaaclab_newton.physics.NewtonKaminoManager.cl_register_site.params.body_pattern">¶</a> – Regex pattern matched against body labels in the
+<li><p><strong>body_pattern</strong> – Regex pattern matched against body labels in the
 prototype builder (e.g. <code class="docutils literal notranslate"><span class="pre">&quot;Robot/link0&quot;</span></code> or <code class="docutils literal notranslate"><span class="pre">&quot;Robot/finger.*&quot;</span></code>
 for multi-body wildcards), or <code class="docutils literal notranslate"><span class="pre">None</span></code> for global sites
 (world-origin reference, etc.).</p></li>
-<li><p><span class="target" id="isaaclab_newton.physics.NewtonKaminoManager.cl_register_site.params.xform"></span><strong>xform</strong><a class="paramlink headerlink reference internal" href="#isaaclab_newton.physics.NewtonKaminoManager.cl_register_site.params.xform">¶</a> – Site transform relative to body.</p></li>
-<li><p><span class="target" id="isaaclab_newton.physics.NewtonKaminoManager.cl_register_site.params.per_world"></span><strong>per_world</strong><a class="paramlink headerlink reference internal" href="#isaaclab_newton.physics.NewtonKaminoManager.cl_register_site.params.per_world">¶</a> – When <code class="docutils literal notranslate"><span class="pre">True</span></code>, <code class="docutils literal notranslate"><span class="pre">body_pattern</span></code> must be <code class="docutils literal notranslate"><span class="pre">None</span></code> and one
+<li><p><strong>xform</strong> – Site transform relative to body.</p></li>
+<li><p><strong>per_world</strong> – When <code class="docutils literal notranslate"><span class="pre">True</span></code>, <code class="docutils literal notranslate"><span class="pre">body_pattern</span></code> must be <code class="docutils literal notranslate"><span class="pre">None</span></code> and one
 bodyless site is created in each cloned world’s frame.</p></li>
 </ul>
 </dd>
@@ -6552,9 +6554,9 @@ rough-terrain margin/gap still apply during early construction.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_newton.physics.NewtonKaminoManager.create_builder.params.up_axis"></span><strong>up_axis</strong><a class="paramlink headerlink reference internal" href="#isaaclab_newton.physics.NewtonKaminoManager.create_builder.params.up_axis">¶</a> – Override for the up-axis. Defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code>, which uses
+<li><p><strong>up_axis</strong> – Override for the up-axis. Defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code>, which uses
 the manager’s <code class="docutils literal notranslate"><span class="pre">_up_axis</span></code>.</p></li>
-<li><p><span class="target" id="isaaclab_newton.physics.NewtonKaminoManager.create_builder.params.**kwargs"></span><strong>**kwargs</strong><a class="paramlink headerlink reference internal" href="#isaaclab_newton.physics.NewtonKaminoManager.create_builder.params.**kwargs">¶</a> – Forwarded to <code class="xref py py-class docutils literal notranslate"><span class="pre">ModelBuilder</span></code>.</p></li>
+<li><p><strong>**kwargs</strong> – Forwarded to <code class="xref py py-class docutils literal notranslate"><span class="pre">ModelBuilder</span></code>.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -6569,7 +6571,7 @@ the manager’s <code class="docutils literal notranslate"><span class="pre">_up
 <dd><p>Remove a registered callback.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab_newton.physics.NewtonKaminoManager.deregister_callback.params.callback_id"></span><strong>callback_id</strong><a class="paramlink headerlink reference internal" href="#isaaclab_newton.physics.NewtonKaminoManager.deregister_callback.params.callback_id">¶</a> – The ID or CallbackHandle returned by register_callback().</p>
+<dd class="field-odd"><p><strong>callback_id</strong> – The ID or CallbackHandle returned by register_callback().</p>
 </dd>
 </dl>
 </dd></dl>
@@ -6583,8 +6585,8 @@ Subclasses may override or extend with platform-specific dispatch.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_newton.physics.NewtonKaminoManager.dispatch_event.params.event"></span><strong>event</strong><a class="paramlink headerlink reference internal" href="#isaaclab_newton.physics.NewtonKaminoManager.dispatch_event.params.event">¶</a> – The event to dispatch.</p></li>
-<li><p><span class="target" id="isaaclab_newton.physics.NewtonKaminoManager.dispatch_event.params.payload"></span><strong>payload</strong><a class="paramlink headerlink reference internal" href="#isaaclab_newton.physics.NewtonKaminoManager.dispatch_event.params.payload">¶</a> – Optional data to pass to callbacks.</p></li>
+<li><p><strong>event</strong> – The event to dispatch.</p></li>
+<li><p><strong>payload</strong> – Optional data to pass to callbacks.</p></li>
 </ul>
 </dd>
 </dl>
@@ -6599,8 +6601,8 @@ root topology may relocate it and return the resulting root prim.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_newton.physics.NewtonKaminoManager.fix_articulation_root.params.articulation_prim"></span><strong>articulation_prim</strong><a class="paramlink headerlink reference internal" href="#isaaclab_newton.physics.NewtonKaminoManager.fix_articulation_root.params.articulation_prim">¶</a> – The articulation-root prim to fix.</p></li>
-<li><p><span class="target" id="isaaclab_newton.physics.NewtonKaminoManager.fix_articulation_root.params.stage"></span><strong>stage</strong><a class="paramlink headerlink reference internal" href="#isaaclab_newton.physics.NewtonKaminoManager.fix_articulation_root.params.stage">¶</a> – The stage containing the prim. Defaults to the current stage.</p></li>
+<li><p><strong>articulation_prim</strong> – The articulation-root prim to fix.</p></li>
+<li><p><strong>stage</strong> – The stage containing the prim. Defaults to the current stage.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -6750,7 +6752,7 @@ is folded into a single <a class="reference internal" href="#isaaclab_newton.phy
 <dd><p>Initialize the manager with simulation context.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab_newton.physics.NewtonKaminoManager.initialize.params.sim_context"></span><strong>sim_context</strong><a class="paramlink headerlink reference internal" href="#isaaclab_newton.physics.NewtonKaminoManager.initialize.params.sim_context">¶</a> – Parent simulation context.</p>
+<dd class="field-odd"><p><strong>sim_context</strong> – Parent simulation context.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -6793,11 +6795,11 @@ rendering, or physics-step boundary.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_newton.physics.NewtonKaminoManager.invalidate_fk.params.env_mask"></span><strong>env_mask</strong><a class="paramlink headerlink reference internal" href="#isaaclab_newton.physics.NewtonKaminoManager.invalidate_fk.params.env_mask">¶</a> – Boolean mask of dirtied environments. Shape <code class="docutils literal notranslate"><span class="pre">(num_envs,)</span></code>.
+<li><p><strong>env_mask</strong> – Boolean mask of dirtied environments. Shape <code class="docutils literal notranslate"><span class="pre">(num_envs,)</span></code>.
 Used by <code class="docutils literal notranslate"><span class="pre">_mask</span></code> write methods.</p></li>
-<li><p><span class="target" id="isaaclab_newton.physics.NewtonKaminoManager.invalidate_fk.params.env_ids"></span><strong>env_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab_newton.physics.NewtonKaminoManager.invalidate_fk.params.env_ids">¶</a> – Integer indices of dirtied environments.
+<li><p><strong>env_ids</strong> – Integer indices of dirtied environments.
 Used by <code class="docutils literal notranslate"><span class="pre">_index</span></code> write methods.</p></li>
-<li><p><span class="target" id="isaaclab_newton.physics.NewtonKaminoManager.invalidate_fk.params.articulation_ids"></span><strong>articulation_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab_newton.physics.NewtonKaminoManager.invalidate_fk.params.articulation_ids">¶</a> – Mapping from <code class="docutils literal notranslate"><span class="pre">(world,</span> <span class="pre">arti)</span></code> to model articulation
+<li><p><strong>articulation_ids</strong> – Mapping from <code class="docutils literal notranslate"><span class="pre">(world,</span> <span class="pre">arti)</span></code> to model articulation
 index. Shape <code class="docutils literal notranslate"><span class="pre">(world_count,</span> <span class="pre">count_per_world)</span></code>. Obtained from
 <code class="docutils literal notranslate"><span class="pre">ArticulationView.articulation_ids</span></code>.</p></li>
 </ul>
@@ -6857,10 +6859,10 @@ cue in the observation (e.g. frame stacking).</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_newton.physics.NewtonKaminoManager.register_particle_visual_prim.params.prim_path"></span><strong>prim_path</strong><a class="paramlink headerlink reference internal" href="#isaaclab_newton.physics.NewtonKaminoManager.register_particle_visual_prim.params.prim_path">¶</a> – Stage path of an existing <code class="docutils literal notranslate"><span class="pre">UsdGeom.Points</span></code> prim.</p></li>
-<li><p><span class="target" id="isaaclab_newton.physics.NewtonKaminoManager.register_particle_visual_prim.params.particle_offset"></span><strong>particle_offset</strong><a class="paramlink headerlink reference internal" href="#isaaclab_newton.physics.NewtonKaminoManager.register_particle_visual_prim.params.particle_offset">¶</a> – First index of the prim’s slice in <code class="docutils literal notranslate"><span class="pre">state.particle_q</span></code>.</p></li>
-<li><p><span class="target" id="isaaclab_newton.physics.NewtonKaminoManager.register_particle_visual_prim.params.particle_count"></span><strong>particle_count</strong><a class="paramlink headerlink reference internal" href="#isaaclab_newton.physics.NewtonKaminoManager.register_particle_visual_prim.params.particle_count">¶</a> – Number of particles in the slice.</p></li>
-<li><p><span class="target" id="isaaclab_newton.physics.NewtonKaminoManager.register_particle_visual_prim.params.sync_frequency"></span><strong>sync_frequency</strong><a class="paramlink headerlink reference internal" href="#isaaclab_newton.physics.NewtonKaminoManager.register_particle_visual_prim.params.sync_frequency">¶</a> – Sync the prim every N dirty render frames.</p></li>
+<li><p><strong>prim_path</strong> – Stage path of an existing <code class="docutils literal notranslate"><span class="pre">UsdGeom.Points</span></code> prim.</p></li>
+<li><p><strong>particle_offset</strong> – First index of the prim’s slice in <code class="docutils literal notranslate"><span class="pre">state.particle_q</span></code>.</p></li>
+<li><p><strong>particle_count</strong> – Number of particles in the slice.</p></li>
+<li><p><strong>sync_frequency</strong> – Sync the prim every N dirty render frames.</p></li>
 </ul>
 </dd>
 </dl>
@@ -6888,7 +6890,7 @@ Attributes are forwarded to the model in <a class="reference internal" href="#is
 so that subsequent <code class="docutils literal notranslate"><span class="pre">Contacts</span></code> creation includes them.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab_newton.physics.NewtonKaminoManager.request_extended_contact_attribute.params.attr"></span><strong>attr</strong><a class="paramlink headerlink reference internal" href="#isaaclab_newton.physics.NewtonKaminoManager.request_extended_contact_attribute.params.attr">¶</a> – Contact attribute name.</p>
+<dd class="field-odd"><p><strong>attr</strong> – Contact attribute name.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -6902,7 +6904,7 @@ Attributes are forwarded to the builder in <a class="reference internal" href="#
 so that subsequent <code class="docutils literal notranslate"><span class="pre">model.state()</span></code> calls allocate them.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab_newton.physics.NewtonKaminoManager.request_extended_state_attribute.params.attr"></span><strong>attr</strong><a class="paramlink headerlink reference internal" href="#isaaclab_newton.physics.NewtonKaminoManager.request_extended_state_attribute.params.attr">¶</a> – State attribute name (must be in <code class="docutils literal notranslate"><span class="pre">State.EXTENDED_ATTRIBUTES</span></code>).</p>
+<dd class="field-odd"><p><strong>attr</strong> – State attribute name (must be in <code class="docutils literal notranslate"><span class="pre">State.EXTENDED_ATTRIBUTES</span></code>).</p>
 </dd>
 </dl>
 </dd></dl>
@@ -6913,7 +6915,7 @@ so that subsequent <code class="docutils literal notranslate"><span class="pre">
 <dd><p>Reset physics simulation.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab_newton.physics.NewtonKaminoManager.reset.params.soft"></span><strong>soft</strong><a class="paramlink headerlink reference internal" href="#isaaclab_newton.physics.NewtonKaminoManager.reset.params.soft">¶</a> – If True, skip full reinitialization.</p>
+<dd class="field-odd"><p><strong>soft</strong> – If True, skip full reinitialization.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -7262,11 +7264,11 @@ fnmatch globs and delegates to <code class="xref py py-class docutils literal no
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_newton.physics.NewtonMPMManager.add_contact_sensor.params.body_names_expr"></span><strong>body_names_expr</strong><a class="paramlink headerlink reference internal" href="#isaaclab_newton.physics.NewtonMPMManager.add_contact_sensor.params.body_names_expr">¶</a> – Expression for body names to sense.</p></li>
-<li><p><span class="target" id="isaaclab_newton.physics.NewtonMPMManager.add_contact_sensor.params.shape_names_expr"></span><strong>shape_names_expr</strong><a class="paramlink headerlink reference internal" href="#isaaclab_newton.physics.NewtonMPMManager.add_contact_sensor.params.shape_names_expr">¶</a> – Expression for shape names to sense.</p></li>
-<li><p><span class="target" id="isaaclab_newton.physics.NewtonMPMManager.add_contact_sensor.params.contact_partners_body_expr"></span><strong>contact_partners_body_expr</strong><a class="paramlink headerlink reference internal" href="#isaaclab_newton.physics.NewtonMPMManager.add_contact_sensor.params.contact_partners_body_expr">¶</a> – Expression for contact partner body names.</p></li>
-<li><p><span class="target" id="isaaclab_newton.physics.NewtonMPMManager.add_contact_sensor.params.contact_partners_shape_expr"></span><strong>contact_partners_shape_expr</strong><a class="paramlink headerlink reference internal" href="#isaaclab_newton.physics.NewtonMPMManager.add_contact_sensor.params.contact_partners_shape_expr">¶</a> – Expression for contact partner shape names.</p></li>
-<li><p><span class="target" id="isaaclab_newton.physics.NewtonMPMManager.add_contact_sensor.params.verbose"></span><strong>verbose</strong><a class="paramlink headerlink reference internal" href="#isaaclab_newton.physics.NewtonMPMManager.add_contact_sensor.params.verbose">¶</a> – Print verbose information.</p></li>
+<li><p><strong>body_names_expr</strong> – Expression for body names to sense.</p></li>
+<li><p><strong>shape_names_expr</strong> – Expression for shape names to sense.</p></li>
+<li><p><strong>contact_partners_body_expr</strong> – Expression for contact partner body names.</p></li>
+<li><p><strong>contact_partners_shape_expr</strong> – Expression for contact partner shape names.</p></li>
+<li><p><strong>verbose</strong> – Print verbose information.</p></li>
 </ul>
 </dd>
 </dl>
@@ -7281,8 +7283,8 @@ site indices, appends it to the internal list, and returns its index.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_newton.physics.NewtonMPMManager.add_frame_transform_sensor.params.shapes"></span><strong>shapes</strong><a class="paramlink headerlink reference internal" href="#isaaclab_newton.physics.NewtonMPMManager.add_frame_transform_sensor.params.shapes">¶</a> – Ordered list of shape indices to measure.</p></li>
-<li><p><span class="target" id="isaaclab_newton.physics.NewtonMPMManager.add_frame_transform_sensor.params.reference_sites"></span><strong>reference_sites</strong><a class="paramlink headerlink reference internal" href="#isaaclab_newton.physics.NewtonMPMManager.add_frame_transform_sensor.params.reference_sites">¶</a> – 1:1 list of reference site indices (same length as shapes).</p></li>
+<li><p><strong>shapes</strong> – Ordered list of shape indices to measure.</p></li>
+<li><p><strong>reference_sites</strong> – 1:1 list of reference site indices (same length as shapes).</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -7299,7 +7301,7 @@ site indices, appends it to the internal list, and returns its index.</p>
 appends it to the internal list, and returns its index.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab_newton.physics.NewtonMPMManager.add_imu_sensor.params.sites"></span><strong>sites</strong><a class="paramlink headerlink reference internal" href="#isaaclab_newton.physics.NewtonMPMManager.add_imu_sensor.params.sites">¶</a> – Ordered list of site indices (one per environment).</p>
+<dd class="field-odd"><p><strong>sites</strong> – Ordered list of site indices (one per environment).</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>Index of the newly created sensor in the internal IMU sensor list.</p>
@@ -7337,12 +7339,12 @@ that match multiple bodies create one site per matched body.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_newton.physics.NewtonMPMManager.cl_register_site.params.body_pattern"></span><strong>body_pattern</strong><a class="paramlink headerlink reference internal" href="#isaaclab_newton.physics.NewtonMPMManager.cl_register_site.params.body_pattern">¶</a> – Regex pattern matched against body labels in the
+<li><p><strong>body_pattern</strong> – Regex pattern matched against body labels in the
 prototype builder (e.g. <code class="docutils literal notranslate"><span class="pre">&quot;Robot/link0&quot;</span></code> or <code class="docutils literal notranslate"><span class="pre">&quot;Robot/finger.*&quot;</span></code>
 for multi-body wildcards), or <code class="docutils literal notranslate"><span class="pre">None</span></code> for global sites
 (world-origin reference, etc.).</p></li>
-<li><p><span class="target" id="isaaclab_newton.physics.NewtonMPMManager.cl_register_site.params.xform"></span><strong>xform</strong><a class="paramlink headerlink reference internal" href="#isaaclab_newton.physics.NewtonMPMManager.cl_register_site.params.xform">¶</a> – Site transform relative to body.</p></li>
-<li><p><span class="target" id="isaaclab_newton.physics.NewtonMPMManager.cl_register_site.params.per_world"></span><strong>per_world</strong><a class="paramlink headerlink reference internal" href="#isaaclab_newton.physics.NewtonMPMManager.cl_register_site.params.per_world">¶</a> – When <code class="docutils literal notranslate"><span class="pre">True</span></code>, <code class="docutils literal notranslate"><span class="pre">body_pattern</span></code> must be <code class="docutils literal notranslate"><span class="pre">None</span></code> and one
+<li><p><strong>xform</strong> – Site transform relative to body.</p></li>
+<li><p><strong>per_world</strong> – When <code class="docutils literal notranslate"><span class="pre">True</span></code>, <code class="docutils literal notranslate"><span class="pre">body_pattern</span></code> must be <code class="docutils literal notranslate"><span class="pre">None</span></code> and one
 bodyless site is created in each cloned world’s frame.</p></li>
 </ul>
 </dd>
@@ -7392,9 +7394,9 @@ rough-terrain margin/gap still apply during early construction.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_newton.physics.NewtonMPMManager.create_builder.params.up_axis"></span><strong>up_axis</strong><a class="paramlink headerlink reference internal" href="#isaaclab_newton.physics.NewtonMPMManager.create_builder.params.up_axis">¶</a> – Override for the up-axis. Defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code>, which uses
+<li><p><strong>up_axis</strong> – Override for the up-axis. Defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code>, which uses
 the manager’s <code class="docutils literal notranslate"><span class="pre">_up_axis</span></code>.</p></li>
-<li><p><span class="target" id="isaaclab_newton.physics.NewtonMPMManager.create_builder.params.**kwargs"></span><strong>**kwargs</strong><a class="paramlink headerlink reference internal" href="#isaaclab_newton.physics.NewtonMPMManager.create_builder.params.**kwargs">¶</a> – Forwarded to <code class="xref py py-class docutils literal notranslate"><span class="pre">ModelBuilder</span></code>.</p></li>
+<li><p><strong>**kwargs</strong> – Forwarded to <code class="xref py py-class docutils literal notranslate"><span class="pre">ModelBuilder</span></code>.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -7409,7 +7411,7 @@ the manager’s <code class="docutils literal notranslate"><span class="pre">_up
 <dd><p>Remove a registered callback.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab_newton.physics.NewtonMPMManager.deregister_callback.params.callback_id"></span><strong>callback_id</strong><a class="paramlink headerlink reference internal" href="#isaaclab_newton.physics.NewtonMPMManager.deregister_callback.params.callback_id">¶</a> – The ID or CallbackHandle returned by register_callback().</p>
+<dd class="field-odd"><p><strong>callback_id</strong> – The ID or CallbackHandle returned by register_callback().</p>
 </dd>
 </dl>
 </dd></dl>
@@ -7423,8 +7425,8 @@ Subclasses may override or extend with platform-specific dispatch.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_newton.physics.NewtonMPMManager.dispatch_event.params.event"></span><strong>event</strong><a class="paramlink headerlink reference internal" href="#isaaclab_newton.physics.NewtonMPMManager.dispatch_event.params.event">¶</a> – The event to dispatch.</p></li>
-<li><p><span class="target" id="isaaclab_newton.physics.NewtonMPMManager.dispatch_event.params.payload"></span><strong>payload</strong><a class="paramlink headerlink reference internal" href="#isaaclab_newton.physics.NewtonMPMManager.dispatch_event.params.payload">¶</a> – Optional data to pass to callbacks.</p></li>
+<li><p><strong>event</strong> – The event to dispatch.</p></li>
+<li><p><strong>payload</strong> – Optional data to pass to callbacks.</p></li>
 </ul>
 </dd>
 </dl>
@@ -7439,8 +7441,8 @@ root topology may relocate it and return the resulting root prim.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_newton.physics.NewtonMPMManager.fix_articulation_root.params.articulation_prim"></span><strong>articulation_prim</strong><a class="paramlink headerlink reference internal" href="#isaaclab_newton.physics.NewtonMPMManager.fix_articulation_root.params.articulation_prim">¶</a> – The articulation-root prim to fix.</p></li>
-<li><p><span class="target" id="isaaclab_newton.physics.NewtonMPMManager.fix_articulation_root.params.stage"></span><strong>stage</strong><a class="paramlink headerlink reference internal" href="#isaaclab_newton.physics.NewtonMPMManager.fix_articulation_root.params.stage">¶</a> – The stage containing the prim. Defaults to the current stage.</p></li>
+<li><p><strong>articulation_prim</strong> – The articulation-root prim to fix.</p></li>
+<li><p><strong>stage</strong> – The stage containing the prim. Defaults to the current stage.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -7590,7 +7592,7 @@ is folded into a single <a class="reference internal" href="#isaaclab_newton.phy
 <dd><p>Initialize the manager with simulation context.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab_newton.physics.NewtonMPMManager.initialize.params.sim_context"></span><strong>sim_context</strong><a class="paramlink headerlink reference internal" href="#isaaclab_newton.physics.NewtonMPMManager.initialize.params.sim_context">¶</a> – Parent simulation context.</p>
+<dd class="field-odd"><p><strong>sim_context</strong> – Parent simulation context.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -7633,11 +7635,11 @@ rendering, or physics-step boundary.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_newton.physics.NewtonMPMManager.invalidate_fk.params.env_mask"></span><strong>env_mask</strong><a class="paramlink headerlink reference internal" href="#isaaclab_newton.physics.NewtonMPMManager.invalidate_fk.params.env_mask">¶</a> – Boolean mask of dirtied environments. Shape <code class="docutils literal notranslate"><span class="pre">(num_envs,)</span></code>.
+<li><p><strong>env_mask</strong> – Boolean mask of dirtied environments. Shape <code class="docutils literal notranslate"><span class="pre">(num_envs,)</span></code>.
 Used by <code class="docutils literal notranslate"><span class="pre">_mask</span></code> write methods.</p></li>
-<li><p><span class="target" id="isaaclab_newton.physics.NewtonMPMManager.invalidate_fk.params.env_ids"></span><strong>env_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab_newton.physics.NewtonMPMManager.invalidate_fk.params.env_ids">¶</a> – Integer indices of dirtied environments.
+<li><p><strong>env_ids</strong> – Integer indices of dirtied environments.
 Used by <code class="docutils literal notranslate"><span class="pre">_index</span></code> write methods.</p></li>
-<li><p><span class="target" id="isaaclab_newton.physics.NewtonMPMManager.invalidate_fk.params.articulation_ids"></span><strong>articulation_ids</strong><a class="paramlink headerlink reference internal" href="#isaaclab_newton.physics.NewtonMPMManager.invalidate_fk.params.articulation_ids">¶</a> – Mapping from <code class="docutils literal notranslate"><span class="pre">(world,</span> <span class="pre">arti)</span></code> to model articulation
+<li><p><strong>articulation_ids</strong> – Mapping from <code class="docutils literal notranslate"><span class="pre">(world,</span> <span class="pre">arti)</span></code> to model articulation
 index. Shape <code class="docutils literal notranslate"><span class="pre">(world_count,</span> <span class="pre">count_per_world)</span></code>. Obtained from
 <code class="docutils literal notranslate"><span class="pre">ArticulationView.articulation_ids</span></code>.</p></li>
 </ul>
@@ -7697,10 +7699,10 @@ cue in the observation (e.g. frame stacking).</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><span class="target" id="isaaclab_newton.physics.NewtonMPMManager.register_particle_visual_prim.params.prim_path"></span><strong>prim_path</strong><a class="paramlink headerlink reference internal" href="#isaaclab_newton.physics.NewtonMPMManager.register_particle_visual_prim.params.prim_path">¶</a> – Stage path of an existing <code class="docutils literal notranslate"><span class="pre">UsdGeom.Points</span></code> prim.</p></li>
-<li><p><span class="target" id="isaaclab_newton.physics.NewtonMPMManager.register_particle_visual_prim.params.particle_offset"></span><strong>particle_offset</strong><a class="paramlink headerlink reference internal" href="#isaaclab_newton.physics.NewtonMPMManager.register_particle_visual_prim.params.particle_offset">¶</a> – First index of the prim’s slice in <code class="docutils literal notranslate"><span class="pre">state.particle_q</span></code>.</p></li>
-<li><p><span class="target" id="isaaclab_newton.physics.NewtonMPMManager.register_particle_visual_prim.params.particle_count"></span><strong>particle_count</strong><a class="paramlink headerlink reference internal" href="#isaaclab_newton.physics.NewtonMPMManager.register_particle_visual_prim.params.particle_count">¶</a> – Number of particles in the slice.</p></li>
-<li><p><span class="target" id="isaaclab_newton.physics.NewtonMPMManager.register_particle_visual_prim.params.sync_frequency"></span><strong>sync_frequency</strong><a class="paramlink headerlink reference internal" href="#isaaclab_newton.physics.NewtonMPMManager.register_particle_visual_prim.params.sync_frequency">¶</a> – Sync the prim every N dirty render frames.</p></li>
+<li><p><strong>prim_path</strong> – Stage path of an existing <code class="docutils literal notranslate"><span class="pre">UsdGeom.Points</span></code> prim.</p></li>
+<li><p><strong>particle_offset</strong> – First index of the prim’s slice in <code class="docutils literal notranslate"><span class="pre">state.particle_q</span></code>.</p></li>
+<li><p><strong>particle_count</strong> – Number of particles in the slice.</p></li>
+<li><p><strong>sync_frequency</strong> – Sync the prim every N dirty render frames.</p></li>
 </ul>
 </dd>
 </dl>
@@ -7728,7 +7730,7 @@ Attributes are forwarded to the model in <a class="reference internal" href="#is
 so that subsequent <code class="docutils literal notranslate"><span class="pre">Contacts</span></code> creation includes them.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab_newton.physics.NewtonMPMManager.request_extended_contact_attribute.params.attr"></span><strong>attr</strong><a class="paramlink headerlink reference internal" href="#isaaclab_newton.physics.NewtonMPMManager.request_extended_contact_attribute.params.attr">¶</a> – Contact attribute name.</p>
+<dd class="field-odd"><p><strong>attr</strong> – Contact attribute name.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -7742,7 +7744,7 @@ Attributes are forwarded to the builder in <a class="reference internal" href="#
 so that subsequent <code class="docutils literal notranslate"><span class="pre">model.state()</span></code> calls allocate them.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab_newton.physics.NewtonMPMManager.request_extended_state_attribute.params.attr"></span><strong>attr</strong><a class="paramlink headerlink reference internal" href="#isaaclab_newton.physics.NewtonMPMManager.request_extended_state_attribute.params.attr">¶</a> – State attribute name (must be in <code class="docutils literal notranslate"><span class="pre">State.EXTENDED_ATTRIBUTES</span></code>).</p>
+<dd class="field-odd"><p><strong>attr</strong> – State attribute name (must be in <code class="docutils literal notranslate"><span class="pre">State.EXTENDED_ATTRIBUTES</span></code>).</p>
 </dd>
 </dl>
 </dd></dl>
@@ -7753,7 +7755,7 @@ so that subsequent <code class="docutils literal notranslate"><span class="pre">
 <dd><p>Reset physics simulation.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="target" id="isaaclab_newton.physics.NewtonMPMManager.reset.params.soft"></span><strong>soft</strong><a class="paramlink headerlink reference internal" href="#isaaclab_newton.physics.NewtonMPMManager.reset.params.soft">¶</a> – If True, skip full reinitialization.</p>
+<dd class="field-odd"><p><strong>soft</strong> – If True, skip full reinitialization.</p>
 </dd>
 </dl>
 </dd></dl>
