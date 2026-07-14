@@ -64,7 +64,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="3.0.0" />
-    <meta name="docbuild:last-update" content="Jul 13, 2026"/>
+    <meta name="docbuild:last-update" content="Jul 14, 2026"/>
   </head>
   
   
@@ -1372,7 +1372,7 @@ which subclass is active.</p>
 <td><p>Update articulation kinematics without stepping physics.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab_newton.physics.NewtonManager.pre_render" title="isaaclab_newton.physics.NewtonManager.pre_render"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pre_render</span></code></a>()</p></td>
-<td><p>Flush deferred Fabric writes before cameras/visualizers read the scene.</p></td>
+<td><p>Refresh derived Newton state before cameras and visualizers read it.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#isaaclab_newton.physics.NewtonManager.sync_transforms_to_usd" title="isaaclab_newton.physics.NewtonManager.sync_transforms_to_usd"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sync_transforms_to_usd</span></code></a>()</p></td>
 <td><p>Write Newton body_q to USD Fabric world matrices for Kit viewport / RTX rendering.</p></td>
@@ -1585,7 +1585,7 @@ base <code class="docutils literal notranslate"><span class="pre">NewtonManager<
 <dl class="py method">
 <dt class="sig sig-object py" id="isaaclab_newton.physics.NewtonManager.pre_render">
 <em class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">pre_render</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span></span><a class="reference internal" href="../../../_modules/isaaclab_newton/physics/newton_manager.html#NewtonManager.pre_render"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#isaaclab_newton.physics.NewtonManager.pre_render" title="Link to this definition">#</a></dt>
-<dd><p>Flush deferred Fabric writes before cameras/visualizers read the scene.</p>
+<dd><p>Refresh derived Newton state before cameras and visualizers read it.</p>
 </dd></dl>
 
 <dl class="py method">
@@ -1805,8 +1805,8 @@ so that subsequent <code class="docutils literal notranslate"><span class="pre">
 <em class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">invalidate_fk</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">env_mask</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">wp.array</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">env_ids</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">wp.array</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">articulation_ids</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">wp.array</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span></span><a class="reference internal" href="../../../_modules/isaaclab_newton/physics/newton_manager.html#NewtonManager.invalidate_fk"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#isaaclab_newton.physics.NewtonManager.invalidate_fk" title="Link to this definition">#</a></dt>
 <dd><p>Mark environments as needing FK recomputation and solver reset.</p>
 <p>Called by asset write methods that modify joint coordinates or root
-transforms. The masks are consumed in <a class="reference internal" href="#isaaclab_newton.physics.NewtonManager.step" title="isaaclab_newton.physics.NewtonManager.step"><code class="xref py py-meth docutils literal notranslate"><span class="pre">step()</span></code></a> before physics
-stepping.</p>
+transforms. The masks are consumed by the next forward, raw-state,
+rendering, or physics-step boundary.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
@@ -1884,9 +1884,8 @@ still drive a PhysX-simulated scene.</p>
 backend-agnostic Newton <code class="docutils literal notranslate"><span class="pre">State</span></code>. When the sim backend is PhysX this
 refreshes the shadow <code class="docutils literal notranslate"><span class="pre">_state_0.body_q</span></code> from the live PhysX scene via
 <a class="reference internal" href="#isaaclab_newton.physics.NewtonManager.update_visualization_state" title="isaaclab_newton.physics.NewtonManager.update_visualization_state"><code class="xref py py-meth docutils literal notranslate"><span class="pre">update_visualization_state()</span></code></a> before returning, so callers never
-observe stale transforms. Under the Newton sim backend
-<a class="reference internal" href="#isaaclab_newton.physics.NewtonManager.update_visualization_state" title="isaaclab_newton.physics.NewtonManager.update_visualization_state"><code class="xref py py-meth docutils literal notranslate"><span class="pre">update_visualization_state()</span></code></a> is a no-op and this is equivalent to
-<a class="reference internal" href="#isaaclab_newton.physics.NewtonManager.get_state_0" title="isaaclab_newton.physics.NewtonManager.get_state_0"><code class="xref py py-meth docutils literal notranslate"><span class="pre">get_state_0()</span></code></a>.</p>
+observe stale transforms. Under the Newton sim backend, pending
+forward kinematics is applied before returning the live state.</p>
 </dd></dl>
 
 <dl class="py method">
@@ -3826,7 +3825,7 @@ convergence logging emitted from <code class="xref py py-meth docutils literal n
 <td><p>Start or resume physics simulation.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab_newton.physics.NewtonMJWarpManager.pre_render" title="isaaclab_newton.physics.NewtonMJWarpManager.pre_render"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pre_render</span></code></a>()</p></td>
-<td><p>Flush deferred Fabric writes before cameras/visualizers read the scene.</p></td>
+<td><p>Refresh derived Newton state before cameras and visualizers read it.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#isaaclab_newton.physics.NewtonMJWarpManager.provides_implicit_damping" title="isaaclab_newton.physics.NewtonMJWarpManager.provides_implicit_damping"><code class="xref py py-obj docutils literal notranslate"><span class="pre">provides_implicit_damping</span></code></a>()</p></td>
 <td><p>Whether this backend's integrator has implicit numerical damping.</p></td>
@@ -4204,9 +4203,8 @@ Returns a list that callers can append to.</p>
 backend-agnostic Newton <code class="docutils literal notranslate"><span class="pre">State</span></code>. When the sim backend is PhysX this
 refreshes the shadow <code class="docutils literal notranslate"><span class="pre">_state_0.body_q</span></code> from the live PhysX scene via
 <a class="reference internal" href="#isaaclab_newton.physics.NewtonMJWarpManager.update_visualization_state" title="isaaclab_newton.physics.NewtonMJWarpManager.update_visualization_state"><code class="xref py py-meth docutils literal notranslate"><span class="pre">update_visualization_state()</span></code></a> before returning, so callers never
-observe stale transforms. Under the Newton sim backend
-<a class="reference internal" href="#isaaclab_newton.physics.NewtonMJWarpManager.update_visualization_state" title="isaaclab_newton.physics.NewtonMJWarpManager.update_visualization_state"><code class="xref py py-meth docutils literal notranslate"><span class="pre">update_visualization_state()</span></code></a> is a no-op and this is equivalent to
-<a class="reference internal" href="#isaaclab_newton.physics.NewtonMJWarpManager.get_state_0" title="isaaclab_newton.physics.NewtonMJWarpManager.get_state_0"><code class="xref py py-meth docutils literal notranslate"><span class="pre">get_state_0()</span></code></a>.</p>
+observe stale transforms. Under the Newton sim backend, pending
+forward kinematics is applied before returning the live state.</p>
 </dd></dl>
 
 <dl class="py method">
@@ -4274,8 +4272,8 @@ Falls back to a flat <code class="docutils literal notranslate"><span class="pre
 <em class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">invalidate_fk</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">env_mask</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">wp.array</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">env_ids</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">wp.array</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">articulation_ids</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">wp.array</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#isaaclab_newton.physics.NewtonMJWarpManager.invalidate_fk" title="Link to this definition">#</a></dt>
 <dd><p>Mark environments as needing FK recomputation and solver reset.</p>
 <p>Called by asset write methods that modify joint coordinates or root
-transforms. The masks are consumed in <a class="reference internal" href="#isaaclab_newton.physics.NewtonMJWarpManager.step" title="isaaclab_newton.physics.NewtonMJWarpManager.step"><code class="xref py py-meth docutils literal notranslate"><span class="pre">step()</span></code></a> before physics
-stepping.</p>
+transforms. The masks are consumed by the next forward, raw-state,
+rendering, or physics-step boundary.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
@@ -4312,7 +4310,7 @@ index. Shape <code class="docutils literal notranslate"><span class="pre">(world
 <dl class="py method">
 <dt class="sig sig-object py" id="isaaclab_newton.physics.NewtonMJWarpManager.pre_render">
 <em class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">pre_render</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#isaaclab_newton.physics.NewtonMJWarpManager.pre_render" title="Link to this definition">#</a></dt>
-<dd><p>Flush deferred Fabric writes before cameras/visualizers read the scene.</p>
+<dd><p>Refresh derived Newton state before cameras and visualizers read it.</p>
 </dd></dl>
 
 <dl class="py method">
@@ -4665,7 +4663,7 @@ coordinate the sync explicitly.</p>
 <td><p>Start or resume physics simulation.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab_newton.physics.NewtonXPBDManager.pre_render" title="isaaclab_newton.physics.NewtonXPBDManager.pre_render"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pre_render</span></code></a>()</p></td>
-<td><p>Flush deferred Fabric writes before cameras/visualizers read the scene.</p></td>
+<td><p>Refresh derived Newton state before cameras and visualizers read it.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#isaaclab_newton.physics.NewtonXPBDManager.provides_implicit_damping" title="isaaclab_newton.physics.NewtonXPBDManager.provides_implicit_damping"><code class="xref py py-obj docutils literal notranslate"><span class="pre">provides_implicit_damping</span></code></a>()</p></td>
 <td><p>Whether this backend's integrator has implicit numerical damping.</p></td>
@@ -5043,9 +5041,8 @@ Returns a list that callers can append to.</p>
 backend-agnostic Newton <code class="docutils literal notranslate"><span class="pre">State</span></code>. When the sim backend is PhysX this
 refreshes the shadow <code class="docutils literal notranslate"><span class="pre">_state_0.body_q</span></code> from the live PhysX scene via
 <a class="reference internal" href="#isaaclab_newton.physics.NewtonXPBDManager.update_visualization_state" title="isaaclab_newton.physics.NewtonXPBDManager.update_visualization_state"><code class="xref py py-meth docutils literal notranslate"><span class="pre">update_visualization_state()</span></code></a> before returning, so callers never
-observe stale transforms. Under the Newton sim backend
-<a class="reference internal" href="#isaaclab_newton.physics.NewtonXPBDManager.update_visualization_state" title="isaaclab_newton.physics.NewtonXPBDManager.update_visualization_state"><code class="xref py py-meth docutils literal notranslate"><span class="pre">update_visualization_state()</span></code></a> is a no-op and this is equivalent to
-<a class="reference internal" href="#isaaclab_newton.physics.NewtonXPBDManager.get_state_0" title="isaaclab_newton.physics.NewtonXPBDManager.get_state_0"><code class="xref py py-meth docutils literal notranslate"><span class="pre">get_state_0()</span></code></a>.</p>
+observe stale transforms. Under the Newton sim backend, pending
+forward kinematics is applied before returning the live state.</p>
 </dd></dl>
 
 <dl class="py method">
@@ -5113,8 +5110,8 @@ Falls back to a flat <code class="docutils literal notranslate"><span class="pre
 <em class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">invalidate_fk</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">env_mask</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">wp.array</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">env_ids</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">wp.array</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">articulation_ids</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">wp.array</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#isaaclab_newton.physics.NewtonXPBDManager.invalidate_fk" title="Link to this definition">#</a></dt>
 <dd><p>Mark environments as needing FK recomputation and solver reset.</p>
 <p>Called by asset write methods that modify joint coordinates or root
-transforms. The masks are consumed in <a class="reference internal" href="#isaaclab_newton.physics.NewtonXPBDManager.step" title="isaaclab_newton.physics.NewtonXPBDManager.step"><code class="xref py py-meth docutils literal notranslate"><span class="pre">step()</span></code></a> before physics
-stepping.</p>
+transforms. The masks are consumed by the next forward, raw-state,
+rendering, or physics-step boundary.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
@@ -5151,7 +5148,7 @@ index. Shape <code class="docutils literal notranslate"><span class="pre">(world
 <dl class="py method">
 <dt class="sig sig-object py" id="isaaclab_newton.physics.NewtonXPBDManager.pre_render">
 <em class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">pre_render</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#isaaclab_newton.physics.NewtonXPBDManager.pre_render" title="Link to this definition">#</a></dt>
-<dd><p>Flush deferred Fabric writes before cameras/visualizers read the scene.</p>
+<dd><p>Refresh derived Newton state before cameras and visualizers read it.</p>
 </dd></dl>
 
 <dl class="py method">
@@ -5504,7 +5501,7 @@ coordinate the sync explicitly.</p>
 <td><p>Start or resume physics simulation.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab_newton.physics.NewtonFeatherstoneManager.pre_render" title="isaaclab_newton.physics.NewtonFeatherstoneManager.pre_render"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pre_render</span></code></a>()</p></td>
-<td><p>Flush deferred Fabric writes before cameras/visualizers read the scene.</p></td>
+<td><p>Refresh derived Newton state before cameras and visualizers read it.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#isaaclab_newton.physics.NewtonFeatherstoneManager.provides_implicit_damping" title="isaaclab_newton.physics.NewtonFeatherstoneManager.provides_implicit_damping"><code class="xref py py-obj docutils literal notranslate"><span class="pre">provides_implicit_damping</span></code></a>()</p></td>
 <td><p>Whether this backend's integrator has implicit numerical damping.</p></td>
@@ -5882,9 +5879,8 @@ Returns a list that callers can append to.</p>
 backend-agnostic Newton <code class="docutils literal notranslate"><span class="pre">State</span></code>. When the sim backend is PhysX this
 refreshes the shadow <code class="docutils literal notranslate"><span class="pre">_state_0.body_q</span></code> from the live PhysX scene via
 <a class="reference internal" href="#isaaclab_newton.physics.NewtonFeatherstoneManager.update_visualization_state" title="isaaclab_newton.physics.NewtonFeatherstoneManager.update_visualization_state"><code class="xref py py-meth docutils literal notranslate"><span class="pre">update_visualization_state()</span></code></a> before returning, so callers never
-observe stale transforms. Under the Newton sim backend
-<a class="reference internal" href="#isaaclab_newton.physics.NewtonFeatherstoneManager.update_visualization_state" title="isaaclab_newton.physics.NewtonFeatherstoneManager.update_visualization_state"><code class="xref py py-meth docutils literal notranslate"><span class="pre">update_visualization_state()</span></code></a> is a no-op and this is equivalent to
-<a class="reference internal" href="#isaaclab_newton.physics.NewtonFeatherstoneManager.get_state_0" title="isaaclab_newton.physics.NewtonFeatherstoneManager.get_state_0"><code class="xref py py-meth docutils literal notranslate"><span class="pre">get_state_0()</span></code></a>.</p>
+observe stale transforms. Under the Newton sim backend, pending
+forward kinematics is applied before returning the live state.</p>
 </dd></dl>
 
 <dl class="py method">
@@ -5952,8 +5948,8 @@ Falls back to a flat <code class="docutils literal notranslate"><span class="pre
 <em class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">invalidate_fk</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">env_mask</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">wp.array</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">env_ids</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">wp.array</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">articulation_ids</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">wp.array</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#isaaclab_newton.physics.NewtonFeatherstoneManager.invalidate_fk" title="Link to this definition">#</a></dt>
 <dd><p>Mark environments as needing FK recomputation and solver reset.</p>
 <p>Called by asset write methods that modify joint coordinates or root
-transforms. The masks are consumed in <a class="reference internal" href="#isaaclab_newton.physics.NewtonFeatherstoneManager.step" title="isaaclab_newton.physics.NewtonFeatherstoneManager.step"><code class="xref py py-meth docutils literal notranslate"><span class="pre">step()</span></code></a> before physics
-stepping.</p>
+transforms. The masks are consumed by the next forward, raw-state,
+rendering, or physics-step boundary.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
@@ -5990,7 +5986,7 @@ index. Shape <code class="docutils literal notranslate"><span class="pre">(world
 <dl class="py method">
 <dt class="sig sig-object py" id="isaaclab_newton.physics.NewtonFeatherstoneManager.pre_render">
 <em class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">pre_render</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#isaaclab_newton.physics.NewtonFeatherstoneManager.pre_render" title="Link to this definition">#</a></dt>
-<dd><p>Flush deferred Fabric writes before cameras/visualizers read the scene.</p>
+<dd><p>Refresh derived Newton state before cameras and visualizers read it.</p>
 </dd></dl>
 
 <dl class="py method">
@@ -6345,7 +6341,7 @@ Kamino’s internal collision detector handles contact generation.</p>
 <td><p>Start or resume physics simulation.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab_newton.physics.NewtonKaminoManager.pre_render" title="isaaclab_newton.physics.NewtonKaminoManager.pre_render"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pre_render</span></code></a>()</p></td>
-<td><p>Flush deferred Fabric writes before cameras/visualizers read the scene.</p></td>
+<td><p>Refresh derived Newton state before cameras and visualizers read it.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#isaaclab_newton.physics.NewtonKaminoManager.provides_implicit_damping" title="isaaclab_newton.physics.NewtonKaminoManager.provides_implicit_damping"><code class="xref py py-obj docutils literal notranslate"><span class="pre">provides_implicit_damping</span></code></a>()</p></td>
 <td><p>Whether this backend's integrator has implicit numerical damping.</p></td>
@@ -6723,9 +6719,8 @@ Returns a list that callers can append to.</p>
 backend-agnostic Newton <code class="docutils literal notranslate"><span class="pre">State</span></code>. When the sim backend is PhysX this
 refreshes the shadow <code class="docutils literal notranslate"><span class="pre">_state_0.body_q</span></code> from the live PhysX scene via
 <a class="reference internal" href="#isaaclab_newton.physics.NewtonKaminoManager.update_visualization_state" title="isaaclab_newton.physics.NewtonKaminoManager.update_visualization_state"><code class="xref py py-meth docutils literal notranslate"><span class="pre">update_visualization_state()</span></code></a> before returning, so callers never
-observe stale transforms. Under the Newton sim backend
-<a class="reference internal" href="#isaaclab_newton.physics.NewtonKaminoManager.update_visualization_state" title="isaaclab_newton.physics.NewtonKaminoManager.update_visualization_state"><code class="xref py py-meth docutils literal notranslate"><span class="pre">update_visualization_state()</span></code></a> is a no-op and this is equivalent to
-<a class="reference internal" href="#isaaclab_newton.physics.NewtonKaminoManager.get_state_0" title="isaaclab_newton.physics.NewtonKaminoManager.get_state_0"><code class="xref py py-meth docutils literal notranslate"><span class="pre">get_state_0()</span></code></a>.</p>
+observe stale transforms. Under the Newton sim backend, pending
+forward kinematics is applied before returning the live state.</p>
 </dd></dl>
 
 <dl class="py method">
@@ -6793,8 +6788,8 @@ Falls back to a flat <code class="docutils literal notranslate"><span class="pre
 <em class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">invalidate_fk</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">env_mask</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">wp.array</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">env_ids</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">wp.array</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">articulation_ids</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">wp.array</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#isaaclab_newton.physics.NewtonKaminoManager.invalidate_fk" title="Link to this definition">#</a></dt>
 <dd><p>Mark environments as needing FK recomputation and solver reset.</p>
 <p>Called by asset write methods that modify joint coordinates or root
-transforms. The masks are consumed in <a class="reference internal" href="#isaaclab_newton.physics.NewtonKaminoManager.step" title="isaaclab_newton.physics.NewtonKaminoManager.step"><code class="xref py py-meth docutils literal notranslate"><span class="pre">step()</span></code></a> before physics
-stepping.</p>
+transforms. The masks are consumed by the next forward, raw-state,
+rendering, or physics-step boundary.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
@@ -6831,7 +6826,7 @@ index. Shape <code class="docutils literal notranslate"><span class="pre">(world
 <dl class="py method">
 <dt class="sig sig-object py" id="isaaclab_newton.physics.NewtonKaminoManager.pre_render">
 <em class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">pre_render</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#isaaclab_newton.physics.NewtonKaminoManager.pre_render" title="Link to this definition">#</a></dt>
-<dd><p>Flush deferred Fabric writes before cameras/visualizers read the scene.</p>
+<dd><p>Refresh derived Newton state before cameras and visualizers read it.</p>
 </dd></dl>
 
 <dl class="py method">
@@ -7186,7 +7181,7 @@ and steps with a single <code class="xref py py-class docutils literal notransla
 <td><p>Start or resume physics simulation.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab_newton.physics.NewtonMPMManager.pre_render" title="isaaclab_newton.physics.NewtonMPMManager.pre_render"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pre_render</span></code></a>()</p></td>
-<td><p>Flush deferred Fabric writes before cameras/visualizers read the scene.</p></td>
+<td><p>Refresh derived Newton state before cameras and visualizers read it.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#isaaclab_newton.physics.NewtonMPMManager.provides_implicit_damping" title="isaaclab_newton.physics.NewtonMPMManager.provides_implicit_damping"><code class="xref py py-obj docutils literal notranslate"><span class="pre">provides_implicit_damping</span></code></a>()</p></td>
 <td><p>Whether this backend's integrator has implicit numerical damping.</p></td>
@@ -7564,9 +7559,8 @@ Returns a list that callers can append to.</p>
 backend-agnostic Newton <code class="docutils literal notranslate"><span class="pre">State</span></code>. When the sim backend is PhysX this
 refreshes the shadow <code class="docutils literal notranslate"><span class="pre">_state_0.body_q</span></code> from the live PhysX scene via
 <a class="reference internal" href="#isaaclab_newton.physics.NewtonMPMManager.update_visualization_state" title="isaaclab_newton.physics.NewtonMPMManager.update_visualization_state"><code class="xref py py-meth docutils literal notranslate"><span class="pre">update_visualization_state()</span></code></a> before returning, so callers never
-observe stale transforms. Under the Newton sim backend
-<a class="reference internal" href="#isaaclab_newton.physics.NewtonMPMManager.update_visualization_state" title="isaaclab_newton.physics.NewtonMPMManager.update_visualization_state"><code class="xref py py-meth docutils literal notranslate"><span class="pre">update_visualization_state()</span></code></a> is a no-op and this is equivalent to
-<a class="reference internal" href="#isaaclab_newton.physics.NewtonMPMManager.get_state_0" title="isaaclab_newton.physics.NewtonMPMManager.get_state_0"><code class="xref py py-meth docutils literal notranslate"><span class="pre">get_state_0()</span></code></a>.</p>
+observe stale transforms. Under the Newton sim backend, pending
+forward kinematics is applied before returning the live state.</p>
 </dd></dl>
 
 <dl class="py method">
@@ -7634,8 +7628,8 @@ Falls back to a flat <code class="docutils literal notranslate"><span class="pre
 <em class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">invalidate_fk</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">env_mask</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">wp.array</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">env_ids</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">wp.array</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">articulation_ids</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">wp.array</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#isaaclab_newton.physics.NewtonMPMManager.invalidate_fk" title="Link to this definition">#</a></dt>
 <dd><p>Mark environments as needing FK recomputation and solver reset.</p>
 <p>Called by asset write methods that modify joint coordinates or root
-transforms. The masks are consumed in <a class="reference internal" href="#isaaclab_newton.physics.NewtonMPMManager.step" title="isaaclab_newton.physics.NewtonMPMManager.step"><code class="xref py py-meth docutils literal notranslate"><span class="pre">step()</span></code></a> before physics
-stepping.</p>
+transforms. The masks are consumed by the next forward, raw-state,
+rendering, or physics-step boundary.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
@@ -7672,7 +7666,7 @@ index. Shape <code class="docutils literal notranslate"><span class="pre">(world
 <dl class="py method">
 <dt class="sig sig-object py" id="isaaclab_newton.physics.NewtonMPMManager.pre_render">
 <em class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">pre_render</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#isaaclab_newton.physics.NewtonMPMManager.pre_render" title="Link to this definition">#</a></dt>
-<dd><p>Flush deferred Fabric writes before cameras/visualizers read the scene.</p>
+<dd><p>Refresh derived Newton state before cameras and visualizers read it.</p>
 </dd></dl>
 
 <dl class="py method">
@@ -8501,7 +8495,7 @@ By The Isaac Lab Project Developers.
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Jul 13, 2026.
+  Last updated on Jul 14, 2026.
   <br/>
 </p>
   </div>

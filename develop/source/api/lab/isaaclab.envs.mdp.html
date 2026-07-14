@@ -64,7 +64,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="3.0.0" />
-    <meta name="docbuild:last-update" content="Jul 13, 2026"/>
+    <meta name="docbuild:last-update" content="Jul 14, 2026"/>
   </head>
   
   
@@ -995,7 +995,10 @@
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.envs.mdp.events.apply_external_force_torque"><code class="docutils literal notranslate"><span class="pre">apply_external_force_torque()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.envs.mdp.events.push_by_setting_velocity"><code class="docutils literal notranslate"><span class="pre">push_by_setting_velocity()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.envs.mdp.events.reset_root_state_uniform"><code class="docutils literal notranslate"><span class="pre">reset_root_state_uniform()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.envs.mdp.events.reset_root_state_uniform"><code class="docutils literal notranslate"><span class="pre">reset_root_state_uniform</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.envs.mdp.events.reset_root_state_uniform.__init__"><code class="docutils literal notranslate"><span class="pre">reset_root_state_uniform.__init__()</span></code></a></li>
+</ul>
+</li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.envs.mdp.events.reset_root_state_with_random_orientation"><code class="docutils literal notranslate"><span class="pre">reset_root_state_with_random_orientation()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.envs.mdp.events.reset_root_state_from_terrain"><code class="docutils literal notranslate"><span class="pre">reset_root_state_from_terrain()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.envs.mdp.events.reset_joints_by_scale"><code class="docutils literal notranslate"><span class="pre">reset_joints_by_scale()</span></code></a></li>
@@ -1169,7 +1172,10 @@
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.envs.mdp.terminations.root_height_below_minimum"><code class="docutils literal notranslate"><span class="pre">root_height_below_minimum()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.envs.mdp.terminations.joint_pos_out_of_limit"><code class="docutils literal notranslate"><span class="pre">joint_pos_out_of_limit()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.envs.mdp.terminations.joint_pos_out_of_manual_limit"><code class="docutils literal notranslate"><span class="pre">joint_pos_out_of_manual_limit()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.envs.mdp.terminations.joint_vel_out_of_limit"><code class="docutils literal notranslate"><span class="pre">joint_vel_out_of_limit()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.envs.mdp.terminations.joint_vel_out_of_limit"><code class="docutils literal notranslate"><span class="pre">joint_vel_out_of_limit</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.envs.mdp.terminations.joint_vel_out_of_limit.__init__"><code class="docutils literal notranslate"><span class="pre">joint_vel_out_of_limit.__init__()</span></code></a></li>
+</ul>
+</li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.envs.mdp.terminations.joint_vel_out_of_manual_limit"><code class="docutils literal notranslate"><span class="pre">joint_vel_out_of_manual_limit()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.envs.mdp.terminations.joint_effort_out_of_limit"><code class="docutils literal notranslate"><span class="pre">joint_effort_out_of_limit()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.envs.mdp.terminations.illegal_contact"><code class="docutils literal notranslate"><span class="pre">illegal_contact()</span></code></a></li>
@@ -3227,25 +3233,22 @@ the event introduced by the function.</p>
 <tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab.envs.mdp.events.push_by_setting_velocity" title="isaaclab.envs.mdp.events.push_by_setting_velocity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">push_by_setting_velocity</span></code></a>(env, env_ids, ...)</p></td>
 <td><p>Push the asset by setting the root velocity to a random value within the given ranges.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab.envs.mdp.events.reset_root_state_uniform" title="isaaclab.envs.mdp.events.reset_root_state_uniform"><code class="xref py py-obj docutils literal notranslate"><span class="pre">reset_root_state_uniform</span></code></a>(env, env_ids, ...)</p></td>
-<td><p>Reset the asset root state to a random position and velocity uniformly within the given ranges.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab.envs.mdp.events.reset_root_state_with_random_orientation" title="isaaclab.envs.mdp.events.reset_root_state_with_random_orientation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">reset_root_state_with_random_orientation</span></code></a>(...)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab.envs.mdp.events.reset_root_state_with_random_orientation" title="isaaclab.envs.mdp.events.reset_root_state_with_random_orientation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">reset_root_state_with_random_orientation</span></code></a>(...)</p></td>
 <td><p>Reset the asset root position and velocities sampled randomly within the given ranges and the asset root orientation sampled randomly from the SO(3).</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab.envs.mdp.events.reset_root_state_from_terrain" title="isaaclab.envs.mdp.events.reset_root_state_from_terrain"><code class="xref py py-obj docutils literal notranslate"><span class="pre">reset_root_state_from_terrain</span></code></a>(env, env_ids, ...)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab.envs.mdp.events.reset_root_state_from_terrain" title="isaaclab.envs.mdp.events.reset_root_state_from_terrain"><code class="xref py py-obj docutils literal notranslate"><span class="pre">reset_root_state_from_terrain</span></code></a>(env, env_ids, ...)</p></td>
 <td><p>Reset the asset root state by sampling a random valid pose from the terrain.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab.envs.mdp.events.reset_joints_by_scale" title="isaaclab.envs.mdp.events.reset_joints_by_scale"><code class="xref py py-obj docutils literal notranslate"><span class="pre">reset_joints_by_scale</span></code></a>(env, env_ids, ...[, ...])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab.envs.mdp.events.reset_joints_by_scale" title="isaaclab.envs.mdp.events.reset_joints_by_scale"><code class="xref py py-obj docutils literal notranslate"><span class="pre">reset_joints_by_scale</span></code></a>(env, env_ids, ...[, ...])</p></td>
 <td><p>Reset the robot joints by scaling the default position and velocity by the given ranges.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab.envs.mdp.events.reset_joints_by_offset" title="isaaclab.envs.mdp.events.reset_joints_by_offset"><code class="xref py py-obj docutils literal notranslate"><span class="pre">reset_joints_by_offset</span></code></a>(env, env_ids, ...[, ...])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab.envs.mdp.events.reset_joints_by_offset" title="isaaclab.envs.mdp.events.reset_joints_by_offset"><code class="xref py py-obj docutils literal notranslate"><span class="pre">reset_joints_by_offset</span></code></a>(env, env_ids, ...[, ...])</p></td>
 <td><p>Reset the robot joints with offsets around the default position and velocity by the given ranges.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab.envs.mdp.events.reset_nodal_state_uniform" title="isaaclab.envs.mdp.events.reset_nodal_state_uniform"><code class="xref py py-obj docutils literal notranslate"><span class="pre">reset_nodal_state_uniform</span></code></a>(env, env_ids, ...)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab.envs.mdp.events.reset_nodal_state_uniform" title="isaaclab.envs.mdp.events.reset_nodal_state_uniform"><code class="xref py py-obj docutils literal notranslate"><span class="pre">reset_nodal_state_uniform</span></code></a>(env, env_ids, ...)</p></td>
 <td><p>Reset the asset nodal state to a random position and velocity uniformly within the given ranges.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab.envs.mdp.events.reset_scene_to_default" title="isaaclab.envs.mdp.events.reset_scene_to_default"><code class="xref py py-obj docutils literal notranslate"><span class="pre">reset_scene_to_default</span></code></a>(env, env_ids[, ...])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab.envs.mdp.events.reset_scene_to_default" title="isaaclab.envs.mdp.events.reset_scene_to_default"><code class="xref py py-obj docutils literal notranslate"><span class="pre">reset_scene_to_default</span></code></a>(env, env_ids[, ...])</p></td>
 <td><p>Reset the scene to the default state specified in the scene configuration.</p></td>
 </tr>
 </tbody>
@@ -3281,13 +3284,16 @@ the event introduced by the function.</p>
 <tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab.envs.mdp.events.randomize_fixed_tendon_parameters" title="isaaclab.envs.mdp.events.randomize_fixed_tendon_parameters"><code class="xref py py-obj docutils literal notranslate"><span class="pre">randomize_fixed_tendon_parameters</span></code></a></p></td>
 <td><p>Randomize the simulated fixed tendon parameters of an articulation by adding, scaling, or setting random values.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab.envs.mdp.events.reset_joints_within_limits_range" title="isaaclab.envs.mdp.events.reset_joints_within_limits_range"><code class="xref py py-obj docutils literal notranslate"><span class="pre">reset_joints_within_limits_range</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab.envs.mdp.events.reset_root_state_uniform" title="isaaclab.envs.mdp.events.reset_root_state_uniform"><code class="xref py py-obj docutils literal notranslate"><span class="pre">reset_root_state_uniform</span></code></a></p></td>
+<td><p>Reset the asset root state to a random position and velocity uniformly within the given ranges.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab.envs.mdp.events.reset_joints_within_limits_range" title="isaaclab.envs.mdp.events.reset_joints_within_limits_range"><code class="xref py py-obj docutils literal notranslate"><span class="pre">reset_joints_within_limits_range</span></code></a></p></td>
 <td><p>Reset an articulation's joints to a random position in the given limit ranges.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab.envs.mdp.events.randomize_visual_texture_material" title="isaaclab.envs.mdp.events.randomize_visual_texture_material"><code class="xref py py-obj docutils literal notranslate"><span class="pre">randomize_visual_texture_material</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab.envs.mdp.events.randomize_visual_texture_material" title="isaaclab.envs.mdp.events.randomize_visual_texture_material"><code class="xref py py-obj docutils literal notranslate"><span class="pre">randomize_visual_texture_material</span></code></a></p></td>
 <td><p>Randomize the visual texture of bodies on an asset using Replicator API.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab.envs.mdp.events.randomize_visual_color" title="isaaclab.envs.mdp.events.randomize_visual_color"><code class="xref py py-obj docutils literal notranslate"><span class="pre">randomize_visual_color</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab.envs.mdp.events.randomize_visual_color" title="isaaclab.envs.mdp.events.randomize_visual_color"><code class="xref py py-obj docutils literal notranslate"><span class="pre">randomize_visual_color</span></code></a></p></td>
 <td><p>Randomize the visual color of bodies on an asset using Replicator API.</p></td>
 </tr>
 </tbody>
@@ -3779,20 +3785,44 @@ are <code class="docutils literal notranslate"><span class="pre">x</span></code>
 If the dictionary does not contain a key, the velocity is set to zero for that axis.</p>
 </dd></dl>
 
-<dl class="py function">
+<dl class="py class">
 <dt class="sig sig-object py" id="isaaclab.envs.mdp.events.reset_root_state_uniform">
-<span class="sig-prename descclassname"><span class="pre">isaaclab.envs.mdp.events.</span></span><span class="sig-name descname"><span class="pre">reset_root_state_uniform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">env</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="isaaclab.envs.html#isaaclab.envs.ManagerBasedEnv" title="isaaclab.envs.ManagerBasedEnv"><span class="pre">ManagerBasedEnv</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">env_ids</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.pytorch.org/docs/2.11/tensors.html#torch.Tensor" title="(in PyTorch v2.11)"><span class="pre">torch.Tensor</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">pose_range</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)"><span class="pre">dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.14)"><span class="pre">tuple</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">velocity_range</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)"><span class="pre">dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.14)"><span class="pre">tuple</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">asset_cfg</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="isaaclab.managers.html#isaaclab.managers.SceneEntityCfg" title="isaaclab.managers.SceneEntityCfg"><span class="pre">SceneEntityCfg</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">SceneEntityCfg(name='robot',</span> <span class="pre">joint_names=None,</span> <span class="pre">joint_ids=slice(None,</span> <span class="pre">None,</span> <span class="pre">None),</span> <span class="pre">fixed_tendon_names=None,</span> <span class="pre">fixed_tendon_ids=slice(None,</span> <span class="pre">None,</span> <span class="pre">None),</span> <span class="pre">body_names=None,</span> <span class="pre">body_ids=slice(None,</span> <span class="pre">None,</span> <span class="pre">None),</span> <span class="pre">object_collection_names=None,</span> <span class="pre">object_collection_ids=slice(None,</span> <span class="pre">None,</span> <span class="pre">None),</span> <span class="pre">preserve_order=False)</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/isaaclab/envs/mdp/events.html#reset_root_state_uniform"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#isaaclab.envs.mdp.events.reset_root_state_uniform" title="Link to this definition">#</a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">isaaclab.envs.mdp.events.</span></span><span class="sig-name descname"><span class="pre">reset_root_state_uniform</span></span><a class="reference internal" href="../../../_modules/isaaclab/envs/mdp/events.html#reset_root_state_uniform"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#isaaclab.envs.mdp.events.reset_root_state_uniform" title="Link to this definition">#</a></dt>
 <dd><p>Reset the asset root state to a random position and velocity uniformly within the given ranges.</p>
-<p>This function randomizes the root position and velocity of the asset.</p>
+<p>This term randomizes the root position and velocity of the asset.</p>
 <ul class="simple">
 <li><p>It samples the root position from the given ranges and adds them to the default root position, before setting
 them into the physics simulation.</p></li>
 <li><p>It samples the root orientation from the given ranges and sets them into the physics simulation.</p></li>
 <li><p>It samples the root velocity from the given ranges and sets them into the physics simulation.</p></li>
 </ul>
-<p>The function takes a dictionary of pose and velocity ranges for each axis and rotation. The keys of the
+<p>The term takes a dictionary of pose and velocity ranges for each axis and rotation. The keys of the
 dictionary are <code class="docutils literal notranslate"><span class="pre">x</span></code>, <code class="docutils literal notranslate"><span class="pre">y</span></code>, <code class="docutils literal notranslate"><span class="pre">z</span></code>, <code class="docutils literal notranslate"><span class="pre">roll</span></code>, <code class="docutils literal notranslate"><span class="pre">pitch</span></code>, and <code class="docutils literal notranslate"><span class="pre">yaw</span></code>. The values are tuples of the form
 <code class="docutils literal notranslate"><span class="pre">(min,</span> <span class="pre">max)</span></code>. If the dictionary does not contain a key, the position or velocity is set to zero for that axis.</p>
+<p>The range dictionaries are materialized as device tensors once at construction.</p>
+<p><strong>Methods:</strong></p>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab.envs.mdp.events.reset_root_state_uniform.__init__" title="isaaclab.envs.mdp.events.reset_root_state_uniform.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>(cfg, env)</p></td>
+<td><p>Initialize the manager term.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="isaaclab.envs.mdp.events.reset_root_state_uniform.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cfg</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="isaaclab.managers.html#isaaclab.managers.EventTermCfg" title="isaaclab.managers.EventTermCfg"><span class="pre">EventTermCfg</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">env</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="isaaclab.envs.html#isaaclab.envs.ManagerBasedEnv" title="isaaclab.envs.ManagerBasedEnv"><span class="pre">ManagerBasedEnv</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/isaaclab/envs/mdp/events.html#reset_root_state_uniform.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#isaaclab.envs.mdp.events.reset_root_state_uniform.__init__" title="Link to this definition">#</a></dt>
+<dd><p>Initialize the manager term.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><span class="target" id="isaaclab.envs.mdp.events.reset_root_state_uniform.params.cfg"></span><strong>cfg</strong><a class="paramlink headerlink reference internal" href="#isaaclab.envs.mdp.events.reset_root_state_uniform.params.cfg">¶</a> – The configuration object.</p></li>
+<li><p><span class="target" id="isaaclab.envs.mdp.events.reset_root_state_uniform.params.env"></span><strong>env</strong><a class="paramlink headerlink reference internal" href="#isaaclab.envs.mdp.events.reset_root_state_uniform.params.env">¶</a> – The environment instance.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
 </dd></dl>
 
 <dl class="py function">
@@ -5334,17 +5364,23 @@ the termination introduced by the function.</p>
 <tr class="row-even"><td><p><a class="reference internal" href="#isaaclab.envs.mdp.terminations.joint_pos_out_of_manual_limit" title="isaaclab.envs.mdp.terminations.joint_pos_out_of_manual_limit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">joint_pos_out_of_manual_limit</span></code></a>(env, bounds[, ...])</p></td>
 <td><p>Terminate when the asset's joint positions are outside of the configured bounds.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab.envs.mdp.terminations.joint_vel_out_of_limit" title="isaaclab.envs.mdp.terminations.joint_vel_out_of_limit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">joint_vel_out_of_limit</span></code></a>(env[, asset_cfg])</p></td>
-<td><p>Terminate when the asset's joint velocities are outside of the soft joint limits.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab.envs.mdp.terminations.joint_vel_out_of_manual_limit" title="isaaclab.envs.mdp.terminations.joint_vel_out_of_manual_limit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">joint_vel_out_of_manual_limit</span></code></a>(env, max_velocity)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab.envs.mdp.terminations.joint_vel_out_of_manual_limit" title="isaaclab.envs.mdp.terminations.joint_vel_out_of_manual_limit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">joint_vel_out_of_manual_limit</span></code></a>(env, max_velocity)</p></td>
 <td><p>Terminate when the asset's joint velocities are outside the provided limits.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab.envs.mdp.terminations.joint_effort_out_of_limit" title="isaaclab.envs.mdp.terminations.joint_effort_out_of_limit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">joint_effort_out_of_limit</span></code></a>(env[, asset_cfg])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab.envs.mdp.terminations.joint_effort_out_of_limit" title="isaaclab.envs.mdp.terminations.joint_effort_out_of_limit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">joint_effort_out_of_limit</span></code></a>(env[, asset_cfg])</p></td>
 <td><p>Terminate when effort applied on the asset's joints are outside of the soft joint limits.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#isaaclab.envs.mdp.terminations.illegal_contact" title="isaaclab.envs.mdp.terminations.illegal_contact"><code class="xref py py-obj docutils literal notranslate"><span class="pre">illegal_contact</span></code></a>(env, threshold, sensor_cfg)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab.envs.mdp.terminations.illegal_contact" title="isaaclab.envs.mdp.terminations.illegal_contact"><code class="xref py py-obj docutils literal notranslate"><span class="pre">illegal_contact</span></code></a>(env, threshold, sensor_cfg)</p></td>
 <td><p>Terminate when the contact force on the sensor exceeds the force threshold.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Classes:</strong></p>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab.envs.mdp.terminations.joint_vel_out_of_limit" title="isaaclab.envs.mdp.terminations.joint_vel_out_of_limit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">joint_vel_out_of_limit</span></code></a></p></td>
+<td><p>Terminate when the asset's joint velocities are outside of the soft joint limits.</p></td>
 </tr>
 </tbody>
 </table>
@@ -5396,10 +5432,34 @@ sampled. It is useful in situations where delayed rewards are used <span id="id3
 </div>
 </dd></dl>
 
-<dl class="py function">
+<dl class="py class">
 <dt class="sig sig-object py" id="isaaclab.envs.mdp.terminations.joint_vel_out_of_limit">
-<span class="sig-prename descclassname"><span class="pre">isaaclab.envs.mdp.terminations.</span></span><span class="sig-name descname"><span class="pre">joint_vel_out_of_limit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">env</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="isaaclab.envs.html#isaaclab.envs.ManagerBasedRLEnv" title="isaaclab.envs.ManagerBasedRLEnv"><span class="pre">ManagerBasedRLEnv</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">asset_cfg</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="isaaclab.managers.html#isaaclab.managers.SceneEntityCfg" title="isaaclab.managers.SceneEntityCfg"><span class="pre">SceneEntityCfg</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">SceneEntityCfg(name='robot',</span> <span class="pre">joint_names=None,</span> <span class="pre">joint_ids=slice(None,</span> <span class="pre">None,</span> <span class="pre">None),</span> <span class="pre">fixed_tendon_names=None,</span> <span class="pre">fixed_tendon_ids=slice(None,</span> <span class="pre">None,</span> <span class="pre">None),</span> <span class="pre">body_names=None,</span> <span class="pre">body_ids=slice(None,</span> <span class="pre">None,</span> <span class="pre">None),</span> <span class="pre">object_collection_names=None,</span> <span class="pre">object_collection_ids=slice(None,</span> <span class="pre">None,</span> <span class="pre">None),</span> <span class="pre">preserve_order=False)</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.pytorch.org/docs/2.11/tensors.html#torch.Tensor" title="(in PyTorch v2.11)"><span class="pre">torch.Tensor</span></a></span></span><a class="reference internal" href="../../../_modules/isaaclab/envs/mdp/terminations.html#joint_vel_out_of_limit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#isaaclab.envs.mdp.terminations.joint_vel_out_of_limit" title="Link to this definition">#</a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">isaaclab.envs.mdp.terminations.</span></span><span class="sig-name descname"><span class="pre">joint_vel_out_of_limit</span></span><a class="reference internal" href="../../../_modules/isaaclab/envs/mdp/terminations.html#joint_vel_out_of_limit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#isaaclab.envs.mdp.terminations.joint_vel_out_of_limit" title="Link to this definition">#</a></dt>
 <dd><p>Terminate when the asset’s joint velocities are outside of the soft joint limits.</p>
+<p>The joint indices are materialized as a device tensor once at construction.</p>
+<p><strong>Methods:</strong></p>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#isaaclab.envs.mdp.terminations.joint_vel_out_of_limit.__init__" title="isaaclab.envs.mdp.terminations.joint_vel_out_of_limit.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>(cfg, env)</p></td>
+<td><p>Initialize the manager term.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="isaaclab.envs.mdp.terminations.joint_vel_out_of_limit.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cfg</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="isaaclab.managers.html#isaaclab.managers.TerminationTermCfg" title="isaaclab.managers.TerminationTermCfg"><span class="pre">TerminationTermCfg</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">env</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="isaaclab.envs.html#isaaclab.envs.ManagerBasedRLEnv" title="isaaclab.envs.ManagerBasedRLEnv"><span class="pre">ManagerBasedRLEnv</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/isaaclab/envs/mdp/terminations.html#joint_vel_out_of_limit.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#isaaclab.envs.mdp.terminations.joint_vel_out_of_limit.__init__" title="Link to this definition">#</a></dt>
+<dd><p>Initialize the manager term.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><span class="target" id="isaaclab.envs.mdp.terminations.joint_vel_out_of_limit.params.cfg"></span><strong>cfg</strong><a class="paramlink headerlink reference internal" href="#isaaclab.envs.mdp.terminations.joint_vel_out_of_limit.params.cfg">¶</a> – The configuration object.</p></li>
+<li><p><span class="target" id="isaaclab.envs.mdp.terminations.joint_vel_out_of_limit.params.env"></span><strong>env</strong><a class="paramlink headerlink reference internal" href="#isaaclab.envs.mdp.terminations.joint_vel_out_of_limit.params.env">¶</a> – The environment instance.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
 </dd></dl>
 
 <dl class="py function">
@@ -5940,7 +6000,10 @@ thus transforming the simplified address into a full manager path.</p>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.envs.mdp.events.apply_external_force_torque"><code class="docutils literal notranslate"><span class="pre">apply_external_force_torque()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.envs.mdp.events.push_by_setting_velocity"><code class="docutils literal notranslate"><span class="pre">push_by_setting_velocity()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.envs.mdp.events.reset_root_state_uniform"><code class="docutils literal notranslate"><span class="pre">reset_root_state_uniform()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.envs.mdp.events.reset_root_state_uniform"><code class="docutils literal notranslate"><span class="pre">reset_root_state_uniform</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.envs.mdp.events.reset_root_state_uniform.__init__"><code class="docutils literal notranslate"><span class="pre">reset_root_state_uniform.__init__()</span></code></a></li>
+</ul>
+</li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.envs.mdp.events.reset_root_state_with_random_orientation"><code class="docutils literal notranslate"><span class="pre">reset_root_state_with_random_orientation()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.envs.mdp.events.reset_root_state_from_terrain"><code class="docutils literal notranslate"><span class="pre">reset_root_state_from_terrain()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.envs.mdp.events.reset_joints_by_scale"><code class="docutils literal notranslate"><span class="pre">reset_joints_by_scale()</span></code></a></li>
@@ -6114,7 +6177,10 @@ thus transforming the simplified address into a full manager path.</p>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.envs.mdp.terminations.root_height_below_minimum"><code class="docutils literal notranslate"><span class="pre">root_height_below_minimum()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.envs.mdp.terminations.joint_pos_out_of_limit"><code class="docutils literal notranslate"><span class="pre">joint_pos_out_of_limit()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.envs.mdp.terminations.joint_pos_out_of_manual_limit"><code class="docutils literal notranslate"><span class="pre">joint_pos_out_of_manual_limit()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.envs.mdp.terminations.joint_vel_out_of_limit"><code class="docutils literal notranslate"><span class="pre">joint_vel_out_of_limit()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.envs.mdp.terminations.joint_vel_out_of_limit"><code class="docutils literal notranslate"><span class="pre">joint_vel_out_of_limit</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.envs.mdp.terminations.joint_vel_out_of_limit.__init__"><code class="docutils literal notranslate"><span class="pre">joint_vel_out_of_limit.__init__()</span></code></a></li>
+</ul>
+</li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.envs.mdp.terminations.joint_vel_out_of_manual_limit"><code class="docutils literal notranslate"><span class="pre">joint_vel_out_of_manual_limit()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.envs.mdp.terminations.joint_effort_out_of_limit"><code class="docutils literal notranslate"><span class="pre">joint_effort_out_of_limit()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#isaaclab.envs.mdp.terminations.illegal_contact"><code class="docutils literal notranslate"><span class="pre">illegal_contact()</span></code></a></li>
@@ -6169,7 +6235,7 @@ By The Isaac Lab Project Developers.
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Jul 13, 2026.
+  Last updated on Jul 14, 2026.
   <br/>
 </p>
   </div>

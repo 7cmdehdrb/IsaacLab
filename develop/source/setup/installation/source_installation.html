@@ -64,7 +64,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="3.0.0" />
-    <meta name="docbuild:last-update" content="Jul 13, 2026"/>
+    <meta name="docbuild:last-update" content="Jul 14, 2026"/>
   </head>
   
   
@@ -829,7 +829,7 @@ variables to your terminal for the remaining of the installation instructions:</
 <input checked="checked" id="sd-tab-item-2" name="sd-tab-set-1" type="radio">
 <label class="sd-tab-label" data-sync-group="os" data-sync-id="linux" for="sd-tab-item-2">
 <i class="fa-brands fa-linux"></i> Linux</label><div class="sd-tab-content docutils">
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Isaac Sim root directory</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Isaac Sim root directory (use linux-aarch64 instead of linux-x86_64 on aarch64)</span>
 <span class="nb">export</span><span class="w"> </span><span class="nv">ISAACSIM_PATH</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">PWD</span><span class="si">}</span><span class="s2">/_build/linux-x86_64/release&quot;</span>
 <span class="c1"># Isaac Sim python executable</span>
 <span class="nb">export</span><span class="w"> </span><span class="nv">ISAACSIM_PYTHON_EXE</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">ISAACSIM_PATH</span><span class="si">}</span><span class="s2">/python.sh&quot;</span>
@@ -1049,7 +1049,8 @@ ln<span class="w"> </span>-s<span class="w"> </span><span class="si">${</span><s
 <span class="c1"># Option 1: If pre-built binaries were installed:</span>
 <span class="c1"># ln -s ${HOME}/isaacsim _isaac_sim</span>
 <span class="c1">#</span>
-<span class="c1"># Option 2: If Isaac Sim was built from source:</span>
+<span class="c1"># Option 2: If Isaac Sim was built from source</span>
+<span class="c1"># (use linux-aarch64 instead of linux-x86_64 on aarch64):</span>
 <span class="c1"># ln -s ${HOME}/IsaacSim/_build/linux-x86_64/release _isaac_sim</span>
 </pre></div>
 </div>
@@ -1082,7 +1083,7 @@ sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> <
 </pre></div>
 </div>
 <p>On <strong>aarch64</strong> systems (e.g., DGX Spark), Python, OpenGL and X11 development packages are also required.
-The <code class="docutils literal notranslate"><span class="pre">imgui-bundle</span></code> and <code class="docutils literal notranslate"><span class="pre">quadprog</span></code> dependencies do not provide pre-built wheels for aarch64 and must be
+Some Python packages, notably <code class="docutils literal notranslate"><span class="pre">imgui-bundle</span></code>, do not provide pre-built wheels for aarch64 and must be
 compiled from source, which needs these headers and libraries:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>python3.12-dev<span class="w"> </span>libgl1-mesa-dev<span class="w"> </span>libx11-dev<span class="w"> </span>libxcursor-dev<span class="w"> </span>libxi-dev<span class="w"> </span>libxinerama-dev<span class="w"> </span>libxrandr-dev
 </pre></div>
@@ -1295,7 +1296,7 @@ By The Isaac Lab Project Developers.
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Jul 13, 2026.
+  Last updated on Jul 14, 2026.
   <br/>
 </p>
   </div>

@@ -64,7 +64,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="3.0.0" />
-    <meta name="docbuild:last-update" content="Jul 13, 2026"/>
+    <meta name="docbuild:last-update" content="Jul 14, 2026"/>
   </head>
   
   
@@ -895,9 +895,9 @@ from inside the virtual environment:</p>
 <h3>Installing dependencies<a class="headerlink" href="#installing-dependencies" title="Link to this heading">#</a></h3>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>On aarch64 (e.g., DGX Spark), <code class="docutils literal notranslate"><span class="pre">imgui-bundle</span></code> and <code class="docutils literal notranslate"><span class="pre">quadprog</span></code> must be compiled from source because no
-pre-built wheel is available. Install the required Python, OpenGL, and X11 development packages
-<strong>before</strong> installing Isaac Lab:</p>
+<p>On aarch64 (e.g., DGX Spark), some Python packages, notably <code class="docutils literal notranslate"><span class="pre">imgui-bundle</span></code>, must be compiled
+from source because no pre-built wheel is available. Install the required Python, OpenGL, and X11
+development packages <strong>before</strong> installing Isaac Lab:</p>
 <blockquote>
 <div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>python3.12-dev<span class="w"> </span>libgl1-mesa-dev<span class="w"> </span>libx11-dev<span class="w"> </span>libxcursor-dev<span class="w"> </span>libxi-dev<span class="w"> </span>libxinerama-dev<span class="w"> </span>libxrandr-dev
 </pre></div>
@@ -968,6 +968,16 @@ the preload is set up via the conda activation hook.</p>
 </div>
 </li>
 </ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The first launch of Isaac Sim asks to accept the NVIDIA Omniverse EULA interactively.
+In a non-interactive shell (CI, remote scripts), the prompt cannot be answered and the
+launch fails with <code class="docutils literal notranslate"><span class="pre">Unable</span> <span class="pre">to</span> <span class="pre">bootstrap</span> <span class="pre">inner</span> <span class="pre">kit</span> <span class="pre">kernel:</span> <span class="pre">EOF</span> <span class="pre">when</span> <span class="pre">reading</span> <span class="pre">a</span> <span class="pre">line</span></code>.
+Accept the EULA through the environment instead:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">OMNI_KIT_ACCEPT_EULA</span><span class="o">=</span>yes
+</pre></div>
+</div>
+</div>
 </section>
 <section id="verifying-the-isaac-sim-installation">
 <h3>Verifying the Isaac Sim installation<a class="headerlink" href="#verifying-the-isaac-sim-installation" title="Link to this heading">#</a></h3>
@@ -1133,7 +1143,7 @@ sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> <
 </pre></div>
 </div>
 <p>On <strong>aarch64</strong> systems (e.g., DGX Spark), Python, OpenGL and X11 development packages are also required.
-The <code class="docutils literal notranslate"><span class="pre">imgui-bundle</span></code> and <code class="docutils literal notranslate"><span class="pre">quadprog</span></code> dependencies do not provide pre-built wheels for aarch64 and must be
+Some Python packages, notably <code class="docutils literal notranslate"><span class="pre">imgui-bundle</span></code>, do not provide pre-built wheels for aarch64 and must be
 compiled from source, which needs these headers and libraries:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>python3.12-dev<span class="w"> </span>libgl1-mesa-dev<span class="w"> </span>libx11-dev<span class="w"> </span>libxcursor-dev<span class="w"> </span>libxi-dev<span class="w"> </span>libxinerama-dev<span class="w"> </span>libxrandr-dev
 </pre></div>
@@ -1346,7 +1356,7 @@ By The Isaac Lab Project Developers.
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Jul 13, 2026.
+  Last updated on Jul 14, 2026.
   <br/>
 </p>
   </div>

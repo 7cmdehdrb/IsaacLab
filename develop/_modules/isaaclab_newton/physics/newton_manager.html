@@ -61,7 +61,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="3.0.0" />
-    <meta name="docbuild:last-update" content="Jul 13, 2026"/>
+    <meta name="docbuild:last-update" content="Jul 14, 2026"/>
   </head>
   
   
@@ -867,8 +867,9 @@
         <span class="k">return</span> <span class="n">NewtonManager</span><span class="o">.</span><span class="n">get_model</span><span class="p">()</span>
 
     <span class="nd">@property</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">state</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Model</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">NewtonManager</span><span class="o">.</span><span class="n">get_state_0</span><span class="p">()</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">state</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">State</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return Newton state after applying pending forward kinematics.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">NewtonManager</span><span class="o">.</span><span class="n">get_state</span><span class="p">()</span>
 
 
 <span class="k">def</span><span class="w"> </span><span class="nf">_eval_fk_unbound</span><span class="p">(</span><span class="n">world_reset_mask</span><span class="p">:</span> <span class="n">wp</span><span class="o">.</span><span class="n">array</span> <span class="o">|</span> <span class="kc">None</span><span class="p">,</span> <span class="n">fk_mask</span><span class="p">:</span> <span class="n">wp</span><span class="o">.</span><span class="n">array</span> <span class="o">|</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
@@ -944,7 +945,6 @@
     <span class="c1"># Collision and contacts</span>
     <span class="n">_contacts</span><span class="p">:</span> <span class="n">Contacts</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="n">_needs_collision_pipeline</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
-    <span class="n">_needs_fk_before_step</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
     <span class="n">_collision_pipeline</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="n">_collision_cfg</span><span class="p">:</span> <span class="n">NewtonCollisionPipelineCfg</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="n">_newton_contact_sensors</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="p">{}</span>  <span class="c1"># Maps sensor_key to NewtonContactSensor</span>
@@ -977,6 +977,7 @@
     <span class="n">_newton_index_attr</span> <span class="o">=</span> <span class="s2">&quot;newton:index&quot;</span>
     <span class="n">_clone_physics_only</span> <span class="o">=</span> <span class="kc">False</span>
     <span class="n">_transforms_dirty</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="n">_transforms_may_change_on_graph_replay</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
     <span class="n">_particles_dirty</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
     <span class="n">_newton_particle_offset_attr</span> <span class="o">=</span> <span class="s2">&quot;newton:particleOffset&quot;</span>
     <span class="n">_newton_particle_count_attr</span> <span class="o">=</span> <span class="s2">&quot;newton:particleCount&quot;</span>
@@ -1116,7 +1117,11 @@
 <a class="viewcode-back" href="../../../source/api/lab_newton/isaaclab_newton.physics.html#isaaclab_contrib.deformable.vbd_manager.NewtonManager.pre_render">[docs]</a>
     <span class="nd">@classmethod</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">pre_render</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Flush deferred Fabric writes before cameras/visualizers read the scene.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Refresh derived Newton state before cameras and visualizers read it.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_fk_reset_mask</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">cls</span><span class="o">.</span><span class="n">forward</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">NewtonManager</span><span class="o">.</span><span class="n">_transforms_may_change_on_graph_replay</span><span class="p">:</span>
+                <span class="n">NewtonManager</span><span class="o">.</span><span class="n">_transforms_dirty</span> <span class="o">=</span> <span class="kc">True</span>
         <span class="bp">cls</span><span class="o">.</span><span class="n">sync_transforms_to_usd</span><span class="p">()</span>
         <span class="bp">cls</span><span class="o">.</span><span class="n">sync_particles_to_usd</span><span class="p">()</span></div>
 
@@ -1311,6 +1316,12 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">NewtonManager</span><span class="o">.</span><span class="n">_transforms_dirty</span> <span class="o">=</span> <span class="kc">True</span>
 
+        <span class="n">device</span> <span class="o">=</span> <span class="n">PhysicsManager</span><span class="o">.</span><span class="n">_device</span>
+        <span class="k">if</span> <span class="n">device</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">device</span> <span class="o">=</span> <span class="n">wp</span><span class="o">.</span><span class="n">get_device</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">device</span><span class="o">.</span><span class="n">is_cuda</span> <span class="ow">and</span> <span class="n">device</span><span class="o">.</span><span class="n">stream</span><span class="o">.</span><span class="n">is_capturing</span><span class="p">:</span>
+                <span class="n">NewtonManager</span><span class="o">.</span><span class="n">_transforms_may_change_on_graph_replay</span> <span class="o">=</span> <span class="kc">True</span>
+
     <span class="nd">@classmethod</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">_mark_particles_dirty</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Flag that particle positions have changed and Fabric needs re-sync.</span>
@@ -1414,19 +1425,8 @@
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;Newton deferred CUDA graph capture failed; using eager execution&quot;</span><span class="p">)</span>
 
-        <span class="c1"># Ensure body_q is up-to-date before solvers read rigid transforms.</span>
-        <span class="c1"># After env resets or kinematic root writes, joint_q is written but</span>
-        <span class="c1"># body_q is stale until FK runs. Collision-based solvers need this for</span>
-        <span class="c1"># broadphase/narrowphase; collider-based solvers such as MPM need it</span>
-        <span class="c1"># for their internal collider queries. Maximal-coordinate solvers</span>
-        <span class="c1"># that treat body state as the main state (e.g. Kamino) require FK before step.</span>
-        <span class="c1"># Only runs FK for dirtied articulations via the accumulated mask.</span>
-        <span class="k">if</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_needs_collision_pipeline</span> <span class="ow">or</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_needs_fk_before_step</span><span class="p">:</span>
-            <span class="bp">cls</span><span class="o">.</span><span class="n">_eval_fk</span><span class="p">(</span><span class="bp">cls</span><span class="o">.</span><span class="n">_world_reset_mask</span><span class="p">,</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_fk_reset_mask</span><span class="p">)</span>
-
-        <span class="c1"># Zero both masks after consumption</span>
-        <span class="n">NewtonManager</span><span class="o">.</span><span class="n">_world_reset_mask</span><span class="o">.</span><span class="n">zero_</span><span class="p">()</span>
-        <span class="n">NewtonManager</span><span class="o">.</span><span class="n">_fk_reset_mask</span><span class="o">.</span><span class="n">zero_</span><span class="p">()</span>
+        <span class="c1"># Reconcile authored state after any mutating graph warmup and before the requested physics step.</span>
+        <span class="bp">cls</span><span class="o">.</span><span class="n">forward</span><span class="p">()</span>
 
         <span class="n">physics_dt</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_solver_dt</span> <span class="o">*</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_num_substeps</span>
         <span class="n">use_graph</span> <span class="o">=</span> <span class="n">cfg</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">cfg</span><span class="o">.</span><span class="n">use_cuda_graph</span> <span class="ow">and</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_graph</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="s2">&quot;cuda&quot;</span> <span class="ow">in</span> <span class="n">device</span>  <span class="c1"># type: ignore[union-attr]</span>
@@ -1536,7 +1536,6 @@
         <span class="n">NewtonManager</span><span class="o">.</span><span class="n">_control</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="n">NewtonManager</span><span class="o">.</span><span class="n">_contacts</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="n">NewtonManager</span><span class="o">.</span><span class="n">_needs_collision_pipeline</span> <span class="o">=</span> <span class="kc">False</span>
-        <span class="n">NewtonManager</span><span class="o">.</span><span class="n">_needs_fk_before_step</span> <span class="o">=</span> <span class="kc">False</span>
         <span class="n">NewtonManager</span><span class="o">.</span><span class="n">_eval_fk</span> <span class="o">=</span> <span class="n">_eval_fk_unbound</span>
         <span class="n">NewtonManager</span><span class="o">.</span><span class="n">_collision_pipeline</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="n">NewtonManager</span><span class="o">.</span><span class="n">_collision_cfg</span> <span class="o">=</span> <span class="kc">None</span>
@@ -1560,6 +1559,7 @@
         <span class="n">NewtonManager</span><span class="o">.</span><span class="n">_newton_stage_path</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="n">NewtonManager</span><span class="o">.</span><span class="n">_usdrt_stage</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="n">NewtonManager</span><span class="o">.</span><span class="n">_transforms_dirty</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="n">NewtonManager</span><span class="o">.</span><span class="n">_transforms_may_change_on_graph_replay</span> <span class="o">=</span> <span class="kc">False</span>
         <span class="n">NewtonManager</span><span class="o">.</span><span class="n">_particles_dirty</span> <span class="o">=</span> <span class="kc">False</span>
         <span class="n">NewtonManager</span><span class="o">.</span><span class="n">_particle_visual_prims</span> <span class="o">=</span> <span class="p">{}</span>
         <span class="n">NewtonManager</span><span class="o">.</span><span class="n">_mpm_object_registry</span> <span class="o">=</span> <span class="p">[]</span>
@@ -1853,8 +1853,8 @@
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Mark environments as needing FK recomputation and solver reset.</span>
 
 <span class="sd">        Called by asset write methods that modify joint coordinates or root</span>
-<span class="sd">        transforms. The masks are consumed in :meth:`step` before physics</span>
-<span class="sd">        stepping.</span>
+<span class="sd">        transforms. The masks are consumed by the next forward, raw-state,</span>
+<span class="sd">        rendering, or physics-step boundary.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            env_mask: Boolean mask of dirtied environments. Shape ``(num_envs,)``.</span>
@@ -2597,10 +2597,11 @@
 <span class="sd">        backend-agnostic Newton ``State``. When the sim backend is PhysX this</span>
 <span class="sd">        refreshes the shadow ``_state_0.body_q`` from the live PhysX scene via</span>
 <span class="sd">        :meth:`update_visualization_state` before returning, so callers never</span>
-<span class="sd">        observe stale transforms. Under the Newton sim backend</span>
-<span class="sd">        :meth:`update_visualization_state` is a no-op and this is equivalent to</span>
-<span class="sd">        :meth:`get_state_0`.</span>
+<span class="sd">        observe stale transforms. Under the Newton sim backend, pending</span>
+<span class="sd">        forward kinematics is applied before returning the live state.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_fk_reset_mask</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_backend_is_newton</span><span class="p">(</span><span class="n">scene_data_provider</span><span class="p">):</span>
+            <span class="bp">cls</span><span class="o">.</span><span class="n">forward</span><span class="p">()</span>
         <span class="bp">cls</span><span class="o">.</span><span class="n">update_visualization_state</span><span class="p">(</span><span class="n">scene_data_provider</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">get_state_0</span><span class="p">()</span></div>
 
@@ -3103,7 +3104,7 @@ By The Isaac Lab Project Developers.
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Jul 13, 2026.
+  Last updated on Jul 14, 2026.
   <br/>
 </p>
   </div>
