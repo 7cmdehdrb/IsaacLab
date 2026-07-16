@@ -104,6 +104,13 @@ from isaaclab_tasks.utils.hydra import hydra_task_config
 logger = logging.getLogger(__name__)
 
 # PLACEHOLDER: Extension template (do not remove this comment)
+try:
+    import sweep_rl  # noqa: F401
+except ModuleNotFoundError as exc:
+    # Keep the stock Isaac Lab trainer usable when the external Sweep RL
+    # package is not installed or present on PYTHONPATH.
+    if exc.name != "sweep_rl":
+        raise
 
 torch.backends.cuda.matmul.allow_tf32 = True
 torch.backends.cudnn.allow_tf32 = True

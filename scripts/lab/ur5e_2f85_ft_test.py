@@ -20,6 +20,17 @@ import re
 
 from isaaclab.app import AppLauncher
 
+
+def parse_bool(value: str) -> bool:
+    """Parse a command-line boolean without treating every non-empty string as true."""
+    normalized = value.strip().lower()
+    if normalized in ("true", "1", "yes", "on"):
+        return True
+    if normalized in ("false", "0", "no", "off"):
+        return False
+    raise argparse.ArgumentTypeError(f"Expected a boolean value, received: {value!r}")
+
+
 parser = argparse.ArgumentParser(
     description="UR5e + Robotiq 2F-85 virtual F/T joint example using Isaac Lab tensors."
 )
@@ -29,7 +40,7 @@ parser.add_argument(
 parser.add_argument(
     "--env_spacing",
     type=float,
-    default=2.0,
+    default=1.0,
     help="Spacing between environments in metres.",
 )
 parser.add_argument(
@@ -59,7 +70,7 @@ parser.add_argument(
 parser.add_argument(
     "--contact_twist_deg",
     type=float,
-    default=30.0,
+    default=10.0,
     help="Peak cube twist angle in degrees during the contact hold phase.",
 )
 parser.add_argument(
@@ -72,6 +83,16 @@ parser.add_argument(
     "--disable_ft_visualization",
     action="store_true",
     help="Disable viewport force/torque arrows. Visualization is also skipped in headless mode.",
+)
+parser.add_argument(
+    "--torque_visualize",
+    type=parse_bool,
+    default=False,
+    metavar="{true,false}",
+    help=(
+        "True: draw resultant force in red and torque in blue. "
+        "False: hide torque and draw sensor-frame Fx/Fy/Fz in red/green/blue."
+    ),
 )
 parser.add_argument(
     "--vis_every",
@@ -123,9 +144,7 @@ from isaaclab.utils import math as math_utils
 # -----------------------------------------------------------------------------
 
 UR5E_USD_PATH = "omniverse://192.168.0.13/NVIDIA/Assets/Isaac/5.0/Isaac/Robots/UniversalRobots/ur5e/ur5e.usd"
-ROBOTIQ_2F85_USD_PATH = (
-    "omniverse://192.168.0.13/NVIDIA/Assets/Isaac/5.1/Isaac/Robots/Robotiq/2F-85/Robotiq_2F_85_edit.usd"
-)
+ROBOTIQ_2F85_USD_PATH = "omniverse://192.168.0.13/NVIDIA/Assets/Isaac/5.1/Isaac/Robots/Robotiq/2F-85/Robotiq_2F_85_edit.usd"
 
 ENV_ROOT_EXPR = "/World/envs/env_.*"
 ENV_ROOT_TEMPLATE = "/World/envs/env_{env_id}"
@@ -985,49 +1004,87 @@ def visualize_ft_wrench(
     robot: Articulation,
     ft_body_id: int,
     wrench_b: torch.Tensor,
+    torque_visualize: bool,
 ) -> None:
-    """Visualize body-frame wrench tensors as bounded world-frame arrows."""
+    """Visualize either force/torque or the three sensor-frame force components."""
     # 센서 body 좌표계의 wrench를 viewport 표시를 위해서만 world 좌표계로 회전한다.
     sensor_pos_w = robot.data.body_pos_w[:, ft_body_id, :]
     sensor_quat_w = robot.data.body_quat_w[:, ft_body_id, :]
-    force_w = math_utils.quat_apply(sensor_quat_w, wrench_b[:, :3])
-    torque_w = math_utils.quat_apply(sensor_quat_w, wrench_b[:, 3:])
+    force_b = wrench_b[:, :3]
+    line_starts = []
+    line_ends = []
+    line_colors = []
 
-    force_norm = torch.linalg.norm(force_w, dim=-1)
-    torque_norm = torch.linalg.norm(torque_w, dim=-1)
-    force_length = torch.clamp(
-        force_norm * FORCE_ARROW_METRES_PER_N, max=FORCE_ARROW_MAX_LENGTH
-    )
-    torque_length = torch.clamp(
-        torque_norm * TORQUE_ARROW_METRES_PER_NM, max=TORQUE_ARROW_MAX_LENGTH
-    )
+    if torque_visualize:
+        # 기본 모드: 합력은 빨간색, 합토크는 파란색으로 표시한다.
+        force_w = math_utils.quat_apply(sensor_quat_w, force_b)
+        torque_w = math_utils.quat_apply(sensor_quat_w, wrench_b[:, 3:])
+        force_norm = torch.linalg.norm(force_w, dim=-1)
+        torque_norm = torch.linalg.norm(torque_w, dim=-1)
+        force_length = torch.clamp(
+            force_norm * FORCE_ARROW_METRES_PER_N, max=FORCE_ARROW_MAX_LENGTH
+        )
+        torque_length = torch.clamp(
+            torque_norm * TORQUE_ARROW_METRES_PER_NM, max=TORQUE_ARROW_MAX_LENGTH
+        )
+        force_length = torch.where(
+            force_norm > 0.1, torch.clamp(force_length, min=0.01), 0.0
+        )
+        torque_length = torch.where(
+            torque_norm > 0.01, torch.clamp(torque_length, min=0.01), 0.0
+        )
 
-    force_length = torch.where(
-        force_norm > 0.1, torch.clamp(force_length, min=0.01), 0.0
-    )
-    torque_length = torch.where(
-        torque_norm > 0.01, torch.clamp(torque_length, min=0.01), 0.0
-    )
+        local_z = torch.zeros_like(sensor_pos_w)
+        local_z[:, 2] = TORQUE_ARROW_OFFSET
+        torque_pos_w = sensor_pos_w + math_utils.quat_apply(sensor_quat_w, local_z)
+        force_starts, force_ends = arrow_line_segments(
+            sensor_pos_w, force_w, force_length
+        )
+        torque_starts, torque_ends = arrow_line_segments(
+            torque_pos_w, torque_w, torque_length
+        )
+        line_starts.extend((force_starts, torque_starts))
+        line_ends.extend((force_ends, torque_ends))
+        line_colors.extend(
+            (
+                ([0.95, 0.05, 0.05, 1.0], force_starts.shape[0]),
+                ([0.10, 0.35, 1.00, 1.0], torque_starts.shape[0]),
+            )
+        )
+    else:
+        # 성분 모드: 센서 기준 Fx/Fy/Fz를 각각 R/G/B 화살표로 표시하고 토크는 숨긴다.
+        component_colors = (
+            [0.95, 0.05, 0.05, 1.0],
+            [0.05, 0.90, 0.15, 1.0],
+            [0.10, 0.35, 1.00, 1.0],
+        )
+        for axis, color in enumerate(component_colors):
+            component_b = torch.zeros_like(force_b)
+            component_b[:, axis] = force_b[:, axis]
+            component_w = math_utils.quat_apply(sensor_quat_w, component_b)
+            component_norm = torch.abs(force_b[:, axis])
+            component_length = torch.clamp(
+                component_norm * FORCE_ARROW_METRES_PER_N,
+                max=FORCE_ARROW_MAX_LENGTH,
+            )
+            component_length = torch.where(
+                component_norm > 0.1,
+                torch.clamp(component_length, min=0.01),
+                0.0,
+            )
+            component_starts, component_ends = arrow_line_segments(
+                sensor_pos_w, component_w, component_length
+            )
+            line_starts.append(component_starts)
+            line_ends.append(component_ends)
+            line_colors.append((color, component_starts.shape[0]))
 
-    local_z = torch.zeros_like(sensor_pos_w)
-    local_z[:, 2] = TORQUE_ARROW_OFFSET
-    torque_pos_w = sensor_pos_w + math_utils.quat_apply(sensor_quat_w, local_z)
-
-    force_starts, force_ends = arrow_line_segments(sensor_pos_w, force_w, force_length)
-    torque_starts, torque_ends = arrow_line_segments(
-        torque_pos_w, torque_w, torque_length
-    )
     # debug_draw가 Python list를 요구하므로 시각화 경로에서만 CPU로 복사한다.
     # RL 관측에 사용하는 ft_wrench_b 텐서에는 영향을 주지 않는다.
-    starts = torch.cat((force_starts, torque_starts), dim=0).detach().cpu().tolist()
-    ends = torch.cat((force_ends, torque_ends), dim=0).detach().cpu().tolist()
-
-    num_force_lines = force_starts.shape[0]
-    num_torque_lines = torque_starts.shape[0]
-    colors = [[0.95, 0.05, 0.05, 1.0]] * num_force_lines + [
-        [0.10, 0.35, 1.00, 1.0]
-    ] * num_torque_lines
-    thicknesses = [4.0] * (num_force_lines + num_torque_lines)
+    starts = torch.cat(line_starts, dim=0).detach().cpu().tolist()
+    ends = torch.cat(line_ends, dim=0).detach().cpu().tolist()
+    colors = [color for color, count in line_colors for _ in range(count)]
+    thicknesses = [4.0] * len(starts)
     draw_interface.clear_lines()
     draw_interface.draw_lines(starts, ends, colors, thicknesses)
 
@@ -1352,9 +1409,14 @@ def main() -> None:
         )
     print("[INFO]: F/T tensor order: [Fx, Fy, Fz, Tx, Ty, Tz]")
     if ft_draw_interface is not None:
-        print(
-            "[INFO]: F/T viewport arrows: force=red, torque=blue (arrow lengths are capped)."
-        )
+        if args_cli.torque_visualize:
+            print(
+                "[INFO]: F/T viewport arrows: force=red, torque=blue (arrow lengths are capped)."
+            )
+        else:
+            print(
+                "[INFO]: Force component arrows: Fx=red, Fy=green, Fz=blue; torque is hidden."
+            )
 
     sim_dt = sim.get_physics_dt()
     cycle_steps = CONTACT_APPROACH_STEPS + CONTACT_HOLD_STEPS + CONTACT_RELEASE_STEPS
@@ -1452,7 +1514,13 @@ def main() -> None:
         max_force_norm = torch.maximum(max_force_norm, measured_force_norm)
         max_torque_norm = torch.maximum(max_torque_norm, measured_torque_norm)
         if ft_draw_interface is not None and step % args_cli.vis_every == 0:
-            visualize_ft_wrench(ft_draw_interface, robot, ft_body_id, ft_wrench_b)
+            visualize_ft_wrench(
+                ft_draw_interface,
+                robot,
+                ft_body_id,
+                ft_wrench_b,
+                args_cli.torque_visualize,
+            )
         if step % args_cli.print_every == 0:
             phase = contact_test_phase(step - 1) if probe_body_id is not None else None
             contact_axis = contact_axis_labels[0] if probe_body_id is not None else None

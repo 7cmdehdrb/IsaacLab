@@ -35,6 +35,7 @@ USD 경로는 스크립트 상단의 `UR5E_USD_PATH`, `ROBOTIQ_2F85_USD_PATH`에
 
 - 빨간색 화살표: force
 - 파란색 화살표: torque
+- `--torque_visualize false`: torque를 숨기고 `Fx/Fy/Fz`를 빨강/초록/파랑으로 분해 표시
 - `--disable_contact_test`: 검증용 probe와 큐브 동작 비활성화
 - `--disable_ft_visualization`: viewport 화살표 비활성화
 

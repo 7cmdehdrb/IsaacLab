@@ -102,6 +102,7 @@ GUI에서 양쪽 finger, knuckle, fingertip이 손목 아래에 정상적으로 
 
 - 센서 body 좌표계의 force와 torque를 world 좌표계로 회전한 뒤 debug draw로 표시한다.
 - force는 빨간색, torque는 파란색 화살표로 구분한다.
+- torque 시각화를 끄면 torque 화살표 대신 센서 기준 `Fx/Fy/Fz`를 각각 빨강/초록/파랑으로 표시한다.
 - 큰 값에서도 viewport를 가리지 않도록 화살표 길이에 상한을 적용한다.
 - torque 화살표는 force 화살표와 겹치지 않도록 센서 위치에서 조금 떨어진 곳에 표시한다.
 - headless 모드에서는 debug draw 모듈을 import하지 않는다.

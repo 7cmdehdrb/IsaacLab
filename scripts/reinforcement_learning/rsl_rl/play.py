@@ -93,6 +93,11 @@ from isaaclab_tasks.utils import get_checkpoint_path
 from isaaclab_tasks.utils.hydra import hydra_task_config
 
 # PLACEHOLDER: Extension template (do not remove this comment)
+try:
+    import sweep_rl  # noqa: F401
+except ModuleNotFoundError as exc:
+    if exc.name != "sweep_rl":
+        raise
 
 
 @hydra_task_config(args_cli.task, args_cli.agent)
