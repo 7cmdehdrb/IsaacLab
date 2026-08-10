@@ -164,11 +164,7 @@ except ModuleNotFoundError as exc:
         raise
 
 
-try:
-    import single_object_sweep  # noqa: F401
-except ModuleNotFoundError as exc:
-    if exc.name != "single_object_sweep":
-        raise
+import single_object_sweep  # noqa: F401
 
 torch.backends.cuda.matmul.allow_tf32 = True
 torch.backends.cudnn.allow_tf32 = True
