@@ -164,7 +164,6 @@ except ModuleNotFoundError as exc:
         raise
 
 
-import single_object_sweep  # noqa: F401
 import sweeping_policy  # noqa: F401
 
 torch.backends.cuda.matmul.allow_tf32 = True
