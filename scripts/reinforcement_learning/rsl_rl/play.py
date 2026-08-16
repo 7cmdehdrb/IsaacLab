@@ -127,8 +127,6 @@ except ModuleNotFoundError as exc:
     if exc.name != "sweeping_policy":
         raise
 
-import single_object_sweep
-
 
 @hydra_task_config(args_cli.task, args_cli.agent)
 def main(
